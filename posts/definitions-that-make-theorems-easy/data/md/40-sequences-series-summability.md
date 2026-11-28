@@ -1,14 +1,14 @@
 ### Absolute convergence makes rearranging a series safe
 
-**Remember:** If the sizes alone add up to something finite, the order cannot matter.
+**Remember:** If the sizes alone have a finite sum, order cannot matter.
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A series Σaₙ converges absolutely when the series of absolute values Σ\|aₙ\| converges.
+**Definition.** A series Σaₙ converges absolutely when the series of absolute values Σ\|aₙ\| converges, so the far-out terms have small total size, however they are arranged.
 
 **Problem.** Every rearrangement of an absolutely convergent series has the same sum.
 
-**How the definition helps.** In our own proof, choose an initial segment with absolute tail sum below ε. Once a rearranged partial sum contains that segment, the omitted terms have total absolute value below ε. Thus every rearrangement approaches the original sum. The alternating harmonic series admits rearrangements with different sums because its absolute tail diverges.
+**How the definition helps.** Pick an initial segment whose absolute tail sum is below ε; once a rearranged partial sum contains that segment, its other terms have total size below ε (our own). So every rearrangement tends to the original sum (our own). The alternating harmonic series is not absolutely convergent, and its rearrangements can have different sums.
 
 **Wikipedia:** [Riemann series theorem](https://en.wikipedia.org/wiki/Riemann_series_theorem), [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “Around the same time, Peter Gustav Lejeune Dirichlet highlighted that such phenomena are ruled out in the context of absolute convergence, and gave further examples of Cauchy's phenomenon for some other series which fail to be absolutely convergent.”
 
@@ -23,11 +23,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A series converges absolutely if the series of absolute values of its terms has a finite sum. Ordinary convergence only asks for the signed partial sums to converge.
+**Definition.** A series converges absolutely if the absolute values of its terms have a finite sum, so its far-out terms are small in total even without cancellation.
 
-**Problem.** The Cauchy product groups pairwise products by the sum of their indices. If both real series converge and at least one converges absolutely, their Cauchy product converges to the product of their sums.
+**Problem.** If two real series converge and at least one converges absolutely, their Cauchy product converges to the product of their sums. The Cauchy product groups the products aᵢbⱼ by the sum i + j.
 
-**How the definition helps.** In our own proof, each product partial sum weights partial sums of one series by terms of the absolutely convergent series. Its absolute tail times a uniform bound on those partial sums controls the late terms, while each early partial sum factor approaches its limit. Without absolute convergence, take both series with terms (−1)ⁿ/√(n+1), starting at zero. Each product diagonal has n+1 terms of one sign and magnitude at least 1/(n+1), so its sum cannot approach zero.
+**How the definition helps.** Each partial sum of the product weights partial sums of the other series by terms of the absolutely convergent one, so its small absolute tail times a bound on those partial sums controls the late weights (our own). Each early weight multiplies a partial sum that tends to its limit (our own). Without absolute convergence, squaring Σ(−1)ⁿ/√(n+1), from n = 0, gives product terms of size at least one, so the product diverges.
 
 **Wikipedia:** [Cauchy product](https://en.wikipedia.org/wiki/Cauchy_product). It says: “if both sequences are conditionally convergent, the Cauchy product does not have to converge towards the product of the two series”
 
@@ -39,11 +39,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A sequence stays away from zero eventually if all its late absolute values exceed the same positive bound. This asks more than merely requiring each term to be nonzero.
+**Definition.** A sequence stays away from zero eventually if, from some index on, all its terms satisfy \|xₙ\| ≥ c for one fixed c &gt; 0, so every late product \|xₙxₘ\| is at least c².
 
 **Problem.** If a real Cauchy sequence stays away from zero eventually, its late reciprocals form a Cauchy sequence.
 
-**How the definition helps.** The positive lower bound controls the denominator in \|1/x − 1/y\| = \|x − y\|/\|xy\| (our own). The sequence 1/n is Cauchy and never zero, but its reciprocals are unbounded (our own). For a real Cauchy sequence, completeness identifies the lower-bound condition with having a nonzero limit (our own).
+**How the definition helps.** The bound gives \|1/xₙ − 1/xₘ\| = \|xₙ − xₘ\|/\|xₙxₘ\| ≤ \|xₙ − xₘ\|/c², so the late reciprocals are Cauchy (our own). The sequence 1/n is Cauchy and never zero, but its reciprocals n are unbounded (our own). For a real Cauchy sequence, the condition is the same as having a nonzero limit (our own).
 
 **Paper or page:** [Combination Theorem for Cauchy Sequences/Inverse Rule](https://proofwiki.org/wiki/Combination_Theorem_for_Cauchy_Sequences/Inverse_Rule). It says: “is well-defined and a Cauchy sequence.”
 
@@ -51,15 +51,15 @@
 
 ### Condensed terms bound whole blocks
 
-**Remember:** The next block’s first term bounds the current block from below.
+**Remember:** Replace each doubling block by its length times its largest term.
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Start with a nonincreasing sequence of nonnegative terms indexed from one. Group consecutive terms into blocks of lengths 1, 2, 4, 8, and so on. In the condensed series, each block contributes its length times its first term.
+**Definition.** For a nonincreasing sequence of nonnegative terms aₙ, n ≥ 1, the condensed series Σ 2ᵏa<sub>2ᵏ</sub> replaces the block of indices from 2ᵏ to 2ᵏ⁺¹ − 1 by its length times its first, largest term. Monotonicity puts each block sum between half the next condensed term and its own condensed term.
 
 **Problem.** The original series converges if and only if the condensed series converges.
 
-**How the definition helps.** Monotonicity bounds each block sum between its condensed term and half the next condensed term. Our own proof sums these bounds and applies the comparison test in both directions. Our own counterexample sets aₙ = 1/n at powers of two and zero elsewhere. The original series is geometric on its support, but every condensed term equals one.
+**How the definition helps.** Summing these two bounds over all blocks and using the comparison test gives convergence in both directions (our own). Without monotonicity the claim fails: our own example has aₙ = 1/n at powers of two and zero elsewhere. The original series is then geometric, but every condensed term equals one.
 
 **Wikipedia:** [Cauchy condensation test](https://en.wikipedia.org/wiki/Cauchy_condensation_test). It says: “each run is bounded above by replacing each term by the largest term in that run.”
 
@@ -67,15 +67,15 @@
 
 ### Consecutive blocks turn regrouping into taking a subsequence
 
-**Remember:** Short blocks of small terms keep intermediate sums close to endpoint sums.
+**Remember:** Grouped sums are a subsequence of the partial sums.
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Group a series into consecutive finite nonempty blocks that cover all its terms in order. The grouped series adds the total of each block as one term.
+**Definition.** Grouping a series cuts its terms, in order, into consecutive finite nonempty blocks and adds each block's total as one term. The partial sums of the grouped series are the original partial sums at the block ends, a subsequence of them.
 
 **Problem.** Grouping a convergent real series into consecutive blocks preserves its sum. Conversely, convergence of the grouped series suffices if the block lengths are bounded and the original terms tend to zero.
 
-**How the definition helps.** Bounded block lengths and vanishing terms keep every partial sum close to the preceding block endpoint sum (our own). Thus a limit for the endpoint sums is also a limit for all partial sums (our own). In the forward direction, endpoint sums form a subsequence of the original partial sums and inherit their limit. Pairing consecutive terms in 1 − 1 + 1 − 1 + ⋯ shows why the converse needs a condition on the terms.
+**How the definition helps.** A subsequence of a convergent sequence has the same limit, which gives the forward direction. Conversely, bounded block lengths and vanishing terms keep each partial sum close to the last block-end sum, so the block-end limit is the limit of all partial sums (our own). Pairing the terms of 1 − 1 + 1 − 1 + ⋯ gives 0 + 0 + ⋯, so the converse needs a condition on the terms.
 
 **Wikipedia:** [Series (mathematics)](https://en.wikipedia.org/wiki/Series_%28mathematics%29). It says: “a subsequence of the partial sums of the original series”
 
@@ -103,11 +103,11 @@
 
 *True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a series of nonnegative terms, take the sums over all finite sets of indices. Define the series sum as their least upper bound if they are bounded, and as +∞ otherwise.
+**Definition.** The sum of a series of nonnegative terms is the least upper bound of its sums over all finite sets of indices, or +∞ if these sums are unbounded.
 
 **Problem.** If 0 ≤ aₙ ≤ bₙ at every index, the sum of the smaller terms is at most the sum of the larger terms. A finite sum for the larger series therefore guarantees convergence of the smaller series.
 
-**How the definition helps.** Each finite sum of smaller terms is bounded by the corresponding sum of larger terms (our own). Taking least upper bounds preserves this inequality, including when the larger sum is infinite (our own). For agreement with ordinary partial sums, each finite selection fits within some initial segment (our own). Nonnegativity makes its sum at most that initial sum, and the initial sums increase to their supremum (our own).
+**How the definition helps.** Each finite sum of the smaller terms is at most the same finite sum of the larger terms, so the least upper bounds keep the inequality, also when the larger one is +∞ (our own). This agrees with the usual sum because each finite set of indices lies in some initial segment (our own). By nonnegativity its sum is at most that initial sum, and the initial sums increase to their supremum (our own).
 
 **Paper or page:** [Positive-Term Generalized Sum Converges iff Supremum](https://proofwiki.org/wiki/Positive-Term_Generalized_Sum_Converges_iff_Supremum). It says: “x is the supremum of:”
 
@@ -119,11 +119,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A series over ℤ converges if its negative and nonnegative parts converge separately, taking each part from zero outward. Its sum is the sum of those two limits.
+**Definition.** A series over ℤ converges if its negative part and its nonnegative part, each summed from zero outward, converge separately. Its sum is the sum of the two limits.
 
 **Problem.** For a convergent series over ℤ, interval sums approach its sum as the lower and upper endpoints tend independently to −∞ and +∞.
 
-**How the definition helps.** Separate convergence lets each endpoint control its own tail. Our own proof splits an interval sum at zero and applies the sum rule for limits. Our own counterexample takes value 1 at positive indices, −1 at negative indices, and 0 at zero. Every symmetric sum vanishes, but neither tail converges.
+**How the definition helps.** Separate convergence lets each endpoint control its own tail: split an interval sum at zero and add the two limits (our own). Our own counterexample takes 1 at positive indices, −1 at negative indices and 0 at zero. Every symmetric sum vanishes, but neither part converges, so interval sums with independent endpoints have no limit.
 
 **nLab:** [doubly infinite series](https://ncatlab.org/nlab/show/doubly+infinite+series). It says: “A doubly infinite series converges if each of its constituent parts (positive and negative), converges; the sum of the series is then, by definition, the sum of the limits of the two series.”
 
@@ -151,11 +151,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A series satisfies the Cauchy condition if, for every ε &gt; 0, all sufficiently late finite blocks have sums of magnitude below ε. A block consists of consecutive terms.
+**Definition.** A series satisfies the Cauchy condition if, for every ε &gt; 0, every block of consecutive terms far enough out has a sum of size below ε.
 
 **Problem.** A real series converges exactly when it satisfies the Cauchy condition. Its terms must then tend to zero.
 
-**How the definition helps.** Each block sum is the difference of two partial sums, so small late blocks make late partial sums close together (our own). Completeness of the real numbers makes this equivalent to convergence of the partial sums (our own). Single-term blocks show that individual terms must tend to zero (our own). In the harmonic series, the terms tend to zero but each block from n + 1 to 2n sums to at least 1/2 (our own).
+**How the definition helps.** Each block sum is a difference of two partial sums, so the condition says the partial sums form a Cauchy sequence, which converges by completeness of ℝ (our own). Blocks of one term show that the terms tend to zero (our own). The converse of that last claim fails: in the harmonic series each block from n + 1 to 2n sums to at least 1/2 (our own).
 
 **Paper or page:** [Cauchy's Convergence Criterion for Series](https://proofwiki.org/wiki/Cauchy's_Convergence_Criterion_for_Series). It says: “\|aₙ₊₁ + aₙ₊₂ + ⋯ + aₘ\| &lt; ε”
 
@@ -167,11 +167,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Take the nth root of the absolute value of each term. Define the upper limit of these roots as the limit of their tail suprema. Roots remain defined at zero terms.
+**Definition.** The root test looks at the upper limit of ⁿ√\|aₙ\|, the limit of the suprema of its tails. These roots are defined even at zero terms, where the ratios of the ratio test are not.
 
 **Problem.** The series converges absolutely if this upper limit is below one. It diverges if the upper limit is above one. The test gives no answer when the upper limit is one.
 
-**How the definition helps.** Taking roots compares each term to a geometric term without dividing by another term (our own). Take terms that are zero at even indices and 2⁻ⁿ at odd indices (our own). Their ratios are undefined infinitely often (our own). The work is a geometric comparison below one, or showing that terms fail to tend to zero above one (our own).
+**How the definition helps.** Below one, late terms satisfy \|aₙ\| ≤ qⁿ for some q &lt; 1, so they compare with a geometric series; above one, infinitely many terms have size at least one and do not tend to zero (our own). No term is divided by another, so zero terms cause no trouble (our own). For terms 0 at even n and 2⁻ⁿ at odd n, the ratios are undefined infinitely often, but the roots have upper limit 1/2 (our own).
 
 **Paper or page:** [Nth Root Test](https://proofwiki.org/wiki/Nth_Root_Test). It says: “If this limit is less than one, the series converges absolutely.”
 
@@ -183,11 +183,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences), 26A03. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A tail consists of all terms from one index onward. Its supremum is its least upper bound. The upper limit of a bounded real sequence is the greatest lower bound of these tail suprema.
+**Definition.** The upper limit of a bounded real sequence is the greatest lower bound of its tail suprema, the least upper bounds of the terms from each index onward.
 
 **Problem.** The upper limit of a bounded real sequence is the largest limit of any of its convergent subsequences.
 
-**How the definition helps.** Every tail has terms arbitrarily close to its supremum, so it supplies candidates for a convergent subsequence (our own). The tail suprema decrease to the upper limit by the convergence theorem for bounded monotone sequences (our own). At step n, start beyond the previous index and beyond n, then choose a term within 1/n of that tail’s supremum (our own). These choices converge to the upper limit, and every tail supremum bounds every subsequence limit from above (our own).
+**How the definition helps.** The tail suprema decrease to the upper limit, and each tail has terms arbitrarily close to its supremum (our own). At step n, choose a term beyond index n and beyond the previous choice, within 1/n of the supremum of the tail that starts there; these terms converge to the upper limit (our own). Every subsequence limit is at most every tail supremum, so it is at most the upper limit (our own).
 
 **Paper or page:** [Bolzano-Weierstrass Theorem](https://proofwiki.org/wiki/Bolzano-Weierstrass_Theorem). It says: “Every bounded sequence of real numbers has a convergent subsequence.”
 
@@ -199,11 +199,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Two positive sequences have the same order of growth if their termwise ratios eventually stay between two fixed positive constants. The usual limit comparison test asks for a positive finite ratio limit instead.
+**Definition.** Two positive sequences have the same order of growth if, from some index on, c ≤ aₙ/bₙ ≤ C for fixed constants 0 &lt; c ≤ C. Then each sequence is at most a constant times the other.
 
 **Problem.** Two positive series whose terms have the same order of growth either both converge or both diverge.
 
-**How the definition helps.** The two bounds let us use direct comparison in both directions (our own). The work is proving the direct comparison test for nonnegative series and checking the two bounds (our own). A positive finite ratio limit supplies them, but alternating ratios of 1 and 2 also work (our own).
+**How the definition helps.** The bounds give aₙ ≤ Cbₙ and bₙ ≤ aₙ/c, so the direct comparison test works in both directions (our own). A positive finite ratio limit gives such bounds, but ratios alternating between 1 and 2 also do (our own).
 
 **Paper or page:** [Limit Comparison Test](https://proofwiki.org/wiki/Limit_Comparison_Test). It says: “are either both convergent or both divergent.”
 
@@ -215,11 +215,11 @@
 
 *True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define a series by its partial sums, starting with an empty sum of zero. Its terms are the differences between consecutive partial sums, and its sum is the limit of the partial sums.
+**Definition.** View a series as its sequence of partial sums, starting from the empty sum 0. Its terms are the differences of consecutive partial sums, and its sum is their limit.
 
 **Problem.** The series of successive differences bₙ − bₙ₋₁ converges exactly when the real sequence beginning at b₀ converges. Its sum is the sequence limit minus b₀.
 
-**How the definition helps.** The partial sums of the differences are exactly the original terms minus b₀ (our own). Adding the first n differences cancels every intermediate term and leaves bₙ − b₀ (our own). Thus taking differences recovers the term list, while taking partial sums recovers the series in its alternative definition (our own).
+**How the definition helps.** The nth partial sum of the differences telescopes to bₙ − b₀, so it converges exactly when bₙ does, with sum lim bₙ − b₀ (our own). Thus taking differences and taking partial sums undo each other (our own).
 
 **Wikipedia:** [Series (mathematics)](https://en.wikipedia.org/wiki/Series_%28mathematics%29). It says: “Some authors directly identify a series with its sequence of partial sums.”
 
@@ -231,9 +231,9 @@
 
 *Rules out counterexamples.* MSC 40A10 (Convergence and divergence of integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Let f be locally integrable on ℝ. Its improper integral converges if the integrals over \[−R,0\] and \[0,R\] each have a finite limit as R→∞. Their two limits add to give its value.
+**Definition.** A locally integrable f on ℝ has a convergent improper integral if the integrals over \[−R, 0\] and over \[0, R\] each have a finite limit as R → ∞, separately. Its value is the sum of the two limits.
 
-**Problem.** If the improper integral converges, its cut integrals tend to the same value as the endpoints go independently to opposite infinities.
+**Problem.** If the improper integral of f converges, the integrals over \[a, b\] tend to its value as a → −∞ and b → +∞ independently.
 
 **How the definition helps.** Split each cut interval at zero and take the two limits separately (our own). Finite-interval additivity also makes the choice of the splitting point harmless (our own). For f(x) = x, the symmetric cuts give zero, but shifting the right endpoint by one makes the integrals diverge (our own).
 
@@ -247,11 +247,11 @@
 
 *True by definition.* MSC 40A10 (Convergence and divergence of integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For an isolated singularity at zero, integrate outside (−ε, ε) and let ε decrease to zero. The Cauchy principal value is this limit if it exists. The ordinary improper integral requires finite limits on both sides separately.
+**Definition.** The Cauchy principal value of an integral over \[−a, a\] with a singularity at zero is the limit, as ε → 0, of the integral over the set where ε &lt; \|x\| ≤ a. This set is symmetric under x ↦ −x (our own).
 
 **Problem.** An odd function that is integrable away from zero on \[−a, a\] has principal value zero there.
 
-**How the definition helps.** The symmetric cutoff pairs every retained point with its negative (our own). Substituting −x for x makes the two integrals cancel for each ε (our own). For 1/x, each one-sided integral diverges (our own).
+**How the definition helps.** Substituting −x for x shows the two halves cancel for each ε, so every cut integral of an odd function is zero (our own). The limit is therefore zero, even for 1/x, whose one-sided integrals both diverge (our own).
 
 **nLab:** [Cauchy principal value](https://ncatlab.org/nlab/show/Cauchy+principal+value). It says: “is, if it exists, the limit of a sequence of the integrals of the function over subsets in the complement of this point as these integration domains tend to that point symmetrically from all sides.”
 
@@ -263,11 +263,11 @@
 
 *Rules out counterexamples.* MSC 40A20 (Convergence and divergence of infinite products). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a product with finitely many zero factors, omit those factors and form partial products. Convergence requires these partial products to have a finite nonzero limit. The product equals that limit unless a factor is zero, in which case its value is zero.
+**Definition.** A product with finitely many zero factors converges if, after leaving out the zero factors, the partial products have a finite nonzero limit. Its value is that limit, or zero if some factor is zero.
 
 **Problem.** If an infinite product ∏ aₖ converges, then aₖ → 1. A convergent product is zero only if some factor is zero.
 
-**How the definition helps.** In our own proof, beyond the last zero each factor equals the ratio of consecutive partial products formed after omitting zeros. Both approach the same nonzero limit, so their ratio approaches one. The value rule gives the second claim. Constant factors of one half show why a zero limit would invalidate the first claim.
+**How the definition helps.** Beyond the last zero factor, each factor is the ratio of two consecutive partial products, and both tend to the same nonzero limit, so the factors tend to one (our own). The value rule gives the second claim. With every factor equal to one half, the partial products tend to zero though the factors do not tend to one, so the limit zero must be excluded.
 
 **nLab:** [infinite product](https://ncatlab.org/nlab/show/infinite+product). It says: “To avoid these "pathological" situations, we make the following modified definition.”
 
@@ -299,11 +299,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Say a series converges locally uniformly on an open interval if it converges uniformly on every closed bounded subinterval. This does not require uniform convergence on the entire open interval.
+**Definition.** A series converges locally uniformly on an open interval if it converges uniformly on every closed bounded subinterval, each with its own cutoff index (our own).
 
 **Problem.** A real power series converges uniformly on each closed bounded subinterval strictly inside its interval of convergence.
 
-**How the definition helps.** Local uniform convergence lets each closed subinterval use its own bound while requiring one cutoff throughout that subinterval (our own). Choose a radius beyond the subinterval’s greatest distance from the center but below the radius of convergence (our own). Absolute convergence at that radius gives a summable bound for the terms throughout the subinterval (our own). The geometric series with terms xⁿ fails to converge uniformly on (−1, 1), since its terms do not tend uniformly to zero (our own).
+**How the definition helps.** A closed subinterval strictly inside stays within some distance r of the center, with r below the radius of convergence (our own). The series converges absolutely at radius r, so the numbers \|aₙ\|rⁿ bound the terms on the whole subinterval and have a finite sum, which gives uniform convergence (our own). Uniform convergence on the whole open interval can fail: Σxⁿ is not uniformly convergent on (−1, 1), since its terms do not tend uniformly to zero (our own).
 
 **Wikipedia:** [Power series](https://en.wikipedia.org/wiki/Power_series). It says: “it converges uniformly on every compact subset of the disc of convergence.”
 
@@ -317,11 +317,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A map between metric spaces is uniformly continuous if each ε&gt;0 admits a δ&gt;0 with the following property. Whenever two inputs are less than δ apart, their outputs are less than ε apart.
+**Definition.** A map between metric spaces is uniformly continuous if for each ε &gt; 0 one δ &gt; 0 works everywhere: any two inputs less than δ apart have outputs less than ε apart.
 
 **Problem.** Let gₙ and g take values in the domain of a uniformly continuous function h. If gₙ → g uniformly, then h ∘ gₙ → h ∘ g uniformly.
 
-**How the definition helps.** One threshold for h works at every pair gₙ(x), g(x) (our own argument). Uniform convergence puts each such pair within this threshold once n is large enough. A counterexample uses h(t) = t² and gₙ(x) = x + 1/n on ℝ. The squared values differ from x² by 2x/n + 1/n², which is unbounded for each n.
+**How the definition helps.** One δ for h works at every pair gₙ(x), g(x), and uniform convergence puts all these pairs within δ once n is large (our own argument). A counterexample uses h(t) = t² and gₙ(x) = x + 1/n on ℝ. The squares differ from x² by 2x/n + 1/n², which is unbounded in x for each n.
 
 **Paper or page:** [Uniformly Continuous Function Preserves Uniform Convergence](https://proofwiki.org/wiki/Uniformly_Continuous_Function_Preserves_Uniform_Convergence). It says: “Let gₙ converge to g uniformly on X as n → ∞. Let f: A₁ → A₂ be uniformly continuous on A₁.”
 
@@ -333,11 +333,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Uniform convergence to f means that each positive error tolerance has one cutoff index. After that index, every function differs from f by less than the tolerance everywhere.
+**Definition.** A sequence fₙ converges uniformly to f if each tolerance ε &gt; 0 has one cutoff index N such that, for all n ≥ N, \|fₙ(y) − f(y)\| &lt; ε at every point y.
 
 **Problem.** Suppose continuous functions fₙ converge uniformly to f on a metric space. If xₙ → x in that space, then fₙ(xₙ) → f(x).
 
-**How the definition helps.** Uniform convergence controls the error even at the moving point xₙ (our own argument). The uniform limit theorem gives continuity of f, so f(xₙ) tends to f(x). A counterexample uses xⁿ on \[0, 1\] at xₙ = 1 − 1/n. The sampled values tend to 1/e, while the pointwise limit at 1 equals 1.
+**How the definition helps.** Uniform convergence bounds \|fₙ(xₙ) − f(xₙ)\| by the same tolerance as at every other point, even though the point moves (our own argument). The uniform limit theorem makes f continuous, so f(xₙ) → f(x). For xⁿ on \[0, 1\] with xₙ = 1 − 1/n, the values (1 − 1/n)ⁿ tend to 1/e, while the limit function at 1 equals 1.
 
 **nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
 
@@ -351,11 +351,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 26A15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A sequence of real functions on X converges uniformly to f if each ε&gt;0 admits an index N with the following property. For every n≥N and every x∈X, \|fₙ(x)−f(x)\|&lt;ε.
+**Definition.** A sequence of real functions on X converges uniformly to f if each ε &gt; 0 has one index N that works at every point: \|fₙ(x) − f(x)\| &lt; ε for all n ≥ N and all x ∈ X.
 
 **Problem.** A uniform limit of continuous functions is continuous, as in the corrected form of Cauchy’s sum theorem.
 
-**How the definition helps.** Uniform convergence gives one N for all nearby points, and the standard ε/3 proof needs exactly that. With pointwise convergence the statement is false, since fₙ(x) = xⁿ on \[0,1\] has continuous terms and a discontinuous limit. Cauchy's proof fails because the N for the point x + h depends on h, and uniform convergence removes that dependence (Seidel 1847). Equicontinuity, one δ for all the functions fₙ at once, is a second repair.
+**How the definition helps.** Uniform convergence gives one N for all points, so the ε/3 argument at x and at a nearby x + h can use one approximating function. Cauchy's proof failed because his N for x + h depended on h, and Seidel saw in 1847 that uniform convergence removes this dependence. With pointwise convergence the claim is false: fₙ(x) = xⁿ on \[0, 1\] has continuous terms and a discontinuous limit.
 
 **nLab:** [Cauchy sum theorem](https://ncatlab.org/nlab/show/Cauchy+sum+theorem). It says: “Analysing this argument, Philipp von Seidel (first, and others afterwards) realised that it could be fixed if f converges to f∞ uniformly, so that n is independent of h.”
 
@@ -369,11 +369,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Uniform convergence of fₙ to f on X means that each ε&gt;0 admits N with \|fₙ(x)−f(x)\|&lt;ε for all n≥N and x∈X. Uniform continuity of h on X means each ε&gt;0 admits δ&gt;0 with \|h(x)−h(y)\|&lt;ε whenever x,y∈X satisfy d(x,y)&lt;δ.
+**Definition.** A sequence fₙ converges uniformly to f on X if each ε &gt; 0 has one index N with \|fₙ(x) − f(x)\| &lt; ε for all n ≥ N and all x ∈ X. So one fₙ approximates f equally well at every pair of points.
 
 **Problem.** The uniform limit of uniformly continuous real functions on a metric space is uniformly continuous.
 
-**How the definition helps.** Uniform convergence lets one function approximate the limit within a third of the tolerance everywhere (our own argument). Its uniform continuity makes its values at nearby points differ by less than another third. The proof adds the three errors by the triangle inequality. With only pointwise convergence, xⁿ on \[0, 1\] has a discontinuous limit.
+**How the definition helps.** Pick one fₙ within ε/3 of f everywhere, and a δ for which fₙ changes by less than ε/3 over distances below δ (our own argument). Then \|f(x) − f(y)\| &lt; ε whenever d(x, y) &lt; δ, by the triangle inequality. With only pointwise convergence, xⁿ on \[0, 1\] has a discontinuous limit.
 
 **nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
 
@@ -385,11 +385,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The Cesàro sum is the limit of the averages of the first n partial sums. The ordinary sum is the limit of the partial sums themselves.
+**Definition.** The Cesàro sum of a series is the limit of the averages of its first n partial sums.
 
 **Problem.** If the partial sums repeat in a finite cycle, the Cesàro sum is the mean of that cycle.
 
-**How the definition helps.** Complete cycles all have the same mean, and the incomplete cycle contributes a vanishing error (our own). For example, the partial sums of 1 − 1 + 1 − ⋯ alternate between one and zero (our own). Agreement with ordinary convergence is separate and follows by bounding the average error of a late tail (our own).
+**How the definition helps.** Each complete cycle of partial sums has the same mean, and the one incomplete cycle adds an error that vanishes after dividing by n (our own). For example, the partial sums of 1 − 1 + 1 − ⋯ alternate between 1 and 0, so the Cesàro sum is 1/2 (our own).
 
 **Wikipedia:** [Cesàro summation](https://en.wikipedia.org/wiki/Ces%C3%A0ro_summation). It says: “This sequence of partial sums does not converge, so the series G is divergent. However, G is Cesàro summable.”
 
@@ -401,11 +401,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences), 40B05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For series with terms aₙ and bₙ indexed from zero, their Cauchy product has nth term ∑ₖ₌₀ⁿ aₖbₙ₋ₖ. A series converges absolutely if its term magnitudes have finite sum.
+**Definition.** The Cauchy product of Σaₙ and Σbₙ, indexed from zero, has Nth partial sum ∑ₖ₌₀ᴺ aₖB<sub>N−k</sub>, the partial sums B<sub>m</sub> of Σbₙ weighted by the terms aₖ (our own). If Σaₙ converges absolutely, meaning ∑\|aₖ\| is finite, these weights have a small total size far out.
 
 **Problem.** If two series converge and one converges absolutely, their Cauchy product converges to the product of their sums.
 
-**How the definition helps.** Each partial sum of the Cauchy product weights shifted partial sums of one series by terms of the absolutely convergent series (our own). The shifted sums are bounded, so the tail contributes at most that bound times the sum of the remaining absolute weights (our own). For each fixed weight, the shifted sum approaches the second sum (our own). Squaring the alternating series with magnitudes 1/√(n + 1) gives product terms of magnitude at least one (our own).
+**How the definition helps.** Subtracting the sum B of Σbₙ, the product partial sum is A<sub>N</sub>·B plus ∑ₖ aₖ(B<sub>N−k</sub> − B), where A<sub>N</sub> is a partial sum of Σaₙ (our own). The differences B<sub>m</sub> − B are bounded and tend to zero, so late weights contribute at most a bound times their small absolute total, and each early weight multiplies a vanishing difference (our own). Squaring the alternating series with magnitudes 1/√(n + 1) gives product terms of size at least one, so absolute convergence of one series cannot be dropped (our own).
 
 **Wikipedia:** [Cauchy product](https://en.wikipedia.org/wiki/Cauchy_product). It says: “if both sequences are conditionally convergent, the Cauchy product does not have to converge towards the product of the two series, as the following example shows”
 
@@ -417,11 +417,11 @@
 
 *True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the upper limit of a bounded real sequence by the limit of its tail suprema. Another description uses the largest limit of a subsequence.
+**Definition.** The upper limit of a bounded real sequence is the limit of its tail suprema, where the tail from n holds all terms with index at least n.
 
 **Problem.** Split the indices of a bounded real sequence into finitely many infinite sets. Its upper limit is the largest upper limit of the resulting subsequences.
 
-**How the definition helps.** A whole tail has supremum equal to the maximum of the suprema over its pieces (our own). A finite maximum commutes with taking limits (our own). The work goes into showing that the limit of tail bounds equals the largest subsequential limit (our own).
+**How the definition helps.** When the indices split into finitely many infinite sets, each tail of the whole sequence splits into tails of the subsequences, so its supremum is the largest of their suprema (our own). A maximum of finitely many convergent sequences tends to the maximum of their limits, which gives the claim (our own).
 
 **Paper or page:** [Limit Superior in terms of Partitioning Subsequences](https://proofwiki.org/wiki/Limit_Superior_in_terms_of_Partitioning_Subsequences). It says: “\\ds \\limsup<sub>k \\mathop \\to \\infty</sub> x<sub>k</sub> = \\max<sub>1 \\le j \\le N</sub> \\limsup<sub>k \\mathop \\to \\infty</sub> x\_{\\map {\\phi<sub>j</sub>} k}”
 
@@ -433,11 +433,11 @@
 
 *True by definition. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Put two bounded sequences in the same class if their termwise difference tends to zero. Add and multiply classes by adding and multiplying their sequences term by term. Convergence to L means belonging to the class of the constant sequence L.
+**Definition.** Call two bounded sequences equivalent if their termwise difference tends to zero; termwise sums and products of equivalent sequences stay equivalent (our own). A sequence converges to L exactly when it is equivalent to the constant sequence L (our own).
 
 **Problem.** The termwise sum and product of convergent real sequences converge to the sum and product of their limits, respectively.
 
-**How the definition helps.** Each convergent sequence shares a class with its constant limit, so class arithmetic reduces to arithmetic on constants (our own). Agreement with ordinary convergence follows because the difference from the constant sequence tends to zero (our own). The work is proving that changing representatives preserves sums and products (our own). Changing one factor adds its vanishing error times a bounded factor, which still tends to zero (our own).
+**How the definition helps.** Each convergent sequence can be replaced by its constant limit, so the termwise sum and product are equivalent to the constant sequences L + M and LM (our own). The classes respect products because replacing one factor changes the product by a vanishing error times a bounded factor, which still tends to zero (our own).
 
 **Paper or page:** [Sum of Convergent Sequences in Topological Vector Space is Convergent](https://proofwiki.org/wiki/Sum_of_Convergent_Sequences_in_Topological_Vector_Space_is_Convergent). It says: “xₙ + yₙ → x + y”
 
@@ -449,11 +449,11 @@
 
 *Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let aₙ and bₙ be real sequences, with bₙ strictly increasing to infinity. The local slope at n is (aₙ₊₁−aₙ)/(bₙ₊₁−bₙ), with weight bₙ₊₁−bₙ. The weighted mean on indices m≤n&lt;N divides the sum of weighted slopes by the sum of their weights.
+**Definition.** For real aₙ and bₙ with bₙ strictly increasing to infinity, the local slope at n is (aₙ₊₁ − aₙ)/(bₙ₊₁ − bₙ). Because every step bₙ₊₁ − bₙ is positive, the slope (a<sub>N</sub> − a<sub>m</sub>)/(b<sub>N</sub> − b<sub>m</sub>) over a long stretch is an average of the local slopes, weighted by these steps.
 
-**Problem.** If those local slopes converge to a finite limit, the ratios a(n)/b(n) converge to the same limit.
+**Problem.** If the local slopes converge to a finite limit, then aₙ/bₙ converges to the same limit.
 
-**How the definition helps.** Positive increments make the slope over a long interval a weighted average of the individual slopes. In our own proof, any fixed initial contribution vanishes after division by b(n), so the average approaches the limiting slope. Our own counterexample sets a(n) = n, b(2k) = k and b(2k+1) = (k+1)² + 1. The local slopes tend to zero because the increments of b grow in size, yet a(2k)/b(2k) = 2 for every positive k.
+**How the definition helps.** A long-stretch slope is a weighted average of local slopes, so it approaches their limit, and a fixed initial part vanishes after division by bₙ (our own). Without increasing b the claim fails: our own example has aₙ = n, b(2k) = k and b(2k + 1) = (k + 1)² + 1. The local slopes tend to zero, yet a(2k)/b(2k) = 2 for every k ≥ 1.
 
 **Wikipedia:** [Stolz–Cesàro theorem](https://en.wikipedia.org/wiki/Stolz%E2%80%93Ces%C3%A0ro_theorem). It says: “Since (bₙ) is strictly increasing, bₙ₊₁ − bₙ &gt; 0”
 
@@ -465,11 +465,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** To weight a series, multiply each term by its own weight. The weights have finite total variation if the absolute differences between consecutive weights have a finite sum.
+**Definition.** Weights wₙ on a series have finite total variation if the sizes of their steps \|wₙ₊₁ − wₙ\| have a finite sum. Summation by parts moves the steps onto the weights, so they meet only partial sums of the series.
 
 **Problem.** Suppose a series has bounded partial sums and its weights have finite total variation. The weighted series converges if either the weights tend to zero or the original series converges.
 
-**How the definition helps.** Finite total variation makes the sum of partial sums times successive weight differences absolutely convergent, since the partial sums are bounded (our own). Summation by parts leaves only the last weight times the last partial sum to check (our own). This product tends to zero if the weights do (our own). Otherwise, when the original series converges, both factors converge because finite total variation makes the weights a Cauchy sequence (our own).
+**How the definition helps.** Summation by parts writes a weighted partial sum as the last weight times the last partial sum, minus a sum of partial sums times weight steps (our own). Bounded partial sums and finite total variation make that second sum converge absolutely (our own). The first part tends to zero if the weights do, and converges if the series converges, because finite variation makes the weights Cauchy (our own).
 
 **Wikipedia:** [Dirichlet's test](https://en.wikipedia.org/wiki/Dirichlet%27s_test). It says: “Since the magnitudes of the partial sums Bₙ are bounded by some M”
 
@@ -483,11 +483,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A tail contains all ratios from one index onward. The upper limit is the greatest lower bound of the tail suprema, where each supremum is a least upper bound. The lower limit reverses these bounds, and both definitions allow infinite values.
+**Definition.** For ratios rₙ = \|aₙ₊₁\|/\|aₙ\|, the upper limit is the infimum of the tail suprema sup<sub>k≥n</sub> r<sub>k</sub>, and the lower limit is the supremum of the tail infima. Both may be infinite.
 
 **Problem.** For eventually nonzero terms, form each ratio by dividing the next term’s magnitude by the current one. An upper limit below 1 guarantees absolute convergence, while a lower limit above 1 guarantees divergence.
 
-**How the definition helps.** An upper limit below 1 puts every sufficiently late ratio below one fixed positive number q &lt; 1 (our own). The remaining magnitudes are bounded by a geometric series with finite sum, so their series converges absolutely (our own). A lower limit above 1 puts every late ratio above 1, preventing the terms from tending to zero (our own).
+**How the definition helps.** If the upper limit is below 1, some tail supremum is below a fixed q &lt; 1, so the later magnitudes are bounded by a convergent geometric series (our own). If the lower limit is above 1, some tail infimum exceeds 1, so the magnitudes eventually increase and cannot tend to zero (our own).
 
 **Wikipedia:** [Ratio test](https://en.wikipedia.org/wiki/Ratio_test). It says: “cases where the limit L fails to exist, if limit superior and limit inferior are used.”
 
@@ -499,11 +499,11 @@
 
 *True by definition.* MSC 40A05 (Convergence and divergence of series and sequences), 26A03. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define a cluster point of a sequence as a point in the closure of every tail. A point lies in a tail's closure if every open interval around the point contains a term of that tail. A tail contains all terms from a given index onward.
+**Definition.** A cluster point of a sequence is a point in the closure of every tail, so every open interval around it contains terms with arbitrarily late indices.
 
 **Problem.** The cluster points of a real sequence form a closed set. They are exactly the limits of its convergent subsequences.
 
-**How the definition helps.** The cluster points form an intersection of closed sets, which is itself closed (our own). Each subsequence visits every interval around its limit arbitrarily late, so its limit belongs to every tail closure (our own). Conversely, choose successive terms within 1/n of a cluster point, always passing the last chosen index (our own). This proves agreement with the usual definition by subsequences (our own).
+**How the definition helps.** The set of cluster points is an intersection of closed sets, so it is closed (our own). The limit of a subsequence has terms of every tail in each interval around it, so it is a cluster point (our own). Conversely, choosing successive terms within 1/n of a cluster point, each later than the last, gives a subsequence converging to it (our own).
 
 **nLab:** [limit point](https://ncatlab.org/nlab/show/limit+point). It says: “the closure of A is the set of all adherent points of A”
 
@@ -513,15 +513,15 @@
 
 ### Absolute convergence makes improper integrals independent of gapped cutoffs
 
-**Remember:** If the whole absolute tail is small, any selection of it is small.
+**Remember:** A small absolute tail makes every piece of the tail small.
 
 *Rules out counterexamples. Confidence: medium.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** An improper integral on \[a, ∞) converges absolutely when the integrals of \|f\| from a to R have a finite limit. For a finite union of bounded intervals, integrate by adding the integrals over its pieces with disjoint interiors.
+**Definition.** The improper integral of f on \[a, ∞) converges absolutely if the integrals of \|f\| from a to R have a finite limit. Then the integral of \|f\| over \[R, ∞) is small for every large R.
 
 **Problem.** Suppose f is locally Riemann integrable and its improper integral on \[a, ∞) converges absolutely. Integrals over finite interval unions in \[a, ∞) approach this value uniformly as the initial segment they contain grows.
 
-**How the definition helps.** The absolute tail bounds every signed tail, so the Cauchy criterion gives ordinary improper convergence (our own). The same absolute tail bounds what any finite union containing the chosen initial interval can omit (our own). The ordinary integral of sin(x)/x on \[1, ∞) converges (our own). Adding only its positive half-waves far out can make the cut integrals arbitrarily large (our own).
+**How the definition helps.** A finite union of intervals that contains \[a, R\] misses only part of \[R, ∞), and the integral of \|f\| there bounds the error (our own). The same tail bound gives ordinary convergence by the Cauchy criterion (our own). The integral of sin(x)/x on \[1, ∞) converges but not absolutely, and adding only its positive half-waves far out makes such union integrals arbitrarily large (our own).
 
 **Wikipedia:** [Improper integral](https://en.wikipedia.org/wiki/Improper_integral). It says: “unconditional convergence turns out to be equivalent to absolute convergence.”
 
@@ -529,15 +529,15 @@
 
 ### Cauchy tails make Dirichlet’s test a bound on one interval
 
-**Remember:** Every sufficiently distant interval must have a small integral, whatever its right endpoint.
+**Remember:** Every far interval has a small integral, whatever its right end.
 
 *True by definition.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** In the Cauchy form of improper convergence, integrals over \[u, v\] must tend uniformly to zero for v &gt; u as u grows. This replaces the limit of integrals taken from a fixed starting point.
+**Definition.** In the Cauchy form of improper convergence, the integral over \[u, v\] must become small, for all v &gt; u at once, as u grows.
 
 **Problem.** Let f be continuous on \[a, ∞) with a bounded primitive F, meaning F′ = f. If g is continuously differentiable, nonnegative, nonincreasing, and tends to zero, then the improper integral of fg converges.
 
-**How the definition helps.** The Cauchy definition replaces evaluation of a limit from a fixed endpoint with one estimate on every distant interval (our own). Let M bound \|F\| and integrate by parts on \[u, v\] (our own). The endpoint terms contribute at most M(g(u) + g(v)), and the remaining integral contributes at most M(g(u) − g(v)) (our own). The resulting bound 2Mg(u) tends to zero independently of v (our own).
+**How the definition helps.** Integrating by parts on \[u, v\], with M a bound for \|F\|, gives boundary terms of size at most M(g(u) + g(v)) (our own). Because g′ ≤ 0, the remaining integral of Fg′ has size at most M(g(u) − g(v)) (our own). The total bound 2Mg(u) does not depend on v and tends to zero, which is the Cauchy form (our own).
 
 **Wikipedia:** [Dirichlet's test](https://en.wikipedia.org/wiki/Dirichlet%27s_test). It says: “An analogous statement for convergence of improper integrals is proven using integration by parts.”
 
@@ -565,11 +565,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A tail integral starts at u and ends at some v &gt; u. Uniformly small integral tails mean every positive tolerance admits one cutoff beyond which all such integrals have absolute value below that tolerance. The same cutoff must work for every function in the sequence.
+**Definition.** A sequence of functions has uniformly small integral tails if each ε &gt; 0 has one cutoff U that works for every function: each integral over \[u, v\] with U ≤ u &lt; v has size below ε.
 
 **Problem.** Suppose locally Riemann integrable functions on \[a, ∞) converge uniformly to f on every closed bounded subinterval and have uniformly small integral tails. Their improper integrals exist and converge to the improper integral of f.
 
-**How the definition helps.** The tail condition gives the Cauchy test for each improper integral and passes to f on each finite tail interval (our own). Cut at one large point for every function, and use uniform convergence on the retained interval (our own). Without tail control, the functions equal to 1/n on \[0, n\] and zero elsewhere converge uniformly to zero but have integral one (our own).
+**How the definition helps.** The tail condition gives each improper integral by the Cauchy test, and passes to f on each bounded interval (our own). So every integral, and that of f, is within ε of its integral up to one common cutoff, where uniform convergence finishes the proof (our own). Without tail control, fₙ = 1/n on \[0, n\] and 0 elsewhere converge uniformly to zero but have integral one (our own).
 
 **Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “The sequence (fₙ) converges uniformly to the zero function”
 
@@ -581,11 +581,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A15 (Convergence and divergence of continued fractions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a simple continued fraction with integer digits a₀,a₁,… and aⱼ≥1 for j≥1, assign digit a the matrix with rows (a,1) and (1,0). Multiply the matrices from a₀ through aₖ in order. The first column (pₖ,qₖ) represents the kth truncation pₖ/qₖ.
+**Definition.** For a simple continued fraction with integer digit a₀ and digits aⱼ ≥ 1 after it, the kth convergent pₖ/qₖ is the first column of the product of the matrices with rows (aⱼ, 1) and (1, 0), for j = 0 to k. Each matrix has determinant −1, so pₖqₖ₋₁ − pₖ₋₁qₖ = (−1)ᵏ⁺¹.
 
 **Problem.** Every infinite simple continued fraction with positive integer digits after the first has convergent finite truncations.
 
-**How the definition helps.** The matrix determinant gives the gap between consecutive fractions, including its sign. In our own proof, each new digit matrix reverses the determinant's sign, so the gap alternates and has size 1/(qₖqₖ₋₁). The recursion qₖ = aₖqₖ₋₁ + qₖ₋₂ with positive digits makes the denominators grow without bound. The alternating series test then gives convergence.
+**How the definition helps.** Dividing the determinant identity by qₖqₖ₋₁ shows that consecutive convergents differ by (−1)ᵏ⁺¹/(qₖqₖ₋₁), with alternating sign (our own). Positive digits in qₖ = aₖqₖ₋₁ + qₖ₋₂ make the denominators grow without bound (our own). The convergents are then partial sums of an alternating series whose terms decrease to zero, so they converge.
 
 **Paper or page:** [Difference between Adjacent Convergents of Simple Continued Fraction](https://proofwiki.org/wiki/Difference_between_Adjacent_Convergents_of_Simple_Continued_Fraction). It says: “Cₖ − Cₖ₋₁ = pₖ/qₖ − pₖ₋₁/qₖ₋₁ = (−1)ᵏ⁺¹/(qₖ qₖ₋₁)”
 
@@ -597,11 +597,11 @@
 
 *Rules out counterexamples.* MSC 40A20 (Convergence and divergence of infinite products). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For real factors 1 + tₙ, call the product absolutely convergent when the series of magnitudes \|tₙ\| converges. Requiring only that the factors tend to one gives less control.
+**Definition.** A real product of factors 1 + tₙ converges absolutely when ∑\|tₙ\| is finite, so the logarithms of its late factors have a finite sum.
 
 **Problem.** If the absolute increments are summable and each factor is nonzero, the real partial products tend to a nonzero limit.
 
-**How the definition helps.** Summable increments give a convergent sum of logarithms for the tail (our own). Eventually \|tₙ\| is below one half, so \|log(1 + tₙ)\| ≤ 2\|tₙ\| (our own). Exponentiating gives a positive tail limit, and the finite initial product is nonzero (our own). The factors 1 − 1/n for n ≥ 2 tend to one, yet their product through N equals 1/N (our own).
+**How the definition helps.** Once \|tₙ\| &lt; 1/2, \|log(1 + tₙ)\| ≤ 2\|tₙ\|, so the logarithms of the tail factors have a convergent sum (our own). Exponentiating gives a positive tail limit, and the finite product of the earlier nonzero factors is nonzero (our own). The factors 1 − 1/n for n ≥ 2 tend to one, yet their product up to N is 1/N, which tends to zero (our own).
 
 **Paper or page:** [Absolutely Convergent Product Does not Diverge to Zero](https://proofwiki.org/wiki/Absolutely_Convergent_Product_Does_not_Diverge_to_Zero). It says: “Then it is not divergent to 0.”
 
@@ -613,11 +613,11 @@
 
 *Rules out counterexamples.* MSC 40A20 (Convergence and divergence of infinite products), 40A30. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let fₙ be continuous complex functions on a compact metric space. Require the series of magnitudes \|fₙ\| to converge uniformly, so one tail bound works at every point. Form the product of the factors 1 + fₙ.
+**Definition.** Let fₙ be continuous complex functions on a compact metric space such that ∑\|fₙ\| converges uniformly, so one cutoff makes the tail of magnitudes small at every point.
 
-**Problem.** Under this condition, the infinite product vanishes exactly where at least one factor vanishes.
+**Problem.** Under this condition, the product of the factors 1 + fₙ vanishes exactly where at least one factor vanishes.
 
-**How the definition helps.** In our own proof, uniform absolute summability makes \|fₙ\|&lt;½ everywhere for all sufficiently large n. On that tail, the power series for log(1+fₙ) gives \|log(1+fₙ)\|≤2\|fₙ\|. The logarithms therefore sum uniformly, and their exponential gives a nonzero tail product, leaving only the initial factors as possible zeros. Constant factors exp(−1/n) show that nonzero factors alone can have product zero.
+**How the definition helps.** Uniform convergence makes \|fₙ\| &lt; 1/2 everywhere for all late n, and there \|log(1 + fₙ)\| ≤ 2\|fₙ\| (our own). The logarithms then sum uniformly, so the tail product is an exponential and never zero, leaving only finitely many factors that can vanish (our own). Constant factors exp(−1/n) are never zero, yet their product is zero.
 
 **Paper or page:** [Uniform Absolute Convergence of Infinite Product of Complex Functions](https://proofwiki.org/wiki/Uniform_Absolute_Convergence_of_Infinite_Product_of_Complex_Functions). It says: “there exists n₀ ∈ ℕ such that ∏ from n = n₀ to ∞ (1 + fₙ(x)) has no zeroes.”
 
@@ -629,7 +629,7 @@
 
 *True by definition.* MSC 40A25 (Approximation to limiting values (summation of series, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For three successive values y₀,y₁,y₂, seek constants L,A,r satisfying yⱼ=L+Arʲ for j=0,1,2 and 0&lt;\|r\|&lt;1. For a unique fitted constant L, define the extrapolated value to be L.
+**Definition.** Aitken's step treats three successive values y₀, y₁, y₂ as a limit plus a geometric error, yⱼ = L + Arʲ for j = 0, 1, 2 with 0 &lt; \|r\| &lt; 1. When this fit has a unique constant L, the step returns L.
 
 **Problem.** For a sequence with exactly that geometric error and nonzero amplitude, one Aitken step returns the true limit.
 
@@ -645,7 +645,7 @@
 
 *True by definition.* MSC 40A25 (Approximation to limiting values (summation of series, etc.)), 40D05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A linear summation method is a linear functional S on a vector space of term sequences. Stability requires S(a)=a₀+S(tail a) for every sequence in its domain, which must also contain each tail. Regularity means the method assigns the ordinary sum to every convergent series.
+**Definition.** A summation method S is linear if it is a linear functional on a vector space of term sequences. It is stable if its domain contains each tail and S(a) = a₀ + S(tail of a) for every sequence a in it.
 
 **Problem.** Every stable linear method that sums the geometric series Σ c rᵏ with r ≠ 1 must give c/(1 − r). In particular, Grandi's series 1 − 1 + 1 − ⋯ gets the value 1/2 whenever it is summed.
 
@@ -679,11 +679,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Real functions fₙ on D converge uniformly to f if every ε&gt;0 admits N with \|fₙ(t)−f(t)\|&lt;ε for all n≥N and t∈D. An accumulation point of D has another point of D in every neighborhood.
+**Definition.** Real functions fₙ on D converge uniformly to f if each ε &gt; 0 has one N with \|fₙ(t) − f(t)\| &lt; ε for all n ≥ N and all t ∈ D. Such a bound, true at every t, survives taking limits as t tends to a point.
 
-**Problem.** Suppose real functions fₙ converge uniformly to f and each fₙ has a finite limit at the same accumulation point x. Then f has a limit at x, and it equals the limit of the individual limits.
+**Problem.** Suppose real functions fₙ converge uniformly to f on D, and each fₙ has a finite limit at the same accumulation point x of D. Then f has a limit at x, and it equals the limit of the individual limits.
 
-**How the definition helps.** Uniform convergence gives a common bound on differences between late functions that survives taking their limits at x (our own argument). In our own proof, the individual limits therefore form a Cauchy sequence and converge by completeness of the real numbers. Approximating f by one late function then gives that same limit at x. For xⁿ on (0, 1), the two orders of limits at 1 give 1 and 0.
+**How the definition helps.** The uniform bound on \|fₙ − fₘ\| survives letting t → x, so the individual limits form a Cauchy sequence and converge by completeness of ℝ (our own argument). Approximating f by one late fₙ then shows that f has the same limit at x (our own). For xⁿ on (0, 1), the two orders of limits at 1 give 1 and 0.
 
 **nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
 
@@ -697,11 +697,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 30B10. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For weights wₙ(x) on X, their total variation at x is the sum over n of \|wₙ₊₁(x)−wₙ(x)\|. Uniformly bounded variation means one finite constant bounds this sum for every x∈X.
+**Definition.** Weights wₙ(x) on X have uniformly bounded variation if one finite constant bounds the total variation ∑ₙ \|wₙ₊₁(x) − wₙ(x)\| for every x ∈ X.
 
 **Problem.** A uniformly convergent series stays uniformly convergent under termwise multiplication by uniformly bounded weights with uniformly bounded total variation. In particular, if ∑ aₙ converges, then ∑ aₙxⁿ converges uniformly on \[0, 1\].
 
-**How the definition helps.** Total variation bounds all the weight differences that appear when summation by parts rewrites a tail. In our own proof, the largest absolute partial sum within the tail is multiplied by at most the weight bound plus the variation bound. Uniform convergence makes those partial sums uniformly small. For xⁿ on \[0, 1\], both the weights and their total variation are at most one.
+**How the definition helps.** Summation by parts rewrites a tail of the weighted series through partial sums of the tail and weight differences, so the total variation bounds all the differences at once. In our own proof, the largest tail partial sum is multiplied by at most the weight bound plus the variation bound, and uniform convergence makes those partial sums uniformly small. For the weights xⁿ on \[0, 1\], both the weights and their total variation are at most one.
 
 **Paper or page:** [Abel's Test for Uniform Convergence](https://proofwiki.org/wiki/Abel's_Test_for_Uniform_Convergence). It says: “∑ \|aₙ(z) − aₙ₊₁(z)\| is convergent with a sum which is bounded in K”
 
@@ -729,11 +729,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A space is compact if every cover by open sets contains a finite subcover. A sequence is monotone at a point if its values there are nondecreasing or nonincreasing.
+**Definition.** A space is compact if every cover by open sets has a finite subcover. For a growing chain of open sets that covers the space, one set of the chain then covers everything.
 
 **Problem.** Suppose continuous real functions on a compact space converge pointwise to a continuous function. If the sequence is monotone at every point, convergence is uniform.
 
-**How the definition helps.** Compactness turns the open sets where the error is below a fixed tolerance into a finite cover. Monotonicity makes these sets grow, so the largest selected set covers every point. Our own counterexample uses xⁿ on \[0, 1), where the pointwise limit is zero but the supremum stays one.
+**How the definition helps.** By continuity, the sets where the error is below a fixed tolerance at step n are open, and they cover the space (our own). Monotonicity makes these sets grow with n, so compactness gives one set, and one common index, covering every point. Our own counterexample is xⁿ on \[0, 1), which is not compact: the limit is zero but the supremum of the error stays one.
 
 **Wikipedia:** [Dini's theorem](https://en.wikipedia.org/wiki/Dini%27s_theorem). It says: “The continuity of the limit function cannot be inferred from the other hypothesis”
 
@@ -747,11 +747,11 @@
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 54C35. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A family of real functions on a metric space X is uniformly equicontinuous if every ε&gt;0 admits a δ&gt;0 as follows. Every family member h satisfies \|h(x)−h(y)\|&lt;ε whenever x,y∈X satisfy d(x,y)&lt;δ. A subset is dense in X if every open ball in X meets it.
+**Definition.** A family of real functions on a metric space X is uniformly equicontinuous if each ε &gt; 0 has one δ &gt; 0 that works for every member h: \|h(x) − h(y)\| &lt; ε whenever d(x, y) &lt; δ.
 
 **Problem.** On a compact metric space, a uniformly equicontinuous sequence of real functions that converges pointwise on a dense subset converges uniformly everywhere.
 
-**How the definition helps.** The shared threshold lets a bound at one test point control all functions nearby. Compactness gives finitely many such test points from the dense set. In our own proof, convergence at these points makes late functions uniformly close there, and the triangle inequality extends the bound everywhere. Completeness of the real numbers then gives uniform convergence.
+**How the definition helps.** One shared δ lets closeness at a test point control all the functions within δ of it, and compactness gives finitely many test points from the dense set within δ of everything. Convergence at those finitely many points makes late functions close there, and the triangle inequality spreads this everywhere (our own). The sequence is therefore uniformly Cauchy and converges uniformly by completeness of ℝ (our own).
 
 **nLab:** [equicontinuous family of functions](https://ncatlab.org/nlab/show/equicontinuous+family+of+functions). It says: “Nevertheless, given a family of functions, we may have that f(x) is arbitrarily close to f(y) for every function f in the family at once whenever x is sufficiently close to y.”
 
@@ -765,11 +765,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 26A42. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Riemann–Stieltjes sum weights each subinterval by the increase of a nondecreasing function α across it. Lower and upper sums use the infimum and supremum of the integrand on each subinterval. A bounded function is integrable when the supremum of its lower sums equals the infimum of its upper sums.
+**Definition.** A Riemann–Stieltjes sum weights the integrand on each subinterval by the increase of a nondecreasing α across it, so the weights are nonnegative and add to α(b) − α(a). A bounded function is integrable when the supremum of its lower sums, using infima, equals the infimum of its upper sums, using suprema.
 
 **Problem.** For fixed nondecreasing α on \[a, b\], a uniform limit of functions Riemann–Stieltjes integrable with respect to α remains integrable. Its integral is the limit of their integrals.
 
-**How the definition helps.** The weights are nonnegative and always add to α(b) − α(a), just as ordinary interval lengths add to b − a. Our own proof bounds each upper or lower sum’s change by the uniform error times that total weight. The gap between the upper and lower integrals therefore vanishes, and the same bound gives convergence of the integrals.
+**How the definition helps.** The nonnegative weights add to α(b) − α(a), so a uniform error δ changes every upper or lower sum by at most δ(α(b) − α(a)) (our own). The gap between the upper and lower integrals of the limit therefore vanishes, and the same bound gives convergence of the integrals (our own).
 
 **Paper or page:** [Riemann-Stieltjes Integral of Constant Integrand](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_of_Constant_Integrand). It says: “∫ from a to b of f dα = cα(b) − cα(a)”
 
@@ -787,7 +787,7 @@
 
 **Problem.** A normally convergent series of real functions converges uniformly.
 
-**How the definition helps.** Summing the supremum norms bounds each tail at every point by the same number (our own). The numerical tail tends to zero, so the function series converges uniformly by the Cauchy criterion (our own). On \[0, 1\], the functions (1 − x)xⁿ for n ≥ 0 sum to one below 1 and zero at 1 (our own). Their discontinuous sum rules out uniform convergence of these continuous functions (our own).
+**How the definition helps.** The sum of the supremum norms beyond N bounds every tail at every point at once, and it tends to zero, so the Cauchy criterion gives uniform convergence (our own). Pointwise convergence is not enough: on \[0, 1\] the continuous functions (1 − x)xⁿ, n ≥ 0, sum to 1 below 1 and to 0 at 1 (our own). That discontinuous sum rules out uniform convergence (our own).
 
 **Wikipedia:** [Normal convergence](https://en.wikipedia.org/wiki/Normal_convergence). It says: “if the series of uniform norms of the terms of the series converges”
 
@@ -797,15 +797,15 @@
 
 ### Uniform convergence on a dense set extends across the domain
 
-**Remember:** A uniform bound on a dense set reaches every point.
+**Remember:** Compare two functions, not a limit; closed bounds survive taking limits.
 
 *True by definition.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A subset is dense if every point is a limit of points from that subset. A sequence is uniformly Cauchy if each positive tolerance has a cutoff after which every two functions differ by less than that tolerance everywhere.
+**Definition.** A sequence of functions is uniformly Cauchy if, for each ε &gt; 0, there is a cutoff after which any two functions satisfy \|fₙ(x) − fₘ(x)\| ≤ ε at every x. For continuous functions, this closed inequality passes from a dense set to every point, because each point is a limit of points of that set.
 
 **Problem.** If continuous real functions on a metric space converge uniformly on a dense subset, they converge uniformly on the whole space.
 
-**How the definition helps.** The uniform Cauchy criterion compares two functions already defined everywhere, without needing a candidate limit outside the dense set. In our own proof, continuity extends a bound of at most half the tolerance from the dense set to all points. Completeness of the real numbers turns the resulting uniform Cauchy bounds into uniform convergence.
+**How the definition helps.** Continuity extends the uniform Cauchy bound from the dense set to every point (our own). Completeness of ℝ then turns the uniform Cauchy bound into uniform convergence. The criterion needs no limit function outside the dense set.
 
 **Paper or page:** [Uniformly Convergent Sequence on Dense Subset](https://proofwiki.org/wiki/Uniformly_Convergent_Sequence_on_Dense_Subset). It says: “Let V be a Banach space.”
 
@@ -813,15 +813,15 @@
 
 ### Uniformly convergent sequences of continuous functions are equicontinuous
 
-**Remember:** Use the limit for the tail and check the head separately.
+**Remember:** One neighborhood serves the whole family at once.
 
 *Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 54C35. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A family is equicontinuous at x if each positive tolerance has one neighborhood of x for the whole family. Throughout that neighborhood, each function differs from its value at x by less than the tolerance.
+**Definition.** A family of functions is equicontinuous at x if one neighborhood of x works for all of them. For each ε &gt; 0, some neighborhood U of x has d(f(y), f(x)) &lt; ε for every y in U and every f in the family.
 
 **Problem.** A uniformly convergent sequence of continuous functions between metric spaces is equicontinuous at every point.
 
-**How the definition helps.** Uniform convergence lets one neighborhood from continuity of the limit control every sufficiently late function at x (our own argument). The proof spends one third of the tolerance on the limit and one third on each approximation error. Intersect this neighborhood with those supplied by continuity of the finitely many earlier functions. Pointwise convergence alone allows xⁿ on \[0, 1\], which fails equicontinuity at 1.
+**How the definition helps.** Uniform convergence puts every late function within ε/3 of the continuous limit everywhere, so the limit's neighborhood serves them all (our own). The finitely many early functions are each continuous, so intersecting their neighborhoods handles them. Pointwise convergence is not enough: xⁿ on \[0, 1\] is not equicontinuous at 1.
 
 **nLab:** [equicontinuous family of functions](https://ncatlab.org/nlab/show/equicontinuous+family+of+functions). It says: “Nevertheless, given a family of functions, we may have that f(x) is arbitrarily close to f(y) for every function f in the family at once whenever x is sufficiently close to y.”
 
@@ -831,15 +831,15 @@
 
 ### Positive rows preserve sequence limits
 
-**Remember:** A positive row cannot magnify the error in the late terms.
+**Remember:** An average of numbers near L stays near L.
 
 *Rules out counterexamples.* MSC 40C05 (Matrix methods for summability). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A nonnegative averaging matrix has entries aₙₖ≥0 with ∑ₖ aₙₖ=1 for every row n. For a bounded sequence x, its nth output is ∑ₖ aₙₖxₖ.
+**Definition.** A nonnegative averaging matrix turns a bounded sequence x into the averages yₙ = ∑ₖ aₙₖxₖ. The weights aₙₖ are nonnegative and sum to 1 in each row, so each output is a true weighted average of the inputs.
 
 **Problem.** Such a matrix preserves limits of convergent sequences exactly when every fixed column tends to zero.
 
-**How the definition helps.** In our own proof, the late weights total at most one, so the largest late input error bounds their contribution. Vanishing columns make the contribution of every fixed prefix tend to zero. Testing a sequence supported at one index proves necessity. Without positivity, xₙ+n(xₙ−xₙ₊₁) has unit row sums and vanishing columns but fails for xₙ=(−1)ⁿ/n.
+**How the definition helps.** Each output differs from L by at most its weight on early terms times a bound, plus the largest late error (our own). Vanishing columns make the early weight tend to zero, and a sequence that is 1 at one index and 0 elsewhere shows necessity. Without positivity the result fails: xₙ + n(xₙ − xₙ₊₁) has unit row sums and vanishing columns but does not preserve the limit of (−1)ⁿ/n.
 
 **Wikipedia:** [Silverman–Toeplitz theorem](https://en.wikipedia.org/wiki/Silverman%E2%80%93Toeplitz_theorem). It says: “A regular matrix summability method is a linear sequence transformation that preserves the limits of convergent sequences.”
 
@@ -847,15 +847,15 @@
 
 ### Cesàro sums give Abel sums
 
-**Remember:** The Abel transform averages Cesàro means with vanishing weight on each fixed prefix.
+**Remember:** Abel averages the Cesàro means and forgets every fixed start.
 
 *True by definition.* MSC 40D25 (Inclusion and equivalence theorems in summability theory), 40G05, 40G10. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For terms indexed from zero, let cₙ be the mean of partial sums s₀,…,sₙ. For each 0&lt;r&lt;1, assign cₙ the weight (n+1)rⁿ(1−r)².
+**Definition.** Let cₙ be the mean of the partial sums s₀, …, sₙ. For 0 &lt; r &lt; 1, give cₙ the Abel weight (n + 1)rⁿ(1 − r)². These weights are positive and sum to one, and each fixed weight tends to zero as r → 1.
 
-**Problem.** If the means cₙ tend to L, the series has Abel sum L. The Abel sum is the limit of the damped series as r increases to one.
+**Problem.** If the Cesàro means cₙ tend to L, the series has Abel sum L, the limit of ∑aₙrⁿ as r increases to one.
 
-**How the definition helps.** In our own proof, summation by parts twice expresses the damped series as the weighted mean of the cₙ. Bounded cₙ give sₙ=(n+1)cₙ−ncₙ₋₁=O(n) for n≥1, so the damped series converges absolutely. The weights sum to one, and each fixed prefix loses its weight as r→1. The remaining means are uniformly close to L once the prefix is long enough.
+**How the definition helps.** Summation by parts twice shows that ∑aₙrⁿ equals ∑(n + 1)rⁿ(1 − r)²cₙ (our own). An average with these weights of a sequence tending to L tends to L, because each fixed prefix loses its weight. Bounded cₙ give sₙ = O(n), so the damped series converges absolutely for r &lt; 1.
 
 **Wikipedia:** [Divergent series](https://en.wikipedia.org/wiki/Divergent_series). It says: “Abel summation is interesting in part because it is consistent with but more powerful than Cesàro summation”
 
@@ -863,15 +863,15 @@
 
 ### Small terms let Abel recover convergence
 
-**Remember:** When n times the term vanishes, smoothing changes no limit.
+**Remember:** Terms smaller than 1/n barely feel the damping.
 
 *Rules out counterexamples.* MSC 40E05 (Tauberian theorems). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** An Abel sum is the limit of the series with term n weighted by rⁿ as r increases to one. To recover ordinary convergence, restrict the series to terms whose product with their index tends to zero.
+**Definition.** The Abel sum of ∑aₙ is the limit of ∑aₙrⁿ as r increases to one. At r = 1 − 1/n, the damping removes at most the fraction k/n of each term aₖ with k ≤ n. This loss is small when k aₖ → 0.
 
 **Problem.** A series with an Abel sum and n a(n) tending to zero converges ordinarily to its Abel sum.
 
-**How the definition helps.** The condition k aₖ → 0 makes the difference between the weighted sum and the ordinary partial sum tend to zero. In our own proof, take r = 1 − 1/n and fix a block after which \|k aₖ\| ≤ ε. Up to index n, the bound 1 − rᵏ ≤ k/n controls the difference, and beyond n the geometric weights do. Our own counterexample is 1 − 1 + 1 − ⋯, which diverges despite its Abel sum of one half.
+**How the definition helps.** At r = 1 − 1/n, the gap between sₙ and the damped sum is at most the mean of \|k aₖ\| for k ≤ n plus the largest \|k aₖ\| for k &gt; n (our own). Both tend to zero, so sₙ tends to the Abel sum. Without the condition, 1 − 1 + 1 − ⋯ has Abel sum ½ but diverges (our own).
 
 **Wikipedia:** [Abelian and Tauberian theorems](https://en.wikipedia.org/wiki/Abelian_and_Tauberian_theorems). It says: “if the Abel sum of a series exists and the coefficients are sufficiently small (o(1/n)) then the series converges to the Abel sum.”
 
@@ -881,15 +881,15 @@
 
 ### Averaging the partial sums recovers every continuous function (Fejér)
 
-**Remember:** Average the partial sums, and the wobbles of the Fourier series cancel.
+**Remember:** Average the partial sums and the kernel turns positive.
 
 *Makes the theorem clean to state or prove.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods), 42A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a series with partial sums s₀,s₁,…, its nth Cesàro mean is σₙ=(s₀+⋯+sₙ)/(n+1). The series is Cesàro summable to s if σₙ→s.
+**Definition.** The nth Cesàro mean σₙ of a series is the average (s₀ + ⋯ + sₙ)/(n + 1) of its first n + 1 partial sums. For a Fourier series, σₙ is convolution of f with the Fejér kernel, which is nonnegative with mean one (our own).
 
 **Problem.** Fejér's theorem: the Cesàro means of the Fourier series of a continuous 2π-periodic function converge to it uniformly.
 
-**How the definition helps.** The Cesàro means give one sequence of approximations for every continuous periodic function, even when its Fourier partial sums diverge at a point. In our own explanation, Fejér’s theorem supplies uniform convergence because the Fejér kernels form a positive approximate identity.
+**How the definition helps.** A nonnegative kernel with mean one makes σₙ(f, x) an average of values of f, and the kernel's mass concentrates near zero (our own). Uniform continuity of f then gives uniform convergence. The plain partial sums lack this positivity, and some continuous functions have Fourier series that diverge at a point.
 
 **Wikipedia:** [Fejér's theorem](https://en.wikipedia.org/wiki/Fej%C3%A9r%27s_theorem), [Convergence of Fourier series](https://en.wikipedia.org/wiki/Convergence_of_Fourier_series). It says: “Sadly however, the theorem does not work in a general sense when we replace the sequence σₙ(f,x) with sₙ(f,x). This is because there exist functions whose Fourier series fails to converge at some point.”
 
@@ -899,15 +899,15 @@
 
 ### Euler differences truncate polynomial sums
 
-**Remember:** Each forward difference lowers a polynomial’s degree until nothing remains.
+**Remember:** Differences flatten a polynomial to zero, so the sum stops.
 
 *True by definition.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For terms (−1)ⁿaₙ indexed from zero, put Δ⁰a=a and define (Δa)ₖ=aₖ₊₁−aₖ. The Euler sum is the sum over n≥0 of (−1)ⁿ(Δⁿa)₀/2ⁿ⁺¹ when that series converges.
+**Definition.** The Euler sum of ∑(−1)ⁿaₙ is ∑(−1)ⁿ(Δⁿa)₀/2ⁿ⁺¹, built from forward differences (Δa)ₖ = aₖ₊₁ − aₖ. Each difference lowers the degree of a polynomial sequence by one, so for degree d every difference after the dth is zero.
 
 **Problem.** The Euler sum of an alternating polynomial sequence of degree d uses only the first d + 1 differences.
 
-**How the definition helps.** Each forward difference lowers the polynomial degree until all entries vanish (our own). Only differences numbered zero through d can contribute. Ordinary partial sums can oscillate even for the constant polynomial one (our own). Identifying the weighted difference sum with the ordinary sum when the original series converges requires the Euler transformation theorem (our own).
+**How the definition helps.** The differences numbered above d vanish, so the Euler sum is a finite sum of d + 1 terms (our own). The ordinary partial sums can oscillate, even for the constant sequence 1 (our own). The Euler transformation theorem shows that the Euler sum equals the ordinary sum when the series converges (our own).
 
 **Wikipedia:** [Euler summation](https://en.wikipedia.org/wiki/Euler_summation). It says: “the inner sum would be zero for i &gt; k, so in this case Euler summation reduces an infinite series to a finite sum.”
 
@@ -915,15 +915,15 @@
 
 ### Abel sums multiply under Cauchy products
 
-**Remember:** Multiply while r is below one, then take the limit.
+**Remember:** Damp both series, multiply freely, then let r reach one.
 
 *True by definition. Confidence: medium.* MSC 40G10 (Abel, Borel and power series methods), 40B05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A series ∑aₙ indexed from zero has Abel sum L if ∑aₙrⁿ converges for every 0≤r&lt;1 and approaches L as r increases to one. The Cauchy product of ∑aₙ and ∑bₙ has nth term ∑ₖ₌₀ⁿ aₖbₙ₋ₖ.
+**Definition.** A series ∑aₙ has Abel sum L if its damped series ∑aₙrⁿ converges for 0 ≤ r &lt; 1 and tends to L as r increases to one. Damping turns the Cauchy product, with nth term ∑ₖ₌₀ⁿ aₖbₙ₋ₖ, into a product of two absolutely convergent power series (our own).
 
 **Problem.** The Cauchy product of two Abel-summable series is Abel-summable to the product of their Abel sums.
 
-**How the definition helps.** For r below one, the damped power series converge absolutely and their coefficients multiply by the Cauchy product rule (our own). Taking the finite limits gives the stated product (our own). Abel’s limit theorem carries the work of identifying Abel sums with ordinary sums whenever the latter exist (our own).
+**How the definition helps.** For r &lt; 1 the damped series converge absolutely, so the damped Cauchy product equals their product (our own). Letting r increase to one multiplies the two limits (our own). Abel's limit theorem shows that these Abel sums equal the ordinary sums whenever those exist (our own).
 
 **Paper or page:** [Abel's Limit Theorem](https://proofwiki.org/wiki/Abel's_Limit_Theorem). It says: “limₓ→₁⁻ (∑ from k = 0 to ∞ aₖxᵏ) = ∑ from k = 0 to ∞ aₖ”
 
@@ -931,15 +931,15 @@
 
 ### Borel summation handles alternating factorials
 
-**Remember:** Divide out the factorials before you try to sum.
+**Remember:** Divide out the factorials, sum, then multiply them back by integrating.
 
 *Makes the theorem clean to state or prove.* MSC 40G10 (Abel, Borel and power series methods). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For coefficients aₙ indexed from zero, the Borel transform is the power series with coefficients aₙ/n!. Require convergence near zero and analytic continuation along the positive real axis. If its continuation B has a convergent integral ∫₀∞ exp(−t)B(t) dt, that integral is the Borel sum.
+**Definition.** The Borel transform of ∑aₙ is B(t) = ∑aₙtⁿ/n!, which must converge near zero and continue analytically along the positive real axis. The Borel sum is ∫₀∞ exp(−t)B(t) dt when it converges; this integral restores each n!, since ∫₀∞ exp(−t)tⁿ dt = n!.
 
 **Problem.** The alternating factorial series starting with 0! has Borel sum ∫₀∞ exp(−t)/(1+t) dt.
 
-**How the definition helps.** The transform is geometric near zero, so it extends as 1/(1 + t) for positive t (our own). The resulting integral converges by comparison with exp(−t) (our own). The work moves from ordinary convergence to continuing and integrating the transform (our own).
+**How the definition helps.** Dividing (−1)ⁿn! by n! leaves the geometric series ∑(−t)ⁿ = 1/(1 + t), which continues to all t ≥ 0 (our own). The integral of exp(−t)/(1 + t) converges by comparison with exp(−t) (our own).
 
 **Wikipedia:** [Borel summation](https://en.wikipedia.org/wiki/Borel_summation). It says: “so the original divergent series is Borel summable for all such z.”
 
@@ -951,11 +951,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40G10 (Abel, Borel and power series methods). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a series starting at index zero, multiply term n by rⁿ, where 0 &lt; r &lt; 1. The Abel sum is the limit of these weighted sums as r increases to one, when that limit exists.
+**Definition.** The Abel sum is the limit of ∑aₙrⁿ as r increases to one, where 0 &lt; r &lt; 1. Summation by parts writes this as ∑(1 − r)rⁿsₙ, an average of the partial sums sₙ with positive weights summing to one (our own). Each fixed weight tends to zero (our own).
 
 **Problem.** If a real or complex series converges ordinarily, it has the same Abel sum.
 
-**How the definition helps.** Rewriting the weighted sum as an average of partial sums makes the ordinary limit visible. Summation by parts assigns partial sum n the weight (1 − r)rⁿ. In our own explanation, these weights add to one and every fixed initial block loses its weight as r approaches one. All later partial sums are close to the ordinary limit.
+**How the definition helps.** An average that forgets every fixed initial block of a convergent sequence tends to its limit (our own). Given ε, the partial sums after some index N lie within ε of the ordinary sum, and the first N weights tend to zero (our own).
 
 **Wikipedia:** [Abel's theorem](https://en.wikipedia.org/wiki/Abel%27s_theorem). It says: “Then substituting aₖ = sₖ − sₖ₋₁ and performing a simple manipulation of the series (summation by parts) results in”
 
@@ -963,15 +963,15 @@
 
 ### Absolute summability forces countable support
 
-**Remember:** Only finitely many magnitudes can exceed each positive threshold.
+**Remember:** A bounded total allows only finitely many terms above each size.
 
 *True by definition.* MSC 40J05 (Summability in abstract structures), 40A05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A family is absolutely summable if all its finite sums of magnitudes have a common upper bound. This definition needs no enumeration of the indices.
+**Definition.** A family (xᵢ) is absolutely summable if the sums of \|xᵢ\| over finite sets of indices have a common upper bound M. Then, for each ε &gt; 0, at most M/ε indices have \|xᵢ\| ≥ ε (our own).
 
 **Problem.** An absolutely summable family of real numbers has at most countably many nonzero terms.
 
-**How the definition helps.** For any positive threshold, too many terms of at least that size would exceed the common bound (our own). All nonzero terms lie in the union of those finite sets for thresholds 1/n (our own). The work moves to proving that the finite-sum bound gives the usual absolute convergence after enumeration (our own).
+**How the definition helps.** The nonzero terms are the union over n of the finite sets where \|xᵢ\| ≥ 1/n, so they are countable (our own). The definition needs no ordering of the indices.
 
 **Wikipedia:** [Absolute convergence](https://en.wikipedia.org/wiki/Absolute_convergence). It says: “the sum of f over X is absolutely convergent, then f takes non-zero values on a set that is at most countable”
 
@@ -979,15 +979,15 @@
 
 ### Unconditional convergence survives taking subseries
 
-**Remember:** Any finite tail of a subseries was already a finite tail.
+**Remember:** Small finite blocks far out stay small in any subseries.
 
 *True by definition.* MSC 40J05 (Summability in abstract structures), 40A05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A series in a normed space satisfies the unordered Cauchy condition if every ε&gt;0 admits a finite index set F with the following property. For every finite index set E disjoint from F, the sum of terms indexed by E has norm below ε.
+**Definition.** A series ∑xₙ in a normed space satisfies the unordered Cauchy condition if, for each ε &gt; 0, some finite index set F has this property. Every finite sum of terms with indices outside F has norm below ε.
 
 **Problem.** In a complete normed space, every subseries of an unconditionally convergent series converges under every rearrangement.
 
-**How the definition helps.** Every finite sum of terms far out in a subseries obeys the original bound (our own). Completeness turns the bound back into convergence (our own). The work goes into the equivalence with the rearrangement definition (our own).
+**How the definition helps.** A finite sum from a subseries with indices outside F is also such a sum for the original series, so every subseries satisfies the condition (our own). In a complete space the condition is equivalent to convergence under every rearrangement (our own).
 
 **Paper or page:** [Infinite Subseries of Unconditionally Convergent Series is Unconditionally Convergent](https://proofwiki.org/wiki/Infinite_Subseries_of_Unconditionally_Convergent_Series_is_Unconditionally_Convergent). It says: “∑ over n ∈ A xₙ = ∑ from n = 1 to ∞ χ<sub>A</sub>(n)xₙ is unconditionally convergent”
 
@@ -995,15 +995,15 @@
 
 ### Unordered sums over index sets split over disjoint pieces
 
-**Remember:** Sum over finite subsets, and the order of terms stops mattering.
+**Remember:** Sums along finite subsets split as cleanly as the index set.
 
 *True by definition.* MSC 40A05 (Convergence and divergence of series and sequences), 54A20, 54H15. arXiv math.CA, math.GN. Level 3: graduate.
 
-**Definition.** For a nonempty index set K, a generalized sum is a limit of the sums over its nonempty finite subsets, ordered by inclusion. With an additive identity, the empty sum equals that identity.
+**Definition.** A generalized sum over an index set K is the limit of the sums over nonempty finite subsets of K, directed by inclusion. A finite subset of a disjoint union I∪J is a finite subset of I together with one of J, so its sum splits in two.
 
 **Problem.** Let G be a Hausdorff commutative topological semigroup, and let disjoint index sets I and J have generalized sums in G. Take both sets nonempty unless G has an additive identity. The generalized sum over I∪J then equals the sum of those two limits.
 
-**How the definition helps.** In our own proof, every sufficiently large finite subset of I∪J splits into nonempty finite parts in I and J when both are nonempty. Requiring those parts to contain prescribed finite subsets places both partial sums in any chosen neighborhoods of their limits. Continuity of addition gives the asserted limit, and an empty part contributes the identity when present.
+**How the definition helps.** Take finite subsets of I∪J that contain prescribed nonempty finite subsets of I and of J; both parts then lie in chosen neighborhoods of their limits (our own). Continuity of addition puts the total near the sum of the limits, and the Hausdorff property makes the limit unique. When I or J is empty, its part contributes the additive identity.
 
 **Paper or page:** [Generalized Sum over Union of Disjoint Index Sets](https://proofwiki.org/wiki/Generalized_Sum_over_Union_of_Disjoint_Index_Sets). It says: “the generalized sum ∑ₖ gₖ converges and: ∑ₖ gₖ = (∑ᵢ gᵢ) + (∑ⱼ gⱼ)”
 
@@ -1017,11 +1017,11 @@
 
 *Rules out counterexamples.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Choose positive weights p₀, p₁, … and let Pₙ be their sum through index n. The Nørlund average through n weights the oldest partial sum by pₙ/Pₙ, the next by pₙ₋₁/Pₙ, and so on.
+**Definition.** Given positive weights p₀, p₁, … with totals Pₙ = p₀ + ⋯ + pₙ, the nth Nørlund mean is (pₙs₀ + pₙ₋₁s₁ + ⋯ + p₀sₙ)/Pₙ. The oldest partial sum s₀ gets the share pₙ/Pₙ.
 
-**Problem.** These averages preserve every ordinary limit exactly when pₙ/Pₙ tends to zero.
+**Problem.** The Nørlund means preserve every ordinary limit exactly when pₙ/Pₙ tends to zero.
 
-**How the definition helps.** The weight pₙ/Pₙ on the first partial sum is the only obstruction (our own proof). The sequence 1, 0, 0, … tends to zero but has average pₙ/Pₙ, so the condition is necessary. Conversely, since the totals increase, a fixed index k has weight pₙ₋ₖ/Pₙ ≤ pₙ₋ₖ/Pₙ₋ₖ, which tends to zero. Doubling weights pₙ = 2ⁿ leave half the mass on the first term in the limit.
+**How the definition helps.** The sequence 1, 0, 0, … has mean pₙ/Pₙ, so the condition is necessary. Conversely, a fixed sₖ has share pₙ₋ₖ/Pₙ ≤ pₙ₋ₖ/Pₙ₋ₖ, which tends to zero, and a positive average that forgets each fixed term preserves limits (our own). Doubling weights pₙ = 2ⁿ fail, since s₀ keeps a share near ½.
 
 **Wikipedia:** [Divergent series](https://en.wikipedia.org/wiki/Divergent_series). It says: “The Nørlund mean is regular, linear, and stable.”
 
@@ -1031,15 +1031,15 @@
 
 ### Borel agreement needs endpoint decay
 
-**Remember:** The two Borel methods differ by the weighted transform at the endpoint.
+**Remember:** The two Borel sums differ only by the endpoint term.
 
 *Rules out counterexamples.* MSC 40G10 (Abel, Borel and power series methods). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Assume the series with terms aₙtⁿ/n!, indexed from zero, defines an entire function B(t). Its integral Borel sum is ∫₀∞ exp(−t)B(t) dt when this converges. Its weak Borel sum is the finite limit as t→∞ of the partial sums averaged with weights exp(−t)tⁿ/n!.
+**Definition.** Assume B(t) = ∑aₙtⁿ/n! is entire. The integral Borel sum is ∫₀∞ exp(−t)B(t) dt, and the weak Borel sum is the limit as T → ∞ of exp(−T)∑sₙTⁿ/n!, with sₙ the partial sums. At each T the weak average equals ∫₀ᵀ exp(−t)B(t) dt plus exp(−T)B(T) (our own).
 
 **Problem.** Assume the integral Borel sum exists. The weak Borel sum exists exactly when exp(−t)B(t) tends to zero, and then both sums agree.
 
-**How the definition helps.** In our own calculation, differentiating the exponential series shows that the weak average at T equals the integral through T plus exp(−T)B(T). The integral converges, so the weak average converges exactly when the endpoint term has a limit. That limit must be zero because the endpoint term has a convergent improper integral. Taking B(t)=exp(t)sin(t²) gives a convergent integral but an oscillating endpoint term.
+**How the definition helps.** Since the integral converges, the weak sum exists exactly when exp(−T)B(T) has a limit (our own). That limit must be zero, because exp(−t)B(t) has a convergent improper integral. B(t) = exp(t)sin(t²) shows that the endpoint term can oscillate while the integral converges.
 
 **Wikipedia:** [Borel summation](https://en.wikipedia.org/wiki/Borel_summation). It says: “Any series A(z) that is weak Borel summable at z ∈ ℂ is also Borel summable at z.”
 
@@ -1051,11 +1051,11 @@
 
 *True by definition.* MSC 40G10 (Abel, Borel and power series methods). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Write sₙ for the partial sum through index n, starting at zero. Weak Borel summation averages these sums with weights exp(−t)tⁿ/n!, then takes the limit as t tends to infinity. These weights form a probability distribution for each positive t.
+**Definition.** Weak Borel summation averages the partial sums sₙ with Poisson weights exp(−t)tⁿ/n!, which are nonnegative and sum to one, then lets t tend to infinity. Each fixed weight tends to zero as t grows.
 
 **Problem.** Weak Borel summation gives an ordinarily convergent series its ordinary sum.
 
-**How the definition helps.** In our own proof, the error is a weighted mean of the partial sums’ errors, with total weight one. Each fixed prefix contributes vanishing error because each of its weights tends to zero. Beyond a sufficiently long prefix, every error lies below any prescribed tolerance, and the tail weights total at most one.
+**How the definition helps.** An average whose weights sum to one and leave every fixed index behind preserves limits (our own). The finitely many early errors get vanishing weight, and every later error is below any chosen ε.
 
 **Wikipedia:** [Borel summation](https://en.wikipedia.org/wiki/Borel_summation). It says: “A weak form of Borel's summation method defines the Borel sum of A to be”
 
@@ -1063,15 +1063,15 @@
 
 ### Banach limits average periodic sequences
 
-**Remember:** Average all phase shifts and a periodic sequence becomes constant.
+**Remember:** Shifts are invisible, so every phase of the period counts equally.
 
 *True by definition.* MSC 40H05 (Functional analytic methods in summability). arXiv math.CA. Level 3: graduate.
 
-**Definition.** A Banach limit is a positive linear functional on bounded real sequences that extends the ordinary limit and is invariant under deleting the first term. Positivity means that every nonnegative sequence receives a nonnegative value.
+**Definition.** A Banach limit is a linear functional on bounded real sequences that extends the ordinary limit and is unchanged when the sequence is shifted by one place. It is also positive: nonnegative sequences get nonnegative values.
 
 **Problem.** Every Banach limit of a periodic sequence equals the mean over one period.
 
-**How the definition helps.** Shift invariance gives every shift in a period the same Banach limit (our own). Averaging those shifts produces a constant sequence equal to the period mean (our own). Linearity gives that constant the original Banach limit (our own). The existence of a positive, shift-invariant extension requires a separate theorem (our own).
+**How the definition helps.** Shift invariance gives all p shifts of a sequence with period p the same value (our own). Their average is the constant sequence equal to the period mean, so linearity and the ordinary limit finish the proof (our own). That Banach limits exist is a separate theorem, from the Hahn–Banach theorem (our own).
 
 **Wikipedia:** [Banach limit](https://en.wikipedia.org/wiki/Banach_limit). It says: “In other words, a Banach limit extends the usual limits, is linear, shift-invariant and positive.”
 
@@ -1083,11 +1083,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 40H05 (Functional analytic methods in summability), 40G05. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A Banach limit assigns a number linearly to each bounded real sequence and agrees with the ordinary limit whenever it exists. It assigns nonnegative values to nonnegative sequences and ignores deletion of the first term. A sequence is almost convergent to L when every Banach limit gives it value L.
+**Definition.** A bounded real sequence is almost convergent to L if every Banach limit gives it the value L. A Banach limit is a positive linear functional on bounded real sequences that extends the ordinary limit and ignores shifts.
 
 **Problem.** A bounded real sequence is almost convergent to L exactly when its long block averages approach L uniformly over all starting positions.
 
-**How the definition helps.** Almost convergence asks whether all Banach limits agree, and Lorentz’s theorem expresses that agreement as one uniform test on block averages. In our own proof of sufficiency, averaging shifts preserves each Banach limit by linearity and shift invariance. Positivity bounds the change in its value by the uniform approximation error. Lorentz’s characterization supplies necessity.
+**How the definition helps.** Banach limits ignore shifts, so they give a sequence the same value as its averages over blocks of length p (our own). Positivity bounds that value by the largest distance of those averages from L, so uniform block averages near L force the value L. Lorentz's theorem supplies the converse.
 
 **Wikipedia:** [Almost convergent sequence](https://en.wikipedia.org/wiki/Almost_convergent_sequence). It says: “Lorentz proved that \\((x<sub>n</sub>)\\) is almost convergent if and only if \\(\\lim\\limits<sub>p\\to\\infty</sub> \\frac{x<sub>n</sub>+\\ldots+x<sub>n+p-1</sub>}p=L\\) uniformly in \\(n\\).”
 
@@ -1097,15 +1097,15 @@
 
 ### Ideal convergence frees Olivier's theorem from monotonicity
 
-**Remember:** Ignore a set of indices with finite harmonic sum, and n aₙ → 0.
+**Remember:** Where n aₙ is large, the harmonic sum is small.
 
 *True by definition.* MSC 40A35 (Ideal and statistical convergence), 26D15. arXiv math.CA. Level 4: research.
 
-**Definition.** An ideal I on the positive integers is a proper family containing all finite sets and closed under subsets and finite unions. Convergence to L along I requires {n : \|xₙ−L\|≥ε}∈I for every ε&gt;0. The summable ideal consists of sets A with finite sum of 1/n over n∈A.
+**Definition.** An ideal on ℕ is a family of index sets that contains every finite set but not ℕ, and is closed under subsets and finite unions. A sequence converges to L along an ideal I if each exceptional set {n : \|xₙ − L\| ≥ ε} lies in I. The summable ideal holds the sets A with finite harmonic sum ∑ over n ∈ A of 1/n.
 
-**Problem.** Let I be an ideal on ℕ. Then n aₙ → 0 along I for every convergent series ∑ aₙ of positive terms exactly when I contains the summable ideal. This removes the monotonicity hypothesis of Olivier's theorem.
+**Problem.** For an ideal I on ℕ, n aₙ → 0 along I for every convergent series ∑aₙ of positive terms exactly when I contains the summable ideal. This removes the monotonicity hypothesis of Olivier's theorem.
 
-**How the definition helps.** In our own proof, the set where naₙ≥ε has harmonic sum at most (∑aₙ)/ε. Thus any ideal containing the summable ideal ignores every such exceptional set. Conversely, for each set A of finite harmonic sum, take aₙ=1/n on A and aₙ=1/(2n²) elsewhere. This positive series converges, and {n : naₙ≥1}=A, so ideal convergence forces A∈I.
+**How the definition helps.** On the set where n aₙ ≥ ε we have 1/n ≤ aₙ/ε, so its harmonic sum is at most (∑aₙ)/ε (our own). Conversely, for A with finite harmonic sum, put aₙ = 1/n on A and aₙ = 1/(2n²) elsewhere. Then {n : n aₙ ≥ 1} = A, so convergence along I forces A ∈ I.
 
 **Paper or page:** [The ideal test for the divergence of a series](https://arxiv.org/abs/2307.01506v1), [The ideal test for the divergence of a series](https://arxiv.org/abs/2307.01506v1). It says: “we either drop the monotonicity assumption completely or we relax it to the monotonicity on a large set of indices. In both cases, the convergence of (n aₙ) is replaced by ideal convergence.”
 
@@ -1119,11 +1119,11 @@
 
 *True by definition. Confidence: low.* MSC 40A35 (Ideal and statistical convergence), 54A20. arXiv math.GN. Level 4: research.
 
-**Definition.** An ideal I on ℕ is a proper family containing all finite sets and closed under subsets and finite unions. Convergence to x along I requires {n : xₙ∉U}∈I for every neighborhood U of x. For M∉I, restrict I to subsets of M belonging to I and keep the indices in M.
+**Definition.** A sequence converges to x along an ideal I on ℕ if, for each neighborhood U of x, the exceptional set {n : xₙ ∉ U} lies in I. For a set M ∉ I, the restricted ideal on M consists of the subsets of M that lie in I. The subsequence on M keeps its original indices, so its exceptional sets are the original ones intersected with M.
 
-**Problem.** Let a sequence converge to x for an ideal, and let M be a nonthin set of indices. Then the subsequence on M, with its original indices, converges to x for the restricted ideal on M.
+**Problem.** Let a sequence converge to x along an ideal I, and let M be a set of indices not in I. Then the subsequence on M, with its original indices, converges to x along the restricted ideal on M.
 
-**How the definition helps.** In our own proof, the restricted sequence’s exceptional set for any neighborhood is the original exceptional set intersected with M. This intersection belongs to the restricted ideal by closure under subsets.
+**How the definition helps.** Each exceptional set of the subsequence is an original exceptional set intersected with M, so it lies in I because I is closed under subsets (our own). If the subsequence is renumbered instead, it may fail to converge along the same ideal.
 
 **Paper or page:** [Compactness with ideals](https://arxiv.org/abs/2107.00050v1). It says: “subsequence of an ideal convergent sequence may fail to be ideal convergent with respect to same ideal.”
 

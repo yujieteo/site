@@ -1,14 +1,14 @@
 ### Counting observations below a threshold gives order statistic laws
 
-**Remember:** The kth smallest is at most x when at least k observations are.
+**Remember:** The kth smallest is ≤ x when at least k values are.
 
 *Makes the theorem clean to state or prove.* MSC 62G30 (Order statistics; empirical distribution functions), 60E05. arXiv math.PR. Level 1: early undergraduate.
 
-**Definition.** For 1 ≤ k ≤ n, the kth order statistic is the kth smallest of n observations. Each occurrence of a repeated value occupies its own place.
+**Definition.** For 1 ≤ k ≤ n, the kth order statistic is the kth smallest of n observations, with each repeated value counted once for each occurrence. So it is at most x exactly when at least k observations are at most x.
 
 **Problem.** Take n independent observations with the same distribution function F, where F(x) is the chance of a value at most x. The chance that the kth smallest is at most x equals the chance of at least k successes in n independent trials with probability F(x).
 
-**How the definition helps.** Counting repeated observations makes the rank test exactly a test on the number of values at or below x (our own). The binomial counting theorem supplies the tail probability, with no density or tie assumption (our own).
+**How the definition helps.** The event that the kth smallest is at most x is the event that at least k observations are at most x, and that count is binomial with n trials and probability F(x) (our own). Counting repeats separately keeps this exact, with no density or tie assumption (our own).
 
 **Wikipedia:** [Order statistic](https://en.wikipedia.org/wiki/Order_statistic). It says: “P(X₍ₖ₎ ≤ x) = P(there are at least k observations less than or equal to x)”
 
@@ -20,11 +20,11 @@
 
 *Rules out counterexamples.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 2: later undergraduate.
 
-**Definition.** Choose a proposal density g and a finite constant M such that the target density f satisfies f ≤ Mg almost everywhere. Draw from g and accept with probability f divided by Mg. Repeat independent attempts until one is accepted.
+**Definition.** Choose a proposal density g and a finite constant M with f ≤ Mg almost everywhere, an envelope that makes f/(Mg) a probability (our own). Draw from g, accept with probability f/(Mg), and repeat independent attempts until one is accepted.
 
 **Problem.** The first accepted draw has density f. Without the envelope condition, clipping the acceptance probability at one need not give that density.
 
-**How the definition helps.** The envelope makes the acceptance weight a probability, so multiplying it by g gives f/M (our own). Conditioning on acceptance then gives density f (our own). For a uniform proposal on \[0,1\], take f(x) = 2x and M = 1 (our own). Clipping the acceptance probability at one gives density proportional to min(2x,1) (our own).
+**How the definition helps.** A draw at x is accepted with density g(x)·f(x)/(Mg(x)) = f(x)/M, so the accepted draw has density f (our own). For a uniform proposal on \[0, 1\], f(x) = 2x and M = 1 break the envelope (our own). Clipping the acceptance at one then gives density proportional to min(2x, 1) (our own).
 
 **Wikipedia:** [Rejection sampling](https://en.wikipedia.org/wiki/Rejection_sampling). It says: “Accepting only pairs such that u &lt; f(x)/(Mg(x)) then produces pairs (x,v) uniformly distributed over the subgraph of f(x)”
 
@@ -38,11 +38,11 @@
 
 *True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 2: later undergraduate.
 
-**Definition.** For simulation on \[0,1\], pair a uniform draw U with 1 − U. Average the two function values rather than drawing two independent points.
+**Definition.** For simulation on \[0,1\], pair each uniform draw U with its reflection 1 − U, so the pair always sums to one (our own). Average the function at the two points rather than at two independent points.
 
 **Problem.** This paired estimator integrates every affine function on \[0,1\] with zero variance.
 
-**How the definition helps.** Reflection fixes the pair’s sum at one, so averaging any affine function gives its midpoint value (our own). For a function of the form ax + b, that midpoint value equals its integral on \[0,1\] (our own). Independent draws lack this cancellation (our own). For nonlinear functions, the work lies in finding pairs whose deviations tend to cancel (our own).
+**How the definition helps.** The pair's midpoint is always 1/2, so for an affine function ax + b the paired average is a/2 + b, its integral on \[0, 1\] (our own). Independent draws lack this cancellation, and for nonlinear functions the gain depends on how well the deviations cancel (our own).
 
 **Paper or page:** [Living on the Edge: An Unified Approach to Antithetic Sampling](https://arxiv.org/abs/2110.15124v2). It says: “CCV are marginally standard uniform and constant in sum.”
 
@@ -52,15 +52,15 @@
 
 ### Completeness makes the best unbiased estimator unique
 
-**Remember:** A complete statistic has no non-zero function that is unbiased for zero.
+**Remember:** From T, only zero can estimate zero without bias.
 
 *Makes the theorem clean to state or prove.* MSC 62B05 (Sufficient statistics and fields), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A statistic T is complete if every measurable g with Eθ\[g(T)\] = 0 for all θ satisfies g(T) = 0 almost surely under every θ.
+**Definition.** A statistic T is complete if no non-zero function of T is unbiased for zero: whenever Eθ\[g(T)\] = 0 for every θ, g(T) = 0 almost surely under every θ. So two unbiased estimators that are both functions of T agree almost surely (our own).
 
 **Problem.** Let T be complete and sufficient, and let h(T) be an unbiased estimator with finite variance under every parameter value. Then h(T) uniquely minimizes variance uniformly among unbiased estimators, up to almost sure equality under every parameter value.
 
-**How the definition helps.** Rao–Blackwell conditioning turns each competing estimator into an unbiased function of T without increasing variance (our own). Its difference from h(T) has mean zero under every parameter, so completeness makes them equal almost surely (our own). Equality of variances requires the competitor’s conditional variance to vanish, giving uniqueness (our own).
+**How the definition helps.** Rao–Blackwell conditioning turns any unbiased competitor into an unbiased function of T with no larger variance (our own). Completeness makes that function equal to h(T) almost surely (our own). If the competitor also has the least variance, its conditional variance given T is zero, so it equals h(T) almost surely (our own).
 
 **Wikipedia:** [Completeness (statistics)](https://en.wikipedia.org/wiki/Completeness_%28statistics%29), [Lehmann–Scheffé theorem](https://en.wikipedia.org/wiki/Lehmann%E2%80%93Scheff%C3%A9_theorem). It says: “Most parametric models have a sufficient statistic which is not complete. This is important because the Lehmann–Scheffé theorem cannot be applied to such models.”
 
@@ -68,15 +68,15 @@
 
 ### Factored likelihood lets likelihood ratio tests use only sufficient statistics
 
-**Remember:** Both fits carry the same data-only factor, so the ratio forgets it.
+**Remember:** The data-only factor appears top and bottom, so it cancels.
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields), 62F03. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** For countable data, T is sufficient if there exist nonnegative functions h and g with Pθ(X=x) = h(x)g(θ,T(x)) for every θ and x. This factorization is equivalent to a parameter-independent conditional law of X given T wherever defined.
+**Definition.** For countable data, T is sufficient when each probability factors as Pθ(X = x) = h(x)g(θ, T(x)), with nonnegative h free of θ and g seeing the data only through T. By the factorization theorem, this is the usual conditional-law definition.
 
-**Problem.** Compare the best likelihood under a null hypothesis with the best likelihood over the full model, using suprema if maxima are absent. If the full supremum is positive and finite, their ratio depends on the data only through T.
+**Problem.** Take the supremum of the likelihood over the null hypothesis and divide it by the supremum over the full model. If the full supremum is positive and finite, this ratio depends on the data only through T.
 
-**How the definition helps.** The same factor h multiplies both suprema, so it cancels from their ratio (our own). The work goes into the factorization theorem, which guarantees the product form from the conditional-law definition.
+**How the definition helps.** The factor h(x) is the same for every θ, so it comes out of both suprema and cancels in the ratio (our own). What remains is a ratio of suprema of g(θ, T(x)), which is a function of T(x) (our own).
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “the likelihood's dependence on θ is only in conjunction with T(X).”
 
@@ -84,15 +84,15 @@
 
 ### Factoring the probability mass shows which statistic is sufficient
 
-**Remember:** On each set of equal statistics, the parameter factor cancels.
+**Remember:** Fix T, and what is left of the data ignores θ.
 
 *Makes the theorem clean to state or prove.* MSC 62B05 (Sufficient statistics and fields). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A statistic T is sufficient if one parameter-independent conditional law describes the data given each value of T whenever that value has positive probability. A factorization of the data probability has the form h(x)g(θ,T(x)), with nonnegative factors and h independent of the parameter θ.
+**Definition.** A statistic T is sufficient if, on each set {T = t} of positive probability, the data mass divided by Pθ(T = t) is the same for every θ.
 
-**Problem.** In a countable sample space, T is sufficient exactly when the joint mass function has this factorization.
+**Problem.** In a countable sample space, T is sufficient exactly when the joint mass function factors as h(x)g(θ, T(x)), with nonnegative factors and h free of θ.
 
-**How the definition helps.** When we fix T and normalize the masses, the parameter factor g cancels (our own). For the reverse implication, the work goes into writing each joint mass as a parameter-free conditional mass times the mass of T (our own).
+**How the definition helps.** If the mass factors, g(θ, t) is constant on {T = t}, so it cancels when we divide by Pθ(T = t) (our own). Conversely, the mass equals the parameter-free conditional mass times Pθ(T = T(x)), and that product is a factorization (our own).
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “the density ƒ can be factored into a product such that one factor, h, does not depend on θ and the other factor, which does depend on θ, depends on x only through T(x).”
 
@@ -106,11 +106,11 @@
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields), 62E10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** An exponential family in natural parameters writes its density as h(x) exp\[η·T(x) − A(η)\]. The parameter vector η multiplies the data summary T(x) by a dot product, and A normalizes the density. A summary is sufficient if, given its value, the conditional law of the data no longer depends on the parameter.
+**Definition.** An exponential family in natural form has density h(x) exp\[η·T(x) − A(η)\], so the parameter η meets the data only through the summary T(x). Here A(η) makes the density integrate to one.
 
-**Problem.** For independent observations from the same family member, the sum of their T values is sufficient for η. Its number of components stays fixed as the sample grows.
+**Problem.** For n independent observations from one member of the family, the sum T(x<sub>1</sub>) + … + T(x<sub>n</sub>) is sufficient for η. Its number of components does not grow with n.
 
-**How the definition helps.** The exponent makes independent likelihood factors combine by adding their T values (our own). This gives the product form required by the factorization theorem, which establishes sufficiency without computing the conditional law directly (our own).
+**How the definition helps.** Multiplying exponentials adds exponents, so the joint density is ∏h(x<sub>i</sub>) times exp\[η·∑T(x<sub>i</sub>) − nA(η)\] (our own). This is the product form of the factorization theorem, with the sum as the statistic (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “the dimension of the sufficient statistic does not grow with the data size”
 
@@ -118,15 +118,15 @@
 
 ### Sufficiency makes the Rao–Blackwell estimator computable from the data
 
-**Remember:** Given a sufficient statistic, what is left of the data says nothing about θ.
+**Remember:** Given a sufficient statistic, the leftover data carry no trace of θ.
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A statistic T(X) is a function of the data X. It is sufficient for the parameter θ when the conditional distribution of X given T(X) does not depend on θ.
+**Definition.** A statistic T(X) is sufficient for θ when the conditional law of the data X given T(X) does not depend on θ. So E\[δ(X) ∣ T\] is the same function of T under every θ, and hence a genuine estimator.
 
 **Problem.** For a square-integrable estimator δ(X) and a sufficient statistic T, E\[δ(X) ∣ T\] is an estimator with mean squared error no larger than δ’s.
 
-**How the definition helps.** Sufficiency gives one conditional data law for all parameter values, so conditioning δ gives the same function of T throughout the model. Conditional Jensen’s inequality for squared error and then averaging give the risk bound (our own).
+**How the definition helps.** Sufficiency makes the conditional expectation free of θ, so it is a statistic. Conditional Jensen’s inequality for squared error gives a conditional risk no larger than δ’s, and averaging over T gives the bound (our own).
 
 **Wikipedia:** [Rao–Blackwell theorem](https://en.wikipedia.org/wiki/Rao%E2%80%93Blackwell_theorem), [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “Generally, the conditional expected value of one function of these data given another function of these data does depend on θ, but the very definition of sufficiency given above entails that this one does not.”
 
@@ -142,11 +142,11 @@
 
 *Rules out counterexamples.* MSC 62B10 (Statistical aspects of information-theoretic topics), 62F10. arXiv stat.TH, math.ST. Level 2: later undergraduate.
 
-**Definition.** Consider densities pθ differentiable in a real parameter θ on an open interval, with common positive support. Require differentiation under the normalization integral, and define the score Sθ = ∂θ log pθ(X). The Fisher information Iθ = Eθ\[Sθ²\] must be positive and finite.
+**Definition.** A regular model has densities pθ, for θ in an open interval, on one positive support that does not move with θ. The densities are differentiable in θ, and ∫pθ = 1 can be differentiated under the integral sign. Its Fisher information Iθ, the mean square of the score ∂θ log pθ(X), must be positive and finite.
 
-**Problem.** For every unbiased estimator T of θ with finite variance, Varθ(T) ≥ 1/Iθ if differentiation passes under the integral for Eθ\[T\].
+**Problem.** In a regular model, every unbiased estimator T of θ with finite variance has Varθ(T) ≥ 1/Iθ, provided Eθ\[T\] can be differentiated under the integral sign.
 
-**How the definition helps.** Differentiating normalization gives Eθ\[Sθ\]=0, while differentiating unbiasedness gives Eθ\[TSθ\]=1 (our own). Cauchy–Schwarz then gives 1 ≤ Varθ(T)Iθ (our own). The uniform model on \[0,θ\] has moving support, so differentiating its normalization also produces a boundary term.
+**How the definition helps.** Differentiating ∫pθ = 1 gives the score mean zero, and differentiating unbiasedness gives Eθ\[T·score\] = 1 (our own). Cauchy–Schwarz then gives 1 ≤ Varθ(T)Iθ (our own). For the uniform law on \[0, θ\] the support moves, so differentiation adds a boundary term and the bound can fail (our own).
 
 **Wikipedia:** [Fisher information](https://en.wikipedia.org/wiki/Fisher_information), [Cramér–Rao bound](https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound). It says: “It is easy to find an example of a density that does not satisfy the regularity conditions: The density of a Uniform(0, θ) variable fails to satisfy conditions 1 and 3.”
 
@@ -156,15 +156,15 @@
 
 ### Expected log likelihood curvature makes Fisher information add
 
-**Remember:** Add the log likelihoods and their expected curvatures add.
+**Remember:** Log likelihoods add, so their expected curvatures add.
 
 *True by definition.* MSC 62B10 (Statistical aspects of information-theoretic topics), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** For a scalar parameter, Fisher information is the expected negative second derivative of the log likelihood. Its equivalent score formula uses the variance of the first derivative, called the score, under the conditions below.
+**Definition.** For a scalar parameter, Fisher information is the expected downward curvature of the log likelihood, I(θ) = −Eθ\[∂²θ log f(X; θ)\].
 
-**Problem.** For independent observations, their Fisher information values add. Assume positive densities on fixed supports, integrable derivatives in the formulas, and permission to differentiate the normalization integrals twice under the integral sign.
+**Problem.** For independent observations, Fisher information values add. Assume positive densities on fixed supports, integrable derivatives, and normalization integrals that can be differentiated twice under the integral sign.
 
-**How the definition helps.** Independence makes log likelihoods add, so their second derivatives and expectations add too (our own). The work goes into differentiating the density normalization twice to show that expected negative curvature equals score variance.
+**How the definition helps.** Independence makes the joint log likelihood a sum of single log likelihoods, so its second derivative and its expectation are sums too (our own). The regularity conditions make this curvature formula agree with the score-variance formula, so the sum rule holds for both (our own).
 
 **Wikipedia:** [Fisher information](https://en.wikipedia.org/wiki/Fisher_information). It says: “the Fisher information will necessarily be the sum of the single-sample Fisher information values, one for each single sample from its distribution.”
 
@@ -174,15 +174,15 @@
 
 ### Averaging posterior loss makes Bayes decisions pointwise
 
-**Remember:** Choose the lowest loss after each observation, then average.
+**Remember:** Bayes risk is a weighted sum of posterior losses, one per observation.
 
 *True by definition.* MSC 62C10 (Bayesian problems; characterization of Bayes procedures), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Given a prior for θ and a sampling law for X given θ, the Bayes risk of a decision rule δ is E\[L(θ,δ(X))\]. At observation x, the posterior expected loss of action a is E\[L(θ,a) ∣ X=x\].
+**Definition.** Bayes risk averages the loss L(θ, δ(X)) over the prior and the data. Conditioning on X = x writes it as a sum over x of P(X = x) times the posterior expected loss E\[L(θ, δ(x)) ∣ X = x\] (our own).
 
 **Problem.** Suppose observations and actions take finitely many values and all expected losses are finite. Choosing an action of least posterior expected loss at every observation of positive probability minimizes Bayes risk.
 
-**How the definition helps.** Conditioning writes Bayes risk as a weighted sum of posterior expected losses, one for each observation (our own). Each choice affects only its own term, whose weight is the observation’s probability (our own). The law of total expectation justifies replacing the original joint average by this sum (our own).
+**How the definition helps.** Each term of the sum depends only on the action chosen at its own x, and its weight P(X = x) is nonnegative (our own). So minimizing every term separately minimizes the sum (our own).
 
 **Wikipedia:** [Bayes estimator](https://en.wikipedia.org/wiki/Bayes_estimator). It says: “the estimator which minimizes the posterior expected loss E(L(θ, θ̂) \| x) for each x also minimizes the Bayes risk and therefore is a Bayes estimator.”
 
@@ -194,11 +194,11 @@
 
 *True by definition.* MSC 62D05 (Sampling theory, sample surveys). arXiv stat.ME, stat.AP. Level 2: later undergraduate.
 
-**Definition.** For each sampled person, divide the observed value by that person’s chance of selection. Add the results to estimate the population total. A common multiplier for everyone would ignore differences in selection probabilities.
+**Definition.** For each sampled member, divide its value by its inclusion probability, its chance of entering the sample, and add the results to estimate the population total. A member that is rarely sampled counts for more when it is sampled.
 
-**Problem.** In a finite population with positive known inclusion probabilities, this estimator is unbiased for the total. Sample members need not be selected independently.
+**Problem.** In a finite population where every inclusion probability is known and positive, this estimate is unbiased for the total. This holds even when members are not selected independently.
 
-**How the definition helps.** A member contributes its inflated value only with the probability used to inflate it (our own). Taking expectations thus recovers each member’s original value (our own). The work moves to finding the inclusion probabilities from the survey design and the joint probabilities for variance (our own).
+**How the definition helps.** Member i contributes yᵢ/πᵢ with probability πᵢ and zero otherwise, so its expected contribution is yᵢ (our own). Summing over members gives the total, and only each member’s own inclusion probability enters, not the joint selection (our own).
 
 **Wikipedia:** [Horvitz–Thompson estimator](https://en.wikipedia.org/wiki/Horvitz%E2%80%93Thompson_estimator). It says: “Taking the expectation of the estimator we can prove it is unbiased as follows:”
 
@@ -208,15 +208,15 @@
 
 ### Independent missingness preserves respondent distributions
 
-**Remember:** If observation ignores the data, observed cases keep the original distribution.
+**Remember:** Missingness that ignores the data leaves a random subsample.
 
 *Rules out counterexamples.* MSC 62D10 (Missing data). arXiv stat.ME, stat.AP. Level 2: later undergraduate.
 
-**Definition.** Call data missing completely at random if the pattern of missing values is independent of the full data. The full data include the values that would have been recorded with complete observation.
+**Definition.** Data are missing completely at random when whether values are missing is independent of all the data, including the values that would have been recorded.
 
-**Problem.** If complete observation has positive probability, complete cases have the same data distribution as all cases.
+**Problem.** If complete observation has positive probability, the complete cases have the same distribution as all cases.
 
-**How the definition helps.** Independence gives every data pattern the same chance of being recorded completely (our own). Conditioning on complete observation therefore preserves every event probability (our own). If only high earners skip an income question, respondents underrepresent high earners (our own). The work lies in justifying independence for the study (our own).
+**How the definition helps.** The event of complete observation is independent of the data, so conditioning on it changes no data probability (our own). If high earners skip an income question more often, missingness depends on income and respondents underrepresent high earners (our own).
 
 **Wikipedia:** [Missing data](https://en.wikipedia.org/wiki/Missing_data). It says: “the participants with completely observed data are in effect a random sample of all the participants assigned a particular intervention.”
 
@@ -230,11 +230,11 @@
 
 *True by definition.* MSC 62E15 (Exact distribution theory in statistics), 60E05. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** The F law with degrees of freedom (d₁, d₂) is the law of (X/d₁)/(Y/d₂) for independent chi-squared variables with those degrees of freedom. Student’s t law with n degrees of freedom is the law of Z/√(V/n). Here Z is standard normal, and V is independent chi-squared with n degrees of freedom.
+**Definition.** The F law with degrees of freedom (d₁, d₂) is the law of the ratio (X/d₁)/(Y/d₂) of independent chi-squared variables with those degrees of freedom. Student’s t law with n degrees of freedom is the law of Z/√(V/n), with Z standard normal and V independent chi-squared with n degrees of freedom.
 
 **Problem.** If U has the F law with degrees of freedom (d₁, d₂), then 1/U has the F law with degrees of freedom (d₂, d₁). If T has the t law with n degrees of freedom, then T² has the F law with degrees of freedom (1, n).
 
-**How the definition helps.** The ratio definitions make both results visible from the numerator and denominator (our own). Taking the reciprocal swaps X and Y, while squaring T puts Z² in its numerator (our own). That square has the chi-squared law with one degree of freedom (our own). Rather than transform densities for each claim, we do the work once by deriving the F and t densities from their ratios (our own).
+**How the definition helps.** Taking the reciprocal of the F ratio swaps the roles of X and Y (our own). Squaring the t ratio gives (Z²/1)/(V/n), and Z² is chi-squared with one degree of freedom and independent of V (our own).
 
 **Wikipedia:** [F-distribution](https://en.wikipedia.org/wiki/F-distribution), [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “If X ∼ F(d₁, d₂) then X⁻¹ ∼ F(d₂, d₁).”
 
@@ -246,11 +246,11 @@
 
 *True by definition.* MSC 62E15 (Exact distribution theory in statistics), 62F03. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Pool both samples’ squared deviations from their respective means and divide the sum by n+m−2. This gives the pooled variance V, instead of an equal-weight average of the two sample variances. The pooled standard error is √\[V(1/n + 1/m)\].
+**Definition.** The pooled variance V adds both samples’ squared deviations from their own means and divides the sum by n + m − 2, the total number of residual directions. The pooled standard error is √\[V(1/n + 1/m)\].
 
 **Problem.** Take independent normal samples of sizes n and m, both at least two, with common positive variance. Subtract the true mean difference from the sample difference and divide by the pooled standard error to obtain Student’s t with n+m−2 degrees of freedom.
 
-**How the definition helps.** Dividing each residual sum of squares by the common variance gives independent chi-squared variables with n−1 and m−1 degrees of freedom (our own). Their sum supplies the denominator in the defining t ratio (our own). The normal-sample theorem supplies a standard normal numerator independent of that sum (our own).
+**How the definition helps.** Divided by the common variance, the two residual sums are independent chi-squared variables with n − 1 and m − 1 degrees of freedom (our own). So their sum is chi-squared with n + m − 2 degrees of freedom (our own). The normal-sample theorem makes the standardized mean difference standard normal and independent of that sum, which gives the defining t ratio (our own).
 
 **Wikipedia:** [Student's t-test](https://en.wikipedia.org/wiki/Student%27s_t-test). It says: “the total sample size minus two (that is, n₁ + n₂ − 2) is the total number of degrees of freedom, which is used in significance testing.”
 
@@ -262,11 +262,11 @@
 
 *True by definition.* MSC 62E15 (Exact distribution theory in statistics), 60F05. arXiv math.ST, math.PR. Level 2: later undergraduate.
 
-**Definition.** Let Z be standard normal and V an independent chi-squared variable with ν degrees of freedom. Student’s t law is the law of Z/√(V/ν). An alternative definition gives the density directly.
+**Definition.** Student’s t law with ν degrees of freedom is the law of Z/√(V/ν), where Z is standard normal and V is an independent chi-squared variable with ν degrees of freedom. So the denominator is the root of an average of ν squared standard normals.
 
 **Problem.** As the degrees of freedom ν increase without bound, Student’s t law converges in distribution to the standard normal law.
 
-**How the definition helps.** The ratio definition reduces the limit to showing that the denominator tends to 1 (our own). V/ν has mean 1 and variance 2/ν, so Chebyshev's inequality makes it tend to 1 in probability (our own). Slutsky's theorem then replaces that factor by 1 in the limit (our own). The density proof instead studies both its normalizing constant and its power term (our own).
+**How the definition helps.** V/ν has mean 1 and variance 2/ν, so it tends to 1 in probability by Chebyshev’s inequality (our own). Slutsky’s theorem then shows that Z/√(V/ν) tends in law to Z (our own).
 
 **Wikipedia:** [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.”
 
@@ -278,11 +278,11 @@
 
 *True by definition.* MSC 62E15 (Exact distribution theory in statistics), 62F03. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Student’s t with k degrees of freedom is the law of Z/√(V/k), where Z is standard normal. The variable V is the sum of k squared independent standard normals, all independent of Z. Use the divisor n−1 in the sample variance S².
+**Definition.** Student’s t with k degrees of freedom is the law of Z/√(V/k), with Z standard normal. Here V is independent of Z and chi-squared with k degrees of freedom, a sum of k squared standard normals.
 
-**Problem.** Let X̄ and S be the sample mean and standard deviation of n ≥ 2 independent observations from one normal distribution with positive variance. If the population mean is μ, then √n(X̄ − μ)/S has Student’s t law with n − 1 degrees of freedom.
+**Problem.** Take n ≥ 2 independent observations from a normal law with mean μ and variance σ² &gt; 0. With sample mean X̄ and sample standard deviation S of divisor n − 1, √n(X̄ − μ)/S has Student’s t law with n − 1 degrees of freedom.
 
-**How the definition helps.** The ratio definition identifies the law directly from the standardized mean and scaled variance, without calculating a new density (our own). The normal-sample theorem supplies independence and the chi-squared law of the scaled variance.
+**How the definition helps.** Write √n(X̄ − μ)/S as Z/√(V/(n − 1)), with Z = √n(X̄ − μ)/σ and V = (n − 1)S²/σ² (our own). The normal-sample theorem makes Z standard normal, V chi-squared with n − 1 degrees of freedom, and the two independent.
 
 **Wikipedia:** [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “it is possible to show that these two random variables (the normally distributed one Z and the chi-squared-distributed one V) are independent.”
 
@@ -298,7 +298,7 @@
 
 **Problem.** Let X and Y be independent chi-squared variables with positive integer degrees of freedom j and k. Then X + Y is chi-squared with j + k degrees of freedom.
 
-**How the definition helps.** Choose j+k independent standard normals and split them into blocks of sizes j and k (our own). Their sums of squares have the joint law of (X,Y) by independence (our own). Adding both blocks gives the defining sum with j+k degrees of freedom.
+**How the definition helps.** The definition lets us build X and Y from two disjoint blocks of j and k independent standard normals (our own). Independence makes this pair have the law of (X, Y) (our own). Then X + Y is a sum of j + k squared independent standard normals, which is chi-squared with j + k degrees of freedom.
 
 **Wikipedia:** [Chi-squared distribution](https://en.wikipedia.org/wiki/Chi-squared_distribution). It says: “It follows from the definition of the chi-squared distribution that the sum of independent chi-squared variables is also chi-squared distributed.”
 
@@ -310,11 +310,11 @@
 
 *Rules out counterexamples.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A null mean is interior if some open interval around it lies within the allowed means. The likelihood ratio statistic doubles the difference between the maximum allowed log likelihood and the log likelihood at the null mean.
+**Definition.** The likelihood ratio statistic is twice the gap between the largest log likelihood over the allowed means and the log likelihood at the null mean. A null mean is interior if an open interval around it lies among the allowed means. At a boundary null, the fitted mean can move only one way (our own).
 
 **Problem.** For independent normal observations with one unrestricted mean and known common positive variance, the statistic under a specified null mean has the one-degree chi-squared law. At null mean zero with only nonnegative means allowed, its law instead mixes a point mass at zero and that chi-squared law equally.
 
-**How the definition helps.** With unrestricted means, the statistic equals Z², where Z is the standardized sample mean under the null (our own). With nonnegative means and null mean zero, the fitted mean is the larger of zero and the sample mean (our own). The statistic then equals max(0,Z)² (our own). A standard normal has equally likely signs independent of its square, giving the stated mixture (our own).
+**How the definition helps.** With unrestricted means, the fitted mean is the sample mean and the statistic is Z², with Z the standardized sample mean (our own). With nonnegative means and null mean zero, the fitted mean is the larger of zero and the sample mean, so the statistic is max(0, Z)² (our own). Z is negative half the time, independently of Z², which gives the even mixture (our own).
 
 **Wikipedia:** [Wilks' theorem](https://en.wikipedia.org/wiki/Wilks%27_theorem). It says: “The theorem no longer applies when the true value of the parameter is on the boundary of the parameter space”
 
@@ -329,11 +329,11 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Let f₀ and f₁ be the data densities under two fixed hypotheses, the null and the alternative. A test has size equal to its null rejection probability and power equal to its alternative rejection probability. For c ≥ 0, the cutoff rule rejects when f₁ &gt; cf₀, accepts when f₁ &lt; cf₀, and may randomize on ties.
+**Definition.** Let f₀ and f₁ be the data densities under a fixed null and a fixed alternative. For c ≥ 0, the cutoff test rejects where f₁ &gt; cf₀, accepts where f₁ &lt; cf₀, and may randomize on ties. Its size and power are its rejection probabilities under f₀ and f₁.
 
 **Problem.** At size α, the likelihood ratio cutoff test has greatest power among tests of size at most α. If c is positive and ties never occur under either law, the test is unique except on events of probability zero.
 
-**How the definition helps.** The cutoff maximizes the gain f₁ − cf₀ from rejecting at each outcome. Integrating gives the largest power minus c times size, without searching over whole tests (our own). Choosing the cutoff and tie probabilities to attain size α then gives greatest power. With no ties, changing the rule on a set of positive probability strictly reduces the integrated gain (our own).
+**How the definition helps.** At each outcome, the cutoff rule rejects exactly where f₁ − cf₀ is positive, so it maximizes power minus c times size among all tests (our own). Choosing c and the tie probability to give size α, no test of size at most α has more power. With c &gt; 0 and no ties, a test that differs on a set of positive probability strictly lowers power minus c times size (our own).
 
 **Wikipedia:** [Neyman–Pearson lemma](https://en.wikipedia.org/wiki/Neyman%E2%80%93Pearson_lemma). It says: “then it is a uniformly most powerful (UMP) test in the set of level α tests.”
 
@@ -343,15 +343,15 @@
 
 ### An exponential family orders likelihood ratios by its natural statistic
 
-**Remember:** A larger natural parameter gives a larger likelihood ratio at larger statistics.
+**Remember:** The parameter multiplies T, so likelihood ratios grow along T.
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62E10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A one-parameter exponential family in natural form writes the density as h(x) exp\[ηT(x) − A(η)\]. The parameter η multiplies the data summary T(x), and A makes the density integrate to one.
+**Definition.** A one-parameter exponential family in natural form has density h(x) exp\[ηT(x) − A(η)\], so η enters the exponent only as a multiple of the summary T(x).
 
 **Problem.** Where h(x) is positive, the density at η₁ divided by the density at η₀ increases with T(x) whenever η₁ exceeds η₀.
 
-**How the definition helps.** The log of the density ratio equals (η₁ − η₀)T(x) plus a constant, so its slope is positive (our own). Exponentiation preserves this order (our own). The work lies in rewriting the model in natural form, which identifies the same ordering for every parameter pair (our own).
+**How the definition helps.** The log of the density ratio is (η₁ − η₀)T(x) plus a constant, which increases with T(x) when η₁ &gt; η₀ (our own). Exponentiation preserves this order (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “A one-parameter exponential family has a monotone non-decreasing likelihood ratio in the sufficient statistic T(x)”
 
@@ -363,11 +363,11 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62B05. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** For two groups of fixed sizes, Fisher’s upper-tail test conditions on their total number of successes. Its p-value is the conditional null probability that the first group records at least its observed number of successes. The test rejects when this probability is at most the chosen level (our own).
+**Definition.** Fisher’s upper-tail test, for two groups of fixed sizes, conditions on the total number of successes. Under the null, that total makes every placement of the successes among the trials equally likely, whatever the common success probability (our own). It rejects when the conditional chance of at least the first group’s observed count is at most the chosen level (our own).
 
 **Problem.** For independent trials with the same success probability, conditioning on total successes gives the first group’s count the hypergeometric law of sampling without replacement. An upper-tail Fisher test therefore controls its false rejection probability at the chosen level.
 
-**How the definition helps.** Fixing total successes makes every placement of those successes equally likely, whatever the common success probability. Counting placements gives the conditional law. Choosing a rejection tail with probability at most α for every total also bounds the overall false rejection probability by α (our own).
+**How the definition helps.** Counting equally likely placements gives the hypergeometric law, which is free of the success probability. The conditional false rejection probability is then at most the level for every total, so the overall one is too (our own).
 
 **Wikipedia:** [Fisher's exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test). It says: “Fisher showed that conditional on the margins of the table, a is distributed as a hypergeometric distribution”
 
@@ -379,11 +379,11 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62J10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Profile likelihood means maximizing over parameters not being tested. For Gaussian regression, profile over the unknown error variance after fitting each of two nested predictor spaces. Partial F divides the improvement in squared error per added direction by the final squared error per residual direction.
+**Definition.** Maximizing a Gaussian regression likelihood over the coefficients and the error variance leaves a constant times the residual sum of squares to the power −n/2 (our own). Partial F divides the drop in residual sum of squares per added direction by the larger model’s residual sum of squares per residual direction.
 
 **Problem.** Take two nested linear models with fixed predictor spaces of dimensions p &lt; q &lt; n for n observations. With independent normal errors of common positive variance and positive residual error, likelihood ratio tests reject for large partial F.
 
-**How the definition helps.** After maximizing over variance, the likelihood ratio depends only on the ratio of the two residual sums of squares (our own). Each fitted variance equals its model’s residual sum of squares divided by n (our own). Substitution shows that a larger partial F gives a smaller null-to-full likelihood ratio (our own).
+**How the definition helps.** The null-to-full likelihood ratio is then the full model’s residual sum of squares over the null model’s, to the power n/2 (our own). Partial F increases with the inverse of that ratio, so a smaller likelihood ratio means a larger partial F (our own).
 
 **Wikipedia:** [F-test](https://en.wikipedia.org/wiki/F-test). It says: “Since F is a monotone function of the likelihood ratio statistic, the F-test is a likelihood ratio test.”
 
@@ -395,11 +395,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A randomized test assigns a rejection probability between zero and one to each outcome. A cutoff test rejects above the cutoff, accepts below it, and can use a fixed rejection probability at the cutoff. Its size is its rejection probability under the null hypothesis.
+**Definition.** A randomized cutoff test rejects above the cutoff c, accepts below it, and at c rejects with a chosen probability between zero and one. Its size is its rejection probability under the null. As that probability runs from zero to one, the size runs from P(statistic &gt; c) to P(statistic ≥ c) (our own).
 
 **Problem.** For a fixed null law on finitely many outcomes, a test that rejects large statistic values can attain any size from zero to one.
 
-**How the definition helps.** Randomization fills the gap between the null probabilities of exceeding and reaching the cutoff (our own). Choose a cutoff bracketing the desired size, then reject an appropriate fraction of ties (our own). For one fair coin toss, a deterministic test can attain only sizes zero, one half, and one (our own).
+**How the definition helps.** Every target size lies between P(statistic &gt; c) and P(statistic ≥ c) for some cutoff c, so a suitable tie probability attains it (our own). For one fair coin toss, a deterministic test attains only sizes zero, one half and one (our own).
 
 **Wikipedia:** [Randomised decision rule](https://en.wikipedia.org/wiki/Randomised_decision_rule). It says: “A statistical test making use of a randomized decision rule is called a randomized test.”
 
@@ -407,15 +407,15 @@
 
 ### Total variation gives the smallest sum of testing errors
 
-**Remember:** Maximize the gain in rejection probability to minimize the sum of errors.
+**Remember:** The two errors sum to one minus the rejection gain.
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62B10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Define total variation distance as the supremum of the absolute differences between two laws’ probabilities of the same event. A rejection region is the event on which a test rejects the null hypothesis.
+**Definition.** The total variation distance between laws P₀ and P₁ is the largest value of \|P₁(A) − P₀(A)\| over events A. For a test that rejects on A, the two error probabilities sum to 1 − (P₁(A) − P₀(A)) (our own).
 
 **Problem.** Suppose each hypothesis specifies one probability law. The smallest sum of the two error probabilities, rejecting a true null and accepting a false null, equals one minus total variation distance.
 
-**How the definition helps.** For any rejection region, the error sum equals one minus its probability gain from the null law to the alternative (our own). Taking the complement reverses the gain, so its largest value equals total variation distance (our own). Densities relative to the sum of the laws attain this gain on the region where the alternative density is larger (our own).
+**How the definition helps.** Minimizing the error sum means maximizing P₁(A) − P₀(A), and passing to complements shows that this largest gain equals the largest absolute difference (our own). The region where the density of P₁ exceeds that of P₀ attains it (our own).
 
 **Paper or page:** [Detecting weighted hidden cliques](https://arxiv.org/abs/2506.21543v1). It says: “R(T⋆) = 1 − dₜᵥ(ℙ₀, ℙ₁) = 1 − ½𝔼₀\[\|L(X) − 1\|\]”
 
@@ -427,11 +427,11 @@
 
 *True by definition.* MSC 62F10 (Point estimation), 62J05. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** The log likelihood is the logarithm of the observed data density, viewed as a function of the model parameters. In Gaussian linear regression, the observations have independent normal errors with a common variance.
+**Definition.** In Gaussian linear regression, the observations have independent normal errors with a common variance σ². So the log likelihood is a constant minus the sum of squared residuals divided by 2σ².
 
 **Problem.** With fixed predictors and a fixed positive error variance, the maximum likelihood coefficient vectors are exactly the least squares coefficient vectors.
 
-**How the definition helps.** The Gaussian log likelihood is a constant minus a positive multiple of the sum of squared residuals (our own). The work goes into multiplying the normal densities and observing that the logarithm preserves the set of maximizers (our own).
+**How the definition helps.** For fixed σ², the constant does not depend on the coefficients and 1/(2σ²) is positive (our own). So maximizing the log likelihood is the same as minimizing the sum of squared residuals (our own).
 
 **Wikipedia:** [Maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). It says: “the ordinary least squares estimator for a linear regression model maximizes the likelihood when the random errors are assumed to have normal distributions with the same variance.”
 
@@ -443,11 +443,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 62F10 (Point estimation). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A Bernoulli model gives probability p to success and 1 − p to failure, with p in the closed interval \[0,1\]. The alternative log odds parameter log\[p/(1 − p)\] represents only 0 &lt; p &lt; 1 when finite.
+**Definition.** A Bernoulli model gives probability p to success and 1 − p to failure, with p allowed in the closed interval \[0, 1\], so certain success and certain failure are included.
 
 **Problem.** For a nonempty sample of independent Bernoulli trials with common parameter p, the observed success fraction maximizes likelihood even when all outcomes agree.
 
-**How the definition helps.** The closed parameter space includes the maximizing endpoint for a sample of identical outcomes (our own). The work goes into maximizing the log likelihood in mixed samples and checking monotonicity when all outcomes agree (our own). With only finite log odds, all successes would give a supremum but no maximum (our own).
+**How the definition helps.** The likelihood pᵏ(1 − p)ⁿ⁻ᵏ for k successes in n trials is largest at p = k/n (our own). If all outcomes agree, that point is 0 or 1, which the closed interval contains (our own). With only finite log odds, so 0 &lt; p &lt; 1, all successes would give a supremum but no maximum (our own).
 
 **Wikipedia:** [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution). It says: “0 ≤ p ≤ 1”
 
@@ -455,7 +455,7 @@
 
 ### Median unbiasedness survives reparameterization
 
-**Remember:** A monotone map can swap the two tails but cannot change their probabilities.
+**Remember:** A monotone map may swap the tails but keeps their probabilities.
 
 *True by definition.* MSC 62F10 (Point estimation). arXiv stat.TH. Level 2: later undergraduate.
 
@@ -475,11 +475,11 @@
 
 *True by definition.* MSC 62F10 (Point estimation), 62E10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** An exponential family in natural form has density h(x) exp\[ηT(x) − A(η)\]. The natural parameter η multiplies the data summary T(x), and A(η) normalizes the density.
+**Definition.** An exponential family in natural form has density h(x) exp\[ηT(x) − A(η)\], where the normalizer A has derivative Eη\[T\] and second derivative Varη(T) ≥ 0 (our own).
 
 **Problem.** Take independent observations from one family member, all in its support, and let η range over an open interval. A parameter value maximizes likelihood exactly when its expected T equals the observed average of T.
 
-**How the definition helps.** The score, or derivative of the sample log likelihood, subtracts the total expected T from the total observed T (our own). The work goes into differentiating the log normalizer to get a mean from its first derivative and a variance from its second (our own). That nonnegative variance makes the log likelihood concave, so a zero score gives a maximum (our own).
+**How the definition helps.** The sample log likelihood is η∑T(xᵢ) − nA(η) plus a constant, so its derivative is ∑T(xᵢ) − nEη\[T\] (our own). Since the second derivative of A is nonnegative, the log likelihood is concave, so a zero derivative is exactly a maximum (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “f<sub>X</sub>{\\!(x\\mid\\theta)} = h(x) \\exp\\left\[\\theta \\cdot T(x) - A(\\theta)\\right\]”
 
@@ -493,11 +493,11 @@
 
 *True by definition.* MSC 62F10 (Point estimation), 62B10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** The score is the derivative of the log density with respect to a scalar parameter. Its variance is the Fisher information I in a regular model. Here regularity means fixed support and valid differentiation under the integrals for total probability and the estimator’s mean.
+**Definition.** The score is the derivative of the log density in a scalar parameter. A regular model has fixed support and allows differentiation under the integrals for total probability and the estimator’s mean. There the score has mean zero and variance equal to the Fisher information I, and an unbiased estimator has covariance one with it (our own).
 
 **Problem.** In a regular model, let an unbiased estimator have finite variance and let I be finite and positive. Its variance equals 1/I exactly when its error equals the score divided by I with probability one.
 
-**How the definition helps.** The logarithm turns differentiation of the estimator’s mean into covariance with the score. Unbiasedness makes that derivative one (our own). Cauchy–Schwarz then gives variance at least 1/I, with equality exactly when the centered estimator is proportional to the score (our own). Covariance one fixes the factor at 1/I (our own).
+**How the definition helps.** Cauchy–Schwarz on that covariance gives variance at least 1/I, with equality exactly when the error is a fixed multiple of the score with probability one (our own). Covariance one fixes the multiple at 1/I (our own).
 
 **Wikipedia:** [Cramér–Rao bound](https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound). It says: “If we consider the covariance cov(V, T) of V and T, we have cov(V, T) = E(VT), because E(V) = 0.”
 
@@ -509,11 +509,11 @@
 
 *True by definition.* MSC 62F25 (Parametric tolerance and confidence regions), 62F03. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Define the confidence set to contain each candidate parameter value whose point-null test does not reject. A point-null test treats that single value as true.
+**Definition.** The confidence set from a family of tests keeps every parameter value whose test of “this value is true” does not reject. So the set misses the true value exactly when the true value’s own test rejects.
 
 **Problem.** If each test rejects its own true value with probability at most α, the resulting confidence set covers the truth with probability at least 1−α. Conversely, rejecting each value outside a set with that coverage gives tests with false rejection probability at most α.
 
-**How the definition helps.** Missing the true value is exactly the event of rejecting its test (our own). The work goes into building a level α test for each candidate and computing the set of candidates those tests keep (our own).
+**How the definition helps.** Coverage fails on exactly the event that the test of the true value rejects, which has probability at most α (our own). For the converse, the test that rejects values outside the set rejects the truth exactly when the set misses it (our own).
 
 **Wikipedia:** [Binomial proportion confidence interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval). It says: “these intervals may be employed as significance tests, with identical results to the source test”
 
@@ -524,15 +524,15 @@
 
 ### Pivot inversion gives exact coverage
 
-**Remember:** Invert one probability statement to get confidence coverage.
+**Remember:** One fixed law for the pivot gives one coverage everywhere.
 
 *True by definition.* MSC 62F25 (Parametric tolerance and confidence regions). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** A pivot is a function of data and unknown parameters whose distribution is the same for all parameter values. Form a confidence set from all parameter values that put the observed pivot in a fixed acceptance region.
+**Definition.** A pivot is a function of data and parameter whose law is the same for every parameter value. The confidence set keeps every parameter value that puts the observed pivot in a fixed acceptance region. It covers the true parameter exactly when the pivot at that parameter lands in the region.
 
 **Problem.** If the acceptance region has pivot probability 1 − α, the resulting confidence set covers the true parameter with probability 1 − α.
 
-**How the definition helps.** Inverting the pivot makes coverage the same event as the pivot landing in the chosen region. Our own argument replaces a separate coverage calculation at each parameter value with one probability calculation under the common law. The work is finding the pivot and its distribution.
+**How the definition helps.** Coverage is the event that the pivot lands in the region, which has probability 1 − α under the common law at every parameter value (our own). The remaining work is finding a pivot and its law.
 
 **Wikipedia:** [Pivotal quantity](https://en.wikipedia.org/wiki/Pivotal_quantity). It says: “A pivot need not be a statistic — the function and its value can depend on the parameters of the model, but its distribution must not.”
 
@@ -544,11 +544,11 @@
 
 *True by definition.* MSC 62F25 (Parametric tolerance and confidence regions), 62F03. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** For positive integers a and b, Beta(a,b) is the law of the ath smallest among a + b − 1 independent uniform draws on \[0,1\]. Its usual definition uses a density. A quantile at level u cuts off probability u in the lower tail of this continuous distribution.
+**Definition.** For positive integers a and b, Beta(a, b) is the law of the ath smallest of a + b − 1 independent uniform draws on \[0, 1\]. The kth smallest draw is at most p exactly when at least k draws are at most p, a binomial tail event (our own).
 
 **Problem.** Observe k successes in n independent Bernoulli trials with common success probability, where 0 &lt; k &lt; n and 0 &lt; α &lt; 1. The equal-tailed Clopper–Pearson interval uses the α/2 quantile of Beta(k,n−k+1) below and the 1−α/2 quantile of Beta(k+1,n−k) above.
 
-**How the definition helps.** The kth uniform order statistic is at most p exactly when at least k draws are at most p (our own). This turns the two binomial tail equations into equations for beta cumulative probabilities (our own). The work moves to deriving the beta density of a uniform order statistic (our own).
+**How the definition helps.** The Clopper–Pearson endpoints solve the binomial tail equations P(at least k successes) = α/2 and P(at most k successes) = α/2 (our own). The definition turns each tail into a beta cumulative probability, which gives the stated quantiles (our own).
 
 **Wikipedia:** [Order statistic](https://en.wikipedia.org/wiki/Order_statistic). It says: “the kth order statistic of the uniform distribution is a beta-distributed random variable.”
 
@@ -564,11 +564,11 @@
 
 *Rules out counterexamples.* MSC 62G05 (Nonparametric estimation). arXiv stat.TH. Level 2: later undergraduate.
 
-**Definition.** A U-statistic estimates the mean of a symmetric function of k independent draws. Average the function over all subsets of k distinct sample indices.
+**Definition.** A U-statistic estimates the mean of a symmetric function of k independent draws by averaging that function over all sets of k distinct sample indices. Each term then uses k different observations, so it has exactly the target mean (our own).
 
 **Problem.** For an independent and identically distributed sample of size at least k, the resulting U-statistic is unbiased whenever the function has finite mean.
 
-**How the definition helps.** Distinct indices give each term the same mean as the target, by our own argument. In our own example, take two independent observations with the same finite, positive variance. Averaging their squared differences over all four ordered pairs halves the expected value because two pairs repeat an index.
+**How the definition helps.** Distinct indices give each term the target mean, so their average has it too (our own). For two observations of variance σ² &gt; 0, averaging ½(Xᵢ − Xⱼ)² over all four ordered pairs gives mean σ²/2, because two pairs repeat an index (our own).
 
 **Wikipedia:** [U-statistic](https://en.wikipedia.org/wiki/U-statistic). It says: “a U-statistic is a class of statistics defined as the average over the application of a given function applied to all tuples of a fixed size.”
 
@@ -580,11 +580,11 @@
 
 *True by definition. Confidence: medium.* MSC 62G09 (Nonparametric statistical resampling methods). arXiv stat.ME. Level 2: later undergraduate.
 
-**Definition.** Give mass 1/n to each of n observations, counting repeats. Define a bootstrap sample as n independent draws from this empirical distribution.
+**Definition.** The empirical distribution gives mass 1/n to each of the n observations, counting repeats. A bootstrap sample is n independent draws from it, so each draw has the observed mean squared deviation from the average as its variance (our own).
 
 **Problem.** Given n real observations, the variance of the bootstrap mean equals their mean squared deviation from their average, divided by n.
 
-**How the definition helps.** Viewing resampling as independent draws from one distribution lets us apply the variance formula for an average. Our own calculation replaces counting all possible resamples with computing the variance of a single draw. That variance uses the divisor n because each observed index receives mass 1/n. Accuracy as an estimate of population sampling variability is a separate question.
+**How the definition helps.** The bootstrap mean averages n independent draws from the empirical distribution, so its variance is one draw’s variance divided by n (our own). That one-draw variance uses the divisor n because each observation has mass 1/n (our own).
 
 **nLab:** [empirical distribution](https://ncatlab.org/nlab/show/empirical+distribution). It says: “The empirical distribution of a finite sequence (x₁, …, xₙ) ∈ Xᴺ is the probability measure on X given by”
 
@@ -596,11 +596,11 @@
 
 *Rules out counterexamples.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 2: later undergraduate.
 
-**Definition.** Compute the observed score and one score per simulation. Define p as the fraction of all scores at least as large as the observed score, counting the observed score itself.
+**Definition.** Compute the observed score and one score per simulation. The p-value is the fraction of all these scores, the observed one included, that are at least as large as the observed score. So p is the observed score’s rank from the top, divided by the number of scores (our own).
 
 **Problem.** Suppose that, under the hypothesis being tested, permuting the scores leaves their joint distribution unchanged. Then rejecting when p ≤ α has probability at most α for 0 ≤ α ≤ 1.
 
-**How the definition helps.** Including the observation turns p into its descending rank divided by the total number of scores. Counting every tie gives the largest rank in each tied group, so ties can only increase p. The work is proving that the simulation method preserves the joint distribution under permutations. In our own example with one simulation and distinct interchangeable scores, omitting the observation gives p = 0 half the time.
+**How the definition helps.** Unchanged joint law under permutations makes every rank of the observed score equally likely, so p ≤ α has probability at most α (our own). Counting ties gives the largest rank in each tied group, which can only raise p. With one simulation and distinct scores, leaving out the observed score gives p = 0 half the time (our own).
 
 **Paper or page:** [Differentially Private Permutation Tests: Applications to Kernel Methods](https://arxiv.org/abs/2310.19043v2). It says: “Suppose that X₁, …, Xₙ, Xₙ₊₁ are exchangeable random variables.”
 
@@ -615,11 +615,11 @@
 
 *True by definition.* MSC 62G30 (Order statistics; empirical distribution functions), 62G08. arXiv cs.LG, stat.TH. Level 2: later undergraduate.
 
-**Definition.** For 0 &lt; q &lt; 1, check loss at threshold t charges q(x − t) when observation x ≥ t. When x &lt; t, it charges (1 − q)(t − x).
+**Definition.** For 0 &lt; q &lt; 1, check loss at threshold t charges q(x − t) for each observation x ≥ t and (1 − q)(t − x) for each x &lt; t. So raising t lowers the total at rate q per point above t and raises it at rate 1 − q per point below (our own).
 
 **Problem.** For a nonempty finite sample and 0 &lt; q &lt; 1, the largest minimizer of total check loss is a sample q-quantile.
 
-**How the definition helps.** At a minimum, the left slope is nonpositive and the right slope is nonnegative because total check loss is convex (our own). Dividing by sample size gives left slope P(x &lt; t) − q and right slope P(x ≤ t) − q, using sample proportions (our own). These signs give precisely the two quantile inequalities, including at the largest minimizer (our own).
+**How the definition helps.** Total check loss is convex, so at a minimizer the left slope is nonpositive and the right slope is nonnegative (our own). Divided by n, these slopes are the fraction below t minus q and the fraction at or below t minus q, which are the two quantile inequalities (our own).
 
 **Paper or page:** [Kandinsky Conformal Prediction: Beyond Class- and Covariate-Conditional Coverage](https://arxiv.org/abs/2502.17264v2). It says: “Then, the largest θ\* ∈ ℝ such that θ\* ∈ argmin<sub>θ ∈ ℝ</sub> Σ<sub>i ∈ \[n\]</sub> ℓ\_α(θ, sᵢ) is a (1−α)-quantile of {sᵢ}<sub>i ∈ \[n\]</sub>.”
 
@@ -638,7 +638,7 @@
 
 **Problem.** For a Dirichlet vector with at least three coordinates, merge two distinct coordinates Xᵢ and Xⱼ by summing them. The result is Dirichlet, with their two shape parameters replaced by αᵢ + αⱼ.
 
-**How the definition helps.** The gamma definition makes merging two coordinates the same as adding their gamma variables before division (our own). A sum of independent gamma variables with scale 1 is gamma with the added shape, and it stays independent of the other variables (our own). The total S does not change (our own). The density proof instead integrates over all splits of the merged coordinate, and the work shifts to gamma additivity (our own).
+**How the definition helps.** Merging Xᵢ and Xⱼ gives (Yᵢ + Yⱼ)/S, with the same total S (our own). A sum of independent gamma variables with scale 1 is gamma with the added shape (our own). It stays independent of the other Y’s, so the merged vector is Dirichlet (our own).
 
 **Wikipedia:** [Dirichlet distribution](https://en.wikipedia.org/wiki/Dirichlet_distribution). It says: “This aggregation property may be used to derive the marginal distribution of Xᵢ mentioned above.”
 
@@ -650,11 +650,11 @@
 
 *True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** The least squares fit minimizes the sum of squared errors. Equivalently, it projects the response onto all linear combinations of the predictors, leaving a perpendicular error vector.
+**Definition.** The least squares fit projects the response onto the span of the predictor columns, leaving an error vector perpendicular to that span. So each least squares estimate of a coefficient combination is the response dotted with a weight vector that lies in the predictor span (our own).
 
 **Problem.** Take fixed, linearly independent predictor columns and uncorrelated, zero-mean errors of common variance. For each linear combination of coefficients, least squares has minimum variance among linear unbiased estimators.
 
-**How the definition helps.** Projection gives least squares weights in the predictor span for any estimated coefficient combination (our own). Unbiasedness for every coefficient vector forces any competing linear estimate to add weights perpendicular to that span (our own). Under the error assumptions, variance equals the common variance times the squared length of the weights (our own). Pythagoras shows that adding perpendicular weights can only increase that length (our own).
+**How the definition helps.** Any other linear unbiased estimate of the same combination uses those weights plus extra weights perpendicular to the predictor span (our own). With uncorrelated errors of common variance σ², the variance is σ² times the squared length of the weights (our own). Pythagoras shows that perpendicular extra weights can only add length (our own).
 
 **Wikipedia:** [Gauss–Markov theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). It says: “The main idea of the proof is that the least-squares estimator is uncorrelated with every linear unbiased estimator of zero”
 
@@ -666,11 +666,11 @@
 
 *True by definition. Confidence: medium.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Define residual degrees of freedom as the dimension of the space perpendicular to the predictor span. An orthonormal basis uses perpendicular unit vectors, so each residual direction contributes one squared coordinate.
+**Definition.** The residual degrees of freedom n − p count the directions perpendicular to the predictor span of dimension p. The residual is the error’s part in those directions, so its squared length is a sum of n − p squared coordinates in an orthonormal basis.
 
 **Problem.** In a fixed design, suppose the mean response lies in the predictor span of dimension p &lt; n, where n counts observations. With uncorrelated errors of common variance, dividing the residual sum of squares by n − p estimates that variance without bias.
 
-**How the definition helps.** Each perpendicular unit direction contributes one copy of the error variance in expectation (our own). Counting these directions gives n − p in the divisor instead of n. The projection theorem identifies the residual with the perpendicular part of the error (our own).
+**How the definition helps.** Each perpendicular unit direction carries one copy of the error variance in expectation, because the errors are uncorrelated with common variance (our own). Summing over the n − p directions gives the expected residual sum of squares, so n − p is the right divisor (our own).
 
 **Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “The denominator, n−p, is the statistical degrees of freedom.”
 
@@ -682,11 +682,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 62J05 (Linear regression; mixed models). arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Define the least squares fit as the vector of achievable predictions closest to the observed responses in Euclidean distance. The achievable vectors form the span of the predictor columns.
+**Definition.** The least squares fit is the point of the span of the predictor columns that is closest to the response in Euclidean distance. It is a vector of predictions, not a choice of coefficients.
 
 **Problem.** The least squares fitted values are unique even when the predictor columns are linearly dependent.
 
-**How the definition helps.** Defining the fit in the predictor span lets the orthogonal projection theorem give uniqueness directly. In our own argument, minimizing squared residuals means finding the closest achievable vector. Duplicate columns allow the same total coefficient to be split between them arbitrarily, as our own counterexample shows.
+**How the definition helps.** A subspace has exactly one closest point to a given vector, by the orthogonal projection theorem. With duplicate columns, the same total coefficient can be split between them arbitrarily, so the coefficients are not unique but the fitted values are (our own).
 
 **Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “When there is perfect multicollinearity, it is no longer possible to obtain unique estimates for the coefficients of the related regressors”
 
@@ -698,11 +698,11 @@
 
 *True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Define the least squares fit by projecting the response onto the span of the predictors, all their linear combinations. The residual is the difference between the response and its fit, perpendicular to that span. To remove other predictors, take residuals of both the response and the selected predictor against those other predictors.
+**Definition.** To remove the other predictors from a variable, replace it by its least squares residual on them, the part perpendicular to their span. Do this for the response and for the selected predictor.
 
 **Problem.** For linearly independent predictor columns, the selected coefficient equals the slope from fitting the response residual to the predictor residual through the origin (our own).
 
-**How the definition helps.** The selected predictor's residual is perpendicular to every other predictor, so only one coefficient acts in its direction (our own). Project the full fit onto that direction to read off the coefficient (our own). The work goes into the projection theorem, which identifies the closest fit with the one that leaves perpendicular residuals (our own).
+**How the definition helps.** The selected predictor’s residual is perpendicular to every other predictor and to the full fit’s residual, so projecting the response onto it sees only the selected coefficient (our own). That projection is the slope through the origin, which therefore equals the selected coefficient (our own).
 
 **Paper or page:** [A First Course in Causal Inference](https://arxiv.org/abs/2305.18793v2). It says: “The coefficient of x₁ in the OLS fit of y on (x₁, x₂, …, xₚ) equals the coefficient of x̃₁ in the OLS fit of y or ỹ on x̃₁”
 
@@ -717,11 +717,11 @@
 
 *True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
 
-**Definition.** Let Ω be the known positive definite covariance matrix of the errors, which collects their variances and covariances. Generalized least squares minimizes rᵀΩ⁻¹r for the residual vector r instead of minimizing the ordinary squared length rᵀr.
+**Definition.** Generalized least squares, for errors with a known positive definite covariance matrix Ω, minimizes rᵀΩ⁻¹r for the residual vector r instead of rᵀr. If Ω = CCᵀ with C invertible, this weighted length is the ordinary squared length of C⁻¹r (our own).
 
 **Problem.** Take a square factor C with Ω = CCᵀ, so C is invertible. Multiplying the response and every predictor by C⁻¹ gives an ordinary least squares problem with the same solutions and errors of identity covariance.
 
-**How the definition helps.** The weighted squared length is exactly the ordinary squared length of C⁻¹r (our own). The work goes into factoring the covariance matrix and transforming both sides of the model with that same factor.
+**How the definition helps.** So the generalized problem is ordinary least squares for the response and predictors multiplied by C⁻¹ (our own). The transformed errors C⁻¹ε have covariance C⁻¹ΩC⁻ᵀ = I (our own).
 
 **Wikipedia:** [Generalized least squares](https://en.wikipedia.org/wiki/Generalized_least_squares). It says: “GLS is equivalent to applying ordinary least squares (OLS) to a linearly transformed version of the data.”
 
@@ -729,15 +729,15 @@
 
 ### Distinct test rates identify prevalence
 
-**Remember:** A positive rate identifies prevalence when the two groups have different positive rates.
+**Remember:** Invert the line from prevalence to positive rate.
 
 *Rules out counterexamples.* MSC 62P10 (Applications of statistics to biology and medical sciences; meta analysis). arXiv stat.AP, stat.ME. Level 2: later undergraduate.
 
-**Definition.** Estimate prevalence from a set of test readings whose known probabilities p among diseased people and h among healthy people differ. The estimate is (observed fraction of readings in the set − h)/(p − h).
+**Definition.** A reading falls in a chosen set with known chance p for diseased people and h for healthy people, where p ≠ h. At prevalence q, this chance is r = h + (p − h)q (our own). The prevalence estimate (observed fraction in the set − h)/(p − h) inverts that line.
 
 **Problem.** For independent readings from one population, this estimate is unbiased for the fraction of people with the disease. Its mean squared error tends to zero as the sample grows.
 
-**How the definition helps.** If prevalence is q, each reading falls in the set with probability r = h + (p − h)q (our own). Thus the estimate has mean q and variance r(1 − r)/(n(p − h)²) for n independent readings (our own). Equal rates would make r constant across all prevalences (our own).
+**How the definition helps.** The observed fraction has mean r, so the estimate has mean q, and its variance r(1 − r)/(n(p − h)²) tends to zero (our own). If p = h, then r does not change with q, so the readings say nothing about prevalence (our own).
 
 **Paper or page:** [Analysis of Diagnostics (Part I): Prevalence, Uncertainty Quantification, and Machine Learning](https://arxiv.org/abs/2309.00645v2). It says: “is an unbiased estimate of q that converges in mean-square as s → ∞”
 
@@ -747,15 +747,15 @@
 
 ### Bayesian sufficiency lets Bayes estimates use only the statistic
 
-**Remember:** If the statistic gives the same posterior, it gives the same optimal choices.
+**Remember:** Same posterior from T as from the data, so same best choices.
 
 *True by definition. Confidence: medium.* MSC 62B05 (Sufficient statistics and fields), 62F15. arXiv math.ST. Level 3: graduate.
 
-**Definition.** Bayesian sufficiency means that conditioning on the data or on T gives the same posterior almost surely for every prior. The prior is the initial law of the parameter θ, and the posterior is its updated law. Classical sufficiency instead requires that the conditional law of the data given T does not depend on θ.
+**Definition.** A statistic T is Bayesian sufficient if, for every prior on θ, the posterior given the data equals the posterior given T almost surely.
 
 **Problem.** For a fixed loss function, the choices that minimize posterior expected loss depend on the data only through T. If a measurable minimizing choice exists based on T, it is also a Bayes rule based on the full data.
 
-**How the definition helps.** Bayesian sufficiency gives the same posterior for both inputs, so each choice has the same expected loss either way (our own). An estimate can therefore use T alone, though a tie can leave room for other choices (our own). The work shifts to showing that classical sufficiency gives Bayesian sufficiency. In a model with a common reference measure, factorization gives a data-only factor that cancels on normalizing the posterior (our own).
+**How the definition helps.** Equal posteriors give each choice the same posterior expected loss, whether we condition on the data or on T (our own). So the minimizing choices depend on the data only through T, and a minimizer based on T is a Bayes rule (our own). In dominated models, classical sufficiency implies Bayesian sufficiency, because the data-only factor cancels when the posterior is normalized (our own).
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “It turns out that this "Bayesian sufficiency" is a consequence of the formulation above”
 
@@ -767,11 +767,11 @@
 
 *Rules out counterexamples.* MSC 62B05 (Sufficient statistics and fields). arXiv stat.TH, math.ST. Level 3: graduate.
 
-**Definition.** T is sufficient if the data given T have a conditional law common to all parameter values. It is boundedly complete if every bounded measurable g with Eθ\[g(T)\] = 0 for all θ vanishes almost surely under every θ. A statistic is ancillary if its law is common to all parameter values.
+**Definition.** A sufficient statistic T, one given which the data have the same law for all θ, is boundedly complete under this condition: every bounded g with Eθ\[g(T)\] = 0 for all θ has g(T) = 0 almost surely under every θ. An ancillary statistic has the same law under every θ.
 
 **Problem.** A boundedly complete sufficient statistic is independent of every ancillary statistic. For example, the mean and variance of a normal sample are independent.
 
-**How the definition helps.** For an ancillary event A, sufficiency gives a common function g(T) = Pθ(A given T) − Pθ(A) (our own). It is bounded with mean zero under every θ, so completeness gives independence (our own). For independent uniform draws on \[0,θ\], the extrema are sufficient, yet their nonconstant ratio is ancillary for sample sizes above one (our own). For normal samples, fix the variance and vary the mean to make the sample mean complete sufficient and the sample variance ancillary (our own).
+**How the definition helps.** For an ancillary event A, sufficiency makes Pθ(A ∣ T) − Pθ(A) one bounded function of T with mean zero, so completeness gives independence (our own). For a normal sample of fixed variance, the sample mean is complete sufficient and the sample variance is ancillary (our own). For uniform draws on \[0, θ\], the extrema are sufficient but not complete, and their nonconstant ratio is ancillary for samples larger than one (our own).
 
 **Wikipedia:** [Basu's theorem](https://en.wikipedia.org/wiki/Basu%27s_theorem), [Completeness (statistics)](https://en.wikipedia.org/wiki/Completeness_%28statistics%29), [Ancillary statistic](https://en.wikipedia.org/wiki/Ancillary_statistic). It says: “Basu's theorem states that any boundedly complete and sufficient statistic is independent of any ancillary statistic.”
 
@@ -785,11 +785,11 @@
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields), 62G30, 60G09. arXiv math.ST, math.PR. Level 3: graduate.
 
-**Definition.** Random variables X₁, …, Xₙ are exchangeable if every reordering of them has the same joint law. The order statistics Y₁ ≤ … ≤ Yₙ are the values sorted from smallest to largest. A statistic is sufficient for a family of laws if the conditional law of the sample given it is the same for each law.
+**Definition.** Random variables X₁, …, Xₙ are exchangeable if every reordering of them has the same joint law, so the law cannot favour one order of the observed values over another.
 
 **Problem.** For any exchangeable real random vector X, the conditional law of X given its order statistics does not depend on the law of X. Given the sorted values, X is a uniformly random reordering of them (Corollary 1).
 
-**How the definition helps.** Averaging over permutations gives the conditional law directly, by Theorem 1. Given the sorted sample, the conditional expectation of each bounded measurable g(X) equals its average over all n! reorderings. Repeated values cause repeated terms in that average, which still defines one conditional law for the whole family (our own).
+**How the definition helps.** Exchangeability gives the conditional law by averaging over permutations (Theorem 1). Given the sorted sample, the conditional expectation of each bounded measurable g(X) is its average over all n! reorderings. Repeated values only repeat terms in that average, which still gives one conditional law for every exchangeable law (our own).
 
 **Paper or page:** [Order statistics from exchangeable random variables are always sufficient](https://arxiv.org/abs/2206.00044v1). It says: “We show that the conditional distribution of (X₁,…,Xₙ) given (Y₁,…,Yₙ) does not depend on F.”
 
@@ -803,11 +803,11 @@
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields), 62F10. arXiv math.ST. Level 3: graduate.
 
-**Definition.** In a model with densities relative to one common measure, the classical definition of sufficiency uses the law of the data given the statistic T. That law must not depend on the parameter θ. The factorization definition instead requires f(x; θ) = h(x)·g(θ, T(x)), with h and g nonnegative.
+**Definition.** In a model with densities relative to one measure, T is sufficient when the density factors as f(x; θ) = h(x)·g(θ, T(x)), with h and g nonnegative and h free of θ. By the Fisher–Neyman theorem, this agrees with the conditional-law definition.
 
 **Problem.** For data x with h(x) &gt; 0, the set of parameters that maximize the likelihood depends only on T(x). If there is just one maximizer, it is a function of T(x).
 
-**How the definition helps.** Factorization leaves only g(θ, T(x)) to maximize, since h(x) is a positive constant for fixed x. The conditional-law definition does not give that algebraic step directly (our own). The work shifts to the Fisher–Neyman theorem, which proves the two descriptions agree for dominated models, where one measure gives all the densities.
+**How the definition helps.** For fixed x with h(x) &gt; 0, maximizing f(x; θ) over θ is the same as maximizing g(θ, T(x)) (our own). That set of maximizers depends on x only through T(x).
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “From this factorization, it can easily be seen that the maximum likelihood estimate of θ will interact with X only through T(X).”
 
@@ -821,11 +821,11 @@
 
 *True by definition.* MSC 62B05 (Sufficient statistics and fields). arXiv stat.TH. Level 3: graduate.
 
-**Definition.** Take a finite family of strictly positive densities f₀, …, fₖ relative to one common measure. At observation x, the likelihood ratio vector has entries fᵢ(x)/f₀(x) for i = 1, …, k.
+**Definition.** For a finite family of strictly positive densities f₀, …, fₖ relative to one measure, the likelihood ratio vector at x has entries fᵢ(x)/f₀(x) for i = 1, …, k. It keeps the relative likelihoods and drops the common scale f₀(x) (our own).
 
 **Problem.** The likelihood ratio vector is minimal sufficient. That is, it is sufficient, and every other sufficient statistic determines it apart from events of probability zero.
 
-**How the definition helps.** Taking ratios cancels every common factor in the likelihood (our own). The factorization theorem says a sufficient statistic captures all parameter dependence in the density (our own). The reference density times each ratio recovers the original density, proving sufficiency by that theorem (our own). Conversely, factoring through any sufficient statistic shows that it determines each ratio (our own).
+**How the definition helps.** Each density is f₀(x) times its ratio, so the factorization theorem makes the ratio vector sufficient (our own). Any sufficient statistic S gives fᵢ = h·gᵢ(S), so each ratio gᵢ(S)/g₀(S) is a function of S almost surely (our own).
 
 **Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “The collection of likelihood ratios {L(X ∣ θᵢ)/L(X ∣ θ₀)} for i = 1,…,k, is a minimal sufficient statistic if the parameter space is discrete {θ₀,…,θₖ}.”
 
@@ -837,11 +837,11 @@
 
 *True by definition. Confidence: medium.* MSC 62B10 (Statistical aspects of information-theoretic topics), 60B10. arXiv math.ST, math.PR. Level 3: graduate.
 
-**Definition.** For probability measures P and Q, choose densities p and q relative to a common reference measure. Their Hellinger distance is H(P, Q) = ‖√p − √q‖₂/√2, where the norm is the square root of the integral of the square. Its alternative formula is H² = 1 − ∫√(pq).
+**Definition.** Choose densities p and q of P and Q relative to a common reference measure. The Hellinger distance is H(P, Q) = ‖√p − √q‖₂/√2, the L² distance between the square roots of the densities, scaled by 1/√2.
 
 **Problem.** Hellinger distance is a metric on probability measures on the same measurable space. Its values lie between 0 and 1.
 
-**How the definition helps.** The square-root formula turns the triangle inequality into the triangle inequality for a norm (our own). Use one reference measure for all three densities, for example P + Q + R (our own). The overlap formula H² = 1 − ∫√(pq) gives the bound by 1 but hides the triangle inequality (our own). The work shifts to checking that the distance is independent of the reference measure, by changing densities (our own).
+**How the definition helps.** Over one reference measure such as P + Q + R, H is a scaled L² distance, so it inherits the norm’s triangle inequality (our own). Expanding the square gives H² = 1 − ∫√(pq), which lies between 0 and 1 (our own). A change of densities shows that H does not depend on the reference measure (our own).
 
 **Wikipedia:** [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance). It says: “The Hellinger distance forms a bounded metric on the space of probability distributions over a given probability space.”
 
@@ -853,11 +853,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 62B15 (Theory of statistical experiments), 62C05. arXiv math.OC, math.ST. Level 3: graduate.
 
-**Definition.** An observation channel gives, for each hidden state, a probability distribution on signals. A garbling of a channel adds further noise. It passes the signal through a second random map that does not see the hidden state.
+**Definition.** An observation channel gives, for each hidden state, a probability distribution on signals. Q₂ is a garbling of Q₁ if Q₂ comes from passing the signal of Q₁ through a second random map that does not see the state.
 
 **Problem.** For finite state and signal spaces, Q₂ is a garbling of Q₁ exactly when Q₁ performs at least as well in every finite-action decision problem.
 
-**How the definition helps.** A decision maker observing Q₁ can simulate Q₂ and copy any decision rule based on Q₂ (our own). Blackwell’s converse uses convex separation to obtain one garbling that works for every state (our own).
+**How the definition helps.** A decision maker who sees Q₁ can apply the garbling and then copy any decision rule for Q₂, so Q₁ does at least as well (our own). Blackwell’s converse uses convex separation to find one garbling that works for every state (our own).
 
 **Paper or page:** [Zero-Sum Games involving Teams against Teams: Existence of Equilibria, and Comparison and Regularity in Information](https://arxiv.org/abs/2206.12048v1). It says: “The information structure induced by channel Q₁ is more informative than the one induced by channel Q₂ for all single player decision problems with finite 𝕌.”
 
@@ -872,11 +872,11 @@
 
 *Rules out counterexamples.* MSC 62B15 (Theory of statistical experiments), 62F12. arXiv stat.TH, math.ST. Level 3: graduate.
 
-**Definition.** A statistical model is identifiable when different parameter values give different probability distributions of the data. In other words, the map from θ to its distribution is one-to-one.
+**Definition.** A statistical model is identifiable when different parameter values give different laws of the data, so the map from θ to its law is one-to-one. Then every wrong parameter has positive Kullback–Leibler divergence from the true law (our own).
 
-**Problem.** Suppose an identifiable model has a compact metric parameter space and its average log likelihood converges uniformly in probability to a continuous expected log likelihood. Assume the expected log likelihood is finite everywhere under the true law. Then every maximum likelihood estimator converges in probability to the true parameter.
+**Problem.** Suppose an identifiable model has a compact metric parameter space, and the expected log likelihood under the true law is finite and continuous. If the average log likelihood converges to it uniformly in probability, every maximum likelihood estimator converges in probability to the true parameter.
 
-**How the definition helps.** The expected log likelihood drops from its true value by the Kullback–Leibler divergence, positive at every other parameter by identifiability (our own). Compactness and continuity give a positive gap outside each neighborhood of the truth, and uniform convergence preserves that gap with probability approaching one (our own). For a normal model of fixed variance and mean a + b, equal sums prevent consistent estimation of the pair throughout the model (our own).
+**How the definition helps.** The expected log likelihood falls below its value at the truth by the Kullback–Leibler divergence, which identifiability makes positive at every other parameter (our own). Compactness and continuity give a positive gap outside each neighbourhood of the truth, and uniform convergence keeps that gap with probability tending to one (our own). If a normal mean is a + b, all pairs with the same sum give one law, so no estimator recovers the pair (our own).
 
 **Wikipedia:** [Identifiability](https://en.wikipedia.org/wiki/Identifiability), [Maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). It says: “The identification condition is absolutely necessary for the ML estimator to be consistent. When this condition holds, the limiting likelihood function ℓ(θ\|·) has unique global maximum at θ₀.”
 
@@ -890,11 +890,11 @@
 
 *True by definition.* MSC 62C05 (General considerations in statistical decision theory), 91B06. arXiv stat.TH, econ.TH. Level 3: graduate.
 
-**Definition.** For each probability vector p, choose an affine function Lₚ below H everywhere and equal to H at p. Reporting p earns Lₚ(eᵢ) when outcome i occurs, where eᵢ assigns probability one to i.
+**Definition.** For a convex function H on probability vectors and each p, choose a supporting plane Lₚ, an affine function that touches H at p and stays below it everywhere. Reporting p earns Lₚ(eᵢ) when outcome i occurs, where eᵢ puts probability one on i.
 
 **Problem.** This construction gives a proper score for finitely many outcomes. If H is strictly convex, no other report gives the same expected score.
 
-**How the definition helps.** At truth q, the expected score for report p equals Lₚ(q) by affinity (our own). This is at most H(q), which reporting q attains (our own). Strict convexity forbids a second contact point, so every other report scores strictly less in expectation (our own).
+**How the definition helps.** Affinity makes the expected score of report p under truth q equal to Lₚ(q), which is at most H(q), the expected score of reporting q (our own). Strict convexity lets Lₚ touch H only at p, so every other report scores strictly less in expectation (our own).
 
 **Paper or page:** [Optimal Scoring Rule Design under Partial Knowledge](https://arxiv.org/abs/2107.07420v3). It says: “Conversely, for every (strictly) convex function H: Δ(Ω)→ℝ, there exists a (strict) proper scoring rule such that the above condition hold.”
 
@@ -905,15 +905,15 @@
 
 ### Equalizer Bayes rules are minimax
 
-**Remember:** An equalizer makes the average risk equal the worst risk.
+**Remember:** Constant risk makes the average risk equal the worst risk.
 
 *True by definition.* MSC 62C20 (Minimax procedures in statistical decision theory), 62C10. arXiv stat.TH. Level 3: graduate.
 
-**Definition.** Call a decision rule an equalizer if its risk, or expected loss, is constant across parameter values. A Bayes rule minimizes the average risk under a given prior.
+**Definition.** An equalizer is a decision rule whose risk, or expected loss, is the same at every parameter value. So its average risk under any prior equals its worst-case risk.
 
 **Problem.** If a Bayes rule for a probability prior has finite constant risk, it minimizes the worst-case risk.
 
-**How the definition helps.** Constant risk turns the prior average into the worst risk, avoiding a separate optimization over parameters (our own). Every competitor’s worst risk bounds its prior average from above (our own). Its prior average is at least as large as the Bayes rule’s average by definition (our own). The work lies in finding a prior whose Bayes rule has constant risk (our own).
+**How the definition helps.** A Bayes rule, which minimizes average risk under the prior, beats every competitor on average, and for an equalizer the average is the worst case (our own). Each competitor's worst risk is at least its average, which is at least the Bayes average (our own). The work lies in finding a prior whose Bayes rule has constant risk (our own).
 
 **Wikipedia:** [Minimax estimator](https://en.wikipedia.org/wiki/Minimax_estimator). It says: “If a Bayes estimator has constant risk, it is minimax.”
 
@@ -921,15 +921,15 @@
 
 ### Propensity scores balance measured covariates
 
-**Remember:** At a fixed score, the measurements cannot change the treatment probability.
+**Remember:** One probability carries everything the measurements say about treatment.
 
 *True by definition.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME, stat.AP. Level 3: graduate.
 
-**Definition.** For a treatment with two options, record each person’s measurements before treatment. The propensity score is the probability of receiving the first option given those measurements. Group people by this single probability instead of matching every measurement separately.
+**Definition.** The propensity score is a person's probability of receiving the first of two treatments given their pretreatment measurements. It is one number that carries everything the measurements say about treatment (our own).
 
 **Problem.** Conditional on the true score, treatment is independent of the recorded measurements. Wherever the score lies strictly between zero and one, each option has positive conditional probability.
 
-**How the definition helps.** Once the score is fixed, knowing the measurements cannot further change the treatment probability (our own). Taking conditional expectations gives that probability both with the measurements and without them (our own). The work moves to estimating the score and checking which parts of the sample have both treatment groups (our own).
+**How the definition helps.** Treatment given the score has probability equal to the average, over people with that score, of treatment given the measurements, which is the score itself (our own). So knowing the measurements as well cannot change the treatment probability (our own).
 
 **Wikipedia:** [Propensity score matching](https://en.wikipedia.org/wiki/Propensity_score_matching). It says: “The propensity score e(x) is a balancing score.”
 
@@ -943,11 +943,11 @@
 
 *True by definition.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME, stat.AP. Level 3: graduate.
 
-**Definition.** For treatment indicator A, outcome Y and pretreatment measurements X, choose an outcome prediction m(X) and a positive treatment probability estimate g(X). The population formula averages m(X) + A(Y − m(X))/g(X) over everyone (our own).
+**Definition.** The doubly robust formula averages over everyone a predicted outcome m(X) plus a correction, m(X) + A(Y − m(X))/g(X). Here A indicates treatment, Y is the outcome and X holds the pretreatment measurements. The correction is the prediction error of treated people (A = 1), divided by an estimated treatment probability g(X) &gt; 0 (our own).
 
 **Problem.** Assume consistency of observed and potential outcomes, positive probabilities for both treatments given X, and conditional independence of treatment and potential outcomes given X. When the displayed terms are integrable, the formula recovers the treated potential outcome mean if either model is correct (our own).
 
-**How the definition helps.** Adding a weighted correction gives the prediction and probability models two ways to recover the mean (our own). With correct predictions, the average error at each measurement pattern is zero among recipients (our own). With correct probabilities, weighting recipients restores the population distribution of measurements, so the correction supplies exactly what the predictions missed (our own). The paper proves consistency for estimated models, which requires controlling their estimation errors.
+**How the definition helps.** The correction has mean zero when m is correct, and it exactly repairs m when g is correct (our own). With correct m, the errors of treated people average zero at each X (our own). With correct g, weighting treated people by 1/g restores the population, so the correction adds back what m missed (our own).
 
 **Paper or page:** [Normalized Augmented Inverse Probability Weighting with Neural Network Predictions](https://arxiv.org/abs/2108.01768v2). It says: “The $DR$ estimator \\eqref {nAIPW} is consistent if either $\\hat {Q}<sup>k\\xrightarrow</sup> {p}Q<sup>k$</sup>, $k=0, 1$, or $\\hat {g}\\xrightarrow {p}g$.”
 
@@ -957,15 +957,15 @@
 
 ### A natural parameter space with interior makes the sufficient statistic complete
 
-**Remember:** A full-dimensional parameter set makes the sufficient statistic complete.
+**Remember:** A ball of parameters forces zero-mean functions of S to vanish.
 
 *Rules out counterexamples.* MSC 62E10 (Characterization and structure theory of statistical distributions), 62B05. arXiv stat.TH, math.ST. Level 3: graduate.
 
-**Definition.** In a natural exponential family, the density at x has form h(x) exp(θ · T(x) − A(θ)) relative to a common measure. Its parameter set has nonempty interior if it contains an open ball of positive radius in ℝᵏ.
+**Definition.** A natural exponential family has densities h(x) exp(θ · T(x) − A(θ)) relative to a common measure. Its parameter set has nonempty interior if it contains an open ball in ℝᵏ. Then each mean of g(S) is, up to a positive factor, a Laplace transform known on that open ball (our own).
 
 **Problem.** For independent observations from the same family member, nonempty interior makes S = ∑ᵢ T(Xᵢ) complete. Each unbiased finite-variance function of S then has minimum variance among unbiased estimators and is unique up to almost sure equality.
 
-**How the definition helps.** For integrable g, zero expectation of g(S) throughout the ball makes its weighted measure’s Laplace transform vanish there (our own). Transform uniqueness gives completeness, and factorization gives sufficiency, so Lehmann–Scheffé yields the variance conclusion (our own). Without interior, normal samples with mean θ ≠ 0 and variance θ² have two distinct unbiased estimates of θ² for n ≥ 2 (our own). These are the unbiased sample variance and n times the squared sample mean divided by n + 1, both functions of S (our own).
+**How the definition helps.** A Laplace transform that vanishes on an open set comes from the zero measure, so a zero mean of g(S) throughout the ball forces g(S) = 0 almost surely (our own). Factorization gives sufficiency, and Lehmann–Scheffé gives the variance conclusion (our own). Without interior, for normal samples with mean θ ≠ 0 and variance θ², the sample variance and nX̄²/(n + 1) are distinct unbiased estimators of θ², both functions of S (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “If Θ has nonempty interior in ℝᵏ, then given any IID samples ... the statistic ... is a complete statistic for θ.”
 
@@ -977,11 +977,11 @@
 
 *True by definition.* MSC 62E10 (Characterization and structure theory of statistical distributions), 62B05. arXiv stat.TH, math.ST. Level 3: graduate.
 
-**Definition.** An exponential family in natural form has density h(x) exp(η·T(x) − A(η)). Here η is the natural parameter and T is the sufficient statistic. A(η) is the log-partition function, the logarithm of the integral that makes the density integrate to 1.
+**Definition.** In a natural exponential family with density h(x) exp(η·T(x) − A(η)), the log-partition function A(η) is the logarithm of ∫ h(x) exp(η·T(x)) dx. So exp(A(η + u) − A(η)) is the mean of exp(u·T) at parameter η (our own).
 
 **Problem.** At each interior natural parameter η, the gradient of A is the mean of T, and its Hessian is the covariance matrix of T. For u with η + u in the natural parameter space, A(η + u) − A(η) is the cumulant generating function at u.
 
-**How the definition helps.** Multiplying the density by exp(u · T) shifts the parameter in the unnormalized integral from η to η + u (our own). Taking the logarithm gives A(η + u) − A(η) (our own). At an interior parameter this function is finite near zero, where its first two derivatives give the mean and covariance (our own).
+**How the definition helps.** The definition makes A(η + u) − A(η) the logarithm of the mean of exp(u·T), which is the cumulant generating function of T (our own). At an interior η it is finite near u = 0, so its gradient and Hessian there give the mean and covariance (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “The reason for this is so that the moments of the sufficient statistics can be calculated easily, simply by differentiating this function.”
 
@@ -989,15 +989,15 @@
 
 ### Defining p-values by rejecting levels controls false rejections
 
-**Remember:** If a p-value is small, every larger level rejects.
+**Remember:** The p-value is the smallest level whose test rejects.
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62A01. arXiv math.ST. Level 3: graduate.
 
-**Definition.** Let Rα increase with α on \[0,1\], with R₁ equal to the whole sample space. Require P(Rα) ≤ α for every null law P and every α. At observation x, the p-value is the infimum of all levels α with x in Rα.
+**Definition.** Take nested rejection regions Rα that grow with α, with P(Rα) ≤ α for every null law P and R₁ the whole sample space. The p-value at x is the smallest level that rejects x, the infimum of all α with x in Rα.
 
 **Problem.** For any null law and any level α in \[0, 1\], the probability that the p-value is at most α is at most α.
 
-**How the definition helps.** The rejecting-level definition bounds the p-value event by any rejection region with a slightly larger level (our own). Nesting gives that inclusion even if the infimum is not attained (our own). Let the larger level decrease to α, with α = 1 immediate (our own). The work shifts from checking a tail probability, including possible ties, to constructing nested tests that meet their stated error bounds (our own).
+**How the definition helps.** If the p-value is at most α, then x lies in every Rβ with β &gt; α, by nesting, even if the infimum is not attained (our own). So the probability is at most P(Rβ) ≤ β, and letting β decrease to α gives the bound (our own). The case α = 1 is immediate (our own).
 
 **Wikipedia:** [P-value](https://en.wikipedia.org/wiki/P-value). It says: “the probability of obtaining a p-value less than or equal to any number between 0 and 1 is still less than or equal to that number”
 
@@ -1005,15 +1005,15 @@
 
 ### Expectation-bounded e-variables multiply when the conditional bound holds
 
-**Remember:** A second bet must have expected payout at most one given the first result.
+**Remember:** Under the null, each bet's expected payout is at most the stake.
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62L10. arXiv math.ST, stat.ME. Level 3: graduate.
 
-**Definition.** An e-variable is a nonnegative statistic whose expected value is at most 1 under every law in the null hypothesis. Large values count as evidence against the null hypothesis.
+**Definition.** An e-variable is a bet against the null hypothesis: a nonnegative statistic whose expected payout is at most 1 under every null law.
 
-**Problem.** Let E₁ be an e-variable based on the first data. Suppose that under every null law, E₂ is nonnegative and its conditional mean given the first data is at most 1. Then E₁E₂ is an e-variable, even if the choice of E₂ depends on the first data.
+**Problem.** If E₁ is an e-variable from the first data and, under every null law, E₂ is nonnegative with conditional mean at most 1 given the first data, then E₁E₂ is an e-variable. This holds even if the choice of E₂ depends on the first data.
 
-**How the definition helps.** Given the first data, E₁ is fixed and E₂ has conditional mean at most one under every null law (our own). The conditional mean of their product is therefore at most E₁ (our own). Averaging gives a mean at most one for the nonnegative product (our own).
+**How the definition helps.** Given the first data, the product has conditional mean at most E₁, and E₁ has mean at most one under every null law (our own). The product is nonnegative, so it is an e-variable (our own).
 
 **Wikipedia:** [E-values](https://en.wikipedia.org/wiki/E-values). It says: “e-values of subsequent experiments (e.g. clinical trials concerning the same treatment) may simply be multiplied to provide a new, "product" e-value that represents the evidence in the joint experiment.”
 
@@ -1027,11 +1027,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 62F03 (Parametric hypothesis testing). arXiv stat.TH, math.ST. Level 3: graduate.
 
-**Definition.** For each θ₁ &lt; θ₂, consider observations where at least one of the two densities is positive. Monotone likelihood ratio means fθ₂(x)/fθ₁(x) is a nondecreasing function of T(x) there, taking value ∞ when only the denominator vanishes.
+**Definition.** A family has a monotone likelihood ratio in T if, for every θ₁ &lt; θ₂, the ratio fθ₂(x)/fθ₁(x) is a nondecreasing function of T(x), so larger T always favours larger θ. The ratio is taken where either density is positive, with value ∞ where only fθ₁ vanishes.
 
 **Problem.** For θ ≤ θ₀ against θ &gt; θ₀, monotone likelihood ratios give a uniformly most powerful level-α test. It rejects above a cutoff in T and randomizes at equality as needed for size α at θ₀.
 
-**How the definition helps.** Every alternative orders observations by the same T, so Neyman–Pearson gives the same upper-tail test against each alternative (our own). Monotone likelihood ratios also make its rejection probability nondecreasing in θ, controlling size over the whole null (our own). This is the Karlin–Rubin argument.
+**How the definition helps.** Against any alternative θ &gt; θ₀, the Neyman–Pearson test rejects for a large likelihood ratio, which here means a large T, so one test is most powerful against all (our own). Monotone ratios also make its rejection probability nondecreasing in θ, so size α at θ₀ holds on the whole null (our own). This is the Karlin–Rubin argument.
 
 **Wikipedia:** [Monotone likelihood ratio](https://en.wikipedia.org/wiki/Monotone_likelihood_ratio). It says: “If the family of random variables has the MLRP in T(X), a uniformly most powerful test can easily be determined for the hypothesis H₀ : θ ≤ θ₀ versus H₁ : θ &gt; θ₀.”
 
@@ -1045,11 +1045,11 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing), 62C05. arXiv stat.TH. Level 3: graduate.
 
-**Definition.** Describe a test by its rejection probability at each possible observation, allowing any value from zero to one. An ordinary nonrandomized test allows only zero and one.
+**Definition.** A randomized test is a rejection probability at each observation, any value from zero to one, so a weighted average of two tests is again a test (our own). An ordinary test allows only zero and one.
 
 **Problem.** Take two fixed probability laws, one for each hypothesis. Then the attainable pairs of false rejection and false acceptance probabilities of randomized tests form a convex set (our own specialization).
 
-**How the definition helps.** A weighted average of rejection probabilities is another test, and both error probabilities follow the same weighted average (our own). Without randomization, a test on a single possible observation gives only the two constant decisions (our own). The work moves to finding tests on the best attainable boundary, which likelihood ratios give for two fixed laws (our own).
+**How the definition helps.** Both error probabilities are linear in the rejection probabilities, so a weighted average of two tests has the weighted average of their error pairs (our own). Without randomization, a single possible observation allows only the two constant decisions, two points with no segment between them (our own).
 
 **Paper or page:** [Optimal Decision Rules for Composite Binary Hypothesis Testing under Neyman-Pearson Framework](https://arxiv.org/abs/2505.17851v1). It says: “𝒫 is convex and compact.”
 
@@ -1063,11 +1063,11 @@
 
 *True by definition.* MSC 62F03 (Parametric hypothesis testing). arXiv stat.TH, stat.ME. Level 3: graduate.
 
-**Definition.** Fit a density using one part of the sample. On an independent part, divide its fitted joint density by the supremum of that part’s joint densities under the null. Set the ratio to zero when the denominator vanishes (our own).
+**Definition.** The split likelihood ratio uses two independent parts of the sample. Its numerator is the second part's likelihood under a density fitted on the first part, and its denominator is the supremum of the second part's likelihood over the null. The ratio is zero when that supremum vanishes (our own).
 
 **Problem.** For independent observations from a model with densities, reject when this ratio reaches 1/α, where 0 &lt; α &lt; 1. If the null hypothesis is true, the chance of rejection is at most α.
 
-**How the definition helps.** The separate fit makes the numerator a fixed probability density when we condition on the fitting data (our own). The denominator is at least the true likelihood, so the conditional mean of the ratio is at most one (our own). Markov's inequality gives the bound (our own). The work moves to designing a split and a fit with good power, the chance to detect a false null (our own).
+**How the definition helps.** Given the first part, the fitted density is fixed, and the ratio is at most the fitted likelihood over the true likelihood, which has conditional mean at most one (our own). Markov's inequality then bounds the chance that the ratio reaches 1/α by α (our own).
 
 **Paper or page:** [Universal Inference for Testing Calibration of Mean Estimates within the Exponential Dispersion Family](https://arxiv.org/abs/2510.23821v1). It says: “The split and sub-sampled split LRTs \\eqref {def<sub>split</sub><sub>lrt</sub><sub>rejection</sub>} control the type I error of rejecting $\\mathcal {H}<sub>0</sub>$ in favor of $\\mathcal {H}<sub>1</sub>$ at the significance level $\\alpha \\in (0,1)$.”
 
@@ -1078,15 +1078,15 @@
 
 ### Posterior averaging gives likelihood ascent
 
-**Remember:** Raising the conditional average keeps the observed likelihood from falling.
+**Remember:** Raising the expected complete log likelihood never lowers the observed likelihood.
 
 *True by definition.* MSC 62F10 (Point estimation), 62-08. arXiv stat.CO, stat.ME. Level 3: graduate.
 
-**Definition.** The observed likelihood integrates the joint density over the missing values. Instead of maximizing it directly, average the complete-data log likelihood under the current conditional distribution of missing values given the observations. Choose a new parameter that preserves or increases this average.
+**Definition.** An EM-type update averages the complete-data log likelihood over the missing values, using their current conditional law given the observations. It then picks a new parameter that does not lower this average.
 
 **Problem.** Assume the current observed likelihood is positive and the conditional averages are finite. Any such update preserves or increases the observed likelihood (our own extension).
 
-**How the definition helps.** The posterior average gives a lower bound on the gain in log likelihood (our own). The bound follows from Jensen’s inequality applied to the complete-data likelihood ratio under the current conditional law (our own). The work moves to computing the conditional average and finding a parameter that increases it (our own).
+**How the definition helps.** The gain in this average is a lower bound on the gain in observed log likelihood (our own). The bound is Jensen’s inequality applied to the complete-data likelihood ratio under the current conditional law (our own).
 
 **Paper or page:** [A review of Monte Carlo-based versions of the EM algorithm](https://arxiv.org/abs/2401.00945v1). It says: “Let θ ∈ Θ, and θ′ = M(θ) be the EM update from θ. Then ℓ(θ′) ≥ ℓ(θ).”
 
@@ -1097,15 +1097,15 @@
 
 ### Profile likelihood preserves maximum likelihood estimates under parameter maps
 
-**Remember:** Maximize over the original parameter, then apply the parameter map.
+**Remember:** Give each value of α the best likelihood among its parameters.
 
 *True by definition.* MSC 62F10 (Point estimation). arXiv math.ST. Level 3: graduate.
 
-**Definition.** For fixed data, let L(θ) be its likelihood, viewed as a function of the model parameter θ. To estimate α = g(θ), define its profile likelihood as the supremum of L(θ) over all θ with g(θ) = α. For a one-to-one map, this reduces to the ordinary likelihood with a new parameter label.
+**Definition.** To estimate α = g(θ), the profile likelihood at α is the largest likelihood L(θ) among parameters θ with g(θ) = α, the supremum over that group.
 
 **Problem.** If θ̂ maximizes L, then g(θ̂) maximizes the profile likelihood, even when g is not one-to-one.
 
-**How the definition helps.** Taking a supremum within each group of parameters preserves the overall maximum (our own). The group containing θ̂ reaches L(θ̂), and no other group can do better (our own). Unlike a one-to-one change of parameter, a many-to-one map need not give a model indexed by α alone. Profiling resolves this by maximizing over the parameters that α leaves unspecified (our own).
+**How the definition helps.** Each group's supremum is at most the overall maximum, and the group containing θ̂ attains L(θ̂), so g(θ̂) wins (our own). A many-to-one g need not give a model indexed by α alone, and profiling supplies the missing likelihood (our own).
 
 **Wikipedia:** [Maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). It says: “The equivariance property can be generalized to non-bijective transforms, although it applies in that case on the maximum of an induced likelihood function which is not the true likelihood in general.”
 
@@ -1115,15 +1115,15 @@
 
 ### Regular estimators exclude Hodges' superefficient estimator
 
-**Remember:** A regular estimator behaves the same for all parameter values near the true one.
+**Remember:** Small shifts of the truth leave a regular estimator's error law unchanged.
 
 *Rules out counterexamples.* MSC 62F12 (Asymptotic properties of parametric estimators). arXiv math.ST. Level 3: graduate.
 
-**Definition.** At an interior scalar parameter θ, consider every fixed real h and local truth θₙ = θ + h/√n. An estimator Tₙ is regular at θ if √n(Tₙ − θₙ) converges under each local truth to the same law.
+**Definition.** Fix an interior scalar parameter θ and, for each fixed real h, the local truth θₙ = θ + h/√n. An estimator Tₙ is regular at θ if √n(Tₙ − θₙ) converges under every local truth to one law that does not depend on h.
 
 **Problem.** In a locally asymptotically normal model with positive finite information, every regular estimator with finite limiting variance has limiting variance at least the efficient variance.
 
-**How the definition helps.** Regularity permits Hájek’s convolution theorem, which expresses the limit as an efficient normal variable plus independent noise (our own). In a normal mean model, Hodges’ estimator sets the sample mean to zero when its magnitude is below n⁻¹ᐟ⁴ (our own). At local truth h/√n it then returns zero with probability approaching one, giving centered limit −h, which violates regularity (our own).
+**How the definition helps.** Regularity is the hypothesis of Hájek’s convolution theorem, which writes the limit as an efficient normal variable plus independent noise, so its variance is at least the efficient one (our own). In a normal mean model, Hodges’ estimator sets the sample mean to zero when its magnitude is below n⁻¹ᐟ⁴ (our own). At local truth h/√n it returns zero with probability tending to one, so its centered limit is −h and it is not regular (our own).
 
 **Wikipedia:** [Hodges' estimator](https://en.wikipedia.org/wiki/Hodges%27_estimator). It says: “The existence of such a counterexample is the reason for the introduction of the notion of regular estimators.”
 
@@ -1133,15 +1133,15 @@
 
 ### Exponential-family conjugate priors update by adding counts and totals
 
-**Remember:** The data add their count and total to the prior count and total.
+**Remember:** Data add their count and total to the prior's count and total.
 
 *True by definition.* MSC 62F15 (Bayesian inference), 62E10. arXiv math.ST. Level 3: graduate.
 
-**Definition.** Consider densities h(x) exp(η · T(x) − A(η)) with natural parameter η. The conjugate prior density is proportional to exp(η · χ − νA(η)) when its integral over the parameter space is finite and positive.
+**Definition.** For densities h(x) exp(η · T(x) − A(η)), the conjugate prior has density proportional to exp(η · χ − νA(η)), provided its integral is finite and positive. It looks like the likelihood of ν pseudo-observations whose statistics T add up to χ (our own).
 
 **Problem.** For n independent observations from this model, the updated density for η has the same form whenever the observed data give a finite, positive normalizer. The new count is ν + n, and the new total is χ + T(x₁) + ⋯ + T(xₙ).
 
-**How the definition helps.** The prior uses the same two terms in η as the likelihood, so multiplying them just adds coefficients (our own). General Bayesian updating gives a product of densities but does not by itself keep the prior's form (our own). The main work is to find which coefficients give a finite normalizing integral, as Diaconis and Ylvisaker did (our own).
+**How the definition helps.** The likelihood of n observations is exp(η · ∑T(xᵢ) − nA(η)) times terms free of η, so multiplying by the prior just adds totals and counts (our own). The main work is to find which χ and ν give a finite normalizer, as Diaconis and Ylvisaker did (our own).
 
 **Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family), [Conjugate prior](https://en.wikipedia.org/wiki/Conjugate_prior). It says: “ν corresponds to the effective number of observations that the prior distribution contributes, and χ corresponds to the total amount that these pseudo-observations contribute to the sufficient statistic over all observations and pseudo-observations.”
 
@@ -1151,15 +1151,15 @@
 
 ### The Jeffreys prior does not depend on the choice of parameter
 
-**Remember:** Built from Fisher information, the Jeffreys prior changes with the parameter as a density should.
+**Remember:** Root-determinant information carries the Jacobian factor a density needs.
 
 *True by definition.* MSC 62F15 (Bayesian inference), 62B11. arXiv math.ST. Level 3: graduate.
 
-**Definition.** In a regular model, the Fisher information matrix I is the expected outer product of the log density gradient with itself. The Jeffreys prior measure has density proportional to √det I with respect to parameter volume.
+**Definition.** In a regular model, the Jeffreys prior has density proportional to √det I(θ), where the Fisher information I(θ) is the expected outer product of the log-density gradient with itself. Because I is built from derivatives, it picks up the Jacobian of any parameter change.
 
 **Problem.** Under a smooth invertible parameter change with smooth inverse, the Jeffreys prior in the new coordinates is the image of the original Jeffreys prior.
 
-**How the definition helps.** If J is the derivative matrix of the inverse change, the transformed information is JᵀIJ by the chain rule (our own). Its square-root determinant is \|det J\|√det I, exactly the change-of-variables factor for the density (our own).
+**How the definition helps.** By the chain rule, the information in the new coordinates is JᵀIJ, where J is the derivative matrix of the inverse change (our own). Its square-root determinant is \|det J\|√det I, exactly the change-of-variables factor for a density (our own).
 
 **Wikipedia:** [Jeffreys prior](https://en.wikipedia.org/wiki/Jeffreys_prior). It says: “That is, the relative probability assigned to a volume of a probability space using a Jeffreys prior will be the same regardless of the parameterization used to define the Jeffreys prior.”
 
@@ -1173,11 +1173,11 @@
 
 *True by definition.* MSC 62F15 (Bayesian inference). arXiv stat.ML. Level 3: graduate.
 
-**Definition.** For fixed observed data x, the evidence p(x) integrates the joint density p(x,z) over the hidden variable z. For a trial density q on z, the variational lower bound is the expectation under q of log(p(x,z)/q(z)).
+**Definition.** For fixed data x and a trial density q on the hidden variable z, the variational lower bound is the q-average of log(p(x,z)/q(z)). It equals log p(x) minus the relative entropy of q from the posterior p(z given x).
 
 **Problem.** Suppose the log evidence is finite and the trial expectation exists, possibly as minus infinity. The bound never exceeds the log evidence and equals it exactly when the trial and posterior densities agree almost everywhere.
 
-**How the definition helps.** Substituting p(x,z) = p(x)p(z given x) expresses the gap as the relative entropy of the trial density from the posterior. Relative entropy is nonnegative and vanishes exactly when the densities agree almost everywhere (our own).
+**How the definition helps.** Relative entropy is nonnegative and vanishes exactly when the two densities agree almost everywhere (our own). The identity comes from writing p(x,z) = p(x)p(z given x) inside the logarithm.
 
 **Wikipedia:** [Evidence lower bound](https://en.wikipedia.org/wiki/Evidence_lower_bound). It says: “= ln pθ(x) − Dᴋʟ(qφ(z\|x) \|\| pθ(z\|x)).”
 
@@ -1185,15 +1185,15 @@
 
 ### Conditional copies give uniform ranks
 
-**Remember:** Matching conditional draws makes the observed rank just another rank.
+**Remember:** Under the null, the real feature is just another conditional copy.
 
 *True by definition. Confidence: medium.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 3: graduate.
 
-**Definition.** Given the controls and response, draw independent replacements from the tested feature’s law given the controls, independently of the observed feature. Apply the same fixed scoring rule to each feature value and break ties by a uniform random ordering.
+**Definition.** Given the controls and response, draw independent copies of the tested feature from its law given the controls, independently of the observed feature. Under the null, the observed feature is then one more such copy. Score all copies and the observed feature by one fixed rule, and break ties by a uniform random ordering.
 
 **Problem.** Under conditional independence of feature and response given the controls, the observed rank is uniform and equal-sized rank groups have equal probabilities (our own).
 
-**How the definition helps.** Under conditional independence, the original feature and all replacements have the same joint law under any permutation given the controls and response (our own). Uniform tie breaking preserves this symmetry, so every position is equally likely for the observed score (our own). The cited grouped-rank limit theorem uses additional assumptions.
+**How the definition helps.** Under conditional independence, the observed feature and the copies are exchangeable given the controls and response, and random tie breaking keeps that symmetry (our own). So the observed score is equally likely to take each rank position (our own). The cited grouped-rank limit theorem uses additional assumptions.
 
 **Paper or page:** [Pearson Chi-squared Conditional Randomization Test](https://arxiv.org/abs/2111.00027v2). It says: “will converge to χ² distribution with L − 1 degrees of freedom”
 
@@ -1207,11 +1207,11 @@
 
 *Rules out counterexamples.* MSC 62G15 (Nonparametric tolerance and confidence regions), 68T05. arXiv stat.ML, cs.LG. Level 3: graduate.
 
-**Definition.** For finitely many nonnegative scores, divide the test score by the mean of all scores, including itself. Define the ratio as zero when all scores vanish (our own).
+**Definition.** Divide the test score by the mean of all the finitely many nonnegative scores, the test score included, and set the ratio to zero when all scores vanish (our own). Because every score is in the mean, the ratios of all scores sum to their number, or to zero (our own).
 
 **Problem.** If the joint score distribution is invariant under permutations, the statistic has mean at most one. Its probability of reaching 1/α is at most α for 0 &lt; α &lt; 1.
 
-**How the definition helps.** Including every score makes the ratios exchangeable and gives them equal expectations (our own). Their sum equals the number of scores unless all vanish, when it equals zero (our own). Each expectation is therefore at most one, and Markov’s inequality gives the probability bound (our own). Omitting the test score makes the denominator zero when only that score is positive (our own).
+**How the definition helps.** Exchangeability gives every score's ratio the same mean, and the ratios sum to at most their number, so each mean is at most one (our own). Markov’s inequality then gives the probability bound (our own). Omitting the test score fails, since the denominator is zero when only the test score is positive (our own).
 
 **Paper or page:** [Enhancing Conformal Prediction Using E-Test Statistics](https://arxiv.org/abs/2403.19082v1). It says: “Set\\\[ F = \\frac{L<sub>n+1</sub>}{\\left(\\sum\\limits<sub>j=1</sub><sup>n+1</sup> L<sub>j</sub>\\right)/(n+1)}. \\\]”
 
@@ -1219,15 +1219,15 @@
 
 ### Within-group ranks give coverage in each prediction group
 
-**Remember:** Rank each candidate inside its own group.
+**Remember:** Rank each candidate only against calibration cases from its own group.
 
 *Makes the theorem clean to state or prove.* MSC 62G15 (Nonparametric tolerance and confidence regions), 68T05. arXiv stat.ML, cs.LG. Level 3: graduate.
 
-**Definition.** Fix 0 &lt; α &lt; 1 and a rule assigning input-label pairs to groups. Pool each candidate’s score with the calibration scores from its group, giving m scores in total. Include the candidate if one plus the number of strictly smaller scores is at most ⌈m(1 − α)⌉.
+**Definition.** Fix 0 &lt; α &lt; 1 and a rule that assigns each input-label pair to a group. Rank each candidate's score only among the calibration scores of its own group, m scores in all with the candidate. Include the candidate if one plus the number of strictly smaller scores is at most ⌈m(1 − α)⌉.
 
 **Problem.** Assume permuting the examples preserves their joint distribution and permutes their scores in the same way. Conditional on any positive-probability group of the true test pair, the prediction set contains the true label with probability at least 1 − α.
 
-**How the definition helps.** In our own proof, ranking within the group makes the test example interchangeable with its group peers. Conditional on group membership, randomly breaking ties would give the test example a uniform rank among those peers. Counting only strictly smaller scores can only lower its rank. The rounded cutoff thus includes the true label with at least the stated probability.
+**How the definition helps.** Within its group, the test example is exchangeable with its group peers, so with random tie breaking its rank among them would be uniform (our own). Counting only strictly smaller scores can only lower its rank, so the cutoff includes the true label with probability at least 1 − α (our own).
 
 **Paper or page:** [Conformal Mixed-Integer Constraint Learning with Feasibility Guarantees](https://arxiv.org/abs/2506.03531v1). It says: “for all groups k ∈ {1, …, K} with ℙ(g(Xₙ₊₁, Yₙ₊₁) = k) &gt; 0”
 
@@ -1235,15 +1235,15 @@
 
 ### Block medians tolerate heavy tails
 
-**Remember:** A bad block can spoil its mean but not outvote a good majority.
+**Remember:** One bad block spoils its mean but cannot outvote the majority.
 
 *True by definition.* MSC 62G35 (Nonparametric robustness). arXiv stat.TH, stat.ME. Level 3: graduate.
 
-**Definition.** Split independent observations into equally sized blocks. Use the median of their means instead of the mean of all observations.
+**Definition.** The median-of-means estimator splits independent observations into equal blocks and takes the median of the block means. It errs by more than a threshold only if at least half the blocks do.
 
-**Problem.** Assume n independent draws from one distribution with finite standard deviation σ. Choose K = ⌈8 log(1/δ)⌉ equal blocks, with 0 &lt; δ ≤ 1/2 and K dividing n. Our own bound gives error at most 2σ√(K/n) with probability at least 1 − δ.
+**Problem.** For n independent draws from one distribution with finite standard deviation σ, take K = ⌈8 log(1/δ)⌉ equal blocks, with 0 &lt; δ ≤ 1/2 and K dividing n. Then the error is at most 2σ√(K/n) with probability at least 1 − δ (our own bound).
 
-**How the definition helps.** Taking the median turns a large error into a count of bad blocks (our own). Chebyshev’s inequality bounds each block’s chance of exceeding the error threshold by one quarter (our own). Hoeffding’s inequality bounds the chance that at least half the independent blocks exceed it by exp(−K/8) (our own).
+**How the definition helps.** A large median error needs at least half the blocks to be bad (our own). Chebyshev’s inequality makes each block bad with chance at most one quarter (our own). Hoeffding’s inequality then bounds the chance that half the independent blocks are bad by exp(−K/8) (our own).
 
 **Paper or page:** [On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514v2). It says: “Denote by μ̂₍MoM,ₙ₎ the MoM estimator computed with K blocks of size m.”
 
@@ -1257,11 +1257,11 @@
 
 *Rules out counterexamples.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas). arXiv math.ST. Level 3: graduate.
 
-**Definition.** A copula is a joint distribution on the unit cube with uniform individual coordinates. It links marginal distribution functions to a joint distribution by using their values as inputs.
+**Definition.** A copula C is a joint distribution function on the unit cube with uniform coordinates that rebuilds a joint law H from its margins Fᵢ by H(x) = C(F₁(x₁), …, F<sub>d</sub>(x<sub>d</sub>)). So H directly fixes C at the points that the margins' values reach (our own).
 
 **Problem.** Sklar’s theorem gives a unique copula for a joint law with continuous marginal distribution functions.
 
-**How the definition helps.** Continuous marginal distribution functions attain every value strictly between zero and one, so the joint distribution fixes the copula throughout the open cube. Continuity of the copula then fixes its boundary values, by our own argument. Applying each marginal distribution function to its own coordinate gives uniform coordinates and constructs the copula. In our own counterexample, every bivariate copula gives the same joint law for two constant coordinates.
+**How the definition helps.** Continuous margins reach every value strictly between zero and one, so H fixes C on the open cube, and continuity of C fixes the boundary (our own argument). Applying each Fᵢ to its own coordinate gives uniform coordinates and constructs the copula. For two constant coordinates, every bivariate copula gives the same joint law (our own counterexample).
 
 **Wikipedia:** [Copula (statistics)](https://en.wikipedia.org/wiki/Copula_%28statistics%29). It says: “This implies that the copula is unique if the marginals Fᵢ are continuous.”
 
@@ -1273,11 +1273,11 @@
 
 *True by definition.* MSC 62H10 (Multivariate distribution of statistics), 62H05. arXiv math.ST. Level 3: graduate.
 
-**Definition.** Take n independent centered normal vectors Gᵢ with covariance V, and allow singular V. Define the Wishart law with scale V and n degrees of freedom as the law of the sum of their outer products GᵢGᵢᵀ. The alternative density formula covers the case of invertible V and n at least the dimension.
+**Definition.** The Wishart law with scale V and n degrees of freedom is the law of ∑ GᵢGᵢᵀ, the sum of outer products of n independent centered normal vectors Gᵢ with covariance V. The scale V may be singular.
 
 **Problem.** If W is Wishart with scale V, then CWCᵀ is Wishart with scale CVCᵀ for any compatible real matrix C. The number of degrees of freedom stays the same.
 
-**How the definition helps.** The outer-product definition turns CWCᵀ into a sum of outer products of the transformed vectors CGᵢ (our own). These vectors are still independent and normal, now with covariance CVCᵀ (our own). The density definition cannot cover cases where CVCᵀ is singular or n is smaller than the output dimension (our own). The work shifts to proving the density formula when it applies and the linear image rule for normal vectors (our own).
+**How the definition helps.** Then CWCᵀ is the sum of the outer products of the vectors CGᵢ, which are independent centered normal vectors with covariance CVCᵀ (our own). A density definition cannot cover this, because CVCᵀ can be singular or n smaller than the output dimension (our own).
 
 **Wikipedia:** [Wishart distribution](https://en.wikipedia.org/wiki/Wishart_distribution). It says: “Then the Wishart distribution is the probability distribution of the p × p random matrix S = GGᵀ = ∑ᵢ₌₁ⁿ gᵢgᵢᵀ known as the scatter matrix.”
 
@@ -1287,15 +1287,15 @@
 
 ### Weighted characteristic-function gaps make distance covariance zero only at independence
 
-**Remember:** Compare the whole joint law rather than one moment.
+**Remember:** Compare the joint characteristic function with the product of the marginals.
 
 *True by definition.* MSC 62H20 (Measures of association (correlation, canonical correlation, etc.)), 60E10. arXiv math.ST, math.PR. Level 3: graduate.
 
-**Definition.** For dimensions p and q, put c(k) = π⁽ᵏ⁺¹⁾ᐟ²/Γ((k+1)/2) and write φ for characteristic functions. Squared distance covariance integrates \|φ₍X,Y₎(t,s) − φₓ(t)φᵧ(s)\|²/\[c(p)c(q)‖t‖ᵖ⁺¹‖s‖ᑫ⁺¹\] over nonzero t and s using Lebesgue measure (our own).
+**Definition.** Squared distance covariance integrates \|φ₍X,Y₎(t,s) − φₓ(t)φᵧ(s)\|², the gap between the joint characteristic function and the product of the marginal ones, over all nonzero frequencies t and s. The weight is the positive function 1/\[c(p)c(q)‖t‖ᵖ⁺¹‖s‖ᑫ⁺¹\], with c(k) = π⁽ᵏ⁺¹⁾ᐟ²/Γ((k+1)/2) for dimensions p and q (our own).
 
 **Problem.** For random vectors X and Y with finite first moments, distance covariance is zero exactly when X and Y are independent (Theorem 3.2).
 
-**How the definition helps.** Because the weight is positive, a zero integral forces the gap to vanish almost everywhere, and by continuity at every frequency (our own reasoning). Equal characteristic functions give equal laws, so the joint law is the product of the marginals. Ordinary covariance can miss dependence: for standard normal X and Y = X², the covariance E\[X³\] is zero (our own example). By our own reading, the real work is to show that the integral equals a simple formula in pairwise distances.
+**How the definition helps.** With a positive weight, a zero integral forces the gap to vanish almost everywhere, and by continuity at every frequency (our own reasoning). Equal characteristic functions give equal laws, so the joint law is the product of the marginals. Ordinary covariance can miss dependence: for standard normal X and Y = X², the covariance E\[X³\] is zero (our own example).
 
 **Paper or page:** [A Basic Treatment of the Distance Covariance](https://arxiv.org/abs/2206.10135v1). It says: “For all X and Y, 𝒱²(X,Y) = 0 if and only if X and Y are independent.”
 
@@ -1306,15 +1306,15 @@
 
 ### Calibration bounds forecast spread
 
-**Remember:** Calibrated forecasts average the true conditional mean.
+**Remember:** A calibrated forecast is a smoothed version of the true conditional mean.
 
 *Rules out counterexamples.* MSC 62J02 (General nonlinear regression). arXiv stat.ML. Level 3: graduate.
 
-**Definition.** A forecast F based on inputs X is calibrated if E\[Y ∣ F\] = F almost surely, where Y is the outcome.
+**Definition.** A forecast F based on inputs X is calibrated if E\[Y ∣ F\] = F almost surely, where Y is the outcome. So F is itself an average of the ideal forecast E\[Y ∣ X\], namely its conditional mean given F.
 
 **Problem.** Let Y and the forecasts be integrable. For every calibrated forecast F based on X and every convex function φ, E φ(F) ≤ E φ(E\[Y ∣ X\]).
 
-**How the definition helps.** Calibration makes F the conditional average of E\[Y ∣ X\] given F, by our own use of iterated expectation. Jensen’s inequality then bounds the convex function of that average by the average of the convex function. In our own counterexample, Y is zero and the input takes values ±1 equally often. Forecasting the input gives a larger expected square than forecasting zero.
+**How the definition helps.** Calibration and iterated expectation give F = E\[E\[Y ∣ X\] ∣ F\], so Jensen’s inequality gives φ(F) ≤ E\[φ(E\[Y ∣ X\]) ∣ F\] (our own). Without calibration the bound fails: if Y = 0 and the input is ±1 equally often, forecasting the input gives a larger expected square than forecasting zero (our own counterexample).
 
 **Paper or page:** [Model selection with Gini indices under auto-calibration](https://arxiv.org/abs/2207.14372v3). It says: “is auto-calibrated for Y, and it strictly dominates in convex order any other auto-calibrated regression function”
 
@@ -1328,11 +1328,11 @@
 
 *Rules out counterexamples.* MSC 62J10 (Analysis of variance and covariance (ANOVA)). arXiv math.ST. Level 3: graduate.
 
-**Definition.** For Gaussian data, project the observation vector onto mutually orthogonal subspaces of positive dimension. Use the squared length of each projection as one sum of squares.
+**Definition.** Project the Gaussian observation vector onto mutually orthogonal subspaces of positive dimension, and take each projection's squared length as one sum of squares. Each sum then uses its own group of coordinates in a combined orthonormal basis.
 
-**Problem.** For a centered Gaussian vector with covariance σ²I and σ &gt; 0, the sums are independent. Each sum divided by σ² has the law of a sum of independent squared standard normal variables, one per subspace dimension. This is the chi-squared law for that dimension.
+**Problem.** For a centered Gaussian vector with covariance σ²I and σ &gt; 0, the sums are independent. Each sum divided by σ² has the chi-squared law whose degrees of freedom equal the subspace dimension.
 
-**How the definition helps.** Orthogonal subspaces separate the sums into disjoint groups of independent Gaussian coordinates. Our own argument chooses an orthonormal basis for each subspace and combines the bases. The covariance hypothesis gives independent coordinates in those directions. In our own counterexample, using the same line twice gives identical nonconstant sums.
+**How the definition helps.** Covariance σ²I makes the coordinates in any orthonormal basis independent, and each sum uses its own disjoint group of them (our own). Using the same line twice gives identical nonconstant sums, which are not independent (our own counterexample).
 
 **Wikipedia:** [Cochran's theorem](https://en.wikipedia.org/wiki/Cochran%27s_theorem). It says: “Cochran's theorem then states that Q₁ and Q₂ are independent, with chi-squared distributions with n − 1 and 1 degree of freedom respectively.”
 
@@ -1340,15 +1340,15 @@
 
 ### Overlap guarantees finite logistic fits
 
-**Remember:** Without a separating direction, the likelihood cannot improve by sending coefficients to infinity.
+**Remember:** No separating direction means no fit improves forever.
 
 *Rules out counterexamples.* MSC 62J12 (Generalized linear models (logistic models)). arXiv stat.ME, stat.TH. Level 3: graduate.
 
-**Definition.** In binary logistic regression, each observation has a score equal to its predictor vector dotted with the coefficient vector. Reverse the score’s sign for outcome zero. Call the sample overlapping if no coefficient vector makes every signed score nonnegative and at least one positive.
+**Definition.** In binary logistic regression, give each observation the signed score ±xᵢ·β, with the plus sign for outcome one. The sample overlaps if no coefficient vector β makes every signed score nonnegative and at least one positive, so no direction separates the outcomes.
 
 **Problem.** Assume the predictor matrix has linearly independent columns and the sample overlaps. Then exactly one finite coefficient vector maximizes the likelihood.
 
-**How the definition helps.** Overlap forces some signed score below zero in every unit direction (our own). Compactness gives a uniform negative bound for the smallest score, so the log likelihood tends to minus infinity as coefficients diverge (our own). Strict concavity gives uniqueness (our own). If a direction instead gives every observation a positive signed score, scaling it up improves the fit indefinitely (our own).
+**How the definition helps.** Overlap and independent columns give every unit direction some negative signed score (our own). Compactness of the unit sphere makes this uniform, so the log likelihood tends to minus infinity as coefficients diverge, and strict concavity gives uniqueness (our own). With a separating direction, scaling it up improves the fit forever (our own).
 
 **Wikipedia:** [Separation (statistics)](https://en.wikipedia.org/wiki/Separation_%28statistics%29). It says: “in case of a logistic regression with completely separated data the maximum appears at the parameter space's margin, leading to "infinite" estimates”
 
@@ -1362,11 +1362,11 @@
 
 *Rules out counterexamples.* MSC 62J15 (Paired and multiple comparisons; multiple testing). arXiv stat.TH. Level 3: graduate.
 
-**Definition.** For each nonempty subset of a finite family of hypotheses, test the claim that all its members are true. Each test must reject a true claim with probability at most α. Reject an original hypothesis only if the tests reject every such claim containing it.
+**Definition.** Closed testing tests at level α, for each nonempty subset of a finite family of hypotheses, the claim that all its members are true. It rejects an original hypothesis only if every such claim containing it is rejected.
 
 **Problem.** The chance of rejecting any true original hypothesis is at most α, even when some original hypotheses are false.
 
-**How the definition helps.** Rejecting any true hypothesis requires rejecting the claim that all the true hypotheses hold together. That claim is true, so its test rejects with probability at most α. In our own counterexample, two independent tests each reject a true hypothesis with probability α. Separate testing then makes at least one error with probability 1 − (1 − α)², greater than α for 0 &lt; α &lt; 1.
+**How the definition helps.** Rejecting any true hypothesis requires rejecting the claim that all the true hypotheses hold, and that claim is true, so this happens with probability at most α. With two independent level-α tests of true hypotheses, separate testing errs at least once with probability 1 − (1 − α)² &gt; α for 0 &lt; α &lt; 1 (our own counterexample).
 
 **Paper or page:** [Too Many, Too Improbable: testing joint hypotheses and closed testing shortcuts](https://arxiv.org/abs/2108.04731v3). It says: “by means of a closed testing procedure controls the FWER at level α in the strong sense.”
 
@@ -1377,15 +1377,15 @@
 
 ### Confidence sequences bound false alarms
 
-**Remember:** If every set contains the truth, the sets cannot have empty intersection.
+**Remember:** Sets that all hold the truth always share a point.
 
 *True by definition.* MSC 62L10 (Sequential statistical analysis). arXiv stat.ME, stat.TH. Level 3: graduate.
 
-**Definition.** A confidence sequence at level 1−α consists of random sets Cₜ satisfying Pθ(θ ∈ Cₜ for every t) ≥ 1−α for every θ.
+**Definition.** A confidence sequence at level 1−α is a sequence of random sets Cₜ that, with probability at least 1−α, all contain the true parameter at once. In symbols, Pθ(θ ∈ Cₜ for every t) ≥ 1−α for every θ.
 
 **Problem.** Signal a change the first time the sets seen so far have empty intersection. If the parameter never changes, the chance of ever signaling is at most α.
 
-**How the definition helps.** One parameter inside every set also lies in their intersection (our own). An empty intersection therefore requires at least one set to miss the unchanged parameter (our own). The work lies in constructing sets whose chance of ever missing the parameter is at most α (our own).
+**How the definition helps.** If every set contains the unchanged parameter, so does their intersection, which is then nonempty (our own). So a signal requires some set to miss the parameter, which has probability at most α (our own).
 
 **Paper or page:** [Sequential change detection via backward confidence sequences](https://arxiv.org/abs/2302.02544v1). It says: “controls the probability of false alarm (PFA) at level α.”
 
@@ -1399,11 +1399,11 @@
 
 *True by definition.* MSC 62N02 (Estimation in survival analysis and censored data), 62P10. arXiv stat.AP, stat.ME. Level 3: graduate.
 
-**Definition.** In a proportional hazards model, a subject’s instantaneous event rate is a common baseline rate times a subject-specific multiplier. The risk set holds the subjects who have not yet had the event. Multiply the conditional event probabilities within those sets instead of using the full event-time likelihood.
+**Definition.** In a proportional hazards model, each subject's event rate is a common baseline rate times the subject's own multiplier. At each event time, compare only the subjects still at risk, those who have not yet had the event.
 
-**Problem.** Take independent subjects with continuous event times and complete follow-up. At an event time with positive total event rate, condition on that time and the subjects still at risk. Each subject’s chance of being the one who fails equals their multiplier divided by the sum of the at-risk subjects’ multipliers.
+**Problem.** For independent subjects with continuous event times and complete follow-up, condition on an event time with positive total rate and on the subjects still at risk. Each subject's chance of being the one who fails is their multiplier divided by the sum of the at-risk multipliers.
 
-**How the definition helps.** Conditioning on the event time and risk set makes each rate share the same baseline factor (our own). That factor cancels in the ratio (our own). The work moves to justifying the proportional rate model and deriving uncertainty for the estimate from these conditional comparisons (our own).
+**How the definition helps.** At one event time, all at-risk subjects share the same baseline rate, so it cancels from each subject's share of the total rate (our own). Subject i's share λ₀(t)rᵢ/∑ⱼ λ₀(t)rⱼ is just rᵢ/∑ⱼ rⱼ, the sum taken over the risk set (our own).
 
 **Wikipedia:** [Proportional hazards model](https://en.wikipedia.org/wiki/Proportional_hazards_model). It says: “The first factor is the partial likelihood shown below, in which the baseline hazard has "canceled out".”
 
@@ -1413,15 +1413,15 @@
 
 ### Coupled proposals attain total variation
 
-**Remember:** The stickier chain stays put whenever shared proposals fail to join the chains.
+**Remember:** Shared draws make the lighter chain accept whenever the heavier one does.
 
 *True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO, stat.TH. Level 4: research.
 
-**Definition.** Let w be the ratio of positive finite target and proposal densities on their common region. At each step draw a fresh proposal z and an independent uniform U on \[0,1\], sharing both draws between chains. Each chain at x moves to z if U &lt; min(1,w(z)/w(x)) and otherwise stays at x.
+**Definition.** Couple two independent-proposal Metropolis–Hastings chains by giving both the same proposal z and the same uniform U on \[0,1\] at each step. With w the ratio of the positive finite target and proposal densities on their common region, a chain at x moves to z if U &lt; min(1, w(z)/w(x)) and otherwise stays.
 
 **Problem.** Start the chains at distinct points. After t steps, their probability of still differing equals the largest difference between the probabilities they assign to any one event.
 
-**How the definition helps.** Until meeting, the chain starting at the heavier point x stays there and the other chain’s weight never exceeds w(x) (our own). Only proposals lighter than x can move the other chain alone, and accepting at x makes both chains meet (our own). Continuous proposals never revisit x almost surely, so disagreement has exactly the probability difference on {x} (our own). Every event’s probability difference is bounded by disagreement under the coupling (our own).
+**How the definition helps.** The chains meet once the chain at the heavier start x accepts, since the other chain, whose weight never exceeds w(x), then accepts too (our own). Until then the heavier chain stays at x, and continuous proposals never revisit x, so disagreement has exactly the probability difference on {x} (our own). Disagreement under any coupling bounds every event's probability difference, so the two are equal (our own).
 
 **Paper or page:** [On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514v2). It says: “for all t ≥ 1, \|Pᵗ(𝐱,·) − Pᵗ(𝐲,·)\|ₜᵥ = ℙ(𝐱,𝐲)(τ &gt; t) = max(r(𝐱),r(𝐲))ᵗ.”
 
@@ -1431,15 +1431,15 @@
 
 ### Reweighted samples restore unbiasedness
 
-**Remember:** Weight the whole pool by the same factor that normalizes the point weights.
+**Remember:** Pick pools in proportion to their average weight.
 
 *True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 4: research.
 
-**Definition.** Draw N ≥ 1 independent points from a proposal law Q, and give each point weight w equal to the target density relative to Q. Multiply this pool’s law by its average weight to obtain the new sampling law. Within that law, average function values with weights proportional to w.
+**Definition.** Draw a pool of N ≥ 1 independent points from a proposal law Q, and weight each point by w, the target density relative to Q. Sample pools in proportion to their average weight, and within a pool average function values with weights proportional to w.
 
 **Problem.** For an integrable function, the weighted average in a pool from the new law has the target mean. The target law must have a density relative to the proposal law.
 
-**How the definition helps.** The average weight in the new density cancels the denominator in the weighted average (our own). Pools with zero total weight have zero probability under the new law (our own). Each remaining term integrates to the target mean after weighting its proposal density (our own). The work moves from correcting a biased average to sampling from the new law (our own).
+**How the definition helps.** The pool's average weight in the new law cancels the denominator of the weighted average, leaving the plain mean of w f under the proposal law (our own). Each term w f has the target mean, and pools with zero total weight have probability zero under the new law (our own).
 
 **Paper or page:** [BR-SNIS: Bias Reduced Self-Normalized Importance Sampling](https://arxiv.org/abs/2207.06364v2). It says: “For every $N \\in \\mathbb{N}<sup>\*</sup> $ and $\\pi $-integrable function $f$, \\\[ {\\textstyle \\int \\targetkern f(x<sup>1:N</sup>) \\boldsymbol{\\pi}<sub>N</sub> ( {d} x<sup>1:N</sup>) = \\pi (f) .} \\\]”
 
@@ -1453,11 +1453,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 62C05 (General considerations in statistical decision theory), 62N01. arXiv stat.ME, stat.AP. Level 4: research.
 
-**Definition.** A competing-risks forecast gives a density for event time and type and a survival probability at each time. Charge minus the log forecast density for an observed event and minus the log forecast survival probability at a censoring time.
+**Definition.** The censored log score charges minus the log forecast density of event time and type when an event is seen, and minus the log forecast survival probability when the case is censored. It is the forecast's negative log likelihood for what was actually observed (our own).
 
 **Problem.** Under independent censoring, assume the observed law identifies the event law and the true expected score is finite. Then the true joint law of event time and type uniquely minimizes the expected score.
 
-**How the definition helps.** The score equals the observed-data negative log likelihood up to censoring terms common to all forecasts (our own). Gibbs’ inequality minimizes its expectation exactly at forecasts giving the true observed law (our own). Identifiability then gives uniqueness of the event law (our own).
+**How the definition helps.** Up to censoring terms common to all forecasts, the score is the observed-data negative log likelihood, so Gibbs’ inequality makes the true observed law the unique minimizer (our own). Identifiability then gives uniqueness of the event law (our own).
 
 **Paper or page:** [A Proper Scoring Rule for Validation of Competing Risks Models](https://arxiv.org/abs/2104.01000v1). It says: “We propose a version of the logarithmic scoring rule for competing risks data and show that it remains strictly proper under non-informative censoring.”
 
@@ -1471,11 +1471,11 @@
 
 *True by definition.* MSC 62C05 (General considerations in statistical decision theory). arXiv stat.ME, math.ST. Level 4: research.
 
-**Definition.** A scoring rule is proper if the true law minimizes the expected loss, and strictly proper if it is the only minimizer. The aggregated score is a weighted sum of proper scores with nonnegative weights.
+**Definition.** A scoring rule is proper if the true law minimizes expected loss, and strictly proper if it is the only minimizer. An aggregated score adds proper scores with nonnegative weights, so a wrong forecast's extra expected loss is a nonnegatively weighted sum of nonnegative terms.
 
 **Problem.** For a finite weighted sum with finite expected component losses, the aggregated score is proper. It is strictly proper if some strictly proper component has a positive weight.
 
-**How the definition helps.** The extra expected loss of a wrong forecast is a nonnegative weighted sum of nonnegative terms, so propriety follows by definition (our own unpacking). A strict component with positive weight makes one term positive, so no wrong forecast ties with the truth. Negative weights break the result. Weights 1 and −2 on two copies of a strict score S give −S, which the truth maximizes (our own counterexample).
+**How the definition helps.** Each term of the extra expected loss is nonnegative, so propriety follows (our own unpacking). A strict component with positive weight makes one term positive for every wrong forecast, so no wrong forecast ties with the truth. Negative weights break this: weights 1 and −2 on two copies of a strict score S give −S, which the truth maximizes (our own counterexample).
 
 **Paper or page:** [Proper Scoring Rules for Multivariate Probabilistic Forecasts based on Aggregation and Transformation](https://arxiv.org/abs/2407.00650v1). It says: “If at least one scoring rule Sᵢ is strictly proper relative to ℱ and wᵢ &gt; 0, the aggregated scoring rule S<sub>𝒮,𝐰</sub> is strictly proper relative to ℱ.”
 
@@ -1485,15 +1485,15 @@
 
 ### Candidate labels retain calibrated forecasts
 
-**Remember:** Trying both labels includes the forecast trained with the right one.
+**Remember:** Try both labels; the true one makes the new case ordinary.
 
 *Makes the theorem clean to state or prove.* MSC 62C05 (General considerations in statistical decision theory). arXiv stat.ML. Level 4: research.
 
-**Definition.** For each binary candidate label, append the new labeled case and fit by the same order-independent rule. Require the residuals, multiplied by each chosen input function, to average zero in each augmented sample. Return the two fitted predictions for the new case.
+**Definition.** For each of the two candidate labels, add the new case with that label and refit by one order-independent rule. The rule makes the residuals, times each chosen input function, average zero over the augmented sample. Return both fitted predictions for the new case.
 
 **Problem.** Suppose the joint law of the cases is unchanged by reordering, and all residual products have finite means. For each chosen function, the expected residual product for the new case is zero for the candidate fitted with its true label.
 
-**How the definition helps.** Trying both labels includes the fit that treats the new case exactly like a training case. In our own argument, symmetry gives every case the same expected residual product for each fixed function. That expectation equals the expected sample average, which is zero by construction. Finding fits that satisfy every required equation carries the work.
+**How the definition helps.** The fit with the true label treats the new case exactly like a training case, so by symmetry its expected residual product equals that of every case (our own). That common value is the expected sample average, which is zero by construction (our own).
 
 **Paper or page:** [Generalized Venn and Venn-Abers Calibration with Applications in Conformal Prediction](https://arxiv.org/abs/2502.05676v3). It says: “contains the perfectly multicalibrated prediction”
 
@@ -1503,15 +1503,15 @@
 
 ### Count deletion estimates Poisson risk
 
-**Remember:** Removing one count shifts a Poisson expectation by its mean.
+**Remember:** Removing one count turns a count-weighted fit into mean times fit.
 
 *True by definition.* MSC 62C05 (General considerations in statistical decision theory), 62F40. arXiv stat.ME. Level 4: research.
 
-**Definition.** Let g(Y) fit means to independent Poisson counts Y and start with the squared error ‖Y − g(Y)‖². For each i with Yᵢ &gt; 0, add 2Yᵢ\[gᵢ(Y) − gᵢ(Y − eᵢ)\], where eᵢ subtracts one count when removed.
+**Definition.** For independent Poisson counts Y and a fit g(Y) of their means, start with the training error ‖Y − g(Y)‖². For each i with Yᵢ &gt; 0, add the deletion term 2Yᵢ\[gᵢ(Y) − gᵢ(Y − eᵢ)\], where Y − eᵢ removes one count from coordinate i.
 
 **Problem.** If each fitted coordinate has finite second moment, this corrected sum estimates expected squared prediction error without bias. Evaluate prediction error against an independent vector of counts with the same means.
 
-**How the definition helps.** Deleting one count makes the correction recover the cross term that ordinary training error misses. In our own calculation, k times the Poisson probability of k equals the mean times the probability of k − 1 for k ≥ 1. Summing over k converts each count-weighted deleted fit into an unbiased estimate of the unknown mean times the expected original fit. Expanding the fresh-data squared error then gives the stated correction.
+**How the definition helps.** The deletion term estimates the cross term between the mean and the fit that training error misses, because E\[Yᵢh(Y − eᵢ)\] = μᵢE\[h(Y)\] for Poisson counts (our own). This identity follows from k P(Yᵢ = k) = μᵢ P(Yᵢ = k − 1) for k ≥ 1 (our own). Expanding the fresh-data squared error then gives the stated correction (our own).
 
 **Paper or page:** [Unbiased Test Error Estimation in the Poisson Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2212.01943v3). It says: “where we abbreviate g₋(Y) = (g₁(Y−e₁), …, gₙ(Y−eₙ))”
 
@@ -1529,7 +1529,7 @@
 
 **Problem.** Tilted risk tends to the minimum loss as t → −∞ and to the maximum loss as t → +∞. As t → 0 it tends to the mean, so the value at zero makes it continuous.
 
-**How the definition helps.** One formula makes the minimum, the mean and the maximum points of a single continuous family. Our own explanation is that for large \|t\| the term exp(t fᵢ) with the extreme loss dominates the sum. The factor 1/N then adds only −(log N)/t, which tends to zero. Near t = 0, a first-order expansion of the exponential gives the mean.
+**How the definition helps.** For large \|t\|, the exponential of the extreme loss dominates the sum, and the 1/N factor adds only −(log N)/t, which tends to zero (our own). Near t = 0, a first-order expansion of the exponential and the logarithm gives the mean (our own).
 
 **Paper or page:** [On Tilted Losses in Machine Learning: Theory and Applications](https://arxiv.org/abs/2109.06141v3). It says: “R̃(−∞; θ) ≔ lim as t → −∞ of R̃(t; θ) = Ř(θ), R̃(0; θ) ≔ lim as t → 0 of R̃(t; θ) = R̄(θ)”
 
@@ -1543,11 +1543,11 @@
 
 *True by definition.* MSC 62C05 (General considerations in statistical decision theory). arXiv stat.ME, math.ST. Level 4: research.
 
-**Definition.** A proper score minimizes expected loss at the true forecast law, uniquely so for a strictly proper score. Given a measurable map T, the transformed score evaluates T(y) against the distribution of T(Y) when Y follows the forecast law.
+**Definition.** The transformed score applies a measurable map T to both sides: it scores the law of T(Y) under the forecast against the transformed outcome T(y). A score is proper if reporting the true law minimizes expected loss, and strictly proper if only the true law does.
 
 **Problem.** Propriety on transformed laws implies propriety of the transformed score. On standard Borel outcome spaces, strict propriety carries over for an injective measurable transformation T.
 
-**How the definition helps.** Under each true law, the expected transformed loss equals the original expected loss for the transformed laws (our own). A proper score therefore favors reporting the truth, and strict propriety gives uniqueness when distinct forecast laws have distinct images (our own).
+**How the definition helps.** Under each true law, a forecast's expected transformed loss equals the original expected loss of its transformed law against the transformed true law (our own). So propriety carries over, and so does strict propriety when distinct forecasts have distinct images, as for injective T on standard Borel spaces (our own).
 
 **Paper or page:** [Proper Scoring Rules for Multivariate Probabilistic Forecasts based on Aggregation and Transformation](https://arxiv.org/abs/2407.00650v1). It says: “is proper relative to ℱ. If S is strictly proper relative to T(ℱ) and T is injective, then the resulting scoring rule S<sub>T</sub> is strictly proper relative to ℱ.”
 
@@ -1557,15 +1557,15 @@
 
 ### Under log loss, minimum excess risk equals conditional mutual information
 
-**Remember:** With log loss, the price of not knowing the model is mutual information.
+**Remember:** With log loss, not knowing the model costs exactly the mutual information.
 
 *True by definition.* MSC 62C10 (Bayesian problems; characterization of Bayes procedures), 94A17. arXiv cs.LG, cs.IT. Level 4: research.
 
-**Definition.** For predicting Y, log loss charges minus the log probability assigned to its observed outcome. Minimum excess risk subtracts the least expected loss using (X,Zⁿ,W) from the least expected loss using only (X,Zⁿ). Both minima range over all conditional forecast laws.
+**Definition.** Under log loss, which charges minus the log probability of the observed outcome, minimum excess risk is the best expected loss for Y using (X,Zⁿ) minus the best using (X,Zⁿ,W). Each best is taken over all conditional forecast laws, and it equals a conditional entropy of Y (our own).
 
 **Problem.** For discrete Y with finite conditional entropy given (X,Zⁿ), minimum excess risk under log loss equals the conditional mutual information I(W;Y given X,Zⁿ).
 
-**How the definition helps.** Gibbs’ inequality makes the true conditional forecast optimal with either information set (our own). Its expected log loss is the corresponding conditional entropy (our own). Subtracting those entropies gives the conditional mutual information (our own).
+**How the definition helps.** Gibbs’ inequality makes the true conditional law the best forecast, and its expected log loss is the conditional entropy of Y given the information (our own). The difference H(Y given X,Zⁿ) − H(Y given X,Zⁿ,W) is the conditional mutual information (our own).
 
 **Paper or page:** [Minimum Excess Risk in Bayesian Learning](https://arxiv.org/abs/2012.14868v2). It says: “For the log loss, MERₗₒg = I(W; Y \| X, Zⁿ).”
 
@@ -1579,11 +1579,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME. Level 4: research.
 
-**Definition.** For binary treatment at each visit, keep the target treatment and switch the other treatment to the target with a specified history-dependent probability. Require this probability to vanish whenever the target has zero conditional probability at that history (our own).
+**Definition.** A flip intervention keeps each visit's target treatment and switches the other treatment to the target with a specified history-dependent probability. That probability must be zero wherever the target has zero conditional probability at that history (our own).
 
 **Problem.** Assume consistency and sequential exchangeability given observed histories, with flip probabilities determined by the observed law or specified in advance. These longitudinal flip effects remain identifiable even when some treatments have zero probability at some histories.
 
-**How the definition helps.** Each flip assigns positive probability only to treatments observed at that history (our own). An unconditional switch would require outcomes from unsupported treatments (our own). The longitudinal g-formula averages the observed conditional laws along the supported histories to identify the intervention mean (our own).
+**How the definition helps.** Each flip gives positive probability only to treatments that occur at that history, so no outcome from an unsupported treatment is needed (our own). The longitudinal g-formula then averages the observed conditional laws along supported histories to identify the intervention mean (our own). An unconditional switch to the target would fail where the target never occurs (our own).
 
 **Paper or page:** [Longitudinal weighted and trimmed treatment effects with flip interventions](https://arxiv.org/abs/2506.09188v1). It says: “With longitudinal data, we then show that flip interventions provide interpretable weighting or trimming on non-baseline covariates and, crucially, yield effects that are identifiable under arbitrary positivity violations.”
 
@@ -1597,11 +1597,11 @@
 
 *True by definition.* MSC 62F15 (Bayesian inference), 68T07. arXiv stat.ML, cs.LG. Level 4: research.
 
-**Definition.** Fix data x and parameter θ with finite positive marginal likelihood. Call the likelihood flat when p(x given z,θ) is constant for prior-almost every z (our own). Posterior collapse means equality of posterior and prior laws.
+**Definition.** Fix data x and parameter θ with finite positive marginal likelihood. The likelihood is flat when p(x given z,θ) is the same for prior-almost every z, so the data say nothing about z (our own). Posterior collapse means the posterior law of z equals its prior law.
 
 **Problem.** For fixed x and θ, posterior collapse occurs exactly when the hidden-variable likelihood is flat prior-almost surely (our own).
 
-**How the definition helps.** Bayes’ rule gives the posterior density relative to the prior as the likelihood divided by the marginal likelihood (our own). This ratio equals one prior-almost surely exactly when the likelihood is constant prior-almost surely (our own).
+**How the definition helps.** By Bayes’ rule, the posterior density relative to the prior is the likelihood divided by the marginal likelihood (our own). This ratio is one prior-almost surely exactly when the likelihood is constant prior-almost surely (our own).
 
 **Paper or page:** [Posterior Collapse and Latent Variable Non-identifiability](https://arxiv.org/abs/2301.00537v1). It says: “The local latent variables z are non-identifiable at θ̂ if and only if the posterior of the latent variable z collapses, p(z \| x) = p(z).”
 
@@ -1611,15 +1611,15 @@
 
 ### Posterior ranks detect marginal errors
 
-**Remember:** A randomized probability rank tests the whole chosen marginal law.
+**Remember:** Spread each jump evenly and the true law's rank is uniform.
 
 *Makes the theorem clean to state or prove.* MSC 62F15 (Bayesian inference). arXiv stat.TH. Level 4: research.
 
-**Definition.** Fix the data and let F be a proposed conditional distribution function for a real quantity T drawn from its true conditional law. Independently draw U uniformly on \[0,1\] and set R = F(T−) + U(F(T) − F(T−)), where F(T−) is the left limit.
+**Definition.** Fix the data, a real quantity T and a proposed conditional distribution function F. The randomized rank is R = F(T−) + U(F(T) − F(T−)), with U uniform on \[0,1\] and independent of T. It spreads each jump of F evenly, so R is uniform when T has law F.
 
 **Problem.** At these fixed data, R is uniform on (0, 1) exactly when F is the true conditional distribution function.
 
-**How the definition helps.** Randomizing within each jump gives a uniform rank under the proposed law by the randomized probability integral transform (our own). Conversely, for every t, the events T ≤ t and R ≤ F(t) can differ only where R = F(t) (our own). Under uniformity that equality has probability zero, giving P(T ≤ t) = F(t) (our own).
+**How the definition helps.** Under the true F, the randomized probability integral transform gives a uniform R (our own). Conversely, for each t the events T ≤ t and R ≤ F(t) differ only where R = F(t) (our own). Uniformity gives that event probability zero, so P(T ≤ t) = F(t) (our own).
 
 **Paper or page:** [Simulation-Based Calibration Checking for Bayesian Computation: The Choice of Test Quantities Shapes Sensitivity](https://arxiv.org/abs/2211.02383v3). It says: “if and only if ∀x ∈ \[0, 1\]: q₍φ,𝑓₎(x \| y) = x.”
 
@@ -1633,11 +1633,11 @@
 
 *True by definition.* MSC 62F40 (Bootstrap, jackknife and other resampling methods). arXiv stat.ME. Level 4: research.
 
-**Definition.** Let Y be a Gaussian vector with covariance σ²I. Independently draw centered Gaussian noise W with the same covariance. For α &gt; 0, train on T = Y + √α W and test on S = Y − W/√α.
+**Definition.** Let Y be a Gaussian vector with covariance σ²I, and let W be independent centered Gaussian noise with the same covariance. For α &gt; 0, train on T = Y + √α W and test on S = Y − W/√α; the opposite noise signs make their covariance σ²I − σ²I = 0.
 
-**Problem.** The training and test vectors are independent. For a prediction rule g, subtract nσ²(1/α − α) from the squared distance between S and g(T), where n is the dimension. With finite squared error, this estimates the expected squared distance between g(T) and an independent copy of T without bias.
+**Problem.** The training and test vectors are independent. For a rule g with finite squared error in dimension n, ‖S − g(T)‖² − nσ²(1/α − α) estimates without bias the expected squared distance between g(T) and an independent copy of T.
 
-**How the definition helps.** The opposite noise weights cancel the shared covariance, so the jointly Gaussian vectors are independent. Our own calculation replaces a fresh training-distribution draw with S, which has the same mean but a different variance. Subtracting the difference in total variances corrects the squared error. Estimating risk at the original noise level takes a separate argument.
+**How the definition helps.** Zero covariance makes the jointly Gaussian vectors independent. S has the same mean as a fresh copy of T, but its total variance is larger by nσ²(1/α − α), which the subtraction removes (our own). Estimating risk at the original noise level takes a separate argument.
 
 **Paper or page:** [Unbiased Risk Estimation in the Normal Means Problem via Coupled Bootstrap Techniques](https://arxiv.org/abs/2111.09447v3). It says: “is unbiased for the noise-elevated risk”
 
@@ -1651,11 +1651,11 @@
 
 *True by definition.* MSC 62G10 (Nonparametric hypothesis testing), 60B10, 46E22. arXiv stat.CO, stat.ML. Level 4: research.
 
-**Definition.** For positive densities p and differentiable q, write A<sub>q</sub> f = div f + f · ∇log q for differentiable vector fields f. Fix a unit ball B of Stein test fields for q. Define Dₚ,ᵩ(π) as the supremum over f in B of Eπ\[(q/p)A<sub>q</sub> f\] (our own).
+**Definition.** For positive densities p and q with q differentiable, use the Stein operator A<sub>q</sub> f = div f + f · ∇log q on a unit ball B of test fields for q. The gradient-free discrepancy Dₚ,ᵩ(π) is the supremum over f in B of Eπ\[(q/p)A<sub>q</sub> f\], the usual Stein test for q with each sample reweighted by q/p (our own).
 
 **Problem.** Assume Z = Eπ\[q/p\] is finite and positive and each weighted test field’s operator value is integrable. With dπ̄ = (q/p)dπ/Z, the discrepancy Dₚ,ᵩ(π) equals Z times Dᵩ,ᵩ(π̄).
 
-**How the definition helps.** The mean of (q/p) times a function under π equals Z times its mean under π̄, so the result is one line (our own unpacking). When π equals p, the reweighted law is q and Z = 1, so the discrepancy is zero (our own check). The identity lets known results for the usual discrepancy transfer to the new one. Proving that a small discrepancy forces π close to p still takes separate conditions.
+**How the definition helps.** The mean of (q/p)h under π equals Z times the mean of h under π̄, so the identity takes one line (our own unpacking). The identity lets known results for the usual discrepancy transfer to the new one. Showing that a small discrepancy forces π close to p still needs separate conditions.
 
 **Paper or page:** [Gradient-Free Kernel Stein Discrepancy](https://arxiv.org/abs/2207.02636v2). It says: “Then π̄ ∈ 𝒫(ℝᵈ) and D<sub>p,q</sub>(π) = Z D<sub>q,q</sub>(π̄).”
 
@@ -1665,15 +1665,15 @@
 
 ### Characteristic kernels distinguish conditional laws
 
-**Remember:** Distinct laws need distinct means, and squaring prevents cancellation across groups.
+**Remember:** A characteristic kernel tells laws apart; squaring stops groups from canceling.
 
 *Rules out counterexamples.* MSC 62G10 (Nonparametric hypothesis testing), 68T05. arXiv stat.ML. Level 4: research.
 
-**Definition.** A law’s kernel mean is its expected feature vector for the chosen kernel. A kernel is characteristic if distinct probability laws have distinct kernel means. Compare two conditional laws given Z by averaging the squared Hilbert space distance between their kernel means over Z.
+**Definition.** A kernel is characteristic if distinct probability laws have distinct kernel means, their expected feature vectors. Compare two conditional laws given Z by averaging over Z the squared Hilbert space distance between their kernel means.
 
 **Problem.** When the kernel mean exists and is one-to-one, the averaged squared distance is zero exactly when the conditional laws agree almost surely.
 
-**How the definition helps.** In our own proof, zero average squared distance forces equal kernel means almost surely, and injectivity then forces equal conditional laws. The work lies in proving that the means exist and that the chosen kernel separates laws. For our own counterexample, the linear kernel on the real line represents each law by its ordinary mean. A point mass at zero and a fair mixture of −1 and 1 have the same mean in every group.
+**How the definition helps.** A zero average of squares forces equal kernel means almost surely, and a characteristic kernel then forces equal conditional laws (our own proof). The linear kernel on the real line keeps only each law's ordinary mean (our own counterexample). So a point mass at zero and a fair mixture of −1 and 1 look identical in every group.
 
 **Paper or page:** [A Kernel-Based Conditional Two-Sample Test Using Nearest Neighbors (with Applications to Calibration, Regression Curves, and Simulation-Based Inference)](https://arxiv.org/abs/2407.16550v2). It says: “ECMMD²\[ℱ, P₍X∣Z₎, P₍Y∣Z₎\] = 0 if and only if ℙ\[P₍X∣Z₎ = P₍Y∣Z₎\] = 1.”
 
@@ -1687,11 +1687,11 @@
 
 *True by definition.* MSC 62G10 (Nonparametric hypothesis testing). arXiv stat.ME. Level 4: research.
 
-**Definition.** Pool independent samples from two populations, keeping individual observations distinguishable but hiding their labels. Keep the original group sizes. Draw a new labeling with probability proportional to the product of the proposed density ratios for observations assigned the second label.
+**Definition.** Pool independent samples from two populations, and hide the labels but keep the group sizes and each observation's identity. Draw a new labeling with probability proportional to the product of the density ratio over the observations it labels second. When the ratio is correct, this is the conditional law of the labeling given the pool (our own).
 
 **Problem.** Suppose the second population density equals the first times a known positive function, up to a constant. Given the unlabeled pool, permuting the original labeling and independent weighted redraws leaves their joint law unchanged.
 
-**How the definition helps.** Weighted relabeling gives each assignment its correct conditional probability, whereas uniform relabeling ignores differences between the densities. In our own calculation, each assignment likelihood contains the same product of first-population densities. Canceling that product leaves the proposed weights. Independent draws using those weights therefore have the same conditional law as the original assignment.
+**How the definition helps.** Each labeling's likelihood is the product of first-population densities over the whole pool times the density ratio over the observations labeled second (our own). The common product cancels, so weighted redraws have the same conditional law as the original labeling and are exchangeable with it (our own). Uniform relabeling ignores the density difference and loses this.
 
 **Paper or page:** [Nonparametric inference for ratios of densities via uniformly valid and powerful permutation tests](https://arxiv.org/abs/2505.24529v2). It says: “Then the sequence (Z, Z⁽¹⁾, …, Z⁽ᴴ⁾) is exchangeable.”
 
@@ -1705,11 +1705,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 62G10 (Nonparametric hypothesis testing), 60B10. arXiv stat.CO, stat.ML. Level 4: research.
 
-**Definition.** For Gaussian density q, transform each scalar polynomial f by Af = Δf + ∇log q · ∇f. The discrepancy tests the expected transform of every monomial through degree r, vanishing when all these expectations equal zero (our own).
+**Definition.** For a Gaussian density q, the Stein operator Af = Δf + ∇log q · ∇f gives every polynomial f a transform with mean zero under q. The polynomial Stein discrepancy checks the expected transform of every monomial through degree r under the comparison law, and is zero when all vanish (our own).
 
 **Problem.** For a nonsingular Gaussian target and a comparison law with finite moments through degree r, zero discrepancy is equivalent to agreement of all those moments.
 
-**How the definition helps.** Whitening the Gaussian preserves polynomial degree and turns the operator into a Gaussian generator with positive definite diffusion matrix (our own). In principal coordinates its polynomial eigenbasis consists of products of Hermite polynomials, with nonzero eigenvalues at every positive degree (our own). Thus zero transformed means force exactly the Gaussian polynomial means through degree r (our own).
+**How the definition helps.** After whitening, A is a Gaussian generator whose eigenfunctions are products of Hermite polynomials, with nonzero eigenvalues at every positive degree (our own). So the transforms of monomials through degree r span all polynomials of degree at most r with Gaussian mean zero, and zero discrepancy matches all moments through degree r (our own).
 
 **Paper or page:** [The Polynomial Stein Discrepancy for Assessing Moment Convergence](https://arxiv.org/abs/2412.05135v1). It says: “In the Bernstein-von Mises limit, where the posterior has a symmetric positive-definite covariance matrix Σ, PSD = 0 if and only if the multi-index moments of P and Q match up to order r.”
 
@@ -1723,11 +1723,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 62G15 (Nonparametric tolerance and confidence regions), 62G30. arXiv stat.ME, stat.TH. Level 4: research.
 
-**Definition.** For candidate label y, compute scores equivariantly under permutations of the augmented sample. Keep calibration units whose swap into the test position preserves its selection and selection type. Among the candidate and retained units (m in total), accept y when fewer than ⌈(1−α)m⌉ scores are strictly smaller than its score.
+**Definition.** For candidate label y, keep only the calibration units that, if swapped into the test position, would still be selected with the same selection type, and compute scores equivariantly. Accept y when fewer than ⌈(1−α)m⌉ of the m candidate and retained scores are strictly smaller than the candidate's score.
 
 **Problem.** Suppose the selection rule does not depend on the order of the calibration units, and the data are exchangeable. Then the prediction set covers the selected unit's outcome with probability at least 1 − α, conditional on that selection.
 
-**How the definition helps.** Given the selection event, the test unit's score is exchangeable with the reference scores, so the usual rank argument works again (our own unpacking). Ordinary conformal sets can fail for selected units, because selection favors unusual cases, as the abstract says. The paper also gives fast ways to compute the reference set for common selection rules.
+**How the definition helps.** Given the selection event, the test score is exchangeable with the retained scores, so the usual rank argument applies (our own unpacking). Ordinary conformal sets can fail for selected units, because selection favors unusual cases.
 
 **Paper or page:** [Confidence on the Focal: Conformal Prediction with Selection-Conditional Coverage](https://arxiv.org/abs/2403.03868v3). It says: “This paper presents a general framework for constructing a prediction set with finite-sample exact coverage, conditional on the unit being selected by a given procedure.”
 
@@ -1741,11 +1741,11 @@
 
 *True by definition. Confidence: medium.* MSC 62G15 (Nonparametric tolerance and confidence regions), 62A01. arXiv stat.ME, math.ST. Level 4: research.
 
-**Definition.** For candidate y, let p(y) be its conformal p-value. Define the plausibility of each nonempty assertion A as sup{p(y) : y ∈ A}, and assign zero to the empty assertion.
+**Definition.** The plausibility of a nonempty assertion A is the largest conformal p-value among its members, sup{p(y) : y ∈ A}, and the empty assertion gets zero. So any assertion that contains the true value is at least as plausible as the true value itself.
 
 **Problem.** Assume the conformal p-value at the true next observation is valid under the sampling law. For each α ∈ \[0,1\], the probability that some assertion containing that observation has plausibility at most α is at most α (our own).
 
-**How the definition helps.** Taking a supremum means any set that contains the true value has plausibility at least that of the true value, by our own reasoning. So one bad event covers every set at once: the true value's own plausibility is at most α. Conformal prediction already bounds the chance of this event by α.
+**How the definition helps.** Every assertion containing the true observation has plausibility at least its p-value, so one event covers them all: that p-value is at most α (our own). Conformal validity bounds the probability of this event by α.
 
 **Paper or page:** [Validity, consonant plausibility measures, and conformal prediction](https://arxiv.org/abs/2001.09225v3). It says: “We go on to show that both types of prediction validity can be achieved by interpreting the conformal prediction output as the contour function of a consonant plausibility measure.”
 
@@ -1759,11 +1759,11 @@
 
 *True by definition.* MSC 62G15 (Nonparametric tolerance and confidence regions), 62G30. arXiv stat.ME, stat.TH. Level 4: research.
 
-**Definition.** For n calibration scores and 0 &lt; α &lt; 1, put k = ⌈(1−α)(n+1)⌉. Accept a candidate whose score is at most the kth smallest calibration score, using infinity if k = n+1.
+**Definition.** For n calibration scores and 0 &lt; α &lt; 1, put k = ⌈(1−α)(n+1)⌉. Accept a candidate whose score is at most the kth smallest calibration score, or every candidate if k = n+1, so coverage depends only on the rank positions of the scores (our own).
 
-**Problem.** Assume n calibration and m future scores are jointly exchangeable and almost surely distinct. The coverage fraction’s law depends only on n, α and m. For fixed n with k ≤ n, the fraction converges in distribution to Beta(k,n+1−k) as m grows.
+**Problem.** If n calibration and m future scores are jointly exchangeable and almost surely distinct, the coverage fraction’s law depends only on n, α and m. For fixed n with k ≤ n, the fraction converges in distribution to Beta(k,n+1−k) as m grows.
 
-**How the definition helps.** Uniform pooled ranks make the coverage count the number of future scores preceding the kth calibration score (our own). Its law therefore matches the count from independent uniform scores (our own). There, the fraction approaches the kth uniform calibration order statistic, which has law Beta(k,n+1−k) (our own). For k = n+1, all points are covered (our own).
+**How the definition helps.** Exchangeable distinct scores make all pooled orderings equally likely, and coverage counts the future scores below the kth calibration score, so its law matches that for independent uniform scores (our own). There the fraction tends to the kth of n uniform order statistics, which has law Beta(k,n+1−k) (our own). For k = n+1, everything is covered (our own).
 
 **Paper or page:** [Universal distribution of the empirical coverage in split conformal prediction](https://arxiv.org/abs/2303.02770v2). It says: “Both distributions are universal, being determined solely by the nominal miscoverage level and the calibration sample size”
 
@@ -1777,11 +1777,11 @@
 
 *True by definition.* MSC 62G15 (Nonparametric tolerance and confidence regions). arXiv stat.ME. Level 4: research.
 
-**Definition.** Let C indicate coverage by a fixed prediction set, m(X) predict its conditional mean, and w(X) estimate the target-to-source input density ratio. The corrected coverage is the target mean of m(X) plus the source mean of w(X)(C − m(X)).
+**Definition.** The corrected coverage estimates target coverage of a fixed prediction set as the target mean of a coverage prediction m(X) plus a source correction, the source mean of w(X)(C − m(X)). Here C indicates coverage and w(X) estimates the target-to-source input density ratio.
 
 **Problem.** Assume a common outcome law given inputs, target inputs absolutely continuous relative to source inputs, and integrable terms. The corrected population average equals target coverage if either m or w is correct.
 
-**How the definition helps.** A correct m gives the same conditional coverage in both populations, and the source correction then has mean zero (our own). A correct w converts the source correction into the target mean of C − m(X), canceling the prediction term (our own).
+**How the definition helps.** A correct m makes the correction's mean zero, since the common outcome law gives the same conditional coverage in both populations (our own). A correct w turns the correction into the target mean of C − m(X), which cancels the prediction term (our own).
 
 **Paper or page:** [Doubly Robust Calibration of Prediction Sets under Covariate Shift](https://arxiv.org/abs/2203.01761v3). It says: “holds true, whenever either of the following holds true:”
 
@@ -1791,15 +1791,15 @@
 
 ### Classifier odds recover copula density
 
-**Remember:** Compare joint ranks to independent ranks using classifier odds.
+**Remember:** The odds of joint against uniform are the copula density.
 
 *True by definition.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas). arXiv stat.ML. Level 4: research.
 
-**Definition.** Transform each coordinate by its continuous marginal distribution function. The copula density is the density of the resulting vector when it exists. Choose the vector’s joint law or the uniform law on the cube with equal probability, draw a point and label it by its source.
+**Definition.** Transform each coordinate by its continuous marginal distribution function; the copula density is the density of the resulting vector on the unit cube, when it exists. Label a point joint if drawn from this vector's law and uniform if drawn from the uniform law on the cube, each with probability ½.
 
 **Problem.** When the transformed joint law has a density, the true conditional odds of the joint label equal the copula density almost everywhere on the cube.
 
-**How the definition helps.** The uniform comparison class has density one, so its use turns the usual density ratio into the copula density itself. In our own application of Bayes’ rule, equal class probabilities cancel from the conditional odds. Estimating those odds from data still requires fitting a classifier, a rule that predicts the class label.
+**How the definition helps.** The uniform class has density one and the class probabilities are equal, so by Bayes' rule the conditional odds are the copula density divided by one (our own). A classifier, a rule that predicts the label, then estimates these odds from data.
 
 **Paper or page:** [Your copula is a classifier in disguise: classification-based copula density estimation](https://arxiv.org/abs/2411.03014v2). It says: “we train a classifier to distinguish samples from the joint density from those of the product of independent marginals, recovering the copula density in the process.”
 
@@ -1809,15 +1809,15 @@
 
 ### Counting only interior mass guarantees a halfspace that attains halfspace depth
 
-**Remember:** Mass on the boundary need not count against the limit.
+**Remember:** Count only the open side, so boundary mass may slip away.
 
 *True by definition. Confidence: medium.* MSC 62H05 (Characterization and structure theory for multivariate probability distributions; copulas), 62R20. arXiv math.ST. Level 4: research.
 
-**Definition.** For a finite Borel measure on ℝᵈ, the halfspace depth of x is the infimum of masses of closed halfspaces containing x. A generalized minimizing halfspace has x on its boundary and interior mass at most that depth.
+**Definition.** The halfspace depth of x for a finite Borel measure on ℝᵈ is the infimum of the masses of closed halfspaces containing x. A generalized minimizing halfspace at x is a closed halfspace with x on its boundary whose open interior has mass at most the depth.
 
-**Problem.** Every finite measure has a generalized minimizing halfspace at every point. Call the measure smooth at x if every hyperplane through x has zero mass. Then some closed halfspace has mass equal to the depth.
+**Problem.** Every finite measure has a generalized minimizing halfspace at every point. If every hyperplane through x has zero mass, some closed halfspace containing x has mass equal to the depth.
 
-**How the definition helps.** Shift minimizing cuts to pass through x, then take a convergent subsequence of unit normals (our own). Every point inside the limiting cut eventually belongs to the approximating cuts, so Fatou’s lemma bounds its interior mass by the depth (our own). Zero boundary mass then gives attainment (our own). An atom at x belongs to every closed cut through x but to none of their interiors, illustrating the boundary obstruction (our own).
+**How the definition helps.** Counting only the interior lets mass on the boundary escape in a limit, so a limit of near-minimizing halfspaces always qualifies (our own). Shift them to pass through x, take a convergent subsequence of unit normals, and apply Fatou's lemma to the interiors (our own). When hyperplanes through x carry no mass, interior and closed masses agree, so the limit attains the depth (our own).
 
 **Paper or page:** [Halfspace depth for general measures: The ray basis theorem and its consequences](https://arxiv.org/abs/2106.00616v1). It says: “For any μ ∈ ℳ(ℝᵈ) there exists a generalized minimizing halfspace of μ at any point x ∈ ℝᵈ. If μ is smooth at x, then there exists a minimizing halfspace of μ at x.”
 
@@ -1827,15 +1827,15 @@
 
 ### Martingale difference divergence is zero exactly when the conditional mean is constant
 
-**Remember:** Probe the mean with every frequency, not just with the predictor.
+**Remember:** The centered Y is uncorrelated with every wave of X.
 
 *Makes the theorem clean to state or prove.* MSC 62H20 (Measures of association (correlation, canonical correlation, etc.)), 62H15, 60E10. arXiv math.ST. Level 4: research.
 
-**Definition.** For real Y and X in ℝᵖ, put g(s) = E\[(Y − E\[Y\]) exp(i⟨s,X⟩)\]. Squared martingale difference divergence integrates \|g(s)\|²/(cₚ‖s‖ᵖ⁺¹) over nonzero frequencies using Lebesgue measure, with cₚ = π⁽ᵖ⁺¹⁾ᐟ²/Γ((p+1)/2) (our own).
+**Definition.** For real Y and X in ℝᵖ, the function g(s) = E\[(Y − E\[Y\]) exp(i⟨s,X⟩)\] tests the centered Y against every Fourier wave of X. Squared martingale difference divergence integrates \|g(s)\|²/(cₚ‖s‖ᵖ⁺¹) ds over nonzero s in ℝᵖ, with cₚ = π⁽ᵖ⁺¹⁾ᐟ²/Γ((p+1)/2) (our own).
 
 **Problem.** If Y and X have finite second moments, the divergence is zero exactly when E\[Y \| X\] = E\[Y\] almost surely.
 
-**How the definition helps.** The positive weight and continuity make zero divergence equivalent to g vanishing everywhere (our own). This is the Fourier transform of the signed measure with density E\[Y given X\] − E\[Y\] relative to the law of X (our own). Fourier uniqueness makes its vanishing equivalent to zero conditional mean deviation almost surely (our own).
+**How the definition helps.** The weight is positive and g is continuous, so zero divergence means g = 0 everywhere (our own). But g is the Fourier transform of the signed measure with density E\[Y \| X\] − E\[Y\] relative to the law of X (our own). Fourier uniqueness makes g = 0 equivalent to E\[Y \| X\] = E\[Y\] almost surely (our own).
 
 **Paper or page:** [Testing the martingale difference hypothesis using martingale difference divergence function](https://arxiv.org/abs/2306.13963v2). It says: “In particular, the measure equals zero if and only if the considered time-series components are conditionally mean-independent.”
 
@@ -1846,15 +1846,15 @@
 
 ### Separating joint laws from products makes a kernel criterion detect independence
 
-**Remember:** Compare the joint law to the law with the same marginals but no dependence.
+**Remember:** The kernel tells every joint law from its independent version.
 
 *True by definition.* MSC 62H20 (Measures of association (correlation, canonical correlation, etc.)), 46E22, 62H15. arXiv stat.ML, math.ST. Level 4: research.
 
-**Definition.** A kernel on a space gives each point a feature vector in a Hilbert space, and each probability law the mean of its feature vectors. The kernel is characteristic if distinct laws have distinct means. A kernel on a product space is ℐ-characteristic if each joint law and the product of its marginals have different means, unless they are equal.
+**Definition.** A kernel sends each probability law to a mean feature vector in a Hilbert space, and it is characteristic if distinct laws get distinct means. A kernel on a product space is ℐ-characteristic if every joint law gets a different mean from the product of its marginals, unless the two laws are equal.
 
-**Problem.** Take bounded characteristic kernels k₁ and k₂ on two second-countable spaces, which are spaces with a countable base. Then the Hilbert–Schmidt independence criterion of the product kernel k₁ ⊗ k₂ is zero exactly when the two variables are independent. This criterion is the squared distance between the means of the joint law and of the product of the marginals.
+**Problem.** For bounded characteristic kernels k₁ and k₂ on two second-countable spaces, spaces with a countable base, the Hilbert–Schmidt independence criterion of k₁ ⊗ k₂ is zero exactly when the variables are independent. This criterion is the squared distance between the means of the joint law and of the product of the marginals.
 
-**How the definition helps.** By the definition of ℐ-characteristic, the criterion is zero exactly when the joint law equals the product of its marginals, which is independence. So the statement about independence holds by definition, and the work moves to Theorem 3(i): the product of two characteristic kernels is ℐ-characteristic. By our own observation, this asks less than separating every pair of laws on the product space. The paper also studies when that stronger property holds.
+**How the definition helps.** The criterion is zero exactly when the two means agree, and ℐ-characteristic turns that into joint law equals product law, which is independence. The work is Theorem 3(i): the product of two characteristic kernels is ℐ-characteristic. By our own observation, this asks less than separating every pair of laws on the product space.
 
 **Paper or page:** [Characteristic and Universal Tensor Product Kernels](https://arxiv.org/abs/1708.08157v4). It says: “If k₁ and k₂ are characteristic, then k₁ ⊗ k₂ is ℐ-characteristic.”
 
@@ -1869,11 +1869,11 @@
 
 *Rules out counterexamples.* MSC 62H20 (Measures of association (correlation, canonical correlation, etc.)), 62H15, 49Q22. arXiv stat.ME, math.ST. Level 4: research.
 
-**Definition.** For each absolutely continuous vector marginal, use its population optimal transport rank Rⱼ to the uniform reference cube. For each subset S of size at least two, integrate \|E∏ⱼ∈S(exp(i⟨tⱼ,Rⱼ⟩) − E exp(i⟨tⱼ,Rⱼ⟩))\|² against the product distance-covariance frequency weights. Squared rank joint distance covariance sums these integrals with strictly positive weights (our own).
+**Definition.** Replace each absolutely continuous vector variable Xⱼ by its population optimal transport rank Rⱼ, its transport map to the uniform law on a cube. For each subset S of at least two variables, integrate \|E∏ⱼ∈S(exp(i⟨tⱼ,Rⱼ⟩) − E exp(i⟨tⱼ,Rⱼ⟩))\|² against the product distance-covariance frequency weights. Squared rank joint distance covariance adds these nonnegative integrals with strictly positive weights (our own).
 
 **Problem.** For any positive weights, rank joint distance covariance is zero exactly when the variables are mutually independent (Proposition 2.10).
 
-**How the definition helps.** Zero sum forces every nonnegative subset integral to vanish (our own). Expanding centered products by increasing subset size then factors each joint characteristic function into its marginals, giving independence by Fourier uniqueness (our own). Population transport ranks preserve independence in both directions under absolute continuity (our own). Two independent uniforms and their sum modulo one show that checking pairs alone can miss joint dependence (our own).
+**How the definition helps.** A positive-weight sum of nonnegative terms is zero only if every subset term is zero, so no dependence can cancel (our own). Expanding by subset size then factors each joint characteristic function of the ranks, and ranks preserve independence under absolute continuity (our own). Two independent uniforms and their sum modulo one are pairwise independent but jointly dependent, which pairs alone miss (our own).
 
 **Paper or page:** [Distribution-free joint independence testing and robust independent component analysis using optimal transport](https://arxiv.org/abs/2211.15639v2). It says: “For any vector positive weights C, RJdCov²(X; C) = 0 if and only if (X₁, X₂, …, Xᵣ) are mutually independent.”
 
@@ -1883,15 +1883,15 @@
 
 ### Adjusted maxima allow asynchronous tests
 
-**Remember:** Adjust the maximum before comparing tests that can stop at different times.
+**Remember:** Shrink the running maximum until its expectation is back below one.
 
 *True by definition.* MSC 62J15 (Paired and multiple comparisons; multiple testing), 62L10. arXiv stat.ME, stat.TH. Level 4: research.
 
-**Definition.** For each test, start a nonnegative process at one and require expectation at most one at every bounded stopping time under its null. Apply a nonnegative nondecreasing function A to its running maximum, with ∫₁∞ A(x)/x² dx ≤ 1.
+**Definition.** An e-process is a nonnegative process that starts at one and has expectation at most one at every bounded stopping time under its null. Its adjusted running maximum applies a nonnegative nondecreasing function A to the running maximum, with ∫₁∞ A(x)/x² dx ≤ 1. This keeps the expectation at most one even when the value is read at any time (our own).
 
-**Problem.** Read the K adjusted values at possibly different times and order them from largest to smallest. Reject the first k hypotheses for the largest k whose value reaches K/(kα), or reject none if no k qualifies. For 0 &lt; α &lt; 1, the expected fraction of rejections that are false is at most α.
+**Problem.** Read the K adjusted values at possibly different times and reject the hypotheses with the k largest values, for the largest k whose kth largest value is at least K/(kα), or none if no k qualifies. For 0 &lt; α &lt; 1, the expected fraction of rejections that are false is at most α.
 
-**How the definition helps.** Ville’s bound makes each null running maximum stochastically bounded by a variable with tail 1/x for x ≥ 1 (our own). The integral condition therefore bounds the expected adjusted value by one at any reading time (our own). Each false rejection contributes at most its adjusted value times α/K to the false fraction, defined as zero without rejections (our own). Summing expectations gives the bound (our own).
+**How the definition helps.** Each false rejection adds at most α/K times its adjusted value to the false fraction, which is zero without rejections, so expectation at most one per null suffices (our own). Ville's inequality gives the null running maximum a tail at most 1/x for x ≥ 1, and the integral condition turns this into expectation at most one (our own). Summing over the nulls gives the bound (our own).
 
 **Paper or page:** [Carefree multiple testing with e-processes](https://arxiv.org/abs/2501.19360v2). It says: “The e-BH procedure applied to the adjusted running maxima of e-processes controls the FDR-sup at level K₀ α / K.”
 
@@ -1905,11 +1905,11 @@
 
 *True by definition.* MSC 62J15 (Paired and multiple comparisons; multiple testing). arXiv stat.ME. Level 4: research.
 
-**Definition.** Pair inputs with copies whose joint law with the inputs is invariant under swapping any subset of pairs. Require the copies to be conditionally independent of the outcome given the original inputs. Compute one score per pair such that swapping any pair reverses only its score.
+**Definition.** Pair each input with a copy so that swapping any set of inputs with their copies leaves the joint law of inputs and copies unchanged. The copies are conditionally independent of the outcome given the original inputs. Each pair gets one score, and swapping that pair flips the sign of its score and leaves the other scores unchanged.
 
 **Problem.** Call an input null if it is independent of the outcome given all other inputs. Given all score magnitudes and all scores for the other inputs that are not null, the nonzero null scores have independent, equally likely signs.
 
-**How the definition helps.** Swapping a null feature with its copy leaves the data law unchanged and reverses only that feature’s score. In our own single-study argument, these swaps replace a direct calculation of joint sign probabilities. Every sign pattern has the same conditional probability because separate swaps connect any two patterns. The work is constructing copies with the required joint law.
+**How the definition helps.** For a null input, swapping it with its copy leaves the law of the data unchanged yet flips only its own score. Separate swaps connect any two sign patterns of the null scores, so every pattern has the same conditional probability. The work is constructing copies with the required joint law.
 
 **Paper or page:** [FDR Controlled Multiple Testing for Union Null Hypotheses: A Knockoff-based Approach](https://arxiv.org/abs/2106.12719v3). It says: “(W₁, ⋯, Wₚ) =ᵈ (W₁ · ε₁, ⋯, Wₚ · εₚ).”
 
@@ -1927,7 +1927,7 @@
 
 **Problem.** Under every null law, the expected loss of a compatible rule is at most one even when the data select the task measurably.
 
-**How the definition helps.** Compatibility bounds the loss of every task by the same S, so it also bounds the loss of whichever task the data select. Taking expectations under the null then gives the risk bound directly, since the expectation of S is at most one. The paper also proves a converse: every Type-I risk safe rule is compatible with some e-variable. By our own reading, the hard part is finding e-variables that give useful decisions.
+**How the definition helps.** Compatibility bounds the loss of every task by the same S, so it also bounds the loss of whichever task the data select. Taking expectations under the null gives expected loss at most E\[S\] ≤ 1. The paper also proves a converse: every rule with this Type-I risk control is compatible with some e-variable.
 
 **Paper or page:** [Beyond Neyman-Pearson: e-values enable hypothesis testing with a data-driven alpha](https://arxiv.org/abs/2205.00901v3). It says: “With e-values it is straightforward, since they provide Type-I risk control in a generalized Neyman-Pearson setting with the decision task (a general loss function) determined post-hoc, after observation of the data”
 
@@ -1941,11 +1941,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 62M20 (Inference from stochastic processes and prediction), 91A26. arXiv econ.TH, stat.ML. Level 4: research.
 
-**Definition.** Group bounded forecasts and outcomes by forecast value. The refinement score averages squared deviations of outcomes from their bin means, counting each observation once. The Brier score averages squared deviations of outcomes from forecasts.
+**Definition.** Group the rounds by forecast value, called bins. The refinement score averages the squared deviations of outcomes from their bin's mean outcome, so it is the best Brier score, the average squared gap between forecast and outcome, that one forecast per bin can reach.
 
-**Problem.** Consider any sequence of forecasts from a fixed finite set in \[0,1\] and outcomes in \[0,1\]. Predict each bin’s past mean, using any value in \[0,1\] on its first visit. After t rounds, this rule’s Brier score is at most the original refinement score plus O((log t)/t).
+**Problem.** Take forecasts from a fixed finite set in \[0,1\] and outcomes in \[0,1\]. If each round instead forecasts the past mean outcome of its bin, using any value in \[0,1\] on the first visit, then after t rounds its Brier score is at most the original refinement score plus O((log t)/t).
 
-**How the definition helps.** The split shows that the refinement score is the best Brier score possible while keeping the forecaster's bins. Our own explanation: with all outcomes known, the bin mean minimizes the squared error within each bin. The new rule copies this using only past outcomes, so it pays only a small learning cost. Theorem 3 bounds that cost.
+**How the definition helps.** The Brier score splits into calibration plus refinement, so refinement is what remains once each bin forecasts its own mean outcome (our own explanation). The new rule tracks that mean using past outcomes only, so it pays only a small learning cost. Theorem 3 bounds that cost by O((log t)/t).
 
 **Paper or page:** ["Calibeating": Beating Forecasters at Their Own Game](https://arxiv.org/abs/2209.04892v2). It says: “The Brier score is the sum of the calibration score and the refinement score”
 
@@ -1959,11 +1959,11 @@
 
 *True by definition.* MSC 62R07 (Statistical aspects of big data and data science). arXiv stat.ML. Level 4: research.
 
-**Definition.** Learn distances between training points in a real Hilbert space, a complete inner product space. For a difference v, set its squared distance to ⟨v, Av⟩ with A bounded, self-adjoint, and strictly positive on nonzero vectors. Compress A to the training span by projecting its output there.
+**Definition.** Learn a metric on a real Hilbert space through a bounded self-adjoint operator A that is strictly positive on nonzero vectors, setting the squared distance of a difference v to ⟨v, Av⟩. Compressing A to the training span projects Av back onto that span, and this keeps every training distance unchanged (our own).
 
 **Problem.** For a loss depending only on training distances, the infimum over these operators equals the infimum on the training span. Every minimizer on the span extends to the whole space.
 
-**How the definition helps.** Compressing the operator preserves all training distances and replaces a search over the full space with one on the training span. In our own calculation, projecting Av preserves its inner product with each training difference v. The reverse direction requires extending any admissible operator on the span. Acting as the identity on its orthogonal complement gives such an extension, so the two searches attain the same loss values.
+**How the definition helps.** Compression keeps every training distance, since projecting Av does not change its inner product with a training difference v (our own). Conversely, an admissible operator on the span extends to the whole space by acting as the identity on the orthogonal complement. So both searches reach the same loss values, and minimizers on the span extend.
 
 **Paper or page:** [Representer Theorems for Metric and Preference Learning: Geometric Insights and Algorithms](https://arxiv.org/abs/2304.03720v2). It says: “And both solutions have the same optimal value.”
 

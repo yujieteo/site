@@ -4,11 +4,11 @@
 
 *Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** For a smooth curve with nowhere-zero velocity, let T be its unit tangent and s its arc length. Its curvature κ is the length of dT/ds. Where κ &gt; 0, its Frenet frame consists of T, N = (dT/ds)/κ and T × N.
+**Definition.** For a smooth regular space curve with unit tangent T and arc length s, the curvature κ is the length of dT/ds. Where κ &gt; 0, the principal normal N = (dT/ds)/κ is defined, and the Frenet frame is T, N and T × N.
 
 **Problem.** At each point of positive curvature, these three vectors form an orthonormal basis of three-dimensional space.
 
-**How the definition helps.** Positive curvature keeps the normalizing denominator of N from vanishing (our own check). Differentiating the constant length of T shows that dT/ds is perpendicular to T, and the cross product completes the basis. The straight line s ↦ (s, 0, 0) has constant tangent and no principal normal (our own counterexample).
+**How the definition helps.** Positive curvature keeps the denominator of N nonzero (our own check). Since T has constant length, dT/ds is perpendicular to T, and T × N completes an orthonormal basis. The straight line s ↦ (s, 0, 0) has dT/ds = 0, so it has no principal normal (our own counterexample).
 
 **Wikipedia:** [Frenet–Serret formulas](https://en.wikipedia.org/wiki/Frenet%E2%80%93Serret_formulas). It says: “The Frenet–Serret formulas apply to curves which are non-degenerate, which roughly means that they have nonzero curvature.”
 
@@ -16,15 +16,15 @@
 
 ### Polygons with corners on the curve define arc length correctly
 
-**Remember:** Join points on the curve in parameter order and take the supremum of the lengths.
+**Remember:** Put the corners on the curve, then take the supremum.
 
 *Rules out counterexamples. Confidence: medium.* MSC 53A04 (Curves in Euclidean and related spaces), 51M25. arXiv math.DG, math.CA. Level 1: early undergraduate.
 
-**Definition.** For a continuous curve γ on \[a,b\], take each finite partition a = t₀ &lt; ⋯ &lt; tₙ = b. Its length is the supremum, over these partitions, of the sums of distances between successive points γ(tᵢ).
+**Definition.** The length of a continuous curve γ on \[a, b\] is the supremum of the lengths of its inscribed polygons. These are the chains through γ(t₀), …, γ(tₙ) for partitions a = t₀ &lt; ⋯ &lt; tₙ = b.
 
 **Problem.** Arc length is well defined, and inscribed polygons approximate it.
 
-**How the definition helps.** Ordered inscribed chains have a supremum, possibly infinite, and their lengths approach it arbitrarily closely (our own). Points merely near the curve give no such guarantee. Staircases of length 2 can converge to a diagonal of length √2 (our own).
+**How the definition helps.** A supremum always exists, possibly infinite, and some inscribed polygons come arbitrarily close to it (our own). Polygons merely near the curve give no such control. Staircases of total length 2 converge to the diagonal of the unit square, of length √2 (our own).
 
 **Wikipedia:** [Schwarz lantern](https://en.wikipedia.org/wiki/Schwarz_lantern). It says: “However, for this to work correctly, the vertices of the polygonal chains must lie on the given curve, rather than merely near it.”
 
@@ -36,11 +36,11 @@
 
 *Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** A regular continuously differentiable curve has nonzero velocity at every parameter value. A continuously differentiable curve without this restriction may have zero speed.
+**Definition.** A continuously differentiable curve is regular if its velocity is never zero, so its arc length is a strictly increasing function of the parameter with positive derivative.
 
 **Problem.** Every regular continuously differentiable curve on a compact interval of positive length admits a continuously differentiable parametrization with speed one.
 
-**How the definition helps.** Positive speed gives accumulated length a differentiable inverse in our own proof. Using length as the parameter divides the old velocity by its length, giving speed one. For the cusp t ↦ (t², t³), the unit tangents approach opposite directions from the two sides of zero. Thus no continuously differentiable unit-speed parametrization can trace the cusp through zero.
+**How the definition helps.** Arc length then has a continuously differentiable inverse, and using it as the parameter gives speed one (our own proof). Without regularity this can fail. On the cusp t ↦ (t², t³), the unit tangents point in opposite directions on the two sides of 0, so no continuously differentiable unit-speed parametrization exists.
 
 **Wikipedia:** [Curve](https://en.wikipedia.org/wiki/Curve). It says: “A differentiable curve is said to be regular if its derivative never vanishes.”
 
@@ -52,11 +52,11 @@
 
 *True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** A regular curve has nonzero velocity. Its curvature is the length of the derivative of its unit tangent with respect to arc length. At positive curvature, an alternative definition uses the reciprocal radius of the circle that best fits the curve to second order.
+**Definition.** The curvature of a regular curve is the length of the derivative of its unit tangent with respect to arc length, so zero curvature means that the tangent direction never changes.
 
 **Problem.** A twice continuously differentiable regular curve on an interval lies on a line if and only if its curvature vanishes everywhere.
 
-**How the definition helps.** Zero curvature makes the arc-length derivative of the unit tangent zero everywhere (our own). On an interval the tangent is therefore constant, and integrating it gives a curve on one line. Conversely, a regular curve on a line has a continuous unit tangent taking only two opposite values, so it is constant.
+**How the definition helps.** If curvature vanishes, the unit tangent is constant on the interval, and integrating it gives a curve on one line (our own). Conversely, the unit tangent of a regular curve on a line is continuous and takes only two opposite values, so it is constant.
 
 **Paper or page:** [Straight Line has Zero Curvature](https://proofwiki.org/wiki/Straight_Line_has_Zero_Curvature). It says: “A straight line has zero curvature.”
 
@@ -68,11 +68,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** Define tangent vectors as velocities of differentiable curves in the surface through the point. Another approach reads the tangent plane from a graph of one coordinate as a function of two others.
+**Definition.** A tangent vector to the level surface F = c at a point is the velocity there of a differentiable curve that stays in the surface. Along such a curve, F keeps the value c.
 
 **Problem.** If F is continuously differentiable and ∇F is nonzero at a point of F = c, then ∇F is normal there.
 
-**How the definition helps.** In our own proof, the velocity definition turns perpendicularity into the derivative of a constant function. Along every curve in the level surface, F has constant value c. The chain rule gives zero for the dot product of the gradient with the curve velocity. The implicit function theorem gives a continuously differentiable local graph and two independent tangent directions.
+**How the definition helps.** Along any curve in the surface F is constant, so the chain rule makes ∇F · velocity zero (our own proof). Hence ∇F is perpendicular to every tangent vector. The implicit function theorem writes the surface locally as a graph, which gives two independent tangent directions, so the tangent vectors fill a plane.
 
 **Wikipedia:** [Gradient](https://en.wikipedia.org/wiki/Gradient). It says: “It follows that in this case the gradient of f is orthogonal to the level sets of f.”
 
@@ -84,11 +84,11 @@
 
 *Rules out counterexamples.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** A regular surface patch has a continuously differentiable, one-to-one parametrization from an open part of the plane into three-dimensional space. Its inverse on its image is continuous, and its two partial derivative vectors are linearly independent.
+**Definition.** A regular surface patch is a continuously differentiable, one-to-one map from an open set in the plane into space, with continuous inverse on its image. Its two partial derivative vectors are linearly independent at every point, so they span a plane.
 
 **Problem.** A regular surface patch has a unique tangent plane at each point of the patch.
 
-**How the definition helps.** The independent partial derivatives give two tangent directions spanning a plane (our own). The inverse function theorem locally writes the patch as a graph over two coordinate axes. The chain rule puts every surface-curve velocity in that plane, so the plane is unique. At the apex of x² + y² = z², the lines on the cone span three dimensions (our own).
+**How the definition helps.** The inverse function theorem writes the patch locally as a graph over two coordinates (our own). By the chain rule, every velocity of a curve in the surface then lies in the plane of the partial derivatives, so that plane is unique. At the apex of the cone x² + y² = z², the lines through the apex span all three dimensions (our own).
 
 **Wikipedia:** [Surface (mathematics)](https://en.wikipedia.org/wiki/Surface_%28mathematics%29). It says: “Such an irregular point, where the tangent plane is undefined, is said singular.”
 
@@ -100,11 +100,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** Parametrize a surface patch once by a smooth map r with two independent partial derivatives. Define its area by integrating the length of their cross product over the parameter domain. Another approach approximates the surface by triangles.
+**Definition.** Parametrize a surface patch by a smooth map r(u, v) with independent partial derivatives r<sub>u</sub> and r<sub>v</sub>. Its area is the integral over the parameter domain of \|r<sub>u</sub> × r<sub>v</sub>\|, the area of the small parallelogram that the parameters span.
 
 **Problem.** An invertible smooth change of parameters with smooth inverse does not change the area of a regular surface patch.
 
-**How the definition helps.** The chain rule changes the two coordinate tangent vectors by the parameter map’s derivative (our own). Bilinearity and antisymmetry multiply their cross product by its determinant. Taking lengths gives the absolute determinant, exactly the factor in the change-of-variables theorem, so the area integrals agree.
+**How the definition helps.** Under a change of parameters, the chain rule and the properties of the cross product multiply r<sub>u</sub> × r<sub>v</sub> by the Jacobian determinant (our own). So the integrand scales by the absolute determinant, exactly the factor in the change-of-variables formula, and the two area integrals agree.
 
 **Wikipedia:** [Surface area](https://en.wikipedia.org/wiki/Surface_area). It says: “integrating the length of the normal vector rᵤ × rᵥ to the surface over the appropriate region D in the parametric uv plane.”
 
@@ -116,11 +116,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
 
-**Definition.** For a surface given locally by two parameters with independent partial derivative vectors, take their span and translate it to the surface point. This gives the tangent plane. Another description uses a perpendicular vector called a normal.
+**Definition.** For a surface given locally by a parametrization with independent partial derivatives, the tangent plane at a point is the span of those two vectors, translated to the point.
 
 **Problem.** An invertible affine map, a linear transformation followed by a translation, carries each tangent plane to the corresponding tangent plane of the image surface.
 
-**How the definition helps.** The linear part acts on both partial derivatives, so it carries their span along (our own argument). The chain rule gives this, and the translation enters only at the base point. The description by normals would need a proof that normals transform by the inverse transpose.
+**How the definition helps.** By the chain rule, composing with the affine map multiplies both partial derivatives by its linear part, so their span goes to the span of the image vectors (our own argument). The translation only moves the base point. A definition by normal vectors would need the fact that normals transform by the inverse transpose.
 
 **Wikipedia:** [Surface (mathematics)](https://en.wikipedia.org/wiki/Surface_%28mathematics%29). It says: “maps the tangent plane to the surface at a point to the tangent plane to the image of the surface at the image of the point.”
 
@@ -132,11 +132,11 @@
 
 *True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a unit-speed space curve with positive curvature, let T be its velocity and N its acceleration divided by its length. Set B = T × N. Define curvature κ and torsion τ as the frame coefficients in T′ = κN and B′ = −τN.
+**Definition.** For a unit-speed space curve with positive curvature, let T be its velocity, N its acceleration divided by its length, and B = T × N. The curvature κ and torsion τ are the coefficients in T′ = κN and B′ = −τN, so κ and τ drive a linear differential equation for the frame (our own).
 
 **Problem.** Given smooth functions κ &gt; 0 and τ on an interval, a smooth unit-speed space curve has those invariants. It is unique up to rotation and translation.
 
-**How the definition helps.** The frame coefficients give a linear system for T, N and B, since N′ = −κT + τB (our own). The existence and uniqueness theorem for linear systems gives a frame for each initial orientation (our own). Skew-symmetry of the coefficient matrix keeps all frame dot products constant (our own). Integrating T recovers the curve up to translation, without solving directly for its three coordinates (our own).
+**How the definition helps.** Together with N′ = −κT + τB, these equations form a linear system for the frame (our own). Its solution exists and is unique for each starting frame, and the skew-symmetric coefficients keep the frame orthonormal (our own). Integrating T gives the curve, and another start changes it by a rotation and translation (our own).
 
 **Wikipedia:** [Torsion of a curve](https://en.wikipedia.org/wiki/Torsion_of_a_curve). It says: “coefficients in the system of differential equations for the Frenet frame”
 
@@ -148,11 +148,11 @@
 
 *Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a unit-speed space curve with positive curvature, the acceleration never vanishes. Let T be the velocity and N the acceleration divided by its length. The binormal is B = T × N, and the torsion is −B′·N.
+**Definition.** For a unit-speed space curve with positive curvature, the principal normal N is the acceleration divided by its length. The binormal B = T × N can only turn along N (our own), and the torsion τ = −B′ · N measures that turning.
 
 **Problem.** On an interval, a smooth unit-speed space curve of positive curvature lies in a plane if and only if its torsion vanishes.
 
-**How the definition helps.** The binormal can change only along N, so zero torsion makes it constant (our own). Then every velocity is perpendicular to this fixed vector, and the curve stays in one plane (our own). Conversely, a plane curve of positive curvature has a constant binormal (our own). Without that curvature condition, smooth arcs in different planes can join along a straight segment where torsion is undefined (our own).
+**How the definition helps.** Since B′ is always a multiple of N, zero torsion makes B constant (our own). Then the velocity stays perpendicular to a fixed vector, so the curve stays in one plane, and conversely a plane curve of positive curvature has constant B (our own). Without positive curvature, arcs in different planes can join along a straight segment where torsion is undefined (our own).
 
 **Wikipedia:** [Torsion of a curve](https://en.wikipedia.org/wiki/Torsion_of_a_curve). It says: “the torsion of a regular curve with non-vanishing curvature is identically zero”
 
@@ -160,15 +160,15 @@
 
 ### Signed area gives an isoperimetric inequality even for crossings
 
-**Remember:** A crossing need not stop you from measuring signed area.
+**Remember:** Signed area needs no inside, so crossings do no harm.
 
 *Makes the theorem clean to state or prove.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define the signed area A of a closed plane curve as half the integral of x dy − y dx once around it. This counts area with sign and multiplicity, without choosing an inside.
+**Definition.** The signed area A of a closed plane curve is half the integral of x dy − y dx once around it. It counts each region as many times as the curve winds around it, so it needs no inside.
 
 **Problem.** For a smooth regular closed plane curve of length L, 4π\|A\| ≤ L². Thus a circle encloses the largest area among simple closed curves of a fixed length.
 
-**How the definition helps.** The area integral pairs the position with the rotated velocity, even at crossings (our own). Center the mean position at zero and use unit speed (our own). Then Cauchy–Schwarz and Wirtinger’s inequality for periodic functions with zero mean give \|A\| ≤ L²/(4π) (our own). Green’s theorem identifies signed area with ordinary area up to sign for simple curves (our own).
+**How the definition helps.** The signed area pairs the position with the rotated velocity, which needs no simple curve (our own). Center the mean position at zero and use unit speed (our own). Then Cauchy–Schwarz and Wirtinger’s inequality give \|A\| ≤ L²/(4π), and Green’s theorem makes \|A\| the ordinary area for simple curves (our own).
 
 **Wikipedia:** [Green's theorem](https://en.wikipedia.org/wiki/Green%27s_theorem). It says: “Green's theorem can be used to compute area by line integral.”
 
@@ -180,11 +180,11 @@
 
 *True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a unit-speed plane curve, choose a continuous angle θ for its unit tangent. Define signed curvature as θ′, with distance along the curve as the variable. Unsigned curvature keeps only \|θ′\|.
+**Definition.** For a unit-speed plane curve, let θ be a continuous angle of its unit tangent. Its signed curvature is θ′, the rate of turning with left turns positive, so it records which way the curve turns (our own).
 
 **Problem.** Every continuous function on an interval is the signed curvature of a twice continuously differentiable unit-speed plane curve. The curve is unique up to translation and rotation.
 
-**How the definition helps.** Signed curvature gives the derivative of the tangent angle, including the direction of each turn (our own). A continuous tangent along an interval admits a continuous angle (our own). Integrating curvature fixes that angle up to a rotation (our own). Integrating the resulting tangent fixes the curve up to a translation (our own).
+**How the definition helps.** Integrating the signed curvature gives the tangent angle up to a constant, which is a rotation (our own). Integrating the unit tangent (cos θ, sin θ) then gives the curve up to a translation (our own). A continuous angle exists because the tangent is continuous on an interval (our own).
 
 **Wikipedia:** [Curvature](https://en.wikipedia.org/wiki/Curvature). It says: “Curvature measures the angular rate of change of the direction of the tangent line”
 
@@ -192,15 +192,15 @@
 
 ### Stationary curvature lets circles satisfy the four vertex theorem
 
-**Remember:** A vertex is where signed curvature stops changing to first order, even on a circle.
+**Remember:** A vertex is where curvature stops changing; circles are all vertices.
 
 *Makes the theorem clean to state or prove.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A vertex of a smooth regular plane curve is a point where signed curvature has derivative zero with respect to distance along the curve. Every local maximum or minimum counts, including points on an arc of constant curvature.
+**Definition.** A vertex of a smooth regular plane curve is a point where the signed curvature has derivative zero with respect to arc length. Every point of a circle, and of any arc of constant curvature, is a vertex.
 
 **Problem.** Every smooth regular simple closed plane curve has at least four distinct vertices.
 
-**How the definition helps.** A circle has constant curvature, so every point qualifies without a separate case. The same rule keeps extrema on arcs of constant curvature (our own). The four vertex theorem still needs a global argument for curves whose curvature varies (our own).
+**How the definition helps.** With this definition the circle satisfies the theorem at once, so it needs no separate case. Curvature extremes are vertices, and a global argument finds four of them on curves whose curvature varies (our own).
 
 **Wikipedia:** [Four vertex theorem](https://en.wikipedia.org/wiki/Four_vertex_theorem). It says: “In a circle, every point is both a local maximum and a local minimum of curvature, so there are infinitely many vertices.”
 
@@ -216,11 +216,11 @@
 
 *True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** On a smooth unit-speed plane curve γ with positive signed curvature κ, let N be the left unit normal. Define the osculating circle by its radius r = 1/κ and center γ + rN.
+**Definition.** On a smooth unit-speed plane curve γ with positive signed curvature κ and left unit normal N, the osculating circle has radius r = 1/κ and center c = γ + rN. Since N′ = −κT, the center has velocity c′ = r′N (our own). So the center moves exactly as fast as the radius changes (our own).
 
 **Problem.** On a smooth plane arc with positive signed curvature and κ′ nowhere zero, the osculating circles are pairwise disjoint and nested.
 
-**How the definition helps.** The center formula gives derivative r′N because N′ is −κ times the unit tangent (our own). The normal turns and r′ keeps one sign, so the centers move strictly less far apart than the radii differ (our own). Thus each larger disk contains the smaller circle in its interior (our own). Agreement with the usual circle of second-order contact follows by matching the tangent and acceleration (our own).
+**How the definition helps.** With κ′ never zero, r is strictly monotone (our own). The center path is not straight because N turns, so two centers are strictly closer than the arc length between them, which equals the change in radius (our own). So each larger disk contains the smaller circle in its interior (our own).
 
 **Paper or page:** [Variations on the Tait-Kneser theorem](https://arxiv.org/abs/2104.02170v2). It says: “The osculating circles of a vertex-free plane curve with non-vanishing curvature are disjoint and pairwise nested”
 
@@ -234,11 +234,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG, math.MG. Level 2: later undergraduate.
 
-**Definition.** The curvature κᵢ of a polygon at vertex i is its turning angle there. This is the angle between the direction of the incoming edge and the direction of the outgoing edge. The tangent indicatrix is the curve of unit tangent directions on the sphere.
+**Definition.** The curvature of a polygon at a vertex is its turning angle, the angle between the incoming and outgoing edge directions. Then its total curvature is the length of its tangent indicatrix, the closed chain of great-circle arcs joining its edge directions on the unit sphere (our own).
 
 **Problem.** Fenchel's theorem: a closed space curve, smooth or polygonal, has total curvature at least 2π. Equality holds exactly when the curve is planar and convex.
 
-**How the definition helps.** With turning angles as curvature, total curvature is the length of the tangent indicatrix, so Fenchel's theorem becomes a statement about spherical curves. For a polygon the indicatrix is a chain of great-circle arcs of lengths κᵢ (our own). The indicatrix of a closed curve lies in no open hemisphere, and such a closed spherical curve has length at least 2π (our own). The same proof covers smooth and polygonal curves at once.
+**How the definition helps.** With turning angles as curvature, total curvature is the length of the tangent indicatrix for smooth and polygonal curves alike (our own). A closed curve's indicatrix lies in no open hemisphere, and such a closed spherical curve has length at least 2π (our own). So one proof covers both kinds of curve.
 
 **Paper or page:** [Discrete curvature](https://arxiv.org/abs/2502.09353), [Discrete curvature](https://arxiv.org/abs/2502.09353). It says: “The total curvature of a closed space curve is bigger or equal 2π: ∫ₐᵇ κ dt ≥ 2π, respectively ∑ᵢ₌₁ⁿ κᵢ ≥ 2π. The equality takes place if and only if the curve is planar and convex.”
 
@@ -253,11 +253,11 @@
 
 *Rules out counterexamples.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a surface in three-dimensional space, define orientation as a continuous choice of unit normal. This replaces a choice of coordinate patches whose changes preserve orientation. The Gauss map sends each point to its chosen normal on the unit sphere.
+**Definition.** An orientation of a surface in space is a continuous choice of unit normal at each point. The Gauss map sends each point to its chosen normal on the unit sphere.
 
 **Problem.** A smooth regular surface admits a smooth Gauss map of unit normals exactly when it is orientable.
 
-**How the definition helps.** A continuous normal defines the Gauss map without matching signs between patches (our own). Locally it is a fixed sign times the smooth unit normal from a surface patch (our own). A Möbius strip is excluded because its normal flips on a trip around the middle (our own).
+**How the definition helps.** A continuous normal is exactly the data the Gauss map needs, with no signs to match between patches (our own). Locally it is plus or minus the unit normal of a patch, so it is smooth (our own). A Möbius strip has no such choice, because the normal flips on a trip around its middle (our own).
 
 **Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “The Gauss map can be defined (globally) if and only if the surface is orientable”
 
@@ -269,11 +269,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** On a connected smooth surface, intrinsic distance is the greatest lower bound of lengths of piecewise smooth paths joining two points. A path may approach that length without attaining it.
+**Definition.** On a connected smooth surface, the intrinsic distance between two points is the infimum of the lengths of piecewise smooth paths joining them, a bound that paths approach but need not reach.
 
 **Problem.** Intrinsic distance is a metric on a connected regular surface, even when no shortest path exists.
 
-**How the definition helps.** The lower bound assigns a distance even when no shortest path exists, as in the plane with its origin removed. Connected smooth surfaces admit piecewise smooth paths between any two points (our own). Constant paths, path reversal and the lower bound from straight-line distance give zero self-distance, symmetry and positive distance between distinct points (our own). Joining paths with lengths arbitrarily close to their lower bounds gives the triangle inequality (our own).
+**How the definition helps.** The infimum exists without a shortest path, as in the plane with the origin removed. Constant paths, reversed paths and the straight-line lower bound give zero self-distance, symmetry and positivity (our own). Joining two nearly shortest paths gives the triangle inequality, and connectedness makes every distance finite (our own).
 
 **Wikipedia:** [Intrinsic metric](https://en.wikipedia.org/wiki/Intrinsic_metric). It says: “The Euclidean plane with the origin removed is not geodesic, but is still a length metric space.”
 
@@ -285,11 +285,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** The Gauss map sends each surface point to its unit normal on the sphere. Define Gaussian curvature as the determinant of the derivative of this map, using the corresponding oriented tangent planes.
+**Definition.** The Gauss map sends each point of an oriented surface to its unit normal on the sphere. Gaussian curvature is the determinant of the derivative of this map, from the tangent plane at the point to the parallel tangent plane of the sphere.
 
 **Problem.** The Gauss map of a smooth oriented surface is smoothly invertible near a point exactly when Gaussian curvature is nonzero there.
 
-**How the definition helps.** Nonzero determinant gives local invertibility by the inverse function theorem (our own). The chain rule gives the converse (our own). The work goes into identifying the determinant with the product of the two principal curvatures (our own).
+**How the definition helps.** By the inverse function theorem, a nonzero determinant makes the Gauss map locally smoothly invertible (our own). Conversely, a smooth local inverse makes the derivative invertible by the chain rule (our own). Showing that this determinant is the product of the principal curvatures is separate work (our own).
 
 **Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “determinant of the Gauss map is equal to Gaussian curvature”
 
@@ -301,11 +301,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces), 26B05. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Signed distance measures distance from a surface with opposite signs on its two sides. In a smooth neighborhood of the surface, define the extended unit normal as the gradient of signed distance.
+**Definition.** Near a smooth surface, the signed distance is the distance to the surface, positive on one side and negative on the other. The extended unit normal is its gradient, so the derivative of the normal is the Hessian of the signed distance.
 
 **Problem.** The derivative of the extended unit normal to a smooth surface is symmetric wherever the signed distance is smooth.
 
-**How the definition helps.** The derivative of a gradient is its Hessian, which is symmetric by equality of mixed partial derivatives. Restricting the normal derivative to tangent vectors gives symmetry of the shape operator, conventionally its negative (our own). The geometric step identifies the signed-distance gradient with the unit normal in a smooth neighborhood (our own).
+**How the definition helps.** A Hessian is symmetric by the equality of mixed partial derivatives. Restricted to tangent vectors, this derivative is the shape operator up to sign, so the shape operator is symmetric too (our own). The geometric step is that the gradient of signed distance is the unit normal on the surface (our own).
 
 **Paper or page:** [Orthogonal signed-distance coordinates and vector calculus near evolving curves and surfaces](https://arxiv.org/abs/2302.02891v2). It says: “The gradient of the normal is the Hessian of the signed-distance function, which is a necessarily symmetric 2-tensor,”
 
@@ -319,11 +319,11 @@
 
 *True by definition. Confidence: medium.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Choose smooth perpendicular unit tangent vectors e and f in positive order on a surface patch. The one-form ω assigns each tangent vector v the number f·De(v), which measures how fast e turns toward f. Define the curvature form as −dω, using the exterior derivative d.
+**Definition.** Choose a smooth positively ordered orthonormal tangent frame e, f on a surface patch. The connection form ω measures how fast e turns toward f along each tangent vector v, as ω(v) = f · D<sub>v</sub> e, and the curvature form is −dω.
 
 **Problem.** Around the positively oriented boundary of a smooth disk, parallel transport rotates each nonzero tangent vector by the disk’s integrated Gaussian curvature, modulo 2π.
 
-**How the definition helps.** Relative to the chosen frame, the angle of a parallel vector changes at rate −ω along the path (our own). Stokes’ theorem turns the boundary integral of −ω into the disk integral of −dω (our own). The work goes into the Gauss equation, which identifies −dω with Gaussian curvature times the oriented area element (our own).
+**How the definition helps.** Measured against the frame, a parallel vector turns at rate −ω, so its total turn around the boundary is the integral of −ω (our own). Stokes’ theorem makes this the integral of −dω over the disk (our own). The real work is the Gauss equation, which identifies −dω with Gaussian curvature times the area element (our own).
 
 **Wikipedia:** [Parallel transport](https://en.wikipedia.org/wiki/Parallel_transport). It says: “The angle by which it twists, α, is proportional to the area inside the loop.”
 
@@ -331,15 +331,15 @@
 
 ### Gaussian curvature as the Gauss map Jacobian makes total curvature a degree
 
-**Remember:** Integrating the normal map’s signed area change counts its degree.
+**Remember:** Integrate the normal map's area scaling to count its degree.
 
 *True by definition. Confidence: medium.* MSC 53A05 (Surfaces in Euclidean and related spaces), 55M25. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For an oriented surface in ℝ³, define the Gaussian curvature as the signed area Jacobian of its unit normal map to the sphere. The other definition multiplies the two principal curvatures, the largest and smallest normal bending rates.
+**Definition.** For an oriented surface in ℝ³, Gaussian curvature is the Jacobian of the unit normal map to the sphere, the signed factor by which that map scales area.
 
 **Problem.** A closed oriented surface immersed in ℝ³ has total Gaussian curvature equal to 4π times the degree of its unit normal map.
 
-**How the definition helps.** With this definition, total curvature is the integral of the pulled-back sphere area form, which is 4π times the degree. The real work is in the degree formula for integrals of pulled-back forms (our own comparison). It also moves to the theorem that the derivative of the normal map is minus the shape operator (our own). The determinant of the shape operator is the product of the principal curvatures.
+**How the definition helps.** Total curvature is then the integral of the pulled-back area form of the sphere, which equals the degree times the sphere's area 4π. The work moves to the degree formula for integrals of pulled-back forms (our own comparison). Agreement with the product of principal curvatures holds because the derivative of the normal map is minus the shape operator (our own).
 
 **Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “The Jacobian determinant of the Gauss map is equal to Gaussian curvature”
 
@@ -351,11 +351,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define geodesics of constant speed as paths where the first derivative of energy vanishes under every smooth variation fixing both endpoints. Energy is half the integral of speed squared over a fixed time interval. On a surface of revolution its integrand is ½(u′² + ρ²φ′²), using meridian distance u, rotation angle φ and distance ρ from the axis.
+**Definition.** Geodesics of constant speed are the critical points of energy, half the integral of speed squared, among paths with fixed endpoints. On a surface of revolution, with meridian distance u, rotation angle φ and distance ρ(u) from the axis, the energy integrand ½(u′² + ρ²φ′²) does not involve φ.
 
 **Problem.** Along a unit-speed geodesic on a surface of revolution away from its axis, ρ sin ψ stays constant. Here ψ is the signed angle from the meridian to the geodesic tangent.
 
-**How the definition helps.** The energy integrand has no φ, so its Euler–Lagrange equation conserves ρ²φ′ (our own). At unit speed the signed component along the parallel is ρφ′ = sin ψ (our own). The work goes into showing that stationary energy gives the geodesic equation (our own).
+**How the definition helps.** Since the integrand does not involve φ, the Euler–Lagrange equation for φ says that ρ²φ′ is constant (our own). At unit speed, ρφ′ is the velocity component along the parallel, which is sin ψ (our own), so ρ sin ψ is constant. That critical points of energy are geodesics is the first variation formula (our own).
 
 **Wikipedia:** [Clairaut's relation (differential geometry)](https://en.wikipedia.org/wiki/Clairaut%27s_relation_%28differential_geometry%29). It says: “ρ sin ψ is constant along γ.”
 
@@ -363,15 +363,15 @@
 
 ### Inversion makes stereographic projection preserve angles
 
-**Remember:** An inversion reflects and rescales tangent vectors, so angles survive.
+**Remember:** Inversion stretches every direction equally, so angles survive.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Take the unit sphere and a pole N. Define stereographic projection onto the equatorial plane by spherical inversion centered at N. It sends a point P other than N to N + 2(P − N)/\|P − N\|².
+**Definition.** Define stereographic projection from the pole N of the unit sphere as the inversion centred at N that sends each point P ≠ N to N + 2(P − N)/\|P − N\|². An inversion stretches all directions at a point by the same factor, up to a reflection (our own).
 
 **Problem.** Stereographic projection preserves angles between smooth regular curves crossing away from the projection pole.
 
-**How the definition helps.** The derivative of inversion is a reflection times a positive scale, which preserves angles (our own). The work goes into differentiating the inversion and checking that its image lies in the equatorial plane (our own). Since the image stays on the line through N and P, it agrees with projection by sight lines (our own).
+**How the definition helps.** The derivative of an inversion is a reflection times a positive scale, and both keep angles (our own). This inversion maps the sphere minus N onto the equatorial plane, and P and its image lie on one line through N, so it is the usual projection (our own).
 
 **Wikipedia:** [Stereographic projection](https://en.wikipedia.org/wiki/Stereographic_projection). It says: “Stereographic projection is conformal, meaning that it preserves the angles at which curves cross each other”
 
@@ -379,15 +379,15 @@
 
 ### Normal acceleration picks out the great circles on a sphere
 
-**Remember:** On a sphere, geodesic acceleration points along a radius.
+**Remember:** On a sphere, geodesics accelerate straight toward the centre.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define a geodesic on a smooth surface in space as a parametrized curve whose acceleration is perpendicular to the tangent plane. Its speed is constant because velocity and acceleration are perpendicular.
+**Definition.** A geodesic on a smooth surface in space is a parametrized curve whose acceleration is perpendicular to the tangent plane. On a round sphere this means the acceleration points along the radius.
 
 **Problem.** The nonconstant geodesics of a round sphere are great circles or arcs of great circles, with constant speed.
 
-**How the definition helps.** Radial acceleration keeps the cross product of position relative to the sphere’s center and velocity constant (our own). A nonconstant geodesic stays in the plane through the center perpendicular to this nonzero vector (our own). Conversely, a great circle at constant speed has radial acceleration (our own). Using shortest paths as the definition would also require the theorem that short geodesic arcs minimize length (our own).
+**How the definition helps.** Radial acceleration keeps the cross product of position from the centre and velocity constant, so a nonconstant geodesic stays in the plane through the centre perpendicular to that vector (our own). Acceleration perpendicular to velocity gives constant speed, and conversely a great circle at constant speed has radial acceleration (our own).
 
 **nLab:** [geodesic](https://ncatlab.org/nlab/show/geodesic). It says: “on a 2-dimensional sphere, geodesics are arcs of great circles.”
 
@@ -395,15 +395,15 @@
 
 ### Normal projection gives Meusnier’s theorem for surface curves
 
-**Remember:** Only the part of acceleration along the surface normal counts.
+**Remember:** Normal curvature reads only how the normal turns along the tangent.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a unit-speed curve γ on a surface, define normal curvature as γ″·n, where n is the chosen surface unit normal. The normal section is the surface’s intersection with the plane spanned by n and the tangent direction.
+**Definition.** For a unit-speed curve γ on a surface with unit normal n, the normal curvature is γ″·n, the part of the acceleration along n. Since γ′·n = 0 along the curve, it equals −v·Dn(v), where v = γ′ and Dn(v) is the derivative of n along v (our own).
 
-**Problem.** Two smooth unit-speed curves through the same surface point with the same tangent line have the same normal curvature. That is the signed curvature of the normal section there.
+**Problem.** Two smooth unit-speed curves through the same surface point with the same tangent line have the same normal curvature. It is the signed curvature of the normal section, the curve cut by the plane through n and that tangent line.
 
-**How the definition helps.** Projection onto the surface normal removes the part of acceleration that can vary between curves (our own). Differentiating γ′·n = 0 gives γ″·n = −v·Dn(v), where v is the velocity and Dn(v) is the normal’s derivative along v (our own). Reversing v leaves that expression unchanged (our own). The normal section already accelerates along n, so projection gives its curvature signed relative to n (our own).
+**How the definition helps.** The expression −v·Dn(v) depends only on v, and replacing v by −v leaves it unchanged (our own). The normal section accelerates along n, so its normal curvature is its signed curvature (our own).
 
 **Wikipedia:** [Meusnier's theorem](https://en.wikipedia.org/wiki/Meusnier%27s_theorem). It says: “having the same tangent line at p also have the same normal curvature at p”
 
@@ -411,15 +411,15 @@
 
 ### One scalar in the shape operator forces a plane or sphere
 
-**Remember:** At an umbilic point, the shape operator scales every tangent direction equally.
+**Remember:** At an umbilic point the normal turns equally in every direction.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Call a point umbilic when the shape operator, the negative derivative of the unit normal, multiplies every tangent vector by the same number. This replaces a test of all normal-section curvatures.
+**Definition.** A point is umbilic when the shape operator, the negative derivative of the unit normal, is multiplication by one number λ. So moving the point by a tangent vector v moves the normal by −λv (our own).
 
 **Problem.** A connected smooth oriented surface whose every point is umbilic lies in a plane or a sphere.
 
-**How the definition helps.** A scalar shape operator makes the normal derivative in every direction equal to −λ times the corresponding position derivative (our own). In patch coordinates, equality of mixed derivatives and independence of the two tangent directions force both derivatives of λ to vanish (our own). Connectedness makes λ constant, so when λ vanishes the surface has a fixed normal and lies in a plane (our own). Otherwise, position plus the unit normal divided by λ gives a fixed sphere center (our own).
+**How the definition helps.** In a chart, equal mixed derivatives and the independence of the two coordinate tangent vectors force both derivatives of λ to vanish, so λ is constant on the connected surface (our own). If λ = 0 the normal is fixed and the surface lies in a plane (our own). Otherwise position plus n/λ is constant, the centre of a sphere of radius 1/\|λ\| (our own).
 
 **Wikipedia:** [Umbilical point](https://en.wikipedia.org/wiki/Umbilical_point). It says: “The sphere is the only surface with non-zero curvature where every point is umbilic.”
 
@@ -427,15 +427,15 @@
 
 ### Projecting acceleration makes the two curvatures add in squares
 
-**Remember:** Tangential bending and normal bending meet at a right angle.
+**Remember:** Acceleration splits into surface part and normal part at right angles.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a unit-speed curve on a surface, define geodesic curvature as the length of the tangent-plane part of its acceleration. Define normal curvature in magnitude as the length of the perpendicular part.
+**Definition.** For a unit-speed curve on a surface, split its acceleration into the part in the tangent plane and the part along the normal. Geodesic curvature is the length of the first part, and normal curvature, up to sign, is the length of the second.
 
 **Problem.** The square of the ordinary curvature of a unit-speed surface curve equals the sum of the squares of its geodesic and normal curvatures.
 
-**How the definition helps.** The two projections split acceleration into perpendicular parts, so their squared lengths add to the squared acceleration length (our own). At unit speed this is the square of ordinary curvature (our own). The alternative intrinsic definition measures bending using distances within the surface (our own). Identifying its derivative with tangential projection is the geometric step (our own).
+**How the definition helps.** The two parts are perpendicular, so by Pythagoras their squared lengths add to the squared length of the acceleration (our own). At unit speed that length is the ordinary curvature (our own).
 
 **Wikipedia:** [Geodesic curvature](https://en.wikipedia.org/wiki/Geodesic_curvature). It says: “the geodesic curvature is the norm of the projection of the covariant derivative”
 
@@ -443,15 +443,15 @@
 
 ### Tangential projection makes parallel transport preserve dot products
 
-**Remember:** If both derivatives are normal, neither changes the tangent dot product.
+**Remember:** Parallel fields change only along the normal, invisible to tangent dot products.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A tangent vector field along a surface curve is parallel when its ordinary derivative has zero tangential part. This replaces separate transport rules for each choice of surface coordinates.
+**Definition.** A tangent vector field along a surface curve is parallel when its ordinary derivative in space points along the surface normal, that is, has zero tangential part.
 
 **Problem.** Two parallel tangent vector fields along a smooth surface curve keep the same dot product. Thus parallel transport preserves lengths and angles.
 
-**How the definition helps.** Each term in the derivative of the dot product pairs a normal vector with a tangent vector, so it vanishes (our own). The work goes into proving that projection gives the intrinsic derivative and that the transport equation has a unique solution (our own).
+**How the definition helps.** The derivative of the dot product of two such fields is a sum of terms that each pair a normal vector with a tangent vector, so it is zero (our own).
 
 **nLab:** [Levi-Civita connection](https://ncatlab.org/nlab/show/Levi-Civita+connection). It says: “which is equivalent to the preservation of the metric inner product of tangent vectors under parallel translation.”
 
@@ -463,11 +463,11 @@
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** The first fundamental form takes the dot product of two tangent vectors to a surface. A smooth map between surfaces is a local isometry if its derivative preserves these dot products everywhere.
+**Definition.** A smooth map between surfaces is a local isometry when its derivative keeps the dot product of tangent vectors, the first fundamental form. So it keeps the speed of every curve and the angle between any two velocities (our own).
 
 **Problem.** A local isometry of regular surfaces preserves the lengths of curves and the angles at which curves meet.
 
-**How the definition helps.** The derivative sends a curve’s velocity to its image velocity, so preserving dot products preserves speed (our own). Integrating speed gives curve length (our own). The dot product of unit tangents gives the cosine of their angle (our own). This derivative test replaces separate length checks for every curve (our own).
+**How the definition helps.** By the chain rule the derivative sends each velocity to the velocity of the image curve (our own). Length is the integral of speed, and the angle between curves comes from the dot product of their unit tangents (our own).
 
 **Wikipedia:** [First fundamental form](https://en.wikipedia.org/wiki/First_fundamental_form). It says: “metric properties of a surface such as length and area”
 
@@ -475,15 +475,15 @@
 
 ### The geodesic equation lets initial velocity determine the path
 
-**Remember:** Normal acceleration gives a geodesic once its initial position and velocity are known.
+**Remember:** Normal acceleration is a second-order equation; start point and velocity decide.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** On a smooth surface in space, define a geodesic as a parametrized curve whose acceleration is perpendicular to the tangent plane. Its speed is constant because its acceleration is perpendicular to its velocity.
+**Definition.** On a smooth surface in space, a geodesic is a parametrized curve whose acceleration is perpendicular to the tangent plane. In a chart this says the coordinates solve a smooth second-order differential equation (our own).
 
 **Problem.** On a smooth surface, a point and an initial tangent vector determine a unique local geodesic.
 
-**How the definition helps.** In smooth surface coordinates, normal acceleration gives a smooth second-order differential equation for position (our own). The existence and uniqueness theorem for differential equations gives the local path from its starting point and velocity. Relating this equation to the shortest-path definition requires proving that sufficiently short geodesic arcs minimize length (our own).
+**How the definition helps.** The existence and uniqueness theorem for smooth second-order differential equations gives exactly one local solution for each starting point and starting velocity.
 
 **Wikipedia:** [Geodesic](https://en.wikipedia.org/wiki/Geodesic). It says: “It has a unique solution, given an initial position and an initial velocity.”
 
@@ -491,15 +491,15 @@
 
 ### The induced metric gives the area of a surface patch
 
-**Remember:** The determinant of the dot-product matrix is the square of the area scale.
+**Remember:** EG minus F squared is the squared area of the tangent parallelogram.
 
 *Makes the theorem clean to state or prove.* MSC 53A05 (Surfaces in Euclidean and related spaces), 58C35. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** The induced metric measures tangent vectors using the surrounding Euclidean dot product. For the two coordinate tangent vectors of a surface chart, write E and G for their squared lengths and F for their dot product.
+**Definition.** The induced metric measures tangent vectors of a surface by the dot product of the surrounding Euclidean space. For a chart, E and G are the squared lengths of the two coordinate tangent vectors and F is their dot product, so EG − F² is the squared area of the parallelogram they span (our own).
 
 **Problem.** For a smooth one-to-one chart with independent coordinate tangent vectors, the surface area is the integral of √(EG − F²) over the parameter region.
 
-**How the definition helps.** The induced metric gives the area of the tangent parallelogram using only dot products, even in higher ambient dimensions (our own). Base times height gives squared area EG − F² (our own). The surface area theorem justifies integrating this local area factor (our own).
+**How the definition helps.** Base times height gives the parallelogram area √(EG − F²) from dot products alone, so it works in any ambient dimension (our own). Surface area integrates this local area factor over the parameter region (our own).
 
 **nLab:** [volume form](https://ncatlab.org/nlab/show/volume+form). It says: “In local oriented coordinates, vol<sub>g</sub> = √\|det(g)\|, where det(g) is the determinant of the matrix of the coordinates of g.”
 
@@ -507,15 +507,15 @@
 
 ### The normal derivative tests whether a ruled surface develops flat
 
-**Remember:** Along a ruling, any twist makes Gaussian curvature strictly negative.
+**Remember:** Rulings have zero normal curvature, so any twist makes curvature negative.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A ruled surface is swept out by straight lines called rulings. Define a smooth surface as developable when its Gaussian curvature is zero. Use Gaussian curvature as the determinant of the negative derivative of its unit normal.
+**Definition.** A ruled surface is swept out by straight lines called rulings. It is developable when its Gaussian curvature, the determinant of the shape operator, is zero; the normal curvature along a ruling is zero, because a line has no acceleration (our own).
 
 **Problem.** A smooth regular ruled surface has nonpositive Gaussian curvature. It is developable exactly when its tangent plane stays fixed along each connected ruling.
 
-**How the definition helps.** Using the ruling as the first unit basis direction makes the first diagonal entry zero because a straight line has zero acceleration (our own). In a perpendicular unit basis the symmetric shape operator then has determinant −a², where a is its off-diagonal entry (our own). This vanishes exactly when the unit normal has zero derivative along the ruling (our own). Identifying zero Gaussian curvature with local flattening without stretching is a separate theorem (our own).
+**How the definition helps.** In a perpendicular unit basis with the ruling first, the symmetric shape operator has zero first diagonal entry, so its determinant is −a², with a the off-diagonal entry (our own). This is never positive, and it vanishes exactly when the normal does not change along the ruling, that is, when the tangent plane does not twist (our own).
 
 **Wikipedia:** [Developable surface](https://en.wikipedia.org/wiki/Developable_surface). It says: “It is developable iff the tangent plane does not twist as you move along a ruling”
 
@@ -523,15 +523,15 @@
 
 ### The shape operator gives Euler’s formula for normal curvature
 
-**Remember:** The two principal curvatures mix with squared direction cosines.
+**Remember:** In principal directions the shape operator is diagonal, so no cross term.
 
 *True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** The shape operator S is the negative derivative of the chosen unit normal. Define principal curvatures as its eigenvalues and principal directions as its unit eigenvectors. The normal curvature in a unit direction v is v·Sv.
+**Definition.** The shape operator S is the negative derivative of the unit normal, and the normal curvature in a unit direction v is v·Sv. S is symmetric, so it has a perpendicular basis of eigenvectors, the principal directions, whose eigenvalues are the principal curvatures.
 
 **Problem.** Take a perpendicular unit basis of principal directions with curvatures κ₁ and κ₂. At angle θ from the first direction, the normal curvature is κ₁ cos² θ + κ₂ sin² θ.
 
-**How the definition helps.** In principal directions the shape operator is diagonal, so v·Sv has no mixed term (our own). The components of v in this basis are cos θ and sin θ (our own). This replaces finding the extreme curvatures among all plane sections perpendicular to the surface (our own). The work is proving symmetry and identifying v·Sv with the curvature of the corresponding section, signed using the surface normal (our own).
+**How the definition helps.** In the principal basis S is diagonal and v has components cos θ and sin θ, so v·Sv = κ₁cos²θ + κ₂sin²θ with no mixed term (our own).
 
 **Wikipedia:** [Principal curvature](https://en.wikipedia.org/wiki/Principal_curvature). It says: “Without reference to a particular orthonormal basis, the principal curvatures are the eigenvalues of the shape operator, and the principal directions are its eigenvectors.”
 
@@ -543,11 +543,11 @@
 
 *True by definition.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 53A05. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define a surface in three-dimensional Euclidean space as minimal when its three position coordinates are harmonic for the surface metric. That means each solves the Laplace equation for the surface.
+**Definition.** Call a surface in ℝ³ minimal when its three position coordinates are harmonic functions on it, that is, solve the surface Laplace equation. Harmonic functions obey the maximum principle: one that attains a maximum on a connected surface is constant.
 
 **Problem.** There is no nonempty smooth compact minimal surface without boundary in three-dimensional Euclidean space.
 
-**How the definition helps.** Harmonicity lets the maximum principle turn each coordinate’s maximum on a compact component into constancy throughout that component. Three constant coordinates describe a single point, which cannot be a regular surface (our own). Agreement with the zero mean curvature definition follows by computing the surface Laplacian of the position vector (our own).
+**How the definition helps.** On a compact component each coordinate attains its maximum, so all three are constant and the component is a single point, which is not a regular surface (our own). This agrees with the zero mean curvature definition, since the surface Laplacian of position is a multiple of the mean curvature vector (our own).
 
 **Wikipedia:** [Minimal surface](https://en.wikipedia.org/wiki/Minimal_surface). It says: “there are no compact complete minimal surfaces in ℝ³”
 
@@ -559,11 +559,11 @@
 
 *True by definition.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 53A05. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** The principal curvatures are the largest and smallest signed normal curvatures at a surface point. Their average is mean curvature, and their product is Gaussian curvature. Define a minimal surface by requiring zero mean curvature everywhere.
+**Definition.** A minimal surface has zero mean curvature everywhere, so its two principal curvatures, the largest and smallest signed normal curvatures, are opposites κ and −κ (our own).
 
 **Problem.** A minimal surface in three-dimensional Euclidean space has nonpositive Gaussian curvature. It is zero only where both principal curvatures vanish.
 
-**How the definition helps.** Zero mean curvature makes the two principal curvatures opposites, so their product is nonpositive (our own). The first variation of area explains why the zero mean curvature condition is equivalent to stationary area (our own).
+**How the definition helps.** Gaussian curvature is the product of the principal curvatures, here −κ² ≤ 0, and it is zero only when κ = 0 (our own).
 
 **Wikipedia:** [Minimal surface](https://en.wikipedia.org/wiki/Minimal_surface). It says: “its mean curvature is equal to zero at all points.”
 
@@ -571,15 +571,15 @@
 
 ### The angular defect at the vertices is the curvature of a polyhedron
 
-**Remember:** Flat paper has no defect; a cone's defect is the wedge you cut out.
+**Remember:** A vertex's defect is the wedge cut out to make a cone.
 
 *Makes the theorem clean to state or prove.* MSC 53A70 (Discrete differential geometry), 51M20. arXiv math.DG, math.MG. Level 2: later undergraduate.
 
-**Definition.** The angular defect at a vertex of a closed polyhedral surface is 2π minus the sum of its incident face angles. It gives the integrated Gaussian curvature concentrated at that vertex.
+**Definition.** The angular defect at a vertex of a closed polyhedral surface is 2π minus the sum of the face angles there. It is the Gaussian curvature concentrated at that vertex, and the flat faces and edges carry none (our own).
 
 **Problem.** On a polyhedral sphere the angular defects sum to 4π. On any closed polyhedral surface they sum to 2π times its Euler characteristic.
 
-**How the definition helps.** Triangulating the faces preserves the defects, and summing the triangle angles gives total defect 2πV − πF (our own). Here V, E and F count vertices, edges and triangles. Each edge belongs to two triangles, so 3F = 2E and the sum equals 2π(V − E + F). A sphere has Euler characteristic two.
+**How the definition helps.** Triangulate the faces, which keeps the defects, and count V vertices, E edges and F triangles; the triangle angles sum to πF, so the total defect is 2πV − πF (our own). Each edge lies on two triangles, so 3F = 2E and the total is 2π(V − E + F). A sphere has Euler characteristic 2.
 
 **Wikipedia:** [Angular defect](https://en.wikipedia.org/wiki/Angular_defect). It says: “the integral of curvature at a vertex is equal to the defect there (by definition).”
 
@@ -591,11 +591,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53B05 (Linear and affine connections), 53B20. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For an affine connection ∇ and a Riemannian metric g, metric compatibility requires X(g(Y,Z)) = g(∇ₓY,Z) + g(Y,∇ₓZ) for every triple of smooth vector fields. Torsion-freeness requires ∇ₓY − ∇ᵧX = \[X,Y\] for every pair, where \[X,Y\] is their Lie bracket.
+**Definition.** A connection is metric-compatible when differentiating an inner product obeys the product rule, X(g(Y,Z)) = g(∇ₓY,Z) + g(Y,∇ₓZ). It is torsion-free when ∇ₓY − ∇ᵧX = \[X,Y\], the Lie bracket. Together the two rules let one solve for g(∇ₓY,Z) from g and brackets alone (our own).
 
 **Problem.** On any Riemannian manifold there is exactly one affine connection that is torsion-free and metric-compatible, the Levi-Civita connection.
 
-**How the definition helps.** Together the two identities determine g(∇ₓY,Z) by the Koszul formula (our own). Nondegeneracy of g therefore determines ∇ₓY uniquely. Conversely, the Koszul formula defines an affine connection satisfying both identities, which gives existence (our own).
+**How the definition helps.** Cycling X, Y and Z in the product rule and using zero torsion gives the Koszul formula for 2g(∇ₓY,Z) (our own). Nondegeneracy of g then fixes ∇ₓY. Conversely the Koszul formula defines a connection with both properties (our own).
 
 **Wikipedia:** [Fundamental theorem of Riemannian geometry](https://en.wikipedia.org/wiki/Fundamental_theorem_of_Riemannian_geometry), [Levi-Civita connection](https://en.wikipedia.org/wiki/Levi-Civita_connection). It says: “on any Riemannian manifold (or pseudo-Riemannian manifold) there is a unique affine connection that is torsion-free and metric-compatible, called the Levi-Civita connection”
 
@@ -621,15 +621,15 @@
 
 ### Defining Gaussian curvature intrinsically makes it invariant under local isometries
 
-**Remember:** Local isometries preserve the metric, which already determines Gaussian curvature.
+**Remember:** Curvature built from the metric alone travels with every isometry.
 
 *True by definition.* MSC 53B20 (Local Riemannian geometry), 53A05. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define the Gaussian curvature of a surface as the sectional curvature of its Levi-Civita connection. This connection is determined by the metric alone. The older definition multiplies the two principal curvatures, the largest and smallest normal bending rates.
+**Definition.** Define the Gaussian curvature of a surface as the sectional curvature of its Levi-Civita connection, which the metric alone determines.
 
 **Problem.** A local isometry between surfaces in Euclidean three-space preserves the product of their principal curvatures.
 
-**How the definition helps.** A local isometry preserves the metric, so it preserves the Levi-Civita connection and its curvature (our own argument). The work moves to the Gauss equation. It shows that this intrinsic curvature equals the product of the principal curvatures.
+**How the definition helps.** A local isometry preserves the metric, so it preserves the Levi-Civita connection and its curvature (our own argument). The Gauss equation, which equates this curvature with the product of the principal curvatures, does the remaining work.
 
 **Wikipedia:** [Theorema Egregium](https://en.wikipedia.org/wiki/Theorema_Egregium). It says: “The Gaussian curvature of a surface is invariant under local isometry.”
 
@@ -645,7 +645,7 @@
 
 **Problem.** On a connected finite-dimensional Riemannian manifold without boundary, metric completeness, compactness of every closed bounded set, and geodesic completeness are equivalent. Under these conditions a shortest geodesic joins any two points.
 
-**How the definition helps.** Metric completeness gives one hypothesis for all three conclusions (our own observation). The Hopf–Rinow theorem proves the equivalences and the existence of shortest geodesics.
+**How the definition helps.** The Hopf–Rinow theorem proves the equivalences and the existence of shortest geodesics. The metric definition names the condition that is easiest to check, for example on every compact manifold (our own).
 
 **Wikipedia:** [Hopf–Rinow theorem](https://en.wikipedia.org/wiki/Hopf%E2%80%93Rinow_theorem). It says: “Let (M, g) be a connected and smooth Riemannian manifold without boundary. Then the following statements are equivalent”
 
@@ -660,11 +660,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C22 (Geodesics in global differential geometry), 58E10. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a piecewise smooth Riemannian path γ on \[a,b\], its energy is E = ½∫\|γ′\|² dt and its length is L = ∫\|γ′\| dt.
+**Definition.** For a piecewise smooth path γ on \[a,b\], its length L = ∫\|γ′\| dt ignores the pace, but its energy E = ½∫\|γ′\|² dt penalizes uneven speed. Precisely, L² ≤ 2(b − a)E, with equality exactly at constant speed (our own).
 
 **Problem.** Among paths between fixed endpoints on a fixed interval \[a,b\] with a &lt; b, energy minimizers are precisely constant-speed length minimizers. They satisfy the geodesic equation.
 
-**How the definition helps.** Cauchy–Schwarz gives L² ≤ 2(b − a)E, with equality exactly at constant speed. Parametrizing a competing path at constant speed attains that bound (our own argument). The Euler–Lagrange equation for energy is the geodesic equation.
+**How the definition helps.** So an energy minimizer must have constant speed and least length, since a shorter path reparametrized at constant speed would have less energy (our own argument). Conversely a constant-speed length minimizer attains the least energy. The Euler–Lagrange equation of energy is the geodesic equation.
 
 **Wikipedia:** [Geodesic](https://en.wikipedia.org/wiki/Geodesic). It says: “paths that are minima of L can be arbitrarily re-parameterized (without changing their length), while minima of E cannot.”
 
@@ -680,7 +680,7 @@
 
 **Problem.** A spacetime with a Cauchy surface has no closed future-directed timelike path.
 
-**How the definition helps.** The single-visit requirement rules out repeating a timelike loop indefinitely. In our own proof, the repeated path either misses the surface or visits it infinitely often. In our own example, identify times one period apart in flat spacetime. A stationary clock revisits the same constant-time slice every period.
+**How the definition helps.** Running a closed timelike loop forever gives an inextendible timelike curve that meets the surface at no parameter value or at infinitely many (our own proof). For example, make time periodic in flat spacetime: a stationary clock crosses each constant-time slice once per period (our own example).
 
 **nLab:** [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface). It says: “a Cauchy surface is an embedded submanifold Σ ↪︎ X such that every timelike curve in X may be extended to a timelike curve that intersects Σ precisely in one point.”
 
@@ -690,15 +690,15 @@
 
 ### Minimal surfaces as real parts of null curves give isometric associate families
 
-**Remember:** Complex phase changes keep the derivative null and preserve its squared size.
+**Remember:** Rotate the complex phase; the derivative stays null and the same size.
 
 *True by definition. Confidence: medium.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 58E12. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Describe a conformal minimal surface in ℝ³ as the real part of a holomorphic curve F with a nonzero null derivative. Null means that the squares of the three components of F′ sum to zero. The usual definition asks for zero mean curvature.
+**Definition.** Describe a conformal minimal surface in ℝ³ as the real part of a holomorphic curve F whose derivative is nonzero and null, meaning the squares of its three components sum to zero. The metric is then \|F′\|²/2 times the flat metric, so it depends only on the size of F′ (our own).
 
 **Problem.** Every conformal minimal immersion of a simply connected domain into ℝ³ belongs to a one-parameter family of isometric minimal immersions. On the catenoid’s universal cover, this family connects its lifted immersion to the helicoid.
 
-**How the definition helps.** Multiply F by a complex number of modulus one; the derivative stays null and keeps its length, which fixes the metric (our own argument). With the mean curvature definition, one must construct the new surfaces by solving for conjugate harmonic functions (our own comparison). The work moves to the Weierstrass representation, which shows that real parts of null curves are exactly the conformal minimal immersions. Simple connectivity lets one integrate the derivative globally.
+**How the definition helps.** Multiplying F by a complex number of modulus one keeps F′ null and keeps \|F′\|, so its real part is an isometric conformal minimal immersion (our own argument). The Weierstrass representation shows that real parts of null curves are exactly the conformal minimal immersions, and simple connectivity lets one integrate F′ globally. Multiplying by i turns the lifted catenoid into the helicoid.
 
 **Paper or page:** [Loop Weierstrass Representation](https://arxiv.org/abs/2411.04626). It says: “is a conformal, minimal immersion into Euclidean space.”
 
@@ -706,15 +706,15 @@
 
 ### Defining divergence by the Lie derivative of volume gives div\[X,Y\] directly
 
-**Remember:** Commute two flow derivatives to find the divergence of their bracket.
+**Remember:** Divergence is how fast a flow scales volume.
 
 *True by definition. Confidence: medium.* MSC 53A45 (Differential geometric aspects in vector and tensor analysis), 58A10. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Fix a volume form μ on a smooth manifold. The divergence of a smooth vector field X is the unique function div X satisfying ℒ(X)μ = (div X)μ.
+**Definition.** Fix a volume form μ on a smooth manifold. The divergence of a vector field X is the rate at which its flow scales μ, the function div X with ℒ(X)μ = (div X)μ.
 
 **Problem.** For a fixed volume form and vector fields X and Y, div\[X,Y\] = X(div Y) − Y(div X).
 
-**How the definition helps.** With the Lie-derivative definition, the formula follows from ℒ(\[X,Y\]) = ℒ(X)ℒ(Y) − ℒ(Y)ℒ(X). By the product rule, ℒ(X) applied to (div Y)μ gives X(div Y)μ + (div Y)(div X)μ (our own calculation). Subtracting the same expression with X and Y swapped cancels the product of the divergences. The coordinate proof would instead need second derivatives of the components to cancel.
+**How the definition helps.** Lie derivatives satisfy ℒ(\[X,Y\]) = ℒ(X)ℒ(Y) − ℒ(Y)ℒ(X), and by the product rule ℒ(X)((div Y)μ) = X(div Y)μ + (div Y)(div X)μ (our own calculation). Subtracting the same term with X and Y swapped cancels the product of the divergences.
 
 **Wikipedia:** [Divergence](https://en.wikipedia.org/wiki/Divergence). It says: “The divergence can be defined in terms of the Lie derivative as”
 
@@ -722,15 +722,15 @@
 
 ### Defining torsion as Dθ makes the first Bianchi identity one differentiation
 
-**Remember:** Differentiate zero torsion to get curvature applied to the identity.
+**Remember:** Torsion is D of the identity; differentiate again to get curvature.
 
 *True by definition. Confidence: medium.* MSC 53B05 (Linear and affine connections), 53C05. arXiv math.DG. Level 3: graduate.
 
-**Definition.** The solder form θ is the identity map of the tangent bundle, viewed as a one-form with values in tangent vectors. Define the torsion as Θ = Dθ, where D is the exterior covariant derivative of the connection. The usual definition is T(X,Y) = ∇<sub>X</sub> Y − ∇<sub>Y</sub> X − \[X,Y\].
+**Definition.** The solder form θ is the identity map of the tangent bundle, viewed as a one-form with tangent-vector values. Define the torsion as Θ = Dθ, its exterior covariant derivative, which equals the usual ∇<sub>X</sub> Y − ∇<sub>Y</sub> X − \[X,Y\] (our own).
 
-**Problem.** Let R be the curvature of a connection on the tangent bundle, which measures how covariant derivatives fail to commute. If the torsion is zero, then R(X,Y)Z + R(Y,Z)X + R(Z,X)Y = 0 for all vector fields X, Y and Z.
+**Problem.** Let R be the curvature of a connection on the tangent bundle. If the torsion is zero, then R(X,Y)Z + R(Y,Z)X + R(Z,X)Y = 0 for all vector fields X, Y and Z.
 
-**How the definition helps.** The identity D²θ = Ω ∧ θ gives DΘ = Ω ∧ θ, where Ω is the curvature form. Zero torsion makes this three-form vanish. Evaluating it on X, Y and Z gives the stated cyclic sum (our own calculation).
+**How the definition helps.** Applying D again gives DΘ = D²θ = Ω ∧ θ, where Ω is the curvature form. Zero torsion makes Ω ∧ θ vanish, and evaluating it on X, Y and Z gives the cyclic sum (our own calculation).
 
 **Wikipedia:** [Torsion tensor](https://en.wikipedia.org/wiki/Torsion_tensor). It says: “the TM-valued one-form θ on M corresponding to the identity endomorphism of the tangent bundle”
 
@@ -742,11 +742,11 @@
 
 *True by definition.* MSC 53B12 (Differential geometric aspects of statistical manifolds and information geometry), 62B11. arXiv math.ST, math.DG. Level 3: graduate.
 
-**Definition.** On positive probability vectors p, the Fisher metric measures a small change dp by the squared length Σ dpᵢ²/pᵢ. Equivalently, send p to (2√p₁, …, 2√pₙ) and measure lengths on the sphere of radius 2.
+**Definition.** The Fisher metric on positive probability vectors gives a small change dp the squared length Σ dpᵢ²/pᵢ. The map p ↦ (2√p₁, …, 2√pₙ) turns this into ordinary length on the sphere of radius 2, since (d(2√pᵢ))² = dpᵢ²/pᵢ (our own).
 
 **Problem.** For positive probability vectors p and q, the Fisher–Rao distance, the shortest path length in the Fisher metric, is 2·arccos(Σ√(pᵢqᵢ)).
 
-**How the definition helps.** The sphere formula replaces the shortest-path calculation by an angle (our own). The shorter great-circle arc stays in the positive part of the sphere because its points lie along positive combinations of the endpoints (our own). Its length is twice the angle, whose cosine is the inner product of the unit vectors √p and √q (our own). The work shifts from solving the path equations in p to checking that \[d(2√pᵢ)\]² = dpᵢ²/pᵢ (our own).
+**How the definition helps.** So the Fisher–Rao distance is arc length on that sphere, which is 2 times the angle between √p and √q, whose cosine is Σ√(pᵢqᵢ) (our own). The shorter great-circle arc stays in the positive part, since its points are positive combinations of the endpoints (our own).
 
 **Wikipedia:** [Fisher information metric](https://en.wikipedia.org/wiki/Fisher_information_metric). It says: “That is, the Fisher information metric on a statistical manifold is simply (four times) the Euclidean metric restricted to the positive orthant of the sphere, after appropriate changes of variable.”
 
@@ -770,15 +770,15 @@
 
 ### Defining totally geodesic by geodesics makes isometry fixed sets totally geodesic
 
-**Remember:** An isometry that fixes a point and a tangent vector fixes that whole geodesic.
+**Remember:** Fix a point and direction, and the isometry fixes the geodesic.
 
 *True by definition.* MSC 53B25 (Local submanifolds), 53C22. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Call a submanifold totally geodesic if each of its geodesics is also a geodesic of the ambient manifold. The other definition asks that its second fundamental form vanish. The second fundamental form measures how the submanifold bends in the ambient space.
+**Definition.** Call a submanifold totally geodesic when each of its own geodesics is also a geodesic of the ambient manifold.
 
 **Problem.** Each connected component of the fixed set of an isometry of a Riemannian manifold is a totally geodesic submanifold.
 
-**How the definition helps.** An isometry maps geodesics to geodesics, so uniqueness keeps each ambient geodesic with fixed initial data inside the fixed set (our own argument). Such a geodesic is then also a geodesic of the fixed set (our own). The work moves to showing that the fixed set is a submanifold. Exponential coordinates show this near each point (our own).
+**How the definition helps.** An isometry maps geodesics to geodesics, so the ambient geodesic from a fixed point with a fixed velocity is fixed pointwise and lies in the fixed set (our own argument). An ambient geodesic inside a submanifold is a geodesic of it, and uniqueness makes these all its geodesics (our own). Exponential coordinates show that the fixed set is a submanifold (our own).
 
 **nLab:** [totally geodesic submanifold](https://ncatlab.org/nlab/show/totally+geodesic+submanifold). It says: “If in addition X is equipped with a Riemannian metric and G acts by isometries then the submanifold Xᴳ is a totally geodesic submanifold.”
 
@@ -786,15 +786,15 @@
 
 ### Chern–Simons transgressions add modulo exact forms
 
-**Remember:** An oriented triangle relates the three paths along its edges.
+**Remember:** Modulo exact forms only the endpoints matter, so paths concatenate.
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 57R20. arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** Join the connections by a smooth path and give the resulting cylinder connection zero path component. Its Chern–Simons transgression class is the fibre integral of the Chern character form over the oriented interval, modulo exact forms.
+**Definition.** Join two connections by a smooth path and form the cylinder connection with zero component along the interval. The Chern–Simons transgression is the integral of its Chern character form over the interval, taken modulo exact forms, so it does not depend on the path.
 
 **Problem.** Transgression from a first connection to a second and then to a third adds to the direct transgression between the first and third.
 
-**How the definition helps.** Passing to the quotient removes the exact form that measures the choice of path. Integrating along two consecutive paths adds their forms. In our own proof, Stokes’ theorem on a triangle of connections makes the difference from the direct path exact.
+**How the definition helps.** Integrating along two consecutive paths adds their forms, and modulo exact forms the joined path gives the same class as the direct one. In our own proof, Stokes’ theorem on a triangle of connections makes the difference exact.
 
 **nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “This is indeed well defined in that it is independent of the chosen concordance, up to an exact term.”
 
@@ -808,11 +808,11 @@
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 58A30. arXiv math.DG. Level 3: graduate.
 
-**Definition.** An Ehresmann connection on a smooth fibre bundle is a smooth subbundle complementary to the vertical tangent bundle. Its curvature sends two horizontal vector fields to the vertical part of their bracket.
+**Definition.** An Ehresmann connection on a smooth fibre bundle is a field of horizontal planes, a smooth subbundle complementary to the vertical tangent bundle. Its curvature takes two horizontal vector fields to the vertical part of their Lie bracket, so it measures how far the planes fail to be closed under bracket.
 
 **Problem.** An Ehresmann connection on any fibre bundle is flat, meaning that a local horizontal section passes through every point, exactly when its curvature is zero.
 
-**How the definition helps.** With the connection given as a distribution of planes, flatness is the Frobenius theorem applied to that distribution. The curvature is exactly the obstruction to the horizontal planes being closed under Lie bracket. So zero curvature means the planes are tangent to local leaves, which are local horizontal sections. The Frobenius theorem carries the analytic work.
+**How the definition helps.** Zero curvature says the horizontal planes are closed under Lie bracket, so the Frobenius theorem gives local leaves tangent to them. These leaves are the local horizontal sections.
 
 **Wikipedia:** [Ehresmann connection](https://en.wikipedia.org/wiki/Ehresmann_connection). It says: “Thus the curvature is the integrability condition for the horizontal subbundle to yield transverse sections of the fiber bundle E → M.”
 
@@ -822,15 +822,15 @@
 
 ### Curvature as the squared covariant derivative satisfies Bianchi’s identity
 
-**Remember:** Either way of grouping three covariant derivatives gives the same result.
+**Remember:** Curvature is D twice, and D commutes with D squared.
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 81T13. arXiv math.DG, hep-th. Level 3: graduate.
 
-**Definition.** A connection specifies how to differentiate vector fields in a bundle. It extends to an operator D on forms with values in that bundle. Define its curvature F as D applied twice, rather than starting with the local formula F = dA + A∧A.
+**Definition.** A connection gives an exterior covariant derivative D on forms with values in a bundle. Define its curvature F as D applied twice, F = D², which acts as multiplication by a two-form with values in linear maps (our own).
 
 **Problem.** The second Bianchi identity says DF = 0, where the derivative here acts on the form with values in linear maps.
 
-**How the definition helps.** The square definition turns DF into the difference D∘D² − D²∘D, which is zero by associativity (our own). The local expression instead requires expanding the derivatives and cancelling terms (our own). The work lies in showing that D² is multiplication by a form and identifying the induced derivative with the displayed difference (our own).
+**How the definition helps.** On forms with values in linear maps, DF is the commutator D∘D² − D²∘D, and both terms equal D³, so it is zero (our own). The work is showing that D² is multiplication by a form and that its induced derivative is this commutator (our own).
 
 **nLab:** [Bianchi identity](https://ncatlab.org/nlab/show/Bianchi+identity). It says: “It can be thought of as generalizing the equation d(dA) = 0 for a real-valued 1-form A to higher degree and nonabelian forms.”
 
@@ -840,15 +840,15 @@
 
 ### If the field is a connection, magnetic charge is an integer
 
-**Remember:** A field that is a bundle with connection has an integer charge built in.
+**Remember:** Flux through a sphere counts how a circle bundle twists.
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 81T13, 55R40. arXiv math-ph, math.DG. Level 3: graduate.
 
-**Definition.** Away from magnetic charges, model the electromagnetic field by a connection on a principal U(1)-bundle. With real curvature F and unit electric charge, define the magnetic charge inside an enclosing oriented sphere S as ∫ₛ F/(2π).
+**Definition.** Away from the magnetic charges, model the electromagnetic field as a connection on a principal U(1)-bundle, with real curvature F and electric charge 1. The magnetic charge inside an oriented sphere S is ∫ₛ F/(2π), which is the first Chern number of the bundle over S (our own).
 
 **Problem.** Dirac charge quantization holds: in units where the electric charge is 1, the magnetic charge is an integer.
 
-**How the definition helps.** The first Chern number of the bundle over S equals the normalized flux and is an integer (our own argument).
+**How the definition helps.** The first Chern number of a circle bundle over a sphere is an integer, so the magnetic charge is an integer (our own argument).
 
 **nLab:** [Dirac charge quantization](https://ncatlab.org/nlab/show/Dirac+charge+quantization), [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “Equivalently this means that the electromagnetic field is a cocycle in ordinary differential cohomology of degree 2.”
 
@@ -863,11 +863,11 @@
 
 *True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Fix an SU(n) bundle on a closed oriented Riemannian four-manifold. The Hodge star splits its curvature into parts F₊ and F₋ with eigenvalues +1 and −1. An anti-self-dual connection satisfies F₊ = 0.
+**Definition.** On a closed oriented Riemannian four-manifold, the Hodge star splits the curvature F of a connection on an SU(n) bundle into parts F₊ and F₋ with eigenvalues +1 and −1. The connection is anti-self-dual when F₊ = 0. Its energy ∫\|F\|² equals a bundle constant plus 2∫\|F₊\|² (our own).
 
 **Problem.** If the bundle admits an anti-self-dual connection, its absolute energy minimizers are exactly its anti-self-dual connections.
 
-**How the definition helps.** In our own proof, the splitting writes the energy as a bundle constant plus twice the integral of \|F₊\|². Here the energy is the integral of \|F\|². Chern–Weil theory shows that the integral of \|F₋\|² − \|F₊\|² depends only on the bundle.
+**How the definition helps.** So the energy is at least that constant, with equality exactly when F₊ = 0 (our own proof). Chern–Weil theory makes ∫(\|F₋\|² − \|F₊\|²) depend only on the bundle.
 
 **nLab:** [Yang-Mills instanton](https://ncatlab.org/nlab/show/Yang-Mills+instanton). It says: “In SU(n)-Yang-Mills theory an instanton is a field configuration with non-vanishing second Chern class that minimizes the Yang-Mills energy.”
 
@@ -879,15 +879,15 @@
 
 ### A frame removes gauge stabilizers
 
-**Remember:** A gauge symmetry that fixes one frame fixes every transported frame.
+**Remember:** Fix one point and parallel transport fixes all the rest.
 
 *Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Choose a point in one fibre of a principal bundle. Its based gauge group consists of all equivariant bundle automorphisms covering the identity that fix this point.
+**Definition.** Choose a point p in one fibre of a principal bundle. The based gauge group consists of the gauge transformations, equivariant bundle automorphisms covering the identity, that fix p.
 
 **Problem.** On a connected base, the based gauge group acts freely on the space of smooth connections.
 
-**How the definition helps.** A symmetry that preserves the connection commutes with parallel transport (our own proof). So if it fixes one frame, it fixes a transported frame over every point of the connected base, and hence is the identity. The full gauge group need not act freely, since constant gauge transformations preserve the product connection on a trivial bundle.
+**How the definition helps.** A gauge transformation that preserves a connection commutes with its parallel transport, so fixing p makes it fix a transported point over every point of the connected base, and equivariance makes it the identity (our own proof). The full gauge group need not act freely, since constant gauge transformations preserve the product connection on a trivial bundle.
 
 **nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “This means that we may identify connections on P with their parallel transport functors.”
 
@@ -899,11 +899,11 @@
 
 *True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** On an oriented Riemannian four-manifold, let F be the curvature of a connection with compact structure group. The metric and orientation define the Hodge star ⋆ on two-forms. A connection is anti-self-dual if ⋆F = −F.
+**Definition.** On an oriented Riemannian four-manifold, a connection with compact structure group is anti-self-dual when its curvature F satisfies ⋆F = −F, where ⋆ is the Hodge star on two-forms. Then the Yang–Mills equation dₐ⋆F = 0 reads −dₐF = 0 (our own).
 
 **Problem.** Every smooth anti-self-dual connection is a Yang–Mills connection.
 
-**How the definition helps.** In our own calculation, anti-self-duality turns the Yang–Mills equation dₐ⋆F = 0 into the Bianchi identity dₐF = 0. Here dₐ differentiates forms using the connection. The identity holds for every connection, so the first-order condition implies the second-order equation.
+**How the definition helps.** The Bianchi identity dₐF = 0 holds for every connection, where dₐ differentiates forms using the connection. So the first-order anti-self-dual condition implies the second-order Yang–Mills equation (our own).
 
 **nLab:** [Yang-Mills equation](https://ncatlab.org/nlab/show/Yang-Mills+equation). It says: “The Bianchi identity dₐFₐ = 0 and the Yang-Mills equation δₐFₐ = 0 combine to:”
 
@@ -917,11 +917,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** At a smooth Yang–Mills connection A, let H linearize the Yang–Mills equation and let dₐ\* denote the metric adjoint of dₐ. Coulomb gauge restricts variations a by dₐ\*a = 0. The gauge-fixed Hessian H + dₐdₐ\* acts on all variations.
+**Definition.** At a smooth Yang–Mills connection A, let H linearize the Yang–Mills equation. Gauge symmetry makes H degenerate in the gauge directions, which Coulomb gauge dₐ\*a = 0 removes, with dₐ\* the adjoint of dₐ. The gauge-fixed Hessian H + dₐdₐ\* acts on all variations.
 
 **Problem.** On a closed Riemannian manifold of positive dimension with positive-dimensional compact structure group, the gauge-fixed operator is elliptic. Its principal symbol, which records its highest derivatives, equals \|ξ\|² times the identity at every nonzero covector ξ.
 
-**How the definition helps.** In our own proof, the added term supplies exactly the direction missing from the Hessian. The symbol of H acts by \|ξ\|² on variations perpendicular to ξ and vanishes on variations parallel to ξ. The added term acts by \|ξ\|² on parallel variations and vanishes on perpendicular ones. Their sum is invertible for ξ ≠ 0, which gives ellipticity.
+**How the definition helps.** At a nonzero covector ξ, the symbol of H is \|ξ\|² on variations perpendicular to ξ and zero on parallel ones (our own proof). The symbol of dₐdₐ\* is \|ξ\|² on parallel variations and zero on perpendicular ones. Their sum is \|ξ\|² times the identity.
 
 **nLab:** [Coulomb gauge](https://ncatlab.org/nlab/show/Coulomb+gauge). It says: “Then A is said to be in Coulomb gauge relative to A₀ if”
 
@@ -935,11 +935,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Take the product of an interval and a closed oriented Riemannian three-manifold with its product metric and a pulled-back principal SU(2) bundle. Temporal gauge means the time component vanishes, leaving a path A(t) of spatial connections. Normalize Chern–Simons so its L² gradient is ⋆Fₐ.
+**Definition.** On an interval times a closed oriented Riemannian three-manifold, with product metric and pulled-back SU(2) bundle, temporal gauge means the connection has no time component. Such a connection is a path A(t) of spatial connections, whose curvature is Fₐ on each slice plus a mixed part built from ∂ₜA (our own). Normalize Chern–Simons so its L² gradient is ⋆Fₐ.
 
 **Problem.** With time first in the product orientation, a connection in temporal gauge is anti-self-dual exactly when its path follows negative Chern–Simons gradient flow.
 
-**How the definition helps.** Temporal gauge turns the mixed curvature component into the time derivative of A. In our own sign convention, anti-self-duality gives ∂ₜA = −⋆Fₐ, where ⋆ is the spatial Hodge star. Parallel transport along the interval supplies temporal gauge. The first variation of Chern–Simons identifies the spatial curvature term with its gradient.
+**How the definition helps.** Anti-self-duality equates the mixed part with minus the spatial Hodge star of the slice part, which gives ∂ₜA = −⋆Fₐ in our own sign convention. Parallel transport along the interval puts any connection in temporal gauge. The first variation of Chern–Simons shows that ⋆Fₐ is its gradient.
 
 **nLab:** [Yang-Mills instanton Floer homology](https://ncatlab.org/nlab/show/Yang-Mills+instanton+Floer+homology). It says: “the flow lines of S₍CS₎ correspond to the Yang-Mills instantons on Σ × \[0,1\].”
 
@@ -949,15 +949,15 @@
 
 ### Cylinder integration gives Chern–Simons transgression
 
-**Remember:** Integrate along the path and differentiate to get the endpoints.
+**Remember:** Integrate a closed form along the path; its derivative sees only endpoints.
 
 *True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Join the connections by their straight path and give the resulting cylinder connection zero interval component. For a homogeneous invariant polynomial P, integrate P(F) with the increasing interval direction inserted first, where F is the cylinder curvature. This integral is the relative Chern–Simons form.
+**Definition.** Join two connections by the straight path and form the cylinder connection with zero interval component and curvature F. For a homogeneous invariant polynomial P, the relative Chern–Simons form is the integral of P(F) along the interval, with the interval direction inserted first.
 
 **Problem.** The exterior derivative of this form equals P applied to the final curvature minus P applied to the initial curvature.
 
-**How the definition helps.** In our own proof, integration along the interval turns differentiation into subtraction of the two endpoint values. Stokes’ formula gives this identity because Chern–Weil theory makes P(F) closed. Using the usual polynomial expression for the relative form would require differentiating the connection along the path explicitly.
+**How the definition helps.** Chern–Weil theory makes P(F) closed, so the fibre-integration Stokes formula leaves only the restrictions of P(F) to the two ends (our own proof). These are P of the final and of the initial curvature.
 
 **Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521). It says: “Given a k-form ξ on X × \[a,b\] we have d∫\[a,b\] ξ + ∫\[a,b\] dξ = ξ\|X×{b} − ξ\|X×{a}.”
 
@@ -971,11 +971,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Let E be a smooth real or complex vector bundle with flat connection on a smooth manifold. Its covariant exterior derivative differentiates E-valued forms and squares to zero because the curvature vanishes. The parallel sections on open sets form a local system, a sheaf that looks constant on small balls.
+**Definition.** For a flat connection on a smooth real or complex vector bundle E, the covariant exterior derivative on E-valued forms squares to zero and gives the flat de Rham complex. Its parallel sections over open sets form a local system, a sheaf that is constant on small balls.
 
 **Problem.** The cohomology of the flat de Rham complex is the cohomology of the parallel local system. In particular it does not require a metric on the base.
 
-**How the definition helps.** In our own proof, a parallel frame turns the differential on bundle-valued forms into ordinary differentiation of each component. The Poincaré lemma gives local exactness in positive degrees, and the kernel in degree zero consists of parallel sections. Partitions of unity make this a resolution whose global sections compute the cohomology of the local system.
+**How the definition helps.** Near each point a parallel frame turns the complex into copies of the ordinary de Rham complex (our own proof). The Poincaré lemma then makes it a fine resolution of the local system, so its global cohomology is the cohomology of the local system.
 
 **Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062). It says: “the homology on the chain complex described above is just the cohomology of M with local coefficients in V”
 
@@ -987,11 +987,11 @@
 
 *Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Fix a holomorphic line bundle L with a nonzero holomorphic section φ on a compact connected Riemann surface with area form ω. A Hermitian metric h gives the unique unitary connection compatible with the holomorphic structure. Its curvature F satisfies the vortex equation when iF = (τ − \|φ\|²)ω/2, with real parameter τ and norm from h.
+**Definition.** On a compact connected Riemann surface with area form ω, fix a holomorphic line bundle L, a nonzero holomorphic section φ and a Hermitian metric, with its unitary connection compatible with the holomorphic structure. The vortex equation says its curvature F satisfies iF = (τ − \|φ\|²)ω/2 for a real constant τ. So iF is τω/2 minus a nonnegative term from φ.
 
 **Problem.** A vortex with nonzero section must satisfy 4π deg L &lt; τ times the area. If equality holds, a constant-curvature connection with the zero section solves the equations.
 
-**How the definition helps.** In our own proof, a nonzero section makes the integral of its squared norm strictly positive. The curvature formula gives ∫iF = 2π deg L, where deg L is the first Chern number. Integrating the vortex equation now gives the strict bound. At equality a constant-curvature metric solves the equation with the zero section.
+**How the definition helps.** Integrating, with ∫iF = 2π deg L, gives 4π deg L = τ·area − ∫\|φ\|²ω (our own proof). A nonzero section makes the last integral positive, which gives the strict bound. At equality a constant-curvature metric solves the equations with the zero section.
 
 **Paper or page:** [Kähler-Yang-Mills Equations and Vortices](https://arxiv.org/abs/2309.15673). It says: “Assume that φ is not identically zero. For every fixed Kähler form ω, there exists a unique solution h of the vortex equations”
 
@@ -1038,15 +1038,15 @@
 
 ### Surface Hermite–Einstein connections are projectively flat
 
-**Remember:** Ignore scalar curvature only after passing to projective frames.
+**Remember:** Scalar curvature disappears once frames forget their common phase.
 
 *True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** On a Riemann surface with area form ω, a unitary connection is Hermite–Einstein if F = iλω Id for some real constant λ. It is projectively flat if the induced connection on orthonormal frames modulo common phase has zero curvature.
+**Definition.** On a Riemann surface with area form ω, a unitary connection is Hermite–Einstein when its curvature is a scalar, F = iλω Id for a real constant λ. It is projectively flat when the connection it induces on frames taken modulo a common phase has zero curvature.
 
 **Problem.** Every Hermite–Einstein connection on a Hermitian bundle over a compact Riemann surface is projectively flat. A positive-degree line bundle shows why one cannot conclude ordinary flatness.
 
-**How the definition helps.** In our own proof, passage to projective frames kills every imaginary scalar multiple of the identity. Thus the Hermite–Einstein equation on a curve forces projective curvature to vanish. For ordinary flatness the scalar itself must vanish. On a positive-degree line bundle its integral is nonzero by the curvature formula for the degree.
+**How the definition helps.** Passing to frames modulo a common phase kills every imaginary scalar multiple of the identity, so Hermite–Einstein curvature becomes zero (our own proof). Ordinary flatness would need λ = 0, but on a positive-degree line bundle the degree formula makes the integral of F nonzero.
 
 **nLab:** [projectively flat connection](https://ncatlab.org/nlab/show/projectively+flat+connection). It says: “A connection on a bundle that is flat up to a central term.”
 
@@ -1056,15 +1056,15 @@
 
 ### Translation symmetry gives Bogomolny monopoles
 
-**Remember:** The removed direction becomes a field on the space that stays.
+**Remember:** The lost direction’s connection component becomes the Higgs field.
 
 *True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Give ℝ × Y the product metric and time-first orientation for an oriented Riemannian three-manifold Y. A translation-invariant connection on a pulled-back principal bundle is A + φ dt, with A a connection and φ an adjoint bundle section on Y.
+**Definition.** Give ℝ × Y the product metric and time-first orientation, for an oriented Riemannian three-manifold Y. A translation-invariant connection is A + φ dt, with A a connection on Y and φ a section of the adjoint bundle. Its curvature has just two parts, Fₐ and dₐφ ∧ dt (our own).
 
 **Problem.** The lifted connection A + φ dt is anti-self-dual exactly when Fₐ = ⋆dₐφ on Y. Here ⋆ is the spatial Hodge star.
 
-**How the definition helps.** In our own calculation, translation invariance leaves just two curvature components, Fₐ and dₐφ ∧ dt. The four-dimensional Hodge star exchanges spatial and mixed forms. With the stated orientation, anti-self-duality therefore says Fₐ = ⋆dₐφ. This identifies the three-dimensional monopole equation with a symmetry restriction of the four-dimensional equation.
+**How the definition helps.** The four-dimensional Hodge star swaps spatial two-forms with mixed ones (our own calculation). With this orientation, anti-self-duality pairs Fₐ with dₐφ ∧ dt and says Fₐ = ⋆dₐφ.
 
 **nLab:** [Bogomolny equation](https://ncatlab.org/nlab/show/Bogomolny+equation). It says: “The Bogomolny equations are differential equations re-expressing the equations of motion of self-dual Yang-Mills theory”
 
@@ -1078,11 +1078,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Fix a based connected smooth manifold M, a Lie group G and a homomorphism ρ from π₁(M) to G. The associated flat bundle is the quotient of M̃ × G by γ·(x,g) = (γx,ρ(γ)g), where γ acts on the universal cover M̃ by deck transformations. It carries the descended product connection.
+**Definition.** Given a homomorphism ρ from the fundamental group of a connected manifold M to a Lie group G, build a bundle from the trivial bundle M̃ × G on the universal cover. Divide by γ·(x,g) = (γx, ρ(γ)g), with γ acting by deck transformations, so the flat product connection descends.
 
 **Problem.** Isomorphism classes of flat principal bundles with connection over a connected smooth manifold correspond to conjugacy classes of fundamental group representations into the structure group.
 
-**How the definition helps.** The quotient construction turns each representation directly into a bundle with connection. For the inverse, pull a flat connection back to the simply connected cover. Flatness makes parallel transport independent of the path there, giving a parallel frame. In our own comparison, changing the initial frame conjugates the representation.
+**How the definition helps.** This turns each representation into a flat bundle. Conversely, on the simply connected cover a flat connection has path-independent transport and hence a parallel frame, on which deck transformations act by a representation. Changing the frame conjugates the representation (our own comparison).
 
 **Paper or page:** [Equivariant gluing theory on regular instanton moduli spaces](https://arxiv.org/abs/2101.09425). It says: “Suppose B is connected, π : P → B is a principal G-bundle and A is a flat connection on P, then there exists a representation π₁(B) → G unique up to conjugation”
 
@@ -1090,7 +1090,7 @@
 
 ### Character curvatures have integral periods
 
-**Remember:** A cycle has zero boundary, so its curvature integral is zero modulo integers.
+**Remember:** A cycle has no boundary, so its curvature integral is an integer.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
 
@@ -1098,7 +1098,7 @@
 
 **Problem.** The curvature of a differential character integrates to an integer on every smooth integral k-cycle.
 
-**How the definition helps.** The boundary rule turns the integral on a cycle into the character’s value at zero, modulo integers. In the model using forms and cochains, integrality instead follows by comparing curvature with an integral cocycle. Our own comparison uses the theorem identifying the two models.
+**How the definition helps.** If C is a cycle, then ∂C = 0 and h(0) = 0 by additivity, so the integral of ω over C is zero modulo integers.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral”
 
@@ -1132,11 +1132,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Take a good cover with circle functions gᵢⱼ and imaginary-valued connection forms Aᵢ satisfying gᵢⱼgⱼₖ = gᵢₖ and Aⱼ − Aᵢ = gᵢⱼ⁻¹dgᵢⱼ on overlaps. Deligne addition multiplies corresponding frame changes and adds corresponding forms.
+**Definition.** On a good cover, a line bundle with unitary connection is given by circle-valued frame changes gᵢⱼ and imaginary connection forms Aᵢ, with gᵢⱼgⱼₖ = gᵢₖ and Aⱼ − Aᵢ = gᵢⱼ⁻¹dgᵢⱼ. Deligne addition multiplies the frame changes and adds the connection forms.
 
 **Problem.** Addition of degree-two smooth Deligne classes corresponds to tensoring Hermitian line bundles with their unitary connections.
 
-**How the definition helps.** The sum already records the frame changes and connection forms of the tensor product (our own). Identifying these local descriptions with geometric bundles uses the classification by gluing (our own).
+**How the definition helps.** Tensoring two bundles multiplies their frame changes and, by the product rule, adds their connection forms, so the sum is the data of the tensor product (our own). The classification by gluing identifies these local data with bundles (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
 
@@ -1150,11 +1150,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A degree-two smooth Deligne cocycle describes a line with connection on a cover with contractible intersections. It gives circle-valued changes of frame on overlaps and real connection forms on patches. The changes compose on triples, and their normalized logarithmic derivatives give the differences between connection forms.
+**Definition.** A degree-two smooth Deligne cocycle on a cover with contractible overlaps is the gluing data of a line bundle with connection. It gives circle-valued frame changes on overlaps that compose on triple overlaps. It also gives real connection forms on patches that differ by the normalized logarithmic derivatives of the frame changes.
 
-**Problem.** Degree-two smooth Deligne classes classify Hermitian line bundles with unitary connection up to isomorphism. Such a connection transports vectors while preserving their lengths.
+**Problem.** Degree-two smooth Deligne classes classify Hermitian line bundles with unitary connection up to isomorphism.
 
-**How the definition helps.** The cocycle equations give exactly the rules for gluing local lines and their connections (our own). Gluing constructs the bundle, while changes of local frame account for equivalent cocycles (our own).
+**How the definition helps.** Gluing trivial local lines by the frame changes builds the bundle, and the forms glue to a connection (our own). Changes of local frame change the cocycle by a coboundary, so classes match isomorphism classes (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “This evidently generalizes the familiar Cech cocycle data for traditional line bundles with connection.”
 
@@ -1168,11 +1168,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Use circle-valued functions as degree zero and take a good cover. A degree-two Deligne cocycle consists of circle functions g on triple overlaps, real one-forms A on double overlaps, and patch two-forms B. With δ the alternating Čech coboundary, require δg = 1, δA = g⁻¹dg/(2πi), and δB = dA.
+**Definition.** On a good cover, a degree-two Deligne cocycle is the gluing data of a gerbe: circle functions g on triple overlaps, real one-forms A on double overlaps, and two-forms B, the curving, on patches. With δ the alternating Čech coboundary, it satisfies δg = 1, δA = g⁻¹dg/(2πi) and δB = dA.
 
 **Problem.** Degree-two Deligne cocycles modulo changes of local trivialization classify circle bundle gerbes with connection and curving up to stable isomorphism.
 
-**How the definition helps.** One cocycle records all three gluing rules for the gerbe, its connection, and its curving. Our own explanation identifies changes of local frames and patch connections with coboundaries, the changes ignored in cohomology. The classification theorem reconstructs the gerbe from these local data.
+**How the definition helps.** The three equations are the gluing rules for the gerbe, its connection and its curving. Changes of local trivialization and patch connections change the cocycle by a coboundary (our own explanation). The classification theorem reconstructs the gerbe from these local data.
 
 **Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “a geometrical model of certain 1-gerbes with connection, or equivalently of a 2-class in Deligne cohomology.”
 
@@ -1183,15 +1183,15 @@
 
 ### Deligne products preserve integral products
 
-**Remember:** The degree zero part multiplies integer cochains.
+**Remember:** The integer part of a Deligne product is the integer cup product.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** On a good cover, integral projection sends a Deligne cocycle to its integer Čech component. For integer components u and v of degrees p and q, the product component on indices i₀,…,iₚ₊q is u(i₀,…,iₚ)v(iₚ,…,iₚ₊q).
+**Definition.** On a good cover, integral projection keeps only the integer Čech component of a Deligne cocycle. On integer components u and v of degrees p and q, the Deligne cup product is the Čech cup product, with value u(i₀,…,iₚ)v(iₚ,…,iₚ₊q).
 
 **Problem.** The underlying integral class of a Deligne cup product is the ordinary cup product of the underlying integral classes.
 
-**How the definition helps.** Projection retains precisely the integer multiplication rule on overlaps (our own). The comparison between cohomology on a good cover and singular cohomology identifies this rule with the ordinary cup product (our own).
+**How the definition helps.** So projection takes Deligne products to Čech cup products of the integer parts (our own). Cohomology on a good cover agrees with singular cohomology, cup products included (our own).
 
 **nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “α ∧ β = αβ”
 
@@ -1202,15 +1202,15 @@
 
 ### Deligne products wedge curvatures
 
-**Remember:** Differentiate the last product form to wedge the curvatures.
+**Remember:** Differentiate the top form α∧dβ to wedge the two curvatures.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** The Deligne cup product represents multiplication of differential cohomology classes using local forms and overlap data. For positive degrees, its highest local form is α∧dβ, where α and β are the highest forms of the factors. The symbol ∧ denotes the exterior product of forms.
+**Definition.** The Deligne cup product multiplies smooth Deligne classes through their local forms and overlap data. In positive degrees its top local form is α∧dβ, where α and β are the top forms of the factors. The curvature of a class is the derivative of its top form.
 
 **Problem.** For smooth Deligne classes of positive degrees, the curvature of their cup product equals the exterior product of their curvatures.
 
-**How the definition helps.** Differentiating α∧dβ gives dα∧dβ, and these two derivatives are the factor curvatures (our own). The work lies in constructing a product on classes from this asymmetric local formula (our own).
+**How the definition helps.** Since d(α∧dβ) = dα∧dβ, the curvature of the product is the wedge of the two curvatures (our own). The work lies in showing that this asymmetric formula gives a well-defined product on classes (our own).
 
 **nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
 
@@ -1226,11 +1226,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** The degree-two smooth Deligne complex is ℤ → C∞(−,ℝ) → Ω¹, with integer inclusion followed by exterior differentiation. Its integral projection acts identically on integers and sends both higher terms to zero.
+**Definition.** The integral projection of the degree-two smooth Deligne complex ℤ → C∞(−,ℝ) → Ω¹ (inclusion, then exterior derivative) keeps the integer term and sends the other two terms to zero. On a cocycle it keeps only the integer Čech 2-cocycle on triple overlaps.
 
 **Problem.** For a line bundle with unitary connection, this projection sends its Deligne class to the first Chern class, its integral topological invariant.
 
-**How the definition helps.** Projection retains the integer discrepancies between local logarithms of the circle-valued frame changes on triple overlaps (our own). The exponential sequence identifies these discrepancies with the first Chern class computed without a connection (our own).
+**How the definition helps.** For a line bundle with connection, that integer cocycle records how local logarithms of the transition functions fail to add up on triple overlaps (our own). The exponential sequence identifies exactly this cocycle with the first Chern class (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “a canonical forgetful map”
 
@@ -1240,15 +1240,15 @@
 
 ### Flat complexes compute flat classes
 
-**Remember:** Require closed top forms and only locally constant data survive.
+**Remember:** Close the top forms and only constant circle values survive.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** For n ≥ 2, the flat Deligne complex starts with smooth circle-valued functions in degree one. It continues with differential forms through degree n−1, requiring the last forms to be closed. The first map takes normalized logarithmic derivatives, and subsequent maps take exterior derivatives.
+**Definition.** For n ≥ 2, the flat Deligne complex is the smooth Deligne complex with its top forms required to be closed: smooth ℝ/ℤ-valued functions in degree one, then Ω¹, …, Ωⁿ⁻¹ closed. Its maps are the normalized logarithmic derivative and then exterior derivatives, so by the Poincaré lemma it resolves the locally constant sheaf ℝ/ℤ (our own).
 
 **Problem.** On a smooth manifold X, degree-n smooth Deligne classes with zero curvature form the ordinary cohomology group Hⁿ⁻¹(X, ℝ/ℤ) for n ≥ 2.
 
-**How the definition helps.** Requiring closed last forms imposes zero curvature directly on local representatives (our own). Local primitives and local logarithms leave only locally constant circle values in degree one (our own). The exact sequence for curvature identifies the resulting group with the kernel (our own).
+**How the definition helps.** Closed top forms impose zero curvature on every local representative (our own). Because the complex resolves the locally constant sheaf ℝ/ℤ placed in degree one, its degree-n cohomology is Hⁿ⁻¹(X, ℝ/ℤ) (our own). The curvature exact sequence identifies this group with the classes of zero curvature (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “The Deligne cohomology group fits into a short exact sequence (of abelian groups) of the form”
 
@@ -1258,15 +1258,15 @@
 
 ### Flat connections lift torsion
 
-**Remember:** Flat connections can keep torsion that real cohomology forgets.
+**Remember:** Constant transition phases leave only a torsion Chern class.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A flat unitary connection has zero curvature and admits local frames that it transports unchanged. In these frames the changes on overlaps take locally constant values in the circle ℝ/ℤ.
+**Definition.** A flat unitary connection is one with zero curvature. Equivalently, the bundle has local frames that the connection keeps parallel, and their changes on overlaps are locally constant circle values.
 
 **Problem.** On a compact smooth manifold, a Hermitian line bundle admits a flat unitary connection exactly when some positive integer kills its first Chern class.
 
-**How the definition helps.** Flat frame changes define a class in H¹(X, ℝ/ℤ) whose Bockstein is the first Chern class (our own argument). Conversely, each such cocycle glues a flat line bundle, and the first Chern class classifies line bundles. Exactness gives precisely the kernel of passage to real cohomology. Compact smooth manifolds have finitely generated integral cohomology, so this kernel is torsion.
+**How the definition helps.** Locally constant frame changes form a class in H¹(X, ℝ/ℤ) whose Bockstein is the first Chern class (our own argument). By exactness, Bockstein images are exactly the integral classes that vanish in real cohomology, and each glues a flat bundle with that Chern class. On a compact manifold these are exactly the torsion classes, and the first Chern class classifies line bundles.
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the Bockstein homomorphism:”
 
@@ -1280,11 +1280,11 @@
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A degree-three differential character assigns a unit complex number to each smooth integral 2-cycle and sends sums to products. On a boundary its value is the exponential of 2πi times the integral of its curvature over the filling. A flat gerbe has zero curvature.
+**Definition.** A degree-three differential character gives each smooth integral 2-cycle a unit complex number, turning sums into products, and gives a boundary ∂V the value exp(2πi ∫<sub>V</sub> curvature). A flat gerbe has zero curvature, so its character is 1 on every boundary.
 
 **Problem.** The surface phases of a flat circle gerbe depend only on the integral homology class of the surface.
 
-**How the definition helps.** In our own derivation, zero curvature makes every boundary phase one, so adding a boundary preserves the phase. The comparison theorem identifies gerbe surface phases with a differential character. In our own counterexample, a trivial gerbe on ℝ³ has potential x dy ∧ dz. The boundary of a ball of volume one-half has phase −1.
+**How the definition helps.** Zero curvature makes the phase of every boundary equal to one, so surfaces that differ by a boundary have equal phases (our own). The comparison theorem identifies gerbe surface phases with a differential character. Without flatness this fails: on ℝ³ the trivial gerbe with curving x dy ∧ dz gives the boundary of a ball of volume one-half the phase −1 (our own counterexample).
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
 
@@ -1298,11 +1298,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Write a(A) for the degree-p Deligne class represented by a single global (p−1)-form A. In the Deligne cup product, a left form multiplies only the highest right form β, giving A∧dβ.
+**Definition.** A single global (p−1)-form A defines a degree-p Deligne class a(A), the one represented by A alone. In the Deligne cup product such a left form meets only the highest forms β of the right factor, giving A∧dβ, and dβ is the right factor's curvature F (our own).
 
 **Problem.** For positive degrees p and q, multiplying a(A) by a degree-q Deligne class with curvature F gives a(A∧F).
 
-**How the definition helps.** Only the derivatives of the highest right forms survive, and these agree everywhere with F (our own). The cochain formula therefore produces the single global form A∧F (our own). The work lies in proving that this product respects changes of representatives (our own).
+**How the definition helps.** The derivatives dβ of the right factor's highest forms agree on overlaps and equal its curvature F, so the cochain formula gives the single global form A∧F (our own). The cup product is well defined on classes, so this holds for any representative (our own).
 
 **nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “\\alpha \\wedge d<sub>dR</sub>\\beta”
 
@@ -1318,11 +1318,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** For n ≥ 2, the smooth Deligne complex starts with ℤ in degree zero, followed by smooth real functions and forms through degree n−1. Its maps are inclusion and then exterior differentiation. Integral projection keeps degree zero and kills all higher terms.
+**Definition.** For n ≥ 2, the smooth Deligne complex is ℤ → C∞(−,ℝ) → Ω¹ → … → Ωⁿ⁻¹, with inclusion and then exterior derivatives, and its integral projection keeps only the ℤ term. Without the ℤ term it is a complex of fine sheaves of forms, so a class with zero integral part comes from one global (n−1)-form (our own).
 
 **Problem.** Degree-n classes with zero underlying integral class form the group of global (n−1)-forms modulo closed forms with integer integrals over cycles.
 
-**How the definition helps.** Deleting the integer term leaves a complex of forms whose cohomology can be computed using global forms (our own). Partitions of unity justify this step (our own). Exactness and the de Rham theorem identify the remaining ambiguity with closed forms having integral periods (our own).
+**How the definition helps.** Partitions of unity let the forms-only complex be computed with global forms, which gives Ωⁿ⁻¹(X) modulo exact forms (our own). Exactness of the sequence with the integer term then also divides out the closed forms with integral periods, by the de Rham theorem (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “Hence we get a short exact sequence by dividing out the image”
 
@@ -1336,11 +1336,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** For a degree-n smooth Deligne cocycle on a good cover, let Bᵢ denote the (n−1)-form on patch i, with n ≥ 2. Define its curvature on each patch as dBᵢ.
+**Definition.** For a degree-n smooth Deligne cocycle on a good cover, with n ≥ 2, the curvature is dBᵢ, the exterior derivative of its highest form Bᵢ on each patch i. The cocycle condition makes the Bᵢ differ on overlaps by exact forms, so the dBᵢ agree (our own).
 
 **Problem.** Differentiating the highest forms of a smooth Deligne cocycle gives a global closed curvature form depending only on its class.
 
-**How the definition helps.** The local derivatives agree because differentiating twice gives zero (our own). Changing the representative also changes its highest forms locally by exact forms (our own). Comparison with geometric connections identifies this global derivative with their curvature (our own).
+**How the definition helps.** The highest forms differ on overlaps by exact forms, and d² = 0 makes their derivatives agree (our own). Changing the representative changes each Bᵢ by an exact form, so the curvature depends only on the class (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the failure of the (n−k+1)-forms to glue on (k+1)-fold intersections of charts is given by the de Rham differential of the (n−k)-forms”
 
@@ -1356,11 +1356,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A central circle extension maps one Lie group onto another with a central circle as kernel. For a principal bundle, two points in one fiber differ by a unique group element. The lifting gerbe assigns to that pair the circle of lifts of this element and multiplies lifts using the extended group.
+**Definition.** Take a central extension of Lie groups with circle kernel, Ĝ → G, and a principal G-bundle P. The lifting gerbe assigns to two points p₁, p₂ of one fiber the circle of lifts to Ĝ of the element g with p₂ = p₁g, and multiplies these lifts in Ĝ.
 
 **Problem.** A smooth principal bundle lifts to the extended group exactly when the integral cohomology class of its lifting gerbe vanishes.
 
-**How the definition helps.** The gerbe product records exactly where lifted transition functions fail to multiply on triple overlaps. Our own comparison uses the same circle-valued error in the usual transition-function proof. The exponential sequence identifies its cohomology class with the integral gerbe class. Vanishing means that local circle factors correct the lifts so they glue.
+**How the definition helps.** The gerbe records the circle-valued failure of lifted transition functions to multiply on triple overlaps (our own comparison). The exponential sequence turns this circle-valued cocycle into an integral class. That class vanishes exactly when local circle factors correct the lifts so that they glue.
 
 **nLab:** [lifting gerbe](https://ncatlab.org/nlab/show/lifting+gerbe). It says: “arising as the obstruction to the lift of a G-principal bundle”
 
@@ -1370,15 +1370,15 @@
 
 ### Matching real classes admit lifts
 
-**Remember:** The witness exists exactly when the two real cohomology classes agree.
+**Remember:** A witness h exists exactly when both real classes agree.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A degree-n differential cocycle consists of an integral n-cocycle c, a closed real n-form ω and a real (n−1)-cochain h on smooth singular chains. For every smooth singular n-chain S, require h(∂S) = ∫ₛ ω − c(S).
+**Definition.** A degree-n differential cocycle is an integral n-cocycle c, a closed real n-form ω, and a witness h that the two agree as real cocycles. The witness is a real (n−1)-cochain on smooth singular chains with h(∂S) = ∫ₛ ω − c(S) for every smooth singular n-chain S.
 
 **Problem.** An integral degree-n class and a closed n-form on a smooth manifold have a common differential refinement exactly when their real cohomology classes agree.
 
-**How the definition helps.** The required real cochain exists exactly when the difference represents zero in real cohomology (our own). The comparison with smooth Deligne classes uses the de Rham theorem to relate differential forms to real cochains (our own).
+**How the definition helps.** The witness h exists exactly when the real cocycle S ↦ ∫ₛ ω − c(S) is a coboundary, that is, when the two real classes agree (our own). The de Rham theorem identifies the class of ω with the class of the cocycle S ↦ ∫ₛ ω (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “represent real cohomology classes that are in the image of integral cohomology classes.”
 
@@ -1388,15 +1388,15 @@
 
 ### Sphere tests miss torus periods
 
-**Remember:** Checking spheres does not check all periods.
+**Remember:** Curvature needs integer periods on every closed surface, not just spheres.
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** A degree-two differential character assigns values in ℝ/ℤ additively to smooth integral 1-cycles. Its curvature is a 2-form whose integral on each smooth integral 2-chain gives the character’s value on the boundary, modulo integers.
+**Definition.** A degree-two differential character assigns values in ℝ/ℤ additively to smooth integral 1-cycles. Its curvature is a 2-form whose integral over any smooth integral 2-chain equals, modulo integers, the character's value on the boundary, so it integrates to an integer over every closed surface.
 
 **Problem.** A torus admits a 2-form whose integral over every mapped sphere is zero, although the form cannot be a character curvature.
 
-**How the definition helps.** The boundary rule tests the whole torus, which has zero boundary. In our own example the form has total integral one half. Every map from the sphere to the torus lifts to the plane, where the lifted form has a primitive. Stokes’ theorem therefore gives zero on every sphere.
+**How the definition helps.** The whole torus has no boundary, so the rule forces an integer integral there, and a form with total integral one half fails (our own example). Every map from the sphere to the torus lifts to the plane, where the pulled-back form has a primitive. So Stokes' theorem gives zero on every sphere.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “a rule that assigns values in the circle group U(1)”
 
@@ -1410,11 +1410,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A circle gerbe with connection assigns a phase, called holonomy, to each closed oriented surface mapped smoothly into its base. A trivialization over the surface describes the gerbe by a real 2-form b. Define the phase as exp(2πi ∫ b), integrating over the surface.
+**Definition.** The holonomy of a circle gerbe with connection is a phase assigned to each closed oriented surface mapped smoothly into the base. Over a trivialization the gerbe is given by a real 2-form b, and the phase is exp(2πi ∫ b) over the surface.
 
 **Problem.** For a smooth map from a compact oriented three-manifold, the boundary phase equals the exponential of 2πi times the integral of the pulled-back gerbe curvature.
 
-**How the definition helps.** The trivialization formula reduces the boundary phase to ordinary Stokes whenever the trivialization extends over the filling. In our own proof, each connected component with boundary admits a trivialization because its third integral cohomology vanishes. A closed component contributes phase one because the curvature has integral periods. The geometric comparison theorem identifies this formula with the usual sum of local contributions from a triangulation.
+**How the definition helps.** When the trivialization extends over the filling three-manifold, db is the curvature there, and ordinary Stokes gives the formula. In our own proof, each component with boundary has zero third integral cohomology, so the pulled-back gerbe trivializes over it. A closed component contributes phase one because the curvature has integral periods.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “this assignment coincides with the integral $\\int\_{\\Sigma<sub>n+1</sub>} \\phi<sup>\*</sup> F$ of the pullback of a curvature $(n+1)$-form”
 
@@ -1429,11 +1429,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 3: graduate.
 
-**Definition.** In the cochain description of a differential character, a real cochain h lifts its cycle values modulo integers. The characteristic class is represented by integrated curvature minus δh, where δ takes the coboundary. A flat character has zero curvature.
+**Definition.** In the cochain description of a differential character, a real cochain h lifts its ℝ/ℤ values on cycles, and the integral characteristic class is represented by the integrated curvature minus δh. A flat character has zero curvature, so its class is represented by −δh alone.
 
 **Problem.** The integral characteristic class of a flat character equals minus the Bockstein of its ℝ/ℤ cohomology class.
 
-**How the definition helps.** Setting curvature to zero leaves exactly −δh. The Bockstein takes a circle-valued cocycle, lifts it to real values, and takes its coboundary. Our own comparison with the definition on cycles uses the theorem identifying characters with cochain classes.
+**How the definition helps.** The Bockstein lifts a circle-valued cocycle to a real cochain and takes its coboundary, which here is δh, so zero curvature leaves exactly minus the Bockstein (our own comparison). The theorem identifying characters with cochain classes makes h a lift of the character's ℝ/ℤ class.
 
 **nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “The underlying characteristic class”
 
@@ -1443,15 +1443,15 @@
 
 ### Truncation preserves exact curvature
 
-**Remember:** An exact curvature can disappear in de Rham cohomology but not in the cutoff complex.
+**Remember:** Cut away the lower forms so exact curvature still counts.
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 55N20. arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** The degree-n truncation of the de Rham complex keeps all forms in degrees n and higher with their usual differential. It replaces every lower degree by zero.
+**Definition.** The degree-n truncation of the de Rham complex keeps the forms of degree n and higher with their usual differential and replaces every lower degree by zero. So its degree-n cohomology is all closed n-forms, since no (n−1)-forms remain to make any of them exact.
 
 **Problem.** On ℝ² there is a differential class with curvature d(x dy) = dx ∧ dy. Using the full form complex would identify this curvature with zero.
 
-**How the definition helps.** The cutoff removes the degree-one forms whose derivatives would otherwise be boundaries in degree two (our own). The one-form x dy defines a topologically trivial differential class with curvature dx ∧ dy (our own). In the full complex, this same two-form represents zero because it is exact (our own).
+**How the definition helps.** With the degree-one forms removed, the exact form dx ∧ dy is a nonzero class in degree two (our own). The one-form x dy defines a topologically trivial differential class with this curvature (our own). In the full complex dx ∧ dy is exact and so represents zero (our own).
 
 **nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “the truncated sheaves of de Rham complexes with coefficients in a given chain complex:”
 
@@ -1462,15 +1462,15 @@
 
 ### Two-forms describe topologically trivial gerbes
 
-**Remember:** A comparison line changes the curving by its curvature.
+**Remember:** Two curvings agree when a line bundle's curvature is their difference.
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A trivial gerbe with curving B carries a global 2-form B specifying its surface phases. A comparison between two such gerbes is a line bundle whose connection has normalized curvature B₂ − B₁. Normalization divides unitary curvature by 2πi.
+**Definition.** A topologically trivial circle gerbe with curving is described by one global 2-form B, which gives its surface phases. An equivalence between descriptions B₁ and B₂ is a line bundle whose connection has curvature B₂ − B₁, after dividing the unitary curvature by 2πi.
 
-**Problem.** Every topologically trivial circle gerbe with connection and curving has such a global description. Two forms give equivalent descriptions exactly when their difference integrates to an integer on every closed integral 2-cycle and is closed.
+**Problem.** Every topologically trivial circle gerbe with connection and curving has such a global description. Two forms give equivalent descriptions exactly when their difference is closed with integer integrals over every closed integral 2-cycle.
 
-**How the definition helps.** The comparison line turns equivalence into a prescribed-curvature problem for an ordinary line bundle. The line bundle curvature theorem gives exactly the stated period condition. In our own explanation, a topological trivialization with compatible connection lets the remaining curving descend to the base.
+**How the definition helps.** Equivalence thus means finding a line bundle with prescribed curvature B₂ − B₁. The line bundle curvature theorem says such a bundle exists exactly when the form is closed with integral periods. In our own explanation, a topological trivialization with compatible connection lets the remaining curving descend to one global form.
 
 **nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “differ by a globally defined connection (n−1)-form, well defined up to addition of a form with integral periods.”
 
@@ -1488,11 +1488,11 @@
 
 *Rules out counterexamples.* MSC 53C21 (Methods of global Riemannian geometry, including PDE methods; curvature restrictions). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A smooth manifold is orientable if it admits a smooth top-degree form that vanishes nowhere.
+**Definition.** A smooth manifold is orientable if it admits a smooth top-degree form that vanishes nowhere. Then parallel transport around every loop preserves orientation.
 
 **Problem.** Every connected, compact, orientable, even-dimensional Riemannian manifold without boundary and with positive sectional curvature is simply connected.
 
-**How the definition helps.** Orientability excludes the positively curved real projective plane, whose fundamental group has order two (our own example). In Synge’s proof, parallel transport around a shortest noncontractible closed geodesic preserves orientation on its odd-dimensional normal space. It therefore fixes a unit normal vector. The resulting parallel variation shortens the geodesic by positive curvature, contradicting minimality (our own summary).
+**How the definition helps.** In Synge's proof, transport around a shortest noncontractible closed geodesic preserves orientation, so it fixes a unit vector of the odd-dimensional normal space (our own summary). Pushing the geodesic along that parallel field shortens it by positive curvature, which contradicts minimality. The round real projective plane shows the need: it has positive curvature but fundamental group of order two (our own example).
 
 **Paper or page:** [The curvature of convex sum of metrics and applications](https://arxiv.org/abs/2106.14781). It says: “Let (M,g) be a compact manifold with positive sectional curvature. Then, If M is even-dimensional and orientable, then it is simply-connected, If M is odd-dimensional, then it is orientable.”
 
@@ -1507,11 +1507,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C22 (Geodesics in global differential geometry), 53B20. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Define a Jacobi field along a geodesic γ as the derivative of a smooth family of geodesics through γ. The usual definition asks for a solution of the Jacobi equation J″ + R(J,γ′)γ′ = 0. Here R is the curvature tensor.
+**Definition.** A Jacobi field along a geodesic γ is the variation field, the derivative in s, of a smooth family of geodesics γₛ with γ₀ = γ.
 
 **Problem.** The restriction of a Killing field, a vector field whose flow preserves the metric, to a geodesic is a Jacobi field.
 
-**How the definition helps.** The local flow of a Killing field takes each geodesic segment to a family of geodesics (our own argument). Differentiating this family gives the restriction of the field. The geodesic variation theorem identifies these derivatives locally with solutions of the Jacobi equation.
+**How the definition helps.** The local flow of a Killing field acts by isometries, so it moves γ through a family of geodesics whose variation field is the Killing field along γ (our own argument). The geodesic variation theorem identifies such fields with the solutions of the Jacobi equation J″ + R(J,γ′)γ′ = 0.
 
 **Wikipedia:** [Jacobi field](https://en.wikipedia.org/wiki/Jacobi_field). It says: “Take a smooth one parameter family of geodesics”
 
@@ -1523,11 +1523,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C22 (Geodesics in global differential geometry), 53C05, 83C40. arXiv math.DG, gr-qc. Level 3: graduate.
 
-**Definition.** A Killing field K is a vector field whose flow preserves the metric. In the Killing equation, the covariant derivative of the one-form g(K, ·) is antisymmetric.
+**Definition.** A Killing field K is a vector field whose flow preserves the metric. Equivalently, its covariant derivative is antisymmetric, so g(∇<sub>U</sub> K, U) = 0 for every vector U.
 
 **Problem.** On an affinely parametrized geodesic, a path whose tangent U is parallel along itself, the metric product g(K, U) stays constant.
 
-**How the definition helps.** The antisymmetric derivative makes the rate of change of g(K, U) vanish because it pairs U with itself. No derivative of U remains because U is parallel along the path (our own). The work is in identifying that antisymmetry with preservation of the metric. A coordinate that does not appear in the metric gives a special case of this construction.
+**How the definition helps.** Along the geodesic, the derivative of g(K, U) is g(∇<sub>U</sub> K, U) + g(K, ∇<sub>U</sub> U). The first term vanishes by antisymmetry, and the second because U is parallel along the path (our own). A coordinate that does not appear in the metric gives the special case of a conserved momentum.
 
 **Wikipedia:** [Killing vector field](https://en.wikipedia.org/wiki/Killing_vector_field). It says: “Each Killing vector corresponds to a quantity which is conserved along geodesics. This conserved quantity is the metric product between the Killing vector and the geodesic tangent vector.”
 
@@ -1535,15 +1535,15 @@
 
 ### Approximate midpoints let a three-point test detect length spaces
 
-**Remember:** Halve the gaps and let the errors shrink.
+**Remember:** A length space has near-halfway points between any two points.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C22. arXiv math.MG. Level 3: graduate.
 
-**Definition.** In a length space, the distance between two points is the infimum of the lengths of paths that join them. A point z is an ε-midpoint of x and y if both d(x, z) and d(y, z) are at most d(x, y)/2 + ε.
+**Definition.** A length space is a metric space in which the distance between two points is the infimum of the lengths of paths that join them. A point z is an ε-midpoint of x and y if d(x, z) and d(y, z) are both at most d(x, y)/2 + ε.
 
 **Problem.** A complete metric space is a length space exactly when every pair of points has an ε-midpoint for every ε &gt; 0.
 
-**How the definition helps.** Approximate midpoints express the path condition using three points (our own explanation). Halving a path whose length approaches the distance supplies an approximate midpoint. Conversely, repeated midpoint insertion with summable errors gives a Lipschitz map on dyadic times with length arbitrarily close to the distance. Completeness extends this map continuously to the whole interval (our own construction).
+**How the definition helps.** Cutting a path of nearly minimal length at half its length gives an ε-midpoint. Conversely, inserting ε-midpoints repeatedly with summable errors gives a Lipschitz map on dyadic times whose length is arbitrarily close to the distance. Completeness extends this map continuously to the whole interval (our own construction).
 
 **Paper or page:** [A Gentle Introduction to CAT(0) Spaces](https://arxiv.org/abs/2406.09883v1). It says: “X is a length space if and only if it admits ε-midpoints for all ε &gt; 0.”
 
@@ -1557,11 +1557,11 @@
 
 *True by definition.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 54E45. arXiv math.MG. Level 3: graduate.
 
-**Definition.** A correspondence R ⊆ X × Y projects onto both spaces. It is optimal if it minimizes the supremum of \|dₓ(x,x′) − dᵧ(y,y′)\| over all (x,y),(x′,y′) in R. For 0 ≤ t ≤ 1, use the weighted distance (1−t)dₓ(x,x′) + tdᵧ(y,y′) on R, identifying pairs at distance zero.
+**Definition.** A correspondence R ⊆ X × Y is a relation that projects onto both spaces, and its distortion is the supremum of \|dₓ(x,x′) − dᵧ(y,y′)\| over pairs in R. For 0 ≤ t ≤ 1, take R of least distortion with the blended distance (1−t)dₓ + t dᵧ, identifying pairs at distance zero.
 
 **Problem.** Nonempty compact metric spaces up to isometry form a geodesic space under Gromov–Hausdorff distance. Each closed optimal correspondence gives a shortest path between its endpoints.
 
-**How the definition helps.** Matching each pair to itself bounds the intermediate Gromov–Hausdorff distance by \|s−t\| times half the distortion of R (our own calculation). The correspondence theorem identifies half the optimal distortion with the endpoint distance and guarantees a closed optimizer for compact spaces. The triangle inequality then forces equality throughout the path.
+**How the definition helps.** Matching each pair to itself shows that the spaces at times s and t are within Gromov–Hausdorff distance \|s−t\| times half the distortion of R (our own calculation). For compact spaces a closed optimal R exists, and half its distortion is the distance between X and Y. The triangle inequality then forces equality along the whole path.
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “is a shortest geodesic with the speed dɢʜ(X,Y).”
 
@@ -1575,11 +1575,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C21. arXiv math.DG, math.MG. Level 3: graduate.
 
-**Definition.** For k &gt; 0, local Alexandrov curvature ≥ k means every point has a neighborhood satisfying spherical triangle comparison. For each sufficiently short geodesic triangle there, distances between side points dominate corresponding distances in the sphere of curvature k. Use triangles of perimeter below 2π/√k and match points by distance along corresponding sides.
+**Definition.** For k &gt; 0, a length space has Alexandrov curvature ≥ k if each point has a neighborhood whose geodesic triangles of perimeter below 2π/√k are at least as fat as their comparison triangles in the sphere of curvature k. Fat means that points on the sides are at least as far apart as the matching points, at the same distances along the comparison sides.
 
 **Problem.** A complete length space of dimension at least two with Alexandrov curvature at least k &gt; 0 has diameter at most π/√k.
 
-**How the definition helps.** The real line satisfies local comparison through degenerate triangles but has infinite diameter (our own example). The Alexandrov Bonnet–Myers theorem gives the diameter bound once the dimension assumption excludes these one-dimensional exceptions.
+**How the definition helps.** The Alexandrov Bonnet–Myers theorem gives the diameter bound once the one-dimensional exceptions are excluded. The real line shows why they must be: its triangles are degenerate, so it passes every comparison but has infinite diameter (our own example).
 
 **Paper or page:** [Alexandrov's Patchwork and the Bonnet--Myers Theorem for Lorentzian length spaces](https://arxiv.org/abs/2302.11615), [Alexandrov's Patchwork and the Bonnet--Myers Theorem for Lorentzian length spaces](https://arxiv.org/abs/2302.11615). It says: “Let X be a complete length space with (local) curvature bounded below by some k&gt;0, which is not one of the aforementioned 1-dimensional spaces. Then diam(X) ≤ π/√k.”
 
@@ -1593,11 +1593,11 @@
 
 *True by definition.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 20F67. arXiv math.MG. Level 3: graduate.
 
-**Definition.** A geodesic metric space is CAT(0) if distances between points on every geodesic triangle are at most the corresponding Euclidean comparison distances. The comparison triangle has the same side lengths, possibly degenerately, and corresponding points have the same positions along corresponding sides.
+**Definition.** A geodesic metric space is CAT(0) if every geodesic triangle is no fatter than its Euclidean comparison triangle, the one with the same side lengths, possibly degenerate. That is, two points on the sides are at most as far apart as the matching points, at the same positions along the sides, of the comparison triangle.
 
 **Problem.** In a CAT(0) space, each pair of points is joined by exactly one geodesic.
 
-**How the definition helps.** Take constant-speed geodesics c and c′ from x to y on \[0,1\]. Use c′ and the two pieces of c meeting at c(t) as triangle sides. Their Euclidean comparison triangle is a segment, where the points corresponding to c(t) and c′(t) coincide. Comparison forces their original distance to vanish for every t (our own proof).
+**How the definition helps.** Two constant-speed geodesics c and c′ from x to y on \[0,1\] form a triangle with sides c′, c on \[0,t\] and c on \[t,1\], whose comparison triangle is a segment (our own proof). In that segment the points matching c(t) and c′(t) coincide. Comparison therefore forces d(c(t), c′(t)) = 0 for every t.
 
 **Paper or page:** [A Gentle Introduction to CAT(0) Spaces](https://arxiv.org/abs/2406.09883v1). It says: “X is uniquely geodesic”
 
@@ -1611,11 +1611,11 @@
 
 *True by definition.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 57N65. arXiv math.GT, math.DG. Level 3: graduate.
 
-**Definition.** A real fundamental cycle of a connected closed oriented manifold represents its orientation in top-dimensional homology. The norm of the cycle is the sum of the absolute values of its coefficients. Simplicial volume is the infimum of that norm over all real fundamental cycles.
+**Definition.** The simplicial volume ‖M‖ of a connected closed oriented manifold is the infimum, over real singular cycles representing its fundamental class, of the sum of the absolute values of their coefficients. Pushing a cycle forward along a map never increases this sum.
 
 **Problem.** For a map f from M to N between connected closed oriented manifolds of the same dimension, ‖M‖ ≥ \|deg f\| · ‖N‖. So a self-map of absolute degree greater than one forces zero simplicial volume.
 
-**How the definition helps.** In our own proof, the cycle norm gives the inequality because pushing a cycle forward can combine coefficients but cannot increase their absolute sum. A fundamental cycle maps to a cycle representing deg(f) times the target's orientation class. Scaling a real class scales its norm by the absolute factor. Taking the infimum gives the result.
+**How the definition helps.** A fundamental cycle of M pushes forward to a cycle of no larger norm that represents deg(f) times the fundamental class of N (our own proof). For deg f ≠ 0, dividing by deg f gives a fundamental cycle of N with norm at most the original norm divided by \|deg f\|. Taking the infimum gives ‖N‖ ≤ ‖M‖/\|deg f\|.
 
 **Wikipedia:** [Simplicial volume](https://en.wikipedia.org/wiki/Simplicial_volume). It says: “one defines the simplicial norm by minimizing the sum of the absolute values of the coefficients over all singular chains homologous to a given cycle. The simplicial volume is the simplicial norm of the fundamental class.”
 
@@ -1633,7 +1633,7 @@
 
 **Problem.** For metric spaces X, Y and Z, the Gromov–Hausdorff distance d satisfies d(X, Z) ≤ d(X, Y) + d(Y, Z). Distances may be infinite, for example for unbounded spaces.
 
-**How the definition helps.** Glue two comparison spaces along their isometric copies of Y (our own argument). Across the join, take the infimum of distances through a point of Y and identify points at distance zero. The resulting metric preserves distances within each original space. Apply the Hausdorff triangle inequality there and take the infimum over both comparisons.
+**How the definition helps.** Because any common space is allowed, glue a space comparing X with Y to one comparing Y with Z along their copies of Y (our own argument). Across the join, measure distance as the infimum through a point of Y and identify points at distance zero; this keeps distances inside each piece. The Hausdorff triangle inequality in the glued space then gives the bound, after taking infima.
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “The function dɢʜ satisfies the triangle inequality.”
 
@@ -1647,11 +1647,11 @@
 
 *Rules out counterexamples.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 54E45. arXiv math.MG. Level 3: graduate.
 
-**Definition.** The Hausdorff distance between two subsets is the infimum of the r such that each lies within distance r of the other. The Gromov–Hausdorff distance between two metric spaces is the infimum of Hausdorff distances between isometric copies of them inside a common metric space. The theorem restricts to nonempty compact spaces.
+**Definition.** The Gromov–Hausdorff distance between two metric spaces is the infimum of Hausdorff distances between isometric copies of them inside a common metric space. Equivalently, it is half the infimum of the distortions of correspondences, relations that project onto both spaces (our own).
 
 **Problem.** Two nonempty compact metric spaces have Gromov–Hausdorff distance zero exactly when some distance-preserving bijection joins them.
 
-**How the definition helps.** Compactness turns arbitrarily accurate correspondences into an isometry (our own explanation). In the compact hyperspace of X × Y, closed correspondences of vanishing distortion have a convergent subsequence. Its limit still projects onto both spaces and has zero distortion, so it is the graph of an isometry. The open and closed unit intervals have zero Hausdorff distance but differ in compactness (our own counterexample).
+**How the definition helps.** Distance zero gives correspondences of distortion tending to zero, and in the compact hyperspace of X × Y a subsequence converges (our own explanation). The limit still projects onto both spaces and has zero distortion, so it is the graph of an isometry. The open and closed unit intervals show the need for compactness: their distance is zero, but they are not isometric (our own counterexample).
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “For compact metric spaces X and Y, it holds dɢʜ(X,Y) = 0 if and only if X and Y are isometric.”
 
@@ -1665,11 +1665,11 @@
 
 *Rules out counterexamples.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C22. arXiv math.MG. Level 3: graduate.
 
-**Definition.** An intrinsic metric measures distance by the infimum of lengths of paths joining two points. An open ball uses distance strictly less than its radius. A closed ball includes points at exactly that radius.
+**Definition.** A metric is intrinsic if the distance between two points is the infimum of the lengths of paths that join them. Let d(x, y) = r &gt; 0 and ε &gt; 0. Then any path from x to y shorter than r + ε passes within ε of y at a point closer than r to x (our own).
 
 **Problem.** In a space with an intrinsic metric, each closed ball of positive radius is the closure of the matching open ball.
 
-**How the definition helps.** Paths of nearly shortest length let each point at distance r be approached from inside the open ball, in our own explanation. Our own proof stops a little short of distance r along such a path. Our own counterexample is a two-point space with distance one, whose metric is not intrinsic. There the open unit ball is a single point, which is closed, but the closed unit ball has both points.
+**How the definition helps.** As ε shrinks, these points lie in the open ball and converge to y (our own proof). So the closed ball lies in the closure of the open ball, and the reverse inclusion holds in every metric space. A two-point space at distance one fails: its open unit ball is one point, which is closed, while its closed unit ball has both points (our own counterexample).
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “Let X be a space with an intrinsic metric. Then Bᵣ(x) = closure of Uᵣ(x).”
 
@@ -1683,11 +1683,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 51F99. arXiv math.MG, math.DG. Level 3: graduate.
 
-**Definition.** Define the metric speed of a curve γ at time t as the limit of d(γ(t+h),γ(t))/\|h\| as h tends to 0. On a Riemannian manifold, the usual speed is the norm of the velocity vector.
+**Definition.** The metric speed of a curve γ at time t is the limit of d(γ(t+h), γ(t))/\|h\| as h tends to 0, when it exists. It uses only distances, so it needs no derivative of the curve.
 
 **Problem.** A distance-preserving map between metric spaces preserves the metric speed of each curve wherever that speed exists. The map needs no smoothness.
 
-**How the definition helps.** A distance-preserving map leaves each defining quotient unchanged, so it also preserves its limit (our own argument). For smooth curves in a Riemannian manifold, the metric speed agrees with the norm of the velocity.
+**How the definition helps.** A distance-preserving map leaves each quotient unchanged, so it leaves their limit unchanged (our own argument). For smooth curves in a Riemannian manifold, the metric speed equals the norm of the velocity, so this recovers the usual statement.
 
 **Wikipedia:** [Metric derivative](https://en.wikipedia.org/wiki/Metric_derivative). It says: “It generalizes the notion of "speed" or "absolute velocity" to spaces which have a notion of distance”
 
@@ -1699,11 +1699,11 @@
 
 *True by definition.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 20F67. arXiv math.MG. Level 3: graduate.
 
-**Definition.** Fix a base point o in a metric space and write (x\|y) = (d(o,x) + d(o,y) − d(x,y))/2. For δ ≥ 0, require (x\|z) ≥ min((x\|y),(y\|z)) − δ for every triple x,y,z.
+**Definition.** Fix a base point o and let (x\|y) = (d(o,x) + d(o,y) − d(x,y))/2, the Gromov product, which measures roughly how long paths from o to x and to y stay together. The space is δ-hyperbolic if (x\|z) ≥ min((x\|y), (y\|z)) − δ for all points x, y, z.
 
 **Problem.** In such a hyperbolic space, consider sequences satisfying (xₙ\|xₘ) → ∞ as both indices grow. The relation defined by (xₙ\|yₙ) → ∞ is transitive on these sequences.
 
-**How the definition helps.** The inequality bounds (xₙ\|zₙ) below by the smaller of two growing products minus δ, so it grows too (our own argument). With the thin-triangle definition, one must first prove this inequality for geodesic spaces (our own comparison). The work moves to the theorem that the two definitions agree up to a change of δ.
+**How the definition helps.** Applied to xₙ, yₙ, zₙ, the inequality bounds (xₙ\|zₙ) below by the smaller of two products that tend to ∞, minus δ, so it tends to ∞ too (our own argument). With the thin-triangle definition one must first prove this inequality, which is the theorem that the two definitions agree up to a change of δ (our own comparison).
 
 **Wikipedia:** [Hyperbolic metric space](https://en.wikipedia.org/wiki/Hyperbolic_metric_space). It says: “converging to infinity are considered equivalent when”
 
@@ -1715,11 +1715,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C70. arXiv math.MG. Level 3: graduate.
 
-**Definition.** A geodesic metric space is CAT(0) if every midpoint m of every pair x,y satisfies the following inequality for every point z. The bound is d(z,m)² ≤ (d(z,x)² + d(z,y)²)/2 − d(x,y)²/4.
+**Definition.** A geodesic metric space is CAT(0) if, for all points x, y, z and every midpoint m of x and y, d(z,m)² ≤ (d(z,x)² + d(z,y)²)/2 − d(x,y)²/4. So squared distance from any point is convex along geodesics, with a margin of d(x,y)²/4 at midpoints.
 
 **Problem.** In a complete CAT(0) space, each nonempty bounded set S has a unique circumcenter, a point minimizing the supremum of its distances to S.
 
-**How the definition helps.** Taking the supremum over the set gives the midpoint inequality for the squared radius function (our own argument). So two nearly optimal centers must be close, since their midpoint cannot beat the least radius (our own). Completeness then gives a center, and the same inequality gives uniqueness (our own). The work moves to the theorem that the midpoint inequality follows from triangle comparison.
+**How the definition helps.** Taking the supremum over z in S gives r(m)² ≤ (r(x)² + r(y)²)/2 − d(x,y)²/4 for the radius function r (our own argument). So two nearly optimal centers are close, because their midpoint cannot beat the least radius, and a minimizing sequence is Cauchy (our own). Completeness then gives a center, and the same inequality rules out a second one (our own).
 
 **Wikipedia:** [Cartan–Hadamard theorem](https://en.wikipedia.org/wiki/Cartan%E2%80%93Hadamard_theorem). It says: “the square distance from the vertex z to the midpoint of the opposite side”
 
@@ -1731,11 +1731,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C70. arXiv math.MG. Level 3: graduate.
 
-**Definition.** A geodesic metric space is CAT(0) if every midpoint m of every pair x,y satisfies the following inequality for every point z. The bound is d(z,m)² ≤ (d(z,x)² + d(z,y)²)/2 − d(x,y)²/4.
+**Definition.** A geodesic metric space is CAT(0) if, for all points x, y, z and every midpoint m of x and y, d(z,m)² ≤ (d(z,x)² + d(z,y)²)/2 − d(x,y)²/4. Every term is a squared distance, so such inequalities can be added across factors (our own).
 
 **Problem.** A finite product of CAT(0) spaces, with the Euclidean product distance, is CAT(0).
 
-**How the definition helps.** Coordinatewise geodesics are product geodesics, and squared product distances add (our own proof). Equality in the Euclidean triangle inequality forces every product midpoint to be a midpoint in each coordinate. Adding the factor inequalities now gives the product inequality. The Bruhat–Tits midpoint criterion identifies this with CAT(0) triangle comparison.
+**How the definition helps.** Squared product distances are sums of squared factor distances, so adding the factor inequalities gives the product inequality (our own proof). Equality in the triangle inequality forces each product midpoint to be a midpoint in every coordinate, and coordinatewise geodesics give product geodesics. The Bruhat–Tits criterion identifies this inequality with CAT(0) triangle comparison.
 
 **Wikipedia:** [CAT(k) space](https://en.wikipedia.org/wiki/CAT%28k%29_space). It says: “The distance between a vertex of a geodesic triangle and the midpoint of the opposite side is always less than the corresponding distance in the comparison triangle in the plane with the same side-lengths.”
 
@@ -1747,11 +1747,11 @@
 
 *Rules out counterexamples.* MSC 53C29 (Issues of holonomy in differential geometry), 53C05. arXiv math.DG. Level 3: graduate.
 
-**Definition.** For a smooth vector bundle connection, restricted holonomy at x consists of the parallel transports around all piecewise smooth contractible loops based at x.
+**Definition.** The restricted holonomy group at x of a vector bundle connection consists of the parallel transports around piecewise smooth contractible loops based at x. Such loops bound disks, so they detect only curvature, while other loops can also detect topology.
 
-**Problem.** On a connected base, a connection is flat exactly when its restricted holonomy group at a base point is trivial. Ambrose–Singer identifies the holonomy Lie algebra with the span of curvature values transported back to the base point along all paths.
+**Problem.** On a connected base, a connection is flat exactly when its restricted holonomy group at a base point is trivial.
 
-**How the definition helps.** By Ambrose–Singer, curvature vanishes exactly when the restricted holonomy Lie algebra vanishes. Restricted holonomy is connected, so this means the group is trivial (our own argument). A flat Möbius line bundle can reverse a vector around its central loop because that loop is noncontractible (our own example).
+**How the definition helps.** By Ambrose–Singer, the holonomy Lie algebra is spanned by curvature values transported back to the base point along all paths, so it vanishes exactly when the curvature does. Restricted holonomy is a connected Lie group, so a zero Lie algebra makes it trivial (our own argument). A flat Möbius line bundle reverses a vector around its noncontractible central loop, so the full holonomy can stay nontrivial (our own example).
 
 **Wikipedia:** [Holonomy](https://en.wikipedia.org/wiki/Holonomy). It says: “∇ is flat (i.e. has vanishing curvature) if and only if Hol⁰(∇) is trivial. In this case, Hol(∇) may still be nontrivial.”
 
@@ -1761,15 +1761,15 @@
 
 ### Defining local symmetry by geodesic reflections makes the curvature parallel
 
-**Remember:** Reflection keeps the curvature derivative but flips the sign of all five arguments.
+**Remember:** Point reflections kill every invariant tensor with an odd number of slots.
 
 *True by definition. Confidence: medium.* MSC 53C35 (Differential geometry of symmetric spaces), 53B20. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Call a Riemannian metric locally symmetric if, near each point, the reflection through that point along geodesics preserves the metric. This reflection sends exp(v) to exp(−v). The other definition asks that the curvature tensor have zero covariant derivative.
+**Definition.** A Riemannian metric is locally symmetric if, near each point p, the geodesic reflection expₚ(v) ↦ expₚ(−v) is an isometry. Its differential at p is minus the identity, so it negates every tensor with an odd number of arguments at p.
 
 **Problem.** On a locally symmetric Riemannian manifold, the curvature tensor is parallel, which means that its covariant derivative is zero.
 
-**How the definition helps.** A geodesic reflection preserves the metric and hence the covariant derivative of its covariant curvature tensor (our own argument). Its differential at the center negates every tangent vector. Changing the sign of all five arguments negates the tensor’s value, so invariance forces it to vanish.
+**How the definition helps.** The reflection is an isometry, so it preserves ∇R, the covariant derivative of the curvature tensor (our own argument). At p it negates all five arguments of ∇R, which negates its value. Invariance then forces ∇R = 0 at p, and p was arbitrary.
 
 **Wikipedia:** [Symmetric space](https://en.wikipedia.org/wiki/Symmetric_space). It says: “This is equivalent to the vanishing of the covariant derivative of the curvature tensor.”
 
@@ -1777,15 +1777,15 @@
 
 ### Defining symmetric spaces by point reflections makes geodesic completeness immediate
 
-**Remember:** Reflect the existing part of a geodesic to extend it beyond its endpoint.
+**Remember:** Each point's reflection reverses geodesics, so any geodesic can be extended.
 
 *True by definition.* MSC 53C35 (Differential geometry of symmetric spaces), 53C30. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A connected Riemannian manifold is symmetric if every point admits a global isometry fixing it and acting as minus the identity on its tangent space.
+**Definition.** A connected Riemannian manifold is symmetric if each point p has a global isometry that fixes p and whose differential at p is minus the identity. That isometry reverses every geodesic through p.
 
 **Problem.** A Riemannian symmetric space is geodesically complete, so every geodesic extends for all time.
 
-**How the definition helps.** Reflect the geodesic through a point close to an end of its interval; the image continues the geodesic past that end (our own argument). Uniqueness of geodesics joins the two pieces (our own). The work moves to constructing the global reflections, for example from the quotient description.
+**How the definition helps.** Reflecting a geodesic through a point near one end of its interval gives a geodesic that runs past that end (our own argument). Uniqueness of geodesics makes the two pieces agree on their overlap, so they join into a longer geodesic (our own).
 
 **Wikipedia:** [Symmetric space](https://en.wikipedia.org/wiki/Symmetric_space). It says: “Every Riemannian symmetric space M is complete”
 
@@ -1795,15 +1795,15 @@
 
 ### Calibrations make volume minimization in a homology class a one-line proof
 
-**Remember:** A closed form measures the calibrated volume exactly and bounds every competitor from below.
+**Remember:** The closed form equals your volume and undercounts every competitor's.
 
 *True by definition.* MSC 53C38 (Calibrations and calibrated geometries), 49Q15. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A calibration is a closed differential form whose value on each oriented unit tangent plane of the right dimension is at most one. A submanifold is calibrated when the form equals its volume form. Without this, one must compare the submanifold with every competitor directly.
+**Definition.** A calibration is a closed form φ whose value on every oriented unit tangent plane of its degree is at most one, so ∫ φ is at most the volume of any submanifold. A submanifold is calibrated when φ restricts to its volume form, so ∫ φ equals its volume.
 
 **Problem.** A compact oriented calibrated submanifold without boundary has least volume among compact oriented submanifolds in its homology class.
 
-**How the definition helps.** The form gives the exact volume of the calibrated submanifold and a lower bound for the volume of any competitor. Stokes’ theorem makes the two integrals equal, because the difference of the submanifolds is a boundary. The work moves to finding a closed form with the bound and with equality on the given tangent planes (our own comparison).
+**How the definition helps.** For a homologous competitor N, vol(M) = ∫<sub>M</sub> φ = ∫<sub>N</sub> φ ≤ vol(N). The middle equality is Stokes' theorem, since φ is closed and M − N is a boundary.
 
 **Wikipedia:** [Calibrated geometry](https://en.wikipedia.org/wiki/Calibrated_geometry). It says: “calibrated closed submanifolds minimize volume within their homology class.”
 
@@ -1813,15 +1813,15 @@
 
 ### Defining harmonic maps by energy makes surface harmonicity conformally invariant
 
-**Remember:** On a surface, rescaling the domain metric changes the two energy factors oppositely.
+**Remember:** In two dimensions, rescaling cancels in the energy.
 
 *True by definition. Confidence: medium.* MSC 53C43 (Differential geometric aspects of harmonic maps), 53C18. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Define a harmonic map as a stationary point of the energy under compactly supported variations. The energy is half the integral of the squared differential. Another definition asks that the tension, the trace of the covariant derivative of the differential, be zero.
+**Definition.** A harmonic map is a stationary point, under compactly supported variations, of the energy, half the integral of \|dφ\|² over the domain. On a surface, multiplying the metric by λ multiplies the area element by λ and \|dφ\|² by 1/λ.
 
 **Problem.** Take a harmonic map from a surface. Multiply the metric on the surface by a smooth positive function. The map stays harmonic.
 
-**How the definition helps.** In dimension two the energy of every map is unchanged by the rescaling, so the stationary points are unchanged (our own argument). The factor multiplies the area element and its reciprocal multiplies the squared differential. With the tension definition, one must instead compute how the connection changes under rescaling (our own comparison). The work moves to the first variation formula, which shows that energy stationarity means zero tension.
+**How the definition helps.** The two factors cancel, so on a surface the rescaling leaves the energy of every map unchanged, and hence also its stationary points (our own argument). With the tension definition one must instead track how the connection changes (our own comparison). The first variation formula shows that the two definitions agree.
 
 **nLab:** [harmonic map](https://ncatlab.org/nlab/show/harmonic+map). It says: “which is a critical point of the Dirichlet kinetic energy functional”
 
@@ -1835,11 +1835,11 @@
 
 *True by definition.* MSC 53C43 (Differential geometric aspects of harmonic maps), 31C12. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A smooth map φ between Riemannian manifolds is a harmonic morphism if every harmonic function f on any target open set U pulls back harmonically. Its pullback is f∘φ on φ⁻¹(U).
+**Definition.** A smooth map φ between Riemannian manifolds is a harmonic morphism if f∘φ is harmonic on φ⁻¹(U) for every harmonic function f on every open set U of the target.
 
 **Problem.** The composite of two harmonic morphisms is a harmonic morphism.
 
-**How the definition helps.** Pulling a harmonic function back through each map in turn keeps it harmonic, so the composite passes the test (our own argument). With the other test, one must compute the tension of a composite (our own comparison). The work moves to the Fuglede–Ishihara theorem, which proves that the two tests agree.
+**How the definition helps.** If φ and ψ are harmonic morphisms and f is harmonic, then f∘ψ is harmonic, and so (f∘ψ)∘φ is harmonic (our own argument). With the Fuglede–Ishihara description, harmonic and horizontally weakly conformal, one must instead compute the tension of the composite (our own comparison).
 
 **Wikipedia:** [Harmonic morphism](https://en.wikipedia.org/wiki/Harmonic_morphism). It says: “pulls back real-valued harmonic functions on the codomain to harmonic functions on the domain.”
 
@@ -1853,11 +1853,11 @@
 
 *True by definition.* MSC 53C43 (Differential geometric aspects of harmonic maps), 53C42. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Define a harmonic map by zero tension. The tension is the trace of the covariant derivative of the differential. The variational definition asks that the map be a stationary point of the energy, half the integral of its squared differential.
+**Definition.** A map φ is harmonic when its tension, the trace of ∇dφ (the covariant derivative of its differential), is zero. For an isometric immersion, ∇dφ is the second fundamental form, which measures how the image bends.
 
-**Problem.** An isometric immersion, which preserves lengths of tangent vectors, is harmonic exactly when it is minimal. Minimal means that its mean curvature vector vanishes.
+**Problem.** An isometric immersion, which preserves lengths of tangent vectors, is harmonic exactly when it is minimal, that is, when its mean curvature vector vanishes.
 
-**How the definition helps.** For an isometric immersion the covariant derivative of its differential equals the second fundamental form (our own argument). Its trace is the domain dimension times the mean curvature vector. Thus zero tension is equivalent to zero mean curvature.
+**How the definition helps.** Tracing the second fundamental form gives the domain dimension times the mean curvature vector (our own argument). So zero tension is the same as zero mean curvature.
 
 **nLab:** [harmonic map](https://ncatlab.org/nlab/show/harmonic+map). It says: “is a harmonic map if and only if it has vanishing”
 
@@ -1867,7 +1867,7 @@
 
 ### A Cauchy surface makes wave equations well posed on globally hyperbolic spacetimes
 
-**Remember:** There is one moment of time that every observer passes through exactly once.
+**Remember:** One slice of time that every observer crosses exactly once.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 35L20, 83C05. arXiv math.DG, math-ph. Level 3: graduate.
 
@@ -1890,11 +1890,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc. Level 3: graduate.
 
-**Definition.** A future causal curve has tangent in the chosen future light cone or its interior. The diamond from p to q consists of points on such curves from p to q, including the endpoints when a curve exists. Global hyperbolicity requires compact diamonds and forbids closed causal curves.
+**Definition.** A spacetime is globally hyperbolic if it has no closed causal curves and every causal diamond is compact. The diamond from p to q is the set of points on future causal curves from p to q, curves whose tangent stays in or on the future light cone.
 
 **Problem.** Every smooth globally hyperbolic spacetime admits a Cauchy surface, which every causal curve without past or future endpoint crosses exactly once. Compact diamonds alone do not ensure this.
 
-**How the definition helps.** Causality excludes a flat torus with periodic time and space (our own counterexample). Winding around time makes every event timelike reachable from every other, so all diamonds equal the compact torus. An indefinitely repeated timelike loop either misses a proposed surface or visits it repeatedly. The Cauchy surface theorem supplies existence under the full hypotheses.
+**How the definition helps.** Under both conditions, the Cauchy surface theorem gives a Cauchy surface. Without causality, a flat torus with periodic time and space fails: every event is timelike reachable from every other, so every diamond is the compact torus (our own counterexample). A timelike loop repeated forever either misses a proposed surface or crosses it many times.
 
 **Wikipedia:** [Globally hyperbolic spacetime](https://en.wikipedia.org/wiki/Globally_hyperbolic_spacetime). It says: “This condition states that no closed causal curves exist, thus forbidding matter or energy from traveling into its own past.”
 
@@ -1924,11 +1924,11 @@
 
 *True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc, math.DG. Level 3: graduate.
 
-**Definition.** A Cauchy surface meets every timelike curve that cannot be extended at either end exactly once. A timelike curve can describe a slower-than-light observer. A spacelike surface alone does not require a meeting.
+**Definition.** A Cauchy surface is a set that every timelike curve without endpoints, the history of a slower-than-light observer, meets exactly once.
 
 **Problem.** A spacetime with a Cauchy surface splits into the surface, its timelike past, and its timelike future. These three sets are disjoint.
 
-**How the definition helps.** Extend a timelike curve through any event in both directions and locate its unique crossing (our own proof). The event lies before, on, or after the surface. Overlap between these sets would produce a timelike curve visiting the surface twice, contrary to the crossing rule.
+**How the definition helps.** Extend a timelike curve through any event in both directions; it crosses the surface once, so the event lies before, on, or after the surface (our own proof). An event in two of these sets would give a timelike curve that meets the surface twice.
 
 **nLab:** [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface). It says: “intersects Σ precisely in one point.”
 
@@ -1942,11 +1942,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc. Level 3: graduate.
 
-**Definition.** A causal path moves toward the future at or below light speed. The causal diamond from p to q consists of events on such paths from p to q. A spacetime is globally hyperbolic if it has no closed causal paths and every causal diamond is compact.
+**Definition.** A spacetime is globally hyperbolic if it has no closed causal paths and every causal diamond is compact, where the diamond from p to q is the set of events on causal paths from p to q. A causal path moves toward the future at or below light speed.
 
 **Problem.** In smooth globally hyperbolic spacetime, two events joined by a causal path admit one with the greatest elapsed clock time.
 
-**How the definition helps.** Compact diamonds confine maximizing sequences, and the limit-curve theorem supplies a limiting causal path (our own outline). Upper semicontinuity of elapsed time makes that path maximizing. Remove the midpoint between two stationary-clock events in flat spacetime with a spatial direction (our own counterexample). Detours approach the missing straight path’s elapsed time, but none attains it.
+**How the definition helps.** Compact diamonds trap a maximizing sequence of causal paths, the limit-curve theorem gives a limiting causal path, and upper semicontinuity of elapsed time makes it maximizing (our own outline). Without compactness this fails: remove the midpoint between two events on a stationary clock in flat spacetime with a spatial direction. Detours then approach the straight path's elapsed time, but none attains it (our own counterexample).
 
 **Wikipedia:** [Globally hyperbolic spacetime](https://en.wikipedia.org/wiki/Globally_hyperbolic_spacetime). It says: “The spacetime is causal, and for every pair of points p and q in M, the subset J⁺(p) ∩ J⁻(q) is compact.”
 
@@ -1958,11 +1958,11 @@
 
 *True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C80. arXiv gr-qc, math-ph. Level 3: graduate.
 
-**Definition.** A conformal map between Lorentzian surfaces is a smooth local diffeomorphism whose pullback metric equals the source metric times a smooth positive function. A light ray is a regular null geodesic with its parameter forgotten.
+**Definition.** A conformal map between Lorentzian surfaces is a smooth local diffeomorphism that multiplies the metric by a smooth positive function, so it keeps null vectors null. A light ray is a regular null geodesic with its parameter forgotten.
 
 **Problem.** A conformal map between smooth Lorentzian surfaces sends light rays to light rays.
 
-**How the definition helps.** A conformal map preserves regular null curves (our own argument). On a Lorentzian surface a null tangent line equals its perpendicular line. Differentiating the zero squared speed puts the acceleration in that same line. A change of parameter therefore makes the image curve a geodesic.
+**How the definition helps.** A conformal map sends regular null curves to regular null curves (our own argument). On a Lorentzian surface, a null curve's acceleration lies in its own tangent line: differentiating zero squared speed puts it in the perpendicular line, which is that same line. So every regular null curve is a reparametrized geodesic, and the image of a light ray is a light ray.
 
 **Paper or page:** [Causal Classification of Pathological Misner-Type Spacetimes](https://arxiv.org/abs/2501.00841). It says: “Conformal transformations between 2-dimensional Lorentzian manifolds send null hypersurfaces to null hypersurfaces and therefore null geodesics to null geodesics.”
 
@@ -1970,15 +1970,15 @@
 
 ### Time prevents compact causal confinement
 
-**Remember:** A trapped curve would force time to stand still on a limit curve.
+**Remember:** Time must keep rising, so no causal curve stays trapped.
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc, math-ph. Level 3: graduate.
 
-**Definition.** A time function on a spacetime is a continuous real function that strictly increases along every nonconstant future causal curve. Such a curve follows the chosen future light cone or its interior.
+**Definition.** A time function is a continuous real function on a spacetime that strictly increases along every nonconstant future causal curve, one whose tangent lies in or on the future light cone.
 
-**Problem.** In a smooth spacetime with a time function, no compact set contains an entire future-inextendible causal curve. Such a curve has no future endpoint in the spacetime.
+**Problem.** In a smooth spacetime with a time function, no compact set contains an entire future-inextendible causal curve, one with no future endpoint in the spacetime.
 
-**How the definition helps.** Along a future-inextendible causal curve confined to a compact set, the time function increases to a finite limit (our own argument). Use arc length for a complete auxiliary Riemannian metric. The limit-curve theorem gives a nonconstant causal limit of late segments of fixed length. Continuity gives that limit segment constant time, contradicting strict increase.
+**How the definition helps.** On a future-inextendible causal curve trapped in a compact set, the time function increases to a finite limit (our own argument). The limit-curve theorem, with arc length from a complete auxiliary Riemannian metric, gives a nonconstant causal limit of late segments. By continuity the time function is constant on that limit, which contradicts strict increase.
 
 **Paper or page:** [Time functions on Lorentzian length spaces](https://arxiv.org/abs/2108.02693). It says: “If X admits a time function, then X is non-totally imprisoning.”
 
@@ -1992,11 +1992,11 @@
 
 *True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C10. arXiv gr-qc, math.DG. Level 3: graduate.
 
-**Definition.** A smooth local clock function f has a gradient, the vector corresponding to its differential under the spacetime metric. Require the gradient to have squared length −1. An ordinary time function only needs to increase along future causal paths, those moving at or below light speed.
+**Definition.** A local clock function is a smooth function f whose gradient ∇f, the vector dual to df under the spacetime metric, has constant squared length −1. Constant length forces the integral curves of ∇f to have no acceleration.
 
-**Problem.** Paths following this gradient are unit timelike geodesics. They describe free fall with elapsed proper time as parameter.
+**Problem.** Integral curves of this gradient are unit timelike geodesics, so they describe free fall with elapsed proper time as parameter.
 
-**How the definition helps.** Normalizing the gradient makes its squared length constant, which forces its acceleration to vanish. In our own calculation, symmetry of second derivatives makes the acceleration half the gradient of that squared length. Constructing such a clock is separate work. The cited construction uses elapsed proper time along perpendicular geodesics before they cross.
+**How the definition helps.** Symmetry of second derivatives makes the acceleration of ∇f along itself equal to half the gradient of its squared length (our own calculation). That squared length is constant, so the acceleration vanishes. Constructing such a clock is separate work, for example by elapsed proper time along perpendicular geodesics.
 
 **Paper or page:** [Omniscient foliations and the geometry of cosmological spacetimes](https://arxiv.org/abs/2205.07470v1). It says: “Thus, any integral curve of ∇f is a unit timelike geodesic.”
 
@@ -2010,11 +2010,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C60 (Global differential geometry of Finsler spaces and generalizations (areal metrics)), 52A20. arXiv math.MG. Level 3: graduate.
 
-**Definition.** In a bounded open convex set Ω ⊂ ℝⁿ, order two distinct interior points and their line’s boundary intersections as X,A,B,Y. Define d(A,B) = log((\|XB\|·\|AY\|)/(\|XA\|·\|BY\|)) and d(A,A) = 0.
+**Definition.** In a bounded open convex set Ω ⊂ ℝⁿ, the line through distinct points A and B meets the boundary at X and Y, in the order X, A, B, Y. The Hilbert distance is d(A,B) = log((\|XB\|·\|AY\|)/(\|XA\|·\|BY\|)), a cross-ratio of four points on that line, with d(A,A) = 0.
 
 **Problem.** If C lies on the segment from A to B, then d(A, B) = d(A, C) + d(C, B). Thus straight segments are shortest paths in the Hilbert metric.
 
-**How the definition helps.** For interior C between A and B, both subsegments have the same boundary endpoints X,Y (our own proof). Their cross-ratios multiply to the full cross-ratio because the factors \|XC\| and \|CY\| cancel. Taking logarithms gives additivity, so every ordered partition of the segment has length sum d(A,B). The metric triangle inequality bounds every competing path’s length below by d(A,B).
+**How the definition helps.** For C between A and B the boundary points X and Y are the same, and the cross-ratios multiply because \|XC\| and \|CY\| cancel (our own proof). Taking logarithms gives d(A,B) = d(A,C) + d(C,B). So the segment has length d(A,B), and by the triangle inequality no path is shorter.
 
 **Wikipedia:** [Hilbert metric](https://en.wikipedia.org/wiki/Hilbert_metric). It says: “Then the Hilbert distance d(A, B) is the logarithm of the cross-ratio of this quadruple of points”
 
@@ -2028,11 +2028,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C70 (Direct methods (\\(G\\)-spaces of Busemann, etc.)), 53C23. arXiv math.MG. Level 3: graduate.
 
-**Definition.** Call a geodesic space Busemann convex if the distance between two constant-speed geodesics on \[0,1\] is a convex function of time. The usual CAT(0) definition compares triangles with Euclidean triangles of the same side lengths.
+**Definition.** A geodesic space is Busemann convex if, for any two constant-speed geodesics c and c′ on \[0,1\], the distance d(c(t), c′(t)) is a convex function of t. For geodesics from a common start, this gives d(c(t), c′(t)) ≤ t·d(c(1), c′(1)) (our own).
 
 **Problem.** Every Busemann convex geodesic space is contractible. In particular, every CAT(0) space is contractible.
 
-**How the definition helps.** Two geodesics from a common start are at most t·d(x,y) apart at time t, which gives continuity in the endpoint (our own argument). Convexity also makes geodesics unique, so the contraction along geodesics to the base point is well defined (our own). With triangle comparison, continuity of geodesics in their endpoints must be proved first (our own comparison). The work moves to proving that CAT(0) spaces are Busemann convex.
+**How the definition helps.** Convexity makes geodesics unique, and the bound shows they depend continuously on their endpoint (our own argument). So sliding each point along its geodesic to a fixed base point is a continuous contraction (our own). CAT(0) spaces are Busemann convex, which gives the second claim.
 
 **Paper or page:** [A Gentle Introduction to CAT(0) Spaces](https://arxiv.org/abs/2406.09883). It says: “X is contractible”
 
@@ -2044,11 +2044,11 @@
 
 *True by definition.* MSC 53D05 (Symplectic manifolds (general theory)), 37J06. arXiv math.SG, math.DS. Level 3: graduate.
 
-**Definition.** A symplectic form on a manifold is a 2-form ω that is closed (dω = 0) and nondegenerate. Nondegeneracy lets each smooth function H define a Hamiltonian vector field Vₕ by ι(Vₕ)ω = dH.
+**Definition.** A nondegenerate 2-form ω lets each smooth function H define a Hamiltonian vector field Vₕ by ι(Vₕ)ω = dH. The form is symplectic when it is also closed, dω = 0.
 
 **Problem.** On a 2n-dimensional manifold with nondegenerate two-form ω, all local Hamiltonian flows preserve ω exactly when dω = 0. In that case they preserve the volume form ωⁿ, as in Liouville’s theorem.
 
-**How the definition helps.** Cartan’s formula gives ℒ(Vₕ)ω = d(dH) + ι(Vₕ)dω = ι(Vₕ)dω. At each point, differentials of smooth functions exhaust all covectors, so nondegeneracy makes Hamiltonian fields attain all tangent vectors there (our own argument). Thus every contraction vanishes exactly when dω vanishes. Preserving ω also preserves its wedge powers.
+**How the definition helps.** Cartan's formula gives ℒ(Vₕ)ω = d(dH) + ι(Vₕ)dω = ι(Vₕ)dω. At each point Hamiltonian fields reach every tangent vector, so all these contractions vanish exactly when dω = 0 (our own argument). Preserving ω also preserves its power ωⁿ.
 
 **Wikipedia:** [Symplectic manifold](https://en.wikipedia.org/wiki/Symplectic_manifold). It says: “the requirement for the vanishing Lie derivative along flows of Vₕ corresponding to arbitrary smooth H is equivalent to the requirement that ω should be closed.”
 
@@ -2062,9 +2062,9 @@
 
 **Definition.** A symplectic manifold is a manifold with a closed, nondegenerate 2-form ω. Darboux coordinates are local coordinates x₁, …, xₙ, y₁, …, yₙ in which ω = dx₁∧dy₁ + … + dxₙ∧dyₙ.
 
-**Problem.** Darboux's theorem: near every point of a 2n-dimensional symplectic manifold there are coordinates in which ω takes the standard form. So any two symplectic manifolds of the same dimension are locally the same.
+**Problem.** Near every point of a 2n-dimensional symplectic manifold there are coordinates in which ω takes the standard form (Darboux's theorem). So any two symplectic manifolds of the same dimension are locally the same.
 
-**How the definition helps.** Darboux coordinates express every symplectic form of a given dimension by the same formula (our own explanation). Darboux’s theorem supplies those coordinates. In Moser’s proof, closedness gives local primitives for the deformation, and nondegeneracy turns them into a vector field.
+**How the definition helps.** Darboux coordinates give every symplectic form of one dimension the same formula, so nothing local tells two of them apart (our own explanation). Darboux's theorem supplies those coordinates. In Moser's proof, closedness gives local primitives for the deformation, and nondegeneracy turns them into a vector field.
 
 **Wikipedia:** [Darboux's theorem](https://en.wikipedia.org/wiki/Darboux%27s_theorem). It says: “Darboux's theorem for symplectic manifolds implies that there are no local invariants in symplectic geometry”
 
@@ -2078,11 +2078,11 @@
 
 *Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 58A10. arXiv math.DG, math.SG. Level 3: graduate.
 
-**Definition.** A pre-symplectic form is a closed two-form ω whose rank is the same at every point. The rank is the rank of ω as an antisymmetric matrix. Its kernel at each point is the set of vectors v with ω(v, w) = 0 for all w.
+**Definition.** A pre-symplectic form is a closed two-form ω whose rank, as an antisymmetric matrix, is the same at every point. So its kernel, the vectors v with ω(v, w) = 0 for all w, has constant dimension and forms a smooth subbundle (our own).
 
 **Problem.** Near each point, a closed two-form of constant rank 2r has coordinates q, p and z in which ω = dq¹∧dp₁ + … + dqʳ∧dpᵣ. In these coordinates the kernel is spanned by the fields ∂/∂zᴬ.
 
-**How the definition helps.** Constant rank makes the kernel a smooth subbundle, and closedness makes the form descend to a local transverse slice (our own argument). Darboux coordinates on that symplectic slice combine with leaf coordinates to give the stated form. The closed form x dx∧dy on ℝ² drops rank at x = 0, which rules out a constant coordinate form there (our own example).
+**How the definition helps.** Closedness makes the kernel integrable and ω invariant along its leaves, so ω descends to a symplectic form on a local transverse slice (our own argument). Darboux coordinates on the slice, together with leaf coordinates z, give the stated form. The closed form x dx∧dy on ℝ² drops rank at x = 0, so no such coordinates exist there (our own example).
 
 **Paper or page:** [A zoo of coisotropic embeddings](https://arxiv.org/abs/2509.19039). It says: “Let (M, ω) be a d-dimensional pre-symplectic manifold, with ω ∈ Ω²(M) a closed 2-form of constant rank 2r &lt; d. Then, for every point m ∈ M, there exists a coordinate chart (U, φ) around m”
 
@@ -2096,11 +2096,11 @@
 
 *Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)), 37J06. arXiv math.SG. Level 3: graduate.
 
-**Definition.** A symplectic field preserves a symplectic form ω, a closed nondegenerate alternating two-form. Inserting the field into the first slot gives a one-form. A Hamiltonian field requires that one-form to be exact, meaning it equals the derivative of a globally defined function.
+**Definition.** A symplectic vector field X preserves a symplectic form ω, which makes the one-form ι(X)ω closed. X is Hamiltonian when ι(X)ω is exact, the derivative dH of a function H defined on the whole manifold.
 
 **Problem.** The one-form of a Hamiltonian field integrates to zero around every closed curve. On the unit-period torus, horizontal translation preserves the standard area form but has no global Hamiltonian.
 
-**How the definition helps.** Exactness makes every closed-curve integral zero by the fundamental theorem of calculus (our own). Inserting the unit horizontal field into dx ∧ dy gives dy, whose integral around the upward vertical circle is one (our own). Translation preserves the area form, so preservation alone allows this counterexample (our own).
+**How the definition helps.** An exact one-form integrates to zero around every closed curve (our own). On the torus, the unit horizontal field inserted into dx ∧ dy gives dy, which integrates to one around the vertical circle (our own). Translation preserves the area form, so this field is symplectic but not Hamiltonian (our own).
 
 **nLab:** [symplectic vector field](https://ncatlab.org/nlab/show/symplectic+vector+field). It says: “If this contraction even is an exact differential form in that there is a function h ∈ C∞(X) such that”
 
@@ -2112,11 +2112,11 @@
 
 *Rules out counterexamples.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A symplectic form is a closed nondegenerate alternating two-form. A smooth path of such forms has fixed de Rham cohomology when every difference between two forms is the exterior derivative of a one-form.
+**Definition.** A smooth path of symplectic forms ωₜ, each a closed nondegenerate two-form, is cohomologous when every difference ωₜ − ωₛ is exact, the derivative of a one-form. Then the velocity is exact too: ∂ₜωₜ = dαₜ for one-forms αₜ varying smoothly in t (our own).
 
 **Problem.** On a compact manifold without boundary, a smooth path of cohomologous symplectic forms admits a smooth family of coordinate changes starting at the identity. Each change pulls the corresponding form back to the initial form.
 
-**How the definition helps.** Fixed cohomology gives smoothly varying primitives αₜ with dαₜ = ∂ₜωₜ (our own outline). By Cartan’s formula, the flow of the field solving ι(Vₜ)ωₜ = −αₜ keeps the pullback constant and exists throughout by compactness. On two area-one tori, scaling their respective area forms by t and 1/t preserves product volume (our own example). Their sum changes its period over the first torus, which an isotopy from the identity must preserve.
+**How the definition helps.** The field Vₜ solving ι(Vₜ)ωₜ = −αₜ has a flow that keeps the pullback of ωₜ constant, by Cartan’s formula, and compactness lets it run for all t (our own outline). Without fixed cohomology this fails. On two area-one tori, the forms tσ₁ + σ₂/t keep the product volume but change the period over the first torus, which an isotopy must keep (our own example).
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Then there exists an isotopy ρ ⦂ M × ℝ → M such that”
 
@@ -2128,11 +2128,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
 
-**Definition.** For a closed two-form ω of constant rank, its null distribution consists of all v satisfying ω(v,w) = 0 for every tangent vector w. Its leaf space identifies points lying on the same connected integral leaf of this distribution.
+**Definition.** The null directions of a closed two-form ω of constant rank are the vectors v with ω(v,w) = 0 for every w. They form an integrable distribution along whose flows ω does not change, and the leaf space collapses each connected leaf to a point (our own).
 
 **Problem.** Assume the form has constant rank and its space of leaves is a smooth manifold. If the quotient projection has surjective derivative everywhere, the form descends to a unique closed nondegenerate two-form.
 
-**How the definition helps.** Cartan’s formula shows that the form is invariant along null fields because both its contraction and its exterior derivative vanish there (our own proof). These properties give descent along the submersion with connected fibres. Surjectivity of its differential gives uniqueness and closedness downstairs. Quotienting each tangent space by precisely the kernel gives nondegeneracy.
+**How the definition helps.** Along a null field the contraction of ω and dω both vanish, so Cartan’s formula gives zero Lie derivative and ω descends along the connected fibres (our own proof). Surjectivity of the projection’s derivative makes the descended form unique and closed. Dividing each tangent space by exactly the kernel makes it nondegenerate.
 
 **nLab:** [presymplectic structure](https://ncatlab.org/nlab/show/presymplectic+structure). It says: “the quotient of X by the flow of the vector fields in the kernel of ω is, if it exists in a reasonable way, a symplectic manifold.”
 
@@ -2144,7 +2144,7 @@
 
 *True by definition. Confidence: medium.* MSC 53D05 (Symplectic manifolds (general theory)). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Write π for the cotangent bundle projection. At a covector α, the tautological one-form satisfies θ(v) = α(dπ(v)) for every tangent vector v to the cotangent bundle at α. Use dθ as the canonical symplectic form.
+**Definition.** The tautological one-form θ on a cotangent bundle feeds a tangent vector v at a covector α to α itself, after projecting v to the base: θ(v) = α(dπ(v)), where π is the bundle projection. The canonical symplectic form is dθ.
 
 **Problem.** Let f be a diffeomorphism from M to N. Its cotangent lift sends a covector α at x to α ∘ (df)⁻¹ at f(x). This lift pulls the canonical symplectic form of T\*N back to that of T\*M.
 
@@ -2160,7 +2160,7 @@
 
 *True by definition.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 3: graduate.
 
-**Definition.** For a contact hyperplane field ξ on M, its symplectization consists of all nonzero covectors annihilating ξ. Its symplectic form is dθ, where θ evaluates each covector on the projection of a tangent vector to M.
+**Definition.** For a contact hyperplane field ξ on M, the symplectization is the set of nonzero covectors that vanish on ξ, a set that any map preserving ξ carries to itself by moving covectors. Its symplectic form is dθ, where θ evaluates each covector on the projection of a tangent vector to M.
 
 **Problem.** A diffeomorphism preserving contact planes lifts canonically to a diffeomorphism preserving the symplectic form on the symplectization.
 
@@ -2176,7 +2176,7 @@
 
 *True by definition.* MSC 53D10 (Contact manifolds (general theory)), 58A30. arXiv math.SG, math.DG. Level 3: graduate.
 
-**Definition.** A hyperplane field ξ on M picks a codimension-one subspace of each tangent space, varying smoothly. Call ξ coorientable when the quotient line bundle TM/ξ is trivial. The geometric definition asks for a continuous choice of one side of each hyperplane.
+**Definition.** A hyperplane field ξ, a smooth choice of codimension-one subspace of each tangent space of M, is coorientable when the quotient line bundle TM/ξ is trivial. Equivalently, TM/ξ has a nowhere-zero section.
 
 **Problem.** A hyperplane field ξ is coorientable exactly when ξ is the kernel of a smooth one-form that is nowhere zero.
 
@@ -2190,15 +2190,15 @@
 
 ### Transverse Liouville fields give contact forms
 
-**Remember:** A transverse Liouville field gives the contact form and normalizes the motion.
+**Remember:** A transverse expanding field makes λ a contact form.
 
 *True by definition.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 3: graduate.
 
-**Definition.** On a symplectic manifold with form ω, a Liouville field V satisfies dλ = ω for λ = ω(V,·). A hypersurface has contact type if such a field exists near it and is everywhere transverse to it.
+**Definition.** A Liouville field V on a symplectic manifold (M,ω) expands the form: the one-form λ = ω(V,·) satisfies dλ = ω. A hypersurface has contact type when some Liouville field defined near it is everywhere transverse to it.
 
-**Problem.** On a hypersurface of contact type, the restriction of λ is a contact form α. On a regular energy surface, its Reeb field follows the Hamiltonian trajectories up to a change of speed.
+**Problem.** On a hypersurface of contact type, the restriction of λ is a contact form α. On a regular energy surface of contact type, its Reeb field follows the Hamiltonian trajectories up to a change of speed.
 
-**How the definition helps.** Transversality makes the contraction of the volume form ωⁿ with V a volume form on the hypersurface (our own proof). This contraction restricts to nα ∧ (dα)ⁿ⁻¹, proving the contact condition. On a regular energy level, the Hamiltonian field spans the kernel of dα on the hypersurface. The Reeb field spans the same line with normalization α(R) = 1.
+**How the definition helps.** Transversality makes the contraction of ωⁿ with V a volume form on the hypersurface, and it restricts to nα ∧ (dα)ⁿ⁻¹, so α is contact (our own proof). On a regular energy level, the Hamiltonian field spans the kernel of dα on the level. The Reeb field spans the same line, normalized by α(R) = 1.
 
 **Paper or page:** [A note on the geometry of the two-body problem on S²](https://arxiv.org/abs/2310.02659v2). It says: “is a (positive) time reparametrisation of the Hamiltonian vector field”
 
@@ -2212,11 +2212,11 @@
 
 *True by definition.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
 
-**Definition.** The conormal bundle of a smooth submanifold S consists of all ambient covectors based on S that vanish on every tangent to S. The canonical one-form evaluates each covector on the base projection of a tangent vector to the cotangent bundle.
+**Definition.** The conormal bundle of a submanifold S is the set of covectors at points of S that vanish on every vector tangent to S. So the canonical one-form, which feeds a covector the base projection of a tangent vector, vanishes on it (our own).
 
 **Problem.** The conormal bundle of a smooth submanifold is Lagrangian in the ambient cotangent bundle. That means the symplectic form vanishes on it and it has half the ambient dimension.
 
-**How the definition helps.** The canonical one-form vanishes on the conormal bundle because all its base directions lie along the submanifold (our own). Its restriction therefore has zero exterior derivative, giving zero for the restricted symplectic form without a coordinate calculation (our own). For a k-dimensional submanifold of an n-dimensional space, each conormal fiber contributes n − k dimensions, giving n altogether (our own).
+**How the definition helps.** The canonical one-form vanishes on the conormal bundle, so its derivative, the symplectic form, vanishes there too (our own). For a k-dimensional submanifold of an n-manifold, the conormal bundle has dimension k + (n − k) = n, half of 2n (our own).
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “For any submanifold S ⊂ X, the conormal bundle N\*S is a Lagrangian submanifold of T\*X.”
 
@@ -2224,15 +2224,15 @@
 
 ### Exact Lagrangians exclude holomorphic disks
 
-**Remember:** Exact boundary data leave a holomorphic disk with zero energy.
+**Remember:** On an exact Lagrangian, disks have zero area, hence zero energy.
 
 *Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Let ω = dλ be a symplectic form, a closed nondegenerate two-form with a chosen primitive λ. A Lagrangian is a half-dimensional submanifold on which ω restricts to zero. It is exact if λ restricts to the differential of a function.
+**Definition.** A Lagrangian L for ω = dλ, a half-dimensional submanifold on which ω vanishes, is exact when λ restricts to df on L for a function f on L. Then λ integrates to zero around every loop in L, so by Stokes’ theorem every disk with boundary on L has zero symplectic area (our own).
 
 **Problem.** Let J be an ω-compatible almost complex structure, so g(v,w) = ω(v,Jw) defines a Riemannian metric. Every J-holomorphic disk with boundary on an exact Lagrangian is constant.
 
-**How the definition helps.** Exactness makes the boundary integral of λ vanish, forcing the disk to have zero area. In our own proof, Stokes’ theorem identifies that integral with the integral of ω over the disk. The quoted energy identity then forces the disk to be constant. Without exactness, the ordinary unit disk in the complex plane gives a counterexample with boundary on the unit circle.
+**How the definition helps.** A J-holomorphic disk has energy equal to its symplectic area, which exactness makes zero, and zero energy forces the disk to be constant. Without exactness, the unit disk in ℂ with boundary on the unit circle is a nonconstant holomorphic disk.
 
 **Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “the equality holds if and only if u is constant.”
 
@@ -2244,11 +2244,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Write θ for the tautological one-form on T∗Q. A Lagrangian L is exact if θ restricts to df on L for some globally defined smooth function f. A Legendrian in T∗Q × ℝ has dimension dim Q and is tangent to the kernel of dz − θ.
+**Definition.** A Lagrangian L in T∗Q is exact when the tautological one-form θ restricts to df on L for a single function f defined on all of L. A Legendrian in T∗Q × ℝ has dimension dim Q and is tangent to the kernel of the contact form dz − θ.
 
 **Problem.** Every exact Lagrangian in a cotangent bundle lifts to a Legendrian for the contact form dz − θ.
 
-**How the definition helps.** Exactness supplies a single height function for the lift. In our own proof, setting z = f makes dz − θ vanish on the graph. Conversely, any height defining such a graph satisfies df = θ there. Over a circle, the graph of a one-form with nonzero integral gives a Lagrangian without a single-valued height.
+**How the definition helps.** Setting the height z = f makes dz − θ = df − df vanish on the lifted copy of L (our own proof). Conversely, any height that makes such a lift Legendrian is a global primitive. On the cotangent bundle of a circle, the graph of a one-form with nonzero integral is Lagrangian but has no single-valued height.
 
 **Paper or page:** [Normal invariant of nearby Lagrangians via twisted derivative](https://arxiv.org/abs/2505.12515v2). It says: “(any Legendrian lift of) L”
 
@@ -2258,15 +2258,15 @@
 
 ### Loop classes make the Maslov index invariant under deformation
 
-**Remember:** A loop keeps its class as it deforms, and joining loops adds classes.
+**Remember:** The index is the loop’s homotopy class, read as an integer.
 
 *True by definition.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Fix a positive-dimensional real symplectic vector space and its Grassmannian of half-dimensional subspaces on which the symplectic form vanishes. Choose the Maslov generator of its fundamental group as positive. The Maslov index of a loop is its integer under the resulting isomorphism with ℤ.
+**Definition.** Fix a nonzero real symplectic vector space and its Lagrangian Grassmannian, the half-dimensional subspaces on which the symplectic form vanishes. The Maslov index of a loop of such subspaces is its homotopy class, read as an integer through the isomorphism of the fundamental group with ℤ that makes the Maslov generator positive.
 
 **Problem.** The Maslov index of a loop of Lagrangian subspaces does not change when the loop deforms. Joining two loops with a common starting point adds their indices.
 
-**How the definition helps.** A based homotopy preserves the loop class, and moving the base point only conjugates it (our own argument). Conjugation acts trivially in ℤ. Concatenation gives the fundamental group operation, which becomes addition under the chosen isomorphism.
+**How the definition helps.** Homotopy classes do not change under deformation, and moving the base point only conjugates the class, which does nothing in the abelian group ℤ (our own argument). Joining loops is the group operation, which the isomorphism turns into addition.
 
 **Wikipedia:** [Maslov index](https://en.wikipedia.org/wiki/Maslov_index). It says: “This definition makes the Maslov index a topological invariant of loops of Lagrangian subspaces.”
 
@@ -2280,11 +2280,11 @@
 
 *True by definition.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D05. arXiv math.SG. Level 3: graduate.
 
-**Definition.** The cotangent bundle T∗Q collects the linear functionals on tangent spaces of Q. Define the tautological 1-form θ by requiring its restriction along the graph of each 1-form β to equal β on Q. In coordinates, θ is the sum of p dq over the position coordinates q and their conjugate momenta p.
+**Definition.** The tautological 1-form θ on T∗Q is the one 1-form whose pullback along the graph of every 1-form β on Q is β itself. The symplectic form is dθ, so its restriction to the graph of β is dβ (our own).
 
-**Problem.** The graph of β is Lagrangian exactly when β is closed, meaning dβ = 0. Lagrangian means half-dimensional with zero restriction of the symplectic form dθ.
+**Problem.** The graph of a 1-form β is Lagrangian in T∗Q, meaning half-dimensional with dθ vanishing on it, exactly when β is closed, dβ = 0.
 
-**How the definition helps.** The defining property makes the restriction of dθ to the graph equal to dβ, because exterior differentiation commutes with restriction (our own). The graph has half the dimension of the cotangent bundle. The work moves into constructing θ and checking that dθ is symplectic (our own).
+**How the definition helps.** Restriction commutes with exterior differentiation, so dθ restricts on the graph to dβ (our own). The graph has half the dimension of T∗Q.
 
 **nLab:** [Liouville-Poincaré 1-form](https://ncatlab.org/nlab/show/Liouville-Poincar%C3%A9+1-form). It says: “for every smooth section σ ∈ Γ(T\* X) the identification σ\* θ = j(σ) between the pullback of θ along σ and the 1-form corresponding to σ under j.”
 
@@ -2298,11 +2298,11 @@
 
 *Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Lagrangian submanifold has half the ambient dimension, and the symplectic form vanishes on its tangent spaces. Its first real cohomology vanishes if every closed one-form on it is the derivative of a global function.
+**Definition.** A compact Lagrangian X has vanishing first real cohomology when every closed one-form on X is the derivative df of a global function f. A C¹-close Lagrangian is then the graph of some df near X, and it meets X exactly where df = 0 (our own).
 
-**Problem.** Let X be a compact connected Lagrangian submanifold without boundary and of positive dimension, with vanishing first real cohomology. Every sufficiently C¹-close Lagrangian deformation meets X in at least two points. Here closeness controls both positions and first derivatives.
+**Problem.** Let X be a compact connected Lagrangian submanifold without boundary, of positive dimension, with vanishing first real cohomology. Every Lagrangian that is sufficiently C¹-close to X, in positions and first derivatives, meets X in at least two points.
 
-**How the definition helps.** Vanishing cohomology makes the closed one-form describing a nearby deformation the derivative of a single function (our own). The Lagrangian neighborhood theorem supplies the graph description, with intersections exactly at zeros of that derivative (our own). A nonconstant function has distinct maximum and minimum points, while a constant function gives intersection everywhere (our own). On a torus, a small nonzero constant one-form has a graph disjoint from the zero section in its cotangent bundle (our own).
+**How the definition helps.** A function on a compact manifold has a maximum and a minimum; they are distinct critical points unless f is constant, when every point is an intersection (our own). The Lagrangian neighborhood theorem gives the graph description (our own). On a torus, the graph of a small nonzero constant one-form misses the zero section (our own).
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “every Lagrangian submanifold of M which is C¹-close to X intersects X in at least two points.”
 
@@ -2314,7 +2314,7 @@
 
 *True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids), 37J37, 70H33. arXiv math.SG, math-ph. Level 3: graduate.
 
-**Definition.** For a Hamiltonian H, a smooth function F is a first integral if its Poisson bracket {H,F} vanishes everywhere. This condition says that F stays constant along each trajectory of H.
+**Definition.** A first integral of a Hamiltonian H is a smooth function F that stays constant along every trajectory of H. Equivalently, its Poisson bracket {H,F} vanishes everywhere.
 
 **Problem.** If F and G are first integrals of H, then their bracket {F, G} is also a first integral of H.
 
@@ -2330,11 +2330,11 @@
 
 *True by definition. Confidence: medium.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Poisson bivector is a smooth section π of the second exterior power of the tangent bundle satisfying \[π,π\] = 0. Here the Schouten–Nijenhuis bracket extends the Lie bracket of vector fields to multivector fields.
+**Definition.** A Poisson bivector is a bivector field π whose Schouten–Nijenhuis bracket with itself vanishes, \[π,π\] = 0, where this bracket extends the Lie bracket of vector fields to multivector fields.
 
 **Problem.** On a Poisson manifold, the operator \[π,−\] on multivector fields squares to zero. Its cohomology is called Poisson cohomology.
 
-**How the definition helps.** With the \[π,π\] = 0 definition, the square of \[π,−\] is a multiple of the bracket with \[π,π\], which is zero. In our own step, the graded Jacobi identity gives \[π,\[π,X\]\] = ½\[\[π,π\],X\]. In our own comparison, the Jacobi identity for functions must first be turned into \[π,π\] = 0 by a calculation in coordinates. In our own account, the work moves to the graded Jacobi identity for the Schouten–Nijenhuis bracket.
+**How the definition helps.** By the graded Jacobi identity, \[π,\[π,X\]\] = ½\[\[π,π\],X\], which is zero when \[π,π\] = 0 (our own step). Starting instead from the Jacobi identity for functions, one must first derive \[π,π\] = 0 by a coordinate calculation (our own comparison).
 
 **Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “the condition d\_π ∘ d\_π = 0 is equivalent to \[π,π\]=0”
 
@@ -2348,11 +2348,11 @@
 
 *True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Poisson bracket is a Lie bracket on smooth functions that satisfies the product rule in each argument. A Poisson map preserves this bracket when functions are pulled back. On a smooth orbit space, functions correspond by pullback to smooth functions constant on each orbit.
+**Definition.** On a smooth orbit space, smooth functions correspond by pullback to the smooth functions upstairs that are constant on each orbit. If the group acts by Poisson maps, maps that preserve the Poisson bracket, the bracket of two such invariant functions is again invariant (our own).
 
 **Problem.** Suppose a Lie group acts smoothly by Poisson maps, freely and properly. Then its orbit space has a unique Poisson bracket making the projection a Poisson map.
 
-**How the definition helps.** Using invariant functions gives the quotient bracket without constructing a tensor in quotient coordinates. In our own proof, the group preserves brackets, so the bracket of two invariant functions stays invariant. The bracket identities pass to the quotient because pullback identifies its functions with these invariant functions. The smooth quotient theorem for free and proper actions supplies the manifold structure.
+**How the definition helps.** The quotient bracket is the bracket of the invariant functions, so the bracket identities pass down through the pullback identification (our own proof). The quotient manifold theorem for free and proper actions gives the smooth structure. No tensor in quotient coordinates is needed.
 
 **Wikipedia:** [Poisson manifold](https://en.wikipedia.org/wiki/Poisson_manifold). It says: “inherits a Poisson structure”
 
@@ -2364,11 +2364,11 @@
 
 *True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Lie groupoid has smooth spaces of objects and invertible arrows, with smooth composition and inversion. Give its arrows a symplectic form, a closed nondegenerate alternating two-form. Multiplicativity means that on composable pairs, the form pulled back by composition equals the sum pulled back from the two arrows.
+**Definition.** A symplectic groupoid is a Lie groupoid, with smooth spaces of objects and invertible arrows, whose space of arrows carries a symplectic form ω. The form is multiplicative: on composable pairs, its pullback by composition is the sum of its pullbacks from the two factors.
 
 **Problem.** Inversion in a symplectic groupoid sends the symplectic form to its negative.
 
-**How the definition helps.** Pull back multiplicativity along the pair of identity arrows at each object (our own proof). The unit pullback of ω equals twice itself and therefore vanishes. Pull back again along the pair consisting of each arrow and its inverse. Their product is a unit, so ω plus its pullback by inversion vanishes.
+**How the definition helps.** On pairs of identity arrows, multiplicativity says ω restricted to units equals twice itself, so it vanishes there (our own proof). On pairs of an arrow and its inverse, whose product is a unit, it says ω plus its pullback by inversion is zero.
 
 **nLab:** [symplectic groupoid](https://ncatlab.org/nlab/show/symplectic+groupoid). It says: “the alternating sum of its canonical pullbacks to the space X₂ of composable morphisms vanishes”
 
@@ -2380,7 +2380,7 @@
 
 *True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Poisson bracket is a Lie bracket on functions that satisfies the product rule. A Poisson map preserves brackets when functions are pulled back. Call a submanifold coisotropic if the bracket of any two local functions vanishing there also vanishes there.
+**Definition.** A smooth map is Poisson when pulling back functions preserves the Poisson bracket, a Lie bracket on functions that obeys the product rule. A submanifold is coisotropic when the bracket of any two local functions vanishing on it also vanishes on it.
 
 **Problem.** A smooth map is Poisson exactly when its graph is coisotropic in the product using the target bracket and the negative domain bracket.
 
@@ -2398,11 +2398,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D20 (Momentum maps; symplectic reduction), 53D30. arXiv math.DG, math.SG. Level 3: graduate.
 
-**Definition.** For a Hamiltonian group action with equivariant moment map μ, the Hamiltonian reduction at zero is μ⁻¹(0) modulo the group action.
+**Definition.** For a group action with equivariant moment map μ, the Hamiltonian reduction at zero is the zero set μ⁻¹(0) divided by the group. When μ is curvature, its zero set is exactly the flat connections.
 
-**Problem.** Take connections on a principal compact Lie group bundle over a closed oriented surface, with an invariant inner product on its Lie algebra. For the Atiyah–Bott form, curvature is a moment map for the gauge group. The flat moduli space is therefore the Hamiltonian reduction at zero, with its reduced symplectic form on the smooth symplectic strata.
+**Problem.** Take connections on a principal bundle with compact structure group over a closed oriented surface, with an invariant inner product on the Lie algebra. For the Atiyah–Bott form, curvature is a moment map for gauge, so the flat moduli space is the reduction at zero, symplectic on smooth strata.
 
-**How the definition helps.** Atiyah and Bott identify the moment map with curvature. Its zero set consists exactly of flat connections. Dividing by gauge transformations gives their moduli space, and symplectic reduction supplies the form on each smooth stratum (our own explanation).
+**How the definition helps.** Atiyah and Bott identify the moment map with curvature, so its zero set is the flat connections and its quotient by gauge is their moduli space. Symplectic reduction supplies the form on each smooth stratum (our own explanation).
 
 **Paper or page:** [Higher Complex Structures and Higher Teichmüller Theory](https://arxiv.org/abs/2007.00382), [A Gentle Introduction to the Non-Abelian Hodge Correspondence](https://arxiv.org/abs/2208.05940). It says: “The action of gauge transforms on the space of connections is a Hamiltonian action and the moment map is the curvature. Thus, the Hamiltonian reduction 𝒜⫽𝒢 gives the moduli space of flat connections.”
 
@@ -2418,11 +2418,11 @@
 
 *Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG, math.DS. Level 3: graduate.
 
-**Definition.** For a Hamiltonian G-action on (M,ω), a momentum map μ into the dual Lie algebra satisfies d⟨μ,ξ⟩ = ι(ξ<sub>M</sub>)ω for every infinitesimal generator ξ<sub>M</sub>. It is equivariant if μ(gx) = Ad\*(g)μ(x) for every g and x, where Ad\* denotes the coadjoint action.
+**Definition.** A momentum map μ for a Hamiltonian G-action on (M,ω) sends points to the dual Lie algebra so that each component ⟨μ,ξ⟩ generates the motion ξ<sub>M</sub>: d⟨μ,ξ⟩ = ι(ξ<sub>M</sub>)ω. It is equivariant when moving a point by g moves its momentum by the coadjoint action, μ(gx) = Ad\*(g)μ(x).
 
 **Problem.** For a connected Hamiltonian symmetry group, an equivariant momentum map preserves brackets when functions on the dual Lie algebra are composed with μ. Use the Lie–Poisson bracket, which on linear functions gives their Lie algebra bracket, with matching sign conventions.
 
-**How the definition helps.** Differentiating equivariance makes the generating functions reproduce the brackets of infinitesimal symmetries (our own). Linear functions supply every possible differential on the dual Lie algebra, and brackets at a point depend only on those differentials (our own). Translations of the plane commute, but their generators y and −x have bracket one in the standard convention (our own). Adding constants cannot repair that mismatch (our own).
+**How the definition helps.** Differentiating equivariance gives {⟨μ,ξ⟩,⟨μ,η⟩} = ⟨μ,\[ξ,η\]⟩, so μ preserves brackets of linear functions (our own). Brackets at a point depend only on differentials, and linear functions give every differential (our own). Translations of the plane commute, but their generators y and −x have bracket one, and adding constants cannot fix this (our own).
 
 **nLab:** [momentum map](https://ncatlab.org/nlab/show/momentum+map). It says: “its dual μ is a Poisson manifold homomorphism with respect to the Lie-Poisson structure”
 
@@ -2434,11 +2434,11 @@
 
 *Rules out counterexamples.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG, math.DS. Level 3: graduate.
 
-**Definition.** A compact Lie group acts freely on the zero set of an equivariant momentum map if every point there has trivial stabilizer. The reduced space is the set of group orbits on that level.
+**Definition.** A compact Lie group acts freely on the zero level μ⁻¹(0) of an equivariant momentum map when no point of the level is fixed by any element except the identity. The reduced space is μ⁻¹(0) divided by the group.
 
 **Problem.** For a compact Lie group acting freely on the zero level, the reduced space is smooth and inherits a symplectic form.
 
-**How the definition helps.** Freeness excludes the fixed origin for opposite circle rotations on ℂ² (our own example). Independent infinitesimal motions make the momentum derivative surjective, so the zero level is smooth. The free, proper quotient theorem gives smooth quotient charts. The restricted form has precisely the orbit directions as its kernel and descends to a symplectic form (our own argument).
+**How the definition helps.** Freeness makes the infinitesimal motions independent, so the momentum derivative is onto, the zero level is smooth, and the free, proper quotient theorem gives smooth charts. The restricted form has exactly the orbit directions as its kernel and descends to a symplectic form (our own argument). Opposite circle rotations on ℂ² fix the origin of the zero level, where the quotient is singular (our own example).
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Assume that G acts freely on μ⁻¹(0).”
 
@@ -2456,7 +2456,7 @@
 
 **Problem.** Take a regular value of the moment map, one where its derivative is onto throughout the level. If the group fixing the value acts freely and properly on the level, the quotient is a smooth symplectic manifold.
 
-**How the definition helps.** Freeness excludes finite stabilizers such as those in the circle action on ℂ² with weights one and two (our own example). On positive momentum levels a half-turn fixes points with first coordinate zero and negates the transverse coordinate. The free, proper quotient theorem gives smooth charts, and the symplectic reduction theorem supplies the form (our own explanation).
+**How the definition helps.** Freeness and properness let the free, proper quotient theorem give smooth charts, and the symplectic reduction theorem supplies the form (our own explanation). Without freeness, the circle acting on ℂ² with weights one and two fails. On positive levels a half-turn fixes the points with first coordinate zero and negates the transverse coordinate, giving a singular point (our own example).
 
 **Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “Then there is a unique symplectic structure”
 
@@ -2470,11 +2470,11 @@
 
 *True by definition.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Let i include a regular moment level in a symplectic manifold (M,ω), and let π project it onto its smooth reduced space. The reduced form Ω is the unique two-form satisfying π\*Ω = i\*ω.
+**Definition.** Let a regular moment level sit in (M,ω) by the inclusion i and project onto its smooth reduced space by π. The reduced form Ω is the unique two-form whose pullback along π equals the restriction of ω: π\*Ω = i\*ω.
 
-**Problem.** Choose a moment map respecting the group actions and a level where its derivative is onto. Suppose the group fixing that value acts freely and properly on the level. Then the flow of any invariant energy projects to the flow of the induced energy on the quotient.
+**Problem.** Take an equivariant moment map and a level where its derivative is onto, and suppose the group fixing that value acts freely and properly on the level. Then the flow of any invariant energy projects to the flow of the induced energy on the quotient.
 
-**How the definition helps.** The pullback identity transfers Hamilton’s equation directly to the quotient (our own argument). Noether’s theorem keeps the invariant Hamiltonian’s flow on the level, and invariance lets its vector field project. Since the reduced energy pulls back to the restricted energy, the projected field satisfies the reduced Hamilton equation. Nondegeneracy identifies it uniquely.
+**How the definition helps.** The identity π\*Ω = i\*ω carries Hamilton’s equation down to the quotient (our own argument). Noether’s theorem keeps the flow on the level, and invariance lets its vector field project. The reduced energy pulls back to the restricted energy, so the projected field satisfies the reduced Hamilton equation, and nondegeneracy makes it unique.
 
 **Paper or page:** [From Symplectic to Poisson. A Study of Reduction and a Proposal Towards Implosion](https://arxiv.org/abs/2202.05783v1). It says: “In particular, $X<sub>H</sub>$ and $X<sub>h</sub>$ are $\\pi$-related.”
 
@@ -2484,7 +2484,7 @@
 
 ### With Hamiltonian actions, Noether's theorem takes one line
 
-**Remember:** Each symmetry has a generating function, and its bracket with energy measures conservation.
+**Remember:** A symmetry’s charge changes at the rate of its bracket with energy.
 
 *True by definition.* MSC 53D20 (Momentum maps; symplectic reduction), 70H33. arXiv math.SG, math.MP. Level 3: graduate.
 
@@ -2506,11 +2506,11 @@
 
 *Rules out counterexamples.* MSC 53D22 (Canonical transformations in symplectic and contact geometry). arXiv math.SG. Level 3: graduate.
 
-**Definition.** Let λ be a one-form whose derivative dλ is symplectic, meaning closed and nondegenerate. A diffeomorphism is exact symplectic if it pulls λ back to λ + dF for a single function F. Adding a real height z gives a contact form dz − λ.
+**Definition.** A diffeomorphism φ of an exact symplectic manifold (M, dλ) is exact when it changes λ by the derivative of one global function: φ\*λ = λ + dF. The contactization M × ℝ, with height z, carries the contact form dz − λ.
 
 **Problem.** Every exact symplectic map lifts to a map of the contactization preserving dz − λ exactly.
 
-**How the definition helps.** Exactness supplies the global height correction (our own calculation). The lift (x,z) ↦ (φ(x),z + F(x)) pulls dz − λ back to dz + dF − φ\*λ = dz − λ. Translating momentum by a nonzero constant on the cotangent bundle of a circle changes λ by a form with nonzero period. That form has no global primitive.
+**How the definition helps.** The lift (x,z) ↦ (φ(x), z + F(x)) pulls dz − λ back to dz + dF − φ\*λ = dz − λ (our own calculation). Translating momentum by a nonzero constant on the cotangent bundle of a circle is symplectic, but it changes λ by a closed form with nonzero period, so no global F exists.
 
 **Wikipedia:** [Contact geometry](https://en.wikipedia.org/wiki/Contact_geometry). It says: “and it lifts to a contact transformation”
 
@@ -2522,11 +2522,11 @@
 
 *True by definition.* MSC 53D22 (Canonical transformations in symplectic and contact geometry). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A Lagrangian submanifold has half the ambient dimension and zero restricted symplectic form. On a product, use the target symplectic form minus the source form.
+**Definition.** A Lagrangian is a half-dimensional submanifold on which the symplectic form restricts to zero. On M × N use the target form minus the source form, which restricts on the graph of φ to φ\*ω<sub>N</sub> − ω<sub>M</sub> (our own).
 
 **Problem.** A diffeomorphism preserves the symplectic form exactly when its graph is Lagrangian for the difference form.
 
-**How the definition helps.** Using the difference form on the product turns preservation of two forms into vanishing of one form on the graph. In our own calculation, restriction to the graph gives the pulled-back target form minus the source form. The graph has half the product dimension since the map is a diffeomorphism. These two facts also prove the converse.
+**How the definition helps.** The difference form restricts on the graph to φ\*ω<sub>N</sub> − ω<sub>M</sub>, which vanishes exactly when φ preserves the form (our own calculation). The graph has half the product dimension because φ is a diffeomorphism.
 
 **nLab:** [Lagrangian correspondence](https://ncatlab.org/nlab/show/Lagrangian+correspondence). It says: “The graph of any symplectomorphism induces a Lagrangian correspondence.”
 
@@ -2538,11 +2538,11 @@
 
 *True by definition.* MSC 53D22 (Canonical transformations in symplectic and contact geometry), 70H15. arXiv math.SG, math-ph. Level 3: graduate.
 
-**Definition.** Define a canonical transformation φ as a symplectomorphism, a smooth invertible map that preserves the symplectic form ω. This form is a closed, nondegenerate alternating pairing on tangent vectors. The classical definition instead asks that Hamilton’s position and momentum equations keep their form after a change of coordinates.
+**Definition.** A canonical transformation φ is a symplectomorphism: a smooth invertible map that preserves the symplectic form ω, the closed nondegenerate pairing that turns the derivative dH into the velocity field of H.
 
-**Problem.** A time-independent canonical transformation φ carries motion for H to motion for H ∘ φ⁻¹. It also carries the Poisson bracket, the operation that gives the rate of change under Hamiltonian motion, to the new coordinates.
+**Problem.** A time-independent canonical transformation φ carries motion for H to motion for H ∘ φ⁻¹. It also carries the Poisson bracket, which gives rates of change under Hamiltonian motion, to the new coordinates.
 
-**How the definition helps.** A symplectomorphism preserves Hamilton’s equations because it preserves the pairing used to determine the motion from the derivative of H (our own). The defining equation therefore carries the original velocity field to the one for H ∘ φ⁻¹ (our own). The same pairing gives the Poisson bracket, so the bracket is preserved too (our own). The work moves into proving that the classical condition on Hamilton’s equations, for all H, is equivalent to preserving ω (our own).
+**How the definition helps.** Hamilton’s equation ι(X<sub>H</sub>)ω = dH uses only ω and H, so a map preserving ω carries the field of H to the field of H ∘ φ⁻¹ (our own). The Poisson bracket {f,g} = ω(X<sub>f</sub>,X<sub>g</sub>) uses the same pairing, so it is carried over too (our own).
 
 **nLab:** [canonical transformation](https://ncatlab.org/nlab/show/canonical+transformation). It says: “Since phase spaces are mathematically identified with symplectic manifolds, canonical transformations are symplectomorphisms.”
 
@@ -2556,11 +2556,11 @@
 
 *True by definition.* MSC 53D35 (Global theory of symplectic and contact manifolds). arXiv math.SG. Level 3: graduate.
 
-**Definition.** A normalized symplectic capacity takes values in \[0,∞\] and satisfies c(M) ≤ c(N) whenever M embeds symplectically into N. Scaling the symplectic form by a positive factor scales the capacity equally. In standard symplectic space it assigns πr² to the radius-r ball and the cylinder over a radius-r conjugate coordinate disk.
+**Definition.** A normalized symplectic capacity gives each symplectic manifold a size in \[0,∞\] that cannot decrease under symplectic embedding and multiplies by a when the form is multiplied by a &gt; 0. It gives both the radius-r ball and the radius-r cylinder over a conjugate coordinate plane the value πr².
 
 **Problem.** In standard symplectic space, a ball cannot embed symplectically into a cylinder of smaller radius over a conjugate coordinate plane.
 
-**How the definition helps.** Any symplectic embedding from the ball into the cylinder requires πr² ≤ πR² by monotonicity and normalization. The substantive input is the existence of a normalized capacity (our own explanation).
+**How the definition helps.** An embedding of the radius-r ball into the radius-R cylinder gives πr² ≤ πR² by monotonicity and normalization, so r ≤ R. The substantive input is that a normalized capacity exists (our own explanation).
 
 **Wikipedia:** [Non-squeezing theorem](https://en.wikipedia.org/wiki/Non-squeezing_theorem). It says: “Given such a capacity, one can verify the non-squeezing theorem”
 
@@ -2572,11 +2572,11 @@
 
 *True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG. Level 3: graduate.
 
-**Definition.** Work over rational Novikov series with nonnegative exponents on a closed symplectic manifold. Pairing the small quantum product a ⋆ b with c gives the sum of genus-zero three-point Gromov–Witten invariants with insertions a,b,c. Each curve class A contributes with weight T raised to its symplectic area.
+**Definition.** On a closed symplectic manifold, over rational Novikov series in T with nonnegative exponents, the small quantum product satisfies ⟨a ⋆ b, c⟩ = ∑ GW<sub>A</sub>(a,b,c) T<sup>ω</sup>(A), summing genus-zero three-point invariants over curve classes A. Only constant curves have zero area, so the T⁰ term is the ordinary cup product (our own).
 
 **Problem.** For a closed symplectic manifold, quotienting its small quantum cohomology ring by all series with zero constant term recovers its rational cohomology ring.
 
-**How the definition helps.** Weighting by area lets one extract ordinary multiplication by taking the constant coefficient (our own). Only constant curves have zero area, and all three evaluations of such a curve return the same point (our own). So the zero-area count pairs the ordinary cup product with the third class (our own). Associativity of the full product requires a separate theorem (our own).
+**How the definition helps.** Setting the positive powers of T to zero keeps only constant curves (our own). A constant curve meets the three classes at one point, so its count is ∫ a ∪ b ∪ c, the cup product paired with c (our own). Associativity of the full product needs a separate theorem (our own).
 
 **Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The only pseudoholomorphic curves in class A = 0 are constant maps, whose images are points.”
 
@@ -2588,11 +2588,11 @@
 
 *Rules out counterexamples.* MSC 53D50 (Geometric quantization), 53D55, 81S10. arXiv math.SG. Level 3: graduate.
 
-**Definition.** Let q assign rank-one orthogonal projections measurably to points of a positive measure space (M,μ), with weak integral ∫q dμ = I. Berezin quantization sends f to Q(f) = ∫f q dμ whenever the weak integral defines a bounded operator.
+**Definition.** Berezin quantization averages rank-one projections with weight f: Q(f) = ∫ f q dμ, where q assigns measurably to each point of a positive measure space (M,μ) a rank-one orthogonal projection, with ∫ q dμ = I weakly. It applies whenever this weak integral defines a bounded operator.
 
 **Problem.** If f ≥ 0, then Q(f) is a positive operator, and if also ∫ f dμ = 1, then Q(f) is a density operator. Weyl quantization lacks this property: some nonnegative functions on ℝ² give operators with a negative expectation value.
 
-**How the definition helps.** For f ≥ 0, each quadratic form value of Q(f) integrates a nonnegative function. Rank-one projections have trace one, so for integrable f ≥ 0 the trace equals ∫f dμ (our own calculation). Weyl expectations instead integrate f against a Wigner function. A nonzero nonnegative bump near the first excited oscillator state’s negative Wigner value at the origin gives a negative expectation (our own example).
+**How the definition helps.** For f ≥ 0, each value ⟨v, Q(f)v⟩ = ∫ f ⟨v, q v⟩ dμ integrates a nonnegative function, so Q(f) is positive. Each projection has trace one, so for integrable f the trace of Q(f) is ∫ f dμ (our own calculation). Weyl expectations integrate f against a Wigner function, which is negative at the origin for the first excited oscillator state, so a nonnegative bump there gives a negative expectation (our own example).
 
 **nLab:** [Berezin quantization](https://ncatlab.org/nlab/show/Berezin+quantization). It says: “That is, if f ≥ 0 and ∫<sub>M</sub> f dμ = 1 then Q<sub>f</sub> ≥ 0 and Tr(Q<sub>f</sub>) = 1”
 
@@ -2612,7 +2612,7 @@
 
 **Problem.** On smooth sections, \[Q(f), Q(g)\] = iħQ({f, g}) for smooth f and g. Here \[A, B\] means AB − BA and {f, g} = ω(X(f), X(g)).
 
-**How the definition helps.** Curvature corrects the multiplication term in the commutator (our own calculation). Since \[X(f),X(g)\] = −X({f,g}), commuting derivatives gives the required derivative part. The two cross terms contribute 2iħ{f,g}, while curvature contributes −iħ{f,g}. Together these give iħQ({f,g}).
+**How the definition helps.** In the commutator, the derivative parts give the derivative along \[X(f),X(g)\] = −X({f,g}), and curvature corrects the multiplication term (our own calculation). The two cross terms contribute 2iħ{f,g}, while curvature contributes −iħ{f,g}. Together these give iħQ({f,g}).
 
 **Wikipedia:** [Geometric quantization](https://en.wikipedia.org/wiki/Geometric_quantization). It says: “Prequantization produces a natural Hilbert space together with a quantization procedure for observables that exactly transforms Poisson brackets on the classical side into commutators on the quantum side.”
 
@@ -2624,7 +2624,7 @@
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products), 17B35, 17B63. arXiv math.QA. Level 3: graduate.
 
-**Definition.** For a finite-dimensional real Lie algebra 𝔤, form its formal enveloping algebra with relations xy − yx = ħ\[x,y\]. Let σ send each polynomial monomial on 𝔤\* to the average of all orderings of its factors, extending coefficientwise in ħ. The Gutt product is f ⋆ g = σ⁻¹(σ(f)σ(g)).
+**Definition.** For a finite-dimensional real Lie algebra 𝔤, the Gutt product carries the product of the formal enveloping algebra, with relations xy − yx = ħ\[x,y\], over to polynomials on 𝔤\*: f ⋆ g = σ⁻¹(σ(f)σ(g)). Here σ sends each monomial to the average of all orderings of its factors, extended coefficientwise in ħ.
 
 **Problem.** The Gutt star product is an associative deformation quantization of the Lie–Poisson structure on 𝔤\*. It is given by bidifferential operators, so it extends to all smooth functions on 𝔤\*.
 
@@ -2644,7 +2644,7 @@
 
 *Rules out counterexamples.* MSC 53D55 (Deformation quantization, star products), 81S10. arXiv math.SG, math.QA. Level 3: graduate.
 
-**Definition.** A differential star product on complex smooth functions is a unital associative formal product f ⋆ g = fg + ∑ₖ≥₁ ħᵏBₖ(f,g) with bidifferential coefficients. It quantizes a Poisson bracket when B₁(f,g) − B₁(g,f) = i{f,g} for all f,g.
+**Definition.** A differential star product is a unital associative formal product f ⋆ g = fg + ∑ₖ≥₁ ħᵏBₖ(f,g) on complex smooth functions, with bidifferential coefficients Bₖ. It quantizes a Poisson bracket when only the first commutator term must match it, B₁(f,g) − B₁(g,f) = i{f,g}, leaving higher terms free.
 
 **Problem.** Under the standard Groenewold–van Hove hypotheses with the Schrödinger position and momentum operators, no quantization satisfies the exact Dirac rule on all polynomial observables. The Moyal product formally quantizes all smooth functions on standard symplectic ℝ²ⁿ.
 
@@ -2658,15 +2658,15 @@
 
 ### Hochschild–Kostant–Rosenberg makes first-order terms bivector fields
 
-**Remember:** Differential cochains represent first-order products, and antisymmetrization remembers their cohomology classes.
+**Remember:** A cocycle’s symmetric part is a coboundary, so gauge it away.
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 16E40. arXiv math.QA. Level 3: graduate.
 
-**Definition.** A differential Hochschild p-cochain on C∞(M) is a p-linear map from smooth functions to smooth functions that acts by a multidifferential operator.
+**Definition.** A differential Hochschild p-cochain on C∞(M) is a p-linear map on smooth functions given by a multidifferential operator. By the Hochschild–Kostant–Rosenberg theorem, a differential 2-cocycle differs from its antisymmetric part, a bivector field, by a coboundary.
 
-**Problem.** Every differential star product quantizing {·,·} with first commutator coefficient {·,·} is differentially equivalent to one with antisymmetric first coefficient B₁. The antisymmetric part of B₁ equals half the Poisson bracket and is invariant under equivalence.
+**Problem.** Every differential star product whose first commutator coefficient is {·,·} is differentially equivalent to one with antisymmetric first coefficient B₁. The antisymmetric part of B₁ equals half the Poisson bracket and does not change under equivalence.
 
-**How the definition helps.** Differential Hochschild cohomology identifies the class of a two-cocycle with its antisymmetrization by the Hochschild–Kostant–Rosenberg theorem. Associativity makes B₁ a cocycle. A differential equivalence changes B₁ by a coboundary, which is symmetric. The theorem makes its symmetric part a coboundary, so an equivalence removes that part (our own summary).
+**How the definition helps.** Associativity at order ħ makes B₁ a Hochschild 2-cocycle, so its symmetric part is the coboundary of a differential operator D. An equivalence f ↦ f + ħD(f) changes B₁ by the coboundary of D, which is symmetric. So a suitable D removes the symmetric part, and the antisymmetric part never changes (our own summary).
 
 **nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “Note that Cᵖ(C∞(M),C∞(M)) should be interpreted as Hom<sub>diff</sub>(C∞(M), C∞(M)).”
 
@@ -2682,11 +2682,11 @@
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products), 17B63. arXiv math.QA, math.SG. Level 3: graduate.
 
-**Definition.** A star product on a manifold M is an associative product on formal power series C∞(M)\[\[ħ\]\]. It has the form f ⋆ g = fg + ħB₁(f,g) + ħ²B₂(f,g) + ⋯ with bilinear maps Bₖ. Its first-order bracket is {f,g} = B₁(f,g) − B₁(g,f).
+**Definition.** A star product on M is an associative product on formal series C∞(M)\[\[ħ\]\] of the form f ⋆ g = fg + ħB₁(f,g) + ħ²B₂(f,g) + ⋯ with bilinear Bₖ. Its first-order bracket {f,g} = B₁(f,g) − B₁(g,f) is the ħ-coefficient of the commutator f ⋆ g − g ⋆ f.
 
 **Problem.** For every star product, the first-order bracket is a Poisson bracket. It is antisymmetric, it is a derivation in each argument, and it satisfies the Jacobi identity.
 
-**How the definition helps.** The first-order bracket is the constant term of the star commutator divided by ħ. Skew-symmetry follows immediately. The commutator product rule at order ħ gives the ordinary Leibniz rule. Its Jacobi identity at order ħ² gives Jacobi for the bracket (our own summary).
+**How the definition helps.** As the leading term of a commutator, the bracket inherits the commutator’s identities, and skew-symmetry is immediate. The commutator’s product rule at order ħ gives the Leibniz rule, and its Jacobi identity at order ħ² gives Jacobi for the bracket (our own summary).
 
 **nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “A (formal) deformation quantization of M is a star product on A = C∞(M) such that the Poisson bracket {a,b} = B₁(a,b) − B₁(b,a) for a,b ∈ A”
 
@@ -2700,11 +2700,11 @@
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products), 81S30. arXiv math.QA, math.SG. Level 3: graduate.
 
-**Definition.** For a constant tensor π on a vector space, define f ⋆π g = m exp(ħπⁱʲ∂ᵢ ⊗ ∂ⱼ)(f ⊗ g) on formal smooth functions. Here m multiplies functions pointwise, and repeated indices are summed. The antisymmetric tensor gives Moyal ordering, while Wick ordering uses a complex tensor with an additional symmetric part.
+**Definition.** For a constant tensor π on a vector space, f ⋆π g = m exp(ħπⁱʲ∂ᵢ ⊗ ∂ⱼ)(f ⊗ g) applies the exponential of π-contracted derivatives and then multiplies pointwise (m), with repeated indices summed. Antisymmetric π gives the Moyal product, and Wick products use a complex π with an added symmetric part.
 
 **Problem.** If α is a symmetric constant tensor, then f ↦ exp(½ħ αⁱʲ ∂ᵢ∂ⱼ) f is an algebra isomorphism from ⋆π to ⋆(π+α). Hence every Wick product is isomorphic to the Moyal product of the antisymmetric part of its tensor.
 
-**How the definition helps.** Putting all constant tensors into one family turns a change of symmetric part into one exponential operator D = exp(½ħ αⁱʲ∂ᵢ∂ⱼ). Because α is symmetric, the product rule gives D(fg) = prod ∘ exp(ħ αⁱʲ ∂ᵢ ⊗ ∂ⱼ)(Df ⊗ Dg). Constant-coefficient exponentials commute and multiply, so D(f ⋆π g) = Df ⋆(π+α) Dg follows in one line (our own computation). Taken separately, the Wick and Moyal formulas look unrelated and need a term-by-term comparison.
+**How the definition helps.** Because α is symmetric, the product rule gives D(fg) = m ∘ exp(ħ αⁱʲ ∂ᵢ ⊗ ∂ⱼ)(Df ⊗ Dg) for D = exp(½ħ αⁱʲ∂ᵢ∂ⱼ). Constant-coefficient exponentials commute and multiply, so D(f ⋆π g) = Df ⋆(π+α) Dg follows in one line (our own computation).
 
 **nLab:** [star product](https://ncatlab.org/nlab/show/star+product). It says: “Indeed every star product induced from a constant rank-2 tensor on a vector space is isomorphic to a Moyal star product”
 
@@ -2718,7 +2718,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 58E12. arXiv math.DG. Level 4: research.
 
-**Definition.** Consider a finite group acting holomorphically on a connected open complex curve and orthogonally on Euclidean space. Weierstrass data form a nowhere-zero vector of holomorphic differentials whose squares sum to zero and whose real integrals vanish around loops. The data respect the actions when pulling them back by each group element gives its orthogonal transformation of the vector.
+**Definition.** Weierstrass data on a connected open complex curve are a nowhere-zero vector of holomorphic differentials whose squares sum to zero and whose real parts integrate to zero around every loop. For a finite group acting holomorphically on the curve and orthogonally on Euclidean space, the data respect the actions when pulling back by each g applies the orthogonal map of g to the vector.
 
 **Problem.** Integrating the real parts gives a conformal minimal immersion F. For data respecting the actions, equality F(gx) = gF(x) everywhere reduces to testing every group element g at one chosen point x.
 
@@ -2736,11 +2736,11 @@
 
 *True by definition.* MSC 53C05 (Connections (general theory)), 58D05. arXiv math.DG. Level 4: research.
 
-**Definition.** A connection specifies parallel transport, a rule for moving points of a bundle fiber along a path. Its holonomy group consists of transports around loops at one base point. A gauge symmetry preserves the connection when it commutes with transport along every path.
+**Definition.** A gauge symmetry of a connection is a bundle automorphism that commutes with parallel transport along every path. So its value on one fiber fixes it everywhere, and that value commutes with transport around every loop, the holonomy group (our own).
 
 **Problem.** On a principal bundle over a connected manifold, restriction identifies the gauge symmetry group with the fiber automorphisms commuting with all holonomy. Fiber automorphisms here respect the structure group action.
 
-**How the definition helps.** The transport description determines a symmetry everywhere from its value on one fiber. In our own proof, transport that value along any path to the desired fiber. Commutation with loop transport makes the result independent of the path, and local smooth families of paths give smoothness. The description uses the equivalence between preserving horizontal tangent spaces and preserving their path transports.
+**How the definition helps.** Transport the value on one fiber along any path to extend it, and commutation with holonomy makes the result independent of the path (our own proof). Smooth local families of paths make the extension smooth. Preserving the connection is equivalent to commuting with all path transports.
 
 **Paper or page:** [The local moduli space of the Einstein-Yang-Mills system](https://arxiv.org/abs/2311.07572). It says: “the centralizer of the holonomy of A at m ∈ M inside the automorphism group”
 
@@ -2754,11 +2754,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C05 (Connections (general theory)), 58H05. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** The path groupoid of X has points as objects and smooth paths constant near both endpoints as representatives of arrows. Two paths represent the same arrow if a smooth endpoint-preserving homotopy between them has differential of rank at most one everywhere. Composition concatenates paths.
+**Definition.** Two paths with the same endpoints are thinly homotopic when one sweeps to the other through no area: by a smooth endpoint-preserving homotopy whose differential has rank at most one everywhere. The path groupoid of X has points as objects, smooth paths constant near their endpoints modulo thin homotopy as arrows, and concatenation as composition.
 
 **Problem.** Parallel transport on a principal G-bundle with connection defines a smooth functor from the path groupoid to G-torsors. Schreiber and Waldorf identify principal G-bundles with connection with such smooth transport functors up to categorical equivalence.
 
-**How the definition helps.** Parallel transport does not change under thin homotopy, so it gives a well-defined functor on the path groupoid. With sitting instants, composition of paths is smooth, and it is associative after the quotient. Schreiber and Waldorf prove that the functor determines the connection, and that equivalence is the real theorem. The functor factors through the fundamental groupoid exactly when the connection is flat.
+**How the definition helps.** Parallel transport does not change under thin homotopy, so it is well defined on arrows and respects concatenation. Paths constant near their endpoints make concatenation smooth, and the quotient makes it associative. Schreiber and Waldorf prove that the functor determines the connection, and that equivalence is the real theorem.
 
 **nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “noticed that the most elegant way to (re)state the maximal equivalence relation on paths which is respected by parallel transport is in terms of thin homotopy.”
 
@@ -2773,11 +2773,11 @@
 
 *Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** A Spin(7) structure is a four-form Φ pointwise equivalent to the Cayley form on an eight-manifold. With the induced Hodge star ⋆, a connection is a Spin(7) instanton if its curvature F satisfies Φ ∧ F = −⋆F.
+**Definition.** A Spin(7) structure on an eight-manifold is a four-form Φ that looks like the Cayley form at each point, and it fixes a metric and Hodge star ⋆. A connection is a Spin(7) instanton when its curvature F satisfies Φ ∧ F = −⋆F, so the Bianchi identity gives dₐ⋆F = −dΦ ∧ F (our own).
 
 **Problem.** A Spin(7) instanton for a closed defining four-form satisfies the ordinary Yang–Mills equation. Without closedness, the same instanton equation need not imply the Yang–Mills equation.
 
-**How the definition helps.** For closed Φ, differentiating the instanton equation gives dₐ⋆F = 0 by the Bianchi identity (our own proof). On Euclidean eight-space take nonzero constant abelian instanton curvature F and choose linear u with du ∧ ⋆F nonzero. Scaling lengths by exp(u) multiplies Φ and ⋆F by exp(4u), preserving the instanton equation. The rescaled ⋆F has nonzero derivative (our own counterexample).
+**How the definition helps.** When Φ is closed, dₐ⋆F = −dΦ ∧ F is the Yang–Mills equation dₐ⋆F = 0 (our own proof). Otherwise, rescale lengths on ℝ⁸ by exp(u), with u linear and du ∧ ⋆F ≠ 0 for a nonzero constant abelian instanton curvature F. Both Φ and ⋆F gain the factor exp(4u), so F stays an instanton, but the new ⋆F is not closed (our own counterexample).
 
 **nLab:** [Spin(7)-instanton](https://ncatlab.org/nlab/show/Spin%287%29-instanton). It says: “On a Spin(7) manifold the differential 2-forms decompose into two irreducible representations, Λ₇ and Λ₂₁ under the action of Spin(7)”
 
@@ -2789,11 +2789,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** On an oriented Riemannian four-manifold, an ideal SU(2) instanton of charge k pairs an anti-self-dual connection with finitely many distinct points of positive integer weight. Its curvature satisfies ⋆F = −F, and its second Chern number plus the sum of the weights equals k.
+**Definition.** An ideal instanton of charge k on an oriented Riemannian four-manifold is an anti-self-dual SU(2) connection, with ⋆F = −F, together with finitely many distinct points of positive integer weight. The weights hold the lost charge: the second Chern number plus the sum of the weights equals k.
 
-**Problem.** On a closed base, every sequence of smooth anti-self-dual connections of charge k has a subsequence converging to an ideal instanton. After changes of frame, the connections converge smoothly on compact sets away from the marked points. In units of one instanton, the energy measures converge weakly to the limiting energy measure plus the weighted point masses.
+**Problem.** On a closed base, every sequence of anti-self-dual connections of charge k has a subsequence converging to an ideal instanton, smoothly on compact sets away from the marked points after changes of frame. In units of one instanton, the energy measures converge weakly to the limit’s energy measure plus the weighted point masses.
 
-**How the definition helps.** In our own account, the marked points give concentrated curvature energy a place in the limit. Uhlenbeck compactness gives convergence away from those points. Removal of singularities extends the limiting connection, and energy quantization gives the integer weights.
+**How the definition helps.** The marked points hold the curvature energy that concentrates and escapes the smooth limit (our own account). Uhlenbeck compactness gives convergence away from those points, removal of singularities extends the limit connection, and energy quantization makes the weights integers.
 
 **nLab:** [Donaldson invariant](https://ncatlab.org/nlab/show/Donaldson+invariant). It says: “corresponding to the positions of the instantons when shrinking their scale down and considering the limit”
 
@@ -2807,11 +2807,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** On a complex vector bundle, take a connection D and two one-forms φ and ψ with values in bundle endomorphisms. Define D(ε) = D + ε⁻¹φ + εψ for every nonzero complex number ε. In wedge products, multiply the endomorphisms by composition.
+**Definition.** On a complex vector bundle, take a connection D and endomorphism-valued one-forms φ and ψ, and set D(ε) = D + ε⁻¹φ + εψ for nonzero complex ε, composing endomorphisms in wedge products. Its curvature is a Laurent polynomial in ε with coefficients φ∧φ, dᴰφ, Fᴰ + φ∧ψ + ψ∧φ, dᴰψ and ψ∧ψ in degrees −2 to 2 (our own).
 
 **Problem.** Every D(ε) is flat exactly when φ∧φ, ψ∧ψ, dᴰφ, dᴰψ and Fᴰ + φ∧ψ + ψ∧φ all vanish. Here Fᴰ is the curvature and dᴰ is the exterior derivative induced by D.
 
-**How the definition helps.** In our own calculation, the family puts each of the five equations in a separate power of ε. Expanding curvature gives powers from −2 through 2. A Laurent polynomial vanishes for every nonzero parameter exactly when each coefficient vanishes.
+**How the definition helps.** A Laurent polynomial vanishes for every nonzero ε exactly when each of its coefficients vanishes.
 
 **Paper or page:** [Nilpotent Higgs bundles and families of flat connections](https://arxiv.org/abs/2207.09581). It says: “Then flatness for all ε ∈ ℂ× is equivalent to the following set of equations:”
 
@@ -2825,11 +2825,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Fix a rank-two unitary bundle over a connected closed oriented three-manifold. It is admissible if its determinant has odd first Chern number on some embedded closed oriented surface. A connection with fixed determinant connection is projectively flat if its curvature is scalar at every point.
+**Definition.** A rank-two unitary bundle over a connected closed oriented three-manifold is admissible when its determinant has odd degree on some embedded closed oriented surface. A connection with fixed determinant connection is projectively flat when its curvature is scalar at every point, so any parallel line subbundle carries half the determinant curvature (our own).
 
 **Problem.** Every projectively flat connection on such a bundle is irreducible for determinant-one gauge transformations, meaning its stabilizer is just the center. A product bundle with the product connection shows what can fail without admissibility.
 
-**How the definition helps.** Odd determinant degree excludes the parallel line splitting of the trivial product connection (our own argument). Any noncentral parallel determinant-one automorphism has two distinct eigenvalues, so its eigenlines are parallel. Projective flatness gives both lines the same curvature and therefore equal degrees on the chosen surface. Their sum is even.
+**How the definition helps.** A noncentral parallel determinant-one automorphism has two distinct eigenvalues, and its eigenlines are parallel line subbundles (our own argument). Projective flatness gives both lines the same curvature, hence equal degrees on the surface, so the determinant degree would be even. The trivial product bundle with the product connection does split this way.
 
 **Paper or page:** [Equivariant instanton homology](https://arxiv.org/abs/1907.01091). It says: “Suppose E is a nontrivial admissible bundle over a 3-manifold Y.”
 
@@ -2839,11 +2839,11 @@
 
 ### One charge adds eight virtual dimensions
 
-**Remember:** Subtract the cokernel dimension from the kernel dimension of the gauge-fixed curvature operator.
+**Remember:** The index formula grows by eight with each unit of charge.
 
 *Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** At an anti-self-dual connection A, define the virtual dimension as the real Fredholm index of dₐ\* ⊕ dₐ⁺ on adjoint-valued one-forms. The two components impose the gauge condition and linearize self-dual curvature, respectively. The index is kernel dimension minus cokernel dimension.
+**Definition.** At an anti-self-dual connection A, the virtual dimension is the real Fredholm index, kernel dimension minus cokernel dimension, of dₐ\* ⊕ dₐ⁺ on adjoint-valued one-forms. This operator combines the gauge condition with the linearized self-duality equation.
 
 **Problem.** For SU(2) bundles over a fixed connected closed oriented four-manifold, increasing the second Chern number k by one increases the virtual dimension by eight.
 
@@ -2879,11 +2879,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A compactly supported degree-n differential character is a class in the direct limit of relative differential character groups for (X,X∖K) over compact K. In the relative cocycle model, its cochains and curvature vanish on X∖K.
+**Definition.** A compactly supported differential character of degree n is a relative character for (X, X∖K) for some compact K, with classes identified as K grows. In the relative cocycle model, its cochains and curvature vanish on X∖K.
 
 **Problem.** Compactly supported characters form a graded module over ordinary differential characters. Forgetting support commutes with this action.
 
-**How the definition helps.** Each term of the product restricts to zero outside K because it contains a relative factor. Our own comparison with characters defined on cycles uses the relative product theorem, including naturality of the correction comparing wedge and cup products. It gives a product on classes compatible with enlarging K and with forgetting K.
+**How the definition helps.** A product with one relative factor is again relative, so it vanishes outside K (our own). The relative product theorem, with its natural correction between wedge and cup products, makes the product well defined on classes. It is compatible with enlarging K and with forgetting K.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
 
@@ -2893,15 +2893,15 @@
 
 ### Bott connections give secondary Pontryagin classes
 
-**Remember:** Differentiate a normal field along a leaf by taking a bracket modulo leaf directions.
+**Remember:** Leafwise brackets kill high curvature, leaving a flat secondary class.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R30. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** For a foliation with tangent bundle L, a Bott connection ∇ on the normal bundle satisfies ∇ₓȲ = \[X,Y\] modulo L for every leafwise X. Here Ȳ denotes the image of any vector field Y in the normal bundle.
+**Definition.** A Bott connection on the normal bundle of a foliation with tangent bundle L differentiates normal fields along leaves by brackets: ∇ₓȲ = \[X,Y\] modulo L for every leafwise X. Its curvature then lies in the ideal of forms vanishing on L, so Bott’s vanishing theorem kills its characteristic forms above degree 2q.
 
-**Problem.** If 2i exceeds q, the i-th differential Pontryagin character gives an ℝ/ℤ cohomology class of degree 4i−1 independent of the Bott connection.
+**Problem.** For a foliation of codimension q with 2i &gt; q, the i-th differential Pontryagin character of a Bott connection gives an ℝ/ℤ cohomology class of degree 4i−1. This class does not depend on the Bott connection.
 
-**How the definition helps.** The character retains a cohomology class one degree lower when its curvature vanishes. Bott’s vanishing theorem kills the degree-4i curvature form because 4i exceeds 2q. Our own independence argument joins two Bott connections on the cylinder with leaves extended along the interval. The same vanishing theorem there gives equal endpoint classes.
+**How the definition helps.** A differential character keeps a class one degree lower when its curvature form vanishes, and Bott’s theorem kills the degree-4i form since 4i &gt; 2q. To compare two Bott connections, join them on the cylinder with leaves extended along the interval, where the same vanishing gives equal end classes (our own argument).
 
 **nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed”
 
@@ -2918,11 +2918,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** For a compact Lie group, pair a conjugation-invariant polynomial P with an integral characteristic class u represented over ℝ by its curvature form. The Cheeger–Simons refinement is the unique natural character assignment with that curvature and integral class. Natural means that pulling back a connection pulls back its character.
+**Definition.** For a compact Lie group, take a conjugation-invariant polynomial P and an integral characteristic class u that P represents over ℝ. The Cheeger–Simons refinement is the unique natural assignment of a differential character to each connection with curvature P(Ω) and integral class u, where natural means it commutes with pullback of connections.
 
 **Problem.** The refinement of the product pair (PQ, u ∪ v) equals the product of the refinements of (P,u) and (Q,v).
 
-**How the definition helps.** The product already has the curvature and integral class that specify the natural assignment. Our own argument uses the multiplicativity of both projections. Passing from the construction on cycles to this characterization requires the uniqueness theorem for assignments on all bundles with connection.
+**How the definition helps.** The product of the two refinements is natural and has curvature PQ and integral class u ∪ v, because both projections are multiplicative (our own argument). Uniqueness of the natural assignment with given curvature and class then forces equality.
 
 **nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
 
@@ -2936,11 +2936,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A differential cohomology class records an integral class together with curvature and holonomy. To transgress a gerbe class, pull it back along evaluation, which sends a loop and a circle point to the corresponding manifold point. Integrating along the oriented circle gives a degree-two class representing a line bundle with connection.
+**Definition.** Transgression pulls a gerbe’s differential cohomology class back along evaluation, which sends a loop and a point of the circle to the point on the loop, and then integrates over the oriented circle. The result is a degree-two class, a line bundle with connection, and this integration commutes with taking curvature.
 
 **Problem.** The normalized curvature of this line bundle is the integral along the same oriented circle of the pulled-back gerbe curvature.
 
-**How the definition helps.** Integration of differential cohomology classes commutes with taking curvature, giving the formula in one step. Our own comparison uses this rule in place of computing parallel transport in the geometric line of trivializations along each loop. Identifying the two line bundles with connection requires a comparison theorem.
+**How the definition helps.** Because integration commutes with curvature, the line bundle’s curvature is the circle integral of the pulled-back gerbe curvature in one step. This replaces computing parallel transport in the line of trivializations along each loop (our own comparison). Identifying this line bundle with the geometric one needs a comparison theorem.
 
 **nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “is a differential cohomology class on X of degree k less.”
 
@@ -2955,11 +2955,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** Circle integration takes a differential cohomology class on X × S¹ to a class on X one degree lower. A smooth family of loops in M gives an evaluation map X × S¹ → M. Transgression means pulling a class back along this map and integrating over the oriented circle.
+**Definition.** Transgression pulls a differential cohomology class on M back along the evaluation map X × S¹ → M of a smooth family of loops and integrates it over the oriented circle. Integration lowers degree by one, so a degree-three class, a gerbe with connection, becomes a degree-two class, a line bundle with connection.
 
 **Problem.** Transgression of a circle gerbe with connection and curving gives each smooth family of loops a line bundle with unitary connection up to isomorphism.
 
-**How the definition helps.** Circle integration takes the degree-three class describing the gerbe to degree two, where classes describe lines with connection (our own). The work lies in constructing integration and proving the geometric classifications in both degrees (our own).
+**How the definition helps.** Degree-two differential classes are exactly line bundles with unitary connection up to isomorphism, so the degree drop gives the result (our own). It uses fiber integration in differential cohomology and the geometric classifications in degrees two and three (our own).
 
 **nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “sends n-connections on Σₖ on U × Σₖ to the (n−k)-connection on U which is their fiber integration over Σₖ.”
 
@@ -2974,11 +2974,11 @@
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A degree-n differential character is a homomorphism from smooth (n−1)-cycles to ℝ/ℤ satisfying h(∂c) = ∫꜀ω modulo integers for every smooth n-chain c. Here ω is its curvature form. For a closed oriented k-manifold F, fiber integration sends h on X × F to z ↦ h(z × u) for any fundamental cycle u.
+**Definition.** A degree-n differential character h is a homomorphism from smooth (n−1)-cycles to ℝ/ℤ whose value on each boundary ∂c is the integral of its curvature form ω over c, modulo integers. Integration over a closed oriented k-manifold F sends h on X × F to z ↦ h(z × u) with u a fundamental cycle, and z × u is a cycle because ∂u = 0.
 
 **Problem.** For n &gt; k, integration over F gives a degree-(n−k) character on X whose curvature is the integral of the original curvature over F.
 
-**How the definition helps.** A closed fiber contributes no boundary term, so the original character gives the required boundary rule on product chains (our own). Changing the fundamental cycle contributes a curvature integral with too many fiber directions, which vanishes (our own). An interval instead contributes its two endpoints by Stokes’ theorem (our own).
+**How the definition helps.** Since ∂(c × u) = ∂c × u, the boundary rule for h gives the boundary rule for the new character, with curvature the fiber integral of ω (our own). Changing u by a boundary changes the value by a curvature integral with too many fiber directions, which vanishes (our own). Over an interval, the endpoints add a boundary term by Stokes’ theorem instead (our own).
 
 **nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “with compact fibers in terms of Deligne complex”
 
@@ -2992,15 +2992,15 @@
 
 ### Cochains give differential characters
 
-**Remember:** The real comparison cochain becomes holonomy modulo integers.
+**Remember:** Reduce the real cochain modulo integers, and the integral part vanishes.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A differential cocycle records an integral cocycle c, a closed n-form ω, and a real cochain h of degree n−1. On each smooth n-chain, h evaluates its boundary as the integral of ω minus the value of c.
+**Definition.** A degree-n differential cocycle is a triple: an integral n-cocycle c, a closed n-form ω, and a real (n−1)-cochain h with h(∂σ) = ∫\_σ ω − c(σ) for every smooth n-chain σ. Modulo integers the term c disappears, so h on cycles becomes a circle-valued function whose value on each boundary is the integral of ω.
 
-**Problem.** Evaluating h modulo integers identifies degree-n smooth Deligne classes with differential characters. These characters add on cycles and evaluate boundaries by integrating their curvature modulo integers.
+**Problem.** Evaluating h modulo integers identifies degree-n smooth Deligne classes with differential characters. These are additive ℝ/ℤ-valued functions on (n−1)-cycles whose value on a boundary is the integral of their curvature modulo integers.
 
-**How the definition helps.** Reducing the cochain equation modulo integers gives the rule for boundaries (our own). Conversely, lifting the character to a real cochain recovers an integral discrepancy c, and different lifts give equivalent cocycles (our own). Identifying these cochain classes with Deligne classes requires the comparison theorem (our own).
+**How the definition helps.** The cochain equation, read modulo integers, is exactly the boundary rule of a character (our own). Conversely, a real lift h of a character makes ∫ω − δh an integral cocycle c, and different lifts give equivalent cocycles (our own). Matching these cochain classes with Deligne classes uses the comparison theorem (our own).
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “are equivalent to other models for these structures, notably to Deligne cohomology”
 
@@ -3012,15 +3012,15 @@
 
 ### Cocycle pairing gives surface holonomy
 
-**Remember:** Every oriented triangulation represents the same surface class.
+**Remember:** Holonomy is the character read on the surface's fundamental cycle.
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A gerbe with connection defines a homomorphism h from smooth two-cycles to ℝ/ℤ satisfying h(∂c) = ∫꜀H modulo integers for every smooth three-chain c. Here H is its normalized curvature. For a surface map f, its holonomy is the value of f\*h on any fundamental cycle of the closed oriented surface.
+**Definition.** A gerbe with connection defines a differential character h, a homomorphism from smooth 2-cycles to ℝ/ℤ with h(∂c) = ∫<sub>c</sub> H modulo integers for every smooth 3-chain c, where H is its normalized curvature. The holonomy of a map f from a closed oriented surface is the value of f\*h on any fundamental cycle of the surface.
 
 **Problem.** For a smooth map from a closed oriented surface, gerbe holonomy is independent of the triangulation and patch labels used in the local formula.
 
-**How the definition helps.** The pulled-back curvature is a three-form on a surface, so the character vanishes on boundaries there (our own). All oriented triangulations represent the same homology class, and character evaluation uses no patch labels (our own). The comparison theorem identifies this evaluation with the local face, edge, and vertex formula (our own).
+**How the definition helps.** On a surface the pulled-back curvature is a 3-form, hence zero, so f\*h vanishes on boundaries and sees only the homology class (our own). All oriented triangulations give the same fundamental class, and the character uses no patch labels (our own). The comparison theorem identifies this value with the local face, edge and vertex formula (our own).
 
 **nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe), [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “assigns the exponentiated integrals of the 2-form over faces, of the connection 1-form over edges, and assigns the isomorphism μᵢⱼₖ to vertices.”
 
@@ -3031,15 +3031,15 @@
 
 ### Compact support requires relative periods
 
-**Remember:** An interval with both ends outside the support can detect a missing period.
+**Remember:** Chains ending outside K are cycles, so their periods are integers.
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A compactly supported degree-n character has a representative homomorphism h from relative (n−1)-cycles for (X,X∖K) to ℝ/ℤ for some compact K. Its curvature ω vanishes off K and satisfies h(∂c) = ∫꜀ω modulo integers for every relative n-chain c. Representatives agree if they agree after enlarging K.
+**Definition.** A compactly supported degree-n character is, for some compact K, a homomorphism h from relative (n−1)-cycles of (X, X∖K) to ℝ/ℤ whose curvature ω vanishes off K and satisfies h(∂c) = ∫<sub>c</sub> ω modulo integers for every relative n-chain c. Two representatives are equal if they agree after enlarging K.
 
 **Problem.** The curvature integrates to an integer on every relative cycle of its degree. A compactly supported 1-form on ℝ with integral one half cannot occur.
 
-**How the definition helps.** Every relative cycle has zero relative boundary, so its curvature integral must vanish modulo integers. In our own example an interval containing K in its interior detects the half-integer. Absolute cycles miss it because every 1-form on the line has a primitive.
+**How the definition helps.** A relative cycle c has zero relative boundary, so ∫<sub>c</sub> ω is zero modulo integers. In our own example, an interval with K in its interior is a relative cycle and detects the half-integer. Absolute cycles miss it, because every 1-form on the line has a primitive.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
 
@@ -3049,15 +3049,15 @@
 
 ### Compact support retains data at infinity
 
-**Remember:** Trivializations at infinity can differ even when the absolute character vanishes.
+**Remember:** A path from end to end counts only relative to infinity.
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** Compactly supported degree-two characters are the direct limit over compact K of degree-two differential characters relative to X∖K. Each relative character maps relative one-cycles additively to ℝ/ℤ and evaluates boundaries by integrating its curvature modulo integers.
+**Definition.** A compactly supported degree-two character is a degree-two differential character relative to X∖K for some compact K, with two such identified when they agree after enlarging K. A relative character maps relative one-cycles, including paths with both ends outside K, additively to ℝ/ℤ and evaluates boundaries by integrating its curvature modulo integers.
 
 **Problem.** On the real line, compactly supported degree-two characters form the group ℝ/ℤ. Every such character becomes zero on forgetting compact support.
 
-**How the definition helps.** Relative cycles include paths joining the two ends of the line, which absolute cycles miss. In our own calculation we take K to be a closed interval. There are no curvature 2-forms, so characters are homomorphisms on relative first homology, generated by a crossing path. Enlarging the interval preserves this generator, whereas absolute first homology vanishes.
+**How the definition helps.** Relative cycles include a path crossing K from one end of the line to the other, which absolute cycles miss. In our own calculation, with K a closed interval, ℝ has no nonzero 2-forms, so characters are homomorphisms to ℝ/ℤ from relative first homology, generated by the crossing path. Enlarging the interval keeps this generator, while absolute first homology vanishes.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
 
@@ -3067,15 +3067,15 @@
 
 ### Curving adjusts the Chern character
 
-**Remember:** The exponential of the curving cancels the extra line curvature.
+**Remember:** exp(−B) cancels what each line adds to the Chern character.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A finite-rank gerbe module has local vector bundles that differ on overlaps by tensoring with lines, with connections respecting these identifications. Choose local 2-forms B whose differences equal the intervening line curvatures divided by 2πi. The adjusted Chern character multiplies the usual curvature form ch(E) = tr exp(F∕2πi) by exp(−B), where F is the module curvature.
+**Definition.** A finite-rank gerbe module has local vector bundles with connection that differ on overlaps by tensoring with the gerbe's lines, compatibly with the connections. Choose local 2-forms B whose differences equal the intervening line curvatures divided by 2πi. The adjusted Chern character is exp(−B) ∧ tr exp(F∕2πi), where F is the local module curvature, so the jump in exp(−B) cancels the factor each line contributes.
 
 **Problem.** The adjusted forms agree on overlaps and give a global even form α satisfying dα + H ∧ α = 0, where H = dB.
 
-**How the definition helps.** The exponential correction cancels the factor that tensoring with a line contributes to the ordinary Chern character. In our own calculation the factors cancel on each overlap, so the local forms glue. Differentiating the correction gives −H, since the ordinary character is closed. Proving independence of the resulting cohomology class from the module connection requires a separate comparison of connections.
+**How the definition helps.** Tensoring with a line multiplies the ordinary Chern character by the exponential of the line's normalized curvature, and the jump in exp(−B) cancels it, so the local forms glue (our own calculation). The ordinary character is closed, so differentiating exp(−B) gives dα = −H ∧ α.
 
 **Wikipedia:** [Bundle gerbe](https://en.wikipedia.org/wiki/Bundle_gerbe). It says: “The twisted Chern character is a differential form that represents a class in the twisted cohomology”
 
@@ -3090,11 +3090,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A line bundle with unitary connection defines a degree-two differential class. Its Deligne square multiplies this class by itself and gives a degree-four character, an additive circle-valued function on three-cycles.
+**Definition.** A line bundle with unitary connection defines a degree-two differential class. Its Deligne square, the product of this class with itself, is a degree-four character: an additive ℝ/ℤ-valued function on three-cycles whose value on a boundary is the integral of the squared curvature form modulo integers.
 
 **Problem.** On a closed oriented three-manifold, evaluating the Deligne square on the orientation class gives the abelian Chern–Simons action in ℝ/ℤ with this normalization. For a trivial bundle with real normalized connection form A, the action is ∫ A∧dA modulo integers.
 
-**How the definition helps.** The square gives a global character even when the local connection forms do not glue to one form (our own). Its curvature vanishes in dimension three, so evaluation depends only on the homology class (our own). On a trivial bundle the Deligne product reduces to A∧dA (our own).
+**How the definition helps.** The square is a global character even when the local connection forms do not glue to one form (our own). On a three-manifold its 4-form curvature vanishes, so its value depends only on the homology class, and the orientation class gives a number (our own). On a trivial bundle the Deligne product reduces to A∧dA (our own).
 
 **nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “The action functional of abelian higher dimensional Chern-Simons theory is given by the fiber integration in ordinary differential cohomology over the BD cup product of differential cocycles”
 
@@ -3106,15 +3106,15 @@
 
 ### Fake flatness permits surface transport
 
-**Remember:** A surface label must account for the change along its edges.
+**Remember:** The surface label must equal the curvature around its edges.
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** Present the strict Lie 2-group by a crossed module H → G. The local one-form A and two-form B take values in the Lie algebras of G and H respectively. The pair is fake flat when the differential of H → G sends B to dA + ½\[A,A\].
+**Definition.** Present the strict Lie 2-group by a crossed module t: H → G, and take a local 1-form A valued in the Lie algebra of G and a 2-form B valued in that of H. The pair is fake flat when t sends B to the curvature dA + ½\[A,A\], so the surface label matches transport around its boundary.
 
 **Problem.** On a trivialized patch, the pair defines smooth strict transport along paths and bigons precisely when it is fake flat. Transport factors through the thin path 2-groupoid.
 
-**How the definition helps.** Fake flatness makes the boundary of each surface label agree with transport along its two edges. The integration theorem constructs transport from the forms and recovers the forms by differentiation. In our own counterexample, take the identity boundary map for the circle, zero A and a nonzero B on the plane.
+**How the definition helps.** Fake flatness makes the boundary of each surface label agree with transport along its two edges, as strict transport along bigons requires. The integration theorem builds transport from the forms and recovers the forms by differentiation. In our own counterexample, take the identity crossed module of the circle, A = 0 and a nonzero B on the plane.
 
 **nLab:** [higher parallel transport](https://ncatlab.org/nlab/show/higher+parallel+transport). It says: “A 2-connection therefore admits parallel transport only if its 2-form curvature is constrained to vanish.”
 
@@ -3124,15 +3124,15 @@
 
 ### Finite holonomy determines the secondary class
 
-**Remember:** On a finite holonomy group, the Bockstein has an inverse.
+**Remember:** The secondary class is a Bockstein lift of minus u.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** Parallel transport in a flat bundle gives a group H of transformations around loops, called its holonomy group. A positive-degree integral characteristic class u compatible with an invariant polynomial has a flat differential refinement. Its secondary class is the corresponding cohomology class with ℝ/ℤ coefficients, one degree lower.
+**Definition.** A flat bundle's holonomy group H is its group of parallel transports around loops. For a positive-degree integral characteristic class u compatible with an invariant polynomial, the secondary class of the flat bundle is the ℝ/ℤ-cohomology class one degree lower given by the flat differential refinement, and its Bockstein is −u.
 
 **Problem.** For finite H and u of degree at least two, the secondary class pulls back from the unique class on BH with Bockstein −u\|BH. Here BH classifies principal H-bundles, and the Bockstein connects ℝ/ℤ cohomology to integral cohomology.
 
-**How the definition helps.** The secondary class records exactly a lift of the negative integral class through the Bockstein. Our own explanation uses naturality of the universal flat class and vanishing of positive-degree real cohomology of a finite group. The coefficient exact sequence then makes that lift unique on BH.
+**How the definition helps.** A flat bundle with holonomy H pulls back from BH, so by naturality its secondary class pulls back from the universal flat class there (our own explanation). For finite H, real cohomology of BH vanishes in positive degrees, so the Bockstein is an isomorphism in degrees at least one. The coefficient exact sequence then makes the lift of −u\|BH unique.
 
 **nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
 
@@ -3146,11 +3146,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.CT, math.DG. Level 4: research.
 
-**Definition.** Fix a spin bundle with connection. An untwisted differential string structure is a trivialization of its differential half-Pontryagin class to the zero cocycle, including the connection data. Equivalently, it is a path from the cocycle to zero in the space classifying circle 2-gerbes with connection.
+**Definition.** Fix a spin bundle with connection. An untwisted differential string structure is a path, in the space classifying circle 2-gerbes with connection, from its differential half-Pontryagin cocycle to the zero cocycle, that is, a trivialization including connection data.
 
 **Problem.** Choosing one such trivialization identifies the space of all such choices with the space of flat circle gerbes, including their isomorphisms and higher symmetries.
 
-**How the definition helps.** Paths with common endpoints can be compared by reversing the chosen path and composing. Our own argument thereby identifies the choices with loops at zero. In the complex of local connection forms, these loops are circle gerbes with closed local 2-forms, precisely the flat gerbes. The path description replaces a direct comparison of local trivializations.
+**How the definition helps.** Two paths from the cocycle to zero differ by a loop at zero, found by reversing one and composing with the other (our own argument). Loops at zero in this space are circle gerbes with closed local 2-forms, which are exactly the flat gerbes (our own).
 
 **nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure), [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “is the homotopy fiber of ½ p̂₁(X) over the trivial differential cocycle.”
 
@@ -3160,15 +3160,15 @@
 
 ### Form multiplication forces cup products
 
-**Remember:** Two products could differ only by a flat operation on integral classes.
+**Remember:** Wedge the curvatures, and let forms act through curvature.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** In ordinary differential cohomology, a form α determines a class a(α) one degree higher, and each class x has a closed curvature form R(x). A compatible product multiplies curvatures by wedge product and satisfies a(α)x = a(α ∧ R(x)).
+**Definition.** In ordinary differential cohomology, each form α gives a class a(α) one degree higher, and each class x has a closed curvature form R(x). A compatible product satisfies R(xy) = R(x) ∧ R(y) and a(α)x = a(α ∧ R(x)).
 
 **Problem.** On an ordinary character functor, the diagram model of ordinary differential cohomology, at most one natural graded-commutative ring product satisfies these rules.
 
-**How the definition helps.** The form rule makes the difference of two products depend only on the underlying integral classes (our own). The curvature rule makes that difference flat, so it takes values in circle-valued cohomology one degree lower (our own). Simons and Sullivan prove that no such natural bilinear cohomology operation exists (our own).
+**How the definition helps.** The form rule makes the difference of two products depend only on the underlying integral classes (our own). The curvature rule makes that difference flat, so it is a natural bilinear operation into circle-valued cohomology one degree lower (our own). Simons and Sullivan show that no nonzero such operation exists (our own).
 
 **nLab:** [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “both these sequences interlock to form the hexagonal differential cohomology diagram of ordinary differential cohomology.”
 
@@ -3182,11 +3182,11 @@
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A fusion circle bundle on loop space has smooth circle-equivariant tensor isomorphisms L(a,b) ⊗ L(b,c) → L(a,c) for every triple of paths sharing endpoints. Here L(a,b) is the fiber over a followed by reversed b, and the isomorphisms associate for every quadruple. A compatible connection preserves these products and interchanges the factors under half-rotation transport.
+**Definition.** A fusion circle bundle on loop space has smooth associative isomorphisms L(a,b) ⊗ L(b,c) → L(a,c) for every three paths a, b, c with common endpoints, where L(a,b) is the fiber over the loop a followed by reversed b. A compatible connection preserves these products and swaps the factors under transport along half-rotation.
 
 **Problem.** On a connected smooth manifold, transgression identifies circle gerbes with connection, up to isomorphism, with fusion circle bundles having superficial connections, up to isomorphism. Superficial connections give phase one on tori of rank at most one and preserve phases during homotopies of rank at most two.
 
-**How the definition helps.** Fusion retains the multiplication needed to reconstruct a gerbe from its loop bundle. Waldorf proves the reconstruction theorem. In our own example, a closed oriented surface of genus two carries a flat gerbe whose phase on the surface differs from one. Every torus map to this surface has degree zero, so the loop connection alone has trivial holonomy.
+**How the definition helps.** Fusion keeps the product of loops along shared paths, which is the data needed to rebuild a gerbe from its loop bundle, and Waldorf proves this reconstruction. In our own example, a flat gerbe on a closed oriented genus-two surface has nontrivial phase on the surface. Every torus map to this surface has degree zero, so the loop connection alone has trivial holonomy.
 
 **nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “Lifted transgression L̃ is an equivalence of categories”
 
@@ -3200,11 +3200,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 57R15. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A geometric string structure for a spin connection is a connection-preserving trivialization of its Chern–Simons 2-gerbe to a trivial 2-gerbe with global 3-curving C.
+**Definition.** A geometric string structure for a spin connection is a connection-preserving trivialization of its Chern–Simons 2-gerbe to a trivial 2-gerbe with a global 3-curving C, whose curvature is dC.
 
 **Problem.** The derivative of C equals the half-Pontryagin form of the spin connection, with the normalization used for the Chern–Simons 2-gerbe.
 
-**How the definition helps.** The trivial 2-gerbe with curving C has curvature dC. A connection-preserving trivialization identifies this with the Chern–Simons 2-gerbe’s normalized half-Pontryagin form (our own explanation).
+**How the definition helps.** A connection-preserving trivialization identifies the curvature dC of the trivial 2-gerbe with the curvature of the Chern–Simons 2-gerbe, its normalized half-Pontryagin form (our own explanation).
 
 **nLab:** [differential string structure](https://ncatlab.org/nlab/show/differential+string+structure). It says: “on a trivial circle n-bundle every connection may be represented by a globally defined n-form.”
 
@@ -3214,15 +3214,15 @@
 
 ### Gerbe automorphisms are flat line bundles
 
-**Remember:** A change that fixes the curving has flat line data.
+**Remember:** A symmetry fixing the curving is a flat line bundle.
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** In a local Deligne description, a connection-preserving gerbe automorphism consists of closed real one-forms aᵢ and circle-valued functions gᵢⱼ on overlaps. In normalized units they satisfy aⱼ − aᵢ = gᵢⱼ⁻¹dgᵢⱼ/(2πi) and gᵢⱼgⱼₖ = gᵢₖ. Isomorphisms are changes of local unitary frames.
+**Definition.** In local Deligne data, a symmetry of a gerbe that preserves its connection and local 2-forms is a family of closed real 1-forms aᵢ and circle-valued functions gᵢⱼ with gᵢⱼgⱼₖ = gᵢₖ and aⱼ − aᵢ = gᵢⱼ⁻¹dgᵢⱼ/(2πi). These are the gluing equations of a flat unitary line bundle, and two symmetries are isomorphic when they differ by a change of local unitary frames.
 
 **Problem.** Up to isomorphism, symmetries preserving a gerbe’s connection and local two-forms form the group of flat unitary line bundles under tensor product.
 
-**How the definition helps.** Fixing the patch two-forms forces the change one-forms to be closed, so they define flat local connections (our own). The remaining equations glue them into a line bundle, and equivalent changes give isomorphic bundles (our own). The geometric interpretation requires the comparison between gerbe symmetries and cocycle changes (our own).
+**How the definition helps.** Fixing the local 2-forms forces daᵢ = 0, so the aᵢ are flat local connection forms (our own). The equations glue them into a line bundle, and frame changes give isomorphic bundles (our own). Matching gerbe symmetries with these cocycle changes uses the comparison between gerbes and Deligne cocycles (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “the collection of Deligne cocycles with coefficients in the Deligne complex that defines it, is considerably richer than other models”
 
@@ -3233,15 +3233,15 @@
 
 ### Gerbe multiplication builds a bundle 2-gerbe
 
-**Remember:** The group difference on triples turns multiplication into gluing.
+**Remember:** The fiber difference map turns gerbe multiplication into gluing.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A circle gerbe is a higher circle bundle. A multiplicative gerbe on a group identifies the tensor product of its values at g and h with its value at gh. A chosen isomorphism compares the two triple products, and the pentagon identity makes these comparisons agree for four factors.
+**Definition.** A multiplicative gerbe on a group G is a circle gerbe 𝒢, a higher circle bundle, with isomorphisms 𝒢<sub>g</sub> ⊗ 𝒢<sub>h</sub> ≅ 𝒢<sub>gh</sub>. A chosen isomorphism compares the two products of three factors, and these comparisons satisfy the pentagon identity for four.
 
 **Problem.** Every principal G-bundle and multiplicative gerbe on G determine a bundle 2-gerbe on the base, with gerbes as its transition data.
 
-**How the definition helps.** Two points in one bundle fiber determine the unique group element carrying the first to the second. On triples these elements multiply, so gerbe multiplication gives the required transition isomorphism. On quadruples the comparison of triple products gives its associator, and the pentagon supplies the last gluing law. This replaces a separate construction of coherence maps on the overlaps.
+**How the definition helps.** Two points in one fiber of the G-bundle determine the unique group element carrying one to the other, and pulling back 𝒢 along it gives a gerbe on pairs. On triples these elements multiply, so gerbe multiplication gives the transition isomorphism. On quadruples the comparison of triple products gives the associator, and the pentagon gives the last gluing law.
 
 **nLab:** [universal Chern-Simons line 3-bundle](https://ncatlab.org/nlab/show/universal+Chern-Simons+line+3-bundle). It says: “the pullback of the multiplicative structure on 𝒢 induces the structure of a bundle 2-gerbe”
 
@@ -3251,15 +3251,15 @@
 
 ### Higher refined classes stay constant along flat paths
 
-**Remember:** Two time differentials wedge to zero.
+**Remember:** Boundaries are priced by P(F), and dt squared is zero.
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A Cheeger–Simons character refines an integral characteristic class whose real image comes from a conjugation-invariant polynomial P. It evaluates cycles modulo integers and integrates P of the connection curvature on boundaries. A flat connection has zero curvature.
+**Definition.** A Cheeger–Simons character refines an integral characteristic class whose real image comes from an invariant polynomial P. It assigns to each cycle a value in ℝ/ℤ, and to the boundary of a chain c it assigns ∫<sub>c</sub> P(F) modulo integers, where F is the connection curvature.
 
 **Problem.** Along a smooth path of flat connections on a fixed principal bundle, the refined class stays constant if P has degree at least two. The differential first Chern class can vary.
 
-**How the definition helps.** On the cylinder, every curvature term contains the time differential because each time slice is flat. Two such terms wedge to zero, so the boundary rule gives equal values on the two ends of every swept cycle. In our own example, the connections d + 2πit dx on the trivial line over ℝ/ℤ give different parallel transports around the circle.
+**How the definition helps.** A path of flat connections is one connection on the cylinder, and its curvature contains dt in every term, since each time slice is flat. If P has degree at least two, every term of P(F) has two factors dt, so it vanishes, and the two ends of every swept cycle get equal values. In our own example, the flat connections d + 2πit dx on the trivial line over ℝ/ℤ have different transports around the circle.
 
 **nLab:** [Chern-Simons form](https://ncatlab.org/nlab/show/Chern-Simons+form). It says: “is a form that trivializes the difference between the two curvature characteristic forms”
 
@@ -3273,11 +3273,11 @@
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** For an involution k, a Jandl structure equips a gerbe 𝒢 with a connection-preserving isomorphism A from k\*𝒢 to its dual. It includes a 2-isomorphism identifying the twice-applied duality with the identity, coherently under a third application.
+**Definition.** For an involution k of the base, a Jandl structure on a gerbe 𝒢 with connection is a connection-preserving isomorphism A from k\*𝒢 to the dual gerbe, with a 2-isomorphism identifying A applied twice with the identity, coherent under a third application. The dual gerbe inverts surface phases, just as reversing orientation does.
 
 **Problem.** A Jandl gerbe assigns a phase to a closed unoriented surface mapped from its orientation double cover into the base. The map must intertwine the exchange of sheets with the involution on the base.
 
-**How the definition helps.** In our own explanation, duality compensates for the inversion of the phase when a local orientation changes. The holonomy theorem proves independence from all choices of local orientations. In our own example, use the identity involution on the sphere and a trivial gerbe whose 2-form integrates to one-third. Its phase exp(2πi/3) differs from its inverse, so this gerbe admits no Jandl structure.
+**How the definition helps.** Reversing a local orientation inverts a phase, and the duality A inverts it back, so local phases glue (our own explanation). The holonomy theorem proves independence from the chosen local orientations. In our own counterexample, a trivial gerbe on the sphere with 2-form integral one-third has phase exp(2πi/3), not its own inverse, so it has no Jandl structure for the identity involution.
 
 **nLab:** [connection on a bundle gerbe](https://ncatlab.org/nlab/show/connection+on+a+bundle+gerbe). It says: “The generalization ("Jandl gerbes") to unoriented surfaces”
 
@@ -3291,11 +3291,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18F20. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A flat circle gerbe is a higher circle bundle with connection and zero 3-curvature. Its local description uses circle functions, 1-forms and 2-forms on overlapping patches. Flatness requires the 2-forms to be closed.
+**Definition.** A flat circle gerbe is a circle gerbe with connection, given locally by circle functions, 1-forms and 2-forms on overlapping patches, whose 3-curvature vanishes, so its local 2-forms are closed. Closed forms are locally exact, so locally the form data can be gauged away, leaving locally constant circle functions.
 
 **Problem.** On a smooth manifold X, flat circle gerbes, their isomorphisms and the maps between isomorphisms form the mapping space from X to K(ℝ/ℤ, 2). This target has just one nonzero homotopy group, the discrete circle group in degree two.
 
-**How the definition helps.** Closed 2-forms have local primitives, so the Poincaré lemma removes the form data locally and leaves locally constant circle coefficients. The comparison with geometric gerbes identifies the resulting cocycles and all their symmetries.
+**How the definition helps.** Gauging away the forms turns flat gerbe data into Čech data with coefficients in the locally constant circle-valued functions, which is cohomology with coefficients in the discrete circle. The comparison with geometric gerbes extends this to isomorphisms and the maps between them.
 
 **nLab:** [circle n-bundle with connection](https://ncatlab.org/nlab/show/circle+n-bundle+with+connection). It says: “by the Poincare lemma applied to each Cartesian space”
 
@@ -3309,11 +3309,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A circle gerbe with connection assigns a circle value, its holonomy, to each closed oriented surface mapped into the base. Transgression gives a circle bundle with connection on the free loop space. It pulls the gerbe’s differential class back by evaluation and integrates over the loop parameter.
+**Definition.** Transgression gives a circle bundle with connection on free loop space: pull the gerbe's differential class back along the evaluation map from loops times the circle to the base, then integrate over the loop parameter. Integrating over the circle evaluates the pulled-back class on a cycle times the loop circle.
 
 **Problem.** Transport around a closed curve in free loop space has the same holonomy as the gerbe on the torus it traces. Orient the torus in the order used for integration.
 
-**How the definition helps.** Integration over the loop parameter turns evaluation on a curve of loops into evaluation on the swept torus. In our own derivation, this is the evaluation rule for integration of differential characters, which assign circle values to cycles. The comparison theorem identifies the integrated class with the bundle built from gerbe trivializations.
+**How the definition helps.** A closed curve of loops times the loop circle is the torus it sweeps, so evaluating the integrated class on the curve evaluates the gerbe on that torus (our own derivation). This is the evaluation rule for integrating differential characters, which assign circle values to cycles. The comparison theorem identifies the integrated class with the bundle built from gerbe trivializations.
 
 **nLab:** [fiber integration in ordinary differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+ordinary+differential+cohomology). It says: “the partial higher holonomy operation for circle n-bundles with connection”
 
@@ -3323,15 +3323,15 @@
 
 ### Multiplicative gerbes give product holonomy
 
-**Remember:** The correction gerbe contributes the exponential of its curving integral.
+**Remember:** The product gerbe splits into two factors plus a 2-form correction.
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A multiplicative circle gerbe with connection on a Lie group compares its pullback by multiplication with the tensor product of its two pullbacks by projection. The tensor product includes a trivial gerbe with a real 2-form ρ on the group square. The comparison preserves connections and satisfies associativity up to compatible isomorphism.
+**Definition.** A multiplicative circle gerbe with connection on a Lie group is a connection-preserving isomorphism from its pullback by multiplication to the tensor product of its two pullbacks by projection and a trivial gerbe with real 2-form ρ on the group square, associative up to compatible isomorphism. Surface phases multiply under tensor product, and the trivial gerbe with 2-form ρ has phase exp(2πi ∫ρ).
 
 **Problem.** For smooth maps f and g from a closed oriented surface into the group, their surface phases satisfy h(fg) = h(f)h(g) exp(2πi ∫ (f,g)⁎ρ).
 
-**How the definition helps.** The multiplicative comparison expresses the product phase as three phases, one for each tensor factor. The trivial factor contributes the exponential of its 2-form integral. Our own derivation replaces a local calculation of the product phase with this comparison. Constructing a multiplicative structure with connection is the separate geometric step.
+**How the definition helps.** Pulling the comparison back along (f,g) writes the phase of fg as the product of the phases of the three tensor factors (our own derivation). The trivial factor contributes exp(2πi ∫ (f,g)⁎ρ).
 
 **nLab:** [basic gerbe](https://ncatlab.org/nlab/show/basic+gerbe). It says: “the basic bundle gerbe itself has a multiplicative structure covering that on G”
 
@@ -3342,15 +3342,15 @@
 
 ### Rational coefficients kill flat cross terms
 
-**Remember:** The rational refinement discards torsion cross terms.
+**Remember:** Rationally, flat classes multiply to zero, leaving only the linear term.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** The degree-2r differential Chern character is the r-th Newton polynomial in rationalized differential Chern classes divided by r!. For a flat unitary connection and r ≥ 1, its curvature vanishes, defining its secondary character in degree 2r−1 with coefficients ℝ/ℚ.
+**Definition.** The degree-2r differential Chern character is the r-th Newton polynomial in the rationalized differential Chern classes, divided by r!. For a flat unitary connection and r ≥ 1 its curvature vanishes, so it defines a secondary character in degree 2r−1 with ℝ/ℚ coefficients.
 
 **Problem.** In degree 2r−1, the secondary Chern character equals the secondary r-th Chern class multiplied by (−1)ʳ⁻¹/(r−1)!, after passage to ℝ/ℚ coefficients.
 
-**How the definition helps.** The polynomial definition leaves only its linear term because products of two positive-degree flat factors vanish here. Our own explanation uses the flat product formula, which pairs one factor with the rational characteristic class of the other. Flatness kills that rational class by the curvature formula. The Newton identities give the stated coefficient.
+**How the definition helps.** With rational coefficients every product of two positive-degree flat factors vanishes, so only the linear term of the Newton polynomial survives. In our own explanation, the flat product formula pairs one factor with the rational characteristic class of the other, and flatness kills that class. The linear coefficient of the Newton polynomial is (−1)ʳ⁻¹r, and dividing by r! gives (−1)ʳ⁻¹/(r−1)!.
 
 **nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “The refined Chern-Weil homomorphism takes values in such "secondary characteristic classes".”
 
@@ -3360,7 +3360,7 @@
 
 ### Rigid connections give one curvature class
 
-**Remember:** Different 2-curvings change curvature by a derivative.
+**Remember:** The 4-curvature always represents the 2-gerbe's real characteristic class.
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
 
@@ -3368,7 +3368,7 @@
 
 **Problem.** Any two rigid connections on the same rigid bundle 2-gerbe give 4-curvatures that differ by an exact form.
 
-**How the definition helps.** The four-curvature represents the real characteristic class of the underlying 2-gerbe by the curvature comparison theorem (our own explanation). Both connections therefore give the same de Rham class, so their curvature difference is exact.
+**How the definition helps.** The 4-curvature represents the real characteristic class of the underlying 2-gerbe, by the curvature comparison theorem (our own explanation). That class does not involve the connection, so the two 4-curvatures are cohomologous and their difference is exact.
 
 **Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521v4). It says: “Hence the de Rham class associated to a rigid bundle 2-gerbe is independent of the choice of rigid connective structure.”
 
@@ -3382,11 +3382,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** For a flat complex bundle, take the real part of its Cheeger–Chern–Simons class using the coefficient map ℂ/ℚ → ℝ/ℚ. For a finite graded flat bundle, its real secondary character is the sum of these classes with sign (−1)ʲ in degree j.
+**Definition.** For a flat complex bundle, take the real part of its Cheeger–Chern–Simons class, the odd-degree secondary Chern character, using the coefficient map ℂ/ℚ → ℝ/ℚ. For a finite graded flat bundle, the real secondary character is the sum of these classes with sign (−1)ʲ in degree j.
 
-**Problem.** A flat complex bundle on a smooth family of closed oriented manifolds over a compact base gives flat cohomology bundles on the base. Their alternating real secondary character equals the fiber integral of the original real secondary character times the Euler class of the vertical tangent bundle.
+**Problem.** A flat complex bundle on a smooth family of closed oriented manifolds over a compact base gives flat cohomology bundles on the base. Their alternating real secondary character equals the fiber integral of the original real secondary character times the Euler class of the vertical tangent bundle, the tangent spaces along the fibers.
 
-**How the definition helps.** The secondary character puts both sides in the same odd cohomology group, even though ordinary real Chern classes of flat bundles vanish in positive degrees. In our own reading, the alternating sum accounts for the degrees of fiber cohomology. Ho’s local index theorem proves the equality. The vertical tangent bundle consists of the tangent spaces along the fibers.
+**How the definition helps.** The secondary character puts both sides in the same odd cohomology group with ℝ/ℚ coefficients, where ordinary real Chern classes of flat bundles vanish. In our own reading, the alternating sum matches the grading of fiber cohomology. Ho’s local index theorem proves the equality.
 
 **Paper or page:** [Local index theory and the Riemann-Roch-Grothendieck theorem for complex flat vector bundles II](https://arxiv.org/abs/2310.06616). It says: “\\operatorname{Re}(\\operatorname{CCS}(H(Z, F\|<sub>Z</sub>), \\nabla <sup>H(Z, F\|<sub>Z</sub>)</sup>))=\\int <sub>X/B</sub>e(T<sup>VX</sup>)\\cup \\operatorname{Re}(\\operatorname{CCS}(F, \\nabla ^F))”
 
@@ -3400,11 +3400,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** On a closed oriented n-manifold, a degree-k integration character integrates a (k−1)-form over cycles modulo integers. A homomorphism from characters to ℝ/ℤ is smooth if on integration characters it integrates that form wedged with a fixed smooth (n−k+1)-form.
+**Definition.** On a closed oriented n-manifold, each (k−1)-form gives a degree-k integration character, which integrates the form over cycles modulo integers. A homomorphism from degree-k characters to ℝ/ℤ is smooth if on integration characters it integrates the form wedged with a fixed smooth (n−k+1)-form, as pairing with a character does.
 
 **Problem.** For 1 ≤ k ≤ n, every smooth homomorphism on degree-k characters pairs with a unique degree-(n−k+1) character by multiplication and evaluation on the manifold.
 
-**How the definition helps.** Character multiplication pairs form inputs with a smooth curvature form, which explains the smoothness requirement. Our own counterexample evaluates a circle-valued function at one point of the circle. A smooth density representing this functional would vanish away from that point by testing real functions supported elsewhere, hence vanish everywhere. Existence and uniqueness use the smooth duality theorem.
+**How the definition helps.** Multiplying an integration character by a character y and evaluating on the manifold gives the integral of the form wedged with the curvature of y, which is the smoothness condition. Our own counterexample evaluates a circle-valued function at one point of the circle; a representing density would vanish off that point, hence everywhere. Existence and uniqueness use the smooth duality theorem.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “Cheeger-Simons differential characters with compact support and Pontryagin duality”
 
@@ -3414,15 +3414,15 @@
 
 ### Thin loops constrain transgression connections
 
-**Remember:** Collapsed tori cannot carry a gerbe phase.
+**Remember:** Thin tori carry no phase, and thin homotopies keep it.
 
 *Rules out counterexamples.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
-**Definition.** A loop of loops traces a torus in the base manifold. A connection on a circle bundle over loop space is superficial if transport around every torus of differential rank at most one gives phase one. It must also give equal phases for tori joined by a homotopy of differential rank at most two.
+**Definition.** A loop of loops traces a torus in the base manifold. A connection on a circle bundle over loop space is superficial if its holonomy is one around every loop of loops whose torus has differential rank at most one, and is equal for two loops of loops joined by a homotopy of rank at most two. These are the tori and homotopies too thin to carry a 2-form or a 3-form.
 
 **Problem.** Every circle gerbe with connection induces a superficial connection on its bundle over free loops.
 
-**How the definition helps.** Superficiality records the two rank bounds under which gerbe surface transport loses dependence on the surface. In our own derivation, the surface holonomy formula gives the first condition, and its curvature formula on a homotopy gives the second. In our own counterexample, evaluate loops in a circle at one parameter and pull back a flat connection with nontrivial phase. The circle of constant loops retains that phase although its torus map has rank one.
+**How the definition helps.** A gerbe's surface holonomy is trivial on a torus too thin to carry a 2-form, and its curvature formula shows that a homotopy too thin to carry a 3-form keeps the phase (our own derivation). In our own counterexample, evaluate loops in a circle at one parameter and pull back a flat connection with nontrivial phase. The circle of constant loops keeps that phase although its torus map has rank one.
 
 **nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “if φ ∈ LLX, φ̃ : S¹ × S¹ → X has rank one, then”
 
@@ -3432,7 +3432,7 @@
 
 ### Transgression lines hold boundary holonomy
 
-**Remember:** Each boundary frame turns the holonomy vector into a phase.
+**Remember:** Points of the line are trivializations of the gerbe on the loop.
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG. Level 4: research.
 
@@ -3440,7 +3440,7 @@
 
 **Problem.** A smooth map from a compact oriented surface with one parametrized outgoing boundary gives a canonical unit vector in the line of its boundary loop.
 
-**How the definition helps.** The line records how the boundary phase changes when the chosen trivialization changes. In our own explanation, a surface trivialization supplies both a boundary frame and a phase obtained by integrating its 2-form. Changing the trivialization multiplies them by inverse factors, by Stokes for the comparison line bundle. Their product therefore gives the same vector.
+**How the definition helps.** A trivialization of the gerbe over the surface gives a boundary trivialization and a phase, the exponential of the integral of its 2-form (our own explanation). Changing the surface trivialization changes the boundary vector and the phase by inverse factors, by Stokes' theorem for the comparison line bundle. Their product is therefore a canonical vector.
 
 **nLab:** [transgression of bundle gerbes](https://ncatlab.org/nlab/show/transgression+of+bundle+gerbes). It says: “for β ∈ LX and where I₀ denotes the trivial gerbe on the circle.”
 
@@ -3452,15 +3452,15 @@
 
 ### Translation symmetries of a gerbe model String
 
-**Remember:** The basic gerbe remembers the extension that makes String.
+**Remember:** String is the 2-group of translations that lift to the gerbe.
 
 *Makes the theorem clean to state or prove.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters), 18N10. arXiv math.CT, math.DG. Level 4: research.
 
-**Definition.** A basic circle gerbe on G is a higher circle bundle whose class generates H³(G; ℤ). Its translation symmetries identify the gerbe with its translates and include the isomorphisms between these identifications. Composition gives a smooth 2-group, a group with isomorphisms between its elements.
+**Definition.** A basic circle gerbe on G is a higher circle bundle whose class generates H³(G; ℤ). Its symmetry 2-group has as elements pairs of a g ∈ G and an isomorphism from the g-translate of the gerbe to the gerbe, with isomorphisms between these as arrows and composition as product.
 
 **Problem.** For compact, simple, simply connected G, this symmetry 2-group models String(G), the cover that also kills the third homotopy group.
 
-**How the definition helps.** Composition of gerbe symmetries supplies the multiplication in the proposed String model. The work in Theorem 1.4 is identifying the homotopy type of this extension.
+**How the definition helps.** Composition of gerbe symmetries supplies the multiplication of the 2-group, and forgetting the isomorphism maps it onto G. Theorem 1.4 does the work of identifying its homotopy type with String(G).
 
 **Paper or page:** [Smooth 2-Group Extensions and Symmetries of Bundle Gerbes](https://arxiv.org/abs/2004.13395v2). It says: “Then both Symɢ(𝒢) and Desₗ are smooth 2-group models for the string group of G.”
 
@@ -3474,11 +3474,11 @@
 
 *True by definition.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** For a compact Lie group, a universal differential characteristic class is a map from the stack of bundles with connection to differential cohomology. A stack records families and their isomorphisms. The map refines an even positive degree integral class by recording its characteristic curvature form.
+**Definition.** For a compact Lie group G, a universal differential characteristic class is one map from the stack of G-bundles with connection, which records smooth families and their isomorphisms, to differential cohomology. It refines an even positive-degree integral class, has the class's characteristic form as curvature, and gives each bundle its class by composition with the bundle's classifying map.
 
 **Problem.** Pulling back a bundle with connection pulls back its differential characteristic class along the same smooth map.
 
-**How the definition helps.** A bundle receives its differential class by composition with the universal map. In our own comparison, computing a class separately from each connection would require checking naturality. Here composition gives naturality once the universal map with the prescribed curvature has been constructed.
+**How the definition helps.** The classifying map of a pulled-back bundle is the original classifying map composed with the smooth map, so composition with the universal map gives the pulled-back class. Computing the class separately for each connection would instead need a separate check of naturality (our own comparison). The work goes into constructing the universal map with the prescribed curvature.
 
 **Paper or page:** [Bordism for the 2-group symmetries of the heterotic and CHL strings](https://arxiv.org/abs/2304.14764v1). It says: “there is a map č : B∇G → Bᵏ⁻¹∇𝕋 natural in (G, c)”
 
@@ -3488,15 +3488,15 @@
 
 ### Whitney sums multiply differential Chern classes
 
-**Remember:** Compare both projections where both bundles are universal.
+**Remember:** A natural character is fixed by its curvature and Chern class.
 
 *True by definition. Confidence: medium.* MSC 53C08 (Differential geometric aspects of gerbes and differential characters). arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** The differential Chern classes are natural character assignments for Hermitian bundles with unitary connection. Their curvatures are the Chern forms computed from the connection, and their integral classes are the ordinary Chern classes. The total class is their sum, including the degree-zero unit.
+**Definition.** The differential Chern classes are the natural assignments of characters to Hermitian bundles with unitary connection, characterized by two projections: their curvatures are the Chern forms of the connection, and their integral classes are the ordinary Chern classes. The total class is their sum, including the degree-zero unit.
 
 **Problem.** For a direct sum with its block sum connection, the total differential Chern class equals the product of the total classes of the summands.
 
-**How the definition helps.** Characterizing the assignment by naturality and its two projections reduces the formula to the ordinary sum formulas for classes and curvature forms. Our own comparison treats a pair of bundles as one bundle for the product of their unitary groups. The uniqueness theorem there replaces a direct calculation on cycles.
+**How the definition helps.** Both sides of the formula are natural assignments for pairs of bundles, that is, for bundles of the product of two unitary groups (our own comparison). They have the same curvature and integral class by the ordinary sum formulas, so the uniqueness theorem for such assignments makes them equal.
 
 **nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
 
@@ -3510,11 +3510,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C12 (Foliations (differential geometric aspects)), 58H05. arXiv math.DG. Level 4: research.
 
-**Definition.** A singular foliation on a smooth manifold M is a locally finitely generated C∞(M)-submodule of compactly supported smooth vector fields closed under the Lie bracket.
+**Definition.** A singular foliation on a smooth manifold M is the family of vector fields that generates it: a locally finitely generated C∞(M)-submodule of compactly supported smooth vector fields, closed under the Lie bracket.
 
 **Problem.** Every singular foliation in this sense has a holonomy groupoid H(F). It is minimal in the sense that every source-connected Lie groupoid integrating F maps onto H(F).
 
-**How the definition helps.** The module specifies the vector fields used to build local flow charts, including near leaves of changing dimension. The Androulidakis–Skandalis holonomy groupoid theorem constructs H(F) from these charts and proves its minimality (our own summary).
+**How the definition helps.** Local generators give flows, and their compositions give local charts for the groupoid even near leaves of changing dimension. The Androulidakis–Skandalis holonomy groupoid theorem builds H(F) from these charts and proves its minimality (our own summary).
 
 **Paper or page:** [The Holonomy Groupoids of Singularly Foliated Bundles](https://arxiv.org/abs/2006.14271). It says: “Let M be a manifold with a singular foliation F. Then there exists a topological groupoid H(F) for which the following hold. H(F) integrates the foliation F, in the sense that its orbits are the leaves of F.”
 
@@ -3529,11 +3529,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C21 (Methods of global Riemannian geometry, including PDE methods; curvature restrictions), 53C23. arXiv math.DG, math.MG. Level 4: research.
 
-**Definition.** For a C¹ Riemannian metric, take Ricci curvature in the sense of distributions. It is nonnegative if Ric(X,X) evaluates nonnegatively on every nonnegative smooth compactly supported test density for every smooth compactly supported vector field X.
+**Definition.** For a C¹ Riemannian metric, the Christoffel symbols are only continuous, so Ricci curvature exists only as a distribution acting on test densities. It is nonnegative if Ric(X,X) pairs nonnegatively with every nonnegative smooth compactly supported test density, for every smooth compactly supported vector field X.
 
 **Problem.** A complete connected C¹ Riemannian manifold with distributionally nonnegative Ricci curvature and a line splits C¹-isometrically as a product with ℝ. A line is a unit-speed geodesic defined on ℝ that minimizes length between every pair of its points.
 
-**How the definition helps.** Testing against densities gives the Ricci hypothesis a meaning at C¹ regularity. The low-regularity Cheeger–Gromoll splitting theorem supplies the product by weak estimates (our own explanation).
+**How the definition helps.** Testing against densities gives the Ricci hypothesis a meaning at C¹ regularity, where pointwise curvature does not exist. The low-regularity Cheeger–Gromoll splitting theorem then gives the product by weak estimates (our own explanation).
 
 **Paper or page:** [Ricci curvature bounds and rigidity for non-smooth Riemannian and semi-Riemannian metrics](https://arxiv.org/abs/2406.06762). It says: “Let (M,g) be a complete, connected Riemannian manifold with metric of regularity C¹. Let Ric≥0 in the distributional sense”
 
@@ -3548,11 +3548,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C21 (Methods of global Riemannian geometry, including PDE methods; curvature restrictions), 58J22. arXiv math.DG, math.KT. Level 4: research.
 
-**Definition.** Fix a closed oriented Riemannian n-manifold. It is enlargeable if for every ε &gt; 0 some spin Riemannian cover admits a smooth ε-Lipschitz map to the unit n-sphere. The map must have nonzero degree and be constant outside a compact set.
+**Definition.** A closed oriented Riemannian n-manifold is enlargeable if, for every ε &gt; 0, some spin cover with the pulled-back metric has a smooth ε-Lipschitz map to the unit n-sphere, one that multiplies distances by at most ε. The map must have nonzero degree and be constant outside a compact set.
 
 **Problem.** No enlargeable closed spin manifold carries a metric of positive scalar curvature (Gromov–Lawson). In particular the n-torus carries no such metric.
 
-**How the definition helps.** The torus is enlargeable at a glance, since its large covers are big tori that map onto the sphere with little stretching (our own). The definition supplies what the index argument needs, a pulled-back bundle that is almost flat but has non-zero twisted Dirac index (our own). Positive scalar curvature would kill that index through the Lichnerowicz formula, because the bundle's curvature is small. For infinite covers, the work went into the relative index theorem on non-compact manifolds.
+**How the definition helps.** Pulling back a bundle from the sphere by such a map gives an almost flat bundle whose twisted Dirac operator has nonzero index (our own). Positive scalar curvature would kill that index by the Lichnerowicz formula, since the bundle's curvature is small, and infinite covers need the relative index theorem. The torus is enlargeable at a glance, since its large covers are big tori that map onto the sphere with little stretching (our own).
 
 **Wikipedia:** [Scalar curvature](https://en.wikipedia.org/wiki/Scalar_curvature). It says: “introduces the homotopy-theoretic notion of enlargeability and says that an enlargeable spin manifold cannot have a Riemannian metric of positive scalar curvature.”
 
@@ -3568,11 +3568,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 51F99. arXiv math.MG. Level 4: research.
 
-**Definition.** A complete length space has nonnegative Alexandrov curvature if every quadruple p,x,y,z satisfies 3(\|px\|² + \|py\|² + \|pz\|²) ≥ \|xy\|² + \|yz\|² + \|zx\|². Here \|ab\| denotes the distance between a and b.
+**Definition.** A complete length space has nonnegative Alexandrov curvature if every four points p, x, y, z satisfy 3(\|px\|² + \|py\|² + \|pz\|²) ≥ \|xy\|² + \|yz\|² + \|zx\|², an inequality among their six distances.
 
 **Problem.** A compact limit of compact Alexandrov spaces with curvature at least zero also has curvature at least zero. The limit is in Gromov–Hausdorff distance, which compares metric spaces by near-isometric matchings.
 
-**How the definition helps.** A matching of vanishing distortion approximates all six distances at once, so the inequality passes to the limit (our own argument). Compact Gromov–Hausdorff limits of compact length spaces remain length spaces. Lebedeva and Petrunin identify this four-point test with triangle comparison.
+**How the definition helps.** The condition is a closed inequality in six distances, and Gromov–Hausdorff matchings of small distortion approximate all six at once, so it passes to the limit (our own argument). Compact Gromov–Hausdorff limits of compact length spaces remain length spaces. Lebedeva and Petrunin show that this four-point test is equivalent to triangle comparison.
 
 **Paper or page:** [Curvature bounded below: a definition a la Berg--Nikolaev](https://arxiv.org/abs/1008.3318). It says: “Let X be a complete space with intrinsic metric. Then X is an Alexandrov space with curvature ≥ 0 if and only if any quadruple p,x,y,z ∈ X satisfies the following inequality”
 
@@ -3586,11 +3586,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 54E35. arXiv math.MG. Level 4: research.
 
-**Definition.** A metric space X satisfies comparison for a finite graph Γ if every placement of its vertices in X admits a placement in Hilbert space. Edge distances must weakly decrease and all other pairwise distances must weakly increase.
+**Definition.** A metric space X satisfies the comparison for a finite graph Γ if every map of the vertices into X has a matching map into Hilbert space in which distances along edges do not increase and all other distances do not decrease.
 
 **Problem.** Every finite graph comparison either holds in every metric space or implies comparison for the four-cycle C₄ or the three-legged star T₃.
 
-**How the definition helps.** The graph specifies all inequality directions, so implication becomes a relation between graphs (our own explanation). The graph-comparison classification proves that every nontrivial comparison implies the four-cycle or tripod comparison.
+**How the definition helps.** The graph alone fixes every inequality direction, so implications between comparisons become relations between graphs (our own explanation). The graph-comparison classification proves that every nontrivial comparison implies the four-cycle or three-legged-star comparison.
 
 **Paper or page:** [Graph comparison meets Alexandrov](https://arxiv.org/abs/2212.08016v2). It says: “We show that any nontrivial graph comparison implies one of Alexandrov's comparisons.”
 
@@ -3604,11 +3604,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 53C21, 49Q22. arXiv math.DG, math.MG. Level 4: research.
 
-**Definition.** Use the curvature-dimension condition CD(K,N) of Lott, Sturm and Villani on a complete separable geodesic metric measure space. The Riemannian condition additionally requires Ch(f+g) + Ch(f−g) = 2Ch(f) + 2Ch(g) for every f,g of finite Cheeger energy Ch.
+**Definition.** A complete separable geodesic metric measure space is RCD(K,N) if it satisfies the Lott–Sturm–Villani condition CD(K,N), a convexity of entropy along optimal transport, and its Cheeger energy Ch is quadratic: Ch(f+g) + Ch(f−g) = 2Ch(f) + 2Ch(g) for all f, g of finite energy. Both conditions use only distance and measure.
 
 **Problem.** Normalized pointed RCD(K,N) spaces are closed under pointed measured Gromov–Hausdorff convergence. This includes such limits of complete Riemannian manifolds with Ricci curvature at least K and dimension at most N.
 
-**How the definition helps.** The entropic characterization formulates the bound using distance, measure, and energy on the limit space. The RCD stability theorem preserves both the entropy condition and quadratic energy under this convergence (our own explanation).
+**How the definition helps.** Both conditions make sense on any limit space because they use only distance, measure and energy. The RCD stability theorem shows that pointed measured Gromov–Hausdorff convergence preserves both the entropy condition and quadratic energy (our own explanation).
 
 **Paper or page:** [On perimeter minimizing sets in manifolds with quadratic volume growth](https://arxiv.org/abs/2504.10413), [On the equivalence of distributional and synthetic Ricci curvature lower bounds](https://arxiv.org/abs/2402.06486). It says: “The class of pointed RCD(K,N) spaces with normalized measures is sequentially compact with respect to pointed measured Gromov-Hausdorff convergence.”
 
@@ -3625,11 +3625,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 54A20. arXiv math.FA, math.MG. Level 4: research.
 
-**Definition.** In a complete CAT(0) space, a bounded sequence converges weakly to x if for each geodesic segment starting at x its projections converge to x.
+**Definition.** A complete CAT(0) space need not be a vector space, so weak convergence is tested with geodesics instead of linear functionals (our own). A bounded sequence converges weakly to x if, for every geodesic segment starting at x, the nearest-point projections of the sequence onto it converge to x.
 
 **Problem.** In a Hadamard space, every bounded sequence has a weakly convergent subsequence. Bounded closed convex sets are weakly sequentially compact.
 
-**How the definition helps.** Geodesic segments test convergence using only the metric (our own explanation). The Δ-compactness theorem gives every bounded sequence a Δ-convergent subsequence, and projection convergence agrees with Δ-convergence. Closed convex sets contain the asymptotic centers of their bounded sequences, so they contain the subsequential limits.
+**How the definition helps.** Weak convergence in this sense agrees with Δ-convergence, and the Δ-compactness theorem gives every bounded sequence a Δ-convergent subsequence. Closed convex sets contain the asymptotic centers of their bounded sequences, so they contain these limits.
 
 **Paper or page:** [On a weak topology for Hadamard spaces and its applications](https://arxiv.org/abs/2204.01461v4), [On a weak topology for Hadamard spaces and its applications](https://arxiv.org/abs/2204.01461v4), [A product of strongly quasi-nonexpansive mappings in Hadamard spaces](https://arxiv.org/abs/2504.21402v1). It says: “Any bounded closed convex set K in a Hadamard space is weakly sequentially compact and therefore τw-sequentially compact.”
 
@@ -3644,11 +3644,11 @@
 
 *True by definition. Confidence: medium.* MSC 53C23 (Global geometric and topological methods (à la Gromov); differential geometric analysis on metric spaces), 51F99. arXiv math.MG, math.DG. Level 4: research.
 
-**Definition.** A submetry maps each closed ball onto the closed ball of the same radius around the image of its center. Here use the four-point test for nonnegative curvature: \|px\|² + \|py\|² + \|pz\|² ≥ (\|xy\|² + \|yz\|² + \|zx\|²)/3. The usual definition compares triangles.
+**Definition.** A submetry maps each closed ball onto the closed ball of the same radius around the image of its center, so a point at distance r from an image point lifts to a point at distance r from any lift of it (our own). Use the four-point test for nonnegative curvature: \|px\|² + \|py\|² + \|pz\|² ≥ (\|xy\|² + \|yz\|² + \|zx\|²)/3.
 
 **Problem.** Let a submetry map a complete, locally compact length space onto another. If the source has nonnegative Alexandrov curvature, so does the target.
 
-**How the definition helps.** Lift the center of four points, then lift the other three at the same distances, as the ball property allows (our own argument). The left side of the test is unchanged and the right side can only shrink in the target (our own). With triangle comparison, one must lift geodesics instead (our own comparison). The work moves to the theorem that the four-point test is equivalent to triangle comparison.
+**How the definition helps.** Lift the center p, then lift x, y and z at their original distances from it (our own argument). The left side of the test is unchanged, and the right side can only shrink in the target, since a submetry does not increase distances (our own). The work moves to the theorem that the four-point test is equivalent to triangle comparison.
 
 **Wikipedia:** [Glossary of Riemannian and metric geometry](https://en.wikipedia.org/wiki/Glossary_of_Riemannian_and_metric_geometry). It says: “the image of metric r-ball is an r-ball”
 
@@ -3662,11 +3662,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53C45 (Global surface theory (convex surfaces à la A. D. Aleksandrov)), 53C23. arXiv math.DG, math.MG. Level 4: research.
 
-**Definition.** Fix an intrinsic metric on a closed surface. It has bounded integral curvature if it is a uniform limit of smooth Riemannian distances with uniformly bounded total absolute Gaussian curvature. Its curvature measure is the weak limit of their Gaussian curvature measures.
+**Definition.** A metric of bounded integral curvature on a closed surface is an intrinsic metric that is a uniform limit of smooth Riemannian distances with uniformly bounded total absolute Gaussian curvature. Its curvature measure is the weak limit of their curvature measures, and it may have atoms, such as cone points.
 
 **Problem.** Fix a conformal structure on a closed connected surface S. Every signed Radon measure ω with total mass 2πχ(S) and ω({x}) &lt; 2π at every x occurs as curvature in that conformal class.
 
-**How the definition helps.** Curvature measures express Gauss–Bonnet as a total mass condition for both smooth and singular metrics. The prescribed-curvature theorem for surfaces of bounded integral curvature constructs the conformal metric under the stated atom bound (our own explanation).
+**How the definition helps.** Gauss–Bonnet passes to the weak limit, so the total mass is 2πχ(S), and an atom of mass less than 2π is a cone point of positive angle. The prescribed-curvature theorem for these surfaces constructs a conformal metric for any such measure (our own explanation).
 
 **Paper or page:** [On Alexandrov's Surfaces with Bounded Integral Curvature](https://arxiv.org/abs/2201.03354), [On Alexandrov's Surfaces with Bounded Integral Curvature](https://arxiv.org/abs/2201.03354). It says: “For any conformal structure on a closed surface S and any signed Radon measure dω on S such that ∫ₛ dω = 2πχ(S) and ω({x}) &lt; 2π for any point x ∈ S, there exists an Alexandrov metric”
 
@@ -3680,11 +3680,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 53C23. arXiv gr-qc, math.MG. Level 4: research.
 
-**Definition.** Fix a finite full-support measure on the underlying metric space. For each point, average the measures of its chronological past’s open r-neighborhoods over 0 &lt; r &lt; 1. Use the same average with a minus sign for its chronological future.
+**Definition.** Fix a finite measure of full support on the underlying metric space. The past averaged volume function sends a point to the average over 0 &lt; r &lt; 1 of the measure of the open r-neighborhood of its chronological past; the future function is minus the same average for its chronological future.
 
 **Problem.** In a second countable, locally compact Lorentzian length space, the averaged volume functions are time functions exactly when the space is causally continuous. Causal continuity requires both that causal pasts and futures distinguish points and that past and future comparisons agree.
 
-**How the definition helps.** The averaged functions use only metric neighborhoods, chronology, and measure (our own explanation). The averaged-volume characterization of causal continuity proves continuity and strict increase in both time directions with the stated signs.
+**How the definition helps.** A later point's past contains an earlier point's past, so the past function grows along causal curves, and the sign makes the future function grow too (our own explanation). The averaged-volume characterization shows that continuity and strict increase hold exactly under causal continuity.
 
 **Paper or page:** [Time functions on Lorentzian length spaces](https://arxiv.org/abs/2108.02693v3). It says: “Let X be a second countable, locally compact Lorentzian length space. Then X causally continuous if and only if the averaged volume functions on X are time functions.”
 
@@ -3698,11 +3698,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc. Level 4: research.
 
-**Definition.** At each point p, use sufficiently small cylindrical neighborhoods U and let Ĩ⁺(p,U) unite the timelike futures for smooth metrics with strictly narrower cones. Causal plainness requires the boundaries in U of Ĩ⁺(p,U) and the causal future J⁺(p,U) to agree, with the same requirement for pasts.
+**Definition.** Near each point p, compare two local futures in small cylindrical neighborhoods U: the causal future J⁺(p,U), and Ĩ⁺(p,U), the union of the timelike futures for smooth metrics with strictly narrower cones. The spacetime is causally plain if these always have the same boundary in U, and likewise for pasts, so no causal bubble sits between them.
 
 **Problem.** In sufficiently small such neighborhoods of a causally plain spacetime, timelike paths reach points arbitrarily close to each causally reachable endpoint. A timelike path stays inside the cones.
 
-**How the definition helps.** Boundary agreement excludes a causal bubble, an open reachable region outside the closure of the timelike future (our own explanation). The two local future boundaries are graphs. The narrower-cone future fills the region above its graph, so it approaches every point on the common graph.
+**How the definition helps.** Equal boundaries rule out a causal bubble, an open causally reachable region outside the closure of the timelike future (our own explanation). Both local futures are regions above graphs, and the narrower-cone future fills the region above its graph. So it comes arbitrarily close to every point of the common boundary graph.
 
 **Paper or page:** [Causal bubbles in globally hyperbolic spacetimes](https://arxiv.org/abs/2207.01392). It says: “consists of points in $J<sup>+</sup>(0)\\setminus \\overline{I<sup>+</sup>(0)}$.”
 
@@ -3716,11 +3716,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 53C42. arXiv gr-qc, math.DG. Level 4: research.
 
-**Definition.** A proper conformal embedding of a spacetime (M,g) into Minkowski space is a smooth embedding f satisfying f\*η = Ω²g with Ω smooth and positive. The preimage of every compact set must be compact.
+**Definition.** A proper conformal embedding of a spacetime (M,g) into Minkowski space is a smooth embedding f that rescales the metric, f\*η = Ω²g with Ω smooth and positive, and is proper: the preimage of every compact set is compact, so no image point is missing at finite distance.
 
 **Problem.** A smooth spacetime admits a proper conformal embedding into some Minkowski space exactly when it is globally hyperbolic.
 
-**How the definition helps.** Properness excludes finite missing limit points, as the punctured Minkowski example shows (our own explanation). Its inclusion preserves cones, but a causal diamond crossing the puncture can fail to be compact. The proper conformal embedding theorem proves the equivalence, including existence of the embedding for globally hyperbolic spacetimes.
+**How the definition helps.** Properness excludes points missing at finite distance, as in punctured Minkowski space (our own explanation). Its inclusion preserves cones, but a causal diamond containing the puncture is not compact. The proper conformal embedding theorem proves the equivalence, including existence of the embedding for globally hyperbolic spacetimes.
 
 **Paper or page:** [Lorentzian manifolds properly isometrically embeddable in Minkowski spacetime](https://arxiv.org/abs/2303.05941v1). It says: “Moreover, I prove that the Lorentzian manifolds that can be properly conformally embedded in Minkowski spacetime coincide with the globally hyperbolic spacetimes.”
 
@@ -3734,11 +3734,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc. Level 4: research.
 
-**Definition.** A future-directed causal path γ is nearly timelike if γ(t) lies in the closure of I⁺(γ(s)) whenever s &lt; t. Also γ(s) must lie in the closure of I⁻(γ(t)) for every such pair. Time separation is the supremum of lengths of nearly timelike paths joining the endpoints, or zero when none exist.
+**Definition.** A future-directed causal path γ is nearly timelike if timelike signals can approach each later point from each earlier one: γ(t) lies in the closure of I⁺(γ(s)) and γ(s) in the closure of I⁻(γ(t)) whenever s &lt; t. Time separation is the supremum of lengths of nearly timelike paths joining two points, or zero if there are none.
 
 **Problem.** For a continuous spacetime metric, nearby endpoint pairs have time separation above any strict lower bound for the original pair. For a smooth metric, this definition gives the usual time separation.
 
-**How the definition helps.** The closure tests exclude causal bubbles that timelike signals cannot approach (our own explanation). The lower semicontinuity theorem uses those tests to perturb endpoints while losing arbitrarily little positive length. For smooth metrics the push-up property gives the closure tests for every causal path.
+**How the definition helps.** The closure tests exclude causal bubbles that timelike signals cannot approach (our own explanation). The lower semicontinuity theorem uses them to perturb the endpoints while losing arbitrarily little length. For smooth metrics the push-up property gives the closure tests for every causal path.
 
 **Paper or page:** [A lower semicontinuous time separation function for C⁰ spacetimes](https://arxiv.org/abs/2308.10182v3). It says: “τ is lower semicontinuous.”
 
@@ -3752,11 +3752,11 @@
 
 *True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc, math.DG. Level 4: research.
 
-**Definition.** A time function is a continuous clock reading that increases along every future path moving at or below light speed. To define null distance, join two events by such paths, allowing reversals between pieces. Take the infimum of the sums of absolute clock changes.
+**Definition.** A time function is a continuous clock that increases along every future causal path. The null distance between two events is the infimum, over chains of causal pieces joining them, each going forward or backward in time, of the sum of absolute clock changes.
 
 **Problem.** On a causal curve, null distance between any two points equals their absolute clock difference. Where null distance is a metric, clock time makes the curve an isometric copy of an interval.
 
-**How the definition helps.** Adding absolute clock changes makes a path without reversals as cheap as possible. In our own proof, the triangle inequality bounds every sum below by the endpoint difference. A single causal segment attains that bound, even for light, whose ordinary proper time vanishes. Proving that null distance separates arbitrary events needs further assumptions on the clock.
+**How the definition helps.** Each piece costs at least its clock change, so by the triangle inequality every chain costs at least the endpoint clock difference (our own proof). A single causal segment costs exactly that, even a light ray, whose proper time is zero.
 
 **Paper or page:** [Limit curve theorems for incomplete metric spaces and the null distance on Lorentzian manifolds](https://arxiv.org/abs/2511.05847v1). It says: “d(γ ∘ s(t₁), γ ∘ s(t₂); f) = \|t₁−t₂\|”
 
@@ -3770,11 +3770,11 @@
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83F05. arXiv gr-qc, math.DG. Level 4: research.
 
-**Definition.** Let spatial lengths at time t equal their fixed reference lengths multiplied by a positive continuous scale factor. The reference metric is geodesic if each pair of points has a shortest path. A length metric only requires paths whose lengths approach the distance.
+**Definition.** Take a spacetime whose spatial lengths at time t are fixed reference lengths times a positive continuous scale factor. The reference metric is geodesic if every two points are joined by a shortest path, not just by paths whose lengths approach their distance.
 
 **Problem.** Available conformal time is the integral of the reciprocal scale factor between two event times. For a geodesic reference metric, a signal reaches the later event exactly when the reference distance is at most the available conformal time.
 
-**How the definition helps.** A shortest spatial path attains the distance bound when traversed at constant speed in conformal time (our own argument). Conversely, the causal speed limit bounds reference length by elapsed conformal time. In the punctured Euclidean plane, detours between opposite points approach their straight-line distance without attaining it (our own example).
+**How the definition helps.** A shortest path, traversed at constant speed in conformal time, uses exactly the available conformal time (our own argument). Conversely, the causal speed limit bounds reference length by elapsed conformal time. In the punctured Euclidean plane, opposite points have only detours that approach their straight-line distance, so the exact-time trip fails (our own example).
 
 **Paper or page:** [Bonnet-Myers rigidity theorem for globally hyperbolic Lorentzian length spaces](https://arxiv.org/abs/2401.17017v3). It says: “if Y is strictly intrinsic the causal relation agrees”
 
@@ -3784,15 +3784,15 @@
 
 ### Timelike convergence rules out de Sitter
 
-**Remember:** Light can miss the curvature that makes timelike lines fail to split spacetime.
+**Remember:** Ricci must be nonnegative on every timelike direction, not only null.
 
 *Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C20. arXiv gr-qc, math.DG. Level 4: research.
 
-**Definition.** A spacetime satisfies timelike convergence if Ric(v,v) ≥ 0 for every timelike tangent vector v at every point.
+**Definition.** Timelike convergence says that gravity focuses timelike geodesics on average: Ric(v,v) ≥ 0 for every timelike tangent vector v at every point.
 
-**Problem.** Suppose a globally hyperbolic spacetime satisfies timelike convergence and contains a complete timelike line. Such a line maximizes elapsed proper time between any two of its points and extends indefinitely in both directions. The spacetime then splits into time and space with metric −dt² + h, where the spatial metric h is independent of time.
+**Problem.** Suppose a globally hyperbolic spacetime satisfies timelike convergence and contains a complete timelike line, one that maximizes proper time between any two of its points. Then it splits as −dt² + h, with a time-independent spatial metric h.
 
-**How the definition helps.** Timelike convergence excludes de Sitter spacetime, whose Ricci tensor is a positive multiple of its metric (our own example). Null vectors give zero, but timelike vectors give negative values. Constant spatial positions trace complete maximizing lines, while a static product would have zero Ricci curvature along time. Galloway’s Lorentzian splitting theorem gives the conclusion under timelike convergence.
+**How the definition helps.** Galloway’s Lorentzian splitting theorem gives the conclusion under timelike convergence. In our own example, de Sitter spacetime has Ricci tensor a positive multiple of the metric, so Ric(v,v) &lt; 0 for timelike v, while null vectors give zero. It has complete timelike lines, yet it cannot split, since a product −dt² + h has Ric(∂<sub>t</sub>, ∂<sub>t</sub>) = 0.
 
 **Paper or page:** [An elliptic proof of the splitting theorems from Lorentzian geometry](https://arxiv.org/abs/2410.12632v1). It says: “R(v,v) ≥ 0 for all timelike vectors”
 
@@ -3806,11 +3806,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C60 (Global differential geometry of Finsler spaces and generalizations (areal metrics)), 51F30. arXiv math.DG, math.MG. Level 4: research.
 
-**Definition.** For an open convex Euclidean domain Ω, the tautological weak Finsler norm is F(x,v) = inf{t &gt; 0 : x + v/t ∈ Ω}. Its length distance takes the infimum of ∫F(γ,γ′) over piecewise smooth paths between the given endpoints.
+**Definition.** For an open convex Euclidean domain Ω, the tautological weak Finsler norm is F(x,v) = inf{t &gt; 0 : x + v/t ∈ Ω}, the size of v measured against how far Ω extends from x in direction v. Its length distance is the infimum of ∫F(γ,γ′) over piecewise smooth paths between the given endpoints.
 
 **Problem.** On a convex domain Ω, the length metric of the tautological weak Finsler structure is exactly the Funk metric. Euclidean segments are shortest paths for it.
 
-**How the definition helps.** The Funk distance formula identifies the integral along the straight segment with the logarithmic boundary-distance ratio. Supporting hyperplanes give that ratio as a lower bound for every competing path, proving minimality (our own explanation). If the forward ray never meets the boundary, the segment costs zero.
+**How the definition helps.** Along a straight segment, F integrates to the logarithm of a boundary-distance ratio, which is the Funk distance formula. Supporting hyperplanes give that ratio as a lower bound for every competing path, so the segment is shortest (our own explanation). If the forward ray never meets the boundary, F vanishes and the segment costs zero.
 
 **Paper or page:** [Weak Finsler Strutures and the Funk Metric](https://arxiv.org/abs/0804.0705), [Weak Finsler Strutures and the Funk Metric](https://arxiv.org/abs/0804.0705). It says: “We compute distances in the tautological weak Finsler structure of a domain and we show that these are given by the so-called Funk weak metric.”
 
@@ -3820,15 +3820,15 @@
 
 ### Defining Zoll by a loop index makes Zoll bodies closed under limits
 
-**Remember:** Test whether the circle index of the shortest characteristics reaches half the ambient dimension.
+**Remember:** Shortest orbits with circle index at least n make Zoll.
 
 *Makes the theorem clean to state or prove.* MSC 53D05 (Symplectic manifolds (general theory)), 37J46, 52A20. arXiv math.SG. Level 4: research.
 
-**Definition.** Take the space of action-minimizing generalized closed characteristics on a convex body in ℝ²ⁿ, with circle action by shifts of starting time. The body is generalized Zoll if the Fadell–Rabinowitz index of this systole space is at least n.
+**Definition.** On a convex body in ℝ²ⁿ, take the space of action-minimizing generalized closed characteristics, its shortest periodic orbits, with the circle acting by shifting the starting time. The body is generalized Zoll if the Fadell–Rabinowitz index of this space, a measure of its size under the circle action, is at least n.
 
 **Problem.** Generalized Zoll convex bodies form a Hausdorff-closed set. With the origin in the interior and smooth boundary, this condition is equivalent to all Reeb trajectories being closed with the same least period for the standard boundary contact form.
 
-**How the definition helps.** Upper semicontinuity of the systolic index preserves the threshold n under Hausdorff limits. The cited paper proves upper semicontinuity and identifies this threshold with the classical Zoll condition for smooth boundaries (our own summary).
+**How the definition helps.** The systolic index is upper semicontinuous, so at a Hausdorff limit it is at least the limit superior of the indices, and the threshold n survives. The cited paper proves this and identifies the threshold with the classical Zoll condition for smooth boundaries (our own summary).
 
 **Paper or page:** [Systolic S¹-index and characterization of non-smooth Zoll convex bodies](https://arxiv.org/abs/2501.13856v3). It says: “The space of generalized Zoll convex bodies is closed in the space of all convex bodies with respect to the Hausdorff distance topology.”
 
@@ -3842,11 +3842,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D10 (Contact manifolds (general theory)). arXiv math.SG. Level 4: research.
 
-**Definition.** A formal Legendrian embedding consists of an embedding and a homotopy of injective tangent bundle maps over it, starting at its derivative. The final map takes each tangent space onto a Lagrangian subspace of the contact plane. A Legendrian embedding is loose if a contact chart identifies it locally with Murphy’s loose chart.
+**Definition.** A formal Legendrian embedding is an embedding with a path of injective tangent maps, from its derivative to a map onto Lagrangian subspaces of the contact planes. A Legendrian embedding is loose if, in some contact chart, it looks like Murphy’s loose chart, a standard local piece that leaves room for local changes.
 
-**Problem.** In contact dimension at least five, every formal Legendrian isotopy class of closed connected knots has a loose representative, unique up to ambient contact isotopy.
+**Problem.** In contact dimension at least five, every formal Legendrian isotopy class of closed connected knots has a loose representative, unique up to ambient contact isotopy. Ambient contact isotopy moves the surrounding space through maps that preserve the contact planes.
 
-**How the definition helps.** The loose chart singles out the knots that formal tangent data can classify. Here isotopy means continuous deformation through the relevant embeddings, and ambient contact isotopy moves the surrounding space while preserving its contact planes. In our own explanation, the chart provides room for the local changes in Murphy’s proof. Her deformation theorem supplies existence and uniqueness.
+**How the definition helps.** Loose knots are exactly those that formal tangent data can classify, because the chart gives room for the local changes in Murphy’s proof (our own explanation). Her deformation theorem supplies existence and uniqueness.
 
 **Paper or page:** [Loose Legendrian embeddings in high dimensional contact manifolds](https://arxiv.org/abs/1201.2245v5). It says: “Then for each formal Legendrian isotopy class there is a loose Legendrian knot in that class, unique up to ambient contact isotopy.”
 
@@ -3860,11 +3860,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 37K45. arXiv math.AP, math.SG. Level 4: research.
 
-**Definition.** Near an isolated Maslov crossing, represent the moving Lagrangian as a symmetric graph over the reference plane using a common Lagrangian complement. Eliminate a nonsingular block by Schur complement to obtain a symmetric form S(t) on the crossing kernel, with S(t₀) = 0. When its lower derivatives vanish, the order-j crossing form is S⁽ʲ⁾(t₀) in the positive spectral-flow convention.
+**Definition.** Near an isolated crossing, write the moving Lagrangian as a symmetric graph over the reference plane, using a common Lagrangian complement, and reduce it by a Schur complement to a symmetric form S(t) on the crossing kernel with S(t₀) = 0. If its derivatives of orders 1 to j − 1 vanish at t₀, the order-j crossing form is S⁽ʲ⁾(t₀), so S(t) is close to S⁽ʲ⁾(t₀)(t − t₀)ʲ/j!.
 
-**Problem.** Take an isolated crossing inside the interval where the forms of orders 1 to j − 1 vanish and the order j form is nondegenerate. The crossing contributes zero to the Maslov index if j is even. It contributes the signature of the order j form if j is odd.
+**Problem.** Take an interior isolated crossing where the forms of orders 1 to j − 1 vanish and the order-j form is nondegenerate. It contributes zero to the Maslov index if j is even, and the signature of the order-j form if j is odd, in the positive spectral-flow convention.
 
-**How the definition helps.** The leading form determines the small eigenvalues’ signs on both sides of the crossing (our own explanation). An even power leaves their signs unchanged, while an odd power reverses them. The local spectral-flow formula counts these changes with sign, giving the stated signature.
+**How the definition helps.** The leading term fixes the signs of the small eigenvalues on both sides of the crossing (our own explanation). An even power keeps these signs, and an odd power reverses them. The local spectral-flow formula counts these sign changes, giving the stated contribution.
 
 **Paper or page:** [The Maslov index, degenerate crossings and the stability of pulse solutions to the Swift-Hohenberg equation](https://arxiv.org/abs/2403.04003v4). It says: “We extend their formulation of the Maslov index to degenerate crossings of general order in the case where the intersection is fully degenerate”
 
@@ -3878,11 +3878,11 @@
 
 *Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
 
-**Definition.** A Lagrangian L in (X,ω) is monotone if some λ &gt; 0 satisfies ∫ᵦω = λμ(β) for every relative disk class β in π₂(X,L). Here μ is the Maslov index of its boundary tangent data.
+**Definition.** A Lagrangian L in (X,ω) is monotone if area and Maslov index are proportional on disks: ∫ᵦω = λμ(β) for a fixed λ &gt; 0 and every class β in π₂(X,L), where μ is the Maslov index of the boundary tangent data.
 
 **Problem.** Fix an almost complex structure compatible with the symplectic form and a compact orientable monotone Lagrangian. Every nonconstant holomorphic disk with boundary on it has Maslov index at least two. A stable holomorphic disk of total index two has at most one nonconstant disk component.
 
-**How the definition helps.** Monotonicity converts positive area into positive index, and orientability makes that index even (our own). Every nonconstant sphere bubble also contributes positive index because its area obeys the same relation in relative homotopy (our own). The indices add, so two nonconstant disk components would contribute at least four (our own). Auroux’s Lemma 5.4 gives a torus bounding a nonconstant index-zero disk when the defining loop passes through zero (our own example choice).
+**How the definition helps.** A nonconstant holomorphic disk has positive area, so monotonicity gives it positive index, and orientability makes the index even, hence at least two (our own). Sphere bubbles also have positive area and index, and indices add, so total index two allows only one nonconstant disk (our own). Auroux’s Lemma 5.4 gives a torus bounding a nonconstant index-zero disk when its defining loop passes through zero (our own example choice).
 
 **Paper or page:** [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2). It says: “Suppose that L is a monotone Lagrangian submanifold of (X,ω).”
 
@@ -3897,11 +3897,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 4: research.
 
-**Definition.** On the dual of a Lie algebroid with anchor ρ, write ℓₛ for evaluation on section s and identify base functions with their pullbacks. The linear Poisson bracket satisfies {ℓₛ,ℓₜ} = ℓ\_\[s,t\], {ℓₛ,f} = ρ(s)f, and {f,g} = 0 for all sections and base functions.
+**Definition.** The dual of a Lie algebroid carries a linear Poisson bracket that encodes the algebroid: {ℓₛ,ℓₜ} = ℓ\_\[s,t\], {ℓₛ,f} = ρ(s)f and {f,g} = 0, where ℓₛ is evaluation on the section s, ρ is the anchor, and f, g are base functions pulled back to the dual.
 
 **Problem.** Fix a vector bundle map between two Lie algebroids over the identity of their common base. It preserves the section bracket and anchor exactly when its dual preserves Poisson brackets by pullback.
 
-**How the definition helps.** The linear Poisson bracket records the section bracket and the anchor in its two potentially nonzero generator brackets (our own proof). Pullback along the dual carries each section function to the function of its image and fixes base functions. These functions supply local coordinates, so checking their brackets suffices.
+**How the definition helps.** The brackets of linear and base functions record exactly the section bracket and the anchor (our own proof). Pullback along the dual map sends each ℓₛ to the linear function of the image section and fixes base functions. These functions give local coordinates, so checking their brackets suffices.
 
 **Paper or page:** [Comomentum sections and Poisson maps in Hamiltonian Lie algebroids](https://arxiv.org/abs/2405.03533v2). It says: “the dual map ψ: A₂∗ → A₁∗ is a Poisson map.”
 
@@ -3909,15 +3909,15 @@
 
 ### Multiplicative forms reverse under inversion
 
-**Remember:** An arrow and its inverse multiply to a unit, where the form vanishes.
+**Remember:** The form adds over products, so an arrow and its inverse cancel.
 
 *True by definition.* MSC 53D17 (Poisson manifolds; Poisson groupoids and algebroids). arXiv math.SG. Level 4: research.
 
-**Definition.** A symplectic groupoid has a symplectic form ω on its arrow manifold satisfying m\*ω = pr₁\*ω + pr₂\*ω on composable pairs. Here m multiplies the arrows and the two projections select the factors.
+**Definition.** A symplectic groupoid is a groupoid whose arrow manifold carries a multiplicative symplectic form ω. Multiplicative means that on composable pairs, ω pulled back by multiplication is the sum of ω pulled back from each factor: m\*ω = pr₁\*ω + pr₂\*ω.
 
 **Problem.** Inversion in a symplectic groupoid pulls back the symplectic form to its negative.
 
-**How the definition helps.** Pulling the multiplicativity identity back along a pair of identical units shows that the unit pullback equals twice itself, hence vanishes (our own proof). Pair each arrow with its inverse. Their product is a unit, so ω plus its pullback under inversion vanishes.
+**How the definition helps.** Multiplicativity makes ω add over products, and ω vanishes on the units (our own proof). Applying the identity to a unit composed with itself gives u\*ω = 2u\*ω, so u\*ω = 0. Pulling the identity back along each arrow paired with its inverse gives ω + inv\*ω = 0, because the product is a unit.
 
 **nLab:** [symplectic groupoid](https://ncatlab.org/nlab/show/symplectic+groupoid). It says: “multiplicative in that the alternating sum of its canonical pullbacks to the space X₂ of composable morphisms vanishes”
 
@@ -3925,15 +3925,15 @@
 
 ### Vanishing ideals give Poisson reduction
 
-**Remember:** Use only functions whose brackets preserve vanishing on the submanifold.
+**Remember:** Functions vanishing on S bracket to functions vanishing on S.
 
 *True by definition.* MSC 53D20 (Momentum maps; symplectic reduction). arXiv math.SG. Level 4: research.
 
-**Definition.** A Poisson bracket is a Lie bracket on functions that satisfies the product rule. Let I consist of smooth functions vanishing on a closed embedded submanifold S. Call S coisotropic if bracketing any two members of I gives another member of I.
+**Definition.** A closed embedded submanifold S of a Poisson manifold is coisotropic if its vanishing ideal I, the smooth functions that vanish on S, is closed under the Poisson bracket. This says exactly that I lies inside N, the functions whose bracket with every member of I stays in I.
 
-**Problem.** Let N consist of functions f such that bracketing f with any member of I gives a member of I. For coisotropic S, multiplication and the bracket are well defined on N modulo I.
+**Problem.** Let N consist of the functions f whose bracket with every member of I lies in I. For coisotropic S, multiplication and the Poisson bracket are well defined on N modulo I.
 
-**How the definition helps.** Defining coisotropy by vanishing functions gives exactly the inclusion I ⊆ N needed to take the quotient. In our own proof, the Jacobi identity closes N under brackets, and the product rule closes it under multiplication. Adding a member of I to a representative changes either result only by a member of I. The geometric work lies in the quoted equivalence with the tangent-space test for coisotropy.
+**How the definition helps.** Coisotropy gives I ⊆ N, so the quotient N/I makes sense (our own proof). The Jacobi identity closes N under brackets, and the product rule closes it under products and makes I an ideal of N for both operations. So changing a representative by a member of I changes each result only by a member of I.
 
 **nLab:** [coisotropic submanifold](https://ncatlab.org/nlab/show/coisotropic+submanifold). It says: “S ↪︎ X is coisotropic if the subalgebra of C∞(X) consisting of functions vanishing on S is closed under the Poisson bracket.”
 
@@ -3941,15 +3941,15 @@
 
 ### Scalar curvature permits Floer differentials
 
-**Remember:** Scalar curvature commutes with every Floer cochain.
+**Remember:** Curvature that is a multiple of the unit cancels itself.
 
 *True by definition.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D37. arXiv math.SG. Level 4: research.
 
-**Definition.** Fix a complete filtered strictly unital Fukaya algebra. A weak bounding cochain is a positive-filtration degree-one element b satisfying ∑ₖ≥₀ mₖ(b,…,b) = W·1 for some scalar W. Here 1 is the strict unit and the k = 0 term is the original curvature.
+**Definition.** In a complete filtered strictly unital Fukaya algebra, a weak bounding cochain is a degree-one element b of positive filtration whose total curvature is a scalar multiple of the unit: ∑ₖ≥₀ mₖ(b,…,b) = W·1. The k = 0 term is the original curvature m₀.
 
 **Problem.** In a complete filtered, strictly unital Fukaya algebra, twisting by a weak bounding cochain makes the one-input operation square to zero.
 
-**How the definition helps.** Scalar curvature removes the obstruction to squaring to zero (our own). The one-input algebra relation expresses the square as the signed difference of left and right multiplication by curvature (our own). For a scalar unit these terms cancel (our own). Constructing the disk operations and proving their relations requires separate work (our own).
+**How the definition helps.** Twisting by b makes the curvature W·1 (our own). The A∞ relation makes the square of the twisted m₁ a signed difference of m₂ with the curvature on the left and right (our own). The strict unit makes these two terms cancel, so the square is zero (our own).
 
 **Paper or page:** [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1). It says: “if $D\\in \\operatorname{MC} ^B(L)$ then $(m<sup>1<sub>B</sup>,D</sub>)<sup>2=0$</sup>”
 
@@ -3959,15 +3959,15 @@
 
 ### Hypertight forms exclude holomorphic planes
 
-**Remember:** A plane would cap its orbit, so a hypertight form rules it out.
+**Remember:** A plane would cap its orbit, and hypertight orbits have no caps.
 
 *Rules out counterexamples. Confidence: medium.* MSC 53D42 (Symplectic field theory; contact homology). arXiv math.SG. Level 4: research.
 
-**Definition.** A contact form α determines a vector field R by α(R) = 1 and dα(R, ·) = 0. A Reeb orbit is a closed trajectory of R. A contact form is hypertight if no such orbit bounds a continuous disk.
+**Definition.** A contact form α is hypertight if none of its Reeb orbits bounds a continuous disk. A Reeb orbit is a closed trajectory of the vector field R with α(R) = 1 and dα(R, ·) = 0.
 
 **Problem.** Add a positive coordinate r to the contact manifold and use the symplectic form d(rα) on the product. For a hypertight form, this space contains no holomorphic plane approaching a single Reeb orbit at infinity.
 
-**How the definition helps.** Hypertightness forbids a contractible Reeb orbit, which such a plane would produce (our own proof). Project a sufficiently large circle in the plane to the contact manifold. Asymptotic convergence makes the projected loop homotopic to the orbit, and the projected interior fills the loop.
+**How the definition helps.** Such a plane would make its limit orbit bound a disk, which hypertightness forbids (our own proof). Project a large circle of the plane to the contact manifold. The projected loop is homotopic to the orbit, and the projected inner disk fills it.
 
 **Paper or page:** [A contact homotopy type](https://arxiv.org/abs/2511.01821v1). It says: “Suppose (Y, λ) has no contractible Reeb orbits.”
 
@@ -3977,15 +3977,15 @@
 
 ### Minimum spherical area rules out splitting
 
-**Remember:** Two positive areas cannot share a total equal to the least positive area.
+**Remember:** The least positive area cannot split into two positive pieces.
 
 *Rules out counterexamples.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
 
-**Definition.** A spherical homology class is the class represented by a map from a sphere. Choose one whose area, the integral of the symplectic form, is least among all positive spherical areas.
+**Definition.** Choose a homology class A represented by a sphere whose symplectic area is the least positive area of any sphere. So every sphere of positive area has area at least that of A.
 
 **Problem.** Fix a compact symplectic manifold without boundary and a compatible complex structure on its tangent spaces. A limit of holomorphic spheres in a class of least positive spherical area has exactly one nonconstant sphere component.
 
-**How the definition helps.** Every nonconstant component has positive spherical area, hence at least the chosen minimum (our own proof). Areas add to the original positive minimum, so exactly one component is nonconstant. At larger area the maps z ↦ z + t/z illustrate splitting as t tends to zero. Away from zero they approach z, while the scale z = tw gives a second component w ↦ 1/w (our own example).
+**How the definition helps.** Each nonconstant component of the limit has positive area, so its area is at least the minimum (our own proof). The component areas add up to the area of A, so only one component can be nonconstant.
 
 **Paper or page:** [A proof of Gromov's non-squeezing theorem](https://arxiv.org/abs/2412.18462v1). It says: “Let A ∈ Z be a homology class of the minimal positive symplectic area in Z”
 
@@ -3995,15 +3995,15 @@
 
 ### Stable maps keep colliding marks distinct
 
-**Remember:** Put colliding marks on a constant sphere instead of identifying them.
+**Remember:** Colliding marks sprout a constant sphere with three special points.
 
 *Makes the theorem clean to state or prove.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds). arXiv math.SG. Level 4: research.
 
-**Definition.** A stable holomorphic map is a holomorphic map from a marked connected nodal curve, with distinct smooth marked points and a finite automorphism group. Its automorphisms preserve the map and fix each labeled mark. A constant sphere component therefore needs at least three special points, counting marks and node branches.
+**Definition.** A stable holomorphic map is a holomorphic map from a connected nodal curve with distinct smooth marked points. It has only finitely many automorphisms that preserve the map and fix each mark. So every constant sphere component carries at least three special points, counting marks and node branches.
 
 **Problem.** Fix a compact symplectic target without boundary and a compatible complex structure on its tangent spaces. Stable holomorphic maps of fixed genus, homology class, and number of marks form a compact space up to changes of domain coordinates.
 
-**How the definition helps.** Stable domains accommodate collisions of marked points (our own example). When two marks collide on a nonconstant sphere, a constant sphere can carry both marks and the attaching node. Those three points stabilize the new component. Gromov compactness gives subsequential convergence allowing such nodal domains.
+**How the definition helps.** Stability lets colliding marks move onto a new constant sphere instead of becoming equal (our own example). That sphere carries both marks and the attaching node, so it is stable. Gromov compactness gives convergence of subsequences to such nodal stable maps.
 
 **Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “we attach a copy of ℙ¹ (a sphere), called a bubble, to the domain curve at the problematic point.”
 
@@ -4011,15 +4011,15 @@
 
 ### Spinᶜ quantization builds in the metaplectic correction
 
-**Remember:** Quantum states are the index of a Dirac operator.
+**Remember:** Quantum states are the index of the Dirac operator twisted by L.
 
 *True by definition. Confidence: medium.* MSC 53D50 (Geometric quantization), 58J20, 19L10. arXiv math.SG, math-ph. Level 4: research.
 
-**Definition.** Fix a spinᶜ structure on a compact prequantized manifold. Its quantization is the index of the associated spinᶜ Dirac operator twisted by the prequantum line L. The index is the formal difference between the positive and negative harmonic spinor spaces.
+**Definition.** Fix a spinᶜ structure on a compact prequantized manifold. Its quantization is the index of the spinᶜ Dirac operator twisted by the prequantum line L, the formal difference of the positive and negative harmonic spinor spaces.
 
 **Problem.** On a compact Kähler manifold, choose the spinᶜ structure induced by a spin structure √K and use the compatible holomorphic prequantum line L. Quantization then equals the alternating sum of holomorphic cohomology groups of L ⊗ √K, including the metaplectic correction.
 
-**How the definition helps.** For the spin-induced structure, spinors are antiholomorphic forms with coefficients in √K. The twisted Dirac operator is the Dolbeault–Dirac operator for L ⊗ √K. Dolbeault–Hodge theory identifies its graded index with the alternating cohomology sum (our own explanation).
+**How the definition helps.** For the structure from √K, spinors are antiholomorphic forms with values in √K, so the twisted Dirac operator is the Dolbeault–Dirac operator of L ⊗ √K. Hodge theory identifies its index with the alternating sum of the cohomology groups (our own explanation).
 
 **nLab:** [geometric quantization](https://ncatlab.org/nlab/show/geometric+quantization), [geometric quantization by push-forward](https://ncatlab.org/nlab/show/geometric+quantization+by+push-forward). It says: “while from the point of view of the Dirac operator it is just twisting by Lω, since tensoring with the square root line bundle √Ωⁿ,⁰ induces the isomorphism between the antiholomorphic differential form bundle and the actual spinor bundle”
 
@@ -4029,15 +4029,15 @@
 
 ### Spinᶜ quantization lets 'quantization commutes with reduction' be stated in general
 
-**Remember:** Twist the Dirac operator by the prequantum line and take its equivariant index.
+**Remember:** Quantize by an equivariant Dirac index, so no Kähler polarization is needed.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D50 (Geometric quantization), 58J20, 19L10. arXiv math.SG, math-ph. Level 4: research.
 
-**Definition.** For a compact Hamiltonian G-manifold with equivariant prequantum line L, choose an invariant compatible almost complex structure. Its spinᶜ quantization is the equivariant index of the associated spinᶜ Dirac operator twisted by L, a virtual representation of G.
+**Definition.** For a compact Hamiltonian G-manifold with equivariant prequantum line L, the spinᶜ quantization is the equivariant index of the spinᶜ Dirac operator twisted by L, built from an invariant compatible almost complex structure. It is a virtual representation of G, so its invariant part makes sense without a Kähler polarization.
 
 **Problem.** Let a compact connected Lie group act on a compact prequantized Hamiltonian manifold with compatible equivariant prequantum data. If zero is regular and the action there is free, the invariant quantization equals the quantization of the reduced manifold.
 
-**How the definition helps.** The equivariant index defines both quantizations without a Kähler polarization (our own explanation). Taking the multiplicity of the trivial representation gives the invariant part. Meinrenken’s quantization-commutes-with-reduction theorem identifies it with the reduced index.
+**How the definition helps.** Both sides of the theorem are indices, so both are defined without a Kähler polarization (our own explanation). The invariant quantization is the multiplicity of the trivial representation. Meinrenken’s theorem that quantization commutes with reduction identifies it with the index on the reduced manifold.
 
 **nLab:** [Guillemin-Sternberg geometric quantization conjecture](https://ncatlab.org/nlab/show/Guillemin-Sternberg+geometric+quantization+conjecture), [geometric quantization by push-forward](https://ncatlab.org/nlab/show/geometric+quantization+by+push-forward). It says: “For the more powerful and more flexible geometric quantization by push-forward, the corresponding statement is widely known as the Guillemin-Sternberg conjecture.”
 
@@ -4048,15 +4048,15 @@
 
 ### Enveloping algebras quantize polynomial Poisson algebras to order three
 
-**Remember:** Associativity is free; only injectivity of symmetrization needs checking.
+**Remember:** Set commutators to ħ times brackets; associativity comes free.
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 17B63. arXiv math.QA. Level 4: research.
 
-**Definition.** For a polynomial Poisson algebra Sym(V) in characteristic zero, symmetrization σ averages all tensor orderings of each monomial. Its formal enveloping algebra is the completed tensor algebra modulo the closed ideal generated by xy − yx − ħσ({x,y}) for all x,y ∈ V. Symmetrization followed by the quotient gives the comparison map τ.
+**Definition.** The formal enveloping algebra of a polynomial Poisson algebra Sym(V) in characteristic zero is the completed tensor algebra with xy − yx set equal to ħσ({x,y}) for x, y ∈ V. Here σ symmetrizes, averaging all orderings of a monomial, and the algebra quantizes to a given order when σ maps Sym(V) into it injectively to that order.
 
 **Problem.** For every polynomial Poisson algebra, the universal enveloping algebra gives a deformation quantization up to order 3 in ħ (Penkava–Vanhaecke). For linear brackets, and brackets with linear and constant terms, it works to all orders.
 
-**How the definition helps.** The product of U is associative by construction, so the only question is whether τ stays injective. That injectivity is a Poincaré–Birkhoff–Witt type statement, and it always holds to order 3. For linear and affine brackets it holds to all orders, which recovers the Gutt and Moyal products. The work moves into proving the injectivity, which uses the Jacobi identity of the bracket (our own remark).
+**How the definition helps.** The product is associative by construction, so only injectivity of symmetrization, a Poincaré–Birkhoff–Witt statement, needs proof. It always holds to order 3. For linear and affine brackets it holds to all orders, recovering the Gutt and Moyal products.
 
 **nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “Moreover, this is always the case for n = 3, hence for every polynomial Poisson algebra its universal enveloping algebra always provides a deformation quantization of order 3 in ħ.”
 
@@ -4066,15 +4066,15 @@
 
 ### Fedosov's class classifies symplectic star products
 
-**Remember:** Pick any closed series of 2-forms; its class names the star product.
+**Remember:** Closed 2-form series build star products; their classes classify them.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D55 (Deformation quantization, star products). arXiv math.SG, math.QA. Level 4: research.
 
-**Definition.** Fedosov's construction takes a symplectic connection and a formal series Ω = ω + ħΩ₁ + ħ²Ω₂ + ⋯ of closed 2-forms. It builds a flat connection on the bundle of fibrewise Moyal algebras whose Weyl curvature is Ω, and its flat sections give a star product. The Fedosov class of this star product is \[Ω\]/ħ, an element of \[ω\]/ħ + H²(M)\[\[ħ\]\].
+**Definition.** Fedosov's construction turns a symplectic connection and any formal series Ω = ω + ħΩ₁ + ħ²Ω₂ + ⋯ of closed 2-forms into a star product, through a flat connection on the bundle of fibrewise Moyal algebras with Weyl curvature Ω. The Fedosov class of that product is \[Ω\]/ħ, an element of \[ω\]/ħ + H²(M)\[\[ħ\]\].
 
 **Problem.** Every differential star product on a symplectic manifold is equivalent to a Fedosov product. Two Fedosov products are equivalent exactly when their classes agree, giving the parameter space \[ω\]/ħ + H²(M)\[\[ħ\]\] in the stated convention.
 
-**How the definition helps.** Fedosov's construction takes Ω as free input, so every class in \[ω\]/ħ + H²(M)\[\[ħ\]\] comes from some star product. Fedosov showed that cohomologous choices of Ω give equivalent star products. The hard direction is the converse, together with the claim that every star product is equivalent to a Fedosov one. Nest–Tsygan, Deligne and Bertelson–Cahen–Gutt proved these (the classification statement is our own summary).
+**How the definition helps.** Ω is free input, so every class occurs, and Fedosov showed that cohomologous choices of Ω give equivalent products. The converse, and the claim that every differential star product is equivalent to a Fedosov one, are due to Nest–Tsygan, Deligne and Bertelson–Cahen–Gutt (the classification statement is our own summary).
 
 **nLab:** [Fedosov's deformation quantization](https://ncatlab.org/nlab/show/Fedosov%27s+deformation+quantization). It says: “Such ∇<sub>Fed</sub> exists, (non-uniquely), it is called a Fedosov connection.”
 
@@ -4086,15 +4086,15 @@
 
 ### Flat Weyl lifts give associativity
 
-**Remember:** Lift, multiply, and project without losing associativity.
+**Remember:** Lift to flat sections, multiply there, and read off at zero.
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products), 81S10. arXiv math-ph. Level 4: research.
 
-**Definition.** Fix a Fedosov connection on the formal Weyl algebra bundle of a symplectic manifold. Lift each formal smooth function uniquely to a flat section with that function as its value at fiber zero. Its Fedosov product with another function is the value at fiber zero of the fiberwise Moyal product of their lifts.
+**Definition.** A Fedosov connection is a flat connection on the formal Weyl algebra bundle of a symplectic manifold that respects the fiberwise Moyal product, so flat sections multiply to flat sections. Each formal function lifts uniquely to a flat section with that value at fiber zero. The Fedosov product of two functions is the value at fiber zero of the Moyal product of their lifts.
 
 **Problem.** The Fedosov product on formal series of smooth functions on a symplectic manifold is associative.
 
-**How the definition helps.** In our own proof, lifting the result recovers the product of the lifts, so associativity follows from pointwise multiplication. This avoids comparing coefficients in the two possible triple products. The work lies in constructing a connection that preserves multiplication and proving existence and uniqueness of lifts.
+**How the definition helps.** Flat sections form an associative algebra under the Moyal product, and lifting identifies it with formal functions, so the transferred product is associative (our own proof). By uniqueness, the lift of a product is the product of the lifts. The work lies in building the connection and proving that lifts exist and are unique.
 
 **Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Then one can define a global star product”
 
@@ -4104,15 +4104,15 @@
 
 ### Formality gives associative star products
 
-**Remember:** Jacobi and associativity each become the Maurer–Cartan equation in the corresponding algebra.
+**Remember:** Jacobi and associativity are one equation; formality carries solutions across.
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 17B55. arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** A Maurer–Cartan element of a differential graded Lie algebra is a degree-one element B satisfying dB + ½\[B,B\] = 0. For shifted polydifferential operators, the bracket is the Gerstenhaber bracket and d brackets with ordinary multiplication. Formal corrections B start at order ħ.
+**Definition.** A Maurer–Cartan element of a differential graded Lie algebra is a degree-one B with dB + ½\[B,B\] = 0. In polyvector fields with the Schouten bracket, this equation for ħπ is the Jacobi identity (our own). In shifted polydifferential operators with the Gerstenhaber bracket, it says that ordinary multiplication plus a correction B of order ħ is associative (our own).
 
 **Problem.** Every finite-dimensional smooth real Poisson manifold admits a star product whose commutator to first order is ħ times its Poisson bracket.
 
-**How the definition helps.** The same equation expresses Jacobi for ħπ and associativity for B, so a map preserving solutions transports the required identity (our own). Kontsevich’s formality theorem supplies such a map, with higher multilinear components correcting ordinary bracket preservation. Applying its Taylor series to ħπ gives B, and its linear component gives the prescribed first-order commutator (our own).
+**How the definition helps.** Kontsevich’s formality theorem gives an L∞ quasi-isomorphism, whose Taylor series carries Maurer–Cartan elements to Maurer–Cartan elements, so ħπ goes to an associative correction B (our own). Its linear component is the standard identification, so the commutator is ħ times the Poisson bracket to first order (our own).
 
 **nLab:** [Kontsevich formality](https://ncatlab.org/nlab/show/Kontsevich+formality). It says: “there is an L-∞-algebra quasi-isomorphism from the dg-Lie algebra of polyvector fields”
 
@@ -4128,11 +4128,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 16E40, 17B55. arXiv math.QA, math.KT. Level 4: research.
 
-**Definition.** An L∞ morphism between differential graded Lie algebras is a morphism of their reduced symmetric coalgebras on the shifted spaces commuting with their codifferentials. It is a quasi-isomorphism if its linear component induces an isomorphism on cohomology.
+**Definition.** An L∞ morphism between differential graded Lie algebras is a morphism of their reduced symmetric coalgebras on the shifted spaces that commutes with the codifferentials, so its Taylor series carries Maurer–Cartan elements to Maurer–Cartan elements. It is a quasi-isomorphism if its linear component is an isomorphism on cohomology, and then, after ħ-adic completion, it matches Maurer–Cartan elements up to gauge (our own).
 
 **Problem.** On ℝᵈ, every Poisson structure has a deformation quantization, that is, an associative star product on power series of functions that deforms the usual product. Formal Poisson structures up to equivalence correspond to star products up to equivalence.
 
-**How the definition helps.** After ħ-adic completion, an L∞ quasi-isomorphism identifies Maurer–Cartan solutions modulo gauge (our own explanation). In polyvector fields these encode formal Poisson tensors, while in shifted polydifferential operators they encode differential star products. Kontsevich constructs the required quasi-isomorphism, whose linear term gives the prescribed first-order bracket.
+**How the definition helps.** Maurer–Cartan elements of polyvector fields are formal Poisson tensors, and those of shifted polydifferential operators are differential star products, so a quasi-isomorphism matches them up to equivalence (our own explanation). Kontsevich constructs the required quasi-isomorphism, and its linear term gives the prescribed first-order bracket.
 
 **nLab:** [Kontsevich formality](https://ncatlab.org/nlab/show/Kontsevich+formality). It says: “The formality theorem (Kontsevich 97) states that there is an L-∞-algebra quasi-isomorphism from the dg-Lie algebra of polyvector fields (with zero differential and Schouten-Nijenhuis bracket) to the dg-Lie algebra of the shifted Hochschild cochain complex”
 
@@ -4142,15 +4142,15 @@
 
 ### Maurer–Cartan moduli classify star products
 
-**Remember:** Equivalent algebras have the same Maurer–Cartan moduli, so quantizations match Poisson structures.
+**Remember:** Quasi-isomorphic algebras share Maurer–Cartan moduli, so quantizations match Poisson structures.
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 17B55. arXiv math.QA. Level 4: research.
 
-**Definition.** In a differential graded Lie algebra completed in positive powers of ħ, a Maurer–Cartan element is a degree-one x satisfying dx + ½\[x,x\] = 0. Its moduli set consists of solutions modulo the gauge action of exponentials of degree-zero elements in positive powers of ħ.
+**Definition.** In a differential graded Lie algebra completed in positive powers of ħ, the Maurer–Cartan moduli set consists of the degree-one solutions x of dx + ½\[x,x\] = 0, taken modulo gauge by exponentials of degree-zero elements in positive powers of ħ.
 
 **Problem.** On every smooth real manifold, differential star products up to differential equivalence correspond bijectively to formal Poisson structures modulo formal diffeomorphisms starting with the identity.
 
-**How the definition helps.** Both classifications become sets of Maurer–Cartan solutions modulo gauge (our own explanation). For shifted polydifferential operators these solutions are associative deformations, and for polyvector fields they are formal Poisson tensors. Kontsevich’s formality theorem and invariance of Maurer–Cartan moduli under filtered quasi-isomorphisms give the bijection.
+**How the definition helps.** In shifted polydifferential operators the moduli set is differential star products up to equivalence, and in polyvector fields it is formal Poisson structures up to formal diffeomorphism (our own explanation). Kontsevich’s formality theorem gives a filtered quasi-isomorphism, and such maps preserve Maurer–Cartan moduli.
 
 **nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “If L₁ is quasi-isomorphic to L₂ then there is a solution to the M-C equation in L₁ iff there is a solution to the M-C equation in L₂.”
 
@@ -4160,15 +4160,15 @@
 
 ### Mixed resolutions quantize Poisson deformations of varieties
 
-**Remember:** Resolve first, then the local formality map glues.
+**Remember:** Resolve first, and then the local formality maps glue.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 53D55 (Deformation quantization, star products), 14D15, 14A22. arXiv math.AG, math.QA. Level 4: research.
 
-**Definition.** Choose an affine cover of a smooth variety. The mixed resolution of a quasi-coherent sheaf is the Thom–Sullivan totalization of its Čech cosimplicial jet de Rham resolution. The jet resolution uses principal parts with their Grothendieck connection.
+**Definition.** Given an affine cover of a smooth variety, the mixed resolution of a quasi-coherent sheaf is one differential graded object that holds its local jets together with their overlap data. Precisely, it is the Thom–Sullivan totalization of the Čech cosimplicial jet de Rham resolution, built from principal parts with the Grothendieck connection.
 
 **Problem.** If H¹(X, 𝒪X) and H²(X, 𝒪X) vanish, there is a canonical bijection between isomorphism classes of Poisson deformations of 𝒪X and of associative deformations of 𝒪X. The bijection preserves first-order brackets.
 
-**How the definition helps.** Mixed resolutions encode overlap data while retaining the differential graded Lie structures needed for global formality (our own explanation). Yekutieli’s twisted quantization theorem identifies the two twisted deformation classifications and preserves first-order brackets. The stated cohomology vanishings identify their classes with ordinary deformation classes.
+**How the definition helps.** Mixed resolutions let the local formality maps glue into one global map between twisted deformation classifications (our own explanation). Yekutieli’s twisted quantization theorem gives this bijection and preserves first-order brackets. The vanishing of H¹ and H² of 𝒪X removes the twisting.
 
 **nLab:** [formal deformation quantization](https://ncatlab.org/nlab/show/formal+deformation+quantization). It says: “Trying to replicate the global formality theorem of Kontsevich, one would like to upgrade this to an L∞ quasi-isomorphism. However, it seems that in general this cannot be done directly, but only after a suitable resolution.”
 
@@ -4180,15 +4180,15 @@
 
 ### Tangential products descend to constraints
 
-**Remember:** Two-sided vanishing ideals make extensions irrelevant.
+**Remember:** Vanishing series form a two-sided ideal, so restriction respects the product.
 
 *Rules out counterexamples.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA. Level 4: research.
 
-**Definition.** A star product is an associative formal deformation of ordinary multiplication of smooth functions. It is tangential to a submanifold when formal series vanishing there form a two-sided ideal. Thus multiplying such a series on either side still gives a series vanishing there.
+**Definition.** A star product, an associative formal deformation of the product of smooth functions, is tangential to a submanifold if the formal series vanishing there form a two-sided ideal. So multiplying a vanishing series on either side by any series still gives a series that vanishes there.
 
 **Problem.** A tangential star product induces an associative product on the quotient by the vanishing ideal. For a closed embedded submanifold this quotient consists of formal smooth functions on that submanifold.
 
-**How the definition helps.** The ideal condition makes restriction independent of the extensions chosen for both factors, so associativity passes to the quotient (our own). The cited lemma proves this condition for a particular Gutt star product. On the symplectic plane, the Moyal product satisfies q ⋆ p − p ⋆ q = iħ (our own). Restricting to q = 0 kills q but preserves iħ, so this product cannot descend (our own).
+**How the definition helps.** The ideal makes the product of restrictions independent of the chosen extensions, so the product and its associativity pass to the quotient (our own). The Moyal product on the plane is not tangential to q = 0: q vanishes there, but q ⋆ p − p ⋆ q = iħ does not (our own).
 
 **Paper or page:** [Characteristic (Fedosov-)class of a twist constructed by Drinfel'd](https://arxiv.org/abs/1903.06416v1). It says: “The Gutt-star product of 𝔥 is tangential”
 
@@ -4202,11 +4202,11 @@
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products), 53D50. arXiv math.SG. Level 4: research.
 
-**Definition.** On a compact prequantized Kähler manifold, Tₖ(f) multiplies holomorphic sections of the kth line bundle power by f, then projects orthogonally back. For smooth f,g, the coefficients Cⱼ satisfy ‖Tₖ(f)Tₖ(g) − ∑₀≤ⱼ&lt;ᴺ k⁻ʲTₖ(Cⱼ(f,g))‖ = O(k⁻ᴺ) as k → ∞ for every integer N ≥ 1.
+**Definition.** On a compact prequantized Kähler manifold, the Toeplitz operator Tₖ(f) multiplies holomorphic sections of the kth power of the line bundle by f and projects back orthogonally. The coefficients Cⱼ(f,g) expand the operator product: for every N ≥ 1, ‖Tₖ(f)Tₖ(g) − ∑₀≤ⱼ&lt;ᴺ k⁻ʲTₖ(Cⱼ(f,g))‖ = O(k⁻ᴺ) as k → ∞.
 
 **Problem.** The coefficients Cⱼ are unique, and the formal product they define is associative (Bordemann–Meinrenken–Schlichenmaier, Schlichenmaier).
 
-**How the definition helps.** Operator associativity gives two expansions of the same triple product (our own). Since ‖Tₖ(f)‖ tends to ‖f‖∞, the first differing coefficient would have positive limiting norm after rescaling (our own). Thus coefficients are unique and the two formal triple products agree (our own). The Berezin–Toeplitz expansion theorem supplies the expansion (our own).
+**How the definition helps.** Composition of operators is associative, so the two bracketings of a triple product give two expansions of one operator (our own). Since ‖Tₖ(f)‖ tends to the supremum of \|f\|, such an expansion has unique coefficients, so the two formal triple products agree (our own). The Berezin–Toeplitz expansion theorem supplies the expansion (our own).
 
 **Paper or page:** [Strict Quantization for Compact Pseudo-Kähler Manifolds and Group Actions](https://arxiv.org/abs/2410.03322), [Strict Quantization for Compact Pseudo-Kähler Manifolds and Group Actions](https://arxiv.org/abs/2410.03322). It says: “There exists a unique formal star-product of Wick type f⋆g := Σ νʲ Cⱼ(f, g), Cⱼ(f, g) lies in C∞(M<sub>G</sub>)”
 
@@ -4216,15 +4216,15 @@
 
 ### Twist identities give associative products
 
-**Remember:** A twist compares the two ways to multiply three inputs.
+**Remember:** The twist makes both bracketings of a triple product apply one element.
 
 *True by definition.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** Let A be a unital H-module algebra for a bialgebra H with coproduct Δ and counit ε. A normalized twist is invertible F ∈ H⊗H satisfying (Δ⊗id)(F)(F⊗1) = (id⊗Δ)(F)(1⊗F) and (ε⊗id)(F) = (id⊗ε)(F) = 1. For a,b ∈ A, define a ⋆ b by applying F to a⊗b and multiplying.
+**Definition.** For a bialgebra H with coproduct Δ and counit ε, a twist is an invertible F ∈ H⊗H that makes the two ways of splitting into three factors agree: (Δ⊗id)(F)(F⊗1) = (id⊗Δ)(F)(1⊗F). It is normalized if (ε⊗id)(F) = (id⊗ε)(F) = 1, and on a unital H-module algebra A it defines a ⋆ b by applying F to a⊗b and multiplying.
 
 **Problem.** For any such action and twist, ⋆ is associative and has the original unit of A.
 
-**How the definition helps.** The twist equation identifies both triple products before evaluating them on individual algebra elements (our own). The counit equations preserve the unit (our own). Finding a twist for a prescribed product is a separate problem (our own).
+**How the definition helps.** The twist equation says that both bracketings of a triple product apply the same element of H⊗H⊗H before multiplying, so they agree (our own). The counit equations keep the original unit (our own).
 
 **Paper or page:** [Hopf Algebroid Twists for Deformation Quantization of Linear Poisson Structures](https://arxiv.org/abs/1605.01376v4). It says: “defines an associative 𝐤-algebra A⋆ = (A, ⋆) structure on A with the same unit”
 
@@ -4234,15 +4234,15 @@
 
 ### Wick products simplify holomorphic multiplication
 
-**Remember:** Put a holomorphic factor second to kill every correction.
+**Remember:** Holomorphic second factors and antiholomorphic first factors see no corrections.
 
 *Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products). arXiv math-ph. Level 4: research.
 
-**Definition.** A Sasakian manifold has a distinguished flow, called the Reeb flow, with complex coordinate directions transverse to it. In the cited construction, a quantum observable is a formal function killed by its operator Δ. Wick separation means each positive-order correction differentiates the first factor in holomorphic directions and the second in antiholomorphic directions.
+**Definition.** A Sasakian manifold has a Reeb flow with complex directions transverse to it, and the cited construction calls a formal function a quantum observable when its operator Δ kills it. A star product of observables has Wick separation if each positive-order correction differentiates the first factor only in holomorphic directions and the second only in antiholomorphic directions.
 
-**Problem.** On any open domain, a Reeb-invariant transversely holomorphic function a is a quantum observable. Every quantum observable c satisfies c ⋆ a = ca. For a Reeb-invariant transversely antiholomorphic function a, the same theorem gives a ⋆ c = ac.
+**Problem.** On any open domain, Reeb-invariant transversely holomorphic functions a are quantum observables, and every quantum observable c satisfies c ⋆ a = ca. For Reeb-invariant transversely antiholomorphic a, likewise a ⋆ c = ac.
 
-**How the definition helps.** Wick separation kills every correction when the second factor is transversely holomorphic or the first is transversely antiholomorphic (our own). The cited Sasakian Wick theorem also supplies the separate assertion that Δ annihilates the indicated Reeb-invariant functions (our own).
+**How the definition helps.** A correction then vanishes when the second factor is transversely holomorphic or the first is transversely antiholomorphic (our own). The cited Sasakian Wick theorem also shows that Δ kills the Reeb-invariant functions of each kind (our own).
 
 **Paper or page:** [Wick-type deformation quantization of contact metric manifolds](https://arxiv.org/abs/2311.12767v1). It says: “Moreover, the Wick property holds”
 
@@ -4256,11 +4256,11 @@
 
 *Rules out counterexamples.* MSC 53E10 (Flows related to mean curvature), 49Q20. arXiv math.DG, math.AP. Level 4: research.
 
-**Definition.** A closed hypersurface bounding a region is outer-minimizing if every enclosing competitor has at least its area.
+**Definition.** A closed hypersurface bounding a region is outer-minimizing if every surface enclosing that region has at least its area. So its least-area enclosure, where the weak inverse mean curvature flow starts, has the same area as the surface (our own).
 
 **Problem.** In hyperbolic space ℍⁿ, weak inverse mean curvature flow from an outer-minimizing initial surface satisfies \|Σₜ\| = eᵗ\|Σ₀\|.
 
-**How the definition helps.** Outer minimization makes the initial region and its minimizing hull have equal perimeter (our own). The Huisken–Ilmanen weak area growth formula then gives eᵗ times that initial perimeter (our own). A surface with a smaller enclosing competitor loses perimeter on passage to its minimizing hull (our own).
+**How the definition helps.** The weak flow starts from the least-area enclosure, and the Huisken–Ilmanen formula makes area grow by the factor eᵗ from there (our own). Outer minimization makes that starting area \|Σ₀\|. Otherwise the flow first jumps to a smaller enclosure, and the area is eᵗ times a number below \|Σ₀\| (our own).
 
 **Paper or page:** [On weak inverse mean curvature flow and Minkowski-type inequalities in hyperbolic space](https://arxiv.org/abs/2404.08410). It says: “If Σ₀ is outer-minimizing, then the area of Σₜ is given by \|Σₜ\|=eᵗ\|Σ₀\|.”
 

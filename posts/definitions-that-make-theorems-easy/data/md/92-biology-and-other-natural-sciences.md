@@ -1,14 +1,14 @@
 ### Clock trees give ultrametric distances
 
-**Remember:** Equal tip heights force the two largest distances in every triple to tie.
+**Remember:** Equal tip heights make the two largest triple distances tie.
 
 *Rules out counterexamples.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Use a rooted tree with the same total length from its root to every tip. This models a strict evolutionary clock for tips sampled at the same time. Allowing unequal root-to-tip lengths gives an ordinary weighted tree instead.
+**Definition.** A clock tree is a rooted tree with the same total length from the root to every tip, as under a strict evolutionary clock with tips sampled at one time. So the distance between two tips is twice the height of their most recent common ancestor above the tips (our own).
 
 **Problem.** For any three tips of a clock tree with positive edge lengths, the largest two pair distances are equal. Its tip distances are therefore an ultrametric.
 
-**How the definition helps.** Equal tip heights make each pair distance twice the height difference from its most recent common ancestor (our own). Among three tips, at least two pairs have the same oldest common ancestor, so their distances tie for largest (our own). This tie gives the ultrametric inequality, which bounds each distance by the larger of the other two (our own). A three-tip star with edge lengths 1, 2 and 3 instead gives distances 3, 4 and 5 (our own).
+**How the definition helps.** Among three tips, two pairs share the oldest common ancestor, so their distances tie for largest (our own). This tie is the ultrametric inequality: each distance is at most the larger of the other two (our own). A three-tip star with edge lengths 1, 2 and 3 gives distances 3, 4 and 5 instead (our own).
 
 **Paper or page:** [Hit and Run Sampling from Tropically Convex Sets](https://arxiv.org/abs/2209.15045v1). It says: “Then, u is an ultrametric if and only if T is an equidistant tree.”
 
@@ -18,15 +18,15 @@
 
 ### Fitch sets count minimum changes
 
-**Remember:** Intersect sets when you can and charge one change when you must unite them.
+**Remember:** Keep every cheapest state, then intersect for free or unite for one.
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE, q-bio.QM. Level 2: later undergraduate.
 
-**Definition.** Consider a rooted binary ancestry tree with known states at its leaves. Charge one whenever the states at the ends of an edge differ. For each vertex, keep every state it can take in an assignment minimizing the total charge within its subtree.
+**Definition.** On a rooted binary tree with known leaf states, the Fitch set of a vertex holds every state it can take in an assignment with the fewest changes within its subtree. So a parent state in a child’s set adds nothing for that child, and any other parent state adds exactly one change, on the joining edge (our own).
 
 **Problem.** Starting at the leaves, use the intersection of the two child sets whenever it contains a state. Otherwise use their union and count one change. The total count is the smallest possible number of changes on the tree.
 
-**How the definition helps.** Keeping every minimizing state tells the parent exactly when it can join both subtrees without paying for another change (our own). A parent state in a child’s set allows that subtree’s minimum cost (our own). Any other state costs exactly one extra because the joining edge can carry the change (our own). These two possibilities prove the recursion and explain why choosing one minimizing state early can overcount (our own).
+**How the definition helps.** The parent’s cheapest states are those in both child sets, at no extra charge, if any exist; otherwise every state in either set costs exactly one change (our own). This is the intersection-or-union rule, applied from the leaves to the root (our own). Keeping a single minimizing state instead of the whole set can overcount (our own).
 
 **Wikipedia:** [Ancestral reconstruction](https://en.wikipedia.org/wiki/Ancestral_reconstruction). It says: “if the intersection is the empty set, then it is the set union.”
 
@@ -36,15 +36,15 @@
 
 ### Split counts give a tree metric
 
-**Remember:** Each split on which two trees disagree must change in at least one comparison.
+**Remember:** Count the edge splits that only one tree has.
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** For two unrooted evolutionary trees on the same labeled tips, list the partitions of tips obtained by cutting individual edges. Their Robinson–Foulds distance is the number of partitions present in exactly one list.
+**Definition.** For two unrooted evolutionary trees on the same labeled tips, list each tree’s splits, the two-part partitions of the tips made by cutting one edge. The Robinson–Foulds distance is the number of splits that appear in exactly one list.
 
 **Problem.** This distance is a metric on unweighted trees with the same labeled tips and no degree-two internal nodes. Identify trees when an isomorphism preserves their tip labels.
 
-**How the definition helps.** Counting differing partitions turns tree distance into the number of unequal entries in two binary lists (our own). Each disagreement between the first and last trees must appear in at least one comparison through an intermediate tree (our own). This gives the triangle inequality (our own). Proving that distance zero identifies the trees requires the theorem that the partitions determine the tree (our own).
+**How the definition helps.** Each tree becomes a 0–1 list over all possible splits, and the distance counts unequal entries, so the triangle inequality holds as for Hamming distance (our own). Distance zero identifies the trees by the theorem that a tree’s splits determine it (our own).
 
 **Wikipedia:** [Robinson–Foulds metric](https://en.wikipedia.org/wiki/Robinson%E2%80%93Foulds_metric). It says: “the number of splits that differ between a pair of trees”
 
@@ -54,15 +54,15 @@
 
 ### Tree splits explain four-point ties
 
-**Remember:** For four tips, only their internal split can make the three sums differ.
+**Remember:** A tip distance adds up every edge that separates the tips.
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Define the distance between two tips of an evolutionary tree by adding the lengths along their connecting path. Equivalently, sum the lengths of all edges whose removal separates those tips.
+**Definition.** The distance between two tips of an evolutionary tree is the total length of the edges on their path, that is, of the edges whose removal separates the two tips.
 
 **Problem.** For four distinct tips, sum the two distances in each of the three possible pairings. The largest sum occurs at least twice in any tree with nonnegative edge lengths.
 
-**How the definition helps.** Count each edge’s contribution to the three sums (our own). Edges separating one tip from three contribute equally, and edges separating none contribute zero (our own). All two-against-two edges induce the same split because tree edge splits are compatible (our own). Each adds twice its nonnegative length to both crossing pairings, so those sums tie for largest (our own).
+**How the definition helps.** Each pairing sum counts every edge once for each of its pairs that the edge separates (our own). An edge cutting off one tip adds its length to all three sums, and all edges splitting two tips from two induce the same split, since tree splits are compatible (our own). Those edges add twice their length to the two crossing pairings and nothing to the third, so the crossing sums tie for largest (our own).
 
 **Paper or page:** [Tropical Grassmannian and Tropical Linear Varieties from phylogenetic trees](https://arxiv.org/abs/1312.0752v2). It says: “the maximum of three number is achieved at least twice D({i,j}) + D({k,l}), D({i,k}) + D({j,l}) and D({i,l}) + D({j,k}).”
 
@@ -72,15 +72,15 @@
 
 ### Single-neuron updates prevent Hopfield cycles
 
-**Remember:** Update one neuron at a time so each actual flip lowers the energy.
+**Remember:** Move one neuron at a time, and every flip lowers energy.
 
 *Rules out counterexamples.* MSC 92B20 (Neural networks for/in biological studies, artificial life and related topics). arXiv q-bio.NC. Level 2: later undergraduate.
 
-**Definition.** A finite Hopfield network has states ±1, symmetric connection weights and no self-connections. Update one neuron at a time to the sign of its weighted input, keeping its state at zero input. Visit every neuron infinitely often.
+**Definition.** In a finite Hopfield network with states ±1, symmetric weights and no self-connections, update one neuron at a time to the sign of its weighted input, keeping its state at zero input, and visit every neuron infinitely often. Because weights are symmetric and only one neuron moves, each flip lowers the energy, minus the sum over pairs of weight times the product of states (our own).
 
 **Problem.** Every such update run eventually reaches a fixed state.
 
-**How the definition helps.** Take energy to be minus the sum over undirected edges of weight times the product of endpoint states (our own). Its change equals minus the updated neuron's input times its state change, so every flip strictly decreases energy (our own). Finiteness allows only finitely many flips, and repeated visits then imply stability (our own). Under simultaneous updates, two positively coupled neurons starting in opposite states swap forever (our own).
+**How the definition helps.** A flip changes the energy by minus the neuron’s input times its state change, which is negative, so only finitely many flips occur (our own). After the last flip, repeated visits show that every neuron agrees with its input, so the state is fixed (our own). Under simultaneous updates, two positively coupled neurons in opposite states swap forever (our own).
 
 **Wikipedia:** [Hopfield network](https://en.wikipedia.org/wiki/Hopfield_network). It says: “The constraint that weights are symmetric guarantees that the energy function decreases monotonically while following the activation rules.”
 
@@ -91,15 +91,15 @@
 
 ### Crossover distances add across intervals
 
-**Remember:** Count crossovers rather than just the pairs they switch.
+**Remember:** Count every crossover, not just whether the markers switched.
 
 *True by definition.* MSC 92D10 (Genetics and epigenetics). arXiv q-bio.GN, q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** A crossover exchanges chromosome segments during the formation of a reproductive cell. Measure genetic distance in morgans by the expected number of crossovers on the transmitted chromosome between two markers. The recombination fraction instead counts the probability that the two markers come from different parental chromosomes.
+**Definition.** Genetic distance in morgans is the expected number of crossovers, exchanges of segments between paired chromosomes, between two markers on a transmitted chromosome. It counts crossovers, not merely whether the two markers come from different parental chromosomes, which is the recombination fraction.
 
 **Problem.** Genetic distances add across adjacent intervals. If the crossover count has a Poisson distribution with mean d, the recombination fraction equals (1 − exp(−2d))/2.
 
-**How the definition helps.** Adjacent crossover counts add on each transmitted chromosome, so their expectations add without any independence assumption (our own). Only an odd count switches the marker pairing (our own). For a Poisson count N of mean d, E\[(−1)ᴺ\] = exp(−2d) equals one minus twice the odd-count probability (our own).
+**How the definition helps.** Crossover counts on adjacent intervals add on each chromosome, so their expectations add without any independence assumption (our own). The markers switch parental chromosomes only for an odd count, and for a Poisson count N with mean d, E\[(−1)ᴺ\] = exp(−2d) equals one minus twice the odd-count probability (our own).
 
 **Wikipedia:** [Centimorgan](https://en.wikipedia.org/wiki/Centimorgan). It says: “the distance in centimorgans does not correspond exactly to the probability of genetic recombination.”
 
@@ -111,11 +111,11 @@
 
 *True by definition.* MSC 92D10 (Genetics and epigenetics). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Choose one genetic variant at each of two positions on a chromosome. Subtract the product of their separate frequencies from the frequency of chromosomes carrying both. This difference D measures linkage disequilibrium.
+**Definition.** Linkage disequilibrium D is the frequency of chromosomes carrying both chosen variants at two positions, minus the product of the two variants’ separate frequencies. It measures the excess over independent pairing.
 
-**Problem.** In a deterministic random-mating model, D becomes (1 − c)D each generation. Here c is the fixed fraction of reproductive cells in which recombination separates the two positions. Assume no selection, mutation or migration.
+**Problem.** In a deterministic random-mating model with no selection, mutation or migration, D becomes (1 − c)D each generation. Here c is the fixed fraction of reproductive cells in which recombination separates the two positions.
 
-**How the definition helps.** Recombination mixes the current joint frequency J with the independent pairing frequency pq (our own). Random mating gives J′ = (1 − c)J + cpq, while the separate frequencies p and q stay fixed (our own). Subtracting pq gives D′ = (1 − c)D (our own).
+**How the definition helps.** Each generation, recombinant chromosomes carry both variants with the independent frequency pq, and the others keep the joint frequency J (our own). So J′ = (1 − c)J + cpq while p and q stay fixed, and subtracting pq gives D′ = (1 − c)D (our own).
 
 **Wikipedia:** [Linkage disequilibrium](https://en.wikipedia.org/wiki/Linkage_disequilibrium). It says: “recombination is expected to decrease the value of D in each generation by a factor (1 - c)”
 
@@ -127,11 +127,11 @@
 
 *True by definition.* MSC 92D15 (Problems related to evolution). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Assign each descendant to one ancestor and assume at least one descendant exists. Define each ancestor’s relative fitness as its descendant count divided by the mean count per ancestor.
+**Definition.** Assign each descendant to one ancestor, and assume at least one descendant exists. An ancestor’s relative fitness is its descendant count divided by the mean count per ancestor, so relative fitnesses average to one (our own).
 
-**Problem.** The change in mean trait equals the covariance of relative fitness with ancestral trait, plus a transmission term. The transmission term averages, over ancestors, relative fitness times the change from the ancestor's trait to its descendants' mean trait. Both averages weight ancestors equally, and childless ancestors add zero.
+**Problem.** The change in mean trait equals the covariance of relative fitness with ancestral trait, plus the average of relative fitness times the change from each ancestor’s trait to its descendants’ mean trait. Both averages weight ancestors equally, and childless ancestors add zero.
 
-**How the definition helps.** Using relative fitness gives weights with mean one, so reweighting ancestral traits adds exactly a covariance (our own). Add and subtract this reweighted ancestral mean when comparing the two generations (our own). The remaining difference measures change within families (our own). Predicting either term still requires a model of reproduction and transmission (our own).
+**How the definition helps.** Because relative fitness has mean one, the fitness-weighted ancestral mean differs from the plain mean by exactly the covariance (our own). Adding and subtracting this weighted mean splits the change into that covariance and the change within families (our own). Predicting either term still needs a model of reproduction and transmission (our own).
 
 **Wikipedia:** [Price equation](https://en.wikipedia.org/wiki/Price_equation). It says: “The equation uses a covariance between a characteristic and fitness, to give a mathematical description of evolution and natural selection.”
 
@@ -145,11 +145,11 @@
 
 *True by definition.* MSC 92D25 (Population dynamics (general)). arXiv math.DS, q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Use the logarithm of each population size as its coordinate. Assume each species’ per capita growth rate is a constant plus a sum of multiples of the other population sizes.
+**Definition.** Use the logarithm of each population size as its coordinate, where each species’ per capita growth rate is a constant plus multiples of the other species’ sizes, with no term in its own size. Then the velocity of each log coordinate is that growth rate, which does not depend on the coordinate itself (our own).
 
 **Problem.** The flow preserves ordinary volume in log coordinates wherever the solutions exist and stay positive.
 
-**How the definition helps.** Logarithms turn each per capita growth rate into a velocity independent of its own coordinate (our own). The diagonal derivatives therefore vanish, so the velocity has zero divergence (our own). The flow volume theorem then gives preservation of ordinary volume in log coordinates (our own). In population coordinates, the same volume weights each region by the reciprocal product of its population sizes (our own).
+**How the definition helps.** Each velocity component ignores its own coordinate, so the divergence is zero and Liouville’s theorem gives preservation of volume in log coordinates (our own). In population coordinates, the same volume weights each region by the reciprocal product of the population sizes (our own).
 
 **Paper or page:** [On a quadratic Poisson algebra and integrable Lotka-Volterra systems with solutions in terms of Lambert's W function](https://arxiv.org/abs/2408.14720v2). It says: “with aᵢᵢ = 0 are measure preserving with density M = (∏ᵢ₌₁ⁿ xᵢ)⁻¹.”
 
@@ -159,15 +159,15 @@
 
 ### Reproductive value gives exact growth
 
-**Remember:** Weight ages by what they contribute to future growth.
+**Remember:** Weight each age by its future offspring, and growth becomes exact.
 
 *True by definition.* MSC 92D25 (Population dynamics (general)). arXiv q-bio.PE, math.DS. Level 2: later undergraduate.
 
-**Definition.** Use a fixed age projection matrix to move the age counts forward one step. Weight each age by the corresponding entry of a positive left eigenvector for the dominant eigenvalue. This weighted count uses reproductive values instead of counting every age equally.
+**Definition.** The reproductive values of an age projection matrix A are the entries of a positive left eigenvector w for its dominant eigenvalue λ, so wA = λw (our own). The weighted population total adds each age count times its reproductive value.
 
 **Problem.** For a primitive age projection matrix, the weighted total grows by its dominant eigenvalue every step, from any starting age distribution. Primitive means that some power of the matrix has strictly positive entries.
 
-**How the definition helps.** The eigenvector weights turn the age update into multiplication of one total by one factor (our own). For a row of weights w and projection matrix A, the left eigenvector equation gives wA = λw (our own). The Perron–Frobenius theorem supplies positive weights, and the age model relates them to discounted future offspring (our own). For a nonzero initial population, the ordinary head count’s growth factor generally approaches λ only in the limit (our own).
+**How the definition helps.** Since wA = λw, one step multiplies the weighted total by exactly λ, from any starting age counts (our own). The Perron–Frobenius theorem supplies the positive w for a primitive matrix, and the age model ties it to discounted future offspring (our own). The plain head count’s growth factor generally approaches λ only in the limit (our own).
 
 **Wikipedia:** [Reproductive value (population genetics)](https://en.wikipedia.org/wiki/Reproductive_value_%28population_genetics%29). It says: “he proposed that future offspring be discounted at the rate of growth of the population”
 
@@ -178,15 +178,15 @@
 
 ### Effective reproduction locates infection peaks
 
-**Remember:** Divide transmission per infected individual by recovery per infected individual.
+**Remember:** Infections grow exactly while each case causes more than one.
 
 *True by definition.* MSC 92D30 (Epidemiology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** In the closed SIR model, susceptible and infected fractions satisfy S′ = −βSI and I′ = βSI − γI for constants β,γ &gt; 0. The effective reproduction number R = βS/γ compares the current per-infected transmission rate with the recovery rate.
+**Definition.** In the closed SIR model S′ = −βSI, I′ = βSI − γI with constants β, γ &gt; 0, the effective reproduction number R = βS/γ compares the per-infected transmission rate with the recovery rate. So I′ = γI(R − 1), and infections grow exactly while R &gt; 1 (our own).
 
 **Problem.** If I starts positive and R starts above one, I has a unique peak when R reaches one.
 
-**How the definition helps.** Using R turns the infection equation into the sign test I′ = γI(R − 1) (our own). While R ≥ 1, I stays above its positive starting value and S decreases at rate βSI (our own). Hence S crosses γ/β in finite time and continues decreasing, so growth changes to decline exactly once (our own).
+**How the definition helps.** S only decreases, so R falls through one at most once, and I′ changes sign there from positive to negative (our own). While R ≥ 1, I stays above its positive start, so S decreases at least at the fixed rate γI(0) and reaches γ/β in finite time (our own).
 
 **Paper or page:** [The SIR model of an epidemic](https://arxiv.org/abs/2104.12029). It says: “The peak infection takes place when the effective reproduction number r₀ S = 1.”
 
@@ -218,11 +218,11 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology), 92B15. arXiv q-bio.QM. Level 3: graduate.
 
-**Definition.** At the tips, use the observed traits with variances given by their branches. For child estimates x,y with variances a,b, record (x − y)/√(a+b) and pass their inverse-variance weighted mean upward. For the next comparison, add the intervening branch variance to ab/(a+b).
+**Definition.** Starting at the tips, with each observed trait’s variance given by its branch, standardize each sister difference and pass the pair’s inverse-variance weighted mean upward. For child estimates x, y with variances a, b, record (x − y)/√(a + b), pass up (bx + ay)/(a + b), and give it variance ab/(a + b) plus the variance of the branch above. These weights make each passed-up mean uncorrelated with the difference just recorded (our own).
 
 **Problem.** Suppose changes on separate branches are independent centered Gaussian variables with variance proportional to positive branch length. The standardized differences are independent centered Gaussian variables with variance one.
 
-**How the definition helps.** Inverse-variance weights make the estimate passed upward uncorrelated with the difference just recorded (our own). An ordinary unweighted mean lacks that property when branch variances differ (our own). The difference cancels the common ancestral value, and joint Gaussian variables with zero covariance are independent (our own). Updating the variance then lets the same argument apply at each parent (our own).
+**How the definition helps.** Each difference cancels the common ancestral value and has zero covariance with the mean passed up, and jointly Gaussian variables with zero covariance are independent (our own). An unweighted mean lacks this property when the variances differ (our own). The updated variance lets the same argument repeat at each parent (our own).
 
 **Wikipedia:** [Phylogenetic comparative methods](https://en.wikipedia.org/wiki/Phylogenetic_comparative_methods). It says: “transform the original tip data (mean values for a set of species) into values that are statistically independent and identically distributed.”
 
@@ -240,7 +240,7 @@
 
 **Problem.** For trains with at most one spike at each integer time from 0 to T, the distance is Lipschitz in q ≥ 0. Its change is at most T(T + 1) ÷ 2 times the absolute change in q.
 
-**How the definition helps.** Each pairing gives an affine cost with slope equal to total displacement (our own). With k pairs, each ordered time differs from its partner by at most T+1−k, since both occupy the same rank (our own). Total displacement is at most k(T+1−k) ≤ T(T+1)/2 for integer T ≥ 1, and vanishes for T = 0 (our own). A minimum of functions with this common Lipschitz bound retains it (our own).
+**How the definition helps.** Each pairing’s cost is affine in q with slope equal to its total displacement, and a minimum of such functions is Lipschitz with the largest slope (our own). With k pairs matched in order, the two times in each pair differ by at most T + 1 − k (our own). So the total displacement is at most k(T + 1 − k) ≤ T(T + 1)/2 (our own).
 
 **Paper or page:** [A Persistent Homology Pipeline for the Analysis of Neural Spike Train Data](https://arxiv.org/abs/2512.08637). It says: “Let 𝖲 and 𝖲′ be two spike trains over the time domain X = {0, 1, 2, …, T}. For any q,q′ ≥ 0, we have \|VP<sub>q</sub>(𝖲, 𝖲′) − VP<sub>q</sub>′(𝖲, 𝖲′)\| ≤ T(T+1)/2 \|q−q′\|”
 
@@ -254,11 +254,11 @@
 
 *True by definition.* MSC 92D10 (Genetics and epigenetics), 92B15. arXiv q-bio.PE, q-bio.GN. Level 3: graduate.
 
-**Definition.** Sample n ≥ 2 gene copies from a single randomly mating population of constant size. Count the sites where at least two copies differ. Watterson’s estimator divides that count by H = 1 + 1/2 + ⋯ + 1/(n − 1).
+**Definition.** Sample n ≥ 2 gene copies from one randomly mating population of constant size, and count the sites where at least two copies differ. Watterson’s estimator divides this count by H = 1 + 1/2 + ⋯ + 1/(n − 1), which adds 1/(k − 1) for each stage of the ancestry with k lines (our own).
 
-**Problem.** Use the standard neutral coalescent, a random ancestry tree where each pair of ancestral lines merges at the same rate. Assume no recombination and random mutations at a constant rate, each at a previously unchanged site. The estimator has expectation θ, the population-scaled mutation rate for the sequence.
+**Problem.** Assume the standard neutral coalescent without recombination, with mutations at a constant rate, each at a new site. Then the estimator has expectation θ, the population-scaled mutation rate for the sequence.
 
-**How the definition helps.** Dividing by H removes the sample-size factor in the expected raw count (our own). With k ancestral lines, the mean waiting time is 2/\[k(k − 1)\] in units where each pair merges at rate one (our own). Multiplying by k and summing gives expected tree length 2H (our own). Each mutation adds one variable site, at rate θ/2 per unit of branch length (our own).
+**How the definition helps.** The expected count is θ/2 times the expected total tree length, measured in units where each pair of lines merges at rate one (our own). A stage with k lines lasts 2/\[k(k − 1)\] on average and so adds 2/(k − 1) to that length (our own). Summing gives θH, so dividing by H leaves θ (our own).
 
 **Wikipedia:** [Watterson estimator](https://en.wikipedia.org/wiki/Watterson_estimator). It says: “When its assumptions are met, the estimator is unbiased”
 
@@ -272,11 +272,11 @@
 
 *Rules out counterexamples.* MSC 92D15 (Problems related to evolution). arXiv q-bio.PE, math.DS. Level 3: graduate.
 
-**Definition.** In a symmetric game, both players use the same payoff rule. A resident strategy is evolutionarily stable if it beats each alternative in a population containing a sufficiently small positive share of that alternative. This requires at least a tie against residents and, in case of a tie, a strict advantage against the alternative.
+**Definition.** A strategy of a symmetric game is evolutionarily stable if it earns more than each alternative in a population with a small enough positive share of that alternative. Equivalently, it does at least as well against itself as any alternative does, and in a tie it does strictly better against the alternative.
 
-**Problem.** In a finite symmetric two-player game, every evolutionarily stable strategy is locally asymptotically stable under replicator dynamics. Each strategy’s share grows at a per capita rate equal to its payoff minus the population mean. Populations starting sufficiently close stay close and converge to the resident.
+**Problem.** Under replicator dynamics, each strategy’s share grows at its payoff minus the mean payoff. Every evolutionarily stable strategy of a finite symmetric two-player game is then locally asymptotically stable.
 
-**How the definition helps.** Evolutionary stability gives the resident a payoff advantage over every distinct sufficiently close population mix (our own). Under replicator dynamics, the derivative of relative entropy from resident to population equals minus that advantage (our own). This strict local Lyapunov function proves attraction and stability (our own). If only mutual B earns one, all-A is Nash but a rare B grows (our own).
+**How the definition helps.** Evolutionary stability gives the resident a strict payoff advantage over every nearby population mix (our own). Under replicator dynamics, relative entropy from the resident to the population then strictly decreases, a local Lyapunov function that proves attraction and stability (our own). If only mutual B earns one, all-A is a Nash equilibrium but a rare B grows (our own).
 
 **Wikipedia:** [Evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy). It says: “the population of players who continue to play strategy S has an advantage when playing against T.”
 
@@ -291,11 +291,11 @@
 
 *Rules out counterexamples.* MSC 92E20 (Classical flows, reactions, etc. in chemistry), 92C42. arXiv q-bio.MN. Level 3: graduate.
 
-**Definition.** Draw each reaction as an arrow between its reactant and product complexes. A network is weakly reversible if every arrow lies on a directed cycle. Its deficiency equals the number of complexes minus the number of undirected components minus the dimension spanned by reaction change vectors.
+**Definition.** A reaction network is weakly reversible if every reaction can be undone by a chain of reactions, that is, every arrow between complexes lies on a directed cycle. Its deficiency is the number of complexes, minus the number of connected components of the reaction graph, minus the dimension spanned by the reaction change vectors.
 
 **Problem.** Suppose each reaction rate equals a positive constant times the product of reactant concentrations raised to their reaction coefficients. Every weakly reversible network of deficiency zero then has a positive equilibrium where incoming and outgoing rates balance at each complex.
 
-**How the definition helps.** A return path excludes complexes that can only lose material in a one-way reaction (our own). For example, A → B has deficiency zero but no equilibrium with A positive (our own). The deficiency-zero theorem proves existence for every choice of positive rate constants (our own).
+**How the definition helps.** A return path excludes complexes that can only lose material through a one-way reaction (our own). For example, A → B has deficiency zero but no equilibrium with A positive (our own). The deficiency-zero theorem proves existence for every choice of positive rate constants (our own).
 
 **Paper or page:** [Advancing Mathematical Epidemiology and Chemical Reaction Network Theory via Synergies Between Them](https://arxiv.org/abs/2411.00488). It says: “𝒩 admits a “complex-balanced” equilibrium, and all its equilibria are complex-balanced.”
 
@@ -305,15 +305,15 @@
 
 ### Any orchard cherry reduction works
 
-**Remember:** In an orchard network, any available cherry reduction keeps the process on track.
+**Remember:** Pick cherries until one leaf remains.
 
 *Makes the theorem clean to state or prove.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 4: research.
 
-**Definition.** In a rooted binary network, delete a cherry leaf sharing its parent with another leaf, or reduce a reticulated cherry. The latter cuts the edge from one leaf’s branching parent to the other’s two-parent vertex. After suppressing unary vertices, including a unary root, a network is orchard if some such sequence reduces it to one leaf.
+**Definition.** A rooted binary network is orchard if some sequence of cherry reductions, suppressing unary vertices including a unary root after each step, shrinks it to one leaf. A reduction either deletes one of two leaves sharing a parent, or cuts the edge from one leaf’s branching parent to the other leaf’s two-parent vertex.
 
 **Problem.** Every maximal sequence of cherry reductions in an orchard network ends at one leaf.
 
-**How the definition helps.** The definition lets us compare one successful sequence with every sequence that runs out of moves (our own). The hard step proves that any legal first reduction leaves another orchard network (our own). Each move shrinks the network, and every nontrivial orchard network has another move (our own).
+**How the definition helps.** The key step proves that any legal reduction of an orchard network leaves an orchard network (our own). Each move shrinks the network, and every nontrivial orchard network has another move, so no maximal sequence gets stuck (our own).
 
 **Paper or page:** [Defining phylogenetic networks using ancestral profiles](https://arxiv.org/abs/2012.00109). It says: “Let 𝒩 be an orchard network, and let 𝒩 = 𝒩₀, 𝒩₁, …, 𝒩ₗ be a maximal cherry-reduction sequence. Then this sequence is complete.”
 
@@ -327,11 +327,11 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 4: research.
 
-**Definition.** In a network admitting the paper’s encoding, assign distinct labels to vertices and record one child-label set per parent. The network is tree-child if every parent has a child with exactly one parent.
+**Definition.** A network is tree-child if every vertex with children has a child with exactly one parent. In the paper’s encoding, each such vertex becomes the set of its children’s labels, so a label occurs in the cover once for each parent of its vertex (our own).
 
 **Problem.** For networks admitting this encoding, the network is tree-child exactly when every set contains a label occurring only once in the cover.
 
-**How the definition helps.** Every occurrence of a label in a child set counts one parent (our own). Checking a child’s parent count becomes counting label occurrences (our own). The work lies in the earlier bijection between these covers and networks that admit the labeling (our own).
+**How the definition helps.** A child with one parent is a label that occurs once, so tree-child asks for such a label in every set (our own). The work lies in the paper’s bijection between these covers and the networks that admit the labeling (our own).
 
 **Paper or page:** [Phylogenetic network classes through the lens of expanding covers](https://arxiv.org/abs/2306.06519v2). It says: “Tree-child networks are in bijection with expanding covers for which each set contains an integer that appears exactly once in the cover.”
 
@@ -341,15 +341,15 @@
 
 ### Leaf correlations contract forest space
 
-**Remember:** Shrink every off-diagonal correlation to zero and the leaves become isolated.
+**Remember:** Stretch every leaf edge, and all correlations shrink to zero.
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE, q-bio.QM. Level 4: research.
 
-**Definition.** Use forests with distinct labels on distinct vertices and labels on every vertex of degree at most two. Give edges positive lengths, and set the matrix entry for connected labels to exp(−d), where d is their path distance. Wald space consists of these matrices, with zero entries for disconnected labels.
+**Definition.** Wald space records each labeled forest with positive edge lengths by its correlation matrix: connected labels get exp(−d), where d is their path distance, and disconnected labels get zero. The forests have distinct labels on distinct vertices, and every vertex of degree at most two carries a label.
 
 **Problem.** Wald space can shrink continuously to the matrix for isolated labels.
 
-**How the definition helps.** For 0 &lt; t &lt; 1, move every label onto a new pendant edge of length −ln(t)/2 (our own). Prune unlabeled dead ends and suppress unlabeled degree-two vertices, preserving distances between labels (our own). Every connected pair of distinct labels gains distance −ln(t), multiplying its correlation by t (our own). These matrices interpolate continuously between the original at t = 1 and isolated labels at t = 0 (our own).
+**How the definition helps.** Because correlation is exp(−distance), moving each label onto a new pendant edge of length −ln(t)/2 multiplies every off-diagonal correlation by t, for 0 &lt; t &lt; 1 (our own). Pruning unlabeled dead ends and suppressing unlabeled degree-two vertices keeps label distances and returns a forest of the allowed kind (our own). Letting t run from 1 to 0 contracts the space continuously to the matrix of isolated labels (our own).
 
 **Paper or page:** [Foundations of the Wald Space for Phylogenetic Trees](https://arxiv.org/abs/2209.05332). It says: “Conveyed by the homeomorphism φ, 𝒲 is star shaped as a subset ℝᴺˣᴺ with respect to F∞ and hence contractible.”
 
@@ -363,11 +363,11 @@
 
 *Rules out counterexamples.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology), 92D15. arXiv q-bio.PE. Level 4: research.
 
-**Definition.** An ancestral profile records, for each leaf label, the path counts from all internal vertices in a common vertex order. An orchard network is one that repeated cherry reductions can shrink to a single leaf. A network is stack-free if no edge connects two vertices that both have multiple parents.
+**Definition.** A network is stack-free if no edge joins two vertices that both have several parents. Its ancestral profile lists, for each leaf label, the numbers of paths to that leaf from all internal vertices, in a common vertex order.
 
-**Problem.** Among rooted phylogenetic networks on the same leaf labels, the ancestral profile determines a stack-free orchard network up to relabeling internal vertices.
+**Problem.** Among rooted phylogenetic networks on the same leaf labels, the ancestral profile determines a stack-free orchard network, one that cherry reductions shrink to one leaf, up to relabeling internal vertices.
 
-**How the definition helps.** The stack-free condition rules out known orchard networks that share the same path counts despite having different shapes. The reconstruction proof must show how to identify a legal reduction from the profile and reverse that reduction uniquely (our own).
+**How the definition helps.** Stacked reticulations can give different orchard networks the same path counts, and stack-freeness removes these counterexamples (our own). The proof reads a legal cherry reduction from the profile and shows that it can be reversed in only one way (our own).
 
 **Paper or page:** [Defining phylogenetic networks using ancestral profiles](https://arxiv.org/abs/2012.00109). It says: “Then, up to isomorphism, 𝒩 is the unique phylogenetic network on X realising Σ𝒩.”
 
@@ -381,11 +381,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 92B25 (Biological rhythms and synchronization), 92C20. arXiv q-bio.NC. Level 4: research.
 
-**Definition.** Two identical oscillators advance uniformly in phase and pulse each other when they reach one and reset to zero. At fixed pulse strength the response F maps pre-pulse phase x to post-pulse phase x + g(x). Assume F increases, fixes both endpoints, and has derivatives on \[0,1\], using one-sided derivatives at the endpoints.
+**Definition.** Two identical oscillators advance uniformly in phase; when one reaches phase one, it fires, resets to zero and moves the other’s phase from x to F(x) = x + g(x). Assume F increases, fixes 0 and 1, and is differentiable on \[0, 1\], one-sided at the ends. So each firing sends the phase gap x to 1 − F(x) (our own).
 
 **Problem.** For two such oscillators that advance uniformly between pulses, simultaneous firing attracts nearby phases if \|F′(0)F′(1)\| &lt; 1. It repels nearby phases if this product has absolute value above one.
 
-**How the definition helps.** The exact pulse map turns a full firing cycle into two evaluations of one function (our own). At each firing the next gap is 1 − F(x), with x the other oscillator’s phase just before the pulse (our own). Applying this rule twice and differentiating at zero gives F′(0)F′(1) (our own). A first-order approximation in pulse strength can give the wrong stability prediction.
+**How the definition helps.** Two firings give the map x ↦ 1 − F(1 − F(x)), whose derivative at zero is F′(1)F′(0) by the chain rule (our own). A derivative of absolute value below one attracts nearby gaps, and above one repels them (our own). A first-order approximation in pulse strength can give the wrong stability prediction.
 
 **Paper or page:** [Infinitesimal phase response functions can be misleading](https://arxiv.org/abs/2302.08392). It says: “Synchrony is g-attracting if \|(1 + ∂g/∂φ(0, ε))(1 + ∂g/∂φ(1, ε))\| &lt; 1,”
 
@@ -395,15 +395,15 @@
 
 ### Subsamples inherit the same genealogy
 
-**Remember:** Trace the same pedigree and then drop the labels you did not sample.
+**Remember:** Trace one pedigree; dropping labels just deletes them.
 
 *True by definition.* MSC 92D10 (Genetics and epigenetics), 60J10. arXiv q-bio.PE. Level 4: research.
 
-**Definition.** Represent ancestry at each past generation by a partition of the sampled labels. Each block records samples with the same ancestor, with that ancestor's type attached. Build the partition by tracing each label through the same realized population pedigree, not by simulating a second pedigree.
+**Definition.** Trace each sampled label back through one realized population pedigree, recording at each past generation which samples share an ancestor and that ancestor’s type. Since all labels follow the same pedigree, not separately simulated ones, dropping a label just deletes it from its block (our own).
 
 **Problem.** Suppose each type has fixed population size and relabeling parents within types leaves the joint offspring law unchanged. Keeping the first m of n sampled labels gives the same ancestry law as sampling those m labels directly.
 
-**How the definition helps.** A shared family tree turns comparison of two random histories into deletion of labels (our own). Two retained labels have the same ancestor regardless of which other labels we trace (our own). The probabilistic work shows that this restricted history has the separately sampled history’s law under the relabeling assumption (our own).
+**How the definition helps.** Because the labels share one pedigree, the history of a subsample is the full history with the other labels deleted (our own). The probabilistic work shows that this restricted history has the law of a directly sampled one, using the relabeling assumption (our own).
 
 **Paper or page:** [On the genealogy of multi-type Cannings models and their limiting exchangeable coalescents](https://arxiv.org/abs/2504.10744). It says: “has the same distribution as the multi-type ancestral process”
 

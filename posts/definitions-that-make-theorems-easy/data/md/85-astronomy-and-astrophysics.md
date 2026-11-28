@@ -1,14 +1,14 @@
 ### Distance modulus adds to magnitude
 
-**Remember:** The logarithmic distance correction adds to a source’s absolute magnitude.
+**Remember:** Logarithms turn inverse-square dimming into an added distance term.
 
 *True by definition.* MSC 85A04 (General questions in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.GA. Level 1: early undergraduate.
 
-**Definition.** For bolometric luminosity L and observed flux F, define luminosity distance D by F = L/(4πD²). The distance modulus is 5 log₁₀(D/(10 parsecs)). Absolute magnitude uses the flux the same isotropic source would produce at ten parsecs.
+**Definition.** Luminosity distance D is the distance at which inverse-square dilution turns bolometric luminosity L into the observed flux F, so F = L/(4πD²). The distance modulus 5 log₁₀(D/(10 parsecs)) is the magnitude change from moving the source from 10 parsecs, where absolute magnitude is defined, out to D.
 
 **Problem.** Sum the light over all wavelengths and assume transparent propagation. Apparent magnitude equals absolute magnitude plus the distance modulus.
 
-**How the definition helps.** The logarithm makes inverse-square dilution an additive correction. In our own derivation, luminosity distance is the distance that gives the measured flux from the source power by inverse-square dilution. Taking the magnitude difference then gives exactly the distance modulus.
+**How the definition helps.** Magnitude is −2.5 log₁₀ of flux, and the flux falls by (D/(10 parsecs))² from 10 parsecs to D (our own). So the logarithm turns this dilution into the added term 5 log₁₀(D/(10 parsecs)) (our own).
 
 **Wikipedia:** [Distance modulus](https://en.wikipedia.org/wiki/Distance_modulus). It says: “the observed brightness of a light source is related to its distance by the inverse square law”
 
@@ -20,11 +20,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 1: early undergraduate.
 
-**Definition.** Define the redshift factor 1 + z as the received wavelength divided by the emitted wavelength. Use this ratio instead of the fractional change z.
+**Definition.** The redshift factor 1 + z is the received wavelength divided by the emitted wavelength, a ratio used instead of the fractional change z.
 
-**Problem.** The total redshift factor equals the product of the factors measured on consecutive parts of the same light path. Use the same observer at each shared endpoint.
+**Problem.** Along one light path, the total redshift factor equals the product of the factors on consecutive parts, when the same observer measures at each shared endpoint.
 
-**How the definition helps.** Using ratios makes consecutive shifts multiply because the shared wavelength cancels. In our own proof, the middle observer measures the same light signal for both ratios. Predicting each ratio from motion or cosmic expansion requires a separate physical calculation.
+**How the definition helps.** Ratios multiply because the wavelength at each shared endpoint appears once above and once below and cancels (our own). Predicting each ratio from motion or cosmic expansion needs a separate physical calculation.
 
 **Wikipedia:** [Redshift](https://en.wikipedia.org/wiki/Redshift). It says: “corresponding to the fractional change in wavelength (positive for redshifts, negative for blueshifts), and by the wavelength ratio 1 + z”
 
@@ -36,11 +36,11 @@
 
 *True by definition.* MSC 85A04 (General questions in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.GA. Level 2: later undergraduate.
 
-**Definition.** For a normalized filter response, let F be its weighted average of flux density per unit frequency. For F &gt; 0, the AB magnitude is −2.5 log₁₀(F/F₀), using the same reference density F₀ of about 3631 janskys for every filter (our own). An AB color is the difference between two AB magnitudes.
+**Definition.** The AB magnitude in a filter is −2.5 log₁₀(F/F₀), where F &gt; 0 is the average flux density per unit frequency weighted by the normalized filter response. The reference F₀, about 3631 janskys, is the same for every filter (our own), and an AB color is the difference of two AB magnitudes.
 
 **Problem.** A source with positive constant flux density per unit frequency has zero AB color between any two properly calibrated filters.
 
-**How the definition helps.** The common reference makes a constant flux density yield the same magnitude in every filter. In our own calculation, every normalized filter average of that constant equals the constant itself. A reference star with a varying spectrum would instead establish different flux references across filters. Applying the AB definition to observations requires calibrating each filter.
+**How the definition helps.** A normalized average of a constant is that constant, so a flat source has the same F, and so the same AB magnitude, in every filter (our own). Their difference is zero. A reference star with a varying spectrum would instead give a different zero point in each filter.
 
 **Wikipedia:** [AB magnitude](https://en.wikipedia.org/wiki/AB_magnitude). It says: “The bandpass AB magnitude is defined so that the zero point corresponds to a bandpass-averaged spectral flux density”
 
@@ -54,11 +54,11 @@
 
 *True by definition.* MSC 85A05 (Galactic and stellar dynamics). arXiv astro-ph.GA. Level 2: later undergraduate.
 
-**Definition.** Write the distribution of stars in position and velocity as a function of orbit constants such as energy. Here an orbit constant has the same value at every point along a star’s orbit. This replaces specifying the distribution independently at each position and velocity.
+**Definition.** Write the distribution of stars in position and velocity as a function of orbit constants such as energy, quantities that keep the same value all along each star's orbit.
 
-**Problem.** In a time-independent gravitational field, every smooth function of time-independent orbit constants solves the steady collisionless Boltzmann equation. This equation requires the distribution to stay constant along each star’s orbit when encounters are negligible.
+**Problem.** In a time-independent gravitational field, every smooth function of time-independent orbit constants solves the steady collisionless Boltzmann equation. This equation says the distribution stays constant along each star's orbit when encounters are negligible.
 
-**How the definition helps.** Writing the distribution in terms of orbit constants makes its derivative along a star’s path vanish. In our own derivation, this follows by the chain rule. The work lies in finding the orbit constants. If the stars generate the field, their density must also reproduce that field.
+**How the definition helps.** Each orbit constant is unchanged along an orbit, so by the chain rule any function of them is too (our own). The work lies in finding the orbit constants, and if the stars make the field, their density must also reproduce it.
 
 **Wikipedia:** [Jeans's theorem](https://en.wikipedia.org/wiki/Jeans%27s_theorem). It says: “any function of the integrals is a steady-state solution”
 
@@ -70,11 +70,11 @@
 
 *True by definition.* MSC 85A15 (Galactic and stellar structure). arXiv astro-ph.SR. Level 2: later undergraduate.
 
-**Definition.** Displace a small parcel of stellar gas vertically without exchanging heat, and compare its buoyancy acceleration with its displacement. At equilibrium define N² as minus the derivative of this acceleration with respect to displacement. This signed quantity is the squared buoyancy frequency.
+**Definition.** Move a small parcel of stellar gas vertically without heat exchange. The squared buoyancy frequency N² is the restoring acceleration per unit displacement at equilibrium, minus the derivative of buoyancy acceleration with respect to displacement. It keeps its sign, so N² &lt; 0 means buoyancy pushes the parcel further away.
 
 **Problem.** With constant local coefficients, the linearized displacement oscillates if N² is positive. It has an exponentially growing mode if N² is negative.
 
-**How the definition helps.** Keeping the sign of N² gives both stability tests from the same linear equation. In our own argument, a displacement x satisfies x″ = −N²x. The physical calculation compares the parcel’s density after displacement with the surrounding density.
+**How the definition helps.** The linearized displacement obeys x″ = −N²x, which oscillates for N² &gt; 0 and grows like exp(√(−N²) t) for N² &lt; 0 (our own). The physical work compares the parcel's density after displacement with the surrounding density.
 
 **Wikipedia:** [Brunt–Väisälä frequency](https://en.wikipedia.org/wiki/Brunt%E2%80%93V%C3%A4is%C3%A4l%C3%A4_frequency). It says: “If a gas parcel is pushed up and N² &gt; 0, the air parcel will move up and down”
 
@@ -86,11 +86,11 @@
 
 *True by definition.* MSC 85A25 (Radiative transfer in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.HE. Level 2: later undergraduate.
 
-**Definition.** Luminosity L is the power a source radiates. For spherical emission, define the Eddington luminosity as 4πGMc/κ, with mass M, gravitational constant G, and light speed c. The opacity κ measures the effective area per unit mass for momentum transfer from light.
+**Definition.** For a spherical source of mass M, the Eddington luminosity 4πGMc/κ is the radiated power at which light's outward push on gas balances gravity. Here κ is the opacity, the effective area per unit mass that light pushes on, and both push and pull fall as 1/r².
 
 **Problem.** Outside a spherical source, use Newtonian gravity and assume constant luminosity and opacity. The ratio of radiation acceleration to gravity equals the ratio of luminosity to Eddington luminosity.
 
-**How the definition helps.** The Eddington luminosity collects all the constants in the acceleration ratio into one reference power. In our own calculation, outward acceleration is κL/(4πr²c) at radius r, while inward acceleration has magnitude GM/r². Their common radius factor cancels. The physical work establishes these acceleration laws for the gas.
+**How the definition helps.** Radiation acceleration κL/(4πr²c) divided by gravity GM/r² equals L divided by 4πGMc/κ, since the r² cancels (our own). The physical work establishes these two acceleration laws for the gas.
 
 **Wikipedia:** [Eddington luminosity](https://en.wikipedia.org/wiki/Eddington_luminosity). It says: “The limit is obtained by setting the outward radiation pressure equal to the inward gravitational force.”
 
@@ -102,11 +102,11 @@
 
 *True by definition.* MSC 85A25 (Radiative transfer in astronomy and astrophysics). arXiv astro-ph.SR. Level 2: later undergraduate.
 
-**Definition.** For starlight at one wavelength, let transmission be the fraction of incident beam intensity that survives a region. For positive transmission, define optical depth as minus its natural logarithm.
+**Definition.** Optical depth is minus the natural logarithm of transmission, the fraction of a beam's intensity at one wavelength that survives a region, for positive transmission. The logarithm turns multiplied fractions into added depths (our own).
 
 **Problem.** If successive regions only remove light from this beam, their optical depths add.
 
-**How the definition helps.** The negative logarithm turns multiplication of consecutive transmission fractions into addition of optical depths (our own). In each region the exiting beam supplies the incident light for the next (our own). Computing the depths from matter requires a physical law for absorption and scattering out of the beam (our own). With loss proportional to intensity, integrating the local loss coefficient gives the optical depth (our own).
+**How the definition helps.** When regions only remove light, the beam leaving one region is the input to the next, so transmissions multiply and their logarithms add (our own). With loss proportional to intensity, the optical depth is the integral of the local loss coefficient (our own).
 
 **Wikipedia:** [Optical depth](https://en.wikipedia.org/wiki/Optical_depth). It says: “the transmitted flux decays exponentially with optical depth”
 
@@ -114,15 +114,15 @@
 
 ### Comoving distances stay fixed
 
-**Remember:** Divide out expansion to keep galaxies that move with it at fixed distances.
+**Remember:** Divide out the stretch of space, and comoving galaxies stand still.
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 2: later undergraduate.
 
-**Definition.** Define the comoving distance as the proper distance on a constant cosmic time slice divided by the scale factor. The scale factor measures the common expansion of space. Proper distance instead measures physical lengths on the slice.
+**Definition.** Comoving distance is proper distance on a constant cosmic time slice divided by the scale factor, the common factor by which expansion stretches every length.
 
 **Problem.** Suppose space looks the same at every point and in every direction at each cosmic time. Two observers following the common expansion stay at constant comoving distance.
 
-**How the definition helps.** Dividing by the scale factor cancels the common change in all physical spatial lengths. In our own derivation, the spatial metric equals a fixed metric times the square of the scale factor. The symmetry assumptions justify that form.
+**How the definition helps.** When space looks the same everywhere and in every direction, the spatial metric is a fixed metric times the square of the scale factor (our own). So the proper distance between observers following the expansion is the scale factor times a constant, and dividing leaves the constant (our own).
 
 **Wikipedia:** [Comoving and proper distances](https://en.wikipedia.org/wiki/Comoving_and_proper_distances). It says: “Comoving distance factors out the expansion of the universe, giving a distance that does not change in time except due to local factors”
 
@@ -134,11 +134,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 2: later undergraduate.
 
-**Definition.** A thin lens treats light deflection as occurring in one plane. Its lens map sends each observed image direction to the source direction without deflection. Define signed magnification as the local ratio of image to source angular area, with a minus sign when orientation reverses.
+**Definition.** A thin lens treats deflection as happening in one plane, and its lens map sends each observed image direction to the source direction without deflection. Signed magnification is the local ratio of image to source angular area, negative when orientation reverses, so it is the area factor of the inverse lens map.
 
 **Problem.** Where the derivative of the lens map is invertible, signed magnification equals the reciprocal of its determinant in local angular area coordinates.
 
-**How the definition helps.** Using oriented areas makes magnification the area factor for the inverse lens map. In our own calculation, the inverse derivative has reciprocal determinant. Relating its absolute value to a flux ratio also requires conservation of surface brightness, the flux per unit solid angle.
+**How the definition helps.** The determinant of a derivative is its signed area factor, and the inverse derivative has reciprocal determinant (our own). Relating the absolute value to a flux ratio also needs conservation of surface brightness, the flux per unit solid angle.
 
 **Wikipedia:** [Gravitational lensing formalism](https://en.wikipedia.org/wiki/Gravitational_lensing_formalism). It says: “The amplification is the inverse of the Jacobian”
 
@@ -146,15 +146,15 @@
 
 ### Toomre’s ratio detects disk instability
 
-**Remember:** Pressure and rotation prevent local ring collapse when Toomre’s ratio reaches one.
+**Remember:** Pressure and rotation must beat self-gravity: Q at least one.
 
 *Makes the theorem clean to state or prove.* MSC 85A05 (Galactic and stellar dynamics). arXiv astro-ph.GA. Level 3: graduate.
 
-**Definition.** Consider a rotating gas disk of negligible thickness. Define Toomre’s ratio Q as cₛκ/(πGΣ), where cₛ is sound speed and G is the gravitational constant. Here κ is the frequency of small radial oscillations about a circular orbit, and Σ is mass per unit area.
+**Definition.** For a thin rotating gas disk, Toomre's ratio Q = cₛκ/(πGΣ) weighs the stabilizing effects of pressure and rotation against self-gravity. Here cₛ is sound speed, κ is the frequency of small radial oscillations about a circular orbit, and Σ is mass per unit area.
 
 **Problem.** Consider small local disturbances that are the same at every angle around the disk. For positive κ, cₛ, and Σ, no radial wavelength grows exponentially exactly when Q ≥ 1.
 
-**How the definition helps.** The ratio Q collects pressure, rotation, and gravity into one test covering every radial wavelength. In our own calculation, squared wave frequency is κ² − 2πGΣ\|k\| + cₛ²k², where k is radial wave number. Its minimum is κ²(1 − 1/Q²). Deriving the wave equation from the gas dynamics supplies the physical work.
+**How the definition helps.** Waves with radial wave number k have squared frequency κ² − 2πGΣ\|k\| + cₛ²k² (our own). Its minimum over k is κ²(1 − 1/Q²), which is nonnegative exactly when Q ≥ 1 (our own). Deriving the wave equation from gas dynamics is the physical work.
 
 **Wikipedia:** [Toomre's stability criterion](https://en.wikipedia.org/wiki/Toomre%27s_stability_criterion). It says: “The stability criterion can then simply be stated as, Q ≥ 1 for a disk to be stable against collapse.”
 
@@ -166,11 +166,11 @@
 
 *True by definition.* MSC 85A15 (Galactic and stellar structure). arXiv astro-ph.SR, gr-qc. Level 3: graduate.
 
-**Definition.** For a static spherical star, define radius r by sphere area 4πr². Use units where light speed and the gravitational constant equal one. Define enclosed mass m(r) through the radial squared length element (dr)²/(1 − 2m(r)/r).
+**Definition.** For a static spherical star with areal radius r, so that spheres have area 4πr², and G = c = 1, define the enclosed mass m(r) by writing the radial metric term as (dr)²/(1 − 2m(r)/r). This is the same form as the exterior Schwarzschild term (dr)²/(1 − 2M/r).
 
 **Problem.** Match the stellar surface at radius R smoothly to the spherical vacuum solution without a surface layer. The mass inferred from the exterior gravitational field equals m(R).
 
-**How the definition helps.** Using the same radius and metric coefficient on both sides makes the mass comparison immediate. In our own calculation, the exterior radial coefficient is 1/(1 − 2M/R) at the surface. Continuity equates it to the interior coefficient and gives M = m(R). Computing the interior geometry and establishing the match still require the gravitational field equations.
+**How the definition helps.** At the surface R, continuity of the metric equates 1/(1 − 2m(R)/R) with 1/(1 − 2M/R), so M = m(R) (our own). Computing the interior geometry and establishing the match still require the field equations.
 
 **Wikipedia:** [Tolman–Oppenheimer–Volkoff equation](https://en.wikipedia.org/wiki/Tolman%E2%80%93Oppenheimer%E2%80%93Volkoff_equation). It says: “continuity of the metric and the definition of m(r) require that”
 
@@ -184,11 +184,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 85A15 (Galactic and stellar structure). arXiv astro-ph.SR. Level 3: graduate.
 
-**Definition.** For a spherical Newtonian polytrope with P = Kρ⁽¹⁺¹⁄ⁿ⁾, take K,n &gt; 0 and positive central density d. Define θ = (ρ/d)¹⁄ⁿ and dimensionless radius ξ = r/a. The length scale satisfies a² = (n + 1)K d⁽¹⁄ⁿ⁻¹⁾/(4πG), where a &gt; 0 and G is Newton’s gravitational constant.
+**Definition.** For a Newtonian polytrope P = Kρ⁽¹⁺¹⁄ⁿ⁾ with K, n &gt; 0 and central density d &gt; 0, measure density by θ = (ρ/d)¹⁄ⁿ and radius by ξ = r/a, where a &gt; 0 and a² = (n + 1)K d⁽¹⁄ⁿ⁻¹⁾/(4πG). This length unit removes K and d from the star's equation, leaving only n (our own).
 
 **Problem.** In Newtonian gravity, these stars share one scaled density profile for each index n. For 0 &lt; n &lt; 5, the first zero of θ gives the radius in the chosen units.
 
-**How the definition helps.** The chosen units leave only n in the differential equation for θ (our own). Newtonian gravity and pressure balance supply that equation, called the Lane–Emden equation (our own). Regularity at the center gives θ(0) = 1 and θ′(0) = 0. The remaining work proves uniqueness of this central solution and, for n below five, existence of its first zero (our own).
+**How the definition helps.** In these units, pressure balance and Newtonian gravity give the Lane–Emden equation for θ(ξ), which involves only n (our own). Regularity at the center gives θ(0) = 1 and θ′(0) = 0, so all stars of one index share one solution. The remaining work proves this solution is unique and, for n below five, has a first zero (our own).
 
 **Wikipedia:** [Lane–Emden equation](https://en.wikipedia.org/wiki/Lane%E2%80%93Emden_equation). It says: “The standard boundary conditions are θ(0) = 1 and θ′(0) = 0.”
 
@@ -198,15 +198,15 @@
 
 ### Rosseland averaging preserves diffusive flux
 
-**Remember:** Transparent frequency ranges carry more of the diffusive flux.
+**Remember:** Average transparency, not opacity, weighted by the Planck spectrum's temperature slope.
 
 *True by definition.* MSC 85A25 (Radiative transfer in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.HE. Level 3: graduate.
 
-**Definition.** At temperature T &gt; 0, weight each frequency ν by w = ∂Bν(T)/∂T, where Bν is the Planck spectrum. For positive opacities κν and finite integrals, the Rosseland mean is ∫w dν divided by ∫(w/κν) dν over positive frequencies.
+**Definition.** At temperature T &gt; 0, the Rosseland mean opacity is the reciprocal of the weighted average of 1/κν, weighting each frequency ν by w = ∂Bν(T)/∂T, where Bν is the Planck spectrum. For positive κν and finite integrals, it is ∫w dν divided by ∫(w/κν) dν over positive frequencies.
 
 **Problem.** Suppose photons travel only short distances between interactions and radiation is nearly in thermal equilibrium with nearby matter. In the diffusion approximation, the Rosseland mean gives the same total energy flux as the frequency-dependent law.
 
-**How the definition helps.** Averaging reciprocal opacity preserves exactly the factor that multiplies the temperature gradient in the total flux. In our own calculation, each frequency contributes in proportion to its temperature weight divided by its opacity. The underlying transport equation supplies this diffusion law.
+**How the definition helps.** In the diffusion approximation, frequency ν carries flux proportional to (w/κν) times the temperature gradient, so the total flux depends only on ∫(w/κν) dν (our own). The Rosseland mean is defined to give that same integral. The underlying transport equation supplies this diffusion law.
 
 **Wikipedia:** [Opacity](https://en.wikipedia.org/wiki/Opacity). It says: “The Rosseland opacity is derived in the diffusion approximation to the radiative transport equation.”
 
@@ -214,15 +214,15 @@
 
 ### Sky power depends on degree
 
-**Remember:** Rotation gives all modes of the same degree the same power.
+**Remember:** Rotations shuffle each degree's modes, so they share one power.
 
 *Makes the theorem clean to state or prove.* MSC 85A35 (Statistical astronomy), 85A40. arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** Expand a square-integrable random sky in orthonormal spherical harmonics, writing aℓₘ for the coefficient of degree ℓ and order m. Its angular power spectrum is Cℓ = ∑ₘ 𝔼\[\|aℓₘ\|²\]/(2ℓ + 1), summing m from −ℓ through ℓ (our own).
+**Definition.** Expand a square-integrable random sky in orthonormal spherical harmonics, with coefficient aℓₘ for degree ℓ and order m. The angular power spectrum Cℓ = ∑ₘ 𝔼\[\|aℓₘ\|²\]/(2ℓ + 1), summing m from −ℓ through ℓ, is the average power of the 2ℓ + 1 modes of degree ℓ (our own).
 
 **Problem.** For a rotationally invariant random sky with zero mean and finite variance, harmonic coefficients are uncorrelated across distinct modes. Their variance depends only on degree.
 
-**How the definition helps.** The harmonic representation reduces the whole covariance to one number per degree. In our own outline, rotations mix modes within each degree. A rotation-invariant covariance acts as a scalar on each degree and has no terms connecting different degrees. This step uses Schur’s lemma for the rotation group.
+**How the definition helps.** Rotations mix modes only within each degree, and by Schur's lemma a rotation-invariant covariance is a scalar on each degree with no terms between degrees (our own). That scalar is Cℓ.
 
 **Paper or page:** [Geometric Methods for Spherical Data, with Applications to Cosmology](https://arxiv.org/abs/2303.15278v1). It says: “there exists a family of orthogonal random coefficients”
 
@@ -230,15 +230,15 @@
 
 ### Conformal time gives constant grid speed
 
-**Remember:** Divide out expansion so light crosses equal grid distances in equal time increments.
+**Remember:** Light crosses equal grid distances in equal conformal ticks.
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** Divide each increment of ordinary cosmic time by the expansion scale factor to get an increment of conformal time. Measure radial distance in comoving coordinates, which keep the expansion out of the spatial grid.
+**Definition.** Conformal time divides each tick of cosmic time by the current scale factor, and comoving coordinates divide expansion out of the spatial grid. Clocks and rulers then carry the same factor, so light's grid speed is constant (our own).
 
-**Problem.** Consider an expanding universe that looks the same at every location and in every direction, with flat spatial geometry. In conformal time, radial light crosses the comoving grid at constant speed c. The comoving particle horizon, the greatest distance light could have covered since the Big Bang, equals c times the elapsed conformal time when finite.
+**Problem.** In a flat expanding universe that looks the same everywhere and in every direction, radial light crosses the comoving grid at constant speed c in conformal time. So the comoving particle horizon, the greatest distance light could have covered since the Big Bang, is c times the elapsed conformal time when finite.
 
-**How the definition helps.** Conformal time absorbs the scale factor that changes light’s grid speed in ordinary cosmic time (our own). In conformal time the radial light equation gives a constant speed, so integration gives the horizon distance (our own). The work lies in obtaining the light equation from spacetime geometry and integrating the expansion history to find elapsed conformal time (our own).
+**How the definition helps.** Light has ds = 0, and the metric a²(−c²dη² + dx²) then gives \|dx/dη\| = c (our own). Integrating gives the horizon distance (our own). The work lies in integrating the expansion history to find the elapsed conformal time (our own).
 
 **Wikipedia:** [Particle horizon](https://en.wikipedia.org/wiki/Particle_horizon). It says: “the particle horizon is equal to the conformal time η that has passed since the Big Bang, times the speed of light c.”
 
@@ -250,11 +250,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** The Hubble rate H measures fractional expansion per unit time. In units where light speed equals one, define critical density as 3H²/(8πG), where G is Newton’s gravitational constant. Divide total energy density, including vacuum energy, by critical density to obtain the density parameter Ω.
+**Definition.** With Hubble rate H and light speed one, the critical density 3H²/(8πG) is the density at which the first Friedmann equation leaves no room for spatial curvature (our own). The density parameter Ω is total energy density, vacuum energy included, divided by critical density.
 
 **Problem.** In a universe with uniform, direction-independent expansion governed by the Friedmann equations, assume H is nonzero. Spatial curvature vanishes exactly when Ω equals one.
 
-**How the definition helps.** Measuring density in critical units makes Ω − 1 proportional to spatial curvature (our own). The first Friedmann equation supplies this relation from Einstein’s equations (our own). In ordinary density units the value giving flat space changes with the Hubble rate (our own).
+**How the definition helps.** Dividing the first Friedmann equation by H² gives Ω = 1 + k/(a²H²), so Ω = 1 exactly when the curvature k is zero (our own). In ordinary density units the value giving flat space changes with the Hubble rate (our own).
 
 **nLab:** [FRW model](https://ncatlab.org/nlab/show/FRW+model). It says: “Ω ≔ Ω<sub>R</sub> + Ω<sub>M</sub> + Ω\_Λ = 1 + k/(a²H²)”
 
@@ -268,11 +268,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** Luminosity distance converts emitted power to observed flux, the power received per unit area, by inverse-square dilution. For angular diameter distance, divide projected source area by observed solid angle and take the square root.
+**Definition.** Luminosity distance Dₗ explains observed flux by inverse-square dilution of emitted power. Angular diameter distance Dₐ explains observed angular size: it is the square root of projected source area divided by observed solid angle.
 
-**Problem.** Suppose photons follow light rays of the spacetime metric and their number is conserved. Observed surface brightness summed over all frequencies equals emitted surface brightness divided by (1 + z)⁴. Here 1 + z is received wavelength divided by emitted wavelength.
+**Problem.** Suppose photons follow light rays of the spacetime metric and their number is conserved. Then observed surface brightness summed over all frequencies equals emitted surface brightness divided by (1 + z)⁴, where 1 + z is received over emitted wavelength.
 
-**How the definition helps.** For a small source patch, observed flux per solid angle equals emitted brightness times (Dₐ/Dₗ)² by the two distance definitions (our own). Etherington reciprocity and photon conservation give Dₗ = (1 + z)²Dₐ (our own). Substitution gives the factor (1 + z)⁻⁴ (our own).
+**How the definition helps.** For a small source patch, the two definitions make observed flux per solid angle equal emitted brightness times (Dₐ/Dₗ)² (our own). Etherington reciprocity with photon conservation gives Dₗ = (1 + z)²Dₐ, hence the factor (1 + z)⁻⁴ (our own).
 
 **Wikipedia:** [Etherington's reciprocity theorem](https://en.wikipedia.org/wiki/Etherington%27s_reciprocity_theorem). It says: “The Etherington distance-duality equation is the relationship between the luminosity distance of standard candles and the angular diameter distance.”
 
@@ -286,11 +286,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology), 85A25. arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** Describe thermal radiation by the mean number of photons in a state of frequency ν. At absolute temperature T this number is 1/(exp(hν/(kT)) − 1), where h and k are Planck’s and Boltzmann’s constants.
+**Definition.** Describe thermal radiation by the mean number of photons in a state of frequency ν, 1/(exp(hν/(kT)) − 1) at temperature T, with h and k Planck's and Boltzmann's constants. This number depends on ν and T only through ν/T.
 
 **Problem.** Suppose thermal radiation travels freely through a uniformly expanding universe. If expansion divides every photon frequency by 1 + z, the radiation remains thermal with temperature divided by 1 + z.
 
-**How the definition helps.** Photon occupation depends only on frequency divided by temperature, so the common frequency shift rescales temperature directly. In our own derivation, free propagation preserves the occupation number along a ray. Substituting the emitted frequency into the original distribution gives the cooler distribution. Proving occupation conservation and the common frequency shift supplies the physical work.
+**How the definition helps.** Free propagation keeps each photon's occupation number while dividing its frequency by 1 + z (our own). So the occupation at ν is the old value at (1 + z)ν, which is thermal with temperature T/(1 + z) (our own). Proving occupation conservation and the common frequency shift is the physical work.
 
 **Wikipedia:** [Cosmic microwave background](https://en.wikipedia.org/wiki/Cosmic_microwave_background). It says: “expansion of the universe would cool blackbody radiation while maintaining a thermal spectrum.”
 
@@ -302,11 +302,11 @@
 
 *True by definition.* MSC 85A40 (Astrophysical cosmology). arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** A gravitational lens bends light and distorts images. Convergence κ measures local focusing, and shear γ measures directional stretching. Define reduced shear as γ/(1 − κ) wherever κ differs from one.
+**Definition.** For a gravitational lens, convergence κ measures local focusing and shear γ measures directional stretching of images. Reduced shear γ/(1 − κ), for κ ≠ 1, is the part of the distortion that image shapes reveal (our own).
 
-**Problem.** Take one thin lens and sources at a fixed distance. Multiply the lens mass distribution by a positive factor λ and add a uniform sheet of convergence 1 − λ. This preserves reduced shear, so image shapes alone cannot distinguish the models.
+**Problem.** For one thin lens and sources at a fixed distance, multiply the lens mass distribution by λ &gt; 0 and add a uniform sheet of convergence 1 − λ. This preserves reduced shear, so image shapes alone cannot distinguish the two models.
 
-**How the definition helps.** Scaling the lens multiplies its shear by λ, while the uniform sheet adds no shear (our own). The new convergence is λκ + 1 − λ, so 1 − κ also gains a factor of λ (our own). The factors cancel, so reduced shear is unchanged even though raw shear changes (our own). An independent magnification measurement can break the ambiguity.
+**How the definition helps.** Scaling the mass by λ multiplies γ by λ, and the uniform sheet adds no shear (our own). The new convergence is λκ + 1 − λ, so 1 − κ also gains the factor λ, which cancels in the ratio (our own). An independent magnification measurement can break the ambiguity.
 
 **Wikipedia:** [Gravitational lensing formalism](https://en.wikipedia.org/wiki/Gravitational_lensing_formalism). It says: “this degeneracy can be broken if an independent measurement of the magnification is available”
 

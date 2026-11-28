@@ -1,14 +1,14 @@
 ### March numbering removes leap day cases
 
-**Remember:** Put the leap day at the end.
+**Remember:** Start the year in March, so the leap day comes last.
 
 *Makes the theorem clean to state or prove.* MSC 00A08 (Recreational mathematics), 01A55, 11A07. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Zeller's congruence numbers the months from March (3) to February (14). It counts January and February as months 13 and 14 of the previous year, so the leap day falls at the end of the year.
+**Definition.** Zeller's congruence starts the year in March: March to December are months 3 to 12, and January and February are months 13 and 14 of the previous year. The leap day then falls at the end of the year, so every month starts at a fixed offset from March 1.
 
-**Problem.** Use Gregorian day d, March-based month m and adjusted year 100j + k (0 ≤ k &lt; 100). The weekday equals d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 through 6 give Saturday through Friday.
+**Problem.** With Gregorian day d, March-based month m and adjusted year 100j + k (0 ≤ k &lt; 100), the weekday is d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 to 6 give Saturday to Friday.
 
-**How the definition helps.** Starting in March puts the variable day after every fixed month start (our own). The year term can then count past leap days and the month term can use only fixed offsets (our own). In our own check, the work is to match the offsets to the fixed month lengths and include the Gregorian century rule.
+**How the definition helps.** Because the leap day comes last, the month term needs only fixed offsets, and the year terms count all earlier leap days (our own). The term ⌊13(m + 1)/5⌋ matches the fixed month lengths from March to January (our own). The terms k, ⌊k/4⌋, ⌊j/4⌋ and 5j add the Gregorian leap-year and century rules (our own).
 
 **Wikipedia:** [Zeller's congruence](https://en.wikipedia.org/wiki/Zeller%27s_congruence). It says: “In this algorithm January and February are counted as months 13 and 14 of the previous year.”
 
@@ -22,11 +22,11 @@
 
 *True by definition.* MSC 00A08 (Recreational mathematics), 05A05. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Color the board like a checkerboard, assigning +1 to white squares and −1 to black squares. Compare the positions of all fifteen tiles and the blank with their solved positions. Multiply the sign of that permutation by the sign of the blank’s square.
+**Definition.** The invariant is the sign of the permutation of the fifteen tiles and the blank, times the colour of the blank's square on a checkerboard (+1 white, −1 black). Each slide swaps the blank with a neighbour, so it flips both factors (our own).
 
 **Problem.** The standard solved 15 puzzle board cannot reach a board with just tiles 14 and 15 swapped.
 
-**How the definition helps.** The combined sign stays fixed because each move swaps two objects and changes the blank’s color. In our own calculation, swapping 14 and 15 flips only the permutation sign. The work is to model each legal slide as one swap across neighboring squares of opposite colors (our own).
+**How the definition helps.** Each move flips both signs, so their product never changes. Swapping only tiles 14 and 15 flips the permutation sign but not the blank's colour, so that board has the other product (our own calculation).
 
 **Wikipedia:** [15 puzzle](https://en.wikipedia.org/wiki/15_puzzle). It says: “This is an invariant because each move changes both the parity of the permutation and the parity of the taxicab distance.”
 
@@ -39,15 +39,15 @@
 
 ### Dimension labels preserve unit arithmetic
 
-**Remember:** Changing units rescales each dimension by its own powers.
+**Remember:** A unit change rescales each quantity by its dimension's powers.
 
 *True by definition.* MSC 00A79 (Physics). arXiv math-ph. Level 3: graduate.
 
-**Definition.** Choose a one-dimensional real vector space and a basis vector (unit) for each base dimension. A derived unit takes the product of the chosen units raised to its dimension’s integer powers.
+**Definition.** Give each base dimension a one-dimensional real vector space, and fix a unit, a basis vector, in each. A quantity of a derived dimension is a number times the product of these units raised to the dimension's integer powers, so a change of units rescales it by those powers of the conversion factors.
 
 **Problem.** Two choices of base units give isomorphic arithmetic on quantities. The change preserves addition within a dimension and multiplication across dimensions.
 
-**How the definition helps.** Dimension powers tell us exactly how each change of base units rescales a numerical value. In our own explanation, quantities of the same dimension acquire the same factor, so conversion preserves sums. Multiplication adds dimension powers, so conversion also preserves products. The construction combines the base spaces and their duals, which represent reciprocal units, into one space for each dimension.
+**How the definition helps.** Changing base units multiplies every number of one dimension by the same factor, so sums within a dimension are preserved (our own). The factor for a product is the product of the factors, because dimension powers add, so products are preserved too (our own).
 
 **Paper or page:** [Measurand Spaces and Dimensioned Hamiltonian Mechanics](https://arxiv.org/abs/2208.08893). It says: “are related by a type-preserving isomorphism of typed fields.”
 

@@ -1,14 +1,14 @@
 ### Conventional cash flows yield one return
 
-**Remember:** One initial cost and only later gains give one break-even rate.
+**Remember:** One cost first, then only gains, gives one break-even rate.
 
 *Rules out counterexamples.* MSC 91G50 (Corporate finance (dividends, real options, etc.)). arXiv q-fin.MF. Level 1: early undergraduate.
 
-**Definition.** Call a cash stream conventional here if it starts with an outflow followed only by inflows or zero payments. The internal rate of return is a discount rate above minus one that makes the sum of discounted cash flows zero.
+**Definition.** A cash stream is conventional if it starts with one outflow and has only inflows or zero payments afterwards. Its internal rate of return is a discount rate above minus one at which the discounted later inflows exactly repay the initial cost.
 
 **Problem.** For a finite conventional cash stream with at least one later positive inflow, the internal rate of return is unique.
 
-**How the definition helps.** Every later inflow falls in present value as the discount rate rises (our own). Their sum decreases continuously from infinity to zero as the rate runs from minus one to infinity (our own). It therefore equals the initial cost exactly once (our own). At dates zero, one, and two, payments of −10, 21, and −11 give two rates, zero and ten percent (our own).
+**How the definition helps.** The discounted value of the later inflows falls strictly and continuously from infinity to zero as the rate runs from minus one to infinity, so it equals the initial cost exactly once (our own). Without the condition, payments −10, 21 and −11 at dates zero, one and two have two rates, zero and ten percent (our own).
 
 **Wikipedia:** [Internal rate of return](https://en.wikipedia.org/wiki/Internal_rate_of_return). It says: “In this case the NPV of the payment stream is a convex, strictly decreasing function of interest rate.”
 
@@ -20,11 +20,11 @@
 
 *Rules out counterexamples.* MSC 91A05 (2-person games), 90C47. arXiv econ.TH, math.OC. Level 2: later undergraduate.
 
-**Definition.** In a finite two-player zero-sum game with payoff matrix A, a mixed strategy is a probability vector over a player's actions. If the players use mixed strategies x and y, player one's expected payoff is xᵀAy and player two loses that amount.
+**Definition.** A mixed strategy is a probability vector over a player's actions, so each player's strategy set is a simplex. In a finite two-player zero-sum game with payoff matrix A, mixed strategies x and y give player one the expected payoff xᵀAy, linear in each, and player two loses that amount.
 
-**Problem.** For a finite two-player zero-sum game, maxₓ minᵧ xᵀAy = minᵧ maxₓ xᵀAy over mixed strategies. This common payoff is the game’s value. Restricting both players to pure strategies can give different bounds.
+**Problem.** For a finite two-player zero-sum game, maxₓ minᵧ xᵀAy = minᵧ maxₓ xᵀAy over mixed strategies, and this common payoff is the game's value. With pure strategies only, the two sides can differ.
 
-**How the definition helps.** Mixed strategies make the strategy sets compact convex simplices and the payoff bilinear, which is what a minimax theorem needs. In our own example, matching pennies with payoffs ±1, the pure max-min is −1 and the pure min-max is +1. With fifty-fifty mixing both equal 0. The theorem is equivalent to linear programming duality (our own).
+**How the definition helps.** Compact convex strategy sets and a payoff linear in each strategy are what a minimax theorem needs. In matching pennies with payoffs ±1, the pure max-min is −1 and the pure min-max is +1, while fifty-fifty mixing makes both 0 (our own).
 
 **Wikipedia:** [Minimax theorem](https://en.wikipedia.org/wiki/Minimax_theorem). It says: “In the context of two-player zero-sum games, the sets X and Y correspond to the strategy sets of the first and second player, respectively, which consist of lotteries over their actions (so-called mixed strategies)”
 
@@ -38,11 +38,11 @@
 
 *Rules out counterexamples.* MSC 91A10 (Noncooperative games). arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** A mixed strategy assigns probabilities to a player’s pure strategies. A Nash equilibrium specifies one mixed strategy per player, with independent draws. No player can increase their expected payoff by changing only their own strategy.
+**Definition.** A mixed strategy assigns probabilities to a player's pure strategies, so each player chooses from a compact convex simplex. A Nash equilibrium is one independent mixed strategy per player such that no player can raise their expected payoff by changing only their own strategy.
 
 **Problem.** Every finite game in normal form (a game given by a table of payoffs) has at least one Nash equilibrium.
 
-**How the definition helps.** Each player’s expected payoff is linear in their own probabilities, so their best responses form a nonempty convex set (our own). Payoff continuity gives the joint best-response correspondence a closed graph on the compact product of simplices (our own). Kakutani’s fixed-point theorem gives a profile of mutual best responses (our own). In matching pennies each pure profile lets one player gain by switching (our own).
+**How the definition helps.** Expected payoff is linear in a player's own probabilities, so best responses form a nonempty convex set, and continuity gives the best-response correspondence a closed graph (our own). Kakutani's fixed-point theorem then gives a profile of mutual best responses (our own). In matching pennies no pure profile works, because one player always gains by switching (our own).
 
 **Wikipedia:** [Nash equilibrium](https://en.wikipedia.org/wiki/Nash_equilibrium). It says: “The key to Nash's ability to prove existence far more generally than von Neumann lay in his definition of equilibrium.”
 
@@ -56,11 +56,11 @@
 
 *Rules out counterexamples.* MSC 91A11 (Equilibrium refinements), 91A18. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** In a perfect-information game, a subgame consists of a decision node and the entire tree below it. A strategy profile is subgame perfect if its restriction is a Nash equilibrium in every subgame, including the whole game.
+**Definition.** A strategy profile is subgame perfect if it is a Nash equilibrium in every subgame, so each player must choose well even after histories the equilibrium never reaches. In a perfect-information game, a subgame is a decision node together with the whole tree below it.
 
 **Problem.** Every finite game with perfect information has a subgame perfect equilibrium, and backward induction computes it. Plain Nash equilibrium does not give this result, because some Nash equilibria rest on threats that a player would never carry out.
 
-**How the definition helps.** Subgame perfection requires optimal choices even after a history the equilibrium strategies never reach. An incumbent’s threat to fight entry fails if accommodation pays more once entry occurs (our own). Working backward, choose a best action given the chosen continuations at every node (our own). Induction gives a Nash equilibrium in each subtree (our own).
+**How the definition helps.** Backward induction builds such a profile by choosing, at each node, a best action given the continuations already chosen below (our own). Induction makes the result a Nash equilibrium in each subtree (our own). An incumbent's threat to fight entry fails this test if accommodating pays more once entry occurs (our own).
 
 **Wikipedia:** [Subgame perfect equilibrium](https://en.wikipedia.org/wiki/Subgame_perfect_equilibrium). It says: “This ensures that strategies are credible and rational throughout the entire game, eliminating non-credible threats.”
 
@@ -75,11 +75,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B12 (Voting theory), 91B14. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** For a finite election, call a set dominating if each member beats each outsider by majority vote. The Smith set is the least nonempty dominating set. It extends the Condorcet winner, who beats every other candidate alone.
+**Definition.** In a finite election, a set of candidates is dominating if every member beats every outsider by majority vote. The Smith set is the least nonempty dominating set.
 
 **Problem.** A nonempty finite election always has exactly one least nonempty dominating set, even when no candidate beats all others.
 
-**How the definition helps.** The full candidate set dominates, so at least one nonempty dominating set exists (our own). If two dominating sets were incomparable, choose one candidate in each but outside the other (our own). Each candidate would have to beat the other, so the sets must be nested (our own). The finite family therefore has a unique least member even in a majority cycle (our own).
+**How the definition helps.** Two dominating sets are always nested, because a candidate in each but outside the other would have to beat the other and lose to them (our own). The full candidate set is dominating, so the nonempty dominating sets form a finite chain with a unique least member (our own).
 
 **Wikipedia:** [Smith set](https://en.wikipedia.org/wiki/Smith_set). It says: “It follows that the Smith set is the smallest non-empty dominating set, and that it is well defined.”
 
@@ -93,11 +93,11 @@
 
 *Rules out counterexamples.* MSC 91B12 (Voting theory), 91B14. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** A voting rule maps each list of voters' strict rankings of the candidates to one winner. The possible outcomes of the rule are the candidates that win for at least one list of rankings. A rule is manipulable if some voter can get a winner she prefers by reporting a false ranking.
+**Definition.** A voting rule maps each list of voters' strict rankings to one winner, and its possible outcomes are the candidates that win for at least one list. The rule is manipulable if some voter can get a winner they prefer by reporting a false ranking.
 
 **Problem.** For finitely many voters and candidates, every voting rule on unrestricted strict rankings with at least three possible winners is dictatorial or manipulable. A dictator always gets their favorite among the possible winners.
 
-**How the definition helps.** With three voters and two possible winners, majority vote is strategyproof because misreporting can only hurt the voter’s preferred option (our own). No single voter determines every winner (our own). Counting possible winners excludes this counterexample even when other candidates appear on the ballot.
+**How the definition helps.** The theorem counts possible winners, not names on the ballot, so a rule that only ever picks between two candidates escapes it. With three voters, majority vote between two possible winners is strategyproof and not dictatorial, because misreporting can only hurt the voter's preferred option (our own).
 
 **Wikipedia:** [Gibbard–Satterthwaite theorem](https://en.wikipedia.org/wiki/Gibbard%E2%80%93Satterthwaite_theorem). It says: “It is only assumed that at least three of them can win, i.e. are possible outcomes of the voting rule.”
 
@@ -112,11 +112,11 @@
 
 *Rules out counterexamples.* MSC 91B12 (Voting theory), 91B14. arXiv econ.TH. Level 2: later undergraduate.
 
-**Definition.** Strict rankings are single-peaked if one common order of alternatives gives each voter a favorite with preferences decreasing on either side. On either side, that voter prefers the alternative nearer the favorite in the common order.
+**Definition.** Strict rankings are single-peaked if the alternatives lie on one common line on which each voter has a favorite and prefers alternatives nearer that favorite on either side.
 
-**Problem.** With an odd number of at least three voters and finite alternatives, single-peaked rankings yield an acyclic majority order. The median voter’s favorite beats every other alternative. On this domain majority rule satisfies unanimity, independence of irrelevant alternatives and nondictatorship.
+**Problem.** With an odd number of at least three voters and finitely many alternatives, single-peaked rankings give an acyclic majority order in which the median voter's favorite beats every other alternative. On this domain majority rule satisfies unanimity, independence of irrelevant alternatives and nondictatorship.
 
-**How the definition helps.** On any triple in axis order, single-peakedness forbids ranking the middle option last (our own). This excludes the cyclic triple of rankings A-B-C, B-C-A and C-A-B on every axis (our own). Against any challenger, a majority have peaks at the median peak or beyond it and therefore prefer it (our own). Black’s theorem gives majority transitivity on this restricted domain (our own).
+**How the definition helps.** Against any challenger, every voter whose peak is at the median peak or beyond it prefers the median peak, and these voters form a majority (our own). On any three alternatives in line order no voter ranks the middle one last, which rules out the cyclic profile A-B-C, B-C-A, C-A-B (our own). Black's theorem gives majority transitivity on this domain (our own).
 
 **Wikipedia:** [Single peaked preferences](https://en.wikipedia.org/wiki/Single_peaked_preferences), [Arrow's impossibility theorem](https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem), [Median voter theorem](https://en.wikipedia.org/wiki/Median_voter_theorem). It says: “If the domain is restricted to profiles where every individual has a single-peaked preference with respect to the linear ordering, then social preferences are acyclic.”
 
@@ -131,11 +131,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 91B14 (Social choice), 91B12. arXiv econ.TH, cs.GT. Level 2: later undergraduate.
 
-**Definition.** A social welfare function turns every list of voters' rankings into one ranking for society. Independence of irrelevant alternatives says that society's order of two alternatives depends only on the voters' orders of those two. Arrow's theorem assumes at least three alternatives.
+**Definition.** Independence of irrelevant alternatives says that society's order of two alternatives depends only on the voters' orders of those two. It constrains a social welfare function, which turns every list of voters' rankings into one ranking for society, and it has force only when a third alternative exists.
 
-**Problem.** For finitely many voters and a finite set of three or more alternatives, unanimity and independence force dictatorship on the unrestricted domain of strict rankings. With an odd electorate of at least three voters and two alternatives, majority rule satisfies both conditions without a dictator. May’s theorem characterizes it there by anonymity, neutrality and positive responsiveness.
+**Problem.** For finitely many voters and three or more alternatives, unanimity and independence force dictatorship on unrestricted strict rankings. With two alternatives and an odd electorate of at least three, majority rule satisfies both without a dictator, and May's theorem characterizes it by anonymity, neutrality and positive responsiveness.
 
-**How the definition helps.** With two alternatives there is no third alternative to be irrelevant, so independence says nothing and majority rule passes every test. The condition of three alternatives in Arrow's theorem excludes exactly this case. A Condorcet cycle, where majorities prefer A to B, B to C and C to A, needs three alternatives (our own). May's theorem is the matching positive result for two alternatives.
+**How the definition helps.** With two alternatives there is no third alternative to be irrelevant, so independence says nothing and majority rule passes every test. A Condorcet cycle, where majorities prefer A to B, B to C and C to A, needs three alternatives (our own).
 
 **Wikipedia:** [May's theorem](https://en.wikipedia.org/wiki/May%27s_theorem), [Arrow's impossibility theorem](https://en.wikipedia.org/wiki/Arrow%27s_impossibility_theorem). It says: “Arrow's theorem does not apply to the case of two candidates (when there are trivially no "independent alternatives"), so this possibility result can be seen as the mirror analogue of that theorem.”
 
@@ -150,11 +150,11 @@
 
 *Rules out counterexamples.* MSC 91B16 (Utility theory), 91B06. arXiv econ.TH. Level 2: later undergraduate.
 
-**Definition.** A finite lottery assigns nonnegative probabilities summing to one to finitely many outcomes. Continuity requires that whenever L ≼ M ≼ N, some p ∈ \[0,1\] makes M indifferent to the mixture pL + (1−p)N.
+**Definition.** Continuity says that no lottery is infinitely better or worse than another: whenever L ≼ M ≼ N, some p ∈ \[0,1\] makes M indifferent to the mixture pL + (1−p)N. A finite lottery assigns nonnegative probabilities summing to one to finitely many outcomes.
 
 **Problem.** For finite lotteries, complete, transitive, continuous and independent preferences admit an expected utility representation. One lottery is weakly preferred to another exactly when its expected utility is at least as high.
 
-**How the definition helps.** Continuity rules out preferences that compare two expected scores lexicographically (our own). Let M tie L on the first score and beat it on the second, while N beats both on the first (our own). Any positive weight on N puts the mixture above M, and zero weight leaves it below M (our own). This violates the mixture test used by the expected utility theorem (our own).
+**How the definition helps.** Continuity rules out ranking lotteries by two expected scores lexicographically (our own). If M ties L on the first score but beats it on the second, and N beats both on the first, then any positive weight on N puts the mixture above M and zero weight leaves it below M (our own). The expected utility theorem needs this mixture test to calibrate utilities (our own).
 
 **Wikipedia:** [Von Neumann–Morgenstern utility theorem](https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem), [Lexicographic preferences](https://en.wikipedia.org/wiki/Lexicographic_preferences). It says: “These axioms, apart from continuity, are often justified using the Dutch book theorems (whereas continuity is used to set aside lexicographic or infinitesimal utilities).”
 
@@ -168,11 +168,11 @@
 
 *True by definition.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 2: later undergraduate.
 
-**Definition.** Compensated demand selects a cheapest bundle that gives the buyer at least a fixed level of satisfaction, called utility. Ordinary demand instead maximizes utility at a fixed budget.
+**Definition.** Compensated demand selects a cheapest bundle that reaches a fixed level of satisfaction, called utility, so the same set of bundles competes at every price vector (our own).
 
 **Problem.** If only one price rises, the cost-minimizing quantity of that good cannot increase, provided both minima exist.
 
-**How the definition helps.** Holding utility fixed lets each bundle compete with the other at both price vectors (our own). Each chosen bundle costs no more than the other at its own prices (our own). Adding the inequalities cancels the unchanged prices and shows that the quantity bought cannot rise (our own).
+**How the definition helps.** Each chosen bundle costs no more than the other at its own prices, because both reach the utility level (our own). Adding the two inequalities cancels the unchanged prices and shows that the price change times the quantity change is at most zero (our own).
 
 **Wikipedia:** [Hicksian demand function](https://en.wikipedia.org/wiki/Hicksian_demand_function). It says: “Hicksian demand always slopes down.”
 
@@ -184,11 +184,11 @@
 
 *True by definition.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 2: later undergraduate.
 
-**Definition.** The expenditure function gives the least cost of reaching a fixed level of satisfaction, called utility. Take the infimum of costs over all bundles reaching that target.
+**Definition.** The expenditure function gives, at each price vector, the least cost of a bundle reaching a fixed utility level, the infimum over those bundles of price times quantity. Each bundle's cost is linear in prices, and the same bundles compete at every price (our own).
 
 **Problem.** At any fixed attainable utility level, minimum expenditure is concave in prices where its value is finite.
 
-**How the definition helps.** Each feasible bundle gives one linear cost function, and the same bundles compete at every price (our own). Their pointwise infimum is concave (our own). Using expenditure avoids tracking switches between the bundles chosen by a consumer with a fixed budget (our own). Connecting the two descriptions requires the duality theorem for consumer choice (our own).
+**How the definition helps.** A pointwise infimum of linear functions is concave (our own). This avoids tracking how a consumer with a fixed budget switches between bundles (our own).
 
 **Wikipedia:** [Expenditure function](https://en.wikipedia.org/wiki/Expenditure_function). It says: “Concave in p”
 
@@ -200,11 +200,11 @@
 
 *Rules out counterexamples.* MSC 91B68 (Matching models). arXiv econ.TH. Level 2: later undergraduate.
 
-**Definition.** A stable matching has no two people who would rather pair with each other than keep their assigned partners. In the two-sided model, only members of opposite sides can pair. The roommates model instead allows any pair.
+**Definition.** A matching is stable if no two people would both rather pair with each other than keep their assigned partners. In the two-sided model only members of opposite sides can pair, so one side can propose while the other holds offers.
 
 **Problem.** Two finite, equally sized sides with strict, complete rankings of the opposite side always admit a stable matching.
 
-**How the definition helps.** In deferred acceptance, each receiver keeps the best offer so far, so a rejected proposer can never form a blocking pair (our own). In a roommates example, A ranks B then C, B ranks C then A, and C ranks A then B (our own). All three rank D last (our own). Whoever pairs with D can form a mutually preferred pair among the first three (our own).
+**How the definition helps.** In deferred acceptance each receiver keeps the best offer so far, so no rejected proposer can form a blocking pair (our own). In the roommates model, where any pair may form, let A rank B then C, B rank C then A, C rank A then B, and all rank D last (our own). Whoever pairs with D can form a mutually preferred pair, so no stable matching exists (our own).
 
 **Wikipedia:** [Stable roommates problem](https://en.wikipedia.org/wiki/Stable_roommates_problem), [Gale–Shapley algorithm](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm). It says: “Unlike the stable marriage problem, a stable matching may fail to exist for certain sets of participants and their preferences.”
 
@@ -214,15 +214,15 @@
 
 ### Log wealth turns growth into addition
 
-**Remember:** Logarithms turn products into sums, so average log gains obey the strong law.
+**Remember:** Logs turn compounding into sums, so the strong law applies.
 
 *True by definition.* MSC 91G10 (Portfolio theory), 91A60. arXiv q-fin.PM. Level 2: later undergraduate.
 
-**Definition.** For repeated bets, compare fixed betting fractions by their expected one-round log return. Divide wealth after one round by wealth before it. The logarithm of this ratio is the log return.
+**Definition.** The log return of a round is the logarithm of wealth after the round divided by wealth before it. Logarithms turn products into sums, so total log gain is the sum of the one-round log returns, and fixed betting fractions are compared by their expected one-round log return.
 
 **Problem.** Suppose successive wealth multipliers are independent, identically distributed, positive, and have integrable logarithms. Total log wealth gain divided by the number of rounds converges almost surely to the expected one-round log return.
 
-**How the definition helps.** The logarithm turns compounded wealth into a sum of one-round log returns. In our own proof the strong law of large numbers gives the limit of their average. Comparing expected wealth instead gives a different decision. In our own even-odds example with a 60% chance of winning, betting everything maximizes expected wealth but loses everything at the first defeat.
+**How the definition helps.** Total log gain is a sum of independent, identically distributed log returns, so the strong law of large numbers gives the limit of their average (our own proof). Comparing expected wealth gives a different choice: with even odds and a 60% chance of winning, betting everything maximizes expected wealth but loses everything at the first defeat (our own).
 
 **Wikipedia:** [Kelly criterion](https://en.wikipedia.org/wiki/Kelly_criterion). It says: “maximizing the long-term expected value of the logarithm of wealth”
 
@@ -232,15 +232,15 @@
 
 ### Two funds span minimum-variance portfolios
 
-**Remember:** Find two points on the line of variance-minimizing portfolios.
+**Remember:** Variance is squared length, so minimizers lie on one line.
 
 *Makes the theorem clean to state or prove.* MSC 91G10 (Portfolio theory). arXiv q-fin.PM. Level 2: later undergraduate.
 
-**Definition.** At a target expected return, choose asset weights summing to one that minimize return variance. Allow negative weights, which represent selling borrowed assets. A positive definite covariance matrix makes variance the squared length of the weight vector in the corresponding inner product.
+**Definition.** A minimum-variance portfolio at a target expected return is a weight vector summing to one, with negative weights allowed for short sales, that minimizes variance. With positive definite covariance, variance is a squared length, so this portfolio is the point nearest zero on the set cut out by two linear constraints (our own).
 
-**Problem.** Assume the covariance matrix is positive definite and the asset means are not all equal. All target-return minimizers lie on one line. Any two minimizers at different targets generate the others by combinations whose coefficients sum to one.
+**Problem.** Assume a positive definite covariance matrix and asset means that are not all equal. Then all target-return minimizers lie on one line, and any two at different targets generate the others by combinations with coefficients summing to one.
 
-**How the definition helps.** Viewing variance as squared length turns each minimizer into the closest feasible point to zero (our own). It lies in the span of the two normals to the budget and return constraints in this inner product (our own). The budget equation cuts that plane in a line, and each target return selects one point (our own).
+**How the definition helps.** The point nearest zero lies in the span of the two constraint normals in this inner product (our own). The budget equation cuts that plane in a line, and each target return picks one point on it (our own).
 
 **Wikipedia:** [Mutual fund separation theorem](https://en.wikipedia.org/wiki/Mutual_fund_separation_theorem). It says: “Now consider two benchmark efficient portfolios constructed at benchmark expected returns”
 
@@ -254,11 +254,11 @@
 
 *True by definition.* MSC 91G15 (Financial markets). arXiv q-fin.MF. Level 2: later undergraduate.
 
-**Definition.** Consider finitely many states and trading dates, with a positive bank account and no dividends. Risk-neutral probabilities give positive weight to exactly the states possible under the original probabilities. Under them, each asset price in bank-account units equals its expected next price given current information.
+**Definition.** Risk-neutral probabilities make every asset price, in bank-account units, a fair game: it equals its expected next price given current information. They give positive weight to exactly the states the original probabilities allow, in a market with finitely many states and dates, a positive bank account and no dividends.
 
-**Problem.** An arbitrage is a self-financing strategy using only information available at each trade. It starts from zero, avoids terminal loss almost surely, and gives a positive terminal gain with positive probability. In a finite market with finitely many trading dates, risk-neutral probabilities rule out arbitrage.
+**Problem.** An arbitrage is a self-financing strategy, using only current information, that starts from zero, avoids terminal loss almost surely, and gains with positive probability. In a finite market with finitely many trading dates, risk-neutral probabilities rule out arbitrage.
 
-**How the definition helps.** Each asset’s discounted price change has conditional mean zero under risk-neutral probabilities (our own). Holdings chosen before that change preserve zero expected gain, and self-financing makes discounted terminal wealth their sum from zero initial wealth (our own). An arbitrage would have strictly positive expectation since both probability laws agree on which states are possible (our own).
+**How the definition helps.** Each discounted price change has conditional mean zero, so self-financing trades from zero give discounted terminal wealth with expectation zero (our own). An arbitrage would have strictly positive expectation, because both probability laws agree on which states are possible (our own).
 
 **nLab:** [martingale](https://ncatlab.org/nlab/show/martingale). It says: “For each n ≤ m, the function fₙ is a conditional expectation of fₘ given ℱₙ:”
 
@@ -270,15 +270,15 @@
 
 ### Risk-neutral averages price exact hedges
 
-**Remember:** Risk-neutral averaging preserves discounted prices and therefore preserves a self-financing hedge’s value.
+**Remember:** Fair prices keep a hedge's expected value equal to its cost.
 
 *True by definition.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 2: later undergraduate.
 
-**Definition.** Express dividend-free prices in units of a positive bank account. A probability is risk-neutral if it preserves null events and each price equals its conditional expected next price given current information. A self-financing exact hedge funds all trades internally and matches the claim at maturity in every possible state.
+**Definition.** A probability is risk-neutral if it keeps the same null events and makes each dividend-free price, in units of a positive bank account, equal its conditional expected next price. A self-financing exact hedge funds all trades internally and matches the claim at maturity in every possible state.
 
 **Problem.** In a finite-state, finite-period market without arbitrage, a self-financing exact hedge costs the expected discounted payoff under any risk-neutral probability.
 
-**How the definition helps.** Pricing by a risk-neutral average avoids solving again for the holdings in an exact hedge (our own). Each trade has zero conditional expected gain in bank-account units, so expected final wealth equals initial wealth (our own). Every risk-neutral probability therefore gives the same cost for a payoff the hedge replicates (our own). Existence of pricing probabilities uses the fundamental theorem, and existence of a hedge still requires proof (our own).
+**How the definition helps.** Each trade has zero conditional expected gain in bank-account units, so the hedge's expected final wealth equals its initial cost (our own). Its final wealth is the payoff, so every risk-neutral probability gives the same cost (our own). The existence of a hedge still needs its own proof (our own).
 
 **Paper or page:** [Asset pricing under model uncertainty with discrete time and states](https://arxiv.org/abs/2408.13048v2). It says: “Π(F) := {x ∈ ℝ: ∃ H such that x + H·S\*(T) = F\*, 𝒫-q.s.} = E<sub>Q</sub>\[F\*\],”
 
@@ -292,11 +292,11 @@
 
 *True by definition.* MSC 91G30 (Interest rates, asset pricing, etc. (stochastic models)). arXiv q-fin.PR. Level 2: later undergraduate.
 
-**Definition.** A state security pays one unit in one specified state and zero elsewhere. Its current cost is the state price. A complete market can reproduce any future payoff by trading existing assets.
+**Definition.** A state security pays one unit in one specified state and nothing elsewhere, and its current cost is the state price. Any payoff is a bundle of state securities, holding as many units of each as the payoff pays in that state (our own).
 
 **Problem.** Consider a complete, frictionless finite-state market with one payment date and unrestricted holdings. Without arbitrage, every payoff costs the sum of its state payments times their state prices.
 
-**How the definition helps.** Writing a payoff in state securities gives an explicit portfolio with exactly that payoff (our own). Hold as many units of each security as the payment required in its state (our own). This replaces a new search for a replicating portfolio with a sum of known costs (our own). Completeness supplies the securities, and arbitrage rules out different prices for identical payments (our own).
+**How the definition helps.** Completeness lets traders build each state security from existing assets, and no arbitrage forces identical payments to have equal prices (our own). So a payoff costs the sum of its state payments times their state prices (our own).
 
 **Wikipedia:** [Arrow–Debreu model](https://en.wikipedia.org/wiki/Arrow%E2%80%93Debreu_model). It says: “An Arrow security is an instrument with a fixed payout of one unit in a specified state and no payout in other states.”
 
@@ -310,11 +310,11 @@
 
 *Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 2: later undergraduate.
 
-**Definition.** For probability p between zero and one, the loss quantile is the smallest threshold with probability at least p of loss at or below it. Expected shortfall averages these quantiles over the highest chosen fraction of probabilities. It includes just enough probability at a tied cutoff to fill that fraction.
+**Definition.** Expected shortfall at a tail fraction averages the loss quantiles over that top fraction of probability levels, so it covers exactly that fraction and takes only part of a tied loss at the cutoff. The loss quantile at level p is the smallest threshold with probability at least p that the loss is at or below it.
 
 **Problem.** Expected shortfall is finite for every integrable loss and every tail fraction strictly between zero and one. For a continuously distributed loss it equals the average loss conditional on exceeding the cutoff.
 
-**How the definition helps.** The quantile integral always covers exactly the chosen fraction, even at a tied cutoff (our own). If a bet loses one unit with probability 5 percent and otherwise zero, the worst 10 percent average is one half (our own). Conditioning strictly above the zero cutoff instead gives one (our own). Proving the formula agrees with conditional averaging for continuous laws uses the distribution of a uniform quantile (our own).
+**How the definition helps.** The quantile average always covers exactly the chosen fraction, even when the cutoff loss has positive probability (our own). If a bet loses one unit with probability 5 percent and otherwise zero, the worst 10 percent averages one half, while conditioning on losses above the cutoff gives one (our own). Proving agreement for continuous laws uses the distribution of a uniform quantile (our own).
 
 **Wikipedia:** [Expected shortfall](https://en.wikipedia.org/wiki/Expected_shortfall). It says: “but may differ for distributions having atoms at the quantile.”
 
@@ -324,15 +324,15 @@
 
 ### Best-response sets contain the supports of Nash equilibria
 
-**Remember:** Each surviving choice needs a best-reply witness among the opponents’ surviving choices.
+**Remember:** Each chosen strategy needs a best-reply reason inside the chosen sets.
 
 *True by definition. Confidence: medium.* MSC 91A10 (Noncooperative games), 91A26. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** Choose a nonempty set of pure strategies for each player in a finite game. Every included strategy must maximize payoff among all pure strategies against some independent opponent mixtures supported on their respective sets. A strategy is rationalizable if it belongs to some such family.
+**Definition.** A best-response set picks a nonempty set of pure strategies for each player of a finite game, such that every included strategy is a best reply, among all pure strategies, to some independent opponent mixtures on the opponents' sets. A strategy is rationalizable if it belongs to some best-response set.
 
 **Problem.** Every pure strategy played with positive probability in a Nash equilibrium is rationalizable.
 
-**How the definition helps.** The best-response-set definition makes the proof immediate because the strategies played with positive probability at equilibrium form such a set. Each of those strategies is optimal against the other players’ equilibrium choices. Our own comparison is that the deletion proof needs an induction showing that each round keeps those strategies. The work in relating the definitions is to show that the deletion process leaves the largest best-response set.
+**How the definition helps.** The supports of a Nash equilibrium form a best-response set, since each strategy played with positive probability is optimal against the others' equilibrium mixtures. Relating this definition to iterated deletion is separate work, namely showing that deletion leaves the largest best-response set.
 
 **Wikipedia:** [Rationalizable strategy](https://en.wikipedia.org/wiki/Rationalizable_strategy). It says: “Rationalizability is a broader concept than a Nash equilibrium. Both require players to respond optimally to some belief about their opponents' actions, but Nash equilibrium requires these beliefs to be correct, while rationalizability does not.”
 
@@ -346,11 +346,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 91A11 (Equilibrium refinements), 91A68. arXiv cs.GT, econ.TH. Level 3: graduate.
 
-**Definition.** A correlated equilibrium of a finite game is a distribution over action profiles satisfying every player's obedience conditions. Given any recommendation of positive probability, following it must yield at least the conditional expected payoff of every alternative action.
+**Definition.** A correlated equilibrium of a finite game is a distribution over action profiles under which obeying pays: each recommended action of positive probability yields at least the conditional expected payoff of every alternative. Multiplied by the recommendation's probability, each such condition is a linear inequality in the distribution (our own).
 
 **Problem.** In a finite game, the correlated equilibria form a nonempty convex polytope. For rational payoffs, a linear program finds one in time polynomial in the payoff table’s bit length.
 
-**How the definition helps.** Multiply each obedience inequality by its recommendation probability to obtain a linear constraint, valid even at zero probability (our own). These constraints cut out a polytope inside the probability simplex (our own). Nash’s existence theorem supplies a feasible product distribution (our own). The explicit payoff table bounds the linear program’s encoding length polynomially (our own).
+**How the definition helps.** These linear inequalities cut out a polytope inside the probability simplex (our own). Nash's existence theorem supplies a feasible product distribution, so the polytope is nonempty (our own). The explicit payoff table bounds the linear program's encoding length polynomially (our own).
 
 **Wikipedia:** [Correlated equilibrium](https://en.wikipedia.org/wiki/Correlated_equilibrium). It says: “computing a correlated equilibrium only requires solving a linear program whereas solving a Nash equilibrium requires finding its fixed point completely.”
 
@@ -365,11 +365,11 @@
 
 *Rules out counterexamples.* MSC 91A11 (Equilibrium refinements), 91A10. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** A perturbation imposes a positive minimum probability on each pure action, with each player's minima summing to less than one. A perfect equilibrium is a limit of equilibria of such perturbations as all minima approach zero.
+**Definition.** A perfect equilibrium survives small mistakes: it is a limit of equilibria of perturbed games, in which every pure action must get at least a positive minimum probability, as all minima tend to zero. Each player's minima sum to less than one.
 
-**Problem.** In 2×2 games, the perfect equilibria are exactly the Nash equilibria in which both players use undominated strategies. A strategy is weakly dominated if another strategy is never worse and sometimes better. Every finite game has at least one perfect equilibrium.
+**Problem.** In 2×2 games, the perfect equilibria are exactly the Nash equilibria in which neither player uses a weakly dominated strategy, one that another strategy never does worse than and sometimes beats. Every finite game has at least one perfect equilibrium.
 
-**How the definition helps.** Against a fully mixed opponent, weak domination gives a strict payoff loss, so dominated actions receive only their minimum probabilities (our own). The quoted two-by-two characterization gives the converse and excludes the dominated equilibrium (Down, Right). Each perturbed finite game has an equilibrium by the fixed-point argument, and compactness gives a convergent subsequence (our own).
+**How the definition helps.** Against an opponent who plays every action with positive probability, a weakly dominated action does strictly worse, so it gets only its minimum probability and vanishes in the limit (our own). Each perturbed game has an equilibrium by a fixed-point argument, and compactness gives a convergent subsequence (our own). The quoted 2×2 characterization supplies the converse.
 
 **Wikipedia:** [Trembling hand perfect equilibrium](https://en.wikipedia.org/wiki/Trembling_hand_perfect_equilibrium). It says: “For 2×2 games, the set of trembling-hand perfect equilibria coincides with the set of equilibria consisting of two undominated strategies.”
 
@@ -380,15 +380,15 @@
 
 ### Arrival orders make the Shapley efficiency proof a telescoping sum
 
-**Remember:** In each arrival order, the increases in worth add up to the total.
+**Remember:** In every arrival order, the worth increases add up to the total.
 
 *True by definition.* MSC 91A12 (Cooperative games). arXiv cs.GT, econ.TH. Level 3: graduate.
 
-**Definition.** In a finite cooperative game with v(∅) = 0, order the players uniformly at random. Each player’s Shapley value is the expected increase in coalition worth when that player joins their predecessors.
+**Definition.** Order the players of a finite cooperative game with v(∅) = 0 uniformly at random, and let each join the players before them. A player's Shapley value is the expected increase in coalition worth when that player joins.
 
 **Problem.** The Shapley values sum to the worth of the group of all players. This property is called efficiency.
 
-**How the definition helps.** The order formula makes efficiency a telescoping sum, since the group's worth after each arrival is its worth before the next. Only the final worth and the empty group's zero worth remain. The weighted formula hides this cancellation in its coefficients (our own comparison). To show the formulas agree, count the orders in which exactly a given group precedes a particular player.
+**How the definition helps.** In each order the increases telescope to v(N) − v(∅) = v(N), so their expectations also sum to v(N). The weighted-subset formula hides this cancellation in its coefficients (our own comparison).
 
 **Wikipedia:** [Shapley value](https://en.wikipedia.org/wiki/Shapley_value). It says: “The sum of the Shapley values of all agents equals the value of the grand coalition, so that all the gain is distributed among the agents:”
 
@@ -398,15 +398,15 @@
 
 ### Balanced games are exactly the cooperative games with a nonempty core
 
-**Remember:** Cover each player with weight one and compare weighted worth with grand-coalition worth.
+**Remember:** Part-time coalitions never earn more than everyone together.
 
 *True by definition.* MSC 91A12 (Cooperative games), 90C46. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** A finite cooperative game assigns worth v(S) to each coalition of players in N, with v(∅) = 0. Its core consists of payments totaling v(N) that give each coalition S at least v(S) in total. The game is balanced if ∑ₛ α(S)v(S) ≤ v(N) whenever nonnegative coalition weights sum to one around every player.
+**Definition.** A finite cooperative game gives worth v(S) to each coalition S of players in N, with v(∅) = 0, and its core is the set of payments totaling v(N) that give each coalition S at least v(S). The game is balanced if ∑ₛ α(S)v(S) ≤ v(N) for all nonnegative coalition weights α that add up to one at every player, so part-time coalitions never beat the grand coalition (our own gloss).
 
 **Problem.** Bondareva–Shapley theorem: the core of a game is nonempty exactly when the game is balanced. It follows that market games and convex games have nonempty cores.
 
-**How the definition helps.** Minimize total payments subject to every coalition receiving its worth (our own). The dual maximizes weighted worth over balanced weights, so strong duality gives the core criterion (our own). The standard balancedness results for market games and convex games give the two applications (our own).
+**How the definition helps.** The core is nonempty exactly when the least total payment meeting every coalition's worth is at most v(N) (our own). The dual of that linear program maximizes weighted worth over balanced weights, so strong duality gives the criterion (our own). Standard balancedness results for market games and convex games give the two applications (our own).
 
 **Wikipedia:** [Bondareva–Shapley theorem](https://en.wikipedia.org/wiki/Bondareva%E2%80%93Shapley_theorem), [Core (game theory)](https://en.wikipedia.org/wiki/Core_%28game_theory%29). It says: “Specifically, the game's core is non-empty if and only if the game is balanced.”
 
@@ -420,11 +420,11 @@
 
 *True by definition. Confidence: medium.* MSC 91A12 (Cooperative games). arXiv cs.GT. Level 3: graduate.
 
-**Definition.** A finite cooperative game assigns worth v(S) to each coalition S, with v(∅) = 0. Its dividend for S equals v(S) minus the sum of all proper-subset dividends. Each player's Shapley value sums equal shares of the dividends of coalitions containing that player.
+**Definition.** A coalition's Harsanyi dividend is its extra worth beyond what its proper subcoalitions already produce, v(S) minus the sum of the dividends of its proper subsets, in a finite game with v(∅) = 0. Each player's Shapley value sums an equal share of the dividend of every coalition containing that player.
 
 **Problem.** The Shapley value distributes the full worth, adds across games, treats interchangeable players equally, and pays nothing to players who never add worth.
 
-**How the definition helps.** Equal shares make full distribution immediate, and the dividend recursion respects addition and relabeling. For the last axiom, our own induction compares each group containing a null player with the same group without them. Their worths agree and all smaller dividends involving that player vanish, so the group's dividend is zero. To compare formulas, note that each dividend goes to the last member to arrive, and each member is equally likely to arrive last (our own).
+**How the definition helps.** The dividends of all coalitions sum to v(N), dividends add across games, and relabeling players relabels dividends, which gives three axioms at once. By induction on coalition size, every dividend of a coalition containing a player who never adds worth is zero, so that player gets nothing (our own).
 
 **Wikipedia:** [Shapley value](https://en.wikipedia.org/wiki/Shapley_value). It says: “In other words, the synergy of each coalition is divided equally between all members.”
 
@@ -440,7 +440,7 @@
 
 **Problem.** Every finite potential game has a pure-strategy Nash equilibrium. Improvement dynamics, in which one player at a time makes a move that raises their own payoff, always stop at one.
 
-**How the definition helps.** Each improving move strictly raises the potential, so an improvement path cannot cycle. In a finite game the path must stop, and where it stops no player can improve. Rosenthal (1973) proved that congestion games have pure equilibria by building such a function, and Monderer and Shapley (1996) made the potential the definition. What stays hard is that the path can be exponentially long (our own summary).
+**How the definition helps.** Each improving move strictly raises the potential, so an improvement path cannot cycle. In a finite game the path must stop, and where it stops no player can improve. The path can still be exponentially long (our own summary).
 
 **Wikipedia:** [Potential game](https://en.wikipedia.org/wiki/Potential_game). It says: “We have just proved that every finite generalized-ordinal-potential game has the FIP.”
 
@@ -456,11 +456,11 @@
 
 *Rules out counterexamples.* MSC 91A18 (Games in extensive form), 91A10. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** A player has perfect recall if any two nodes in one information set have identical sequences of her earlier information sets and actions. A mixed strategy randomizes over complete plans. A behavior strategy independently randomizes over available actions at each information set.
+**Definition.** A player has perfect recall if any two nodes in one information set have the same sequence of that player's earlier information sets and actions, so the player never forgets what they knew or did. A mixed strategy randomizes over complete plans, and a behavior strategy randomizes independently at each information set.
 
 **Problem.** Kuhn's theorem (1953): in a finite game with perfect recall, every mixed strategy has a behavior strategy with the same outcome probabilities, and conversely. So one can work with the much smaller behavior strategies.
 
-**How the definition helps.** Perfect recall identifies the earlier personal choices on which to condition each mixed plan’s next action (our own). Use any distribution at histories with zero weight and the conditional distribution elsewhere (our own). Conversely, sampling all local choices independently gives a mixed plan with the same outcome probabilities (our own). The absent-minded driver revisits one information set, so independent choices can produce different actions there on successive visits (our own).
+**How the definition helps.** Perfect recall tells each information set which earlier choices of the player led there, so a mixed plan's next action can be replaced by its conditional distribution given those choices (our own). At histories of zero weight any distribution works, and conversely, sampling all local choices independently gives a mixed plan with the same outcome probabilities (our own). The absent-minded driver, who revisits one information set, shows that the condition is needed (our own).
 
 **Wikipedia:** [Kuhn's theorem](https://en.wikipedia.org/wiki/Kuhn%27s_theorem). It says: “in any finite extensive-form game where players have perfect recall (the ability to remember all of their previous moves and information), every mixed strategy has an equivalent behavior strategy that yields the same outcome probabilities, and vice versa.”
 
@@ -475,11 +475,11 @@
 
 *Rules out counterexamples.* MSC 91A22 (Evolutionary games). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** The resident strategy is the one initially used throughout the population. It is evolutionarily stable if, against each distinct mutant strategy, residents earn strictly more than mutants at every sufficiently small positive mutant share. Both face opponents drawn from the same population.
+**Definition.** A resident strategy is evolutionarily stable if every different mutant strategy, at every small enough positive population share, earns strictly less than the residents. Residents and mutants both meet opponents drawn from the mixed population, so a tie against residents is broken by play against mutants.
 
 **Problem.** In a finite symmetric two-player game, an evolutionarily stable strategy is a symmetric Nash equilibrium. If a mutant ties against the resident, the resident must earn more against the mutant than the mutant does against itself.
 
-**How the definition helps.** Testing positive mutant shares distinguishes strategies that tie when everyone plays the resident strategy. Our own proof writes the resident's payoff advantage as an affine function of the mutant share. At zero the advantage must be nonnegative, and if it vanishes there, the slope must be positive. In the article's example, B ties A against residents playing A, yet B earns more than A against B.
+**How the definition helps.** The residents' payoff advantage is affine in the mutant share (our own proof). It must be nonnegative at share zero, which gives a Nash equilibrium, and if it is zero there, its slope must be positive, which gives the tie-break condition (our own proof). In the article's example, B ties A against residents playing A but earns more than A against B.
 
 **Wikipedia:** [Evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy). It says: “only B is an ESS”
 
@@ -489,15 +489,15 @@
 
 ### Defining common knowledge by a common partition makes agreement immediate
 
-**Remember:** Common knowledge holds throughout the cell shared by all partitions after coarsening.
+**Remember:** Common knowledge fills a whole cell of the shared coarsening.
 
 *Makes the theorem clean to state or prove.* MSC 91A27 (Games with incomplete information, Bayesian games), 03B42. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** Each agent observes a cell of a partition of a finite state space. An event is common knowledge at a state if it contains that state's cell in the finest common coarsening of all agents’ partitions.
+**Definition.** Each agent learns only which cell of their own partition of a finite state space contains the true state. An event is common knowledge at a state if it contains that state's cell in the meet, the finest partition coarser than every agent's partition.
 
 **Problem.** Suppose agents share a prior giving every state positive probability. If their posterior probabilities of an event are common knowledge, their posteriors agree.
 
-**How the definition helps.** The partition definition turns the proof into one short computation with conditional probabilities (our own summary). The part of the meet that holds the true state is a union of each agent's own parts. Each agent has the same posterior on all her parts inside it, so that posterior equals the probability conditional on the whole part. That number does not depend on the agent, so the posteriors agree.
+**How the definition helps.** The meet cell holding the true state is a union of each agent's own cells. If an agent's posterior is common knowledge, it is the same number on each of those cells, so it equals the probability conditional on the whole meet cell. That number does not depend on the agent, so the posteriors agree.
 
 **Wikipedia:** [Aumann's agreement theorem](https://en.wikipedia.org/wiki/Aumann%27s_agreement_theorem). It says: “The theorem was proved by Robert Aumann in his 1976 paper "Agreeing to Disagree", which also introduced the formal, set-theoretic definition of common knowledge.”
 
@@ -511,11 +511,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91A27 (Games with incomplete information, Bayesian games), 91A18. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** In a finite Bayesian game, Nature draws a type profile from a known common prior and privately tells each player their type. A mixed action rule assigns an action distribution to each possible type. At Bayesian Nash equilibrium, each positive-probability type maximizes conditional expected payoff given everyone else's rules.
+**Definition.** In a finite Bayesian game, Nature first draws a type profile from a known common prior and tells each player only their own type. A mixed action rule assigns an action distribution to each type, and at a Bayesian Nash equilibrium each positive-probability type maximizes its conditional expected payoff given the others' rules.
 
 **Problem.** Every finite Bayesian game has a Bayesian Nash equilibrium in mixed strategies.
 
-**How the definition helps.** With a common prior, the game becomes an ordinary game with imperfect information in which Nature moves first. So Nash's existence theorem applies, for example by treating each type as a separate player (our own). Without types, players would reason about beliefs about beliefs without end. What stays hard is the common prior itself, which is a strong assumption (our own).
+**How the definition helps.** Nature's move turns the game into an ordinary finite game with imperfect information. Treating each type as a separate player, Nash's existence theorem gives an equilibrium (our own). The common prior makes this possible, and it is a strong assumption (our own).
 
 **Wikipedia:** [Bayesian game](https://en.wikipedia.org/wiki/Bayesian_game). It says: “both players are aware of this probability (common prior assumption, which can be converted into a complete-information game with imperfect information).”
 
@@ -529,11 +529,11 @@
 
 *True by definition.* MSC 91B03 (Mechanism design theory), 91B16, 91B26. arXiv cs.GT, econ.TH. Level 3: graduate.
 
-**Definition.** With quasilinear utility, an agent values outcome x and transfer t at vᵢ(x) + t. VCG selects an outcome maximizing total reported value. Each agent receives the others’ total reported value there minus a function of their reports alone.
+**Definition.** Under quasilinear utility, an agent's payoff is her value for the outcome plus the money she receives, vᵢ(x) + t. A VCG mechanism picks an outcome with the largest total reported value. It pays each agent the others' total reported value there, minus an amount that depends only on the others' reports.
 
 **Problem.** In every VCG mechanism, reporting one's true values is a dominant strategy, best whatever the others report. The Vickrey second-price auction is a special case.
 
-**How the definition helps.** With others’ reports fixed, the agent maximizes her true value plus their reported values because the subtracted term stays fixed (our own). Reporting truthfully makes the mechanism maximize exactly that sum (our own). In a single-item auction, the pivot payment charges the winner the highest losing bid (our own).
+**How the definition helps.** Each agent's payoff becomes her true value plus the others' reported values, minus a term she cannot affect (our own). So she wants the outcome that maximizes that sum, and truthful reporting makes the mechanism pick it (our own). In a single-item auction, the pivot payment charges the winner the highest losing bid (our own).
 
 **Wikipedia:** [Vickrey–Clarke–Groves mechanism](https://en.wikipedia.org/wiki/Vickrey%E2%80%93Clarke%E2%80%93Groves_mechanism), [Quasilinear utility](https://en.wikipedia.org/wiki/Quasilinear_utility). It says: “The agent is paid the total value of the other agents; hence, together with its own value, the total welfare of the agent is exactly equal to the total welfare of society.”
 
@@ -545,15 +545,15 @@
 
 ### The revelation principle lets designers study only truthful mechanisms
 
-**Remember:** Any equilibrium outcome can be reached by asking people for the truth.
+**Remember:** The mechanism plays your equilibrium strategy, so you only tell the truth.
 
 *Makes the theorem clean to state or prove.* MSC 91B03 (Mechanism design theory), 91B14. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** A mechanism is a game that a designer sets up to pick an outcome from the players' actions. A social choice function picks an outcome for each list of the players' preferences. A direct mechanism asks each player only to report a preference, and it is incentive-compatible if telling the truth is an equilibrium.
+**Definition.** A direct mechanism asks each player only to report a preference, then picks the outcome from the reports. It is incentive-compatible if truthful reporting is an equilibrium, so it carries out a social choice function, a rule from preference lists to outcomes, by evaluating it at the true preferences.
 
 **Problem.** If some mechanism implements a social choice function in dominant strategies or in Bayesian Nash equilibrium, then a direct incentive-compatible mechanism implements it too.
 
-**How the definition helps.** A direct mechanism can run the original equilibrium strategies on the reported types (our own). Any profitable false report would give a profitable deviation in the original mechanism under the same equilibrium criterion (our own). Truth therefore reproduces the original outcome (our own).
+**How the definition helps.** Build the direct mechanism that feeds the reports into the original equilibrium strategies and plays the original game (our own). A profitable false report would then be a profitable deviation in the original game under the same equilibrium notion (our own). So truth is an equilibrium and gives the original outcome (our own).
 
 **Wikipedia:** [Revelation principle](https://en.wikipedia.org/wiki/Revelation_principle). It says: “By narrowing the area needed to be searched, the problem of finding a mechanism becomes much easier.”
 
@@ -564,15 +564,15 @@
 
 ### Certainty equivalents compose
 
-**Remember:** Replace risk with certainty without changing its averaged utility.
+**Remember:** The sure amount whose utility equals the expected utility.
 
 *True by definition.* MSC 91B06 (Decision theory). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** Fix a continuous, strictly increasing utility function that assigns a numerical value to each payoff. For a bounded risky payoff, its conditional certainty equivalent is the amount known from current information with the same conditional expected utility.
+**Definition.** Fix a continuous, strictly increasing utility u. Given some information, the conditional certainty equivalent of a bounded risky payoff X is the unique amount, known from that information, whose utility equals E\[u(X) \| that information\].
 
 **Problem.** Compute a certainty equivalent with finer information, then compute its certainty equivalent with coarser information. The result equals the certainty equivalent computed directly with coarser information.
 
-**How the definition helps.** Matching conditional expected utility makes two successive replacements preserve the same average as one replacement (our own). Averaging first with finer information and then with coarser information gives the coarser average directly (our own). Strict increase gives just one amount with this utility (our own). The paper’s representation theorem identifies when an abstract family of consistent evaluations admits a utility description.
+**How the definition helps.** In utility terms each certainty equivalent is a conditional expectation of u(X), so composing two of them is the tower property of conditional expectation (our own). Strict increase of u makes equal utilities give equal amounts (our own).
 
 **Paper or page:** [On conditioning and consistency for nonlinear functionals](https://arxiv.org/abs/2401.09054v2). It says: “is a family of time consistent conditional nonlinear expectations”
 
@@ -586,11 +586,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B08 (Individual preferences), 91B15, 91B50. arXiv econ.TH. Level 3: graduate.
 
-**Definition.** A bundle is a list of amounts of each good. A preference is locally nonsatiated if, for every bundle and every distance ε &gt; 0, there is a strictly preferred bundle within distance ε. In words, near every bundle there is a slightly better one.
+**Definition.** A preference is locally nonsatiated if every bundle of goods has a strictly preferred bundle arbitrarily close to it: for every bundle x and every ε &gt; 0, some bundle within distance ε of x is strictly preferred. So a consumer never leaves money unspent at a best affordable bundle (our own).
 
-**Problem.** The first fundamental theorem of welfare economics: if preferences are locally nonsatiated, every competitive equilibrium allocation is Pareto optimal. Pareto optimal means that no feasible allocation makes someone better off and nobody worse off.
+**Problem.** The first fundamental theorem of welfare economics: if preferences are locally nonsatiated, every competitive equilibrium allocation is Pareto optimal. That is, no feasible allocation makes someone better off and nobody worse off.
 
-**How the definition helps.** Local nonsatiation makes every weakly preferred bundle cost at least equilibrium expenditure, since a cheaper bundle permits a nearby affordable improvement (our own). A strictly preferred bundle costs strictly more by consumer optimality (our own). A Pareto improvement would therefore increase total expenditure beyond what feasibility and profit maximization allow (our own).
+**How the definition helps.** Local nonsatiation makes every bundle at least as good as a consumer's equilibrium bundle cost at least as much, and every strictly better bundle cost strictly more (our own). A Pareto improvement would then cost more in total at equilibrium prices than profit-maximizing firms can supply (our own).
 
 **Wikipedia:** [Fundamental theorems of welfare economics](https://en.wikipedia.org/wiki/Fundamental_theorems_of_welfare_economics). It says: “If preferences are locally nonsatiated, and if (X\*, Y\*, p) is a price equilibrium with transfers, then the allocation (X\*, Y\*) is Pareto optimal.”
 
@@ -604,11 +604,11 @@
 
 *True by definition.* MSC 91B16 (Utility theory), 91B06. arXiv econ.TH, q-fin.RM. Level 3: graduate.
 
-**Definition.** Let u be a twice differentiable utility of wealth with positive derivative. The Arrow–Pratt coefficient of absolute risk aversion at wealth c is −u″(c)/u′(c). Using curvature alone, u″(c), would make the measure depend on the scale of utility.
+**Definition.** For a twice differentiable utility of wealth u with u′ &gt; 0, the Arrow–Pratt coefficient of absolute risk aversion at c is the curvature divided by the slope, −u″(c)/u′(c). Dividing by the slope makes the measure ignore the units of utility.
 
 **Problem.** Replacing u by αu + β with α &gt; 0 preserves expected-utility preferences and leaves the Arrow–Pratt coefficient unchanged.
 
-**How the definition helps.** The ratio makes invariance immediate because α multiplies both derivatives and cancels, while differentiation removes β. Bare curvature instead changes by a factor of α. The work in Pratt’s comparison theorem is to connect the coefficient to choices over risk. It shows that a decision maker with a larger coefficient at every wealth level will pay at least as much to avoid the same risk.
+**How the definition helps.** Replacing u by αu + β multiplies both u″ and u′ by α, which cancels, and β disappears on differentiation. Bare curvature u″ would instead change by the factor α.
 
 **Wikipedia:** [Risk aversion](https://en.wikipedia.org/wiki/Risk_aversion). It says: “However, since expected utility functions are not uniquely defined (are defined only up to affine transformations), a measure that stays constant with respect to these transformations is needed rather than just the second derivative of u(c).”
 
@@ -618,15 +618,15 @@
 
 ### Allocation probabilities determine auction payments
 
-**Remember:** Match the chances of winning and pin down one payment.
+**Remember:** Win chances fix the slope of surplus, so payments follow.
 
 *Makes the theorem clean to state or prove.* MSC 91B26 (Auctions, bargaining, bidding and selling, and other market models). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** For each bidder, record the probability of winning at each private value, averaging over the other bidders’ values and any auction randomness. This function summarizes how the auction allocates the item.
+**Definition.** A bidder's win probability is her chance of winning as a function of her own private value, averaged over the other bidders' values and any randomness in the auction. In a truthful auction it is the slope of her expected surplus, value received minus payment, as her value varies (our own).
 
-**Problem.** Suppose bidders have independent private values on closed intervals and maximize expected value received minus payment. In each auction, truthful reporting maximizes this expectation when others report truthfully. If win probabilities agree at each value and expected payments agree at each bidder’s lowest value, expected payments agree throughout.
+**Problem.** Suppose bidders have independent private values on closed intervals, maximize expected value received minus payment, and report truthfully in equilibrium in two auctions. If the auctions give the same win probability at each value and the same expected payment at each lowest value, they give the same expected payment at every value.
 
-**How the definition helps.** The win probability gives the slope of expected surplus, value received minus payment, as the bidder's value varies (our own). Truthful reporting bounds each change in surplus between the endpoint win probabilities times the change in value (our own). Integrating the win probability therefore recovers surplus up to its starting value (our own). Subtracting surplus from value times win probability then gives the expected payment (our own).
+**How the definition helps.** Truthful reporting makes expected surplus equal its value at the lowest type plus the integral of the win probability (our own). Expected payment is value times win probability minus surplus, so the same data fix it (our own).
 
 **Wikipedia:** [Revenue equivalence](https://en.wikipedia.org/wiki/Revenue_equivalence). It says: “The expected payments of all types are the same in both mechanisms, and hence:”
 
@@ -636,15 +636,15 @@
 
 ### Virtual valuations turn auction revenue into a pointwise objective
 
-**Remember:** Subtract the upper-tail probability divided by density from the bidder’s value.
+**Remember:** Value minus information rent: revenue is the winner's virtual value.
 
 *Makes the theorem clean to state or prove.* MSC 91B26 (Auctions, bargaining, bidding and selling, and other market models), 91B03. arXiv cs.GT, econ.TH. Level 3: graduate.
 
-**Definition.** For a bidder with distribution function F and positive density f on \[0,b\], the virtual value at v is v − (1 − F(v))/f(v). Virtual surplus equals the winner’s virtual value, or zero without a sale.
+**Definition.** For a bidder with distribution function F and positive density f on \[0,b\], the virtual value at v is v − (1 − F(v))/f(v). Virtual surplus is the winner's virtual value, or zero with no sale, and a truthful auction's expected revenue is its expected virtual surplus, less the lowest types' expected utilities.
 
-**Problem.** Suppose risk-neutral bidders have independent private values and nondecreasing virtual values. Award the item to the highest positive virtual bidder, using fixed tie-breaking and threshold payments. This maximizes expected revenue among truthful auctions giving each lowest-value type nonnegative expected utility.
+**Problem.** Suppose risk-neutral bidders have independent private values and nondecreasing virtual values. Then giving the item to the highest positive virtual bidder, with fixed tie-breaking and threshold payments, maximizes expected revenue among truthful auctions giving each lowest-value type nonnegative expected utility.
 
-**How the definition helps.** Myerson’s payment identity gives expected revenue as expected virtual surplus minus the bidders’ expected utilities at their lowest values (our own). The rule maximizes virtual surplus at each bid profile (our own). Fixed tie-breaking preserves monotonicity, and threshold payments implement truthfulness with zero utility at value zero (our own).
+**How the definition helps.** Since revenue is expected virtual surplus minus the lowest types' utilities, the best auction maximizes virtual surplus at every bid profile and leaves the lowest types zero (our own). Nondecreasing virtual values make this rule monotone in bids, with fixed tie-breaking preserving this (our own). Threshold payments then make it truthful with zero utility at value zero (our own).
 
 **Wikipedia:** [Virtual valuation](https://en.wikipedia.org/wiki/Virtual_valuation). It says: “The expected profit of any truthful mechanism is equal to its expected virtual surplus.”
 
@@ -658,11 +658,11 @@
 
 *Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)), 91B50, 91B15. arXiv econ.TH, cs.GT. Level 3: graduate.
 
-**Definition.** In a competitive equilibrium, each buyer chooses a best affordable bundle, and total demand equals total supply. With equal incomes, all buyers face the same prices and have the same budget. An allocation is envy-free if no buyer strictly prefers another buyer’s bundle.
+**Definition.** An allocation is envy-free if no buyer strictly prefers another buyer's bundle. In a competitive equilibrium with equal incomes, all buyers face the same prices and the same budget, and each picks a best bundle she can afford, so every other buyer's bundle is affordable to her.
 
 **Problem.** Every competitive equilibrium with equal incomes is envy-free.
 
-**How the definition helps.** Equal budgets make every other buyer's bundle affordable, so choosing a best bundle rules out envy. Our own example with unequal budgets has three units of one divisible good at price one. Two buyers with budgets one and two buy one and two units. If both prefer more of the good, the first buyer envies the second.
+**How the definition helps.** Each buyer could afford any other buyer's bundle and chose her own as best, so she envies no one. Our own example: with one divisible good at price one and budgets one and two, the poorer buyer envies the richer one if both prefer more.
 
 **Wikipedia:** [Competitive equilibrium](https://en.wikipedia.org/wiki/Competitive_equilibrium), [Efficient envy-free division](https://en.wikipedia.org/wiki/Efficient_envy-free_division). It says: “Furthermore, by Varian's theorems, a CE allocation in which all agents have the same income is also envy-free.”
 
@@ -672,15 +672,15 @@
 
 ### Strict housing preferences force uniqueness
 
-**Remember:** Give everyone in a top-choice cycle their first choice.
+**Remember:** No group can reshuffle its own houses to help someone, hurting nobody.
 
 *Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** Each person owns one house and ranks the houses. A group blocks an assignment if it can redistribute its original houses and help someone without hurting any member. The strict core consists of assignments that no group can block.
+**Definition.** Each person owns one house and ranks the houses. A group blocks an assignment if, by trading only its members' original houses, it can make one member better off and no member worse off, and the strict core is the set of assignments no group blocks.
 
 **Problem.** With finitely many owners and strict rankings, the strict core has exactly one assignment, the one found by top trading cycles. In each round, owners point to the owners of their favorite remaining houses, trade along the resulting cycles, and leave.
 
-**How the definition helps.** Every strict-core assignment must honor each top-choice cycle, since its members could reclaim their favorite houses together (our own). Removing those cycles forces each later round in turn (our own). Conversely, earliest-round members of any proposed block must keep their unique favorites, consuming their cycles’ houses whenever the block preserves their welfare (our own). Removing these cycles successively leaves nobody strictly better off, while two indifferent owners permit both assignments (our own).
+**How the definition helps.** Owners in a top-choice cycle can each get their favorite house by trading among themselves, so every strict-core assignment gives them those houses (our own). Removing them and repeating forces each later round, and one checks that the resulting assignment is unblocked (our own). With ties, two owners indifferent between their houses can swap or not, and both assignments are in the strict core (our own).
 
 **Wikipedia:** [Top trading cycle](https://en.wikipedia.org/wiki/Top_trading_cycle). It says: “Moreover, with strict preferences, there is a unique core-stable allocation, and it is the one found by TTC.”
 
@@ -691,15 +691,15 @@
 
 ### Utility weights certify fractional efficiency
 
-**Remember:** Allow every fractional split before testing whether anyone can gain without another losing.
+**Remember:** Test efficiency against every fractional split, not only whole-item trades.
 
 *Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** With additive item values, permit each item to be split into fractions, with value proportional to the fraction. An allocation is fractionally Pareto efficient when no such allocation helps anyone without hurting someone.
+**Definition.** With additive item values, an allocation is fractionally Pareto efficient if no allocation that may split items, with value proportional to the fraction, helps someone without hurting anyone. Splitting makes the set of reachable utility vectors a polytope (our own).
 
 **Problem.** An allocation of finitely many goods with additive values is fractionally Pareto efficient exactly when it maximizes a strictly positive weighted sum of utilities.
 
-**How the definition helps.** Fractional splits give a utility polytope, where the polyhedral supporting-weight theorem gives every efficient point strictly positive supporting weights (our own). Any Pareto improvement raises every positively weighted sum (our own). Alice values two goods at 3 and 2, George at 4 and 1, and each initially owns the correspondingly numbered good (our own). No whole-item exchange helps both, but splitting the first equally and giving Alice the second raises both utilities (our own).
+**How the definition helps.** On a polytope every Pareto-efficient point has a supporting hyperplane with strictly positive weights, and a maximizer of a positively weighted sum cannot be Pareto improved (our own). For example, Alice values goods 1 and 2 at 3 and 2, George at 4 and 1, and Alice holds good 1 and George good 2 (our own). No whole-item change helps both, but splitting good 1 equally and giving Alice good 2 raises both utilities (our own).
 
 **Wikipedia:** [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_efficiency). It says: “it is not Pareto dominated even by an allocation in which some items are split between agents.”
 
@@ -713,11 +713,11 @@
 
 *True by definition. Confidence: medium.* MSC 91B38 (Production theory, theory of the firm), 52A41. arXiv econ.TH, math.OC. Level 3: graduate.
 
-**Definition.** A production set Y lists the firm’s feasible net output vectors. At prices p the profit π(p) is the supremum of p·y over y in Y. This is the support function of Y, meaning the supremum of the dot products with p, with no need for a maximizing point.
+**Definition.** Profit at prices p is the support function of the production set Y: the supremum of p·y over all feasible net output vectors y in Y, whether or not a maximizer exists. So profit is a supremum of functions that are linear in p.
 
 **Problem.** The profit function is convex and positively homogeneous in prices. If profit-maximizing plans y(p) and y(q) exist, then (p − q)·(y(p) − y(q)) ≥ 0.
 
-**How the definition helps.** The support-function formula makes profit convex because it takes the supremum of linear functions of price. Scaling prices by a positive constant scales that supremum by the same amount. Defining profit through a chosen supply plan would need a maximizer and hide both facts (our own comparison). For the supply inequality, our own check compares the two chosen plans at each price and adds the inequalities.
+**How the definition helps.** A supremum of linear functions of p is convex, and scaling p by a positive constant scales it by the same constant. For the supply inequality, p·y(p) ≥ p·y(q) and q·y(q) ≥ q·y(p), and adding them gives the result (our own).
 
 **Wikipedia:** [Support function](https://en.wikipedia.org/wiki/Support_function), [Hotelling's lemma](https://en.wikipedia.org/wiki/Hotelling%27s_lemma). It says: “It follows directly from its definition that the support function is positive homogeneous”
 
@@ -729,11 +729,11 @@
 
 *True by definition. Confidence: medium.* MSC 91B42 (Consumer behavior, demand theory), 91B16. arXiv econ.TH. Level 3: graduate.
 
-**Definition.** Indirect utility v(p, w) is the supremum of utility over bundles x with p·x ≤ w. The alternative formula evaluates utility at a demand bundle, one that maximizes utility among affordable bundles.
+**Definition.** Indirect utility v(p, w) is the supremum of utility over the budget set, the bundles x with p·x ≤ w. So it depends on prices and income only through that set.
 
 **Problem.** Scaling prices and income together by a positive number leaves indirect utility unchanged. Indirect utility is quasiconvex in prices and income, so its value at a mixture is at most the larger endpoint value.
 
-**How the definition helps.** The budget-set definition makes scale invariance immediate because joint rescaling leaves every affordability inequality unchanged. Our own quasiconvexity proof uses the fact that a bundle affordable at a mixture is affordable at one endpoint. Otherwise its cost exceeds income at both endpoints, and therefore at the mixture. The demand formula hides this argument and requires an optimizer to exist.
+**How the definition helps.** Scaling p and w together leaves the budget set unchanged, so v is unchanged. For quasiconvexity, a bundle affordable at a mixture of two price–income pairs is affordable at one of them (our own). Otherwise its cost exceeds income at both, and therefore at the mixture (our own).
 
 **Wikipedia:** [Indirect utility function](https://en.wikipedia.org/wiki/Indirect_utility_function). It says: “if prices and income are all multiplied by a given constant the same bundle of consumption represents a maximum, so optimal utility does not change”
 
@@ -741,15 +741,15 @@
 
 ### Expenditure slopes give compensated demand
 
-**Remember:** At the minimum, one extra unit of price reveals the quantity.
+**Remember:** Expenditure lies under each bundle's cost line and touches at the best.
 
 *True by definition.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** For utility u, prices p and target a, expenditure is the infimum of p·x over consumption bundles x satisfying u(x) ≥ a. Compensated demand consists of all bundles attaining that cost.
+**Definition.** Expenditure e(p, a) is the least cost of reaching utility at least a, the infimum of p·x over bundles x with u(x) ≥ a. So e lies below the cost line p′ ↦ p′·x\* of a minimizing bundle x\* at p, and touches it at p (our own).
 
 **Problem.** If expenditure is differentiable at a positive price vector and a minimizing bundle exists, its price gradient equals that bundle.
 
-**How the definition helps.** A minimizing bundle gives a linear function of prices that touches the expenditure function from above (our own). At a point of differentiability their gradients agree, and the linear function has the bundle itself as gradient (our own). This identifies demand directly from minimum cost (our own). Differentiability still needs proof when several bundles compete (our own).
+**How the definition helps.** Where a differentiable function touches a linear one from below, their gradients agree, and the cost line has gradient x\* (our own). So the price gradient of expenditure is the minimizing bundle (our own).
 
 **Wikipedia:** [Shephard's lemma](https://en.wikipedia.org/wiki/Shephard%27s_lemma). It says: “the partial derivatives of the expenditure function with respect to the prices of goods equal the Hicksian demand functions for the relevant goods.”
 
@@ -763,11 +763,11 @@
 
 *True by definition.* MSC 91B44 (Economics of information). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** A finite experiment gives a signal distribution for each hidden state. One experiment garbles another if a single randomized map between signal sets transforms the original distribution into the new one in every state.
+**Definition.** One finite experiment is a garbling of another if its signal can be produced from the other's signal by one randomized map, the same in every hidden state.
 
 **Problem.** If one finite experiment is a garbling of another, the original yields at least as much optimal expected utility in every finite decision problem.
 
-**How the definition helps.** Defining information by signal simulation gives a decision maker an explicit way to copy every strategy using the weaker signal (our own). For each state, the copied strategy gives the same distribution of actions and the same expected payoff (our own). Blackwell’s converse supplies the difficult direction, deriving simulation from payoff comparisons across all decision problems.
+**How the definition helps.** Whoever sees the original signal can run the garbling map and then any strategy for the garbled signal, getting the same action distribution and payoff in every state (our own). So the best original strategy does at least as well. Blackwell's theorem supplies the converse.
 
 **Wikipedia:** [Blackwell's informativeness theorem](https://en.wikipedia.org/wiki/Blackwell%27s_informativeness_theorem). It says: “Intuitively, garbling is a way of adding "noise" to an information structure, such that the garbled information structure is considered to be less informative.”
 
@@ -775,15 +775,15 @@
 
 ### Gross substitutes ensure price equilibria
 
-**Remember:** Raise some prices without driving demand away from unchanged items.
+**Remember:** Raising some prices never drives you from the items that stayed cheap.
 
 *Makes the theorem clean to state or prove.* MSC 91B50 (General equilibrium theory). arXiv econ.TH. Level 3: graduate.
 
-**Definition.** A buyer’s best bundle maximizes its value minus its total price. A valuation has gross substitutes if the following holds after any price increases. For every formerly best bundle, some new best bundle retains all its items whose prices stayed fixed.
+**Definition.** A buyer's best bundle maximizes value minus total price. A valuation has gross substitutes if, after any price increases, every formerly best bundle has some new best bundle that keeps all its items whose prices did not change.
 
 **Problem.** Suppose finitely many buyers have gross substitutes valuations for finitely many distinct goods, and adding goods never lowers value. Some nonnegative item prices let each buyer receive a best bundle, with each unassigned item priced at zero.
 
-**How the definition helps.** Gross substitutes describes the demand response used in the Kelso–Crawford equilibrium existence theorem (our own). Complementary pairs can prevent equilibrium when three buyers each want a different pair of three items and value it at one (our own). A winning pair leaves one free item, so deterring the two losers requires each winning item to cost at least one (our own). With no winning pair, total payments are zero and free pairs attract demand (our own).
+**How the definition helps.** Gross substitutes means that raising the prices of over-demanded items never removes demand for the others, which lets the Kelso–Crawford ascending process reach equilibrium prices (our own). Without it, three buyers who each value a different pair of three items at one admit no equilibrium (our own).
 
 **Wikipedia:** [Gross substitutes (indivisible items)](https://en.wikipedia.org/wiki/Gross_substitutes_%28indivisible_items%29). It says: “The GS property means that when the price of some items increases, the demand for other items does not decrease.”
 
@@ -793,15 +793,15 @@
 
 ### Quasi-equilibrium makes the second welfare theorem hold without extra conditions
 
-**Remember:** Supporting prices make every strictly preferred bundle cost at least the assigned wealth.
+**Remember:** Separating prices: anything strictly better costs at least your wealth.
 
 *Makes the theorem clean to state or prove.* MSC 91B52 (Special types of economic equilibria), 91B15, 91B50. arXiv econ.TH. Level 3: graduate.
 
-**Definition.** A price quasi-equilibrium with transfers is a feasible allocation with nonzero prices at which firms maximize profits and each consumer’s bundle costs their assigned wealth. Every strictly preferred bundle must cost at least that wealth.
+**Definition.** A price quasi-equilibrium with transfers is a feasible allocation with nonzero prices at which every firm maximizes profit and each consumer's bundle costs her assigned wealth. Every strictly preferred bundle must cost at least that wealth, a weak inequality, which is what a separating hyperplane gives.
 
 **Problem.** Consider a finite-dimensional economy with convex consumption and production sets, convex locally nonsatiated preferences, and nonempty interior of the aggregate production set. Every Pareto-efficient allocation admits a price quasi-equilibrium with transfers.
 
-**How the definition helps.** The definition separates the geometric part of the theorem from the boundary cases. A hyperplane separates the sums of strictly preferred bundles from the feasible total bundles, and it gives the prices. With only convexity and local nonsatiation, these prices support the allocation in the weaker quasi-equilibrium sense. A genuine price equilibrium needs extra conditions, such as a cheaper bundle for each consumer.
+**How the definition helps.** A hyperplane separating the sums of strictly preferred bundles from the feasible totals gives prices that satisfy only weak inequalities, which is exactly the quasi-equilibrium condition. A genuine price equilibrium needs extra conditions, such as a cheaper bundle for each consumer.
 
 **Wikipedia:** [Fundamental theorems of welfare economics](https://en.wikipedia.org/wiki/Fundamental_theorems_of_welfare_economics). It says: “any desired Pareto-efficient allocation can be supported as a price quasi-equilibrium with transfers.”
 
@@ -815,11 +815,11 @@
 
 *True by definition.* MSC 91G10 (Portfolio theory), 91G15. arXiv q-fin.PM. Level 3: graduate.
 
-**Definition.** A numeraire portfolio is an attainable portfolio with strictly positive wealth. Divide any allowed wealth process by its wealth. At any future date, the conditional expected ratio given current information is at most the current ratio.
+**Definition.** A numeraire portfolio is an attainable portfolio with strictly positive wealth against which no allowed wealth process grows on average. That is, each process divided by its wealth has conditional expected future ratio at most its current ratio.
 
 **Problem.** Suppose a numeraire portfolio exists and has finite expected terminal log wealth. It maximizes expected terminal log wealth among positive portfolios with equal initial wealth and finite expected logarithms.
 
-**How the definition helps.** Our own proof compares each portfolio directly with the benchmark, whose defining property bounds the expected terminal wealth ratio by one. Concavity of the logarithm bounds the expected log ratio by the log of that expectation. The resulting bound is zero. The market theorem supplies the benchmark’s existence under its trading assumptions.
+**How the definition helps.** Another portfolio with the same initial wealth has expected terminal wealth ratio to the benchmark at most one (our own). By Jensen's inequality for the concave logarithm, its expected log ratio is at most log 1 = 0 (our own). Existence of the benchmark is the market theorem's job.
 
 **Paper or page:** [Signature Methods in Stochastic Portfolio Theory](https://arxiv.org/abs/2310.02322v3). It says: “the numeraire portfolio is the log-optimal portfolio.”
 
@@ -827,15 +827,15 @@
 
 ### Convex order tests whether two price laws admit a martingale
 
-**Remember:** Under a martingale, convex payoff averages cannot fall over time.
+**Remember:** Martingales only spread prices out, so convex averages cannot fall.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 91G15 (Financial markets), 91G20. arXiv q-fin.MF. Level 3: graduate.
 
-**Definition.** One integrable real law lies below another in convex order if every convex function integrable under both has no greater expectation under the first. A two-date martingale consists of integrable prices X and Y satisfying E\[Y \| X\] = X almost surely.
+**Definition.** One integrable law on ℝ lies below another in convex order if every convex function integrable under both has expectation no greater under the first. Roughly, the second law is a more spread-out version with the same mean (our own).
 
-**Problem.** Two real price distributions with finite first moments can occur successively in a martingale exactly when the first lies below the second in convex order.
+**Problem.** Two real price distributions with finite first moments are the laws of X and Y for some martingale, E\[Y \| X\] = X, exactly when the first lies below the second in convex order.
 
-**How the definition helps.** Convex order collects all the inequalities that conditional Jensen’s inequality gives for a martingale. In our own example, equal means alone permit a random first price followed by a constant price. Absolute distance from that constant violates convex order unless the first price is already constant. Strassen’s theorem proves the difficult converse by constructing a joint distribution with the required conditional mean.
+**How the definition helps.** For a martingale, conditional Jensen's inequality gives E\[φ(X)\] ≤ E\[φ(Y)\] for every convex φ, so convex order is necessary. Strassen's theorem gives the converse by constructing a joint law with the required conditional mean.
 
 **Paper or page:** [Convex Order and Arbitrage](https://arxiv.org/abs/2510.01599v1). It says: “The following are equivalent: The market is free of model-independent arbitrage. $\\mathcal{M}(\\mu ,\\nu ) \\neq \\emptyset $. $\\mu \\preceq \_c \\nu $.”
 
@@ -849,11 +849,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 3: graduate.
 
-**Definition.** An exchange option lets its holder give one unit of a second asset for one unit of the first at expiry. In units of the second asset, its payoff is the larger of zero and the price ratio minus one.
+**Definition.** An exchange option lets its holder give one unit of the second asset for one unit of the first at expiry. Measured in units of the second asset, its payoff is the larger of zero and the price ratio minus one, a call on the ratio with exercise price one (our own).
 
 **Problem.** Assume two dividend-free assets with positive prices follow correlated geometric Brownian motions with constant volatilities and correlation in a frictionless Black–Scholes market. The exchange option costs as much, in second-asset units, as a call on their ratio with exercise price one.
 
-**How the definition helps.** Dividing by the asset to be delivered makes the exercise price constant (our own). The change of pricing unit gives a probability under which the ratio has zero expected instantaneous change (our own). Its logarithm has normally distributed increments with variance computed from both volatilities and their correlation (our own). The ordinary call formula then prices the exchange (our own).
+**How the definition helps.** Using the second asset as the unit gives a pricing probability under which the price ratio is a martingale (our own). The ratio is lognormal, with variance from both volatilities and their correlation, so the call formula with zero interest prices it (our own).
 
 **Wikipedia:** [Margrabe's formula](https://en.wikipedia.org/wiki/Margrabe%27s_formula). It says: “has become a call option on the first asset (with its numeraire pricing) with a strike of 1 unit of the riskless asset.”
 
@@ -867,11 +867,11 @@
 
 *True by definition.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 3: graduate.
 
-**Definition.** For positive prices S₁,…,Sₙ at n fixed dates, their geometric average is the positive nth root of S₁⋯Sₙ.
+**Definition.** For positive prices S₁,…,Sₙ at n fixed dates, the geometric average is the positive nth root of S₁⋯Sₙ. Its logarithm is the ordinary average of the log prices (our own).
 
 **Problem.** Assume the stock’s log price follows Brownian motion with constant drift and volatility under the pricing probability, with a constant interest rate. Then the geometric average at fixed dates is lognormal, meaning its logarithm is normally distributed.
 
-**How the definition helps.** Taking the logarithm turns the geometric average into an arithmetic average of jointly normal log prices (our own). Their average is normal, with mean and variance determined by the observation dates (our own). For a call, average the excess above the agreed exercise price, counting negative excess as zero, and discount to today (our own).
+**How the definition helps.** Under these assumptions the log prices are jointly normal, so their average is normal, with mean and variance set by the dates (our own). This gives a closed-form price for a geometric Asian call (our own).
 
 **Wikipedia:** [Asian option](https://en.wikipedia.org/wiki/Asian_option). It says: “However, an exact result is easily obtained for Asian options with geometric averaging”
 
@@ -885,11 +885,11 @@
 
 *True by definition.* MSC 91G30 (Interest rates, asset pricing, etc. (stochastic models)). arXiv q-fin.PR. Level 3: graduate.
 
-**Definition.** Use a strictly positive traded asset with a known initial price as the unit for quoting all prices. Discounting a price means dividing it by the value of the bank account. Weight each outcome by the new unit’s final discounted price divided by its initial discounted price.
+**Definition.** Pick a strictly positive traded asset with known initial price as the new unit for quoting prices. Weight each outcome by the new unit's final discounted price, its price divided by the bank account, over its initial discounted price, so the weight cancels the division by the unit (our own).
 
-**Problem.** Consider assets paying no dividends over a fixed finite horizon. Suppose each discounted price, including the new unit’s, equals its expected future value given current information. Under the reweighted probability, prices expressed in the new unit have the same property.
+**Problem.** Consider dividend-free assets over a fixed finite horizon whose discounted prices, including the new unit's, equal their expected future values given current information. Under the reweighted probability, prices quoted in the new unit have the same property.
 
-**How the definition helps.** The weight used in the conditional average cancels the asset used as the unit (our own). Applying the original conditional pricing identities to the numerator and denominator gives today’s price ratio (our own). The original pricing probability must exist, and the discounted unit must have constant expectation for its weight to define a probability (our own).
+**How the definition helps.** In the conditional average of a price quoted in the new unit, the weight cancels the unit and leaves the original discounted conditional average, divided by today's discounted unit (our own). The original pricing probability must exist, and the discounted unit must have constant expectation so that its weight defines a probability (our own).
 
 **Wikipedia:** [Numéraire](https://en.wikipedia.org/wiki/Num%C3%A9raire). It says: “Then it can be shown that S(t) is a martingale under Qᴺ when priced in terms of the new numéraire N(t):”
 
@@ -903,11 +903,11 @@
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
 
-**Definition.** An acceptance set lists safe financial positions and stays acceptable when a payoff increases. The capital required for a position is the infimum of the cash deposits that make it safe. A negative deposit means a withdrawal.
+**Definition.** An acceptance set lists the safe financial positions and stays safe when a payoff increases. The capital required for a position is the infimum of the cash amounts which, added to it, make it safe, and a negative amount means a withdrawal.
 
 **Problem.** Assume the capital requirement is finite for every position. A convex acceptance set gives a convex capital requirement.
 
-**How the definition helps.** Our own proof mixes the deposits in the same proportions as the positions, and convexity keeps the mixed position safe. Taking deposits arbitrarily close to their infima gives the convexity inequality for capital. Starting from a capital formula would require checking that inequality for every pair of positions. Here the work lies in checking which mixtures the safety rule accepts.
+**How the definition helps.** If X plus m and Y plus n are safe, convexity makes their mixture safe, so the mixed position needs at most the mixed cash amount (our own). Letting m and n approach their infima gives the convexity inequality for capital (our own).
 
 **Paper or page:** [A note on the induction of comonotonic additive risk measures from acceptance sets](https://arxiv.org/abs/2307.04647v2). It says: “If A is convex, then ρₐ is convex.”
 
@@ -915,15 +915,15 @@
 
 ### Firm tails bound systemic exposure
 
-**Remember:** A market crash need not select a firm’s worst losses.
+**Remember:** Your own worst tail beats any other event of that size.
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
 
-**Definition.** Fix a tail fraction t strictly between zero and one, with integrable losses and continuous firm and market loss distributions. Marginal expected shortfall averages firm loss over the market’s worst fraction t. Firm expected shortfall averages firm loss over its own worst fraction t.
+**Definition.** Fix a tail fraction t in (0,1), with integrable losses and continuous loss distributions. A firm's expected shortfall averages its loss over its own worst fraction t, which is the largest average loss over any event of probability t (our own). Its marginal expected shortfall averages its loss over the market's worst fraction t, one such event.
 
 **Problem.** A firm’s marginal expected shortfall cannot exceed its own expected shortfall. The bound is sharp when all losses increase with the same uniform random variable.
 
-**How the definition helps.** The event selected by total market loss is one candidate in the maximum defining the firm’s expected shortfall (our own). If every firm’s loss increases with the same uniform random draw, the market and firm select the same tail. The work lies in proving that the usual tail average equals the maximum over events (our own).
+**How the definition helps.** The market's tail is one candidate event in the maximum, so it gives an average no larger than the firm's own tail (our own). If every loss increases with the same uniform random variable, the market and the firm select the same tail, and equality holds (our own).
 
 **Paper or page:** [Static marginal expected shortfall: Systemic risk measurement under dependence uncertainty](https://arxiv.org/abs/2504.19953v2), [An elementary proof of the dual representation of Expected Shortfall](https://arxiv.org/abs/2306.14506v1). It says: “The upper bound of MESₚ(Xᵢ, S) is M(p) = ESₚ(Xᵢ).”
 
@@ -937,11 +937,11 @@
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
 
-**Definition.** For risk aversion a &gt; 0, entropic risk assigns a loss X the sure loss with the same expected exponential disutility. Equating disutilities gives exp(a times sure loss) = E\[exp(aX)\], where E means expectation. Equivalently, entropic risk is ln(E\[exp(aX)\])/a.
+**Definition.** For risk aversion a &gt; 0, the entropic risk of a loss X is the sure loss with the same expected exponential disutility. Solving for it gives ln(E\[exp(aX)\])/a, where E means expectation.
 
 **Problem.** Entropic risk adds across independent losses when both use the same parameter and their exponential moments are finite.
 
-**How the definition helps.** The logarithm formula turns independent losses into an addition rule (our own). Independence makes the expected exponential of the sum the product of the two expected exponentials (our own). The logarithm adds their risks (our own). The conversion from the preference definition consists of solving the equal-disutility equation for the sure loss (our own).
+**How the definition helps.** For independent losses, E\[exp(a(X + Y))\] is the product E\[exp(aX)\]·E\[exp(aY)\] (our own). The logarithm turns this product into a sum of the two risks (our own).
 
 **Wikipedia:** [Entropic risk measure](https://en.wikipedia.org/wiki/Entropic_risk_measure). It says: “the entropic risk measure is a risk measure which depends on the risk aversion of the user through the exponential utility function.”
 
@@ -953,11 +953,11 @@
 
 *Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures), 90C15. arXiv q-fin.RM, math.OC. Level 3: graduate.
 
-**Definition.** At probability p between zero and one, the loss quantile is the smallest value with cumulative probability at least p. For a tail fraction t strictly between zero and one, define expected shortfall as the average quantile over levels between 1 − t and one.
+**Definition.** For a tail fraction t in (0,1), expected shortfall is the average of the loss quantiles over levels from 1 − t to 1. Here the quantile at p is the smallest value with cumulative probability at least p, so the average takes exactly mass t from the top, splitting a tie at the cutoff (our own).
 
 **Problem.** For an integrable loss X and tail fraction t, expected shortfall equals the minimum over real thresholds c of c + E\[max(X − c, 0)\]/t.
 
-**How the definition helps.** Write q for the cutoff quantile and U for a uniform draw on (0,1), so Q(U) has the loss distribution (our own). For any c, max(Q(U) − c,0) dominates (Q(U) − c) times the indicator of U &gt; 1 − t (our own). Averaging gives the claimed bound, with equality at c = q even with ties (our own). A loss of 100 with probability 0.05 and zero otherwise averages 50 in its upper tenth, despite averaging 100 above zero (our own).
+**How the definition helps.** Write X as Q(U), with Q the quantile function and U uniform on (0,1) (our own). For every c, max(Q(U) − c, 0) is at least Q(U) − c on the event U &gt; 1 − t, which gives the bound, with equality at the cutoff quantile (our own). Ties matter: a loss of 100 with probability 0.05 has expected shortfall 50 at t = 0.1, but averages 100 above zero (our own).
 
 **Paper or page:** [Risk-Adaptive Approaches to Stochastic Optimization: A Survey](https://arxiv.org/abs/2212.00856v3). It says: “expectation of the α-tail distribution of ξ”
 
@@ -967,15 +967,15 @@
 
 ### Scaled tail risk is concave
 
-**Remember:** Scale out the tail probability and minimize lines.
+**Remember:** Scaled shortfall is the lowest of a family of lines.
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
 
-**Definition.** For an integrable loss Y, expected shortfall averages its quantiles from probability β to one, where 0 &lt; β &lt; 1. Equivalently, minimize t + E\[max(Y − t, 0)\]/(1 − β) over real thresholds t. Here E denotes expectation.
+**Definition.** For an integrable loss Y and 0 &lt; β &lt; 1, expected shortfall averages the quantiles of Y from level β to 1. Equivalently, it is the minimum over real thresholds t of t + E\[max(Y − t, 0)\]/(1 − β), where E means expectation.
 
 **Problem.** Multiplying expected shortfall by 1 − β gives a concave function of β for each fixed loss.
 
-**How the definition helps.** The threshold formula expresses scaled expected shortfall as the infimum of lines in β (our own). Each line has value (1 − β)t + E\[max(Y − t, 0)\] at β (our own). An infimum of affine functions is concave (our own). The work lies in proving that threshold minimization gives the same value as the quantile average (our own).
+**How the definition helps.** Times 1 − β, it becomes the minimum over t of (1 − β)t + E\[max(Y − t, 0)\], and each of these is an affine function of β (our own). A minimum of affine functions is concave (our own).
 
 **Paper or page:** [Higher order measures of risk and stochastic dominance](https://arxiv.org/abs/2402.15387v1). It says: “For Y fixed in the domain of ℛ, the mapping β ↦ (1 − β) · ℛᵦ(Y) is concave.”
 
@@ -985,15 +985,15 @@
 
 ### Worst-case averages make expected shortfall subadditive
 
-**Remember:** The worst average of a sum cannot exceed the sum of the worst averages.
+**Remember:** A sum's worst average is at most the sum of worst averages.
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
 
-**Definition.** Fix a tail fraction 0 &lt; α &lt; 1. Expected shortfall averages the worst α fraction of losses, using just enough mass at a tied cutoff. Equivalently, it maximizes E\[ZX\] over random weights Z satisfying 0 ≤ Z ≤ 1/α and E\[Z\] = 1 for loss X.
+**Definition.** Fix a tail fraction α in (0,1). Expected shortfall of a loss X is its worst reweighted average, the maximum of E\[ZX\] over random weights Z with 0 ≤ Z ≤ 1/α and E\[Z\] = 1. This equals the average of the worst α fraction of losses, with just enough mass taken at a tied cutoff.
 
 **Problem.** For two integrable losses, expected shortfall of their sum is at most the sum of their expected shortfalls.
 
-**How the definition helps.** Our own proof uses the same weights for both losses, so their weighted averages add, and each average is at most its separate maximum. The representation theorem shows that this maximum equals the tail average. In our own example, two independent losses each equal one with probability 4% and zero otherwise. Each has a 95th percentile of zero, but their sum has a 95th percentile of one.
+**How the definition helps.** Take the best weights Z for X + Y; then E\[Z(X + Y)\] = E\[ZX\] + E\[ZY\], and each term is at most its own maximum (our own). Value at risk fails this: two independent losses, each one with probability 4% and zero otherwise, have 95th percentile zero, but their sum has 95th percentile one (our own).
 
 **Wikipedia:** [Value at risk](https://en.wikipedia.org/wiki/Value_at_risk). It says: “VaR of a combined portfolio can be larger than the sum of the VaRs of its components.”
 
@@ -1005,15 +1005,15 @@
 
 ### Minimax holds in all subgames exactly when no infinite triangular subgame exists
 
-**Remember:** Without an infinite larger-number pattern, every subgame has a minimax value.
+**Remember:** Whoever names the larger number wins, and no value exists.
 
 *Makes the theorem clean to state or prove.* MSC 91A05 (2-person games), 68Q32. arXiv cs.LG, cs.GT. Level 4: research.
 
-**Definition.** A subgame of a binary zero-sum game restricts each player to a nonempty subset of actions. An infinite triangular subgame has distinct rows aᵢ and distinct columns bⱼ indexed by positive integers. Its payoff is one for i &lt; j and zero otherwise, or the reverse throughout.
+**Definition.** An infinite triangular subgame is a copy of the game 'larger number wins' inside a binary zero-sum game. It has distinct rows a₁, a₂, … and distinct columns b₁, b₂, …, with payoff one for i &lt; j and zero otherwise, or the reverse throughout.
 
-**Problem.** Take a binary game whose payoff functions have finite Vapnik–Chervonenkis dimension. Every subgame then has equal upper and lower values exactly when there is no infinite triangular subgame. This stays true even with mixed strategies of finite support.
+**Problem.** Take a binary zero-sum game whose payoff functions have finite Vapnik–Chervonenkis dimension. Every subgame, a restriction to nonempty action sets, has equal upper and lower values over finitely supported mixed strategies exactly when there is no infinite triangular subgame.
 
-**How the definition helps.** The definition names the one pattern that breaks minimax, so the theorem can say it is the only obstruction. In the larger-number game, each player can beat any fixed mixed strategy of the other with probability close to one. So its upper value is 1 and its lower value is 0 (Proposition 10 of the paper). The hard direction is the converse, which uses the finite dimension to handle infinitely many actions.
+**How the definition helps.** In the larger-number game each player beats any finitely supported mixed strategy of the other by naming a larger index, so the upper value is 1 and the lower value 0 (Proposition 10 of the paper). The hard direction is the converse, which uses the finite dimension to handle infinitely many actions.
 
 **Paper or page:** [Online Learning with Simple Predictors and a Combinatorial Characterization of Minimax in 0/1 Games](https://arxiv.org/abs/2102.01646v1). It says: “for all subgames (𝒜′, ℬ′, val) if and only if it has no infinite triangular subgame.”
 
@@ -1027,11 +1027,11 @@
 
 *True by definition.* MSC 91A10 (Noncooperative games), 90C33, 90C11. arXiv econ.TH, math.OC. Level 4: research.
 
-**Definition.** In a generalized Nash game, each player's allowed strategies may depend on the other players' choices. For a profile x, the Nikaido–Isoda function adds up, over all players, the cost each would save by switching alone to a proposed allowed strategy. The merit function V̂(x) is the supremum of this sum over all proposed switches.
+**Definition.** In a generalized Nash game, each player's allowed strategies may depend on the other players' choices. The merit function V̂(x) is the largest total cost that the players could save, each switching alone to an allowed strategy, with the switches chosen separately.
 
 **Problem.** A profile x is a generalized Nash equilibrium exactly when x is feasible and V̂(x) = 0.
 
-**How the definition helps.** The merit function packs the definition of equilibrium into one number, so the theorem follows directly. Our own explanation: every player may propose to stay put, so V̂(x) ≥ 0 when x is feasible. Each player's switch is chosen separately, so V̂(x) &gt; 0 exactly when some player has a profitable switch. The paper's harder work uses this function to replace a nonconvex game by convexified games with the same equilibria.
+**How the definition helps.** Each player may stay put, so V̂(x) ≥ 0 when x is feasible (our own). Because the switches are chosen separately, V̂(x) = 0 exactly when no player can save by switching alone, which is the definition of equilibrium (our own).
 
 **Paper or page:** [Generalized Nash Equilibrium Problems with Mixed-Integer Variables](https://arxiv.org/abs/2107.13298v3). It says: “We present a new approach to characterize equilibria via a convexification technique using the Nikaido-Isoda function.”
 
@@ -1045,11 +1045,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91A14 (Potential and congestion games), 91A12, 05A18. arXiv econ.TH. Level 4: research.
 
-**Definition.** For finite cooperative games with empty-coalition worth zero, the potential assigns zero to the empty game. Removing any player decreases the potential by that player's Shapley value. A random partition draws disjoint nonempty coalitions covering the player set.
+**Definition.** The potential of a finite cooperative game with v(∅) = 0 is zero for the empty game and drops by a player's Shapley value when that player is removed. It equals the sum over nonempty coalitions S of (\|S\|−1)!(n−\|S\|)!/n! times the worth of S (our own).
 
 **Problem.** Fix a random partition of n players. Its expected total block worth equals the potential for every game exactly when each nonempty coalition of size t has block probability (t−1)!(n−t)!/n!.
 
-**How the definition helps.** Each coalition’s coefficient in expected total worth is its block probability (our own). The Shapley potential formula gives coefficient (t−1)!(n−t)!/n! for a coalition of size t (our own). Equality for every worth function therefore requires and suffices for matching coefficients (our own).
+**How the definition helps.** Expected total block worth is the sum of each coalition's worth times its probability of being a block (our own). Matching the potential formula for every worth function forces, and is ensured by, equal coefficients (our own).
 
 **Paper or page:** [Random partitions, potential, value, and externalities](https://arxiv.org/abs/2402.00394v2). It says: “the expected accumulated worth of a random partition of the players.”
 
@@ -1063,11 +1063,11 @@
 
 *True by definition.* MSC 91A15 (Stochastic games, stochastic differential games), 91A50. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** Past discounting with factor γ replaces the reward at step n by the sum of γⁿ⁻ᵏ rₖ over all steps k ≤ n. Future discounting with factor λ then scores a play by the sum of λⁿ times these new rewards.
+**Definition.** Past discounting with factor γ replaces the reward at step n by the sum of γⁿ⁻ᵏ rₖ over all k ≤ n, and future discounting with factor λ then scores a play by the sum of λⁿ times these new rewards. So each original reward rₖ gets weight λᵏ times 1 + γλ + (γλ)² + ⋯ (our own).
 
 **Problem.** Consider a stochastic game with bounded rewards and discount factors γ and λ in \[0,1). Its value with both discounts equals its ordinary λ-discounted value divided by 1 − γλ.
 
-**How the definition helps.** Bounded rewards and geometric discounting permit us to exchange the sums by absolute convergence (our own). The reward at step k then receives total weight λᵏ times the geometric sum with ratio γλ (our own). This scales every play’s payoff and hence the game value by 1/(1 − γλ) (our own).
+**How the definition helps.** Bounded rewards let us exchange the two sums, and the geometric sum equals 1/(1 − γλ) (our own). So every play's payoff, and hence the value, is the λ-discounted one divided by 1 − γλ (our own).
 
 **Paper or page:** [Discounting the Past](https://arxiv.org/abs/2102.06985v2). It says: “the values of these games may be computed via reductions to standard discounted and mean-payoff games.”
 
@@ -1081,11 +1081,11 @@
 
 *True by definition.* MSC 91A26 (Rationality and learning in game theory), 91A10, 68Q32. arXiv cs.GT, cs.LG. Level 4: research.
 
-**Definition.** A swap rule maps each of a player's actions to a replacement action. Swap regret is the largest cumulative payoff gain from applying one rule to every recorded round while keeping opponents’ actions fixed. A joint distribution is an ε-correlated equilibrium if every player's expected gain from each such rule is at most ε.
+**Definition.** A swap rule replaces each of a player's actions by some action. Swap regret is the largest total gain a player could have had by applying one swap rule in every past round, with opponents' actions unchanged. An ε-correlated equilibrium is a joint distribution in which no swap rule gains any player more than ε in expectation.
 
 **Problem.** If each player has swap regret at most R(T) in T rounds, the recorded actions, sampled uniformly, form an R(T)/T-approximate correlated equilibrium.
 
-**How the definition helps.** The rule-based definition turns the equilibrium error into swap regret divided by the number of rounds. Here the error is the greatest expected gain from any one replacement rule. The usual exact test checks one recommended action and one replacement at a time; the rule-based test groups these changes to match the regret bound (our own comparison). The hard part is finding algorithms that keep swap regret small.
+**How the definition helps.** Under the uniform distribution on the T recorded rounds, a swap rule's expected gain is its total gain divided by T, which is at most R(T)/T. The hard part is finding algorithms with small swap regret.
 
 **Paper or page:** [Fast swap regret minimization and applications to approximate correlated equilibria](https://arxiv.org/abs/2310.19647v2). It says: “If an m-player normal-form game is played repeatedly for T days, and each player incurs no more than R(T) swap regret over the T days, then the empirical distribution of the joint actions by the players is an R(T)/T-correlated equilibrium.”
 
@@ -1095,15 +1095,15 @@
 
 ### Monotone rationality makes elimination order-preserving, so Tarski's fixed-point theorem applies
 
-**Remember:** A monotone test keeps its order through every stage, even limit stages.
+**Remember:** Acceptable in a small game stays acceptable in a bigger one.
 
 *Makes the theorem clean to state or prove.* MSC 91A26 (Rationality and learning in game theory), 91A44, 03B42. arXiv econ.TH. Level 4: research.
 
-**Definition.** A rationality notion says when a player's strategy is acceptable, given which strategies remain available. It is monotone if a strategy acceptable in a smaller restriction of the game stays acceptable in any larger one. Iterated elimination repeatedly deletes unacceptable strategies and takes intersections at limit stages.
+**Definition.** A rationality notion says which strategies are acceptable, given the strategies still available. It is monotone if a strategy acceptable in a restriction of the game stays acceptable in every larger restriction, so elimination preserves the order of restrictions. Iterated elimination deletes unacceptable strategies and takes intersections at limit stages.
 
 **Problem.** In any strategic game, finite or infinite, common knowledge of a monotone rationality notion implies that players choose only strategies that survive the elimination for that notion. The elimination may need transfinitely many steps.
 
-**How the definition helps.** On a common-knowledge event, each player's possible opponents’ actions lie within the strategies represented there (our own). Rationality and monotonicity therefore keep every represented strategy acceptable within that restriction (our own). Tarski’s theorem places this restriction inside the greatest fixed point, obtained by transfinite elimination from the full game (our own).
+**How the definition helps.** On a common-knowledge event, rationality and monotonicity make every represented strategy acceptable within the restriction they form, so elimination deletes none of them (our own). Tarski's theorem puts every such restriction inside the greatest fixed point, which transfinite elimination from the full game reaches (our own).
 
 **Paper or page:** [The Role of Monotonicity in the Epistemic Analysis of Strategic Games](https://arxiv.org/abs/1010.5595v2). It says: “We establish a general theorem that deals with monotonic rationality notions and arbitrary strategic games and allows to strengthen the above result to arbitrary games, other rationality notions, and transfinite iterations of the elimination process.”
 
@@ -1117,11 +1117,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 91A27 (Games with incomplete information, Bayesian games), 91A44, 91B44. arXiv econ.TH. Level 4: research.
 
-**Definition.** A type structure models beliefs: each type of a player has a conditional probability system over the basic uncertainty and the other players' types. A conditional probability system gives one belief for each event in a fixed family of conditioning events, linked by Bayes' rule. The structure is complete if every such system is the belief of some type, so the belief maps are onto.
+**Definition.** A type structure gives each type of a player a conditional probability system, beliefs for each conditioning event linked by Bayes' rule, about the basic uncertainty and the other players' types. It is complete if every such system is the belief of some type, so the belief maps are onto.
 
-**Problem.** A complete type structure that is compact and has continuous belief maps represents all hierarchies of conditional beliefs; the paper calls this terminal. A complete Souslin structure satisfies a weaker finite version. Souslin is a mild regularity condition on the spaces.
+**Problem.** A complete type structure that is compact with continuous belief maps represents all hierarchies of conditional beliefs, which the paper calls terminal. A complete Souslin structure, with spaces meeting a mild regularity condition, satisfies a weaker finite version.
 
-**How the definition helps.** Completeness is a condition on the type structure alone, so one can check it without writing down infinite belief hierarchies. Our own explanation is that onto belief maps supply a type for every belief needed at each finite level of a hierarchy. Passing from all finite levels to whole hierarchies is where compactness and continuity enter. The result extends Friedenberg's 2010 theorem to conditional beliefs.
+**How the definition helps.** Onto belief maps supply a type for every belief needed at each finite level of a hierarchy (our own). Compactness and continuity carry this from all finite levels to whole hierarchies. The result extends Friedenberg's 2010 theorem to conditional beliefs.
 
 **Paper or page:** [Complete Conditional Type Structures (Extended Abstract)](https://arxiv.org/abs/2307.05630v1). It says: “We provide sufficient conditions under which a complete type structure represents all hierarchies of conditional beliefs.”
 
@@ -1131,15 +1131,15 @@
 
 ### Credibility with fixed message frequencies is tested by cyclical monotonicity
 
-**Remember:** Fix how often each message is sent, then check that no swap pays.
+**Remember:** Keep each message's frequency fixed; no reshuffle of states may pay.
 
 *Makes the theorem clean to state or prove.* MSC 91A28 (Signaling and communication in game theory), 91B44. arXiv econ.TH. Level 4: research.
 
-**Definition.** In Bayesian persuasion, a sender commits to a rule that sends messages depending on the state, and a receiver acts on each message. The rule is credible if the sender cannot gain by changing which states send which messages while keeping each message's overall frequency. A distribution over state–action pairs is cyclically monotone if no cyclic swap of actions among pairs in its support raises the sender's total payoff.
+**Definition.** In Bayesian persuasion, a sender commits to a rule that sends messages depending on the state. The rule is credible if the sender cannot gain by reassigning states to messages while keeping each message's overall frequency, so the current joint law is a best coupling with those fixed marginals. A distribution over state–action pairs is cyclically monotone if no cyclic swap of actions among its support pairs raises the sender's total payoff.
 
 **Problem.** In the paper's finite model, a disclosure rule is credible exactly when its distribution over states and actions is cyclically monotone for the sender's payoff.
 
-**How the definition helps.** Keeping message frequencies fixed turns the sender's deviations into couplings with fixed marginals, the objects of optimal transport. A coupling is a joint distribution with given marginal distributions. So credibility says that the current coupling of states and messages already maximizes the sender's expected payoff. The paper's Lemma 2 is the classical fact that, on finite sets, a coupling is optimal exactly when its support is cyclically monotone.
+**How the definition helps.** Fixed message frequencies make the sender's deviations exactly the couplings with the same marginals, so credibility means the current coupling is optimal for the sender. On finite sets a coupling is optimal exactly when its support is cyclically monotone, the classical fact in the paper's Lemma 2.
 
 **Paper or page:** [Credible Persuasion](https://arxiv.org/abs/2205.03495v1). It says: “We show that the credibility of a disclosure policy is equivalent to a cyclical monotonicity condition on its induced distribution over states and actions.”
 
@@ -1149,15 +1149,15 @@
 
 ### Smoothness gives a short price of anarchy bound
 
-**Remember:** Bound total unilateral switching costs by weighted target and starting costs.
+**Remember:** Lone switches toward b cost at most λC(b) plus μC(a).
 
 *True by definition.* MSC 91A68 (Algorithmic game theory and complexity), 91A10. arXiv cs.GT. Level 4: research.
 
-**Definition.** Let C(a) be the total cost of all players at outcome a. A game is (λ, μ)-smooth, with λ ≥ 0 and μ &lt; 1, if for every pair of outcomes a and b the following holds. The sum over players i of i's cost when i alone switches from aᵢ to bᵢ is at most λC(b) + μC(a).
+**Definition.** Let C(a) be the total cost of all players at outcome a. A game is (λ, μ)-smooth, with λ ≥ 0 and μ &lt; 1, if for every pair of outcomes a and b, the players' costs of switching alone from aᵢ to bᵢ sum to at most λC(b) + μC(a).
 
 **Problem.** In a (λ, μ)-smooth game with positive optimal cost, every pure Nash equilibrium costs at most λ/(1 − μ) times the optimum. So the price of anarchy for pure equilibria is at most λ/(1 − μ).
 
-**How the definition helps.** Smoothness gives exactly the bound on individual switching costs that the equilibrium proof needs. Let b be optimal and a an equilibrium; then C(a) is at most the sum of the costs of switching alone toward b. Smoothness bounds this sum by λC(b) + μC(a), and rearranging gives the bound. The work now lies in proving a useful smoothness inequality for the class of games.
+**How the definition helps.** Take a an equilibrium and b optimal; each player's equilibrium cost is at most the cost of switching alone to bᵢ, so C(a) ≤ λC(b) + μC(a). Rearranging gives C(a) ≤ λC(b)/(1 − μ).
 
 **Wikipedia:** [Price of anarchy](https://en.wikipedia.org/wiki/Price_of_anarchy). It says: “PoA upper bounds can be obtained if the game is shown to satisfy a so-called smoothness inequality.”
 
@@ -1167,15 +1167,15 @@
 
 ### Coarser voting groups preserve obvious truthfulness
 
-**Remember:** Larger groups leave fewer voters free to vary across the comparison.
+**Remember:** Bigger groups fix more voters, so worst cases only improve.
 
 *True by definition.* MSC 91B03 (Mechanism design theory), 91B12. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** Compare truthful play with a deviation at the first decision where they differ. Fix the strategies of the other voters in the same group, allowing each possible choice of those strategies. Across the remaining voters’ possible actions, the worst truthful outcome must rank at least as high as the best outcome from deviating.
+**Definition.** Group voters into a partition. A procedure passes the obvious-truthfulness test if, at the first decision where truthful play and a deviation differ, the worst truthful outcome ranks at least as high as the best deviating outcome. Worst and best range over the other groups' actions, for each fixed choice of strategies of the other voters in one's own group.
 
 **Problem.** If a voting procedure passes this test for a partition of the voters, it passes after any groups merge.
 
-**How the definition helps.** Our own explanation holds more strategies fixed after groups merge, so both ranges of possible outcomes shrink. The worst truthful outcome can only improve, and the best outcome from deviating can only worsen. The original procedure still works. The work lies in finding a procedure that passes the stronger test.
+**How the definition helps.** Merging groups fixes more strategies, so both ranges of outcomes shrink (our own). The worst truthful outcome can only rise and the best deviating outcome can only fall, so the test still passes (our own).
 
 **Paper or page:** [Obvious Strategy-proofness with Respect to a Partition](https://arxiv.org/abs/2409.05315v1). It says: “Let f: D → A be OSP with respect to S\* and let S be a coarser partition of S\*. Then, f: D → A is OSP with respect to S.”
 
@@ -1189,11 +1189,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 91B06 (Decision theory), 91B44, 91A27. arXiv econ.TH. Level 4: research.
 
-**Definition.** Let B be the finite family of a player's posterior distributions on a finite state space. A distribution p is disintegrable if it is a convex combination of members of B. It is a money pump if some real payoff has nonnegative expectation under every member of B and negative expectation under p.
+**Definition.** Let B be the finite family of a player's posterior beliefs on a finite state space. A distribution p is disintegrable if it is an average (convex combination) of members of B. It is a money pump if some bet has nonnegative expected value under every belief in B but negative expected value under p.
 
 **Problem.** For one player with finitely many states, every distribution is either disintegrable or a money pump, and never both.
 
-**How the definition helps.** Asking that a prior average the beliefs is what rules out money pumps. Our own explanation: an average of nonnegative expected payoffs cannot be negative. The paper's Lemma 6 shows that disintegrable means lying in the convex hull of the beliefs. Our own reading of the converse is that a separating hyperplane gives a bet that every belief accepts but p rejects.
+**How the definition helps.** An average of nonnegative expected payoffs is nonnegative, so no distribution is both (our own). If p is not an average of the beliefs, a hyperplane separating p from their convex hull gives a bet that every belief accepts but p rejects (our own reading of the converse).
 
 **Paper or page:** [Three Variations on Money Pump, Common Prior, and Trade](https://arxiv.org/abs/2401.13132v1). It says: “In the single player setting we conclude that a probability distribution is a prior if it is disintegrable, because this definition excludes money pump.”
 
@@ -1203,15 +1203,15 @@
 
 ### Positional voting rules with shrinking score gaps cannot be obviously manipulated
 
-**Remember:** Compare only best and worst cases, since other ballots are unknown.
+**Remember:** Obvious lies improve the best case or the worst case.
 
 *Makes the theorem clean to state or prove.* MSC 91B12 (Voting theory), 91B14, 91B03. arXiv econ.TH. Level 4: research.
 
-**Definition.** A voter manipulates obviously if some false ballot gives her a better best-case outcome, or a better worst-case outcome, than her true ballot. The best and worst cases range over all possible ballots of the other voters. A positional scoring rule gives each candidate points by its rank on each ballot.
+**Definition.** A voter manipulates obviously if some false ballot gives her a better best-case outcome, or a better worst-case outcome, than her true ballot, with cases ranging over all ballots of the other voters. A positional scoring rule gives each candidate points by its rank on each ballot.
 
 **Problem.** A strict positional scoring rule whose gaps between the scores of consecutive ranks weakly shrink down the ballot cannot be obviously manipulated. By contrast, the Gibbard–Satterthwaite theorem says every unanimous, non-dictatorial rule with at least three candidates can be manipulated.
 
-**How the definition helps.** The definition compares only best and worst cases, so a voter needs no information about other ballots to see the gain. Manipulations that pay only at particular profiles of other ballots are therefore not obvious. This is why the Gibbard–Satterthwaite impossibility does not settle the weaker question. Proving that shrinking score gaps protect both extremes is still the content of Theorem 4.
+**How the definition helps.** The definition compares only the extremes, so manipulations that pay only at particular profiles of other ballots do not count. So the Gibbard–Satterthwaite theorem does not settle this weaker question. Theorem 4 proves that shrinking score gaps protect both extremes.
 
 **Paper or page:** [Obvious Manipulability of Voting Rules](https://arxiv.org/abs/2111.01983v3). It says: “In contrast to the Gibbard-Satterthwaite theorem, many of the rules we examined are not obviously manipulable.”
 
@@ -1221,15 +1221,15 @@
 
 ### An allocation that is envy-free up to one item always exists
 
-**Remember:** EF1 forgives the envy that one item can cause.
+**Remember:** Envy is forgiven if removing one good from the other ends it.
 
 *Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)), 91A68. arXiv cs.GT, econ.TH. Level 4: research.
 
-**Definition.** An allocation partitions finitely many indivisible goods among finitely many agents. For each ordered pair A,B, A must weakly prefer her bundle to B’s after removing at most one good from B’s bundle. An allocation satisfying this condition is envy-free up to one item.
+**Definition.** An allocation of indivisible goods is envy-free up to one item if each agent weakly prefers her own bundle to any other agent's bundle once at most one good is removed from that other bundle.
 
-**Problem.** For indivisible goods and monotone utilities, an allocation of all items that is EF1 always exists, although an envy-free one need not.
+**Problem.** For indivisible goods and monotone utilities, an allocation of all items that is envy-free up to one item always exists, although an envy-free one need not.
 
-**How the definition helps.** When two agents strictly want the only good, exact envy-freeness fails, but removing that good resolves the comparison (our own). The envy-cycle elimination algorithm proves existence for monotone utilities by preserving this one-good bound as it allocates each remaining good (our own).
+**How the definition helps.** With one good and two agents who both want it, every allocation causes envy, but removing that good ends it (our own). The envy-cycle elimination algorithm keeps this one-good bound while it hands out the goods one at a time (our own).
 
 **Wikipedia:** [Envy-free item allocation](https://en.wikipedia.org/wiki/Envy-free_item_allocation). It says: “An EF1 allocation always exists and can be found efficiently by various procedures”
 
@@ -1244,11 +1244,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)), 91B15. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** An allocation lottery is a probability distribution over the allowed allocations of indivisible items. It is ex-ante envy-free if each agent's expected value for her own bundle is at least her expected value for any other agent's bundle.
+**Definition.** An allocation lottery is a random allocation of indivisible items. It is ex-ante envy-free if each agent values her own random bundle, in expectation, at least as much as any other agent's random bundle.
 
-**Problem.** In the finite fair-division model with feasible allocations closed under exchanges of agents’ bundles, some allocation lottery is ex-ante envy-free and Pareto optimal. No other lottery can improve anyone’s expected utility without lowering someone else’s. A deterministic envy-free allocation need not exist.
+**Problem.** In the finite fair-division model, with feasible allocations closed under exchanging agents' bundles, some allocation lottery is ex-ante envy-free and Pareto optimal in expected utility. A deterministic envy-free allocation need not exist.
 
-**How the definition helps.** Judging envy in expectation lets an existence theorem hold where every deterministic allocation causes envy. In our own example, two people both want one indivisible item, and a fair coin gives both the same expected value. The general existence theorem is a real result, due to Cole and Tao. This paper shows that finding such a lottery lies in PPAD, a class of problems solved by fixed-point style arguments.
+**How the definition helps.** Judging envy in expectation lets a lottery share what no single allocation can: two people who both want one item each get it with probability one half (our own). Existence in general is the theorem of Cole and Tao. This paper shows that finding such a lottery lies in PPAD.
 
 **Paper or page:** [On the complexity of Pareto-optimal and envy-free lotteries](https://arxiv.org/abs/2307.12605v1). It says: “Cole and Tao (2021) have proved that an ex-ante envy-free and Pareto-optimal allocation lottery is always guaranteed to exist.”
 
@@ -1258,15 +1258,15 @@
 
 ### One allocation gives every agent half of any feasible fair share
 
-**Remember:** A feasible rule sets individual targets that everyone can receive when using that rule.
+**Remember:** A feasible share can be given to everyone at once.
 
 *Makes the theorem clean to state or prove.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)), 91A68. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** Agents divide indivisible goods and have entitlements, which are weights that sum to 1. A share rule maps an agent’s valuation and entitlement to a minimum value she should get. A share rule is feasible if every instance has an allocation that gives every agent at least her share.
+**Definition.** Agents with entitlements, weights summing to one, divide indivisible goods. A share rule gives each agent a minimum value from her valuation and entitlement, and it is feasible if every instance has an allocation giving every agent her share.
 
-**Problem.** Agents value bundles additively, and each agent may pick a different feasible share rule. Some allocation gives every agent at least half her chosen share. The factor one half cannot be improved in general.
+**Problem.** Suppose agents value bundles additively and each picks her own feasible share rule. Then some allocation gives every agent at least half her chosen share, and one half cannot be improved in general.
 
-**How the definition helps.** Feasibility compares all share rules using the same guarantee when everyone uses one rule (our own). The quoted half-share theorem supplies a common allocation even when the selected rules differ. Its matching upper bound requires a separate worst-case instance (our own).
+**How the definition helps.** Feasibility bounds each rule's shares by what one allocation can give everyone at once (our own). The quoted theorem turns this into one allocation meeting half of each agent's own rule, even when the rules differ. A separate worst-case instance shows one half is best possible (our own).
 
 **Paper or page:** [Share-Based Fairness for Arbitrary Entitlements](https://arxiv.org/abs/2405.14575v1). It says: “there is an allocation that gives every agent at least half her share value, regardless of which feasible share-based fairness notion the agent wishes to use.”
 
@@ -1280,11 +1280,11 @@
 
 *True by definition.* MSC 91B44 (Economics of information), 91A27. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** Given a common prior and private signals, a player's posterior is the conditional probability of winning given their signal. A signal is direct if its numerical value equals that posterior almost surely.
+**Definition.** Given a common prior and private signals, a player's posterior is the conditional probability of winning given their signal. A signal is direct if its value is that posterior, the winning probability it implies.
 
 **Problem.** Any joint distribution of posterior winning probabilities obtainable from private signals is also obtainable from direct signals under the same prior.
 
-**How the definition helps.** Our own proof replaces each arbitrary signal by the winning probability it implies, preserving the whole vector of reported probabilities. Averaging the old conditional probability given its reported value returns that same value. Each report is therefore still the receiver’s winning probability. The work lies in deciding which joint distributions any signals could generate.
+**How the definition helps.** Replace each signal by the winning probability it implies; by the tower property, the probability of winning given this new report is the report itself (our own). So the joint law of posteriors is unchanged (our own).
 
 **Paper or page:** [A Belief-Based Characterization of Reduced-Form Auctions](https://arxiv.org/abs/2307.04070v1). It says: “then there exists a direct information structure I such that ν is p₀-feasible for I.”
 
@@ -1298,11 +1298,11 @@
 
 *True by definition.* MSC 91B44 (Economics of information). arXiv econ.TH. Level 4: research.
 
-**Definition.** For hidden state θ and target g(θ), an analyst’s posterior mean is the expected target given their information. Given θ, the verifier’s signal Y is independent of that information. A statistic h(Y) is unbiased if its conditional mean in each possible state θ equals g(θ).
+**Definition.** A statistic h(Y) of the verifier's signal is unbiased for the target g(θ) if its conditional mean in each state θ equals g(θ). Since Y is independent of the analyst's information given θ, h(Y) then has conditional mean equal to the analyst's posterior mean of g(θ) (our own).
 
-**Problem.** For finite states and signals, an unbiased statistic lets a verifier reward a risk-neutral analyst for reporting the posterior mean. A risk-neutral analyst maximizes expected payment.
+**Problem.** For finite states and signals, an unbiased statistic lets a verifier pay a risk-neutral analyst, who maximizes expected payment, so that reporting the posterior mean is optimal.
 
-**How the definition helps.** Unbiasedness makes the expected statistic given the analyst’s information equal the posterior mean (our own). Pay twice the report times the statistic minus the square of the report (our own). The expected payment is a quadratic uniquely maximized at the posterior mean (our own).
+**How the definition helps.** Pay twice the report r times h(Y), minus r² (our own). Its expectation is 2rm − r², where m is the posterior mean, and this is uniquely maximized at r = m (our own).
 
 **Paper or page:** [Elicitability](https://arxiv.org/abs/2510.00879v1). It says: “then the mean of g(θ) is elicitable with (Y, π).”
 
@@ -1312,15 +1312,15 @@
 
 ### Saturated agent spaces make fractional and ordinary coalitions block the same allocations
 
-**Remember:** On every positive-measure part, countably many functions cannot approximate all integrable functions.
+**Remember:** Saturation lets some agents fully join in place of all partly joining.
 
 *Makes the theorem clean to state or prove.* MSC 91B50 (General equilibrium theory), 91A12, 28B05. arXiv econ.TH. Level 4: research.
 
-**Definition.** An agent measure space is saturated if L¹ on every measurable set of positive measure has no countable norm-dense subset. Ordinary blocking uses a coalition’s members at full weight. Fuzzy blocking permits measurable participation weights in \[0,1\], positive on a set of positive measure, in the coalition’s aggregate trade.
+**Definition.** An agent measure space is saturated if L¹ on every set of positive measure has no countable norm-dense subset, so Lyapunov's convexity theorem holds exactly, even in Banach spaces (our own). A fuzzy coalition joins a trade with measurable weights in \[0,1\], positive on a set of positive measure, and an ordinary coalition joins at full weight.
 
-**Problem.** If the measure space of agents is saturated, the core equals the fuzzy core, with commodities in any Banach space and minimal assumptions on preferences.
+**Problem.** If the measure space of agents is saturated, the core equals the fuzzy core, the allocations that no fuzzy coalition can block. This holds with commodities in any Banach space and minimal assumptions on preferences.
 
-**How the definition helps.** Saturation permits exact Lyapunov purification of the integrals in a fuzzy block (our own). Include participation mass alongside net trades to obtain a positive-measure ordinary blocking coalition with the same totals (our own). Conversely, an ordinary coalition’s indicator supplies fuzzy participation weights (our own).
+**How the definition helps.** Exact Lyapunov convexity turns the integrals of a fuzzy block, with participation mass included, into those of an ordinary coalition of positive measure with the same totals (our own). Conversely, an ordinary coalition is a fuzzy one with weights 0 and 1 (our own).
 
 **Paper or page:** [Fuzzy Core Equivalence in Large Economies: A Role for the Infinite-Dimensional Lyapunov Theorem](https://arxiv.org/abs/2112.15539v1). It says: “Due to the exact version of the Lyapunov convexity theorem in Banach spaces, we clarify that the additional structure of commodity spaces and preferences is unnecessary whenever the measure space of agents is "saturated".”
 
@@ -1334,11 +1334,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B68 (Matching models), 91A12. arXiv econ.TH. Level 4: research.
 
-**Definition.** A coalition strongly blocks a matching if a feasible internal rematching weakly benefits all members and strictly benefits at least one. The strong core excludes every such block. Strong stability requires individual rationality and excludes every feasible worker–firm deviation satisfying the same improvement test.
+**Definition.** A coalition strongly blocks a matching if a feasible rematching among its members makes all of them weakly better off and at least one strictly better off. The strong core excludes all such blocks, and strong stability requires individual rationality and excludes such blocks by worker–firm pairs.
 
 **Problem.** For many-to-one matching with responsive preferences and possible ties, the strong core equals the set of strongly stable matchings.
 
-**How the definition helps.** Applying the same weak-improvement, strict-gain test to pairs and to coalitions lets the two sets be compared directly. Our own explanation: a pair is a coalition, so every matching in the strong core is strongly stable. The reverse inclusion needs a blocking pair to be found inside any blocking coalition. For the ordinary notions, the abstract states only that the core contains the stable set.
+**How the definition helps.** Pairs and coalitions use the same improvement test, so every matching in the strong core is strongly stable (our own). The paper's work is the reverse inclusion, which finds a blocking pair inside any blocking coalition.
 
 **Paper or page:** [Core and stability notions in many-to-one matching markets with indifferences](https://arxiv.org/abs/2203.16293v1). It says: “the strong core coincides with the strongly stable set”
 
@@ -1352,11 +1352,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 91B68 (Matching models). arXiv econ.TH. Level 4: research.
 
-**Definition.** A worker and firm block a matching if the worker prefers the firm and the firm would choose the worker from its enlarged staff. A stable matching has no such pair, and each participant accepts their assignment. A worker-quasi-stable matching has acceptable assignments, and only unemployed workers may be in blocking pairs.
+**Definition.** A worker and firm block a matching if the worker prefers the firm and the firm would choose the worker from its staff plus that worker. A matching is worker-quasi-stable if all assignments are acceptable and every blocking pair has an unemployed worker. It is stable if all assignments are acceptable and there are no blocking pairs at all.
 
 **Problem.** Assume finitely many workers and firms, strict preferences, and substitutable firm choices. The paper's repair round maps worker-quasi-stable matchings to worker-quasi-stable matchings, and its fixed points are exactly the stable matchings.
 
-**How the definition helps.** The restriction on blocking pairs identifies all workers who can start a repair (our own explanation). Each unemployed worker with a blocking firm applies to their favorite such firm, and firms choose from applicants and current workers. The hard step proves that no employed worker can block after the round. The paper shows that the rounds improve the matching in the firms' ordering until it becomes stable.
+**How the definition helps.** Quasi-stability confines blocks to unemployed workers, so a repair round lets each apply to their favorite blocking firm while firms choose from applicants and staff (our own explanation). The hard step shows that no employed worker can block afterwards. A fixed point therefore has no unemployed blocker either, so it is stable; a stable matching has no applicants, so it is fixed.
 
 **Paper or page:** [The lattice of worker-quasi-stable matchings](https://arxiv.org/abs/2103.16330v4). It says: “T(μ) = μ if and only if μ is stable.”
 
@@ -1370,11 +1370,11 @@
 
 *True by definition.* MSC 91B68 (Matching models), 05C70, 90C27. arXiv econ.TH, cs.GT. Level 4: research.
 
-**Definition.** A matching M is popular if no rival wins more votes in their pairwise comparison. Each vertex scores its proposed partner +1, 0 or −1 according to preference over its partner in M, ranking unmatched below acceptable partners. Each matched edge sums its endpoints’ scores, and an unmatched vertex contributes its single score through a self-loop.
+**Definition.** A matching M is popular if no rival matching wins more votes against it in a head-to-head vote. Weight each edge by the sum of its endpoints' votes, +1, 0 or −1 for preferring that partner to their partner in M, with unmatched ranked below acceptable partners. Give each vertex a self-loop weighted by its vote for being unmatched, so a rival's weight is its vote margin against M.
 
-**Problem.** With strict preferences on both sides and incomplete lists, M is popular exactly when it is a maximum-weight matching for these weights. This test is due to Biró, Irving and Manlove (2010). The paper derives the separate graph-structural tests for popularity from it, and back.
+**Problem.** With strict preferences on both sides and incomplete lists, M is popular exactly when it is a maximum-weight matching for these weights, a test due to Biró, Irving and Manlove (2010). The paper derives the separate graph-structural tests for popularity from it, and back.
 
-**How the definition helps.** Every completed matching, including its unmatched self-loops, counts each vertex's vote exactly once (our own). Its weight is therefore its vote margin against M, whose own weight is zero (our own). A maximum-weight completed matching tests popularity, and the paper connects this optimization to graph-structural tests.
+**How the definition helps.** A rival matching, completed with self-loops, counts each vertex's vote exactly once, so its weight is its vote margin against M, and M itself has weight zero (our own). So M is popular exactly when no matching has positive weight, that is, when M has maximum weight (our own).
 
 **Paper or page:** [On the Equivalence of the Graph-Structural and Optimization-Based Characterizations of Popular Matchings](https://arxiv.org/abs/2508.00349v1). It says: “an optimization-based characterization described by maximum-weight matchings.”
 
@@ -1389,11 +1389,11 @@
 
 *True by definition.* MSC 91G10 (Portfolio theory), 90C20. arXiv q-fin.PM, math.OC. Level 4: research.
 
-**Definition.** An affine portfolio rule has weights w₀(h) + ∑ⱼ θⱼwⱼ(h) at each observed history h. The baseline weights sum to one and each adjustment vector sums to zero. The coefficients θⱼ are the decision variables.
+**Definition.** An affine portfolio rule chooses weights w₀(h) + ∑ⱼ θⱼwⱼ(h) at each observed history h, with baseline weights summing to one, adjustment vectors summing to zero, and coefficients θⱼ as the decision variables. The next return is then affine in the θⱼ, however nonlinearly the weights depend on h.
 
 **Problem.** Assume the return terms have finite second moments. Minimizing return variance minus a nonnegative multiple of expected return gives a convex quadratic problem in the coefficients.
 
-**How the definition helps.** The restricted portfolio definition makes the next return affine in the coefficients, even when the signals depend nonlinearly on past prices. In our own calculation, its expectation is affine and its variance is quadratic. The covariance matrix gives the quadratic term and is positive semidefinite. The work lies in constructing this representation for the trading rules.
+**How the definition helps.** An affine return has expectation affine in θ and variance quadratic in θ, with a positive semidefinite covariance matrix (our own). So variance minus a nonnegative multiple of the mean is a convex quadratic (our own).
 
 **Paper or page:** [Signature Methods in Stochastic Portfolio Theory](https://arxiv.org/abs/2310.02322v3). It says: “the following two optimization problems are convex quadratic optimization problems”
 
@@ -1407,11 +1407,11 @@
 
 *True by definition.* MSC 91G10 (Portfolio theory). arXiv q-fin.PM. Level 4: research.
 
-**Definition.** Split one unit of initial wealth into nonnegative shares summing to one. Each account follows a strategy that funds trades from its own holdings. While total wealth is positive, weight each account’s asset mix by its current share of total wealth.
+**Definition.** Split one unit of initial wealth into nonnegative shares summing to one, and let each account follow its own self-financing strategy. While total wealth is positive, the combined strategy weights each account's asset mix by that account's current share of total wealth, so it holds exactly the sum of the accounts' holdings (our own).
 
 **Problem.** Under the paper’s continuous-time trading assumptions, this mix funds its own trades. On each price path its wealth equals the sum of the separately funded accounts.
 
-**How the definition helps.** Current wealth shares make the combined holdings exactly the sum of the individual holdings (our own). Fixed starting weights would require moving money between accounts when their returns differ (our own). The paper proves that the resulting continuous-time rule remains a valid trading strategy path by path.
+**How the definition helps.** Since the combined holdings are the sum of the separate holdings, its gains are the sum of their gains (our own). Fixed starting weights would instead need money moved between accounts when returns differ (our own). The paper checks that this rule is a valid continuous-time trading strategy path by path.
 
 **Paper or page:** [Model-free portfolio allocation in continuous-time](https://arxiv.org/abs/2411.05470v3). It says: “then θ̂(b) ∈ Θ and W(θ̂(b)) = ∑ₖ₌₁ᵐ bₖ W(θ⁽ᵏ⁾)”
 
@@ -1421,15 +1421,15 @@
 
 ### Closures catch vanishing-risk free lunches
 
-**Remember:** No exact arbitrage is not enough when trades can approach one.
+**Remember:** Not even a limit of trades may give a riskless profit.
 
 *Makes the theorem clean to state or prove.* MSC 91G15 (Financial markets). arXiv q-fin.MF. Level 4: research.
 
-**Definition.** Start with bounded payoffs no greater than the final gains of zero-cost trades whose wealth stays bounded below. Include all limits in the essential supremum norm, which ignores events of probability zero. No free lunch with vanishing risk means that only zero among these payoffs is everywhere nonnegative, apart from events of probability zero.
+**Definition.** No free lunch with vanishing risk says that trades cannot even approach a riskless profit. Take the bounded payoffs no greater than the final gains of zero-cost trades whose wealth stays bounded below, and add all their limits in the essential supremum norm. The condition holds when zero is the only payoff in this closed set that is nonnegative apart from events of probability zero.
 
 **Problem.** Let finitely many discounted prices over a finite horizon be locally bounded semimartingales. There is no free lunch with vanishing risk exactly when some probability with the same null events makes the prices local martingales.
 
-**How the definition helps.** The norm closure captures uniformly approximable arbitrage gains, including a positive limit of trades whose possible losses shrink to zero (our own). The Delbaen–Schachermayer fundamental theorem identifies this closed-cone condition with existence of an equivalent local martingale measure (our own).
+**How the definition helps.** Closing the set in the uniform norm adds the limits of trades whose possible losses shrink to zero, so the condition rules these out too (our own). The Delbaen–Schachermayer fundamental theorem matches this closed condition with a probability that has the same null events and makes the prices local martingales (our own).
 
 **Paper or page:** [The Golden Age of the Mathematical Finance](https://arxiv.org/abs/2102.06693v2). It says: “There are not free lunches with vanishing risk if and only if there is probability ℙ∗ ∼ ℙ under which S̃ is a local martingale.”
 
@@ -1439,15 +1439,15 @@
 
 ### Comonotonic prices satisfy put–call parity
 
-**Remember:** Split a payoff into two parts that rise together, then add their prices.
+**Remember:** Payoffs that rise together are priced by adding.
 
 *Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 4: research.
 
-**Definition.** Payoffs X and Y are comonotonic if (X(s) − X(t))(Y(s) − Y(t)) ≥ 0 for every pair of states s,t. A pricing rule f is comonotonic additive if f(X + Y) = f(X) + f(Y) for every such pair. It is monotone if X ≤ Y pointwise implies f(X) ≤ f(Y).
+**Definition.** Two payoffs X and Y are comonotonic when they rise and fall together: (X(s) − X(t))(Y(s) − Y(t)) ≥ 0 for every pair of states s, t. A pricing rule f is comonotonic additive when f(X + Y) = f(X) + f(Y) for every comonotonic pair.
 
-**Problem.** For bounded measurable payoffs, a monotone pricing rule satisfies the paper’s put–call parity exactly when it is comonotonic additive.
+**Problem.** For bounded measurable payoffs, a monotone pricing rule, one that never prices a pointwise smaller payoff higher, satisfies the paper’s put–call parity exactly when it is comonotonic additive.
 
-**How the definition helps.** The call, short put and constant strike are comonotonic and sum to the underlying payoff (our own). Comonotonic additivity therefore prices their sum by adding their separate prices (our own). The paper’s parity characterization proves the converse for monotone rules on bounded measurable payoffs.
+**How the definition helps.** A call, a short put and a constant strike rise together and sum to the underlying payoff, so comonotonic additivity prices the underlying as the sum of their prices (our own). The paper’s parity characterization proves the converse for monotone rules on bounded measurable payoffs.
 
 **Paper or page:** [Put-Call Parities, absence of arbitrage opportunities and non-linear pricing rules](https://arxiv.org/abs/2203.16292v1). It says: “satisfies PCP if and only if it is Comonotonic Additive.”
 
@@ -1457,15 +1457,15 @@
 
 ### One currency prices both markets
 
-**Remember:** Use one unit for both currencies, then convert the answer back.
+**Remember:** Measure euros and dollars in one shared unit.
 
 *Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 4: research.
 
-**Definition.** Let f be the dollar price of one euro. In an intermediate currency, one euro costs √f and one dollar costs 1/√f. A payoff has degree one if multiplying both inputs by a positive factor multiplies the payoff by that factor.
+**Definition.** Price both currencies in an intermediate unit in which they play symmetric roles: if one euro costs f dollars, one euro costs √f units and one dollar costs 1/√f units. A payoff has degree one if multiplying both its inputs by a positive factor multiplies the payoff by that factor.
 
 **Problem.** In the paper’s euro–dollar model, consider options payable only at expiry with degree-one payoffs. The same pricing probability values options written on euros and options written on dollars.
 
-**How the definition helps.** Measuring both currencies in the same unit gives both contracts the same pricing probability (our own). Degree-one scaling converts the amount paid at expiry into that unit (our own). The paper constructs the intermediate interest rate and proves that the corresponding pricing probability exists.
+**How the definition helps.** In the shared unit, options on euros and options on dollars are priced under one probability, and degree one lets the payoff be rescaled into that unit (our own). The paper constructs the intermediate interest rate and proves that this pricing probability exists.
 
 **Paper or page:** [Pricing FX Options under Intermediate Currency](https://arxiv.org/abs/1912.01387v2), [Pricing FX Options under Intermediate Currency](https://arxiv.org/abs/1912.01387v2). It says: “Then the arbitrage price of a European option on EUR with a payoff g(x; K) being homogeneous function of order 1 and maturity time T is given by”
 
@@ -1475,15 +1475,15 @@
 
 ### Directional closure makes capital limits attainable
 
-**Remember:** Including limits along the priced direction makes the boundary budget work.
+**Remember:** If every extra sliver suffices, nothing extra is needed.
 
 *Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
 
-**Definition.** Let A be an upward-closed acceptance set and π a linear price on eligible trades including U ≥ 0 with π(U) = 1. Put B = A + ker π, adding all zero-price trades. Directional closure requires x ∈ B whenever x + εU ∈ B for every ε &gt; 0.
+**Definition.** Let A be an upward-closed set of acceptable positions and π a linear price on eligible trades, with an eligible U ≥ 0 of price one. Put B = A + ker π, the positions that some zero-price trade makes acceptable. Directional closure says that x lies in B whenever x + εU lies in B for every ε &gt; 0.
 
 **Problem.** Required capital is the infimum price of trades making a position safe. Fix any real budget m. Directional closure holds exactly when every position requiring at most m admits a trade costing m that makes it safe.
 
-**How the definition helps.** A trade costing m works at x exactly when x + mU belongs to B (our own). Capital at most m gives membership at every budget m + ε, so closure gives membership at m (our own). Conversely, apply budget attainment to x − mU whenever x + εU belongs to B for every ε &gt; 0 (our own). With only strictly positive balances acceptable, every positive deposit works at zero, but zero fails (our own).
+**How the definition helps.** A trade costing m makes x safe exactly when x + mU lies in B, and capital at most m puts x + (m + ε)U in B for every ε &gt; 0 (our own). Closure then gives x + mU; conversely, budget attainment applied to y − mU puts y in B whenever every y + εU lies in B (our own). If only strictly positive balances are acceptable, every positive deposit works at the zero position but zero does not (our own).
 
 **Paper or page:** [A new view on risk measures associated with acceptance sets](https://arxiv.org/abs/2109.12320v2). It says: “holds if and only if A + ker π is (−U)-directionally closed.”
 
@@ -1493,15 +1493,15 @@
 
 ### Logarithms turn risk products into sums
 
-**Remember:** Taking logs turns multiplication of risk bounds into addition.
+**Remember:** Logs turn dividing by a payoff into subtracting capital.
 
 *True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
 
-**Definition.** For a positive loss factor X, let η(X) be the infimum price of an eligible payoff H that makes X/H acceptable. Use positive payoffs and prices. In logarithmic units, an eligible payoff becomes log H and its cost becomes the logarithm of its price.
+**Definition.** For a positive loss factor X, η(X) is the infimum price of a positive eligible payoff H that makes X/H acceptable, with positive prices. In logarithmic units, dividing by H becomes subtracting log H, at a cost equal to the logarithm of H's price. So log η(X) is the capital requirement for log X with these log payoffs and log costs (our own).
 
 **Problem.** Assume products stay in the loss domain and the risks are positive and finite. Then η(XY) ≤ η(X)η(Y) exactly when the corresponding risk on log losses is subadditive, meaning the risk of a sum never exceeds the summed risks.
 
-**How the definition helps.** Our own explanation takes logarithms of both sides, turning a product bound into a sum bound. The essential identity says that the transformed capital requirement at log X equals log η(X). It follows by translating every acceptable trade and taking its infimum cost.
+**How the definition helps.** Since log η(X) is the risk of log X, taking logarithms turns η(XY) ≤ η(X)η(Y) into subadditivity of the log risk (our own). The identity follows by translating every acceptable trade into log units and taking its infimum cost (our own).
 
 **Paper or page:** [Multi-asset return risk measures](https://arxiv.org/abs/2411.08763v2). It says: “is subadditive if and only if ηℜ is submultiplicative, i.e., ∀ X,Y ∈ C: ηℜ(XY) ≤ ηℜ(X)ηℜ(Y).”
 
@@ -1511,15 +1511,15 @@
 
 ### Moment bounds control worst-case risk
 
-**Remember:** Match means and covariances with Gaussians, then measure their transport distance.
+**Remember:** Compare only means and covariances, and the ball can only grow.
 
 *Makes the theorem clean to state or prove.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
 
-**Definition.** Quadratic transport distance minimizes root mean square separation over all joint realizations of two finite-second-moment laws. A transport ball bounds this distance from a reference law by a radius. A Gelbrich set imposes that bound on the Gaussian laws matching the respective means and covariances.
+**Definition.** Quadratic transport distance is the least root mean square separation over all joint realizations of two finite-second-moment laws. The transport ball of radius ρ contains every such law within this distance ρ of the reference law. The Gelbrich set of radius ρ contains every such law whose mean and covariance lie within ρ of the reference’s, comparing moments by the transport distance between the matching Gaussian laws.
 
 **Problem.** For the same reference law and radius, the supremum of risk over the Gelbrich set bounds the supremum over the transport ball from above.
 
-**How the definition helps.** Using only means and covariances enlarges the set over which one takes the worst risk (our own). The Gelbrich inequality proves that replacing both laws by their matching Gaussians cannot increase their transport distance (our own). Set inclusion then gives the risk bound for each fixed loss function.
+**How the definition helps.** By the Gelbrich inequality, replacing two laws by Gaussians with the same means and covariances never increases their transport distance, so the transport ball lies inside the Gelbrich set (our own). A supremum over a larger set is larger, for each fixed loss function.
 
 **Paper or page:** [Mean-Covariance Robust Risk Measurement](https://arxiv.org/abs/2112.09959v3), [Mean-Covariance Robust Risk Measurement](https://arxiv.org/abs/2112.09959v3). It says: “then we have 𝒲ᵨ(ℙ̂) ⊆ 𝒢ᵨ(μ̂, Σ̂).”
 

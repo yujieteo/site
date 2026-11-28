@@ -4,11 +4,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 76A02 (Foundations of fluid mechanics). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** A flow map sends each initial position to its position at time t. Define the local volume ratio as the determinant of its derivative with respect to initial position.
+**Definition.** A flow map sends each initial position to its position at time t. The local volume ratio is the determinant of its derivative in the initial position. It changes at a rate equal to itself times the divergence of velocity (our own).
 
 **Problem.** A smooth flow preserves volume on every parcel if and only if its velocity has zero divergence.
 
-**How the definition helps.** In our own proof, the local volume ratio turns a condition on every parcel into a scalar equation along each path. Its derivative equals the ratio times the divergence of velocity. The ratio starts at one, so it stays one exactly when the divergence vanishes. Integrating the ratio over each initial parcel gives its current volume.
+**How the definition helps.** Integrating the ratio over an initial parcel gives its current volume, so every parcel keeps its volume exactly when the ratio stays one (our own). The ratio starts at one and grows at the rate given by the divergence, so it stays one exactly when the divergence vanishes (our own).
 
 **Wikipedia:** [Incompressible flow](https://en.wikipedia.org/wiki/Incompressible_flow). It says: “Equivalently, the divergence of an incompressible flow velocity is zero.”
 
@@ -20,11 +20,11 @@
 
 *Rules out counterexamples.* MSC 76B47 (Vortex flows for incompressible inviscid fluids). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** A velocity potential is a scalar function whose gradient equals the fluid velocity. Require one single-valued potential throughout the fluid region. Circulation is the line integral of velocity around a closed curve.
+**Definition.** A velocity potential is a scalar function whose gradient is the fluid velocity; require one single-valued potential on the whole fluid region. The circulation around a closed loop, the line integral of velocity, is then the change of the potential around the loop (our own).
 
 **Problem.** Every closed loop in a flow with a single-valued velocity potential has zero circulation. Zero curl alone does not give this conclusion on an annulus.
 
-**How the definition helps.** In our own proof, the integral of a gradient around a loop equals the change in potential, hence zero. On a planar annulus, counterclockwise circular velocity of magnitude 1/r has zero curl, where r is distance from the center. Its circulation around each centered counterclockwise circle is 2π, which excludes a single-valued potential.
+**How the definition helps.** Going around a loop returns a single-valued potential to its start, so the circulation is zero (our own). Counterclockwise circular velocity 1/r on a planar annulus, with r the distance to the center, has zero curl but circulation 2π on centered circles (our own). So zero curl alone does not give a single-valued potential there.
 
 **Wikipedia:** [Vortex](https://en.wikipedia.org/wiki/Vortex). It says: “For an irrotational vortex, the circulation is zero along any closed contour that does not enclose the vortex axis”
 
@@ -36,11 +36,11 @@
 
 *Rules out counterexamples.* MSC 76B99 (Incompressible inviscid fluids). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** Irrotational flow means that the velocity field has zero curl. For constant density, the Bernoulli quantity adds half the squared speed, pressure divided by density, and potential energy per unit mass.
+**Definition.** Irrotational flow means the velocity field has zero curl. For constant density, the Bernoulli quantity is half the squared speed plus pressure over density plus potential energy per unit mass. In steady inviscid flow its gradient equals the velocity crossed with the curl (our own).
 
-**Problem.** Consider smooth, steady flow of an inviscid fluid of constant density in a connected region, with a body force derived from a potential. Zero curl makes the Bernoulli quantity constant throughout the region. Otherwise it can vary between streamlines, the curves tangent to the velocity.
+**Problem.** In smooth steady inviscid flow of constant density in a connected region, with a conservative body force, zero curl makes the Bernoulli quantity constant throughout. Otherwise it can vary between streamlines, the curves tangent to the velocity.
 
-**How the definition helps.** In our own proof, zero curl makes the acceleration the gradient of half the squared speed. The steady momentum equation then gives a zero Bernoulli gradient, so connectedness gives constancy. In solid-body rotation without body forces, pressure and speed increase away from the axis, giving different values on different streamlines.
+**How the definition helps.** Zero curl makes the gradient vanish, and connectedness then makes the quantity constant (our own). In solid-body rotation without body force, speed and pressure both grow away from the axis, so different circular streamlines carry different values (our own).
 
 **Wikipedia:** [Bernoulli's principle](https://en.wikipedia.org/wiki/Bernoulli%27s_principle). It says: “If the fluid flow is irrotational, the total pressure is uniform”
 
@@ -48,15 +48,15 @@
 
 ### Stream functions measure flux
 
-**Remember:** Read the stream function at the ends to get the flux across the curve.
+**Remember:** ψ changes along a curve by exactly the flow crossing it.
 
 *True by definition.* MSC 76B99 (Incompressible inviscid fluids). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** In two dimensions write velocity as (∂ψ/∂y, −∂ψ/∂x). The scalar ψ is the stream function. This represents the flow by one function rather than two separately specified velocity components.
+**Definition.** In a two-dimensional flow, the stream function ψ is the scalar whose rotated gradient is the velocity: u = (∂ψ/∂y, −∂ψ/∂x). So the derivative of ψ along any curve equals the velocity component crossing the curve toward its right (our own).
 
-**Problem.** Flux is the volume per unit time and unit thickness that crosses an oriented planar curve. With the normal pointing right along the curve, flux equals the final stream function value minus the initial value.
+**Problem.** Flux is the volume per unit time and unit thickness that crosses an oriented planar curve toward its right. It equals the value of ψ at the end of the curve minus its value at the start.
 
-**How the definition helps.** In our own words, the rotated gradient makes normal flow equal to the derivative of ψ along the curve. Its integral is the endpoint difference. The work, in our own account, is proving that smooth incompressible planar flow on a simply connected region admits such a function.
+**How the definition helps.** Flux is the integral of the derivative of ψ along the curve, so it is the endpoint difference. The real work is existence (our own): smooth incompressible planar flow on a simply connected region has a stream function.
 
 **Wikipedia:** [Stream function](https://en.wikipedia.org/wiki/Stream_function). It says: “In words, the stream function ψ is the volumetric flux through the test surface per unit thickness”
 
@@ -64,15 +64,15 @@
 
 ### Creeping flow retraces reversed motion
 
-**Remember:** With no fluid inertia, reverse the drive and the particles retrace their paths.
+**Remember:** No inertia: reverse the boundary motion and the whole flow reverses.
 
 *Rules out counterexamples.* MSC 76D07 (Stokes and related (Oseen, etc.) flows). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** At each instant, an incompressible Newtonian fluid in creeping flow satisfies ∇·u = 0 and −∇p + μΔu + f = 0. Here u is velocity, p is pressure, μ is constant viscosity, and f is body force per unit volume.
+**Definition.** Creeping (Stokes) flow is incompressible Newtonian flow with inertia neglected: ∇·u = 0 and −∇p + μΔu + f = 0 at each instant. Here u is velocity, p pressure, μ constant viscosity and f body force per unit volume. The equations are linear with no time derivative, so each instant’s flow depends only on that instant’s boundary motion.
 
-**Problem.** Consider smooth steady Stokes flow at each instant in a bounded vessel, with prescribed velocity on the whole boundary and no body force. Reversing the complete boundary motion in time makes fluid particles retrace their paths.
+**Problem.** Consider smooth Stokes flow, steady at each instant, in a bounded vessel with prescribed velocity on the whole boundary and no body force. Reversing the complete boundary motion in time makes fluid particles retrace their paths.
 
-**How the definition helps.** The instantaneous linear equations give the negative velocity field when the driving velocities reverse. In our own words, uniqueness of the Stokes boundary-value problem and uniqueness of particle paths carry the work. In our own counterexample, a sinusoidal shear on a periodic region decays under time-dependent Navier–Stokes flow. Replaying it backward would make the mode grow, which the unforced equations do not permit.
+**How the definition helps.** Reversing the boundary velocity turns the unique Stokes solution u into −u, so particles run backward along the same paths (our own). This uses uniqueness for the Stokes boundary-value problem and for particle paths. With inertia it fails: a decaying periodic shear mode under unforced Navier–Stokes flow would have to grow when replayed backward (our own).
 
 **Wikipedia:** [Stokes flow](https://en.wikipedia.org/wiki/Stokes_flow). It says: “a time-reversed Stokes flow solves the same equations as the original Stokes flow.”
 
@@ -80,15 +80,15 @@
 
 ### Density weighting cancels cross terms
 
-**Remember:** Weight by density and the mean mass flux of the fluctuation is zero.
+**Remember:** Weight by density so the fluctuation carries no mean mass flux.
 
 *True by definition.* MSC 76F50 (Compressibility effects in turbulence). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** For positive mean density, define the Favre mean velocity as mean momentum per unit volume divided by mean density. Subtract this velocity from each sample to get its fluctuation.
+**Definition.** For density ρ with positive mean E\[ρ\], the Favre mean velocity is the density-weighted mean U = E\[ρu\]/E\[ρ\], and the fluctuation is u′ = u − U. By construction the density-weighted fluctuation has zero mean: E\[ρu′\] = 0.
 
-**Problem.** Write ρ for density, E for the mean, and U and u′ for Favre mean velocity and fluctuation. For every component pair i, j, E\[ρu<sub>i</sub> u<sub>j</sub>\] = E\[ρ\]U<sub>i</sub> U<sub>j</sub> + E\[ρu′<sub>i</sub> u′<sub>j</sub>\].
+**Problem.** For every component pair i, j, E\[ρu<sub>i</sub> u<sub>j</sub>\] = E\[ρ\]U<sub>i</sub> U<sub>j</sub> + E\[ρu′<sub>i</sub> u′<sub>j</sub>\].
 
-**How the definition helps.** In our own expansion, each mixed term contains the mean of density times a fluctuation, which vanishes by construction. Subtracting the ordinary mean would only make the unweighted fluctuation average vanish. The remaining fluctuation product still needs a model.
+**How the definition helps.** Expanding u = U + u′ gives two mixed terms, each a constant times E\[ρu′\], which is zero (our own). With the ordinary mean only E\[u′\] vanishes, so E\[ρu′\] survives as an extra term.
 
 **Wikipedia:** [Favre averaging](https://en.wikipedia.org/wiki/Favre_averaging). It says: “Favre averaging is the density-weighted averaging method”
 
@@ -98,15 +98,15 @@
 
 ### Matching Reynolds numbers matches equations
 
-**Remember:** Match the ratio of inertia to viscosity, not the separate speeds or sizes.
+**Remember:** After rescaling, only inertia over viscosity remains in the equations.
 
 *Makes the theorem clean to state or prove.* MSC 76M55 (Dimensional analysis and similarity applied to problems in fluid mechanics), 76D05. arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** For a fluid with constant density ρ and constant viscosity μ, the Reynolds number is ρUL/μ. Here μ measures resistance to shear, U is a speed scale and L is a length scale. Measure position in units of L, velocity in units of U, time in units of L/U and pressure in units of ρU².
+**Definition.** The Reynolds number Re = ρUL/μ is the ratio of inertial to viscous forces, for constant density ρ, viscosity μ, speed scale U and length scale L. Measuring position, velocity, time and pressure in units of L, U, L/U and ρU² turns the Navier–Stokes equations without body force into ∂u/∂t + (u·∇)u = −∇p + (1/Re)Δu with ∇·u = 0 (our own).
 
-**Problem.** Consider geometrically similar domains containing incompressible Newtonian fluids, whose viscous stress is proportional to their rate of deformation. Without body forces, equal Reynolds numbers give identical scaled flow equations. Matching scaled boundary and initial data then give matching solutions wherever the scaled problem has a unique solution.
+**Problem.** For incompressible Newtonian fluids without body forces in geometrically similar domains, equal Reynolds numbers give identical scaled flow equations. Matching scaled boundary and initial data then give matching solutions wherever the scaled problem has a unique solution.
 
-**How the definition helps.** In our own words, rescaling puts all material and scale parameters into the viscosity coefficient, the reciprocal Reynolds number. The remaining work, in our own account, is matching the full scaled data and establishing uniqueness for a claim about one flow.
+**How the definition helps.** Re is the only parameter left in the scaled equations, so equal Re gives the same equations (our own). Matching solutions also need matching scaled data and uniqueness of the scaled problem (our own).
 
 **Wikipedia:** [Reynolds number](https://en.wikipedia.org/wiki/Reynolds_number). It says: “the ratio of inertial forces to viscous forces”
 
@@ -116,15 +116,15 @@
 
 ### Barotropic pressure preserves circulation
 
-**Remember:** When pressure follows density alone, pressure cannot create circulation.
+**Remember:** If pressure follows density alone, pressure force is a pure gradient.
 
 *Rules out counterexamples.* MSC 76N15 (Gas dynamics (general theory)), 76B47. arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** In a barotropic fluid, pressure p is a differentiable function of density ρ alone. Circulation is the line integral of velocity around a closed curve.
+**Definition.** A fluid is barotropic when its pressure p is a differentiable function of density ρ alone. Then the pressure force per unit mass, −∇p/ρ, is the gradient of one function of ρ, with derivative −p′(ρ)/ρ, so it has no curl.
 
-**Problem.** Consider a smooth inviscid flow with positive density and body forces per unit mass given by a potential. A barotropic pressure law preserves circulation around every loop carried by the fluid.
+**Problem.** Consider a smooth inviscid flow with positive density and body forces per unit mass given by a potential. A barotropic pressure law preserves circulation, the line integral of velocity, around every loop carried by the fluid.
 
-**How the definition helps.** In our own proof, barotropic pressure makes the pressure force per unit mass a gradient with potential derivative −p′(ρ)/ρ. Differentiating circulation along a material loop then leaves only integrals of gradients, which vanish. For initially stationary gas with ρ = 1 + x and p = 2 + y near the origin, the pressure force has nonzero curl. Circulation therefore starts changing around small horizontal loops.
+**How the definition helps.** The rate of change of circulation around a material loop is a loop integral of gradients, so it is zero (our own). For gas at rest near the origin with ρ = 1 + x and p = 2 + y, the pressure force has nonzero curl, so circulation around small horizontal loops starts to change (our own).
 
 **Wikipedia:** [Kelvin's circulation theorem](https://en.wikipedia.org/wiki/Kelvin%27s_circulation_theorem). It says: “This theorem does not hold in cases with viscous stresses, nonconservative body forces (for example the Coriolis force) or non-barotropic pressure-density relations.”
 
@@ -132,15 +132,15 @@
 
 ### Hydraulic head accounts for gravity
 
-**Remember:** Add elevation to pressure head before deciding where water will flow.
+**Remember:** Water flows down the head: elevation plus pressure height.
 
 *True by definition.* MSC 76S05 (Flows in porous media; filtration; seepage). arXiv physics.flu-dyn. Level 2: later undergraduate.
 
-**Definition.** For a liquid of constant density ρ under uniform gravity, hydraulic head is h = z + p/(ρg). Here z is elevation, p is pressure and g is gravitational acceleration. Darcy flux measures volume flow per unit total cross-sectional area of a porous material.
+**Definition.** For a liquid of constant density ρ under uniform gravity g, hydraulic head h = z + p/(ρg) adds elevation z and pressure height p/(ρg). Its gradient measures the combined push of pressure and gravity, so a liquid at rest has constant head (our own).
 
-**Problem.** For positive scalar hydraulic conductivity K, Darcy’s law reads q = −K∇h. Flow points downhill in head wherever its gradient is nonzero. In a liquid at rest under gravity, head is constant and flux vanishes.
+**Problem.** For positive scalar hydraulic conductivity K, Darcy’s law q = −K∇h makes the Darcy flux q (volume flow per unit total cross-section) point down the head gradient wherever it is nonzero. In a liquid at rest under gravity, head is constant and flux vanishes.
 
-**How the definition helps.** In our own explanation, using head combines the separate pressure and gravity forces into one gradient. In a vertical column at rest, pressure decreases with height exactly enough to cancel the elevation term. A rule based on pressure alone would predict flow. The physical work is establishing the proportionality between flux and total driving force for the porous material.
+**How the definition helps.** In a liquid at rest, pressure height grows with depth exactly as elevation falls, so ∇h = 0 and q = 0 (our own). A law using pressure alone would wrongly predict upward flow, from the higher pressure below (our own).
 
 **Wikipedia:** [Darcy's law](https://en.wikipedia.org/wiki/Darcy%27s_law). It says: “Note that the elevation head must be taken into account if the inlet and outlet are at different elevations.”
 
@@ -148,15 +148,15 @@
 
 ### Finite speed fixes airfoil circulation
 
-**Remember:** One circulation cancels the trailing edge singularity.
+**Remember:** Choose the one circulation that keeps trailing-edge speed finite.
 
 *Rules out counterexamples.* MSC 76B10 (Jets and cavities, cavitation, free-streamline theory, water-entry problems, airfoil and hydrofoil theory, sloshing). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** For steady two-dimensional flow, the Kutta condition requires finite speed at the sharp rear tip of a wing section. Circulation is the integral of tangential velocity around the section.
+**Definition.** The Kutta condition picks the circulation, the integral of tangential velocity around the wing section, that keeps the flow speed finite at its sharp rear tip. For every other circulation the steady two-dimensional potential flow has infinite speed there.
 
-**Problem.** Consider incompressible, irrotational flow past an impermeable Joukowski airfoil, a wing section obtained by mapping a circle. Fix a uniform velocity at infinity and assume the section has a single rear cusp. Exactly one circulation gives finite speed there.
+**Problem.** Consider incompressible irrotational flow past an impermeable Joukowski airfoil, the image of a circle under the Joukowski map, with one rear cusp and fixed uniform velocity at infinity. Exactly one circulation gives finite speed at the cusp.
 
-**How the definition helps.** In our own proof, finite speed forces the circle velocity to vanish at the point mapped to the cusp. The map derivative has a simple zero there and divides the circle velocity in the formula for airfoil velocity. At the circle wall the velocity is tangential. Its tangential component depends linearly on circulation with nonzero slope, so exactly one value cancels it.
+**How the definition helps.** Airfoil velocity is circle velocity divided by the map derivative, which has a simple zero at the circle point sent to the cusp (our own). So finite speed forces the circle velocity to vanish there. That velocity depends linearly on circulation with nonzero slope, so exactly one circulation works.
 
 **Wikipedia:** [Kutta condition](https://en.wikipedia.org/wiki/Kutta_condition). It says: “Mathematically, the Kutta condition enforces a specific choice among the infinite allowed values of circulation.”
 
@@ -164,15 +164,15 @@
 
 ### Flux coordinates preserve incompressibility
 
-**Remember:** Move flux with the area it crosses.
+**Remember:** Carry flux, not velocity, so each region’s outflow survives.
 
 *True by definition.* MSC 76B15 (Water waves, gravity waves; dispersion and scattering, nonlinear interaction). arXiv math.AP, physics.flu-dyn. Level 3: graduate.
 
-**Definition.** Let F be a smooth change of coordinates from a flat reference region to the fluid, with positive derivative determinant. At each reference point, apply the inverse derivative to the velocity at its image. Multiply the result by the derivative determinant to obtain the reference flux field.
+**Definition.** Pull a fluid velocity back to a flat reference region as a flux field. Its flux through each reference surface then equals the fluid flux through the image surface (our own). For a smooth coordinate change F with det DF &gt; 0, this field at X is det DF(X) · DF(X)⁻¹ u(F(X)).
 
 **Problem.** If the smooth fluid velocity has zero divergence, so does the reference flux field.
 
-**How the definition helps.** In our own proof, this definition preserves the volume per unit time crossing each corresponding surface. Transforming velocity alone misses the change in oriented area. The surface change-of-variables formula supplies the determinant factor. The divergence theorem now transfers zero net outward flux from each fluid region to its reference region.
+**How the definition helps.** Zero divergence means zero net outward flux from every small region, and this definition preserves flux region by region (our own). The divergence theorem then carries zero divergence from fluid to reference region. Transforming velocity by DF⁻¹ alone misses the change in area that the determinant supplies.
 
 **Paper or page:** [Symmetric doubly periodic gravity-capillary waves with small vorticity](https://arxiv.org/abs/2204.13093v3). It says: “In particular, the property of being divergence free is conserved under flattening.”
 
@@ -182,15 +182,15 @@
 
 ### Wave action survives energy exchange
 
-**Remember:** Divide wave energy by the frequency measured in the moving fluid.
+**Remember:** Divide wave energy by the frequency felt in the moving current.
 
 *Makes the theorem clean to state or prove.* MSC 76B15 (Water waves, gravity waves; dispersion and scattering, nonlinear interaction). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** Wave action density is wave energy density divided by nonzero angular frequency, both measured in the frame moving with the local mean current.
+**Definition.** Wave action density is wave energy density divided by the intrinsic angular frequency, the nonzero frequency seen by an observer moving with the local mean current. Wave energy alone changes as waves exchange energy with a varying current, and this ratio factors out that exchange (our own).
 
-**Problem.** Consider a small wave train with a single local frequency, away from zero in the moving frame. Suppose the current varies slowly across a wavelength and a wave period. Without forcing or damping, wave action obeys a local conservation law to leading order.
+**Problem.** Consider a small wave train with one local frequency, away from zero in the moving frame, on a current that varies slowly over a wavelength and a wave period. Without forcing or damping, wave action obeys a local conservation law to leading order.
 
-**How the definition helps.** Our own reading is that dividing by the moving-frame frequency cancels the leading energy exchange term. Our own account puts the work in deriving the averaged wave equations under the slow variation assumption.
+**How the definition helps.** Dividing by the intrinsic frequency cancels the leading energy exchange term between waves and current (our own). The work is deriving the averaged wave equations under the slow-variation assumption (our own).
 
 **Wikipedia:** [Wave action (continuum mechanics)](https://en.wikipedia.org/wiki/Wave_action_%28continuum_mechanics%29). It says: “However, wave action is a quantity which is conserved for the wave-part of the motion.”
 
@@ -200,15 +200,15 @@
 
 ### Distributional curl locates sheet vorticity
 
-**Remember:** The curl of a tangential jump lives on the sheet.
+**Remember:** A tangential velocity jump puts vorticity on the sheet itself.
 
 *True by definition.* MSC 76B47 (Vortex flows for incompressible inviscid fluids). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** For a locally integrable three-dimensional velocity u, its distributional vorticity ω satisfies ⟨ω,φ⟩ = ∫u·curl φ dV for every smooth compactly supported test field φ. Orient the sheet normal from the minus side to the plus side and take the jump as the plus trace minus the minus trace.
+**Definition.** The distributional vorticity ω of a locally integrable velocity u is its curl taken against test fields: ⟨ω,φ⟩ = ∫u·curl φ dV for every smooth compactly supported φ. Unlike the pointwise curl, it keeps the boundary terms that integration by parts produces where u jumps.
 
-**Problem.** Suppose a three-dimensional velocity field is smooth up to each side of a smooth sheet. Its curl contains a sheet term whose density is the unit normal crossed with the velocity jump.
+**Problem.** Suppose a three-dimensional velocity is smooth up to each side of a smooth sheet, with unit normal n from the minus side to the plus side. Its curl contains a sheet term with density n × \[u\], where \[u\] is the plus trace minus the minus trace.
 
-**How the definition helps.** In our own proof, the definition retains the boundary terms that pointwise differentiation misses. Integration by parts on both sides gives opposite outward normals. Their contributions combine into the unit normal crossed with the change in limiting velocity when crossing in the direction of the normal.
+**How the definition helps.** Integrating by parts on each side leaves boundary integrals over the sheet with opposite outward normals (our own). Their sum is the sheet term n × \[u\].
 
 **Wikipedia:** [Vortex sheet](https://en.wikipedia.org/wiki/Vortex_sheet). It says: “the normal component of the flow velocity is continuous.”
 
@@ -216,15 +216,15 @@
 
 ### Hodge splitting isolates harmonic flow
 
-**Remember:** A harmonic field has zero divergence and zero curl.
+**Remember:** Harmonic fields are invisible to both divergence and vorticity.
 
 *Makes the theorem clean to state or prove.* MSC 76B47 (Vortex flows for incompressible inviscid fluids), 58A14. arXiv math.AP, physics.flu-dyn. Level 3: graduate.
 
-**Definition.** On a compact oriented Riemannian surface without boundary, a smooth tangent field is harmonic if its divergence and curl both vanish.
+**Definition.** On a compact oriented Riemannian surface without boundary, a smooth tangent field is harmonic if its divergence and curl both vanish. These are exactly the fields that can be added to a velocity without changing its divergence or its vorticity.
 
-**Problem.** Two divergence-free velocities on the same such surface have the same vorticity, or curl, exactly when their difference is harmonic. Thus vorticity determines the velocity on a sphere, but leaves an ambiguity on a flat torus.
+**Problem.** Two divergence-free velocities on the same such surface have the same vorticity exactly when their difference is harmonic. Thus vorticity determines the velocity on a sphere, but not on a flat torus.
 
-**How the definition helps.** In our own proof, the difference of two divergence-free fields is divergence-free and has zero curl exactly when their vorticities agree. Hodge theory gives no nonzero harmonic fields on the sphere. On a flat torus, adding a nonzero constant field preserves vorticity and divergence.
+**How the definition helps.** The difference of two divergence-free fields is divergence-free, and it has zero curl exactly when their vorticities agree (our own). Hodge theory gives no nonzero harmonic fields on the sphere. On a flat torus, nonzero constant fields are harmonic.
 
 **Paper or page:** [On the interplay between vortices and harmonic flows: Hodge decomposition of Euler's equations in 2d](https://arxiv.org/abs/2309.12582v1). It says: “If v is divergence free, then in the Hodge decomposition of ν = v♭ there is no component df.”
 
@@ -238,11 +238,11 @@
 
 *True by definition.* MSC 76B47 (Vortex flows for incompressible inviscid fluids). arXiv math.AP, physics.flu-dyn. Level 3: graduate.
 
-**Definition.** Represent velocity by a one-form, a linear function that takes a tangent vector to its inner product with velocity. Its integral along a curve measures circulation. Define vorticity as its exterior derivative, the oriented area density whose surface integral gives circulation around the boundary.
+**Definition.** Treat velocity as a one-form ν, whose integral along a curve is the circulation, and define vorticity as its exterior derivative dν. Euler’s equation says ν changes along the flow by an exact form db, and exterior differentiation kills exact forms.
 
 **Problem.** For smooth constant-density Euler flow without nonconservative forces, the fluid flow preserves the vorticity two-form. Equivalently, vorticity flux through every material surface is constant.
 
-**How the definition helps.** In our own proof, defining vorticity by differentiation removes the pressure term in one step. The velocity equation for the one-form has a scalar derivative on its right. Applying the exterior derivative kills that term and commutes with transport by the flow. The work goes into converting the usual vector momentum equation into this form.
+**How the definition helps.** Applying d to Euler’s equation removes db, since d² = 0, and d commutes with the Lie derivative along the flow. So ∂(dν)/∂t + L<sub>u</sub>(dν) = 0, which says the flow carries the vorticity two-form unchanged. The work is rewriting the vector momentum equation in this one-form form (our own).
 
 **Paper or page:** [On the interplay between vortices and harmonic flows: Hodge decomposition of Euler's equations in 2d](https://arxiv.org/abs/2309.12582v1). It says: “Euler's equations are given by ∂ν/∂t + Lν♯ ν = db”
 
@@ -252,15 +252,15 @@
 
 ### Minimum dissipation gives unique Stokes velocity
 
-**Remember:** Averaging distinct admissible velocities lowers their average dissipation.
+**Remember:** Average two different minimizers and dissipation drops below both.
 
 *True by definition.* MSC 76D07 (Stokes and related (Oseen, etc.) flows), 76M30. arXiv math.AP, physics.flu-dyn. Level 3: graduate.
 
-**Definition.** For steady flow without body forces, define the Stokes velocity as the field minimizing viscous energy loss. For constant positive viscosity, this loss is proportional to the integral of the squared symmetric part of the velocity gradient. Compare divergence-free velocities with the same prescribed values on the whole boundary.
+**Definition.** Among divergence-free velocities with given values on the whole boundary, the Stokes velocity minimizes viscous dissipation, the integral of the squared symmetric part of the velocity gradient (steady flow, constant positive viscosity, no body force). This dissipation is a strictly convex function of the symmetric gradient.
 
 **Problem.** On a bounded connected region with sufficiently smooth boundary, the fixed-boundary Stokes dissipation problem has at most one minimizing velocity.
 
-**How the definition helps.** In our own proof, two distinct admissible velocities have different symmetric gradients because their difference vanishes on the boundary and satisfies Korn’s inequality. Strict convexity of the squared norm then gives their midpoint less dissipation than their average. Since the midpoint is admissible, both velocities cannot minimize dissipation.
+**How the definition helps.** Two distinct admissible velocities differ by a field vanishing on the boundary, so by Korn’s inequality their symmetric gradients differ (our own). Strict convexity then gives their average strictly less dissipation than the mean of their dissipations (our own). The average is admissible, so both cannot be minimizers.
 
 **Wikipedia:** [Stokes flow](https://en.wikipedia.org/wiki/Stokes_flow). It says: “The Stokes solution dissipates less energy than any other solenoidal vector field with the same boundary velocities”
 
@@ -268,15 +268,15 @@
 
 ### Squire’s rescaling exposes two-dimensional instability
 
-**Remember:** Keep the total wave number and the product of streamwise wave number and Reynolds number.
+**Remember:** Turn the wave to face the flow and the Reynolds number drops.
 
 *True by definition.* MSC 76E05 (Parallel shear flows in hydrodynamic stability). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** For streamwise wave number α &gt; 0 and transverse wave number β, set k = √(α² + β²). Squire’s transformation replaces (α, β) by (k, 0), keeps complex phase speed fixed, and multiplies the Reynolds number by α/k.
+**Definition.** Squire’s transformation replaces wave numbers (α, β), with α &gt; 0, by (k, 0), where k = √(α² + β²). It keeps the complex phase speed and multiplies the Reynolds number by α/k ≤ 1. This keeps k and α times the Reynolds number, the only parameters besides phase speed in the equation for velocity normal to the walls (our own).
 
 **Problem.** Consider linear disturbances of a steady viscous incompressible parallel flow between fixed parallel walls. Every growing three-dimensional mode with α &gt; 0 gives a growing two-dimensional mode at a lower Reynolds number.
 
-**How the definition helps.** In our own calculation, the rescaling keeps k and the product of streamwise wave number and Reynolds number fixed. Those quantities and the phase speed determine the equation for velocity normal to the walls. Its wall conditions also agree. The work lies in deriving this equation and excluding growing modes with zero normal velocity.
+**How the definition helps.** The three- and two-dimensional modes solve the same equation for wall-normal velocity with the same wall conditions, so growth carries over at the lower Reynolds number (our own). The remaining work is deriving that equation and excluding growing modes with zero wall-normal velocity.
 
 **Wikipedia:** [Squire's theorem](https://en.wikipedia.org/wiki/Squire%27s_theorem). It says: “If we want to decide whether a flow is unstable or not, it suffices to look at two-dimensional perturbations.”
 
@@ -286,15 +286,15 @@
 
 ### Geostrophic velocity is constant along rotation axes
 
-**Remember:** In geostrophic balance, the pressure gradient fixes the cross product of rotation and velocity.
+**Remember:** Rotation balanced by pressure freezes velocity along the spin axis.
 
 *Makes the theorem clean to state or prove.* MSC 76U05 (General theory of rotating fluids). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** Velocity u satisfies geostrophic balance at density ρ and angular velocity Ω if 2Ω × u = −∇p/ρ at every point, where p is pressure.
+**Definition.** A velocity u is in geostrophic balance when the Coriolis force balances the pressure force. In symbols, 2Ω × u = −∇p/ρ at every point, for angular velocity Ω, pressure p and density ρ. At constant density this makes Ω × u a gradient, so its curl vanishes (our own).
 
 **Problem.** Suppose a smooth divergence-free velocity satisfies geostrophic balance at constant density in a frame with constant nonzero angular velocity. Velocity is constant on each line segment in the fluid parallel to the rotation axis.
 
-**How the definition helps.** In our own calculation, geostrophic balance expresses the cross product of angular velocity and fluid velocity as a pressure gradient times a constant. Taking curl removes pressure. Because angular velocity is constant and fluid velocity has zero divergence, only the derivative along the rotation axis remains. Applying this balance to an actual flow also requires justifying the neglect of inertia and viscosity.
+**How the definition helps.** For constant Ω and ∇·u = 0, curl(Ω × u) = −(Ω·∇)u, so the curl of the balance gives (Ω·∇)u = 0 (our own). Hence u does not change along the rotation axis. Applying this to a real flow requires justifying the neglect of inertia and viscosity.
 
 **Wikipedia:** [Taylor–Proudman theorem](https://en.wikipedia.org/wiki/Taylor%E2%80%93Proudman_theorem). It says: “all three components of the velocity vector are uniform along any line parallel to the z-axis.”
 
@@ -302,15 +302,15 @@
 
 ### Ertel’s vorticity follows compressible air parcels
 
-**Remember:** Project absolute vorticity onto the potential temperature gradient by dot product, then divide by density.
+**Remember:** Dot vorticity with a conserved temperature gradient, then divide by density.
 
 *Makes the theorem clean to state or prove.* MSC 76U60 (Geophysical flows). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** Absolute vorticity is the curl of fluid velocity plus twice the frame’s angular velocity. Potential temperature is the temperature a parcel would reach at a reference pressure under reversible compression or expansion without heat exchange. Define Ertel’s potential vorticity as absolute vorticity dotted with the potential temperature gradient, divided by density.
+**Definition.** Ertel’s potential vorticity is ω<sub>a</sub>·∇θ/ρ, where ω<sub>a</sub> is absolute vorticity (the curl of velocity plus twice the frame’s angular velocity), θ is potential temperature and ρ is density. Potential temperature is a function of pressure and density that each parcel keeps without heating, so ∇θ is perpendicular to the vorticity source ∇p × ∇ρ.
 
 **Problem.** In smooth dry ideal-gas flow with conservative body forces and no friction or heating, Ertel’s potential vorticity stays constant along parcel paths.
 
-**How the definition helps.** In our own proof, the potential temperature gradient kills the pressure-density vorticity source because potential temperature depends only on pressure and density. The vorticity and temperature-gradient transport equations give cancelling stretching terms in their dot product. Division by density cancels compression.
+**How the definition helps.** Dotting with ∇θ removes the pressure–density vorticity source, because ∇θ is perpendicular to it. The stretching terms of the vorticity and ∇θ transport equations cancel in the dot product, and dividing by density cancels compression (our own).
 
 **Wikipedia:** [Potential vorticity](https://en.wikipedia.org/wiki/Potential_vorticity). It says: “its gradient is perpendicular to the cross product of ∇p and ∇ρ”
 
@@ -320,15 +320,15 @@
 
 ### Tangential fields make helicity gauge independent
 
-**Remember:** A gradient changes helicity only through magnetic flux at the boundary.
+**Remember:** If no field line crosses the boundary, gauge changes cannot alter helicity.
 
 *Rules out counterexamples.* MSC 76W05 (Magnetohydrodynamics and electrohydrodynamics). arXiv physics.flu-dyn. Level 3: graduate.
 
-**Definition.** For a magnetic field B, choose a vector potential A whose curl is B. Define magnetic helicity as the integral of A · B. Restrict ordinary helicity to fields tangent to the boundary, so no field crosses it.
+**Definition.** Magnetic helicity is ∫A·B over the region, where A is any vector potential with curl A = B. For a field tangent to the boundary, B·n = 0 there. Changing A by a gradient ∇χ changes this integral only by the boundary integral of χ B·n, which is zero.
 
 **Problem.** On a smooth bounded simply connected region, helicity is independent of the choice of vector potential for a field tangent to its boundary.
 
-**How the definition helps.** In our own proof, the potentials differ by a gradient because their difference has zero curl on a simply connected region. Since B has zero divergence, integration by parts gives only a boundary integral proportional pointwise to the normal field component. Tangency makes that integral zero. For a uniform vertical field in a box, adding the gradient of height instead changes helicity.
+**How the definition helps.** On a simply connected region two potentials differ by a gradient ∇χ (our own). Since div B = 0, ∫∇χ·B equals the boundary integral of χ B·n, which tangency makes zero (our own). For a unit vertical field in a box, adding the gradient of height changes helicity by the volume.
 
 **Wikipedia:** [Magnetic helicity](https://en.wikipedia.org/wiki/Magnetic_helicity). It says: “Since the magnetic vector potential is not gauge invariant, the magnetic helicity is also not gauge invariant in general.”
 
@@ -338,15 +338,15 @@
 
 ### Geodesics make pressure a constraint force
 
-**Remember:** A parcel geodesic makes kinetic action stationary among volume-preserving paths with fixed endpoints.
+**Remember:** Pressure is the constraint force keeping a geodesic volume-preserving.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 76A02 (Foundations of fluid mechanics), 58D05. arXiv physics.flu-dyn. Level 4: research.
 
-**Definition.** Represent parcel motion by smooth invertible maps with smooth inverses that preserve volume. Measure a path’s kinetic energy by integrating half the squared parcel speed over initial positions. A geodesic makes the time integral of this energy stationary under small changes of path with fixed endpoints.
+**Definition.** A geodesic of parcel maps is a path of smooth volume-preserving diffeomorphisms whose action is stationary under variations with fixed endpoints. The action is the time integral of the kinetic energy ½∫\|parcel speed\|². Stationarity means the parcel acceleration is perpendicular to every allowed variation, that is, to every divergence-free field (our own).
 
 **Problem.** On a compact space with a smooth metric and no boundary, the velocity of a smooth geodesic of parcel maps satisfies the incompressible Euler equations.
 
-**How the definition helps.** In our own account of Arnold’s result, the geodesic condition makes acceleration perpendicular to every allowed change of parcel position. Volume preservation permits precisely the infinitesimal parcel displacements with zero divergence at each fixed configuration. The orthogonal decomposition of vector fields identifies their perpendicular directions as gradients. This gives the pressure term in the acceleration equation.
+**How the definition helps.** Volume preservation allows exactly the divergence-free infinitesimal displacements, and by the orthogonal (Helmholtz–Hodge) decomposition the fields perpendicular to all of them are gradients (our own). So acceleration equals −∇p for some p, which is the incompressible Euler equation.
 
 **nLab:** [diffeomorphism group](https://ncatlab.org/nlab/show/diffeomorphism+group). It says: “one considers groups of diffeomorphisms which are automorphism preserving that extra structure.”
 
@@ -360,11 +360,11 @@
 
 *True by definition.* MSC 76B15 (Water waves, gravity waves; dispersion and scattering, nonlinear interaction), 76M45. arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** Let ζ denote scaled surface height and ψ the surface velocity potential. For the model’s Fourier multiplier Fμ, set v = Fμ\[∂ₓψ\]. Define r = (ζ + v)/2 and s = (ζ − v)/2.
+**Definition.** Combine scaled surface height ζ and v = Fμ\[∂ₓψ\], where ψ is the surface velocity potential and Fμ the model’s Fourier multiplier, into r = (ζ + v)/2 and s = (ζ − v)/2. Then ζ = r + s and v = r − s, so r and s are the two parts of the wave moving in opposite directions.
 
 **Problem.** In the shallow-water model of Proposition 3.5, the quadratic part of the energy is the integral of r² + s². The linear equations propagate r and s independently in opposite directions.
 
-**How the definition helps.** In our own calculation, substituting ζ = r + s and v = r − s into the quadratic energy cancels the mixed terms. Proposition 3.5 supplies the transformed motion operator, whose diagonal linear terms have opposite signs. Thus the linear motions separate.
+**How the definition helps.** Substituting ζ = r + s and v = r − s into the quadratic energy cancels the mixed terms (our own). Proposition 3.5 supplies the transformed linear operator, which is diagonal with opposite signs, so r and s propagate independently.
 
 **Paper or page:** [Rigorous derivation of the Whitham equations from the water waves equations in the shallow water regime](https://arxiv.org/abs/2101.02940v1). It says: “Let r and s be defined as r ≔ (ζ + Fμ\[∂ₓψ\])/2, s ≔ (ζ − Fμ\[∂ₓψ\])/2.”
 
@@ -372,15 +372,15 @@
 
 ### A weighted sum reveals turbulent decay
 
-**Remember:** Weight the energy loss to pay for possible growth in vorticity.
+**Remember:** Weight energy so its viscous loss outpaces vorticity growth.
 
 *Makes the theorem clean to state or prove.* MSC 76F05 (Isotropic turbulence; homogeneous turbulence). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** The weighted sum is the mean magnitude of vorticity, the curl of velocity, plus the mean squared speed divided by √2 ν. Here ν is the kinematic viscosity, the coefficient of velocity diffusion.
+**Definition.** The weighted sum is the mean vorticity magnitude plus the mean squared speed divided by √2 ν, where ν is the kinematic viscosity. The weight is chosen so the viscous loss of energy outpaces the fastest growth of mean vorticity magnitude that vortex stretching allows (our own).
 
 **Problem.** Consider smooth unforced incompressible turbulence whose velocity statistics are unchanged by translations and rotations. The weighted sum cannot increase while the averages and their derivatives exist.
 
-**How the definition helps.** In our own derivation, the chosen weight lets the energy loss cover the maximum predicted growth of mean vorticity magnitude. Fluid stretching can increase that magnitude. The proof uses an identity relating average squared deformation to average squared vorticity, together with the energy balance.
+**How the definition helps.** The scaled energy loss covers the largest possible stretching growth of mean vorticity magnitude, so the sum cannot increase (our own). The bound uses an identity relating mean squared deformation to mean squared vorticity, together with the energy balance.
 
 **Paper or page:** [The vortex dynamics in incompressible viscous turbulent flows](https://arxiv.org/abs/2101.00375v2). It says: “is monotonically decreasing.”
 
@@ -390,15 +390,15 @@
 
 ### Equilibrium variables preserve steady currents
 
-**Remember:** Reconstruct the quantities that are constant even when depth changes.
+**Remember:** Reconstruct discharge and head, which stay flat over a bumpy bed.
 
 *Makes the theorem clean to state or prove.* MSC 76M12 (Finite volume methods applied to problems in fluid mechanics). arXiv math.NA, physics.flu-dyn. Level 4: research.
 
-**Definition.** For one-dimensional shallow water, discharge is hu and total head is b + h + u²/(2g). Here h denotes depth, u velocity, b bed height, and g gravitational acceleration.
+**Definition.** For one-dimensional shallow water, let h be depth, u velocity, b bed height and g gravity. Reconstruct discharge hu and total head b + h + u²/(2g) instead of depth and velocity. A frictionless steady current keeps both constant, even where depth changes with the bed (our own).
 
 **Problem.** Consider the frictionless, one-dimensional shallow-water methods in Theorem 2.1. If discharge and head are each constant at all the discrete locations, both the cell averages and the point values stay fixed.
 
-**How the definition helps.** In our own reading, a steady current becomes constant data when expressed in discharge and head. Reconstructing those constants avoids introducing variation from changes in bed height. The proof still checks cancellation between transported momentum and the force from the bed in both updates.
+**How the definition helps.** Reconstructing constant data returns the same constants, so the scheme adds no spurious variation from the varying bed (our own). The proof still checks that transported momentum and the bed force cancel in both the cell-average and point-value updates.
 
 **Paper or page:** [A New Approach for Designing Well-Balanced Schemes for the Shallow Water Equations: A Combination of Conservative and Primitive Formulations](https://arxiv.org/abs/2304.07809v4). It says: “If the discrete data are at a steady state”
 
@@ -408,15 +408,15 @@
 
 ### Skew symmetry cancels interior transport
 
-**Remember:** Pair each interior transport term with its negative.
+**Remember:** Pair each transport term with its transpose, and only boundary flux remains.
 
 *True by definition.* MSC 76N06 (Compressible Navier-Stokes equations). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** For a state vector U and coefficient matrix A, the paired transport expression in direction x is ∂ₓ(AU) + Aᵀ∂ₓU. Use state variables whose energy is quadratic.
+**Definition.** In state variables U with quadratic energy, write each interior transport term in the paired form ∂ₓ(AU) + Aᵀ∂ₓU, for coefficient matrix A. Paired this way, its contribution to the energy rate, Uᵀ∂ₓ(AU) + Uᵀ Aᵀ∂ₓU = ∂ₓ(UᵀAU), is a pure derivative (our own).
 
 **Problem.** For Nordström’s compressible flow equations, suppose diffusion dissipates energy and the boundary supplies at most the prescribed energy input. Assume the remaining interior matrix is skew-symmetric, meaning its transpose equals its negative. Then the initial state and external data bound the energy.
 
-**How the definition helps.** In our own proof, integration by parts cancels the paired interior derivative terms and leaves their boundary flux. The separate skew-symmetric matrix contributes zero to the quadratic energy balance. The work lies in finding variables and coefficients that reproduce the original equations and checking the diffusion and boundary inequalities.
+**How the definition helps.** Integration by parts turns the paired terms into boundary flux, and the skew-symmetric matrix C contributes UᵀCU = 0 (our own). Dissipative diffusion and the boundary condition then bound the energy by the data. The work is finding variables and coefficients that reproduce the original equations.
 
 **Paper or page:** [A Skew-Symmetric Energy Stable Almost Dissipation Free Formulation of the Compressible Navier-Stokes Equations](https://arxiv.org/abs/2401.12038v2). It says: “C + Cᵀ = 0”
 
@@ -426,15 +426,15 @@
 
 ### Relative energy blocks branching gas flows
 
-**Remember:** Compare to the tangent at the state you want to track.
+**Remember:** Measure the gap from the tangent at the state you track.
 
 *Makes the theorem clean to state or prove.* MSC 76N10 (Existence, uniqueness, and regularity theory for compressible fluids and gas dynamics). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** For density ρ and velocity u, compare with density r and velocity v using the internal energy per volume H. The relative energy density is ρ\|u − v\|²/2 + H(ρ) − H(r) − H′(r)(ρ − r).
+**Definition.** The relative energy of density ρ and velocity u against a comparison r, v is ρ\|u − v\|²/2 + H(ρ) − H(r) − H′(r)(ρ − r), with H the internal energy per volume. It adds the kinetic energy of the velocity difference to the gap between H and its tangent line at r. For strictly convex H it vanishes exactly when density and momentum agree (our own).
 
 **Problem.** Consider a gas whose pressure is proportional to a power of density with exponent greater than one. Suppose a comparison solution satisfies the regularity and vacuum conditions of Theorem 1.4. Every weak solution satisfying its energy inequality with the same initial data has the same density and momentum.
 
-**How the definition helps.** In our own reading, relative energy vanishes exactly when density and momentum agree, including in vacuum. Strict convexity detects density errors, and the kinetic term detects velocity errors wherever density is positive. Theorem 1.4 controls growth near vacuum and forces initially zero relative energy to stay zero.
+**How the definition helps.** Strict convexity makes the tangent gap zero only when ρ = r, and the kinetic term catches velocity errors where density is positive (our own). Theorem 1.4 controls growth near vacuum, so zero initial relative energy stays zero.
 
 **Paper or page:** [Weak-Strong Uniqueness for the Isentropic Euler Equations with Possible Vacuum](https://arxiv.org/abs/2103.16560v1). It says: “ϱ = r and ϱu = rv in \[0, T\] × ℝᴺ.”
 
@@ -444,15 +444,15 @@
 
 ### Subtracting surface motion saves derivatives
 
-**Remember:** Subtract what the moving coordinates contribute.
+**Remember:** Subtract the derivative that comes only from moving coordinates.
 
 *True by definition.* MSC 76N30 (Waves in compressible fluids). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** Let D denote a fourth-order tangential derivative, f the field in flattened coordinates, and η the vertical coordinate map. The good unknown is G = Df − (∂zf)Dη, where ∂zf denotes the physical vertical derivative in those coordinates.
+**Definition.** The good unknown G = Df − (∂zf)Dη corrects the fourth-order tangential derivative Df of a field f in flattened coordinates. It removes the part (∂zf)Dη that comes from differentiating the vertical coordinate map η, where ∂zf is the physical vertical derivative.
 
-**Problem.** Assume the map’s vertical derivative stays above a positive constant. The squared L² norm of Df is bounded by 2‖G‖₂² + 2‖∂zf‖∞²‖Dη‖₂².
+**Problem.** Assume the map’s vertical derivative stays above a positive constant. Then ‖Df‖₂² ≤ 2‖G‖₂² + 2‖∂zf‖∞²‖Dη‖₂².
 
-**How the definition helps.** In our own calculation, the correction removes the fourth derivative caused by moving the coordinates. Adding the correction back gives the stated bound by the triangle inequality. The substantive estimates control the errors when the fluid equations differentiate this corrected quantity.
+**How the definition helps.** Since Df = G + (∂zf)Dη, the inequality (a + b)² ≤ 2a² + 2b² gives the bound (our own). The substantive estimates control G when the fluid equations differentiate it.
 
 **Paper or page:** [Compressible Gravity-Capillary Water Waves with Vorticity: Local Well-Posedness, Incompressible and Zero-Surface-Tension Limits](https://arxiv.org/abs/2211.03600v5). It says: “be the Alinhac good unknowns associated with the smooth function f”
 
@@ -466,11 +466,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 76P05 (Rarefied gas flows, Boltzmann equation in fluid mechanics). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** For distinct planar velocities v and w, use their average (v + w)/2, relative speed \|v − w\|, and direction angle of v − w. Exchanging the particles shifts the angle by π.
+**Definition.** Describe a pair of distinct planar velocities v, w by their average (v + w)/2, their relative speed \|v − w\| and the angle θ of v − w. A collision keeps the average and relative speed, so it changes only θ (our own). Exchanging the particles shifts θ by π.
 
 **Problem.** For a smooth positive symmetric pair density, the angular collision operator contributes a nonpositive rate of change to angular Fisher information. This information measures squared angular derivatives of log density, weighted by density and inverse squared relative speed.
 
-**How the definition helps.** In our own reading, the coordinates reduce collisions at fixed average velocity and relative speed to changes in one angle. Lemma 3.3 pairs each angle with a possible outgoing angle. The resulting integral is minus a squared difference of angular derivatives with nonnegative weights. Deriving that identity supplies the sign.
+**How the definition helps.** In these coordinates the collision operator acts on the angle alone (our own). Lemma 3.3 pairs each angle with an outgoing angle and turns the rate of change into minus a squared difference of angular derivatives with nonnegative weights.
 
 **Paper or page:** [On the monotonicity of the Fisher information for the Boltzmann equation](https://arxiv.org/abs/2409.01183v1). It says: “where θ is an angular variable and F is π-periodic with respect to θ”
 
@@ -480,15 +480,15 @@
 
 ### Density sorting measures excess energy
 
-**Remember:** Compare with the lowest energy that preserves the density distribution.
+**Remember:** Measure energy above the sorted, heaviest-at-bottom state.
 
 *Makes the theorem clean to state or prove.* MSC 76S05 (Flows in porous media; filtration; seepage). arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** Sort the density by height, with heavier fluid below lighter fluid. Keep the volume occupied by each density range unchanged. Define excess energy as the gravitational energy above that of the sorted density.
+**Definition.** The sorted density rearranges the fluid vertically, heaviest at the bottom, keeping the volume of each density range. Excess energy is the gravitational energy above that of the sorted state, the lowest energy any volume-preserving transport can reach (our own).
 
 **Problem.** Consider incompressible porous flow near a linearly decreasing density under the hypotheses of Park’s Theorem 1.1. A constant times the excess energy bounds the integrated squared difference from the sorted density. Thus decay of excess energy to zero gives convergence to the sorted density.
 
-**How the definition helps.** Sorting provides one reference state for the whole motion because transport preserves the volume of each density range. Proposition 2.5 bounds the integrated squared density difference by a constant times the excess energy for these small perturbations. In our own account, taking square roots converts energy decay into density convergence. Proving the comparison and the energy decay requires separate estimates.
+**How the definition helps.** Transport preserves the volume of each density range, so the sorted state is one fixed reference for the whole motion. Proposition 2.5 bounds the integrated squared distance to it by a constant times excess energy for these small perturbations. So excess energy decaying to zero forces convergence (our own).
 
 **Paper or page:** [Stability analysis of the incompressible porous media equation and the Stokes transport system via energy structure](https://arxiv.org/abs/2403.14187v2). It says: “the solution ρ(t) converges to the vertical rearrangement of the initial data”
 
@@ -502,11 +502,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 76T06 (Liquid-liquid two component flows), 76D05. arXiv math.AP, physics.flu-dyn. Level 4: research.
 
-**Definition.** For composition φ and reference ψ, let Λˢ multiply each Fourier mode by its frequency magnitude raised to s. Integrate ρ\|u − v\|²/2 + \|Λˢ(φ − ψ)\|²/2 + Φ(φ) − Φ(ψ) − Φ′(ψ)(φ − ψ). Here ρ is density, u and v are the respective velocities, and Φ is the convex composition energy density.
+**Definition.** The relative energy compares a solution with composition φ, density ρ and velocity u to a reference with composition ψ and velocity v, charging only for differences: ∫ ρ\|u − v\|²/2 + \|Λˢ(φ − ψ)\|²/2 + Φ(φ) − Φ(ψ) − Φ′(ψ)(φ − ψ). Here Λˢ multiplies each Fourier mode by its frequency magnitude to the power s, and Φ is the convex composition energy density.
 
-**Problem.** On a periodic cube, compare the paper’s weak solutions with a smooth incompressible solution on a fixed interval of regularity. Initial compositions have equal means and converge in the norm controlling their mean-square derivatives through order s. With uniformly bounded initial energies and initial velocities converging in mean square, relative energy tends uniformly to zero as the density contrast vanishes.
+**Problem.** On a periodic cube, compare the paper’s weak solutions with a smooth incompressible solution on a fixed interval of regularity. If initial compositions have equal means and converge in the norm of mean-square derivatives through order s, initial energies are uniformly bounded and initial velocities converge in mean square, then relative energy tends uniformly to zero as the density contrast vanishes.
 
-**How the definition helps.** Relative energy expresses convergence of velocity and composition through one estimate. Weak solutions satisfy the equations after integration against smooth test functions. In our own words, convexity makes the tangent subtraction nonnegative. The work goes into bounding relative energy by a constant times the initial relative energy plus the density contrast.
+**How the definition helps.** One quantity measures velocity and composition errors together, and convexity makes the tangent gap nonnegative (our own). The work is a stability bound: relative energy stays below a constant times the initial relative energy plus the density contrast.
 
 **Paper or page:** [Weak solutions and incompressible limit of a quasi-incompressible Navier--Stokes/Cahn--Hilliard model for viscous two-phase flows](https://arxiv.org/abs/2508.08090v1). It says: “E(φα, uα \| φ, u)(τ) ≔ ∫𝕋³ ½ρα\|u − uα\|²(τ) dx + ∫𝕋³ ½\|Λˢφ − Λˢφα\|²(τ) dx + ∫𝕋³ (Φ(φα) − Φ′(φ)(φα − φ) − Φ(φ))(τ) dx”
 

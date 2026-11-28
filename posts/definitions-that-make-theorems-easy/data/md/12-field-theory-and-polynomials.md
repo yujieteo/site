@@ -4,11 +4,11 @@
 
 *True by definition.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** Center the root list by subtracting its mean from each root, counting repeats in the mean. For a polynomial f with root mean m, the centered polynomial is f(y + m).
+**Definition.** To center a polynomial f, shift its variable by the mean m of its roots, counted with repetition. The centered polynomial f(y+m) has roots equal to the old roots minus m, so they add to zero.
 
 **Problem.** Centering gives the unique shift of a nonconstant complex polynomial that makes the coefficient just below its leading term zero.
 
-**How the definition helps.** In our own proof, shifting the variable by c changes the mean of the roots from m to m − c. Only c = m makes this mean zero. Viète’s formula says the coefficient in question equals the negative root sum times the leading coefficient. It also gives the shift from the coefficients without finding the roots.
+**How the definition helps.** By Viète’s formula the coefficient below the leading term is minus the leading coefficient times the root sum, so it vanishes exactly when the roots add to zero (our own proof). Shifting by c moves the root mean from m to m − c, so only c = m works. Viète also gives m from the coefficients without finding the roots.
 
 **Paper or page:** [Tschirnhaus Transformation yields Depressed Polynomial](https://proofwiki.org/wiki/Tschirnhaus_Transformation_yields_Depressed_Polynomial). It says: “converts f into a depressed polynomial”
 
@@ -16,15 +16,15 @@
 
 ### The quadratic discriminant measures the height at the vertex
 
-**Remember:** The vertex height gives the discriminant after multiplication by −4a.
+**Remember:** The discriminant is the vertex height scaled by −4a.
 
 *True by definition.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** For a real quadratic f(x) = ax² + bx + c with a ≠ 0, the vertex lies at h = −b/(2a). Define its discriminant Δ by multiplying the vertex height f(h) by −4a.
+**Definition.** For a real quadratic f(x) = ax² + bx + c with a ≠ 0 and vertex h = −b/(2a), the discriminant is Δ = −4a·f(h). Since f(x) = a(x − h)² + f(h), the roots solve (x − h)² = Δ/(4a²) (our own).
 
 **Problem.** The complex roots are h ± √Δ/(2a). Positive, zero, and negative Δ give two, one, and no distinct real roots, respectively.
 
-**How the definition helps.** Our own proof writes f(x) as a(x − h)² + f(h), so solving f(x) = 0 requires just one square root. Our own comparison expands −4a f(h) to recover b² − 4ac.
+**How the definition helps.** Taking the square root gives h ± √Δ/(2a), and the sign of Δ decides whether that root is real and nonzero (our own proof). Expanding −4a·f(h) recovers b² − 4ac (our own comparison).
 
 **Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “the roots are distinct and real if Δ &gt; 0, coincide at x = −b/(2a) if Δ = 0”
 
@@ -36,11 +36,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 30C15. arXiv math.AC, math.CV. Level 1: early undergraduate.
 
-**Definition.** For a root a of a nonzero polynomial p, its multiplicity is the largest integer k≥1 for which (x−a)ᵏ divides p.
+**Definition.** The multiplicity of a root a of a nonzero polynomial p is the number of times the factor x − a appears in p, that is, the largest k ≥ 1 with (x − a)ᵏ dividing p.
 
 **Problem.** Over the complex numbers, every polynomial of degree n ≥ 1 has exactly n roots, counted with multiplicity.
 
-**How the definition helps.** Counting each linear factor once per occurrence makes the total equal to the degree. For example, (x+4)(x−1)² has one root of multiplicity one and one of multiplicity two. The fundamental theorem of algebra supplies a root of every nonconstant complex polynomial, so repeated division yields a full factorization (our own argument).
+**How the definition helps.** By the fundamental theorem of algebra, a complex polynomial of degree n splits into n linear factors (our own argument). Counting each root once per factor makes the total n. For example, (x + 4)(x − 1)² has the root −4 once and the root 1 twice.
 
 **Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “The notion of multiplicity is important to be able to count correctly without specifying exceptions (for example, double roots counted twice).”
 
@@ -48,15 +48,15 @@
 
 ### One comparison polynomial bounds every complex root
 
-**Remember:** Replace the lower coefficients by negative sizes and bound all roots.
+**Remember:** Make every lower coefficient negative; its positive root caps all roots.
 
 *True by definition.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 30C15. arXiv math.CV. Level 1: early undergraduate.
 
-**Definition.** Make the leading coefficient 1 by dividing through. Define the comparison polynomial by keeping the leading term and replacing each lower coefficient by minus its absolute value.
+**Definition.** Divide a polynomial by its leading coefficient to make it monic. Its comparison polynomial keeps the leading term xⁿ and replaces each lower coefficient by minus its absolute value.
 
 **Problem.** If there is a nonzero lower coefficient, the comparison polynomial has a unique positive root R. Every complex root of the original polynomial has absolute value at most R.
 
-**How the definition helps.** In our own proof, the triangle inequality makes the comparison polynomial nonpositive at the absolute value of every root. For positive inputs, divide by the leading power to get one minus a strictly decreasing sum. This quotient increases from negative infinity to one, so its unique zero bounds every root size.
+**How the definition helps.** The triangle inequality makes the comparison polynomial at most zero at \|z\| for every root z (our own proof). Divided by xⁿ, it is one minus a strictly decreasing sum, which rises from −∞ to 1 on positive x. So it has a unique positive zero R, and it is negative only below R.
 
 **Wikipedia:** [Geometrical properties of polynomial roots](https://en.wikipedia.org/wiki/Geometrical_properties_of_polynomial_roots). It says: “Descartes' rule of signs shows that the polynomial has exactly one positive real root.”
 
@@ -70,11 +70,11 @@
 
 *Rules out counterexamples.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 01A45. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** List a real polynomial’s coefficients in descending degree, delete all zeros, and count consecutive entries with opposite signs.
+**Definition.** The sign count of a real polynomial is the number of sign changes in its list of coefficients in descending degree, after all zero coefficients are deleted.
 
-**Problem.** For a real polynomial with a nonzero constant term, the positive root count equals the sign count minus a nonnegative even integer. Count roots with multiplicity.
+**Problem.** For a real polynomial with a nonzero constant term, the number of positive roots, counted with multiplicity, equals the sign count minus a nonnegative even integer.
 
-**How the definition helps.** Deleting zeros catches the sign change in x²−1, which has a positive root despite its zero middle coefficient (our own example). Multiplying by x−a with a&gt;0 adds at least one sign change, bounding the number of positive roots with multiplicity. The first and last nonzero coefficients determine sign-count parity. They also determine the signs near zero and positive infinity, which differ exactly for odd total positive-root multiplicity (our own argument).
+**How the definition helps.** Multiplying by x − a with a &gt; 0 adds at least one sign change, so induction bounds the positive roots by the sign count (our own argument). The signs of the first and last nonzero coefficients fix the parity of both numbers (our own argument). Deleting zeros matters: x² − 1 has a positive root, and its zero middle coefficient must not hide the sign change (our own example).
 
 **Wikipedia:** [Descartes's rule of signs](https://en.wikipedia.org/wiki/Descartes%27s_rule_of_signs). It says: “the number of sign changes in the sequence of the polynomial's coefficients (omitting zero coefficients)”
 
@@ -86,15 +86,15 @@
 
 ### Formal differentiation detects repeated roots
 
-**Remember:** At a root, the derivative detects a second copy of the same linear factor.
+**Remember:** A double root makes the derivative vanish there too.
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** The formal derivative sends constants to zero. For each positive power, multiply the coefficient by the exponent and lower the exponent by one. A root a is repeated when (x − a)² divides the polynomial.
+**Definition.** The formal derivative of ∑ aₖxᵏ is ∑ k·aₖxᵏ⁻¹, defined by this rule with no limits. A root a is repeated when (x − a)² divides the polynomial.
 
 **Problem.** If a is a root of a nonzero polynomial f over a field, then a is a repeated root exactly when f′(a) = 0.
 
-**How the definition helps.** The formal product rule turns the test into one substitution at the root (our own). Write f = (x − a)g by the factor theorem, so the product rule gives f′(a) = g(a) (our own). Apply the factor theorem again to see that g(a) vanishes exactly when x − a divides g (our own). The work is in proving the formal product rule from the rule on powers (our own).
+**How the definition helps.** Write f = (x − a)g by the factor theorem, so the product rule gives f′(a) = g(a) (our own). So f′(a) = 0 exactly when x − a divides g, that is, when (x − a)² divides f (our own). The only work is the formal product rule, which follows from the rule on powers (our own).
 
 **Wikipedia:** [Formal derivative](https://en.wikipedia.org/wiki/Formal_derivative). It says: “Formal differentiation is used in algebra to test for multiple roots of a polynomial.”
 
@@ -104,15 +104,15 @@
 
 ### Lagrange basis polynomials isolate data points
 
-**Remember:** Each basis polynomial contributes only its own prescribed value at the given inputs.
+**Remember:** Each basis polynomial is one at home, zero elsewhere.
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** For each distinct input, multiply the linear factors that vanish at every other input. Divide by the value of that product at the chosen input. These Lagrange basis polynomials replace the usual basis of successive powers of x.
+**Definition.** For n + 1 distinct inputs, the Lagrange basis polynomial of one input is the product of the factors x − xⱼ over the other inputs, divided by its value at that input. So it is 1 at its own input and 0 at every other input (our own).
 
 **Problem.** Choose n + 1 distinct inputs in a field. Exactly one polynomial of degree at most n takes prescribed values from that field at those inputs.
 
-**How the definition helps.** Each basis polynomial is 1 at its own input and 0 at the others (our own). Distinct inputs make each denominator a product of nonzero differences (our own). Weight each basis polynomial by its prescribed value and add the results (our own). The root bound does the remaining work, since the difference of two solutions would have more roots than its degree (our own).
+**How the definition helps.** Weight each basis polynomial by its prescribed value and add, to get a solution of degree at most n (our own). Distinct inputs keep every denominator nonzero (our own). The difference of two solutions has degree at most n but n + 1 roots, so it is zero (our own).
 
 **Wikipedia:** [Lagrange polynomial](https://en.wikipedia.org/wiki/Lagrange_polynomial). It says: “The interpolating polynomial is unique.”
 
@@ -122,7 +122,7 @@
 
 ### Over an algebraically closed field every linear map has an eigenvector
 
-**Remember:** Every nonconstant polynomial has a root in the field.
+**Remember:** Every polynomial has a root, so every characteristic polynomial does.
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)), 15A18. arXiv math.AC. Level 1: early undergraduate.
 
@@ -130,7 +130,7 @@
 
 **Problem.** Over an algebraically closed field F, every linear map from Fⁿ to itself has an eigenvector whenever n ≥ 1.
 
-**How the definition helps.** A linear map has an eigenvector exactly when its characteristic polynomial has a root, so over an algebraically closed field the theorem is immediate. The article shows that the converse also holds, so the eigenvector property is an equivalent definition of algebraic closure. The real numbers fail: our own example is a rotation of ℝ² by 90°, which has no eigenvector. What stays hard is the fundamental theorem of algebra, which says that ℂ is algebraically closed.
+**How the definition helps.** A linear map has an eigenvector exactly when its characteristic polynomial, of degree n ≥ 1, has a root in F, so the theorem is immediate. The article shows the converse, so the eigenvector property is an equivalent definition of algebraic closure. Over ℝ it fails: the rotation of ℝ² by 90° has no eigenvector (our own example).
 
 **Wikipedia:** [Algebraically closed field](https://en.wikipedia.org/wiki/Algebraically_closed_field). It says: “The field F is algebraically closed if and only if, for each natural number n, every linear map from Fⁿ into itself has some eigenvector.”
 
@@ -142,11 +142,11 @@
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** Fix a field F and an element a ∈ F. Two polynomials in F\[x\] are equivalent modulo x − a if x − a divides their difference. The remainder of f modulo x − a is the unique constant equivalent to f.
+**Definition.** Two polynomials over a field F are congruent modulo x − a when x − a divides their difference; in particular, x is congruent to a. The remainder of f modulo x − a is the unique constant congruent to f.
 
 **Problem.** The remainder of a polynomial f on division by x − a is f(a). In particular, x − a divides f exactly when f(a) = 0.
 
-**How the definition helps.** In our own proof, replacing x by a leaves every sum and product in the same group. Thus f and the constant f(a) belong together. Polynomial division gives exactly one constant in each group and identifies it with the usual remainder.
+**How the definition helps.** Since x is congruent to a and congruence respects sums and products, f(x) is congruent to the constant f(a) (our own proof). Polynomial division gives exactly one constant in each class, and it is the usual remainder (our own).
 
 **Paper or page:** [Little Bézout Theorem](https://proofwiki.org/wiki/Little_Bézout_Theorem). It says: “Then the remainder of Pₙ(x) when divided by x − a is equal to Pₙ(a).”
 
@@ -158,11 +158,11 @@
 
 *True by definition.* MSC 12E99 (General field theory). arXiv math.AC. Level 1: early undergraduate.
 
-**Definition.** Define the prime subfield as the intersection of all subfields that share the field's one. An alternative builds it from one using the field operations.
+**Definition.** The prime subfield of a field is the intersection of all its subfields, that is, the set of elements that every subfield contains.
 
 **Problem.** Every field has a unique smallest subfield.
 
-**How the definition helps.** The intersection automatically lies in every subfield, which is the required minimality. In our own proof, zero and one belong to every subfield. The intersection inherits addition, subtraction, multiplication, and inversion of nonzero elements. Constructing the smallest subfield from one instead requires showing that the construction gives exactly this intersection.
+**How the definition helps.** The intersection lies inside every subfield, so it is the smallest one as soon as it is a subfield. It is one, because every subfield contains 0 and 1 and is closed under addition, subtraction, multiplication and inverses of nonzero elements (our own proof).
 
 **Paper or page:** [Intersection of All Division Subrings is Prime Subfield](https://proofwiki.org/wiki/Intersection_of_All_Division_Subrings_is_Prime_Subfield). It says: “Let P be the intersection of the set of all division subrings of K. Then P is the prime subfield of K.”
 
@@ -174,11 +174,11 @@
 
 *True by definition. Confidence: medium.* MSC 12J15 (Ordered fields), 26A03. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** An Archimedean ordered field is an ordered field in which no element is larger than every natural number. The real numbers are the terminal one, which means that every Archimedean ordered field has exactly one order-preserving field homomorphism into it.
+**Definition.** The real numbers are the terminal Archimedean ordered field: every Archimedean ordered field, one with no element above all natural numbers, has exactly one order-preserving field homomorphism into them.
 
 **Problem.** All constructions of the real numbers give the same field, up to a unique isomorphism.
 
-**How the definition helps.** Terminality gives a unique order-preserving field map in each direction. Each composite must equal the identity because the terminal field has only one endomorphism (our own). Each construction must therefore establish terminality.
+**How the definition helps.** A terminal object is unique up to unique isomorphism by definition. Two terminal fields have unique maps each way, and each composite is the identity, the only endomorphism of a terminal field (our own). So each construction need only prove that its field is terminal.
 
 **nLab:** [real number](https://ncatlab.org/nlab/show/real+number). It says: “We speak of the such field because it is unique up to unique isomorphism by definition of terminal object.”
 
@@ -188,15 +188,15 @@
 
 ### Conjugate pairs determine the sign of the discriminant
 
-**Remember:** Square the product of root differences after scaling by the leading coefficient.
+**Remember:** Conjugation flips the sign of the root-difference product once per nonreal pair.
 
 *True by definition.* MSC 12D05 (Polynomials in real and complex fields: factorization), 13P15. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Let a polynomial have degree n ≥ 1, leading coefficient a, and complex roots r₁, …, rₙ listed with multiplicity. Form D by multiplying aⁿ⁻¹ by every difference rᵢ − rⱼ with 1 ≤ i &lt; j ≤ n. The discriminant is D².
+**Definition.** For a polynomial of degree n ≥ 1 with leading coefficient a and complex roots r₁, …, rₙ listed with multiplicity, let D = aⁿ⁻¹ times the product of rᵢ − rⱼ over i &lt; j. The discriminant is D².
 
 **Problem.** For a nonconstant real polynomial with distinct roots, the discriminant has sign (−1)ᵏ when k pairs of roots are nonreal.
 
-**How the definition helps.** Conjugation swaps the two roots in each nonreal pair, and each swap negates the unsquared product. Thus the product is real for even k and purely imaginary for odd k. Its square has the claimed sign because distinct roots make the product nonzero. Our own comparison uses the theorem on symmetric polynomials to recover a formula in the coefficients.
+**How the definition helps.** Complex conjugation swaps the two roots of each of the k nonreal pairs, and each swap negates D, so the conjugate of D is (−1)ᵏD. So D is real for even k and purely imaginary for odd k, and D ≠ 0 because the roots are distinct. Hence D² has sign (−1)ᵏ.
 
 **Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “If the discriminant is positive, the number of non-real roots is a multiple of 4.”
 
@@ -208,11 +208,11 @@
 
 *True by definition.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** The third Chebyshev polynomial is the unique polynomial T₃ satisfying T₃(cos θ) = cos(3θ) for every real θ. Its polynomial form is T₃(z) = 4z³ − 3z.
+**Definition.** The third Chebyshev polynomial T₃(z) = 4z³ − 3z is the cubic that triples an angle inside a cosine: T₃(cos θ) = cos 3θ for every real θ.
 
 **Problem.** For t³ − 3a²t − 2b = 0 with a &gt; 0 and \|b\| &lt; a³, let θ = arccos(b/a³). The three roots are 2a cos(θ/3), 2a cos(θ/3 + 2π/3), and 2a cos(θ/3 + 4π/3).
 
-**How the definition helps.** The cosine definition turns the scaled cubic into an equation for three times an angle. In our own proof, t = 2az gives T₃(z) = b/a³. The triple-angle identity gives the polynomial formula for T₃. Since 0 &lt; θ &lt; π, the three displayed cosines are distinct.
+**How the definition helps.** Substituting t = 2az turns the equation into 4z³ − 3z = b/a³, that is, T₃(z) = cos θ (our own proof). So z = cos φ with cos 3φ = cos θ, which gives φ = θ/3, θ/3 + 2π/3 and θ/3 + 4π/3. Since 0 &lt; θ &lt; π, these three cosines are distinct.
 
 **Paper or page:** [Cardano's Formula/Trigonometric Form](https://proofwiki.org/wiki/Cardano's_Formula/Trigonometric_Form). It says: “Then the solutions of P can be expressed as: x₁ = 2√(−Q) cos(θ/3) − b/(3a)”
 
@@ -224,11 +224,11 @@
 
 *True by definition. Confidence: medium.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Subtract the quartic x⁴ + px² + qx + r from (x² + m)². Define Ferrari’s resolvent as the equation that sets the discriminant in x of the remainder to zero. It is 4(2m − p)(m² − r) = q².
+**Definition.** Ferrari’s resolvent for x⁴ + px² + qx + r is the condition on m that makes (x² + m)² minus the quartic a perfect square in x. That difference is (2m − p)x² − qx + (m² − r), and it is a square when its discriminant vanishes: q² = 4(2m − p)(m² − r).
 
 **Problem.** Suppose q ≠ 0. Over the complex numbers, any root m of this resolvent gives a factorization of the quartic into two quadratics.
 
-**How the definition helps.** The resolvent makes the difference a quadratic with a repeated root, hence a square over the complex numbers. In our own proof, q ≠ 0 forces 2m − p ≠ 0, so the difference really has degree two. Subtracting its square representation from (x² + m)² gives two quadratic factors. The fundamental theorem of algebra supplies a root m of the cubic resolvent.
+**How the definition helps.** With such m, the quartic is (x² + m)² minus a square, a difference of two squares, so it factors into two quadratics. Since q ≠ 0, the resolvent forces 2m − p ≠ 0, so the square is of a genuine linear polynomial (our own proof). The fundamental theorem of algebra supplies a root m of the cubic resolvent.
 
 **Paper or page:** [Ferrari's Method](https://proofwiki.org/wiki/Ferrari's_Method). It says: “Ferrari's Method is a technique for solving this quartic.”
 
@@ -240,11 +240,11 @@
 
 *Rules out counterexamples.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Work over the complex numbers with p ≠ 0. For x³ + px + q, let U and V be the roots of z² + qz − p³/27. Call cube roots u and v of U and V a pair when uv = −p/3.
+**Definition.** Work over ℂ with p ≠ 0, and let U and V be the roots of z² + qz − p³/27. Cube roots u of U and v of V form a pair when uv = −p/3, the condition that makes the cross term 3uv(u + v) cancel p(u + v).
 
 **Problem.** Each paired sum u + v is a root of x³ + px + q. Taking all three choices of u gives all three roots, counted with multiplicity.
 
-**How the definition helps.** The pairing condition cancels the mixed terms in (u + v)³ + p(u + v) + q. Each choice of u forces v = −p/(3u), whose cube is V. In our own check, expanding the three factors x − (u + v) gives the original cubic, including repeated roots. For x³ − 3x + 2, our own incompatible choice u = v = (1 + i√3)/2 gives a nonreal sum.
+**How the definition helps.** Since u³ + v³ = U + V = −q and 3uv = −p, the sum u + v satisfies x³ + px + q = 0. Each of the three choices of u forces v = −p/(3u), and expanding the three factors x − (u + v) gives the cubic back (our own check). Unpaired choices fail: for x³ − 3x + 2, u = v = (1 + i√3)/2 gives a nonreal sum (our own).
 
 **Wikipedia:** [Cubic equation](https://en.wikipedia.org/wiki/Cubic_equation). It says: “At this point Cardano imposed the condition 3uv + p = 0.”
 
@@ -256,11 +256,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12D05 (Polynomials in real and complex fields: factorization). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For positive degree 2m, define a palindromic polynomial by the identity P(x) = x to the power 2m times P(1/x). This is equivalent to reading the same coefficient list in either order.
+**Definition.** A polynomial P of degree 2m is palindromic when its coefficient list reads the same in either order, that is, P(x) = x²ᵐP(1/x). So P(x)/xᵐ is the middle coefficient plus terms cₖ(xᵏ + x⁻ᵏ) (our own).
 
 **Problem.** A palindromic complex polynomial equation of degree 2m reduces to degree m in y = x + 1/x. Each y gives the solutions of x² − yx + 1 = 0.
 
-**How the definition helps.** In our own proof, the matching coefficients pair each positive power with its reciprocal after division by x to the power m. The middle coefficient stays constant. The pair sums start with 2 and y, and each next sum equals y times the last minus the preceding sum. The final sum has degree m, and the original constant coefficient is nonzero, so division loses no root.
+**How the definition helps.** Each xᵏ + x⁻ᵏ is a polynomial of degree k in y = x + 1/x, since it equals y times the previous sum minus the one before, starting from 2 and y (our own proof). So P(x)/xᵐ is a polynomial of degree m in y. The constant coefficient equals the leading one, so it is nonzero and dividing by xᵐ loses no root.
 
 **Wikipedia:** [Reciprocal polynomial](https://en.wikipedia.org/wiki/Reciprocal_polynomial). It says: “A self-reciprocal polynomial is also called palindromic because its coefficients, when the polynomial is written in the order of ascending or descending powers, form a palindrome.”
 
@@ -272,11 +272,11 @@
 
 *True by definition.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a nonconstant real polynomial f of degree n, its Hermite form assigns a number to each real polynomial g of degree below n. That number is the sum of g(r)² over all complex roots r of f, counted with repetition.
+**Definition.** For a real polynomial f of degree n ≥ 1, the Hermite form sends each real polynomial g of degree below n to the sum of g(r)² over the complex roots r of f, counted with multiplicity. A real root contributes a square, while a conjugate pair with g(r) = u + iv contributes 2(u² − v²) (our own).
 
 **Problem.** The signature of the Hermite form equals the number of distinct real roots of f. Signature counts positive squares minus negative squares in a diagonal expression for the form.
 
-**How the definition helps.** Root values separate the form into one block per real root or conjugate pair. In our own proof, a real root of multiplicity m contributes one positive square, while a conjugate pair contributes 2m(u² − v²). Real polynomial interpolation realizes arbitrary real values and conjugate pairs of values at the distinct roots. Polynomials vanishing there contribute zero, and Newton’s identities recover the usual matrix from the coefficients.
+**How the definition helps.** Real interpolation lets g take arbitrary real values, and conjugate pairs of values, at the distinct roots, so the form splits into independent pieces (our own proof). A real root of multiplicity m gives m·u², one positive square, and a conjugate pair gives 2m(u² − v²), one positive and one negative square. So the signature is the number of distinct real roots.
 
 **Paper or page:** [Certified Hermite Matrices from Approximate Roots](https://arxiv.org/abs/2110.10313v1). It says: “σ(Hg(ℐ)) = \# {x ∈ Vℝ(ℐ) \| g(x) &gt; 0} − \# {x ∈ Vℝ(ℐ) \| g(x) &lt; 0}.”
 
@@ -284,7 +284,7 @@
 
 ### Asking that −1 is not a sum of squares characterizes orderable fields
 
-**Remember:** If −1 is no sum of squares, some ordering exists.
+**Remember:** Sums of squares miss −1 exactly when an ordering exists.
 
 *Makes the theorem clean to state or prove.* MSC 12D15 (Fields related with sums of squares (formally real fields, Pythagorean fields, etc.)), 12J15. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
@@ -292,7 +292,7 @@
 
 **Problem.** A field can be ordered exactly when −1 is not a sum of squares. Every formally real field also sits inside a real closed field, one with no larger formally real algebraic extension.
 
-**How the definition helps.** Formal reality states the obstruction to ordering entirely in field operations (our own). Squares are nonnegative in every ordered field. The Artin–Schreier theorem supplies an ordering and a real closure for every formally real field (our own).
+**How the definition helps.** Formal reality is the obvious necessary condition (our own), since sums of squares are nonnegative in any ordered field. The Artin–Schreier theorem shows that it is also sufficient, and it gives every formally real field a real closure (our own).
 
 **Wikipedia:** [Formally real field](https://en.wikipedia.org/wiki/Formally_real_field). It says: “It is also easy to see that a field that admits an ordering must satisfy these three properties.”
 
@@ -306,11 +306,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)), 13F07. arXiv math.RA, math.AC. Level 2: later undergraduate.
 
-**Definition.** For polynomials P and Q over a field, with at least one nonzero, their monic greatest common divisor divides both and has leading coefficient 1. Every common divisor of P and Q divides it.
+**Definition.** The monic greatest common divisor of polynomials P and Q over a field, not both zero, is the common divisor with leading coefficient 1 that every common divisor divides. The Euclidean algorithm computes it from P and Q by division with remainder alone.
 
 **Problem.** If E extends F and P, Q ∈ F\[X\] are not both zero, their monic greatest common divisor over E equals the one over F.
 
-**How the definition helps.** The monic condition selects the same representative in both fields (our own). Polynomial division in F gives the same remainders in E. The Euclidean algorithm therefore returns the same last nonzero remainder, with the same monic normalization (our own).
+**How the definition helps.** Division of polynomials over F gives the same quotients and remainders in E, so the Euclidean algorithm runs the same in both fields (our own). Both give the same last nonzero remainder, and the monic condition picks the same scalar multiple of it (our own).
 
 **Paper or page:** [GCD of Polynomials does not depend on Base Field](https://proofwiki.org/wiki/GCD_of_Polynomials_does_not_depend_on_Base_Field). It says: “Let: gcd {P, Q} = R in F\[X\] gcd {P, Q} = S in E\[X\]. Then R = S. In particular, S ∈ F\[X\].”
 
@@ -324,7 +324,7 @@
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** Let f have degree n ≥ 2 and leading coefficient a over a field. List its roots r₁, …, rₙ in a splitting field, with multiplicity. Its discriminant is a²ⁿ⁻² times the product of (rᵢ − rⱼ)² over all i &lt; j.
+**Definition.** For f of degree n ≥ 2 with leading coefficient a over a field, the discriminant is a²ⁿ⁻² times the product of (rᵢ − rⱼ)² over all i &lt; j. Here r₁, …, rₙ are the roots of f in a splitting field, listed with multiplicity.
 
 **Problem.** The discriminant of f is zero if and only if f has a repeated root. If f has real coefficients and all its roots are real and distinct, the discriminant is positive.
 
@@ -336,15 +336,15 @@
 
 ### Eisenstein's square condition rules out two nonconstant factors
 
-**Remember:** The prime misses the leader, divides all lower coefficients, and divides the constant only once.
+**Remember:** p divides all but the leader, and the constant only once.
 
 *Rules out counterexamples.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)), 13B25. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For an integer polynomial to be Eisenstein at a prime p, its leading coefficient must survive reduction modulo p and every lower coefficient must vanish. Its degree must be positive, and p² must not divide its constant term.
+**Definition.** An integer polynomial aₙxⁿ + … + a₀ of positive degree is Eisenstein at a prime p when p does not divide aₙ, p divides every other coefficient, and p² does not divide a₀.
 
 **Problem.** A polynomial that is Eisenstein at a prime is irreducible over the rational numbers.
 
-**How the definition helps.** Modulo p, both positive-degree factors would have to be single terms, so their constant coefficients would both be divisible by p (our own). Their product would have constant coefficient divisible by p², which the definition forbids (our own). The work moves to Gauss's lemma, which turns a rational factorization into one over the integers (our own). Without the square condition, x² + 4x + 4 passes the test at 2 but equals (x + 2)² (our own).
+**How the definition helps.** Modulo p the polynomial is the single term aₙxⁿ, so both factors of a factorization reduce to single terms and both constant terms are divisible by p (our own). Their product would have constant term divisible by p², which the definition forbids; Gauss's lemma reduces rational factorizations to integer ones (our own). Without the square condition, x² + 4x + 4 = (x + 2)² passes the other tests at 2 (our own).
 
 **Wikipedia:** [Eisenstein's criterion](https://en.wikipedia.org/wiki/Eisenstein%27s_criterion). It says: “Then Q cannot be written as a product of two non-constant polynomials in D\[x\].”
 
@@ -360,11 +360,11 @@
 
 *Rules out counterexamples.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)), 13B25. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Reduction modulo p sends each integer coefficient to its class in ℤ/pℤ. Say this reduction preserves degree if p does not divide the leading coefficient.
+**Definition.** Reducing an integer polynomial modulo a prime p preserves degree when p does not divide its leading coefficient.
 
 **Problem.** If an integer polynomial reduces to an irreducible polynomial of the same degree modulo a prime p, it is irreducible over ℚ.
 
-**How the definition helps.** Keeping the degree prevents a nonconstant factor from reducing to a constant (our own). Gauss's lemma brings any rational factorization back to integer factors, so their reductions would contradict irreducibility (our own). Without the degree rule, (2x + 1)(x + 1) reduces to x + 1 modulo 2 (our own).
+**How the definition helps.** When the degree survives, every factor keeps its degree, so an integer factorization into nonconstant factors reduces to one modulo p (our own). Gauss's lemma turns any rational factorization into an integer one (our own). Without the degree condition, (2x + 1)(x + 1) reduces to x + 1, which is irreducible modulo 2 (our own).
 
 **Wikipedia:** [Irreducible polynomial](https://en.wikipedia.org/wiki/Irreducible_polynomial). It says: “does not divide the leading coefficient of f”
 
@@ -376,11 +376,11 @@
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** Define the nth cyclotomic polynomial as the product of x − ζ over all complex roots ζ of order exactly n. One can instead take the minimal polynomial of a single such root over ℚ.
+**Definition.** The nth cyclotomic polynomial is the product of x − ζ over the primitive nth roots of unity ζ, the complex numbers of order exactly n.
 
 **Problem.** The nth cyclotomic polynomial has degree φ(n), the number of integers from 1 to n that are coprime to n.
 
-**How the definition helps.** The product definition gives one factor for each power of a fixed primitive root whose exponent is coprime to n (our own). The work moves to proving the product irreducible, which identifies it with the minimal polynomial of one primitive root (our own).
+**How the definition helps.** The primitive nth roots are the powers ζᵏ of one of them with 1 ≤ k ≤ n and k coprime to n, so the product has φ(n) linear factors (our own). The work moves to proving the product irreducible, which identifies it with the minimal polynomial of one primitive root (our own).
 
 **Wikipedia:** [Cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial). It says: “The degree of Φₙ, or in other words the number of nth primitive roots of unity, is φ(n)”
 
@@ -388,15 +388,15 @@
 
 ### The minimal polynomial definition makes cyclotomic polynomials irreducible
 
-**Remember:** Use one primitive root to get irreducibility from its minimal polynomial.
+**Remember:** A minimal polynomial cannot factor.
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** Define the nth cyclotomic polynomial as the monic minimal polynomial over ℚ of a complex root of unity of order exactly n. The other definition multiplies x − ζ over all roots ζ of order n.
+**Definition.** The nth cyclotomic polynomial is the monic minimal polynomial over ℚ of a complex root of unity of order exactly n.
 
 **Problem.** The nth cyclotomic polynomial is irreducible over ℚ.
 
-**How the definition helps.** A minimal polynomial is irreducible because a factorization would give a lower-degree polynomial vanishing at the chosen root (our own). The work shifts to showing that all primitive roots are conjugate, so the two definitions agree (our own).
+**How the definition helps.** A minimal polynomial is irreducible, since a factor of lower degree would also vanish at the chosen root (our own). The work moves to showing that all primitive nth roots are conjugate, so this agrees with the product definition (our own).
 
 **Wikipedia:** [Cyclotomic polynomial](https://en.wikipedia.org/wiki/Cyclotomic_polynomial). It says: “irreducible over the field of the rational numbers.”
 
@@ -408,11 +408,11 @@
 
 *True by definition.* MSC 12E05 (Polynomials in general fields (irreducibility, etc.)). arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** Set Φ₁(x) = x − 1. For n &gt; 1, multiply the previously defined cyclotomic polynomials indexed by the positive proper divisors of n. Define Φₙ(x) as xⁿ − 1 divided by this product.
+**Definition.** Set Φ₁(x) = x − 1. For n &gt; 1, let Φₙ(x) be xⁿ − 1 divided by the product of Φ<sub>d</sub>(x) over the proper positive divisors d of n.
 
 **Problem.** Every cyclotomic polynomial has integer coefficients.
 
-**How the definition helps.** Each earlier cyclotomic polynomial is monic, so polynomial long division introduces no denominators (our own). Grouping the complex roots of xⁿ − 1 by their orders proves that the division is exact. Induction starting with x − 1 now gives integer coefficients.
+**How the definition helps.** By induction each Φ<sub>d</sub> is monic with integer coefficients, so long division of xⁿ − 1 by their product introduces no denominators (our own). The division is exact, because grouping the complex roots of xⁿ − 1 by their orders shows that the product divides it.
 
 **Paper or page:** [Cyclotomic Polynomial has Integer Coefficients](https://proofwiki.org/wiki/Cyclotomic_Polynomial_has_Integer_Coefficients). It says: “Then the nth cyclotomic polynomial Φₙ(x) has integer coefficients.”
 
@@ -424,11 +424,11 @@
 
 *True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)), 12F10. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** Fix a prime p and an algebraic closure K of 𝔽ₚ. Write σ(x) = xᵖ for its Frobenius automorphism. For each positive integer n, define the subfield of size pⁿ in K as the fixed field of σⁿ.
+**Definition.** Fix an algebraic closure K of 𝔽ₚ with Frobenius map σ(x) = xᵖ. The subfield of K of size pⁿ is the set of elements that σⁿ fixes.
 
 **Problem.** The intersection of the finite subfields of degrees m and n has degree gcd(m, n) over the prime field.
 
-**How the definition helps.** With the fixed-field definition, an intersection of subfields is the fixed set of a group of powers of σ (our own). The elements fixed by σᵐ and σⁿ are those fixed by the subgroup they generate (our own). By Bézout’s identity, this subgroup is generated by σ to the power gcd(m, n) (our own). The work moves to proving that σ is bijective on K and that σⁿ has exactly pⁿ fixed points (our own).
+**How the definition helps.** An element lies in both subfields when σᵐ and σⁿ fix it, that is, when the whole group they generate fixes it (our own). By Bézout's identity, that group is generated by σ to the power gcd(m, n) (our own). The work moves to proving that σ is bijective on K and that σⁿ has exactly pⁿ fixed points (our own).
 
 **nLab:** [finite field](https://ncatlab.org/nlab/show/finite+field). It says: “may be defined to be the fixed field of the automorphism σⁿ: K → K.”
 
@@ -440,11 +440,11 @@
 
 *True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Fix a prime p and a positive integer n, and put q = pⁿ. Inside an algebraic closure of the field with p elements, take the elements unchanged by raising them to the power q.
+**Definition.** Fix a prime p and put q = pⁿ. In an algebraic closure of 𝔽ₚ, take the elements fixed by the map x ↦ xᑫ, that is, the roots of xᑫ − x.
 
 **Problem.** For every prime p and positive integer n, a field of size pⁿ exists and is unique up to isomorphism.
 
-**How the definition helps.** Raising to the power q preserves field operations, so its fixed elements form a field (our own). They solve xᑫ − x = 0, whose derivative is −1, giving exactly q distinct roots. In any field of size q, each nonzero element has order dividing q − 1. Every such field is therefore a splitting field of the same polynomial over 𝔽ₚ, which proves uniqueness up to isomorphism.
+**How the definition helps.** Raising to the power q preserves sums and products, so its fixed elements form a field (our own). The polynomial xᑫ − x has derivative −1, so it has exactly q distinct roots. In any field of size q every element satisfies xᑫ = x by Lagrange's theorem, so that field is a splitting field of xᑫ − x over 𝔽ₚ, unique up to isomorphism.
 
 **Paper or page:** [Theorem 4.2. (Complete classification of finite fields)](https://venhance.github.io/napkin/Napkin.pdf). It says: “A field $F$ is a finite field with $p<sup>n$</sup> elements if and only if it is a splitting field of $x<sup>p<sup>n</sup>-x$</sup> over $\\FF<sub>p</sub>$.”
 
@@ -456,11 +456,11 @@
 
 *True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** In prime characteristic p, a field is perfect if every element has a pth root in the field. Equivalently, every irreducible polynomial has distinct roots in a splitting field.
+**Definition.** A field of prime characteristic p is perfect when every element has a pth root in it, that is, when the Frobenius map x ↦ xᵖ is onto.
 
 **Problem.** Every finite field is perfect.
 
-**How the definition helps.** On a finite field the map taking pth powers is injective, hence onto (our own). The work lies in the polynomial criterion. An irreducible polynomial with repeated roots would have zero derivative and only exponents divisible by p. Taking pth roots of its coefficients would make it a pth power, contradicting irreducibility.
+**How the definition helps.** Frobenius is a field homomorphism, so it is injective, and an injective map from a finite set to itself is onto (our own).
 
 **Paper or page:** [Theorem 5.6. (Finite fields are perfect)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Suppose F is a field with finitely many elements. Then it is perfect.”
 
@@ -472,11 +472,11 @@
 
 *Rules out counterexamples.* MSC 12E99 (General field theory), 13A15. arXiv math.RA, math.AC. Level 2: later undergraduate.
 
-**Definition.** A field is a commutative ring with 1 ≠ 0 in which every nonzero element has an inverse. An ideal is an additive subgroup that is closed under multiplication by every ring element.
+**Definition.** A field is a commutative ring with 1 ≠ 0 in which every nonzero element a has an inverse, that is, the ideal Ra of multiples of a contains 1.
 
 **Problem.** A commutative ring with unity is a field exactly when its only ideals are {0} and the whole ring, and these two are different.
 
-**How the definition helps.** Requiring 1 ≠ 0 excludes the zero ring, whose two listed ideals coincide (our own). In a field, any ideal containing a nonzero a contains a⁻¹a = 1 and hence the whole field. Conversely, if R has exactly the two stated ideals, every nonzero a generates R. Thus ra = 1 for some r ∈ R (our own).
+**How the definition helps.** In a field every nonzero a is a unit, so any ideal containing a contains 1 and hence the whole ring. Conversely, if the only ideals are {0} and R, then Ra = R for a ≠ 0, so ra = 1 for some r (our own). Asking that the two ideals differ excludes the zero ring, just as 1 ≠ 0 does (our own).
 
 **Paper or page:** [Commutative and Unitary Ring with 2 Ideals is Field](https://proofwiki.org/wiki/Commutative_and_Unitary_Ring_with_2_Ideals_is_Field), [Field has 2 Ideals](https://proofwiki.org/wiki/Field_has_2_Ideals), [Non-Commutative Ring with Unity and 2 Ideals not necessarily Division Ring](https://proofwiki.org/wiki/Non-Commutative_Ring_with_Unity_and_2_Ideals_not_necessarily_Division_Ring). It says: “That is, such that (R, +, ∘) has no non-null proper ideals. Then (R, +, ∘) is a field.”
 
@@ -492,11 +492,11 @@
 
 *Rules out counterexamples.* MSC 12E99 (General field theory), 13B10, 13A35. arXiv math.RA, math.AC. Level 2: later undergraduate.
 
-**Definition.** A unital field homomorphism f from K to L satisfies f(1) = 1. For every a, b ∈ K, it satisfies f(a + b) = f(a) + f(b) and f(ab) = f(a)f(b).
+**Definition.** A unital field homomorphism f from K to L respects sums and products and sends 1 to 1, so it cannot send all of K to 0.
 
 **Problem.** Every homomorphism between fields that sends 1 to 1 is injective. So a surjective one is an isomorphism, and the Frobenius map x ↦ xᵖ is injective in characteristic p.
 
-**How the definition helps.** Asking that 1 goes to 1 rules out the zero map, which is the only field map that is not injective. The reason is that the kernel of a ring map is an ideal, and a field has only two ideals. The ProofWiki page keeps the zero map as a second case; in our own reading, the condition 1 ↦ 1 removes it. The theorem then has no exceptions, and the surjective case and the Frobenius case follow at once.
+**How the definition helps.** The kernel of f is an ideal of the field K, so it is {0} or K. Since f(1) = 1 ≠ 0, it is {0}, and f is injective. ProofWiki keeps the zero map as a second case, and in our own reading the condition 1 ↦ 1 removes it.
 
 **Paper or page:** [Field Homomorphism is either Trivial or Injection](https://proofwiki.org/wiki/Field_Homomorphism_is_either_Trivial_or_Injection), [Surjective Field Homomorphism is Field Isomorphism](https://proofwiki.org/wiki/Surjective_Field_Homomorphism_is_Field_Isomorphism), [Frobenius Endomorphism on Field is Injective](https://proofwiki.org/wiki/Frobenius_Endomorphism_on_Field_is_Injective). It says: “Then φ is either an injection or the trivial homomorphism.”
 
@@ -508,7 +508,7 @@
 
 ### The group exponent makes finite multiplicative subgroups cyclic
 
-**Remember:** The exponent is the smallest positive power that sends every group element to one.
+**Remember:** The exponent is the one power that kills every element.
 
 *True by definition.* MSC 12E99 (General field theory), 12E05. arXiv math.AC. Level 2: later undergraduate.
 
@@ -516,7 +516,7 @@
 
 **Problem.** Every finite subgroup of the multiplicative group of a field is cyclic.
 
-**How the definition helps.** Every group element solves xᵉ = 1, so the subgroup has at most e elements (our own). The structure theorem for finite abelian groups gives an element of order e. Its e powers exhaust the subgroup (our own).
+**How the definition helps.** Every element of the subgroup is a root of xᵉ − 1, which has at most e roots in a field, so the subgroup has at most e elements (our own). The structure theorem for finite abelian groups gives an element of order e. Its e powers then fill the subgroup (our own).
 
 **nLab:** [root of unity](https://ncatlab.org/nlab/show/root+of+unity). It says: “Let G be a finite subgroup of the multiplicative group k∗ of a field k. Then G is cyclic.”
 
@@ -528,11 +528,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Fix an algebraic closure containing the finite extension E/F. Its normal closure over F is the field generated by all images of E under embeddings fixing F. This replaces a search among all normal fields containing E.
+**Definition.** Inside a fixed algebraic closure, the normal closure of a finite extension E/F is the field generated by all images of E under embeddings that fix F.
 
 **Problem.** The normal closure of a finite extension is the unique smallest normal extension of the base containing it inside the chosen algebraic closure.
 
-**How the definition helps.** Every normal field containing E contains each image of E under an embedding fixing F (our own). The images together contain every root of the minimal polynomials of a finite set of generators of E. Here one uses the theorem extending embeddings to the algebraic closure. Those roots generate the proposed closure, so it is a splitting field and hence normal.
+**How the definition helps.** Every normal field containing E must contain each such image, so the generated field lies inside every candidate (our own). The images contain all roots of the minimal polynomials of finitely many generators of E, by the theorem that extends embeddings to the algebraic closure. Those roots generate the field, so it is a splitting field and hence normal.
 
 **Paper or page:** [Lemma 9.16.3.](https://stacks.math.columbia.edu/tag/09DT). It says: “There exists a unique smallest finite extension K/E such that K is normal over F.”
 
@@ -544,11 +544,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Let a be algebraic over F with minimal polynomial m. Model the field F(a) as polynomials over F modulo multiples of m, with x representing a.
+**Definition.** For a algebraic over F with minimal polynomial m, model F(a) as F\[x\]/(m): polynomials over F, two being equal when m divides their difference, with x standing for a.
 
 **Problem.** For each extension L/F, evaluation at a bijects the F-embeddings F(a) → L with the roots of m in L.
 
-**How the definition helps.** Evaluation at a root of m gives the same value on polynomials differing by a multiple of m (our own). It therefore gives a field embedding. Conversely, an embedding must send a to a root, and this choice determines every polynomial value. The work lies in identifying the field generated by a with the quotient.
+**How the definition helps.** An F-embedding of F\[x\]/(m) into L is fixed by where it sends x, and that image must be a root of m. Conversely, evaluation at a root b of m in L gives the same value on polynomials that differ by a multiple of m, so it is a well-defined embedding (our own). The work lies in identifying F(a) with the quotient.
 
 **Paper or page:** [Universal Property for Simple Field Extensions](https://proofwiki.org/wiki/Universal_Property_for_Simple_Field_Extensions). It says: “Then there exists a unique field homomorphism ψ : K(α) → L extending φ that sends α to β.”
 
@@ -560,11 +560,11 @@
 
 *Rules out counterexamples.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** An algebraic closure of F is an algebraically closed field that is algebraic over F. Algebraically closed means that every nonconstant polynomial over the field has a root there.
+**Definition.** An algebraic closure of F is an algebraically closed field, one where every nonconstant polynomial has a root, in which every element is a root of a nonzero polynomial over F.
 
 **Problem.** Any two algebraic closures of F are isomorphic by a map that fixes F.
 
-**How the definition helps.** Algebraicity makes an embedding between the closures onto (our own). Its image is algebraically closed, and the target is algebraic over that image (our own). Without algebraicity, ℂ and an algebraic closure of ℂ(t) are not isomorphic over ℂ (our own). The work lies in proving the embedding theorem for algebraic extensions (our own).
+**How the definition helps.** The embedding theorem gives a map over F from one closure into the other, and its image is algebraically closed (our own). The target is algebraic over this image, so the image is everything (our own). Without algebraicity, ℂ and an algebraic closure of ℂ(t) are not isomorphic over ℂ (our own).
 
 **Paper or page:** [Lemma 9.10.6.](https://stacks.math.columbia.edu/tag/09GV). It says: “Any two algebraic closures of a field are isomorphic.”
 
@@ -572,15 +572,15 @@
 
 ### Constructible numbers sit at the top of towers of degree-2 steps
 
-**Remember:** A finite tower of real quadratic extensions contains every constructible number.
+**Remember:** Constructible means reached from ℚ by finitely many square-root steps.
 
 *Makes the theorem clean to state or prove.* MSC 12F05 (Algebraic field extensions), 51M04. arXiv math.AC, math.MG. Level 2: later undergraduate.
 
-**Definition.** A real number is constructible from a unit segment if it lies in a finite tower of real fields starting at ℚ. Each extension in the tower has degree two.
+**Definition.** A real number is constructible from a unit segment when it lies at the top of a finite tower of real fields that starts at ℚ, each field of degree two over the one before.
 
 **Problem.** Doubling the cube and trisecting a general angle are impossible with straightedge and compass (Wantzel, 1837).
 
-**How the definition helps.** The tower law makes the degree of a constructible number divide the degree of its tower, a power of two (our own). Doubling a unit cube requires ∛2, of degree three. Trisecting 60° requires cos 20°, also of degree three.
+**How the definition helps.** By the tower law, a constructible number has degree over ℚ dividing the degree of its tower, a power of two (our own). Doubling a unit cube needs ∛2, and trisecting 60° needs cos 20°, and both have degree three.
 
 **Wikipedia:** [Constructible number](https://en.wikipedia.org/wiki/Constructible_number). It says: “It follows from this decomposition that the degree of the field extension \[ℚ(γ):ℚ\] is 2ʳ, where r counts the number of quadratic extension steps.”
 
@@ -590,15 +590,15 @@
 
 ### Defining field trace as a matrix trace makes it linear
 
-**Remember:** Add the multiplication maps, then add their traces.
+**Remember:** The trace of multiply-by-a is linear in a.
 
 *True by definition.* MSC 12F05 (Algebraic field extensions), 11R04. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** For a finite field extension L of K, multiplication by an element a is a K-linear map of L. Define the trace of a as the matrix trace of this map. Another definition adds the roots of the minimal polynomial of a, each counted \[L : K(a)\] times.
+**Definition.** For a finite extension L/K, the trace of an element a of L is the matrix trace of the K-linear map on L that multiplies by a.
 
 **Problem.** The field trace is linear over the base field.
 
-**How the definition helps.** With the matrix-trace definition, the theorem is the linearity of matrix trace (our own). Multiplication by xa + yb is x times multiplication by a plus y times multiplication by b (our own). With the root-sum definition, the roots for a + b are not simply sums of roots for a and b (our own). The Napkin proves that the two definitions agree for number fields, and the work moves there.
+**How the definition helps.** Multiplication by xa + yb is x times multiplication by a plus y times multiplication by b, so linearity of matrix trace gives the theorem (our own). With the other definition, a sum of the roots of the minimal polynomial counted \[L : K(a)\] times, the roots for a + b are not sums of roots for a and b (our own). The Napkin proves that the two definitions agree for number fields.
 
 **Paper or page:** [Theorem 2.8. (Morally correct definition of norm and trace)](https://venhance.github.io/napkin/Napkin.pdf). It says: “the trace of α equals the trace”
 
@@ -610,11 +610,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions), 12F10. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** Define a normal extension of K as a splitting field of a family of polynomials over K. That is the field generated over K by all roots of those polynomials. Another definition asks that every irreducible polynomial over K with one root in the extension splits there.
+**Definition.** A normal extension of K is a splitting field of some family of polynomials over K, the field generated over K by all their roots.
 
 **Problem.** The compositum of normal algebraic extensions in a common algebraic closure is normal. The compositum is the smallest field containing them all.
 
-**How the definition helps.** With the splitting-field definition, the compositum is generated by all roots of the combined families, so it is a splitting field (our own). The work moves to proving that splitting fields pass the other test (our own).
+**How the definition helps.** The compositum is generated by all roots of the union of the families, so it is again a splitting field (our own). The work moves to proving that splitting fields meet the other test, that every irreducible polynomial over K with one root in the field splits there (our own).
 
 **nLab:** [normal field extension](https://ncatlab.org/nlab/show/normal+field+extension). It says: “A field extension K ⊂ L is said to be normal if L is the splitting field of a family of polynomials in K\[x\].”
 
@@ -626,11 +626,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** An element is algebraic over a field if it satisfies a nonzero polynomial over that field. Equivalently, adjoining it gives an extension of finite degree. An extension is algebraic if every element is algebraic.
+**Definition.** An element is algebraic over a field when it is a root of a nonzero polynomial over that field. Equivalently, adjoining it gives an extension of finite degree.
 
 **Problem.** An algebraic extension of an algebraic extension is algebraic over the original base field.
 
-**How the definition helps.** A polynomial for the element needs finitely many coefficients, so put them in one finite extension of the base field (our own). Adjoin the element to that finite extension and apply the tower law (our own). The work is the equivalence between the polynomial test and finite degree (our own).
+**How the definition helps.** An element a of E satisfies a polynomial over F with finitely many coefficients, each algebraic over K, so they generate a finite extension F₀ of K (our own). Then F₀(a) is finite over F₀, so finite over K by the tower law, and a is algebraic over K (our own). The work is the equivalence between the polynomial test and finite degree (our own).
 
 **Paper or page:** [Transitivity of Algebraic Extensions](https://proofwiki.org/wiki/Transitivity_of_Algebraic_Extensions). It says: “Let E / F / K be a tower of field extensions. Let E be algebraic over F. Let F be algebraic over K. Then E is algebraic over K.”
 
@@ -658,11 +658,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Call an element of E algebraic over F if it lies in a finite extension of F inside E. The usual definition instead asks for a nonzero polynomial over F that vanishes there.
+**Definition.** Call an element of E algebraic over F when it lies in some finite extension of F inside E. This agrees with the usual test, a nonzero polynomial over F that vanishes at it.
 
 **Problem.** In any field extension E/F, the elements algebraic over F form a field. Any finite set of these elements generates a finite extension of F.
 
-**How the definition helps.** Finite extensions give a common field in which to perform the operations (our own). Adjoin the elements successively. Each still satisfies its original polynomial, so each step has finite degree and the tower law gives finite total degree. Every element of the resulting field is algebraic by linear dependence of its powers.
+**How the definition helps.** Adjoining algebraic elements one at a time gives finite steps, so by the tower law F(a, b) is finite over F (our own). So a ± b, ab and a/b lie in a finite extension and are algebraic. The same argument shows that any finite set generates a finite extension.
 
 **Paper or page:** [Lemma 9.8.7.](https://stacks.math.columbia.edu/tag/09GI). It says: “Then the elements of E algebraic over k form a subextension of E/k.”
 
@@ -678,7 +678,7 @@
 
 **Problem.** In a tower of finite field extensions, the trace from the largest field to the smallest equals the composition of the two intermediate traces.
 
-**How the definition helps.** In a basis built from the two tower bases, each upper matrix entry becomes its multiplication matrix over the bottom field (our own). Only diagonal blocks contribute to the full trace. Their traces sum to the lower field trace of the sum of the upper diagonal entries, by linearity.
+**How the definition helps.** Build a basis of E over F from products of a basis of E over the middle field and one of the middle field over F (our own). The matrix of a over F then has one block for each entry of its matrix over the middle field, namely that entry's matrix over F. The full trace sums the traces of the diagonal blocks, which by linearity is the lower trace of the upper trace.
 
 **Paper or page:** [Lemma 9.20.5.](https://stacks.math.columbia.edu/tag/0BIJ). It says: “Let M/L/K be a tower of finite extensions of fields. Then Trace₍M/K₎ = Trace₍L/K₎ ∘ Trace₍M/L₎”
 
@@ -690,11 +690,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions), 12F10. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** Fix a finite separable extension L/K and an algebraic closure Ω of K. For a ∈ L, its norm is the product of σ(a) over all embeddings σ from L into Ω fixing K.
+**Definition.** For a finite separable extension L/K and an algebraic closure Ω of K, the norm of an element a of L is the product of its images σ(a) under all K-embeddings σ from L into Ω.
 
 **Problem.** Take finite separable extensions K ⊂ L ⊂ M. The norm from M to K is the norm from M to L followed by the norm from L to K.
 
-**How the definition helps.** Group the embeddings of M by their restrictions to L (our own). Each embedding τ of L extends to an automorphism of the algebraic closure. Composing this automorphism with all L-embeddings of M gives exactly the embeddings restricting to τ. Their factors multiply to τ applied to the upper norm, so the full product gives the lower norm (our own).
+**How the definition helps.** Group the K-embeddings of M by their restriction τ to L (our own). Extending τ to an automorphism of Ω and composing with the L-embeddings of M gives exactly the embeddings above τ, so their product is τ applied to the norm from M to L. Multiplying over all τ gives the norm from L to K of that norm (our own).
 
 **Paper or page:** [Lemma 9.20.5.](https://stacks.math.columbia.edu/tag/0BIJ). It says: “Let M/L/K be a tower of finite extensions of fields.”
 
@@ -706,11 +706,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a monic irreducible polynomial m over F, form the field F\[x\]/(m) of polynomials modulo m. Two polynomials represent the same element when m divides their difference. The class of x is a root of m.
+**Definition.** For a monic irreducible polynomial m of degree d over F, the field F\[x\]/(m) consists of polynomials over F, two being equal when m divides their difference. The class of x is a root of m.
 
 **Problem.** If m has degree d, the field generated by a root has degree d over F. The first d powers of the root, starting with 1, form a basis.
 
-**How the definition helps.** Polynomial division gives each class exactly one remainder of degree below d, including the zero remainder (our own). Its coefficients are the coordinates in the power basis. Evaluation at the root identifies this quotient field with the field generated by the root.
+**How the definition helps.** Division by m gives each class exactly one remainder of degree below d, so the classes of 1, x, …, xᵈ⁻¹ form a basis (our own). Evaluation at the root identifies this field with the field that the root generates.
 
 **Paper or page:** [Lemma 9.9.2.](https://stacks.math.columbia.edu/tag/09GN). It says: “The degree of the minimal polynomial is \[k(α) : k\].”
 
@@ -718,15 +718,15 @@
 
 ### Quadratic towers rule out doubling the cube
 
-**Remember:** Constructible lengths lie in fields reached by finitely many quadratic extensions of ℚ.
+**Remember:** Constructible means reached from ℚ by finitely many square-root steps.
 
 *Makes the theorem clean to state or prove.* MSC 12F05 (Algebraic field extensions), 51M15. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A real length is constructible from a unit segment if it lies in a finite tower of real fields starting at ℚ. Each extension in the tower has degree two.
+**Definition.** A real length is constructible from a unit segment when it lies at the top of a finite tower of real fields that starts at ℚ, each field of degree two over the one before.
 
 **Problem.** No straightedge and compass construction can double the volume of a given cube by constructing its new edge.
 
-**How the definition helps.** The tower law makes the degree of every constructible number divide a power of two (our own). Doubling a unit cube would require an edge satisfying x³ − 2 = 0. This cubic has no rational root, so it is irreducible and the edge has degree three. The geometric input identifies constructible lengths with real lengths in quadratic towers.
+**How the definition helps.** By the tower law, every constructible number has degree a power of two over ℚ (our own). The doubled edge ∛2 is a root of x³ − 2, which has no rational root and so is irreducible, giving degree three. The geometric work is identifying constructible lengths with quadratic towers.
 
 **Paper or page:** [Doubling the Cube by Compass and Straightedge Construction is Impossible](https://proofwiki.org/wiki/Doubling_the_Cube_by_Compass_and_Straightedge_Construction_is_Impossible). It says: “There is no compass and straightedge construction to allow a cube to be constructed whose volume is double that of a given cube.”
 
@@ -736,15 +736,15 @@
 
 ### Quadratic towers rule out squaring the circle
 
-**Remember:** Constructible lengths lie in fields reached by finitely many quadratic extensions of ℚ.
+**Remember:** Constructible means reached from ℚ by finitely many square-root steps.
 
 *Makes the theorem clean to state or prove.* MSC 12F05 (Algebraic field extensions), 51M15. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A real length is constructible from a unit segment if it lies in a finite tower of real fields starting at ℚ. Each extension in the tower has degree two.
+**Definition.** A real length is constructible from a unit segment when it lies at the top of a finite tower of real fields that starts at ℚ, each field of degree two over the one before.
 
 **Problem.** A straightedge and compass cannot construct a square with the area of a given circle.
 
-**How the definition helps.** Quadratic towers contain only algebraic numbers, so a constructible side would have an algebraic square (our own). The unit circle has area π, which is not algebraic (our own). The work is identifying constructible lengths with quadratic towers and proving Lindemann’s theorem that π is transcendental (our own).
+**How the definition helps.** Every number in a quadratic tower is algebraic, so a constructible side s would make s² = π algebraic (our own). Lindemann’s theorem says that π is transcendental (our own). The other work is identifying constructible lengths with quadratic towers (our own).
 
 **Paper or page:** [Squaring the Circle by Compass and Straightedge Construction is Impossible](https://proofwiki.org/wiki/Squaring_the_Circle_by_Compass_and_Straightedge_Construction_is_Impossible). It says: “There is no compass and straightedge construction to allow a square to be constructed whose area is equal to that of a given circle.”
 
@@ -754,15 +754,15 @@
 
 ### Quadratic towers rule out trisecting a 60 degree angle
 
-**Remember:** Constructible lengths lie in fields reached by finitely many quadratic extensions of ℚ.
+**Remember:** Constructible means reached from ℚ by finitely many square-root steps.
 
 *Makes the theorem clean to state or prove.* MSC 12F05 (Algebraic field extensions), 51M15. arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A real length is constructible from a unit segment if it lies in a finite tower of real fields starting at ℚ. Each extension in the tower has degree two.
+**Definition.** A real length is constructible from a unit segment when it lies at the top of a finite tower of real fields that starts at ℚ, each field of degree two over the one before.
 
 **Problem.** A straightedge and compass cannot trisect every angle. In particular, they cannot trisect a 60° angle.
 
-**How the definition helps.** The quadratic tower condition forces a constructible length to have degree a power of two (our own). A 60° angle is constructible, so trisecting it would make twice the cosine of 20° constructible. The triple-angle formula makes this number a root of x³ − 3x − 1. Neither 1 nor −1 is a root, so this cubic is irreducible and the number has degree three.
+**How the definition helps.** By the tower law, every constructible number has degree a power of two over ℚ (our own). Trisecting 60° would make 2 cos 20° constructible, and the triple-angle formula makes it a root of x³ − 3x − 1. Neither 1 nor −1 is a root, so this cubic is irreducible and the number has degree three.
 
 **Paper or page:** [Trisecting the Angle by Compass and Straightedge Construction is Impossible](https://proofwiki.org/wiki/Trisecting_the_Angle_by_Compass_and_Straightedge_Construction_is_Impossible). It says: “There is no compass and straightedge construction for the trisection of the general angle.”
 
@@ -776,11 +776,11 @@
 
 *Rules out counterexamples.* MSC 12F05 (Algebraic field extensions), 12E05. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** The minimal polynomial of α over a field K is a monic polynomial with coefficients in K that has α as a root. It has the smallest degree among such polynomials. Monic means that the leading coefficient is 1.
+**Definition.** The minimal polynomial of α over K is the monic polynomial, one with leading coefficient 1, of smallest degree over K that has α as a root.
 
 **Problem.** For each element α that is algebraic over K, there is exactly one minimal polynomial.
 
-**How the definition helps.** Without the word 'monic', every nonzero constant multiple of a smallest polynomial would also be smallest. The monic condition picks one polynomial from each such family. In our own proof, two monic minimal polynomials differ by a polynomial of lower degree that also vanishes at α, so the difference is 0.
+**How the definition helps.** Without the word monic, every nonzero constant multiple of a smallest polynomial would also be smallest. Two monic ones of the same degree differ by a polynomial of lower degree that vanishes at α, so the difference is 0 (our own).
 
 **Paper or page:** [Minimal Polynomial is Unique](https://proofwiki.org/wiki/Minimal_Polynomial_is_Unique). It says: “Let α ∈ L be algebraic over K. Then the minimal polynomial of α over K is unique.”
 
@@ -798,7 +798,7 @@
 
 **Problem.** Any two splitting fields of a nonconstant polynomial are isomorphic over its coefficient field.
 
-**How the definition helps.** The extension theorem for embeddings gives a base-preserving embedding of the first splitting field into an algebraic closure containing the second (our own). It carries the full root set bijectively onto the full root set. Those roots generate the second field, so the embedding maps onto it (our own).
+**How the definition helps.** The extension theorem gives an embedding over the base of the first splitting field into an algebraic closure containing the second (our own). It sends the roots in the first field bijectively onto the roots in the second. Those roots generate the second field, so the embedding is onto (our own).
 
 **Paper or page:** [Lemma 9.16.1.](https://stacks.math.columbia.edu/tag/09HU). It says: “Moreover, the field extension E/F is normal and unique up to (nonunique) isomorphism.”
 
@@ -826,11 +826,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions), 11R04. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** For a finite field extension L of K, multiplication by an element a is a K-linear map of L. Define the norm of a as the determinant of this map. Another definition multiplies the roots of the minimal polynomial of a, each counted \[L : K(a)\] times.
+**Definition.** For a finite extension L/K, the norm of an element a of L is the determinant of the K-linear map on L that multiplies by a.
 
 **Problem.** The norm of a product equals the product of the norms.
 
-**How the definition helps.** With the determinant definition, the theorem is the product rule for determinants (our own). Multiplying by b and then by a is the same as multiplying by ab (our own). With the root-product definition, the roots for ab are not simply products of roots for a and b (our own). The work moves to proving that the two definitions agree (our own).
+**How the definition helps.** Multiplying by b and then by a is multiplying by ab, so the product rule for determinants gives the theorem (our own). With the other definition, a product of the roots of the minimal polynomial counted \[L : K(a)\] times, the roots for ab are not products of roots for a and b (our own). The work moves to proving that the two definitions agree (our own).
 
 **Wikipedia:** [Field norm](https://en.wikipedia.org/wiki/Field_norm). It says: “is defined as the determinant of this linear transformation.”
 
@@ -842,11 +842,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Define the minimal polynomial of an algebraic element a as the monic generator of the ideal of polynomials that vanish at a. This means that all such polynomials are its multiples. Monic means the leading coefficient is 1.
+**Definition.** The minimal polynomial of an algebraic element a is the monic generator of the ideal of polynomials that vanish at a, so every such polynomial is a multiple of it.
 
 **Problem.** Every polynomial over the base field that vanishes at a is divisible by the minimal polynomial of a.
 
-**How the definition helps.** A generator divides every polynomial in its ideal (our own). For the usual least-degree definition, divide a vanishing polynomial by the minimal polynomial. The remainder also vanishes at a, so minimality forces it to be zero.
+**How the definition helps.** A generator of an ideal divides every member of it (our own). For the usual least-degree definition, divide a vanishing polynomial by the minimal polynomial. The remainder also vanishes at a, so minimality forces it to be zero.
 
 **Paper or page:** [Polynomial with Algebraic Number as Root is Multiple of Minimal Polynomial](https://proofwiki.org/wiki/Polynomial_with_Algebraic_Number_as_Root_is_Multiple_of_Minimal_Polynomial). It says: “Then P(x) is a multiple of the minimal polynomial m(x) in z over F.”
 
@@ -858,11 +858,11 @@
 
 *Rules out counterexamples.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A field is algebraically closed if each nonconstant polynomial over it has a root in it. The equivalent extension definition says that the field has no proper algebraic extension.
+**Definition.** A field is algebraically closed when every nonconstant polynomial over it has a root in it.
 
 **Problem.** Every algebraically closed field is infinite.
 
-**How the definition helps.** The root requirement rules out any finite field through a single polynomial (our own). In a finite field, multiply x − a over every field element a, then add 1. The resulting nonconstant polynomial takes the value 1 everywhere. Adjoining roots proves the equivalence with the definition using algebraic extensions.
+**How the definition helps.** In a finite field, the product of x − a over all elements a, plus 1, is a nonconstant polynomial equal to 1 everywhere, so it has no root (our own). The equivalent definition, no proper algebraic extension, follows by adjoining roots.
 
 **Paper or page:** [Algebraically Closed Field is Infinite](https://proofwiki.org/wiki/Algebraically_Closed_Field_is_Infinite). It says: “Then F is infinite.”
 
@@ -870,15 +870,15 @@
 
 ### The root test makes intersections of normal extensions normal
 
-**Remember:** If a polynomial splits in both fields, its roots lie in both.
+**Remember:** Normal means one root inside pulls in all its conjugates.
 
 *True by definition.* MSC 12F05 (Algebraic field extensions), 12F10. arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** An algebraic extension L of K is normal if each irreducible polynomial over K with a root in L splits into linear factors in L. Another definition says L is the splitting field of a family of polynomials over K. That means their roots generate L over K.
+**Definition.** An algebraic extension L of K is normal if every irreducible polynomial over K with one root in L has all its roots in L.
 
 **Problem.** Let E and F be normal extensions of K in a common field. Then E ∩ F is normal over K.
 
-**How the definition helps.** Every irreducible polynomial over K with a root in E ∩ F splits in both fields. Inside a common algebraic closure, each root therefore belongs to their intersection (our own).
+**How the definition helps.** If an irreducible polynomial over K has a root in E ∩ F, then all its roots lie in E and all lie in F (our own). Inside the common field these roots are the same elements, so they lie in E ∩ F.
 
 **Wikipedia:** [Normal extension](https://en.wikipedia.org/wiki/Normal_extension). It says: “If E and F are normal extensions of K contained in L, then the compositum EF and E ∩ F are also normal extensions of K.”
 
@@ -890,11 +890,11 @@
 
 *True by definition.* MSC 12F05 (Algebraic field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** The degree of a field extension E/F is the dimension of E as a vector space over F.
+**Definition.** The degree \[E : F\] of a field extension is the dimension of E as a vector space over F, the size of a basis.
 
 **Problem.** For finite field extensions L/E and E/F, the degree of L/F is the product of their degrees.
 
-**How the definition helps.** Products of basis elements give coordinates over the bottom field (our own). Expand each element in the upper basis, then expand its coefficients in the lower basis. Uniqueness at both steps makes the products a basis.
+**How the definition helps.** If the aᵢ form a basis of L over E and the bⱼ a basis of E over F, the products aᵢbⱼ form a basis of L over F (our own). Expand an element in the aᵢ, then each coefficient in the bⱼ. Uniqueness at both steps gives independence.
 
 **Paper or page:** [Lemma 9.7.7.](https://stacks.math.columbia.edu/tag/09G9). It says: “Suppose given a tower of fields F/E/k. Then \[F:k\] = \[F:E\]\[E:k\]”
 
@@ -902,15 +902,15 @@
 
 ### A primitive root turns cyclotomic automorphisms into multiplication modulo n
 
-**Remember:** Compose two maps on ζ by multiplying their exponents.
+**Remember:** Each symmetry raises the one generator ζ to a coprime power.
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory), 11R18. arXiv math.NT, math.AC. Level 2: later undergraduate.
 
-**Definition.** Define the nth cyclotomic field as ℚ(ζ), where ζ is a complex root of unity of exact order n. Thus this one element generates the field and its powers give all nth roots of unity.
+**Definition.** The nth cyclotomic field is ℚ(ζ), generated by one complex root of unity ζ of exact order n. So an automorphism is fixed by where it sends ζ, and it must send ζ to some ζᵏ with k coprime to n (our own).
 
 **Problem.** The Galois group of the nth cyclotomic field is isomorphic to the multiplicative group of invertible residues modulo n.
 
-**How the definition helps.** An automorphism is determined by the image of ζ, which must be a power of ζ of order n (our own). Composition multiplies the exponents modulo n (our own). The work is proving cyclotomic irreducibility, which ensures that every primitive power gives an automorphism (our own).
+**How the definition helps.** Sending an automorphism to its exponent k gives an injective map to (ℤ/nℤ)ˣ, and composition multiplies exponents (our own). The work is the irreducibility of the cyclotomic polynomial, which makes every such k occur (our own).
 
 **Wikipedia:** [Cyclotomic field](https://en.wikipedia.org/wiki/Cyclotomic_field). It says: “the multiplicative group (ℤ/nℤ)ˣ, which consists of the invertible residues modulo n”
 
@@ -918,15 +918,15 @@
 
 ### Artin–Schreier polynomials replace roots in degree equal to the characteristic
 
-**Remember:** In characteristic p, use xᵖ − x − a instead of xᵖ − a.
+**Remember:** Shift one Artin–Schreier root by 1 to get the next.
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory), 12E10. arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** For a field K of prime characteristic p, an Artin–Schreier polynomial has the form xᵖ − x − a for some a ∈ K.
+**Definition.** Over a field K of prime characteristic p, an Artin–Schreier polynomial is xᵖ − x − a with a ∈ K. If u is one root, the roots are u, u + 1, …, u + p − 1, because xᵖ − x is additive and vanishes on 𝔽ₚ (our own).
 
 **Problem.** Every Galois extension of degree p of a field of characteristic p is the splitting field of an Artin–Schreier polynomial.
 
-**How the definition helps.** Translations by elements of 𝔽ₚ preserve xᵖ − x (our own). Choose a generator σ of the degree-p Galois group. Since 1 has trace zero, additive Hilbert 90 gives u satisfying σ(u) − u = 1. The conjugates u + i for i ∈ 𝔽ₚ exhaust the roots, and a = uᵖ − u belongs to K (our own).
+**How the definition helps.** Take a generator σ of the Galois group of order p; since 1 has trace zero, additive Hilbert 90 gives u with σ(u) = u + 1. Then u generates the extension, and its conjugates u + i make it a root of xᵖ − x − a with a = uᵖ − u in K (our own).
 
 **Wikipedia:** [Artin–Schreier theory](https://en.wikipedia.org/wiki/Artin%E2%80%93Schreier_theory), [Kummer theory](https://en.wikipedia.org/wiki/Kummer_theory). It says: “Artin–Schreier theory is a branch of Galois theory, specifically a positive characteristic analogue of Kummer theory, for Galois extensions of degree equal to the characteristic p.”
 
@@ -941,11 +941,11 @@
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** An algebraic extension E/F is separable if the minimal polynomial of every element of E has distinct roots. An extension is normal if every irreducible polynomial over F that has one root in E splits into linear factors in E. A Galois extension is one that is both normal and separable.
+**Definition.** An algebraic extension E/F is Galois when the minimal polynomial over F of every element of E splits into distinct linear factors in E. The word distinct is separability, and it makes the number of automorphisms equal the degree.
 
 **Problem.** For a finite Galois extension E/F, the intermediate fields correspond bijectively to the subgroups of its Galois group. The group has order \[E : F\].
 
-**How the definition helps.** Separability excludes repeated roots that reduce the number of embeddings. In our own example, 𝔽ₚ(x) over 𝔽ₚ(xᵖ) has degree p but only the identity automorphism. Every automorphism fixes x because it is the unique pth root of xᵖ. For finite normal separable extensions, the fundamental theorem of Galois theory gives the correspondence and the degree count.
+**How the definition helps.** With distinct roots, a finite Galois extension has exactly \[E : F\] automorphisms, and the fundamental theorem of Galois theory gives the correspondence. Without separability this fails: 𝔽ₚ(x) over 𝔽ₚ(xᵖ) has degree p but only the identity automorphism, since x is the only pth root of xᵖ (our own example).
 
 **Wikipedia:** [Separable extension](https://en.wikipedia.org/wiki/Separable_extension). It says: “the fundamental theorem of Galois theory is a theorem about normal extensions, which remains true in non-zero characteristic only if the extensions are also assumed to be separable.”
 
@@ -957,11 +957,11 @@
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Characteristic zero means no positive sum of copies of 1 is zero. An irreducible polynomial is separable when it has no repeated roots in a field where it splits.
+**Definition.** An irreducible polynomial f is separable when it has no repeated roots in a splitting field, which holds exactly when f and its derivative f′ have no common factor. In characteristic zero, where no positive multiple of 1 is zero, a nonconstant f has nonzero f′ of lower degree (our own).
 
 **Problem.** Over a field of characteristic zero, every irreducible polynomial is separable. Thus every algebraic extension of such a field is separable.
 
-**How the definition helps.** Characteristic zero keeps the leading term of every nonconstant polynomial’s derivative nonzero (our own). An irreducible polynomial then has no factor in common with its lower-degree derivative, so it has distinct roots. Over the rational function field 𝔽₂(t), the polynomial x² − t is irreducible because t is not a square. Its derivative vanishes, and its two roots coincide.
+**How the definition helps.** An irreducible f shares a factor with f′ only if f divides f′, which a nonzero f′ of lower degree prevents. In characteristic 2, x² − t over 𝔽₂(t) is irreducible, but its derivative is 0 and its two roots coincide.
 
 **Paper or page:** [Lemma 9.12.1.](https://stacks.math.columbia.edu/tag/09H0). It says: “The second case can only happen if F has characteristic p &gt; 0.”
 
@@ -973,11 +973,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a subgroup H of automorphisms, take its fixed field to be the elements that every map in H fixes. A subgroup is normal when conjugating it by any group element leaves it unchanged.
+**Definition.** In a finite Galois extension L/K, each subgroup H of the Galois group G matches its fixed field, the elements every map in H fixes. Moving the field by σ ∈ G matches conjugating the subgroup: σ(Fix H) = Fix(σHσ⁻¹) (our own).
 
 **Problem.** For a finite Galois extension L/K, an intermediate field is Galois over K exactly when its corresponding subgroup is normal.
 
-**How the definition helps.** Conjugation by an automorphism takes the fixed field of H to the fixed field of the conjugate subgroup (our own). The Galois correspondence is the work that lets equality of those fields detect equality of the subgroups (our own). Normality of the intermediate field can then be read from whether each automorphism preserves it (our own).
+**How the definition helps.** An intermediate field M is Galois over K exactly when σ(M) = M for every σ ∈ G (our own). By the matching, this says σHσ⁻¹ = H for every σ, which is normality of H (our own).
 
 **Paper or page:** [Theorem 9.21.7.](https://stacks.math.columbia.edu/tag/09DW). It says: “The normal subgroups H of G correspond exactly to those subextensions M with M/K Galois.”
 
@@ -993,7 +993,7 @@
 
 **Problem.** Take finite extensions F ⊂ M ⊂ K. The separable degree of K over F is the product of those of K over M and M over F.
 
-**How the definition helps.** With the counting definition, the proof is a count of field maps (our own). Sort the field maps from K by their restrictions to M (our own). Each field map from M extends to K in exactly as many ways as the separable degree of K over M (our own). The work moves to this extension count and to Stacks Lemma 9.14.8, which proves that the two definitions agree.
+**How the definition helps.** Sort the embeddings of K by their restrictions to M (our own). Each embedding of M extends to K in exactly \[K : M\]ₛ ways (our own). The work is this extension count and Stacks Lemma 9.14.8, which matches the count with the other definitions.
 
 **Paper or page:** [Lemma 9.14.8.](https://stacks.math.columbia.edu/tag/09HJ). It says: “Then \[K : F\]ₛ = \|Morꜰ(K, F̄)\|.”
 
@@ -1001,15 +1001,15 @@
 
 ### Counting embeddings makes separability pass through finite towers
 
-**Remember:** When both embedding counts are full, their product is full.
+**Remember:** Separable means the embedding count reaches its maximum, the degree.
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A finite extension E/F is separable if the number of embeddings into an algebraic closure fixing F equals its degree. The elementwise definition instead asks that each minimal polynomial have distinct roots.
+**Definition.** A finite extension E/F is separable when its number of embeddings into an algebraic closure fixing F equals its degree, the largest possible count.
 
 **Problem.** In a finite tower L/E/F, the extension L/F is separable exactly when L/E and E/F are separable.
 
-**How the definition helps.** The embedding counts and the field degrees both multiply in a tower (our own). Each count is positive and bounded by its degree, so equality for the products means equality at both steps. The work lies in proving multiplication of embedding counts and their equivalence with the distinct-root test.
+**How the definition helps.** Embedding counts and degrees both multiply in a tower (our own). Each count is at most its degree, so the products are equal only if both steps are equal. The work is the multiplication of counts and their match with the distinct-root test.
 
 **Paper or page:** [Lemma 9.12.12.](https://stacks.math.columbia.edu/tag/09HB). It says: “Let E/k and F/E be separable algebraic extensions of fields. Then F/k is a separable extension of fields.”
 
@@ -1017,15 +1017,15 @@
 
 ### Cyclotomic fields make regular polygons a power of two test
 
-**Remember:** For a regular polygon, count the degree of its cyclotomic field.
+**Remember:** A polygon is constructible when its vertex field has 2-power degree.
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory), 51M15. arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** For n at least 3, encode the regular polygon by the root of unity ζ at angle 2π/n on the unit circle. The cyclotomic field ℚ(ζ) is the field generated by that vertex as a complex number.
+**Definition.** For n ≥ 3, the nth cyclotomic field ℚ(ζ) is generated by ζ = e<sup>(2πi/n)</sup>, a vertex of the regular n-gon on the unit circle. It has degree φ(n) over ℚ and an abelian Galois group, and constructing the polygon means reaching ζ by a tower of quadratic extensions (our own).
 
 **Problem.** A regular polygon with n sides can be constructed with straightedge and compass exactly when φ(n) is a power of two. Here φ(n) counts the integers from 1 to n that are coprime to n.
 
-**How the definition helps.** Encoding a vertex by ζ turns constructibility into membership in a tower of quadratic extensions (our own). Its cyclotomic field has degree φ(n), so the tower law makes a power of two necessary. Conversely, when φ(n) is a power of two, the Galois group has a chain of subgroups of successive index two. The Galois correspondence gives the required quadratic tower.
+**How the definition helps.** The tower law makes φ(n) a power of two necessary. Conversely, a group whose order is a power of two has a chain of subgroups of successive index two. The Galois correspondence turns that chain into the quadratic tower.
 
 **Wikipedia:** [Constructible polygon](https://en.wikipedia.org/wiki/Constructible_polygon). It says: “Wantzel's result comes down to a calculation showing that φ(n) is a power of 2 precisely in the cases specified.”
 
@@ -1033,15 +1033,15 @@
 
 ### Defining Galois extensions by fixed fields frees Galois theory from primitive elements
 
-**Remember:** The fixed field contains exactly the elements every group member leaves unchanged.
+**Remember:** Start with the symmetries; the field they fix is the base.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** Let G be a finite group of automorphisms of a field E. The fixed field F is the set of elements of E that every element of G fixes. Artin takes such pairs E and F as the starting point of Galois theory.
+**Definition.** Given a finite group G of automorphisms of a field E, its fixed field F is the set of elements of E that every element of G fixes. Artin starts Galois theory from such a pair, not from a polynomial or a primitive element.
 
 **Problem.** If G is a finite group of automorphisms of E with fixed field F, then E over F is a Galois extension. Its degree equals the order of G, and its Galois group is G.
 
-**How the definition helps.** Starting from a group and its fixed field turns the main count into linear algebra. The proof that the degree equals the order of G uses the linear independence of distinct field homomorphisms (our own). The older approach wrote the field as F(α) for one primitive element and counted the roots of the minimal polynomial of α. Artin's route needs no primitive element, so it works in the same form for all fields (our own).
+**How the definition helps.** Starting from G turns the degree count into linear algebra: distinct field homomorphisms are linearly independent, which gives \[E : F\] = \|G\| (our own). No primitive element is needed, unlike the older route through one generator's minimal polynomial (our own).
 
 **Wikipedia:** [Primitive element theorem](https://en.wikipedia.org/wiki/Primitive_element_theorem), [Galois extension](https://en.wikipedia.org/wiki/Galois_extension). It says: “Emil Artin reformulated Galois theory in the 1930s without relying on primitive elements.”
 
@@ -1053,11 +1053,11 @@
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a finite base field F of size q, define the Frobenius map by x ↦ x to the power q. It is a field automorphism on every finite extension of F and fixes F.
+**Definition.** For a finite field F of size q, the Frobenius map sends x to x to the power q. It is an automorphism of every finite extension that fixes F, and its kth power fixes exactly the roots of the polynomial x<sup>(qᵏ)</sup> − x.
 
 **Problem.** The Galois group of an extension of finite fields of degree n is cyclic of order n and is generated by the Frobenius map.
 
-**How the definition helps.** Iterating Frobenius gives an automorphism whose order can be read from its fixed points (our own). Its nth iterate fixes all qⁿ elements. For 0 &lt; k &lt; n, the kth iterate fixes at most qᵏ elements by the polynomial root bound. Hence its powers already give n automorphisms, the upper bound for a degree n extension.
+**How the definition helps.** In a degree n extension, which has qⁿ elements, the nth power of Frobenius fixes everything. For 0 &lt; k &lt; n, the kth power fixes at most qᵏ elements, so it is not the identity. So Frobenius has order n, the largest possible size of the Galois group (our own).
 
 **Paper or page:** [Corollary 5.23.](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “If K is a finite field, then Gal(K/F) is cyclic, generated by the Frobenius automorphism.”
 
@@ -1065,15 +1065,15 @@
 
 ### Kummer theory needs the n-th roots of unity in the base field
 
-**Remember:** Adjoin radicals whose nth powers lie in a field containing all nth roots of unity.
+**Remember:** Each symmetry multiplies an nth root by a root of unity.
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** Fix a positive integer n and a field K containing n distinct nth roots of unity. A Kummer extension of exponent dividing n is generated over K by elements whose nth powers belong to K.
+**Definition.** Let K contain n distinct nth roots of unity. A Kummer extension of exponent dividing n is generated over K by nth roots of elements of K, so each automorphism multiplies such a root by a root of unity in K.
 
 **Problem.** If K contains n distinct n-th roots of unity, every abelian extension of exponent dividing n comes from adjoining n-th roots. These extensions match subgroups of K× modulo n-th powers.
 
-**How the definition helps.** All choices of an nth root differ by a root of unity when the radicand is nonzero (our own). Thus adjoining roots depends only on the subgroup of K×/(K×)ⁿ generated by their radicands. The Kummer correspondence identifies these subgroups with abelian extensions of exponent dividing n inside a fixed algebraic closure (our own).
+**How the definition helps.** Sending σ to σ(α)/α makes the Galois group act through roots of unity, so it is abelian of exponent dividing n (our own). The extension depends only on the subgroup of K×/(K×)ⁿ that the radicands generate, and the Kummer correspondence matches these subgroups with such abelian extensions (our own).
 
 **Wikipedia:** [Kummer theory](https://en.wikipedia.org/wiki/Kummer_theory). It says: “Taking n = 3, there are no degree 3 Kummer extensions of the rational number field Q, since for three cube roots of 1 complex numbers are required.”
 
@@ -1087,11 +1087,11 @@
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** A finite extension E/F is Galois when it is normal and separable. Count embeddings of E into a fixed algebraic closure containing E that fix F. Normality means every image equals E, and separability means the count equals the degree.
+**Definition.** A finite extension E/F is Galois when it is normal and separable. For embeddings of E into an algebraic closure that fix F, normality says each one has image E, and separability says there are \[E : F\] of them.
 
 **Problem.** A finite extension is Galois exactly when the number of automorphisms fixing the base field equals its degree.
 
-**How the definition helps.** Normality makes every embedding an automorphism, and separability makes their number equal the degree (our own). Conversely, automorphisms are among the embeddings, whose number cannot exceed the degree. Equality forces both conditions. The work lies in the embedding bound and the equivalence with the usual splitting and distinct-root tests.
+**How the definition helps.** Together the two conditions give \[E : F\] automorphisms (our own). Conversely, automorphisms are embeddings, and there are at most \[E : F\] embeddings, so equality forces both conditions. The work is the embedding bound and its match with the splitting and distinct-root tests.
 
 **Paper or page:** [Lemma 9.21.2.](https://stacks.math.columbia.edu/tag/09I1). It says: “Then E is Galois over F if and only if \|Aut(E/F)\| = \[E : F\].”
 
@@ -1099,15 +1099,15 @@
 
 ### Normality makes field automorphisms restrict to intermediate fields
 
-**Remember:** A normal intermediate field stays put when its elements move.
+**Remember:** A normal field stays put under every embedding.
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** An algebraic extension M/K is normal if every embedding of M into an algebraic closure of K has image M. The embeddings must fix K.
+**Definition.** An algebraic extension M/K is normal if every embedding of M into an algebraic closure of K that fixes K has image exactly M.
 
 **Problem.** In a finite tower L/M/K with M/K normal, every K-automorphism of L restricts to a K-automorphism of M.
 
-**How the definition helps.** Normality keeps the image of M equal to M (our own). In the splitting field of x³ − 2 over ℚ, some automorphisms move the real cube root to a nonreal root (our own). They do not preserve the field generated by the real root (our own). The work moves to the equivalence of this embedding test and the usual splitting field definition (our own).
+**How the definition helps.** The restriction of τ to M is an embedding fixing K, so normality gives τ(M) = M (our own). Without normality this fails: in the splitting field of x³ − 2, some automorphisms move ∛2 to a nonreal root, so they do not preserve ℚ(∛2) (our own). The work is the match of this test with the splitting field definition (our own).
 
 **Paper or page:** [Lemma 9.15.7.](https://stacks.math.columbia.edu/tag/0BME). It says: “If $M/K$ is normal, then any automorphism $\\tau$ of $L/K$ induces an automorphism $\\tau\|<sub>M</sub> : M \\to M$.”
 
@@ -1115,15 +1115,15 @@
 
 ### Normality makes the automorphisms fix exactly the base field
 
-**Remember:** A normal field keeps all the roots, so its symmetries can move them.
+**Remember:** Every element outside K has a distinct conjugate inside L.
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** An algebraic extension L of K is normal when every irreducible polynomial over K with one root in L has all its roots in L. For a finite extension, this means that L is the splitting field of a polynomial. An extension is separable if each element's minimal polynomial has distinct roots, and Galois if it is both normal and separable.
+**Definition.** An algebraic extension L/K is normal and separable when every irreducible polynomial over K with one root in L has all its roots in L, and they are distinct. So every element outside K has a different conjugate in L for an automorphism to send it to.
 
 **Problem.** An algebraic extension L of K is normal and separable exactly when the field fixed by all automorphisms of L over K is K itself.
 
-**How the definition helps.** Normality and separability let each element outside K move to a distinct conjugate by the embedding extension theorem (our own). Conversely, each element has a finite automorphism orbit. Its orbit polynomial has distinct roots in L and fixed coefficients, so a fixed field of K forces normality and separability (our own). In ℚ(∛2), the missing nonreal conjugates force every ℚ-automorphism to fix ∛2.
+**How the definition helps.** The embedding extension theorem gives an automorphism carrying an element outside K to a different conjugate (our own). Conversely, an element's orbit polynomial has distinct roots in L and coefficients in the fixed field, so a fixed field of K forces both conditions (our own). In ℚ(∛2), the nonreal conjugates are missing, so every ℚ-automorphism fixes ∛2.
 
 **Wikipedia:** [Galois extension](https://en.wikipedia.org/wiki/Galois_extension), [Normal extension](https://en.wikipedia.org/wiki/Normal_extension). It says: “a Galois extension is an algebraic field extension E/F that is normal and separable; or equivalently, E/F is algebraic, and the field fixed by the automorphism group Aut(E/F) is precisely the base field F.”
 
@@ -1135,11 +1135,11 @@
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a root a in a finite Galois extension, its orbit O is the set of its images under all automorphisms fixing the base. Its orbit polynomial is the product of x − b over the distinct elements b of O.
+**Definition.** For an element a of a finite Galois extension of F, its orbit is the set of its distinct images under the Galois group. Its orbit polynomial is the product of x − b over the orbit; the group permutes these factors, so it fixes the coefficients (our own).
 
 **Problem.** Suppose a polynomial over F has distinct roots that all lie in a finite Galois extension of F. Its monic irreducible factors are the orbit polynomials of its roots.
 
-**How the definition helps.** Automorphisms permute the orbit, so they fix every coefficient of its polynomial (our own). The fixed field theorem puts these coefficients in F. The minimal polynomial divides the orbit polynomial and vanishes at every distinct orbit element, so the two monic polynomials agree.
+**How the definition helps.** The fixed field theorem puts the coefficients in F (our own). The minimal polynomial of a vanishes at every orbit element and divides the orbit polynomial, which has distinct roots, so the two monic polynomials agree.
 
 **Paper or page:** [Minimal Polynomial of Element with Finite Orbit under Group of Automorphisms over Fixed Field in terms of Orbit](https://proofwiki.org/wiki/Minimal_Polynomial_of_Element_with_Finite_Orbit_under_Group_of_Automorphisms_over_Fixed_Field_in_terms_of_Orbit). It says: “Then α is algebraic over F and the product of polynomials p(x) = ∏β ∈ Λ (x − β) is the minimal polynomial of α over F.”
 
@@ -1155,7 +1155,7 @@
 
 **Problem.** Over a perfect field, every algebraic extension is separable. So for Galois theory over such a field, only normality needs checking.
 
-**How the definition helps.** Every element of an algebraic extension has an irreducible minimal polynomial over K. Perfection gives that polynomial distinct roots, which is the separability test for the element (our own). This applies to every element, leaving normality as the remaining Galois condition.
+**How the definition helps.** Every element of an algebraic extension has an irreducible minimal polynomial over K, and perfection gives it distinct roots (our own). That is exactly the separability of the element.
 
 **Wikipedia:** [Perfect field](https://en.wikipedia.org/wiki/Perfect_field), [Separable polynomial](https://en.wikipedia.org/wiki/Separable_polynomial). It says: “Perfect fields are significant because Galois theory over these fields becomes simpler, since the general Galois assumption of field extensions being separable is automatically satisfied over these fields”
 
@@ -1169,11 +1169,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** For a monic irreducible cubic over ℚ, order its three complex roots. Multiply the three differences between earlier and later roots. The discriminant is the square of this product.
+**Definition.** For a monic irreducible cubic over ℚ with roots r₁, r₂, r₃, let δ = (r₁ − r₂)(r₁ − r₃)(r₂ − r₃). Swapping two roots changes the sign of δ, and the discriminant is δ².
 
 **Problem.** The discriminant is a rational square exactly when the Galois group of the cubic is cyclic of order three.
 
-**How the definition helps.** Swapping two roots negates their difference product, so exactly the even permutations fix it (our own). The fixed field theorem makes the product rational exactly when every Galois permutation is even. Irreducibility makes the group transitive on three roots. The only transitive group of even permutations on three roots is cyclic of order three.
+**How the definition helps.** δ is rational exactly when every Galois automorphism fixes it, that is, when every Galois permutation is even (our own). Irreducibility makes the group transitive on the three roots. The only transitive group of even permutations of three roots is cyclic of order three.
 
 **Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “if and only if the Galois group of the cubic equation is the cyclic group of order three.”
 
@@ -1185,11 +1185,11 @@
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** The splitting field of a polynomial is generated over its coefficient field by all its roots. Its Galois group consists of the field automorphisms that fix the coefficient field.
+**Definition.** The splitting field of a polynomial is generated over its coefficient field by the roots, so an automorphism that fixes the coefficient field is decided by what it does to the roots.
 
 **Problem.** The Galois group of a polynomial with r distinct roots embeds in the group of permutations of those r roots.
 
-**How the definition helps.** Generation by the roots prevents a nonidentity automorphism from fixing every root (our own). Every automorphism permutes the roots because it fixes the coefficients. If the ambient field had extra generators, an automorphism could move those while fixing all the roots.
+**How the definition helps.** Each such automorphism fixes the coefficients, so it permutes the roots. Two automorphisms that permute the roots in the same way agree on all generators, so they are equal (our own).
 
 **Paper or page:** [Automorphism Group Acts Faithfully on Generating Set](https://proofwiki.org/wiki/Automorphism_Group_Acts_Faithfully_on_Generating_Set). It says: “Then the induced group action on S is faithful.”
 
@@ -1197,15 +1197,15 @@
 
 ### Separability is what the primitive element theorem needs
 
-**Remember:** Separability requires distinct roots for every element’s minimal polynomial.
+**Remember:** Separable means finitely many middle fields, hence one generator.
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** A finite extension E of F is separable if the minimal polynomial of each element of E has distinct roots. An element α is primitive if E = F(α), so one element generates the whole extension.
+**Definition.** A finite extension E of F is separable if the minimal polynomial of each element of E has distinct roots. Then E lies in a finite Galois extension, so by the Galois correspondence it has only finitely many intermediate fields (our own).
 
 **Problem.** Every finite separable extension is generated by a single element. This holds for all number fields and all finite extensions of finite fields.
 
-**How the definition helps.** A finite separable extension has a finite Galois closure, so the Galois correspondence bounds its number of intermediate fields (our own). Steinitz’s primitive element criterion now gives one generator. For independent variables T and U, 𝔽ₚ(T,U) has degree p² over 𝔽ₚ(Tᵖ,Uᵖ). Every pth power lies in the base, so one element generates degree at most p (our own example).
+**How the definition helps.** Steinitz's theorem says that finitely many intermediate fields give a primitive element, one α with E = F(α). Without separability this fails: 𝔽ₚ(T,U) has degree p² over 𝔽ₚ(Tᵖ,Uᵖ), but each element has its pth power in the base, so it generates degree at most p (our own example).
 
 **Wikipedia:** [Primitive element theorem](https://en.wikipedia.org/wiki/Primitive_element_theorem). It says: “When \[E : F\] = p², there may not be a primitive element (in which case there are infinitely many intermediate fields by Steinitz's theorem).”
 
@@ -1219,11 +1219,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Start with n algebraically independent root variables over ℚ, meaning they satisfy no nonzero polynomial relation over ℚ. Form the product of the n linear factors x minus each root variable. Its coefficients generate the base field over ℚ.
+**Definition.** Start with n algebraically independent variables r₁, …, rₙ over ℚ, which satisfy no nonzero polynomial relation, and treat them as roots. The base field is generated by the coefficients of (x − r₁)⋯(x − rₙ), which every permutation of the roots leaves unchanged.
 
 **Problem.** Over this coefficient field, the general monic polynomial of degree n has every root permutation as a Galois automorphism. For n ≥ 5, no formula in radicals solves the general polynomial.
 
-**How the definition helps.** Every permutation of the root variables fixes the coefficients, and every automorphism that fixes the coefficients permutes the roots (our own). The theorem on symmetric polynomials shows that the coefficients are independent, so this is the usual general polynomial (our own). In degree five or higher the full permutation group is not solvable, so the Galois criterion rules out a radical formula (our own).
+**How the definition helps.** Every permutation of the roots fixes the coefficients and extends to an automorphism of ℚ(r₁, …, rₙ), so the Galois group is the full symmetric group (our own). The theorem on symmetric polynomials makes the coefficients independent, so this is the general polynomial (our own). For n ≥ 5 the symmetric group is not solvable, so Galois's criterion rules out a radical formula (our own).
 
 **Wikipedia:** [Abel–Ruffini theorem](https://en.wikipedia.org/wiki/Abel%E2%80%93Ruffini_theorem). It says: “For proving that the Galois group is 𝒮ₙ, it is simpler to start from the roots.”
 
@@ -1235,11 +1235,11 @@
 
 *True by definition.* MSC 12F15 (Inseparable field extensions), 12F05. arXiv math.AC, math.NT. Level 2: later undergraduate.
 
-**Definition.** Let E be an algebraic extension of a field F of prime characteristic p. The extension is purely inseparable if each element of E has a power with exponent pⁿ in F, for some integer n ≥ 0. Another definition requires that every element outside F have a minimal polynomial with a repeated root.
+**Definition.** An algebraic extension E of a field F of prime characteristic p is purely inseparable if every element of E, raised to some power pⁿ with n ≥ 0, lands in F.
 
 **Problem.** Let F ⊆ M ⊆ E be fields of characteristic p. If E is purely inseparable over M and M is purely inseparable over F, then E is purely inseparable over F.
 
-**How the definition helps.** The power test makes the tower claim a rule for multiplying exponents. For α in E choose n so that β = α<sup>(pⁿ)</sup> lies in M, then m so that β<sup>(pᵐ)</sup> lies in F. Then α<sup>(pⁿ⁺ᵐ)</sup> lies in F, which proves the claim (our own). The minimal-polynomial test does not directly say how to combine the two extensions.
+**How the definition helps.** If α<sup>(pⁿ)</sup> lies in M and that element raised to pᵐ lies in F, then α<sup>(pⁿ⁺ᵐ)</sup> lies in F (our own). The minimal-polynomial definition gives no direct way to combine the two steps.
 
 **Wikipedia:** [Purely inseparable extension](https://en.wikipedia.org/wiki/Purely_inseparable_extension). It says: “For each element α ∈ E, there exists n ≥ 0 such that \\(\\alpha<sup>p<sup>n</sup>\\in</sup> F\\).”
 
@@ -1251,11 +1251,11 @@
 
 *True by definition.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 2: later undergraduate.
 
-**Definition.** Define an element a to be transcendental over F when evaluation at a kills no nonzero polynomial over F. A rational function is a fraction of polynomials with a nonzero denominator.
+**Definition.** An element a is transcendental over F when no nonzero polynomial over F vanishes at a. So every fraction p(x)/q(x) of polynomials over F with q ≠ 0 can be evaluated at a.
 
 **Problem.** The field generated by one transcendental element over F is isomorphic over F to the rational function field in one variable.
 
-**How the definition helps.** Transcendence keeps every nonzero polynomial denominator nonzero at a (our own). Evaluation therefore embeds the rational function field into the field containing a. Its image contains F and a, and every value is a quotient of polynomials in a. Thus its image is the smallest field containing F and a.
+**How the definition helps.** Evaluation at a is therefore a field map from F(x), and field maps are injective (our own). Its image contains F and a and consists of fractions of polynomials in a, so it is F(a).
 
 **Paper or page:** [Structure of Simple Transcendental Field Extension](https://proofwiki.org/wiki/Structure_of_Simple_Transcendental_Field_Extension). It says: “If α is transcendental over K then K(α) ≃ K(X).”
 
@@ -1263,7 +1263,7 @@
 
 ### Equivalence of absolute values gives Ostrowski's short list
 
-**Remember:** Equivalent absolute values give the same topology.
+**Remember:** Equivalent absolute values are positive powers of each other.
 
 *Makes the theorem clean to state or prove.* MSC 12J10 (Valued fields), 11S85. arXiv math.NT. Level 2: later undergraduate.
 
@@ -1271,7 +1271,7 @@
 
 **Problem.** Every nontrivial absolute value on ℚ is equivalent to the real one or to a p-adic one.
 
-**How the definition helps.** Equivalence groups together the absolute values that induce the same topology. Ostrowski’s theorem classifies the resulting nontrivial classes on ℚ, one real class and one for each prime.
+**How the definition helps.** Equivalence reduces the claim to a short list, and the proof splits by whether \|n\| is bounded on the integers (our own). If it is, the absolute value is a power of the p-adic one for the one prime with \|p\| &lt; 1 (our own). If not, it is a power of the real one (our own).
 
 **Wikipedia:** [Ostrowski's theorem](https://en.wikipedia.org/wiki/Ostrowski%27s_theorem). It says: “is equivalent to either the usual real absolute value or a p-adic absolute value.”
 
@@ -1285,11 +1285,11 @@
 
 *True by definition. Confidence: low.* MSC 12J25 (Non-Archimedean valued fields), 26E30. arXiv math.NT, math.CA. Level 2: later undergraduate.
 
-**Definition.** For a prime p and nonzero rational x, define \|x\|ₚ = p⁻ᵛ, where v counts numerator factors of p minus denominator factors. Set \|0\|ₚ = 0. The field ℚₚ is the completion of ℚ for this absolute value.
+**Definition.** For a prime p, the p-adic absolute value is \|x\|ₚ = p⁻ᵛ, where v is the exponent of p in the rational x, and \|0\|ₚ = 0. It satisfies \|x + y\|ₚ ≤ max(\|x\|ₚ, \|y\|ₚ), and ℚₚ is the completion of ℚ for it.
 
 **Problem.** In ℚₚ, a series converges exactly when its terms tend to 0.
 
-**How the definition helps.** The strong triangle inequality bounds the absolute value of every finite tail by its largest term in absolute value (our own). If the terms tend to zero, the partial sums are Cauchy and completeness gives convergence. Conversely, consecutive partial sums of a convergent series approach the same limit, so their differences approach zero.
+**How the definition helps.** The strong inequality bounds each finite block of terms by its largest term, so terms tending to 0 make the partial sums Cauchy (our own). Completeness then gives convergence. Conversely, the terms of any convergent series tend to 0.
 
 **Paper or page:** [An Infinitely Large Napkin: Calculus: P Adic](https://venhance.github.io/napkin/Napkin.pdf). It says: “A series ∑ xₖ (k = 1 to ∞) in ℚₚ converges to some limit if and only if lim (k → ∞) \|xₖ\|ₚ = 0.”
 
@@ -1303,11 +1303,11 @@
 
 *True by definition.* MSC 12J25 (Non-Archimedean valued fields), 13A18. arXiv math.NT. Level 2: later undergraduate.
 
-**Definition.** For a nonzero rational r, write vₚ(r) for the exponent of the prime p in r. The p-adic absolute value of r is \|r\|ₚ = p to the power −vₚ(r). So r has a small p-adic size when p appears in r to a high power.
+**Definition.** For a nonzero rational r, the p-adic absolute value is \|r\|ₚ = p<sup>(−vₚ(r))</sup>, where vₚ(r) is the exponent of the prime p in r. The base p is chosen so that \|p\|ₚ = 1/p exactly cancels the ordinary size \|p\| = p.
 
 **Problem.** The product formula: for every nonzero rational r, \|r\| · ∏ₚ \|r\|ₚ = 1. In words, the ordinary size of r times all its p-adic sizes is exactly 1.
 
-**How the definition helps.** In our own words: base p is the one base that makes the sizes cancel exactly. Any base greater than 1 gives an absolute value with the same topology. But only base p gives pᵏ the p-adic size 1/pᵏ, which cancels its ordinary size pᵏ. So the product formula follows from unique factorization.
+**How the definition helps.** By unique factorization r = ±∏ pᵏ, and each prime power gives pᵏ to \|r\|, p⁻ᵏ to \|r\|ₚ, and 1 to every other \|r\|<sub>q</sub>. So the whole product is 1. Another base gives the same topology but breaks the exact cancellation (our own).
 
 **Wikipedia:** [P-adic valuation](https://en.wikipedia.org/wiki/P-adic_valuation). It says: “The choice of base p in the exponentiation p<sup>(−νₚ(r))</sup> makes no difference for most of the properties, but supports the product formula”
 
@@ -1315,15 +1315,15 @@
 
 ### Frobenius groups irreducible factors
 
-**Remember:** Multiply conjugate factors to recover one factor over the smaller field.
+**Remember:** Multiply each Frobenius cycle of factors to get one factor over 𝔽<sub>q</sub>.
 
 *True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)). arXiv math.NT. Level 3: graduate.
 
-**Definition.** Let g be a squarefree monic polynomial over the field 𝔽<sub>q</sub>, and factor it into monic irreducibles over a larger finite field. The Frobenius map raises each coefficient to its qth power. A Frobenius orbit is the set of distinct factors that repeated use of this map reaches from one factor.
+**Definition.** Factor a squarefree monic polynomial g over 𝔽<sub>q</sub> into monic irreducibles over a larger finite field. The Frobenius map, which raises each coefficient to the qth power, permutes these factors, and a Frobenius orbit is the set of factors it reaches from one factor.
 
 **Problem.** The products of the Frobenius orbits, one product per orbit, are exactly the monic irreducible factors of g over 𝔽<sub>q</sub>.
 
-**How the definition helps.** Frobenius permutes each orbit, so its product has coefficients in the smaller field (our own). By unique factorization, any monic divisor over the smaller field selects a Frobenius-invariant subset of those factors. A single orbit has no nonempty proper invariant subset, so its product is irreducible. Together the orbit products give g.
+**How the definition helps.** Frobenius permutes each orbit, so the orbit product has coefficients fixed by Frobenius, which lie in 𝔽<sub>q</sub> (our own). By unique factorization, a monic divisor of g over 𝔽<sub>q</sub> is the product of a Frobenius-invariant set of factors. One orbit has no smaller nonempty invariant set, so its product is irreducible.
 
 **Paper or page:** [Closed formulas for the factorization of Xⁿ−1, the n-th cyclotomic polynomial, Xⁿ−a and f(Xⁿ) over a finite field for arbitrary positive integers n](https://arxiv.org/abs/2306.11183). It says: “Then the factorization of g into monic irreducible polynomials over 𝔽q is given by: ∏(R ∈ ℛ/∼) spin<sub>q</sub>\[R\]”
 
@@ -1333,15 +1333,15 @@
 
 ### Norm forms preserve C₁ under extension
 
-**Remember:** Taking the norm multiplies the degree and variable count equally.
+**Remember:** More variables than the degree forces a nonzero zero.
 
 *True by definition.* MSC 12E30 (Field arithmetic). arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** A field K is C₁ if every homogeneous polynomial over K of positive degree d in m &gt; d variables vanishes at some nonzero K-tuple.
+**Definition.** A field K is C₁ if every homogeneous polynomial over K whose number of variables exceeds its positive degree has a nonzero zero in K.
 
 **Problem.** Every finite extension of a C₁ field is again C₁.
 
-**How the definition helps.** Taking the norm multiplies both the degree and the variable count by the extension degree n (our own). Expand each of the m variables of a degree-d form f in a base-field basis. The norm of f gives a degree-nd form in nm &gt; nd coordinates, so it vanishes at a nonzero tuple. The corresponding extension-field tuple is nonzero, and its f-value has zero norm, so that value is zero.
+**How the definition helps.** Take a degree-d form f over L in m &gt; d variables, and write each variable in a basis of L over K (our own). Its norm is a degree-nd form over K in nm &gt; nd variables, with n = \[L : K\], so it has a nonzero zero. At the matching nonzero tuple over L, f has norm zero, so f vanishes there.
 
 **Wikipedia:** [Quasi-algebraically closed field](https://en.wikipedia.org/wiki/Quasi-algebraically_closed_field). It says: “Any algebraic extension of a quasi-algebraically closed field is quasi-algebraically closed.”
 
@@ -1351,15 +1351,15 @@
 
 ### Pseudo-finite fields inherit norm surjectivity
 
-**Remember:** An infinite field is pseudo-finite when every common first-order finite-field law holds there.
+**Remember:** Infinite, yet obeying every first-order law all finite fields obey.
 
 *True by definition. Confidence: medium.* MSC 12E30 (Field arithmetic). arXiv math.LO, math.NT. Level 3: graduate.
 
-**Definition.** A pseudo-finite field is an infinite field satisfying every first-order sentence true in every finite field. Such sentences quantify over field elements and use field operations and equality.
+**Definition.** A pseudo-finite field is an infinite field that satisfies every first-order sentence, one that quantifies only over field elements, which holds in all finite fields.
 
 **Problem.** The norm from every finite extension of a pseudo-finite field is onto the nonzero elements of the base field.
 
-**How the definition helps.** The first-order definition transfers the finite-field norm theorem one extension degree at a time. In our own proof, fix the degree and describe a simple extension by the coefficients of an irreducible polynomial. Irreducibility and the norm as a determinant both have first-order formulas, so surjectivity in that degree is one sentence. Pseudo-finite fields are perfect, so the primitive element theorem makes every finite extension simple.
+**How the definition helps.** For a fixed degree, norm surjectivity in all extensions of that degree is one first-order sentence, since irreducibility and the norm as a determinant are expressible (our own). It holds in finite fields, so it holds here. Pseudo-finite fields are perfect, so the primitive element theorem makes every finite extension simple and covered (our own).
 
 **Wikipedia:** [Pseudo-finite field](https://en.wikipedia.org/wiki/Pseudo-finite_field). It says: “an infinite model of the first-order theory of finite fields.”
 
@@ -1369,15 +1369,15 @@
 
 ### Rational points split Brauer classes
 
-**Remember:** Every geometrically integral variety over the field has a point over that field.
+**Remember:** Every geometrically integral variety has a point over the field.
 
 *Makes the theorem clean to state or prove.* MSC 12E30 (Field arithmetic). arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** A pseudo-algebraically closed field supplies a rational point on every geometrically integral variety over it. Such a variety stays irreducible and has no nilpotent functions after extending to an algebraic closure. A rational point has coordinates in the original field.
+**Definition.** A field K is pseudo-algebraically closed if every geometrically integral variety over K, one that stays irreducible and reduced over an algebraic closure, has a point with coordinates in K.
 
 **Problem.** Over a pseudo-algebraically closed field, every finite-dimensional central simple algebra is a matrix algebra. Equivalently, the Brauer group of the field is trivial.
 
-**How the definition helps.** The rational-point axiom applies to the variety that detects whether a given algebra is a matrix algebra. The Severi–Brauer theorem constructs this variety and identifies its rational points as the test for splitting. Over an algebraic closure the variety becomes projective space, so it is geometrically integral.
+**How the definition helps.** Each central simple algebra has a Severi–Brauer variety, which has a K-point exactly when the algebra is a matrix algebra. Over an algebraic closure this variety becomes projective space, so it is geometrically integral and the defining property gives a point.
 
 **Wikipedia:** [Pseudo algebraically closed field](https://en.wikipedia.org/wiki/Pseudo_algebraically_closed_field). It says: “The Brauer group of a PAC field is trivial, as any Severi–Brauer variety has a rational point.”
 
@@ -1385,15 +1385,15 @@
 
 ### Defining separable as geometrically reduced makes separability survive base change
 
-**Remember:** Changing the base field just changes which tensor product you test.
+**Remember:** Separable means no nilpotents after any change of base field.
 
 *True by definition.* MSC 12F10 (Separable extensions, Galois theory), 13B40. arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** Call a finite field extension K of k separable when K ⊗ₖ k′ is reduced for every field extension k′ of k. Reduced means that no nonzero element has a power equal to zero. The usual definition asks that each minimal polynomial has distinct roots.
+**Definition.** Call a finite extension K of k separable when K ⊗ₖ k′ is reduced, with no nonzero nilpotent elements, for every field extension k′ of k.
 
 **Problem.** Let K be a finite separable extension of k, and let k′ be any extension field of k. Then K ⊗ₖ k′ is a finite product of finite separable extensions of k′.
 
-**How the definition helps.** With the tensor definition, the test for each factor is already one of the original tests (our own). The ring K ⊗ₖ k′ is reduced and finite over k′, so it is a product of fields (our own). For a further extension k″ of k′, each factor tensored with k″ is a factor of K ⊗ₖ k″, which is reduced (our own). The work moves to Stacks Lemma 10.44.2, which proves that the tensor test agrees with the usual definition.
+**How the definition helps.** K ⊗ₖ k′ is reduced and finite over k′, so it is a product of fields (our own). For a further extension k″, each factor tensored with k″ is a factor of the reduced ring K ⊗ₖ k″, so each factor passes the same test (our own). The work is Stacks Lemma 10.44.2, which matches this test with the distinct-root definition.
 
 **Paper or page:** [Lemma 10.44.2.](https://stacks.math.columbia.edu/tag/030W). It says: “K is geometrically reduced over k.”
 
@@ -1401,15 +1401,15 @@
 
 ### Frobenius generates the Galois group of a finite field topologically
 
-**Remember:** A topological generator has integer powers dense in the whole group.
+**Remember:** Its powers reach every automorphism of each finite layer.
 
 *Makes the theorem clean to state or prove.* MSC 12F10 (Separable extensions, Galois theory), 12E20. arXiv math.NT. Level 3: graduate.
 
-**Definition.** An element generates a topological group topologically if the closure of its powers is the whole group. The absolute Galois group carries the Krull topology.
+**Definition.** An element σ of the absolute Galois group, with its Krull topology, is a topological generator when the closure of its powers is the whole group. Equivalently, the powers of σ restrict to every automorphism of each finite Galois subextension (our own).
 
-**Problem.** The absolute Galois group of a field is the Galois group of its separable closure. For a finite field with q elements, it is the profinite integers, the limit of all the groups ℤ/n. The map that sends x to x raised to the power q generates it topologically.
+**Problem.** For a finite field with q elements, the absolute Galois group, the Galois group of its separable closure, is the profinite integers, the limit of all ℤ/n. The Frobenius map, which raises each element to the power q, generates it topologically.
 
-**How the definition helps.** Density means that the powers realize every restriction to a finite Galois subextension (our own). Over a finite field, Frobenius generates the cyclic Galois group of every degree-n extension. Restriction reduces exponents modulo divisors of n, so the inverse limit is the profinite integers, with Frobenius corresponding to 1 (our own).
+**How the definition helps.** Over a finite field, Frobenius generates the cyclic Galois group of each degree-n extension, so it is a topological generator. Restriction reduces exponents modulo divisors of n, so the inverse limit is the profinite integers, with Frobenius matching 1 (our own).
 
 **Wikipedia:** [Absolute Galois group](https://en.wikipedia.org/wiki/Absolute_Galois_group), [Weil group](https://en.wikipedia.org/wiki/Weil_group). It says: “The Frobenius automorphism is a canonical (topological) generator of GK.”
 
@@ -1423,11 +1423,11 @@
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory), 20E18. arXiv math.AC, math.GR. Level 3: graduate.
 
-**Definition.** Let L/K be a Galois extension, possibly infinite. Its Galois group Gal(L/K) is the inverse limit of the finite groups Gal(E/K), over all finite Galois subextensions E. The Krull topology on it is the inverse-limit topology, with each finite group discrete.
+**Definition.** For a Galois extension L/K, possibly infinite, the Krull topology on Gal(L/K) has basic open subgroups Gal(L/E), for each finite subextension E. A subgroup H is closed when it contains every automorphism that agrees on each finite subextension with some member of H.
 
 **Problem.** The intermediate fields of L/K correspond one to one with the closed subgroups of Gal(L/K) in the Krull topology. Under this correspondence, finite subextensions match open subgroups.
 
-**How the definition helps.** A subgroup and its closure have the same fixed field because every element stabilizer is closed (our own). In the algebraic closure of 𝔽ₚ, Frobenius generates a proper dense subgroup with the same fixed field as the full group (our own). The infinite Galois correspondence recovers closed subgroups from their fixed fields and identifies open subgroups with finite subextensions.
+**How the definition helps.** A subgroup and its closure fix the same elements, since each element lies in a finite subextension (our own). So only closed subgroups are recovered from fixed fields: in Gal(𝔽̄ₚ/𝔽ₚ), the powers of Frobenius form a proper dense subgroup fixing only 𝔽ₚ (our own). The infinite Galois correspondence recovers every closed subgroup and matches open ones with finite subextensions.
 
 **nLab:** [Galois theory](https://ncatlab.org/nlab/show/Galois+theory). It says: “correspond bijectively to the closed subgroups of”
 
@@ -1442,11 +1442,11 @@
 
 *Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 3: graduate.
 
-**Definition.** For a finite field extension L of K, the trace of z is the matrix trace of multiplication by z on L over K. Pair x and y by taking the trace of xy. The extension is separable if every minimal polynomial over K of an element of L has distinct roots.
+**Definition.** For a finite field extension L/K, the trace of z is the trace of the K-linear map multiply-by-z on L. The trace pairing sends x and y to the trace of xy, so once some z has nonzero trace, each x ≠ 0 pairs nontrivially with z/x.
 
 **Problem.** The trace pairing (x, y) ↦ trace of xy is nondegenerate exactly when L is separable over K. Nondegenerate means that each nonzero x has some y with trace of xy nonzero.
 
-**How the definition helps.** The trace criterion for separability says that the trace map is nonzero exactly for separable extensions (our own). Given z of nonzero trace and x ≠ 0, take y = z/x. Conversely, a zero trace map makes every pairing zero. For example, over 𝔽₂(t), multiplication by a + b√t has diagonal entries a, a in the basis 1, √t (our own).
+**How the definition helps.** The trace criterion says the trace map is not identically zero exactly when L/K is separable (our own). If it is zero, every pairing is zero. Over 𝔽₂(t), multiplication by a + b√t has diagonal entries a, a in the basis 1, √t, so its trace 2a is 0 (our own).
 
 **Paper or page:** [Lemma 9.20.7.](https://stacks.math.columbia.edu/tag/0BIL). It says: “L/K is separable, Traceₗ⁄ₖ is not identically zero, and the trace pairing Qₗ⁄ₖ is nondegenerate.”
 
@@ -1454,15 +1454,15 @@
 
 ### A p-basis gives differential coordinates
 
-**Remember:** Monomials with exponents below p form a basis over k and the pth powers.
+**Remember:** Exponents below p, unique expansions, one partial derivative per element.
 
 *Rules out counterexamples.* MSC 12F15 (Inseparable field extensions). arXiv math.AC. Level 3: graduate.
 
-**Definition.** For K/k of characteristic p &gt; 0, let E be the subfield generated by k and the pth powers in K. A subset B of K is a p-basis if its monomials with exponents below p form an E-basis of K. Each exponent is a nonnegative integer, and only finitely many are nonzero in each monomial.
+**Definition.** For a field extension K/k of characteristic p &gt; 0, let E be the field generated by k and the pth powers of K. A set B in K is a p-basis when every element of K is uniquely an E-combination of monomials in B with each exponent below p.
 
 **Problem.** The differentials of the elements of a p-basis form a basis of the differential space of K over k.
 
-**How the definition helps.** Unique monomial expansions let us take a partial derivative in each chosen element independently. In our own argument, reducing an exponent by the relation for a pth power respects differentiation because both sides have derivative zero. The resulting partial derivatives distinguish the basis differentials, and the monomial expansions show that those differentials span. In our own example, adjoining tᵖ to the list containing t preserves generation of 𝔽ₚ(t) but adds a zero differential.
+**How the definition helps.** Unique expansions let us differentiate in each element of B independently, and every element of E has derivative zero. So the differentials of B are independent and span (our own). Without uniqueness this fails: adding tᵖ to t still generates 𝔽ₚ(t), but tᵖ has differential zero (our own).
 
 **Paper or page:** [Power Towers: Purely Inseparable Galois Theory and Foliations in Positive Characteristic](https://arxiv.org/abs/2510.06058). It says: “dxᵢ is a basis of the K-vector space Ω(K/k).”
 
@@ -1476,11 +1476,11 @@
 
 *True by definition.* MSC 12F15 (Inseparable field extensions). arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** Fix an algebraic closure of a field k of characteristic p &gt; 0. Its perfect closure consists of all x there satisfying x<sup>(pⁿ)</sup> ∈ k for some integer n ≥ 0.
+**Definition.** The perfect closure of a field k of characteristic p &gt; 0 is the set of x in a fixed algebraic closure with x<sup>(pⁿ)</sup> ∈ k for some n ≥ 0. Each such x is the only pⁿth root of an element of k, because x ↦ xᵖ is injective (our own).
 
 **Problem.** Every homomorphism between fields of characteristic p extends uniquely to a homomorphism between their perfect closures.
 
-**How the definition helps.** In characteristic p an element has at most one pth root, so each adjoined root has only one possible image (our own). A map φ sends the pⁿth root of a to the pⁿth root of φ(a) in the target closure (our own). This rule preserves sums and products because x ↦ xᵖ does (our own). The work moves to Stacks Lemma 10.45.4, which shows that this construction is the unique perfect, purely inseparable extension.
+**How the definition helps.** A map φ must send the pⁿth root of a to the pⁿth root of φ(a), so the extension is unique (our own). This rule respects sums and products because x ↦ xᵖ does (our own). The work is Stacks Lemma 10.45.4, which shows this is the unique perfect, purely inseparable extension.
 
 **Paper or page:** [Lemma 10.45.4.](https://stacks.math.columbia.edu/tag/046W). It says: “The field extension k′/k is unique up to unique isomorphism.”
 
@@ -1492,11 +1492,11 @@
 
 *True by definition.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A field extension L/k is regular if L ⊗ₖ k̄ is an integral domain for an algebraic closure k̄ of k. An integral domain is a nonzero commutative ring with identity and no zero divisors.
+**Definition.** A field extension L/k is regular if L ⊗ₖ k̄ is an integral domain, a ring with no zero divisors, for an algebraic closure k̄ of k.
 
 **Problem.** For a regular extension L of k and any field extension E of k, E ⊗ₖ L is a domain.
 
-**How the definition helps.** The tensor definition gives exactly the single test needed to preserve integrality over every larger field. The first cited lemma proves that testing an algebraic closure suffices. In our own comparison, the usual definition requires separability and requires every element of L algebraic over k to lie in k. The equivalence with that definition carries the field-theoretic work.
+**How the definition helps.** The cited lemma shows that passing this single test makes E ⊗ₖ L a domain for every domain E over k, in particular every field extension. The usual definition, separable with k algebraically closed in L, needs a separate equivalence proof (our own).
 
 **Wikipedia:** [Regular extension](https://en.wikipedia.org/wiki/Regular_extension). It says: “or equivalently, L ⊗ₖ k̄ is an integral domain when k̄ is the algebraic closure of k”
 
@@ -1510,11 +1510,11 @@
 
 *Rules out counterexamples.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A separating transcendence basis is an algebraically independent set that leaves only a separable algebraic extension. In other words, over the rational function field it generates, all minimal polynomials have distinct roots. An ordinary transcendence basis does not require this.
+**Definition.** A separating transcendence basis of a finitely generated extension K/k is an algebraically independent set S such that K is separable algebraic over the rational function field k(S).
 
 **Problem.** If a finitely generated field extension admits a separating transcendence basis, one separable element suffices to generate the extension over the resulting rational function field.
 
-**How the definition helps.** Choosing a separating basis makes the remaining extension finite and separable, so the primitive element theorem gives one generator. In our own example, the singleton containing tᵖ is a transcendence basis for 𝔽ₚ(t) over the field with p elements. Over 𝔽ₚ(tᵖ), the minimal polynomial of t has a repeated root. No separable element generates that extension.
+**How the definition helps.** Then K is finite and separable over k(S), so the primitive element theorem gives one separable generator. Without separability this fails: tᵖ alone is a transcendence basis of 𝔽ₚ(t), but t has a repeated root over 𝔽ₚ(tᵖ), and no separable element generates (our own).
 
 **Paper or page:** [Lemma 10.42.3.](https://stacks.math.columbia.edu/tag/030Q). It says: “K = k(x₁, …, xᵣ₊₁), and xᵣ₊₁ is separable over k(x₁, …, xᵣ).”
 
@@ -1526,11 +1526,11 @@
 
 *True by definition.* MSC 12G05 (Galois cohomology), 16K50, 20J06. arXiv math.NT, math.RA. Level 3: graduate.
 
-**Definition.** Fix a separable closure Kₛ of K and put G = Gal(Kₛ/K). Define the cohomological Brauer group as H²(G, Kₛ×), using continuous cohomology and the discrete module of nonzero elements of Kₛ.
+**Definition.** Let G be the absolute Galois group of K, the profinite Galois group of a separable closure Kₛ. The cohomological Brauer group is the continuous cohomology H²(G, Kₛ×), so each class comes from a finite quotient Gal(L/K) (our own).
 
 **Problem.** For every field K, the Brauer group Br(K) is a torsion group.
 
-**How the definition helps.** Positive-degree continuous cohomology of a profinite group with discrete coefficients is torsion. Applying this theorem in degree two gives torsion for the cohomological Brauer group. The Brauer group comparison theorem identifies this group with the classes of central simple K-algebras (our own).
+**How the definition helps.** Positive-degree cohomology of a finite group of order n is killed by n, so each class, coming from some Gal(L/K), is torsion (our own). The comparison theorem identifies this group with classes of central simple algebras (our own).
 
 **Wikipedia:** [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “For an arbitrary field K, the Brauer group can be expressed in terms of Galois cohomology as follows: Br K ≅ H²(K, Gₘ),”
 
@@ -1543,15 +1543,15 @@
 
 ### Galois cohomology turns Kummer theory into one long exact sequence
 
-**Remember:** The mth-power map on separable-closure units is onto, with kernel the mth roots of unity.
+**Remember:** The mth-power map is onto, with kernel μₘ.
 
 *Makes the theorem clean to state or prove.* MSC 12G05 (Galois cohomology), 11R34, 20J06. arXiv math.NT. Level 3: graduate.
 
-**Definition.** Fix a separable closure Kₛ of K and a positive integer m nonzero in K. The Kummer sequence is the exact sequence 1 → μₘ → Kₛ× → Kₛ× → 1. Its maps between the three middle groups include the mth roots of unity and raise elements to the mth power, respectively.
+**Definition.** For m ≥ 1 nonzero in K and a separable closure Kₛ, the Kummer sequence is the exact sequence 1 → μₘ → Kₛ× → Kₛ× → 1. The map Kₛ× → Kₛ× raises to the mth power, which is onto, with kernel the mth roots of unity μₘ.
 
 **Problem.** For every such K and m, K×/(K×)ᵐ is isomorphic to H¹(K, μₘ) without any root-of-unity hypothesis on K. When K contains all mth roots of unity, cyclic extensions of degree dividing m arise by adjoining mth roots.
 
-**How the definition helps.** The connecting map identifies the quotient by mth powers with H¹(K, μₘ) because Hilbert 90 gives H¹(K, Kₛ×) = 0. When K contains μₘ, the Galois action on it is trivial. Continuous characters into μₘ then describe cyclic extensions through their kernels (our own).
+**How the definition helps.** The long exact sequence in Galois cohomology gives K×/(K×)ᵐ ≅ H¹(K, μₘ), because Hilbert 90 says H¹(K, Kₛ×) = 0. If μₘ ⊂ K, the action on μₘ is trivial, so classes are continuous characters into μₘ, and their kernels give the cyclic extensions (our own).
 
 **Wikipedia:** [Kummer theory](https://en.wikipedia.org/wiki/Kummer_theory). It says: “By Hilbert's Theorem 90 H¹(L, K̄×) = 0, and hence we get an isomorphism δ: L×/(L×)ᵐ → H¹(L, K̄×\[m\]).”
 
@@ -1562,15 +1562,15 @@
 
 ### Group cohomology states Hilbert's Theorem 90 for every Galois group
 
-**Remember:** First cohomology identifies cocycles that differ by a coboundary.
+**Remember:** Cocycles modulo the trivial ones σ(b)/b.
 
 *Makes the theorem clean to state or prove.* MSC 12G05 (Galois cohomology), 20J06. arXiv math.NT. Level 3: graduate.
 
-**Definition.** Let G act on a field L by automorphisms. A cocycle f from G to L× satisfies f(στ) = f(σ)σ(f(τ)) for every σ, τ ∈ G. The group H¹(G,L×) consists of cocycles modulo maps σ ↦ σ(b)/b for b ∈ L×.
+**Definition.** For a group G acting on a field L, H¹(G, L×) is the group of cocycles f: G → L×, with f(στ) = f(σ)σ(f(τ)), modulo the cocycles σ ↦ σ(b)/b for b ∈ L×.
 
 **Problem.** For a finite Galois extension L/K with group G, H¹(G,L×) is trivial. If σ generates G, every element of norm 1 equals σ(b)/b for some b ∈ L×.
 
-**How the definition helps.** The cohomology definition turns the special statement about norm-one elements into one vanishing statement that makes sense for any Galois group. For a cyclic group, a cocycle is fixed by its value at a generator, which is an element of norm 1. Noether gave the general form in 1933. The proof is short: average a cocycle against independent characters to find b (our own).
+**How the definition helps.** For cyclic G with generator σ, a cocycle is fixed by its value f(σ), which has norm 1, so vanishing of H¹ is the classical statement. For every finite Galois group the proof is short: average a cocycle against independent characters to find b (our own).
 
 **Wikipedia:** [Hilbert's Theorem 90](https://en.wikipedia.org/wiki/Hilbert%27s_Theorem_90). It says: “the first cohomology group of G, with coefficients in the multiplicative group of L, is trivial”
 
@@ -1585,11 +1585,11 @@
 
 *True by definition.* MSC 12G10 (Cohomological dimension of fields), 16K20, 12G05. arXiv math.NT, math.RA. Level 3: graduate.
 
-**Definition.** A profinite group G has cohomological dimension at most n if Hᵏ(G,M) vanishes for every k &gt; n and every discrete torsion G-module M. Its dimension is the least such nonnegative integer, or infinity if none exists. A field has the cohomological dimension of its absolute Galois group.
+**Definition.** A profinite group G has cohomological dimension at most n if Hᵏ(G, M) = 0 for every k &gt; n and every discrete torsion G-module M. A field has the cohomological dimension of its absolute Galois group.
 
 **Problem.** The Brauer group of a finite field is 0. Hence every finite division ring is commutative, which is Wedderburn's little theorem.
 
-**How the definition helps.** The units of an algebraic closure of a finite field form a torsion module, so dimension one kills their H², which is the Brauer group. Every nonzero element of the closure lies in a finite field, so it has finite order (our own). A finite division ring is a central division algebra over its centre, a finite field, so it equals its centre (our own). Witt's elementary proof counts with the class equation instead, and here the work went into showing that Ẑ has dimension one (our own).
+**How the definition helps.** Each unit of an algebraic closure of a finite field has finite order, so dimension one kills their H², the Brauer group (our own). A finite division ring is a central division algebra over its centre, a finite field, so it equals its centre (our own). The work is showing that Ẑ has dimension one (our own).
 
 **Wikipedia:** [Cohomological dimension](https://en.wikipedia.org/wiki/Cohomological_dimension), [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “Every finite field has absolute Galois group isomorphic to Ẑ and so has cohomological dimension 1.”
 
@@ -1600,7 +1600,7 @@
 
 ### Differential closedness gives separability without perfection
 
-**Remember:** An extension must carry the derivative before it can supply a root.
+**Remember:** Any system solvable in some differential extension is already solvable in K.
 
 *True by definition.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 3: graduate.
 
@@ -1608,7 +1608,7 @@
 
 **Problem.** Every differentially closed field is separably closed: each nonconstant separable polynomial has a root in it. In characteristic p it is not perfect, so it is not algebraically closed.
 
-**How the definition helps.** Testing differential extensions gives roots of separable polynomials because the derivative extends to every separable algebraic extension. In our own argument, adjoin a variable with derivative one. Differential closedness then gives an element a of the field with derivative one. In characteristic p, every pth power has derivative zero, so a has no pth root.
+**How the definition helps.** The derivation extends to every separable algebraic extension, so each separable polynomial has a root in some differential extension, hence in K. In characteristic p, a variable with derivative one gives a solvable system, so K has an element a with a′ = 1 (our own). Every pth power has derivative zero, so a is not a pth power (our own).
 
 **Wikipedia:** [Differentially closed field](https://en.wikipedia.org/wiki/Differentially_closed_field). It says: “Taking g=1 and f any ordinary separable polynomial shows that any differentially closed field is separably closed.”
 
@@ -1620,11 +1620,11 @@
 
 *Rules out counterexamples.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 3: graduate.
 
-**Definition.** Let A be an n × n matrix over a differential field K. A Picard–Vessiot field is a differential extension generated over K as a field by the entries of an invertible matrix F satisfying F′ = AF. Its constants, the elements with derivative zero, must be exactly those of K.
+**Definition.** For an n × n matrix A over a differential field K, a Picard–Vessiot field is generated over K by the entries of an invertible matrix F with F′ = AF. It adds no new constants: its elements of derivative zero are exactly those of K.
 
 **Problem.** In a Picard–Vessiot field for an n-dimensional system, the solution space has dimension n over the original constants.
 
-**How the definition helps.** The constant-field condition forces every solution to be a combination of the columns of F with coefficients in the original constants. In our own calculation, multiplying a solution by the inverse of F gives a vector with derivative zero. For our own counterexample, take ℂ(x) with ordinary differentiation and adjoin a transcendental constant c. For y′ = 0, the invertible solution matrix (c) generates this extension, yet 1 and c are independent solutions over ℂ.
+**How the definition helps.** For any solution y, F⁻¹y has derivative zero, so its entries are constants of K and y is a constant combination of the columns of F (our own). Without the condition this fails: adjoin a transcendental constant c to ℂ(x); for y′ = 0 the matrix (c) generates it, but 1 and c are independent solutions over ℂ (our own).
 
 **Paper or page:** [Differential Central Simple Algebras](https://arxiv.org/abs/2303.12430). It says: “The field of constants C<sub>K</sub>=C<sub>k</sub>.”
 
@@ -1636,11 +1636,11 @@
 
 *True by definition.* MSC 12J10 (Valued fields), 13J15. arXiv math.NT, math.AC. Level 3: graduate.
 
-**Definition.** Call a valued field K henselian if its valuation extends uniquely, up to equivalence, to an algebraic closure. The usual definition asks that simple roots modulo the maximal ideal of the valuation ring lift to roots.
+**Definition.** A valued field K is henselian if its valuation extends uniquely, up to equivalence, to an algebraic closure. So composing the extended valuation with any K-automorphism gives an equivalent valuation.
 
 **Problem.** Let K be a henselian field with a real-valued valuation v, extended to an algebraic closure. Conjugate elements, which are roots of the same irreducible polynomial over K, have equal values.
 
-**How the definition helps.** Composing the extended valuation v with a K-automorphism σ gives an equivalent extension (our own). The induced ordered value-group isomorphism fixes the base value group. Every algebraic element’s value has a positive integer multiple in the base value group, so this isomorphism fixes every value (our own). The embedding extension theorem gives a σ carrying either conjugate to the other.
+**How the definition helps.** The embedding extension theorem gives σ carrying one conjugate to the other, and v∘σ is equivalent to v (our own). The equivalence fixes the base values, and each algebraic value has a positive multiple among them, so v∘σ = v (our own).
 
 **Wikipedia:** [Henselian ring](https://en.wikipedia.org/wiki/Henselian_ring). It says: “if and only if v extends uniquely to every finite extension of K”
 
@@ -1652,11 +1652,11 @@
 
 *Rules out counterexamples.* MSC 12J10 (Valued fields), 11S85. arXiv math.NT. Level 3: graduate.
 
-**Definition.** A local field is a nondiscrete, locally compact Hausdorff topological field. Addition, multiplication, negation, and inversion on nonzero elements must be continuous on their respective domains.
+**Definition.** A local field is a field with a locally compact Hausdorff topology that is not discrete, in which the field operations, including inversion on nonzero elements, are continuous.
 
 **Problem.** Every local field is topologically isomorphic to ℝ, ℂ, a finite extension of some ℚₚ, or a Laurent series field over a finite field.
 
-**How the definition helps.** The non-discrete condition rules out the trivial case and leaves only fields whose topology comes from an absolute value. Any field with the discrete topology is locally compact, so without the condition every field would count (our own). The page builds that absolute value from Haar measure, the translation-invariant measure on the field. Sorting the resulting complete fields into the four types is the remaining work (our own).
+**How the definition helps.** Without non-discreteness every field counts, since the discrete topology is locally compact (our own). With it, Haar measure, the translation-invariant measure, gives an absolute value that defines the topology. Sorting the resulting complete fields into the four types is the remaining work (our own).
 
 **Wikipedia:** [Local field](https://en.wikipedia.org/wiki/Local_field). It says: “In mathematics, a local field is a locally compact Hausdorff non-discrete topological field.”
 
@@ -1666,15 +1666,15 @@
 
 ### Residue fields classify unramified extensions
 
-**Remember:** A simple residue factor lifts without splitting ambiguities.
+**Remember:** Coprime factors modulo the maximal ideal lift to the ring.
 
 *Rules out counterexamples.* MSC 12J10 (Valued fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A discrete valuation ring is henselian if coprime monic factors of a monic polynomial modulo the maximal ideal lift to factors over the ring. A finite extension of its fraction field is unramified if its degree equals its residue degree and its residue extension is separable.
+**Definition.** A discrete valuation ring is henselian when every factorization of a monic polynomial into coprime monic factors modulo the maximal ideal lifts to the ring. A finite extension of its fraction field is unramified when its degree equals its residue degree and its residue extension is separable.
 
 **Problem.** Let K be the fraction field of a henselian discrete valuation ring with residue field k. Taking residues matches finite unramified extensions of K with finite separable extensions of k up to isomorphism. It also matches their embeddings.
 
-**How the definition helps.** The henselian lifting property recovers separable residue extensions and their embeddings from lifted polynomial factors. The cited theorem proves this for finite étale algebras, and the connected ones give the unramified fields. In our own counterexample, adjoin √6 to the integers localized at 5, which is not henselian. The result is a domain, but its reduction splits because X² − 6 has two distinct roots modulo 5.
+**How the definition helps.** A separable residue extension comes from a separable polynomial, and henselian lifting gives a matching root and field upstairs; the cited theorem does this for finite étale algebras. Without lifting this fails: over the integers localized at 5, X² − 6 stays irreducible but splits modulo 5, since 6 ≡ 1 (our own).
 
 **Paper or page:** [Lemma 10.153.7.](https://stacks.math.columbia.edu/tag/04GK). It says: “The category of finite étale ring extensions R → S is equivalent to the category of finite étale algebras κ → S̄ via the functor S ↦ S/𝔪S.”
 
@@ -1686,11 +1686,11 @@
 
 *Rules out counterexamples.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** For a field k and an ordered abelian group G, a Hahn series assigns coefficients in k to exponents in G. The nonzero coefficients must have well-ordered support, so every nonempty subset of their exponents has a least element. The Hahn field uses coefficientwise addition and convolution multiplication.
+**Definition.** A Hahn series over k with exponents in an ordered abelian group G is a formal sum of terms c·tᵍ whose exponents with nonzero coefficient form a well-ordered set. If G is divisible, each exponent g has an nth part h with nh = g, for every n ≥ 1.
 
 **Problem.** Suppose the ordered coefficient field is real closed, meaning it has no proper ordered algebraic extension. Its Hahn field is also real closed if the exponent group is divisible.
 
-**How the definition helps.** Divisibility provides, for each exponent g and positive integer n, an exponent h satisfying nh = g. Without it, t has no square root in ℝ((t)) because every square has even leading exponent (our own). The leading coefficient orders the Hahn field, and adjoining √−1 extends its real closed coefficients to algebraically closed coefficients. The Hahn algebraic closure theorem then gives an algebraically closed field, proving real closedness (our own).
+**How the definition helps.** Divisibility supplies the exponent g/n that an nth root of a series with leading exponent g needs. Without it, t has no square root in ℝ((t)), since every square has even leading exponent (our own). Adjoining √−1 makes the coefficients algebraically closed, and the Hahn algebraic closure theorem then shows the Hahn field is real closed (our own).
 
 **nLab:** [Hahn series](https://ncatlab.org/nlab/show/Hahn+series). It says: “As a corollary, if G is divisible, k\[tᴳ\] is real closed if k is real closed.”
 
@@ -1702,11 +1702,11 @@
 
 *True by definition.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A real closed ordered field has square roots of all positive elements and roots of all odd-degree polynomials. One can also define it as an ordered field with no proper ordered algebraic extension.
+**Definition.** A real closed field is an ordered field in which every positive element has a square root and every odd-degree polynomial has a root. So its positive elements are exactly its nonzero squares, and the field alone fixes the order.
 
 **Problem.** Every field embedding between real closed fields preserves their unique orders.
 
-**How the definition helps.** The square-root axiom identifies positive elements with nonzero squares. Every field embedding preserves nonzero squares, so it preserves the order. In our own argument, the Artin–Schreier theorem supplies the root axioms when one starts with the definition using ordered algebraic extensions.
+**How the definition helps.** Every field embedding sends nonzero squares to nonzero squares, so it preserves positivity and the order. Starting from the definition with no proper ordered algebraic extension, the Artin–Schreier theorem supplies the root properties (our own).
 
 **nLab:** [real closed field](https://ncatlab.org/nlab/show/real+closed+field). It says: “In fact, the category of real closed fields and order-preserving field homomorphisms is a full subcategory of the category Field of fields and field homomorphisms.”
 
@@ -1714,15 +1714,15 @@
 
 ### Fixed orders make real closures unique
 
-**Remember:** Keep the signs before you adjoin square roots.
+**Remember:** Fix the signs first, then adjoin square roots of the positives.
 
 *Rules out counterexamples.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A real closure of an ordered field is an algebraic extension with an order extending the given one. In that extension, every positive element has a square root and every polynomial of odd degree has a root.
+**Definition.** A real closure of an ordered field K is an algebraic extension of K that is real closed, with an order that extends the order of K. Real closed means every positive element is a square and every odd-degree polynomial has a root.
 
 **Problem.** An ordered field has a real closure unique up to a unique order-preserving isomorphism over that field.
 
-**How the definition helps.** Fixing the order rules out extensions that give square roots to elements declared negative. In our own example, the rational function field ℚ(t) admits orders with t positive and orders with t negative. Only the first real closures contain a square root of t, so no isomorphism fixing ℚ(t) can identify the two. The Artin–Schreier theorem proves existence and uniqueness once the order is fixed.
+**How the definition helps.** Fixing the order of K decides which elements of K get square roots, so two real closures cannot disagree on signs. In our own example, ℚ(t) has orders with t &gt; 0 and with t &lt; 0, and only real closures for the first contain √t. The Artin–Schreier theorem gives existence and uniqueness once the order is fixed.
 
 **Paper or page:** [An Artin-Schreier-type theory for signatures of hermitian forms over involutions](https://arxiv.org/abs/2304.03598). It says: “unique up to a unique K-isomorphism.”
 
@@ -1730,15 +1730,15 @@
 
 ### Root axioms make value groups divisible
 
-**Remember:** Roots of positive representatives divide their values.
+**Remember:** Take an nth root, and its value is one nth.
 
 *True by definition.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** In an ordered field, two nonzero elements have the same natural value when their absolute ratio lies between two positive rational bounds. These classes form the natural value group, with field multiplication written as group addition. In a real closed ordered field, positive elements have square roots and odd-degree polynomials have roots.
+**Definition.** Two nonzero elements of an ordered field have the same natural value when their ratio, in absolute value, lies between two positive rationals. These values form a group, written additively, in which the value of xⁿ is n times the value of x. In a real closed field, every positive element has a positive nth root for each n ≥ 1.
 
 **Problem.** The natural value group of a real closed field is divisible. For every value v and positive integer n, some value w satisfies nw = v.
 
-**How the definition helps.** Every value has a positive representative, and a positive nth root divides its value by n. The odd-degree root axiom handles the odd part of n, and repeated square roots handle the powers of two. In our own terms, the Artin–Schreier theorem supplies these root axioms if real closed means maximal among ordered algebraic extensions.
+**How the definition helps.** Take a positive x of value v; its positive nth root has a value w with nw = v. In our own terms, the root exists because odd-degree roots handle the odd part of n and repeated square roots handle the powers of two.
 
 **nLab:** [real closed field](https://ncatlab.org/nlab/show/real+closed+field). It says: “If R is real closed, then the value group is a linearly ordered divisible group (divisible because we can take nth roots of positive elements in R).”
 
@@ -1746,15 +1746,15 @@
 
 ### Discrete henselization changes no values or residues
 
-**Remember:** Take the separable algebraic part without changing the values or residues.
+**Remember:** Squeezed between K and its completion, nothing new appears.
 
 *True by definition.* MSC 12J20 (General valuation theory for fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** For a discretely valued field K, its henselization can be realized as the subfield of its completion consisting of elements separably algebraic over K.
+**Definition.** For a discretely valued field K, the henselization can be taken as the elements of the completion of K that are separably algebraic over K. So it lies between K and its completion, which has the same value group and residue field as K.
 
 **Problem.** The henselization of a discretely valued field has its original value group and residue field.
 
-**How the definition helps.** Density of K in its completion gives approximations to each element of the henselization (our own). For a nonzero element, choose an approximation whose error has higher value than the element, so their values agree. For an integral element, an error of positive value gives the same residue. The henselization theorem identifies this subfield with the smallest henselian extension inside a chosen valued algebraic closure.
+**How the definition helps.** A field between K and its completion keeps the value group and residue field of K, because K is dense (our own). Each element has an approximation in K close enough to share its value and, if integral, its residue. The henselization theorem identifies this subfield with the smallest henselian extension inside a valued algebraic closure.
 
 **nLab:** [Henselian ring](https://ncatlab.org/nlab/show/Henselian+ring). It says: “Then the Henselization of R is isomorphic to the subring of R̂ whose elements are roots of separable polynomials with coefficients in K.”
 
@@ -1762,15 +1762,15 @@
 
 ### Pure inseparability gives one valuation ring
 
-**Remember:** Test an element by raising it back to the base field.
+**Remember:** Test an element by raising it to a power in K.
 
 *True by definition.* MSC 12J20 (General valuation theory for fields), 12F15. arXiv math.AC. Level 3: graduate.
 
-**Definition.** A valuation ring A of K is a subring containing x or x⁻¹ for each nonzero x ∈ K. In characteristic p &gt; 0, L/K is purely inseparable if every x ∈ L satisfies x<sup>(pⁿ)</sup> ∈ K for some integer n ≥ 0.
+**Definition.** In characteristic p &gt; 0, L is purely inseparable over K when each x in L has a power x<sup>(pⁿ)</sup> in K. A valuation ring of K is a subring A that contains x or x⁻¹ for each nonzero x in K.
 
 **Problem.** If L is purely inseparable over K, exactly one valuation ring of L meets K in A. It is the integral closure of A in L.
 
-**How the definition helps.** Take B to consist of x ∈ L having some pⁿth power in A (our own). Common p-powers give ring closure, and the valuation test in K puts each nonzero x or x⁻¹ in B. Since A is integrally closed and every member of B satisfies a monic power equation over A, B meets K in A. Every extending valuation ring is integrally closed and contains x exactly when it contains such a power, proving uniqueness and identifying the integral closure.
+**How the definition helps.** A valuation ring of L contains x exactly when it contains x<sup>(pⁿ)</sup>, so one meeting K in A must be the set B of x with some x<sup>(pⁿ)</sup> in A (our own). This B is a ring because common p-powers add and multiply, and it contains x or x⁻¹ by the test in K (our own). Each member of B satisfies X<sup>(pⁿ)</sup> − x<sup>(pⁿ)</sup> = 0 over A, and valuation rings are integrally closed, so B is the integral closure of A (our own).
 
 **Paper or page:** [Lemma 15.124.3.](https://stacks.math.columbia.edu/tag/0H37). It says: “Then the integral closure B of A in L is a valuation ring with fraction field L and A ⊂ B is an extension of valuation rings.”
 
@@ -1778,15 +1778,15 @@
 
 ### Valuation rings restrict by intersection
 
-**Remember:** Restrict the field and keep the elements of size at most one.
+**Remember:** Restricting a valuation keeps the elements of size at most one.
 
 *True by definition.* MSC 12J20 (General valuation theory for fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A valuation ring in a field is a subring containing x or its inverse for each nonzero field element x. Its elements have size at most one for the corresponding valuation. Alternatively, a valuation assigns values in an ordered group.
+**Definition.** A valuation ring of a field is a subring that contains x or x⁻¹ for each nonzero x, namely the elements of size at most one for a valuation. Equivalence classes of valuations correspond to these rings.
 
 **Problem.** Restricting a valuation from a field L to a subfield K corresponds to intersecting its valuation ring with K. So restrictions compose in towers.
 
-**How the definition helps.** The ring definition turns restriction to a subfield K into intersection with K. In our own proof, the intersection still contains x or its inverse for every nonzero x in K. Taking two successive intersections gives the same ring as restricting directly. The correspondence with ordered-group valuations requires recovering the group of values by dividing the multiplicative group by the units of the ring.
+**How the definition helps.** Intersecting with K keeps the defining property, since each nonzero x in K still has x or x⁻¹ in the ring (our own). The intersection holds exactly the elements of K of size at most one, so it is the ring of the restricted valuation. Intersecting in two steps gives the same ring as intersecting at once (our own).
 
 **nLab:** [valuation ring](https://ncatlab.org/nlab/show/valuation+ring). It says: “There is a natural bijective correspondence between equivalence classes of valuations on K and valuation rings in K.”
 
@@ -1794,15 +1794,15 @@
 
 ### Haar scaling makes a local field’s module multiplicative
 
-**Remember:** Multiplying twice multiplies the volume scaling factors.
+**Remember:** The module says how much multiplying by a stretches volume.
 
 *True by definition.* MSC 12J25 (Non-Archimedean valued fields), 28C10. arXiv math.NT. Level 3: graduate.
 
-**Definition.** Fix additive Haar measure μ on a nondiscrete locally compact Hausdorff field F. For each nonzero a in F, its module \|a\| satisfies μ(aS) = \|a\|μ(S) for every Borel set S. Set \|0\| = 0.
+**Definition.** Let F be a nondiscrete locally compact Hausdorff field with additive Haar measure μ. The module \|a\| of a nonzero a is the factor by which multiplying by a scales measure: μ(aS) = \|a\|μ(S) for Borel sets S. Set \|0\| = 0.
 
 **Problem.** The module is multiplicative. On ℚₚ, the field of p-adic numbers, \|p\| = 1/p for the prime p.
 
-**How the definition helps.** For fixed nonzero a, S ↦ μ(aS) is another Haar measure, so Haar uniqueness gives the scaling factor (our own). Scaling first by b and then by a gives \|ab\| = \|a\|\|b\| for nonzero factors (our own). The zero case follows from \|0\| = 0 (our own). The p equal-measure cosets of pℤₚ partition ℤₚ, which has positive finite measure, giving \|p\| = 1/p (our own).
+**How the definition helps.** Multiplying by b and then by a scales measure by \|b\| and then \|a\|, so \|ab\| = \|a\|\|b\|, and \|0\| = 0 covers zero factors (our own). The factor exists because S ↦ μ(aS) is again a Haar measure, unique up to scaling (our own). On ℚₚ, ℤₚ is a union of p disjoint translates of pℤₚ, so \|p\| = 1/p (our own).
 
 **Wikipedia:** [Local field](https://en.wikipedia.org/wiki/Local_field). It says: “The module of an element a of F is defined so as to measure the change in size of a set after multiplying it by a.”
 
@@ -1812,15 +1812,15 @@
 
 ### Hahn series admit a missing root
 
-**Remember:** Well-ordered exponents need not have bounded denominators.
+**Remember:** Well-ordered exponents may have denominators that grow without bound.
 
 *Makes the theorem clean to state or prove.* MSC 12J25 (Non-Archimedean valued fields). arXiv math.AC. Level 3: graduate.
 
-**Definition.** A Hahn series has exponents in an ordered abelian group. Each nonempty subset of the exponents with nonzero coefficients must have a least element. A Puiseux series is a Laurent series in a single fractional power of t, so its exponents share a denominator.
+**Definition.** A Hahn series is a formal sum of powers t<sup>q</sup>, with q in an ordered group, whose exponents with nonzero coefficients form a well-ordered set: every nonempty subset has a least element. A Puiseux series is a Laurent series in t<sup>(1/n)</sup> for one n, so its exponents have bounded denominators.
 
 **Problem.** Over a field of characteristic p, the Hahn field with rational exponents has a root of Xᵖ − X = t⁻¹. The Puiseux field does not.
 
-**How the definition helps.** The exponents −1/p, −1/p², … form a well-ordered set with no common denominator. Give each exponent coefficient one to form a Hahn series x. Raising x to the pth power shifts its terms, leaving xᵖ − x = t⁻¹ (our own). Every other root differs by a root of zᵖ = z in the prime field, so its negative exponents persist (our own).
+**How the definition helps.** The series x = t<sup>(−1/p)</sup> + t<sup>(−1/p²)</sup> + … is a Hahn series because its exponents increase, and pth powers shift each term to the previous one, so xᵖ − x = t⁻¹ (our own). Its denominators are unbounded, so x is not a Puiseux series. Every other root is x plus an element of the prime field, so it keeps these exponents (our own).
 
 **Wikipedia:** [Hahn series](https://en.wikipedia.org/wiki/Hahn_series). It says: “it is not a Puiseux series because the denominators in the exponents are unbounded.”
 
@@ -1828,15 +1828,15 @@
 
 ### p-adic numbers make Hasse–Minkowski a test one prime at a time
 
-**Remember:** Complete the rationals using the power of p in each difference.
+**Remember:** Close in ℚₚ means the difference has many factors of p.
 
 *Makes the theorem clean to state or prove.* MSC 12J25 (Non-Archimedean valued fields), 11E12, 11E08. arXiv math.NT. Level 3: graduate.
 
-**Definition.** For a prime p, write each nonzero rational as pᵏa/b with integers a and b prime to p. Set \|pᵏa/b\|ₚ = p⁻ᵏ and \|0\|ₚ = 0. The field ℚₚ is the completion of ℚ for the distance \|x − y\|ₚ.
+**Definition.** ℚₚ is the completion of ℚ for the p-adic distance, in which two rationals are close when their difference is divisible by a high power of p. Precisely, \|pᵏa/b\|ₚ = p⁻ᵏ for integers a and b prime to p, and \|0\|ₚ = 0.
 
 **Problem.** A rational quadratic form has a nonzero rational zero exactly when it has a nonzero zero over ℝ and every ℚₚ. Two rational quadratic forms are equivalent exactly when they are equivalent over each of these fields.
 
-**How the definition helps.** Each ℚₚ collects approximation at every power of one prime into a single field (our own). Hasse–Minkowski gives the two local tests using these fields and ℝ.
+**How the definition helps.** Each ℚₚ records solvability modulo every power of p in one field, so solvability over ℚₚ becomes a single test (our own). The Hasse–Minkowski theorem says that these tests, with the test over ℝ, decide solvability and equivalence over ℚ.
 
 **Wikipedia:** [Hasse–Minkowski theorem](https://en.wikipedia.org/wiki/Hasse%E2%80%93Minkowski_theorem). It says: “in order to determine whether an equation of a certain type has a solution in rational numbers, it is sufficient to test whether it has solutions over complete fields of real and p-adic numbers”
 
@@ -1846,15 +1846,15 @@
 
 ### Residue sequences make p-adic units exactly those nonzero modulo p
 
-**Remember:** Invert each residue, and uniqueness makes the inverses fit together.
+**Remember:** A residue prime to p is invertible at every level.
 
 *True by definition. Confidence: medium.* MSC 12J25 (Non-Archimedean valued fields), 11S99. arXiv math.NT. Level 3: graduate.
 
-**Definition.** For a prime p, a p-adic integer is a sequence with xₙ ∈ ℤ/pⁿℤ for every n ≥ 1. Each xₙ₊₁ reduces to xₙ modulo pⁿ. Multiply sequences coordinate by coordinate.
+**Definition.** A p-adic integer is a sequence of residues xₙ modulo pⁿ, for n ≥ 1, in which each xₙ₊₁ reduces to xₙ. Sequences multiply coordinate by coordinate. Every xₙ reduces to x₁ modulo p, so all xₙ are prime to p exactly when x₁ ≠ 0.
 
 **Problem.** A p-adic integer is a unit, meaning it has a multiplicative inverse, exactly when its first residue x₁ is not zero.
 
-**How the definition helps.** A nonzero first residue makes every coordinate coprime to p and hence invertible modulo pⁿ (our own). Uniqueness makes these inverses compatible under reduction, so they form an inverse sequence (our own). Conversely, reducing an inverse sequence modulo p gives an inverse for x₁ (our own).
+**How the definition helps.** If x₁ ≠ 0, each xₙ is prime to p and so invertible modulo pⁿ (our own). Inverses modulo pⁿ are unique, so they agree under reduction and form an inverse sequence (our own). Conversely, the first coordinate of an inverse inverts x₁ (our own).
 
 **Paper or page:** [An Infinitely Large Napkin: Calculus: P Adic](https://venhance.github.io/napkin/Napkin.pdf). It says: “The number x ∈ ℤₚ is invertible if and only if x₁ ≠ 0. In symbols, x ∈ ℤₚˣ ⟺ x ≢ 0 (mod p).”
 
@@ -1862,15 +1862,15 @@
 
 ### Spherical completeness excludes immediate extensions
 
-**Remember:** A new element in an immediate extension produces nested balls with no common point.
+**Remember:** Nested balls always meet, so no new point can hide.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 12J25 (Non-Archimedean valued fields). arXiv math.NT. Level 3: graduate.
 
-**Definition.** A valued field is spherically complete if every family of closed balls totally ordered by inclusion has a common point. An extension is immediate if inclusion induces isomorphisms on the value groups and residue fields.
+**Definition.** A valued field is spherically complete if every chain of closed balls, nested by inclusion, has a common point. An extension is immediate if it adds no new values and no new residues, so the value groups and residue fields stay the same.
 
 **Problem.** A spherically complete valued field has no proper immediate extension.
 
-**How the definition helps.** A new element x in an immediate extension would give nested balls with empty intersection (our own). For each old element a take the old ball v(y − a) ≥ v(x − a), using v(0) = ∞ (our own). The valuation inequality nests these balls, since their extensions all contain x (our own). Matching the value and leading residue of x − a gives a closer old b whose ball excludes a (our own).
+**How the definition helps.** A new element x of an immediate extension would give a nested chain of old balls with no old common point (our own). For each old a, take the old closed ball around a of radius v(x − a); these balls are nested, since their extensions all contain x (our own). Because x − a has an old value and leading residue, some old b is closer to x, and its ball excludes a (our own).
 
 **Wikipedia:** [Spherically complete field](https://en.wikipedia.org/wiki/Spherically_complete_field). It says: “every collection of balls that is totally ordered by inclusion has a nonempty intersection.”
 
@@ -1880,15 +1880,15 @@
 
 ### The fundamental theorem of algebra, stated for the multiset of roots
 
-**Remember:** Match roots in the best order, then complete the space of unordered tuples.
+**Remember:** Unordered roots converge without anyone choosing an order.
 
 *Makes the theorem clean to state or prove.* MSC 12D10 (Polynomials in real and complex fields: location of zeros (algebraic theorems)), 03F60. arXiv math.AC, math.LO. Level 4: research.
 
-**Definition.** For two n-tuples of complex numbers, match their entries by a permutation and take the largest distance between matched entries. Minimize over permutations to obtain the distance between unordered tuples. A root multiset in Richman’s sense is a point of the metric completion of these unordered tuples.
+**Definition.** A root multiset in Richman's sense is a point of the completion of the space of unordered n-tuples of complex numbers. The distance between two unordered tuples is the smallest, over all ways to match their entries, of the largest distance between matched entries.
 
 **Problem.** Constructively, without choice, every monic complex polynomial of degree n has a root multiset of size n in this completed space.
 
-**How the definition helps.** The completion lets approximations specify the entire root multiset without choosing a consistent ordering (our own). Richman’s constructive fundamental theorem of algebra supplies this point for each monic polynomial.
+**How the definition helps.** Approximate roots can then converge as an unordered whole, without a choice of which approximate root follows which (our own). Richman's constructive fundamental theorem of algebra gives this limit point for each monic polynomial.
 
 **nLab:** [fundamental theorem of algebra](https://ncatlab.org/nlab/show/fundamental+theorem+of+algebra), [Weierstrass factorization theorem](https://ncatlab.org/nlab/show/Weierstrass+factorization+theorem). It says: “In light of this, one can instead interpret the constructive FTA as a statement about sets of roots rather than about individual roots, an interpretation that dates from Richman 2000.”
 
@@ -1902,11 +1902,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 12F15 (Inseparable field extensions), 12H05. arXiv math.NT, math.RA. Level 4: research.
 
-**Definition.** Let L/K be a field extension of characteristic p with xᵖ in K for every x in L. A K-derivation is a K-linear map D from L to L satisfying D(xy) = xD(y) + yD(x) for all x,y. The relevant L-subspaces of derivations are closed under commutators and p-fold iteration.
+**Definition.** Let L/K have characteristic p and exponent 1, meaning xᵖ ∈ K for every x in L. A K-derivation is a K-linear map D: L → L with D(xy) = xD(y) + yD(x), so it vanishes on K. The sets that count are L-subspaces of derivations closed under commutators and pth powers Dᵖ, called restricted Lie subalgebras.
 
 **Problem.** Let L over K be finite and purely inseparable of exponent 1. Its intermediate fields match the restricted Lie subalgebras of the K-derivations of L that are also L-subspaces.
 
-**How the definition helps.** Derivations specify an intermediate field by their common zeros (our own). Conversely, take all K-derivations vanishing on the intermediate field (our own). Jacobson’s correspondence proves these operations are inverse under the stated hypotheses.
+**How the definition helps.** A set of derivations gives the field of elements they all kill, and an intermediate field gives the derivations that kill it (our own). Jacobson's correspondence proves that these two operations are inverse under the stated hypotheses.
 
 **Wikipedia:** [Purely inseparable extension](https://en.wikipedia.org/wiki/Purely_inseparable_extension). It says: “introduced a variation of Galois theory for purely inseparable extensions of exponent 1, where the Galois groups of field automorphisms in Galois theory are replaced by restricted Lie algebras of derivations.”
 
@@ -1920,11 +1920,11 @@
 
 *True by definition.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 4: research.
 
-**Definition.** A Picard–Vessiot field adjoins a basis of solutions of one homogeneous linear differential equation without adding constants, meaning elements with derivative zero. A Picard–Vessiot closure does this for all such equations over the starting field. The complete closure repeats this step indefinitely and takes the union.
+**Definition.** A Picard–Vessiot closure of a differential field adjoins a full basis of solutions of every homogeneous linear differential equation over it, without new constants, meaning elements with derivative zero. The complete closure repeats this step countably often and takes the union, so any finite list of coefficients lies in some stage.
 
 **Problem.** Suppose the starting differential field has characteristic zero and its constants form an algebraically closed field. The union has the same constants. Each homogeneous linear differential equation of positive order n over the union has n solutions linearly independent over those constants.
 
-**How the definition helps.** The iteration allows the next stage to solve equations using the previous stage’s solutions as coefficients. In our own terms, a linear equation has finitely many coefficients, so a single finite stage contains all of them. A constant in the union already lies at some finite stage and so belongs to the original field. The existence theorem for a Picard–Vessiot closure with unchanged constants supplies each stage.
+**How the definition helps.** An equation over the union has finitely many coefficients, all in some stage, and the next stage solves it (our own). A constant of the union lies in some stage, so it is an original constant. The existence theorem for Picard–Vessiot closures with unchanged constants supplies each stage, using characteristic zero and algebraically closed constants.
 
 **Paper or page:** [The Complete Picard Vessiot Closure](https://arxiv.org/abs/2203.00705). It says: “The constants of F∞ are those of F.”
 
@@ -1940,7 +1940,7 @@
 
 **Problem.** For a finite tame extension of henselian discretely valued fields, the relative logarithmic differentials of the valuation rings vanish.
 
-**How the definition helps.** Tameness makes e invertible in the upper valuation ring (our own). After the unramified part, which contributes no relative logarithmic differentials, choose a generating uniformizer s with sᵉ in the lower field (our own). Then e dlog s = 0 kills the remaining generator (our own). In characteristic p, the wild extension t = sᵖ instead admits a relative logarithmic derivation taking dlog s to 1 (our own).
+**How the definition helps.** Since e is a unit, the relation e·dlog s = 0 kills the only new logarithmic differential (our own). After the unramified part, which adds none, a uniformizer s with sᵉ in the lower field generates the rest (our own). In characteristic p, the wild extension with t = sᵖ has a logarithmic derivation sending dlog s to 1 (our own).
 
 **Paper or page:** [Logarithmic differentials on discretely ringed adic spaces](https://arxiv.org/abs/2009.14128). It says: “For any tame extension L\|K of valued fields the logarithmic cotangent complex is trivial.”
 

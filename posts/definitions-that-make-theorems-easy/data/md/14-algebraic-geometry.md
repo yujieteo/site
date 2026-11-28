@@ -4,11 +4,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** A basic open set D(f) of an affine variety X consists of the points where f is nonzero. To adjoin an inverse to f, add a variable t and impose ft = 1.
+**Definition.** A basic open set D(f) of an affine variety X is the set of points where f is nonzero. Adjoining an inverse turns this into an equation (our own): add a variable t and impose ft = 1.
 
 **Problem.** The basic open set D(f) is isomorphic to the affine set of pairs (x,t) with x in X and f(x)t = 1.
 
-**How the definition helps.** The equation ft = 1 turns a nonvanishing condition into a polynomial equation (our own). Projection forgets t, and its inverse sends x to (x, 1/f(x)) (our own). This inverse is regular because its denominator is nonzero throughout D(f) (our own).
+**How the definition helps.** The equation ft = 1 holds for some t exactly where f is nonzero, and then t = 1/f(x) (our own). So projection (x, t) ↦ x and its inverse x ↦ (x, 1/f(x)) are regular, since f has no zero on D(f) (our own).
 
 **Paper or page:** [Alg Geom: Quasi Proj, Theorem 5.2. (Distinguished open subsets of affines are affine)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Define W = V(f₁, …, fₘ, y · f − 1) ⊆ 𝔸ⁿ⁺¹ where y is the (n+1)st coordinate of 𝔸ⁿ⁺¹. Then X ≅ W.”
 
@@ -20,11 +20,11 @@
 
 *True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** A projective point is a nonzero coordinate vector up to multiplication by a nonzero scalar. Its ith affine chart consists of points whose ith coordinate is nonzero. In this chart, divide every coordinate by the ith coordinate.
+**Definition.** A projective point is a nonzero coordinate vector up to a nonzero scalar. Its ith affine chart consists of the points with nonzero ith coordinate, which can then be scaled to 1.
 
 **Problem.** The n + 1 affine charts cover every variety in projective n-space. Setting the chosen coordinate to 1 gives ordinary polynomial equations for each piece.
 
-**How the definition helps.** Each point in a chart has a unique representative with the chosen coordinate equal to 1 (our own). Homogeneity makes the equations unaffected by rescaling as far as their zeros are concerned (our own). To combine the pieces, the work is to compare their coordinates by division wherever two charts overlap (our own).
+**How the definition helps.** Every point has some nonzero coordinate, so the n + 1 charts cover it, and in chart i it has a unique representative with xᵢ = 1 (our own). Homogeneous equations keep their zeros under rescaling, so setting xᵢ = 1 gives ordinary polynomial equations (our own).
 
 **Wikipedia:** [Projective variety](https://en.wikipedia.org/wiki/Projective_variety). It says: “Thus, X is an algebraic variety covered by (n+1) open affine charts X ∩ Uᵢ.”
 
@@ -36,11 +36,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** Let r be a rational function, a fraction of polynomial functions on an irreducible affine variety. Define its denominator ideal as the set of polynomial functions g for which gr is polynomial.
+**Definition.** Let r be a rational function on an irreducible affine variety. Its denominator ideal is the set of polynomial functions g with gr polynomial, so r is regular at a point exactly when some g in this ideal is nonzero there.
 
 **Problem.** Over an algebraically closed field, a rational function regular everywhere on an irreducible affine variety is a polynomial function. Regular means that at each point it has some denominator that is nonzero there.
 
-**How the definition helps.** The denominator ideal has no common zero because a valid denominator is available at every point (our own). The weak Nullstellensatz puts 1 in the ideal, so r itself is polynomial (our own). The work moves from joining local formulas to the existence of zeros of proper ideals (our own).
+**How the definition helps.** If r is regular everywhere, the denominator ideal has no common zero (our own). The weak Nullstellensatz then puts 1 in it, so r = 1·r is polynomial (our own).
 
 **Paper or page:** [Alg Geom: Zariski, Theorem 7.1. (Regular functions on distinguished open sets)](https://venhance.github.io/napkin/Napkin.pdf). It says: “In particular, 𝒪ᵥ(V) = 𝒪ᵥ(D(1)) ≅ ℂ\[V\].”
 
@@ -52,11 +52,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** A space is Noetherian if every descending chain of closed subsets eventually stops changing. A nonempty closed set is irreducible if it cannot split into two proper closed subsets.
+**Definition.** A space is Noetherian if every descending chain of closed subsets stops changing. A nonempty closed set is irreducible if it is not the union of two proper closed subsets.
 
 **Problem.** Every affine algebraic set is the union of finitely many irreducible components, the maximal irreducible closed subsets.
 
-**How the definition helps.** If a closed set were no finite union of irreducible sets, the descending chain condition would give a minimal such set (our own). It would split into two smaller closed sets, both finite unions of irreducible sets (our own). Discarding pieces contained in others leaves the maximal irreducible pieces (our own). Hilbert’s basis theorem gives the chain condition because smaller closed sets have larger vanishing ideals (our own).
+**How the definition helps.** A closed set that is no finite union of irreducible sets would, by the chain condition, contain a minimal such set, but that set splits into two smaller ones that are finite unions (our own). Affine algebraic sets satisfy the chain condition by Hilbert's basis theorem, since smaller closed sets have larger ideals (our own). Discarding pieces inside others leaves the components (our own).
 
 **nLab:** [noetherian topological space](https://ncatlab.org/nlab/show/noetherian+topological+space). It says: “Every noetherian topological space is a closed union of a finitely many irreducible topological spaces (its irreducible components).”
 
@@ -68,11 +68,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms), 13P10. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** The elimination ideal consists of the polynomials in I involving only the retained coordinates y. The Zariski closure of a set is the smallest common zero set containing it.
+**Definition.** The elimination ideal I ∩ k\[y\] consists of the polynomials in I that involve only the retained coordinates y.
 
-**Problem.** Over an algebraically closed field, the closure of the projection of V(I) onto y equals the zero set of I ∩ k\[y\]. Applying this to the graph of a polynomial parametrization gives equations for the closure of its image.
+**Problem.** Over an algebraically closed field, the Zariski closure of the projection of V(I) onto the y coordinates, the smallest zero set containing it, is the zero set of I ∩ k\[y\]. Applying this to the graph of a polynomial parametrization gives equations for the closure of its image.
 
-**How the definition helps.** An equation in y holds on the projection exactly when it holds on the original set (our own). The strong Nullstellensatz says that some power then belongs to I, and that power still uses only y (our own). The system xy = 1 projects onto the line minus zero, so the projection itself need not be closed (our own).
+**How the definition helps.** A polynomial in y vanishes on the projection exactly when it vanishes on V(I), and the strong Nullstellensatz then puts a power of it in I ∩ k\[y\] (our own). The projection itself need not be closed, since xy = 1 projects onto the line minus zero (our own).
 
 **Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “the (Zariski closure of) the projection of the algebraic set defined by the ideal I into the Y-subspace is defined by the ideal I ∩ K\[Y\].”
 
@@ -88,7 +88,7 @@
 
 **Problem.** The projective closure of an affine algebraic set is the projective zero set of the homogenization of its vanishing ideal.
 
-**How the definition helps.** Using every equation keeps exactly the homogeneous equations that vanish on the affine set in the chart z = 1 (our own). For example, y and xy − x generate the ideal of the origin (our own). Their homogenizations y and xy − xz both vanish at the extra point \[x:y:z\] = \[1:0:0\] (our own). The full ideal contains x, whose homogenization excludes that point (our own).
+**How the definition helps.** The homogenized ideal contains every homogeneous polynomial that vanishes on the affine set in the chart z = 1, so it cuts out exactly the closure (our own). Homogenizing generators alone can fail: y and xy − x generate the ideal of the origin, but y and xy − xz vanish at \[1:0:0\] (our own). The full ideal contains x, whose homogenization excludes that point (our own).
 
 **Wikipedia:** [Projective variety](https://en.wikipedia.org/wiki/Projective_variety). It says: “the defining ideal of this closure is the homogeneous ideal”
 
@@ -104,7 +104,7 @@
 
 **Problem.** For a radical ideal I of ℂ\[x₁, …, xₙ\], I is prime exactly when its zero set V(I) is irreducible. Here V(I) has the Zariski topology, whose closed sets are the zero sets of ideals.
 
-**How the definition helps.** Nonemptiness removes the whole ring, whose zero set is empty (our own). For radical I, the Nullstellensatz identifies I with all polynomials vanishing on V(I) (our own). A vanishing product ab with neither factor vanishing identically splits V(I) into its two proper factor zero sets (our own). Conversely, for each member of a proper closed cover by two sets, choose an equation vanishing there but not everywhere (our own).
+**How the definition helps.** Nonemptiness matches the rule that a prime ideal is proper, since the whole ring has an empty zero set (our own). For radical I, the Nullstellensatz makes I the ideal of all polynomials that vanish on V(I) (our own). Then ab ∈ I with a, b ∉ I splits V(I) into the proper closed sets V(I) ∩ V(a) and V(I) ∩ V(b), and the converse runs backward (our own).
 
 **Wikipedia:** [Hyperconnected space](https://en.wikipedia.org/wiki/Hyperconnected_space). It says: “However some authors, especially those interested in applications to algebraic geometry, add an explicit condition that an irreducible space must be nonempty.”
 
@@ -120,11 +120,11 @@
 
 *Rules out counterexamples.* MSC 14A10 (Varieties and morphisms), 13A02, 13A15. arXiv math.AG, math.AC. Level 2: later undergraduate.
 
-**Definition.** For a homogeneous ideal in ℂ\[x₀,…,xₙ\], its projective zero set consists of lines on whose nonzero vectors every polynomial in the ideal vanishes. The irrelevant ideal is (x₀,…,xₙ).
+**Definition.** The projective zero set of a homogeneous ideal in ℂ\[x₀,…,xₙ\] is the set of lines through the origin on which all its polynomials vanish. The irrelevant ideal (x₀,…,xₙ) vanishes only at the origin, so its projective zero set is empty.
 
 **Problem.** Projective varieties in ℂPⁿ correspond bijectively to the homogeneous radical ideals of ℂ\[x₀, …, xₙ\] other than the irrelevant ideal.
 
-**How the definition helps.** The irrelevant ideal vanishes only at the origin of ℂⁿ⁺¹, and the origin is not a point of projective space (our own). So its projective zero set is empty, the same as for the whole ring (1), and both ideals are radical. Removing the irrelevant ideal leaves one ideal for the empty variety and restores the bijection. The real work is the affine Nullstellensatz, applied to the cone over the variety in ℂⁿ⁺¹ (our own).
+**How the definition helps.** The whole ring and the irrelevant ideal are both radical with empty projective zero set, so removing the irrelevant ideal leaves one ideal for the empty variety (our own). The affine Nullstellensatz, applied to the cone over each variety in ℂⁿ⁺¹, gives the bijection for the rest (our own).
 
 **Paper or page:** [An Infinitely Large Napkin: Alg Geom: Proj Var](https://venhance.github.io/napkin/Napkin.pdf). It says: “Thus there is a natural bijection between: projective varieties in ℂPⁿ, and homogeneous radical ideals of ℂ\[x₀, …, xₙ\] except for the irrelevant ideal.”
 
@@ -138,11 +138,11 @@
 
 *True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** Use the Zariski topology on an affine variety. Its closed subsets are the common zeros of polynomial functions, rather than the closed sets from a distance.
+**Definition.** In the Zariski topology on an affine variety, the closed sets are the common zero sets of polynomial functions.
 
 **Problem.** Every polynomial map between affine varieties is continuous for the Zariski topology.
 
-**How the definition helps.** Substituting the coordinate polynomials of the map into the target equations gives equations for their inverse image (our own). These are still polynomials, so the inverse image is closed (our own). The work is the closure of polynomials under substitution, not a distance estimate (our own).
+**How the definition helps.** The inverse image of a zero set is cut out by substituting the map's coordinate polynomials into its equations (our own). The results are still polynomials, so the inverse image is closed (our own).
 
 **nLab:** [Zariski topology](https://ncatlab.org/nlab/show/Zariski+topology). It says: “These subsets are called the Zariski closed subsets.”
 
@@ -154,11 +154,11 @@
 
 *True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** Define the coordinate ring of an affine algebraic set X as the ring of polynomial functions restricted to X. Two polynomials count as the same function if they agree at every point of X.
+**Definition.** The coordinate ring of an affine algebraic set X is the ring of polynomial functions on X, where two polynomials count as the same function if they agree at every point of X.
 
 **Problem.** For an affine algebraic set X over a field k, its coordinate ring is the polynomial ring modulo the vanishing ideal I(X).
 
-**How the definition helps.** Two polynomials give the same function on X exactly when their difference belongs to I(X) (our own). Thus each polynomial function corresponds to one class in the quotient ring (our own). Starting from defining equations instead requires identifying their vanishing ideal, which the Nullstellensatz does over an algebraically closed field (our own).
+**How the definition helps.** Two polynomials give the same function on X exactly when their difference lies in I(X), so polynomial functions on X are the classes of the quotient (our own).
 
 **Paper or page:** [Alg Geom: Zariski, Theorem 5.3. (Coordinate rings correspond to ideal)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then ℂ\[V\] ≅ ℂ\[x₁, …, xₙ\] / I.”
 
@@ -174,7 +174,7 @@
 
 **Problem.** For affine varieties X and Y over an algebraically closed field k, polynomial maps X → Y correspond to k-algebra maps k\[Y\] → k\[X\].
 
-**How the definition helps.** Substitution along a polynomial map sends each function on Y to a function on X (our own). Conversely, a ring map fixing k sends the coordinates of Y to functions on X (our own). These images satisfy the equations of Y, so their values give a point of Y at each point of X (our own). The two constructions undo each other because the coordinates generate k\[Y\] (our own).
+**How the definition helps.** Substitution along a polynomial map sends each function on Y to a function on X, which gives a k-algebra map (our own). Conversely, a k-algebra map sends the coordinates of Y to functions on X that satisfy the equations of Y, so they define a polynomial map X → Y (our own). The two constructions are inverse because the coordinates generate k\[Y\] (our own).
 
 **nLab:** [affine variety](https://ncatlab.org/nlab/show/affine+variety). It says: “the algebra can be recovered as the coordinate ring of the variety; this correspondence is an equivalence of categories, if the morphisms are properly defined.”
 
@@ -186,11 +186,11 @@
 
 *Rules out counterexamples.* MSC 14A10 (Varieties and morphisms), 14H50. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** An affine isomorphism is a polynomial map with a polynomial inverse. A map is polynomial if each output coordinate is a polynomial function.
+**Definition.** An affine isomorphism is a polynomial map, one whose coordinates are polynomials, with a polynomial inverse.
 
 **Problem.** Over an algebraically closed field, the map t ↦ (t²,t³) is a polynomial bijection onto the cusp y² = x³. It is not an isomorphism.
 
-**How the definition helps.** Every polynomial in t² and t³ has zero linear coefficient (our own). The field is infinite, so such a polynomial cannot agree with t everywhere (our own). Yet every nonzero cusp point has the unique parameter y/x, and the origin has parameter zero (our own).
+**How the definition helps.** An inverse would write t as a polynomial in x = t² and y = t³, but such polynomials have no linear term, so they differ from t on an infinite field (our own). The map is still bijective, since each nonzero cusp point has the unique parameter y/x and the origin has parameter 0 (our own).
 
 **Wikipedia:** [Affine variety](https://en.wikipedia.org/wiki/Affine_variety). It says: “A morphism, or regular map, of affine varieties is a function between affine varieties that is polynomial in each coordinate:”
 
@@ -204,11 +204,11 @@
 
 *Rules out counterexamples.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** An ideal I is radical if f belongs to I whenever a positive power of f belongs to I. Use radical ideals, not arbitrary ideals, to represent sets of common zeros.
+**Definition.** An ideal I is radical if f lies in I whenever some power fⁿ lies in I. Such an ideal never separates f from fⁿ, which have the same zeros (our own).
 
 **Problem.** Over an algebraically closed field, affine algebraic sets correspond to radical ideals in the polynomial ring. The correspondence reverses inclusion.
 
-**How the definition helps.** Radical ideals remove the ambiguity because an equation and its positive powers have the same zeros (our own). The ideals generated by x and x² have the same zeros, but only the first is radical (our own). The strong Nullstellensatz carries the work by identifying the vanishing ideal of each zero set with the radical of its defining ideal.
+**How the definition helps.** The strong Nullstellensatz says that the polynomials vanishing on V(I) form the radical √I, so each zero set comes from exactly one radical ideal. The ideals (x) and (x²) have the same zeros, but only (x) is radical (our own).
 
 **Paper or page:** [Alg Geom: Affine Var, Theorem 4.4. (Hilbert's Nullstellensatz)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Given an affine variety V = V(I), the set of polynomials which vanish on all points of V is precisely √I.”
 
@@ -220,11 +220,11 @@
 
 *True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** The vanishing ideal I(S) consists of all polynomials that are zero at every point of S. A set is Zariski closed if it is the common zero set of some polynomials.
+**Definition.** The vanishing ideal I(S) is the set of all polynomials that are zero at every point of S, that is, every equation that S satisfies.
 
 **Problem.** The Zariski closure of any subset S of affine space is the common zero set of I(S).
 
-**How the definition helps.** The vanishing ideal collects every equation that a closed set containing S could impose (our own). Its common zeros therefore lie in every such closed set and include S (our own). This replaces intersecting all closed supersets with finding the equations that vanish on S (our own).
+**How the definition helps.** Every Zariski closed set containing S is cut out by equations that vanish on S, so it contains V(I(S)) (our own). And V(I(S)) is itself closed and contains S, so it is the smallest such set (our own).
 
 **Paper or page:** [Zero Locus of Vanishing Ideal is Closure](https://proofwiki.org/wiki/Zero_Locus_of_Vanishing_Ideal_is_Closure). It says: “V(I(S)) = S̄”
 
@@ -232,15 +232,15 @@
 
 ### Counting complex points at infinity makes Bézout's count exact
 
-**Remember:** Count every complex projective intersection by the dimension of its local quotient.
+**Remember:** Count every meeting point, at infinity too, by its local dimension.
 
 *Makes the theorem clean to state or prove.* MSC 14C17 (Intersection theory, characteristic classes, intersection multiplicities in algebraic geometry), 14H50. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** For two complex projective plane curves without a common component, choose an affine chart at each intersection point P. Its intersection multiplicity is the complex vector-space dimension of the ambient local ring at P modulo both local equations.
+**Definition.** At each intersection point P of two complex projective plane curves with no common component, the intersection multiplicity is the dimension over ℂ of the local ring of the plane at P modulo both local equations. Points at infinity and tangencies count with this weight.
 
 **Problem.** For complex projective plane curves of degrees m and n without a common component, the sum of their intersection multiplicities is mn.
 
-**How the definition helps.** Local dimensions count the contribution of each point, including tangencies and points at infinity (our own). Bézout’s theorem identifies their sum with the product of the two degrees (our own).
+**How the definition helps.** Bézout’s theorem says that these weights add up to mn, the product of the degrees (our own). Without complex points, points at infinity and weights, the circle x² + y² = 1 and the line y = 2 would not meet at all (our own).
 
 **Wikipedia:** [Bézout's theorem](https://en.wikipedia.org/wiki/B%C3%A9zout%27s_theorem). It says: “To properly account for all intersection points, it may be necessary to allow complex coordinates and include the points on the infinite line in the projective plane.”
 
@@ -254,11 +254,11 @@
 
 *True by definition. Confidence: medium.* MSC 14E05 (Rational and birational maps), 14A10. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** On an irreducible variety, any two nonempty open sets meet. A rational function is represented on a nonempty open set by a regular function, locally a polynomial fraction with nonvanishing denominator. Two representatives agree as rational functions if they agree on some common nonempty open set.
+**Definition.** A rational function on an irreducible variety is a regular function on some nonempty open set, and two count as equal if they agree on a smaller nonempty open set. Any two nonempty open sets meet, so these functions form a field that does not depend on which open set one uses (our own).
 
 **Problem.** Two irreducible varieties over k are birational if they have isomorphic nonempty open subsets over k. Birational varieties have isomorphic fields of rational functions over k.
 
-**How the definition helps.** Every nonempty open set meets every other, so restricting representatives to any one of them gives the same field (our own). An isomorphism on these open sets pulls rational functions back and has an inverse pullback (our own). To compare this definition with polynomial fractions on affine varieties, use the fact that a regular function is locally a polynomial fraction (our own).
+**How the definition helps.** An isomorphism between nonempty open subsets pulls regular functions back in both directions, so it identifies the two fields of rational functions (our own). Shrinking to the open subset loses nothing, because each rational function lives on some smaller open set anyway (our own).
 
 **nLab:** [rational function on an affine variety](https://ncatlab.org/nlab/show/rational+function+on+an+affine+variety). It says: “A rational function is any element of the field of fractions of 𝒪(X), that is the function field of the variety.”
 
@@ -270,11 +270,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** For homogeneous plane curve equations F and G over a field k, form the quotient of k\[x,y,z\] by the ideal they generate. Its Hilbert function in degree d is the dimension of its degree-d part over k.
+**Definition.** The Hilbert function of two homogeneous plane curve equations F and G over a field k gives, for each degree d, the dimension over k of the degree-d forms in k\[x,y,z\] modulo the ideal (F,G).
 
 **Problem.** For curves over an algebraically closed field with no common component, this Hilbert function eventually equals the product of their degrees. This number is their total intersection multiplicity.
 
-**How the definition helps.** Multiplication by the second equation on the quotient by the first is injective because the equations are coprime (our own). Subtract the shifted dimensions for the two equations from the dimension of all forms, and add back their product’s contribution (our own). This gives a second difference of the quadratic monomial count, equal to mn in high degrees (our own). The remaining work identifies that dimension with the sum of local intersection multiplicities (our own).
+**How the definition helps.** When F and G have no common factor, multiplication by G is injective modulo F, so each dimension is an alternating sum of monomial counts (our own). In large degrees this sum is a second difference of a quadratic count, which equals mn (our own). The remaining work identifies mn with the sum of local intersection multiplicities (our own).
 
 **Paper or page:** [Alg Geom: Bezout, Theorem 5.5. (Bézout's theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then deg(I + (f)) = k deg I.”
 
@@ -286,11 +286,11 @@
 
 *Rules out counterexamples.* MSC 14H50 (Plane and space curves). arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** Use a plane curve equation F with no repeated factor over an algebraically closed field. A point is singular if it lies on the curve and its local equation has no linear term in coordinates centered there.
+**Definition.** Take a plane curve equation F with no repeated factor over an algebraically closed field. A point is singular if it lies on the curve and F, written in coordinates centred at that point, has no linear term.
 
 **Problem.** For a homogeneous plane curve equation F, a projective point is singular exactly when F and its three first partial derivatives vanish there.
 
-**How the definition helps.** In an affine chart the two remaining partial derivatives are the linear coefficients (our own). Euler’s identity for homogeneous polynomials recovers the third derivative once F and the other two derivatives vanish (our own). In characteristic p, all partial derivatives of xᵖ + yzᵖ⁻¹ vanish at \[1:0:0\], which is not on the curve (our own).
+**How the definition helps.** In the chart z = 1 the linear terms are ∂F/∂x and ∂F/∂y, and Euler’s identity d·F = x∂F/∂x + y∂F/∂y + z∂F/∂z then forces ∂F/∂z = 0 (our own). The condition that the point lies on the curve is needed: in characteristic p all partial derivatives of xᵖ + yzᵖ⁻¹ vanish at \[1:0:0\], which is off the curve (our own).
 
 **Wikipedia:** [Singular point of a curve](https://en.wikipedia.org/wiki/Singular_point_of_a_curve). It says: “The singular points are those points on the curve where both partial derivatives vanish”
 
@@ -304,11 +304,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** Let F and G define plane curves without a common component over an algebraically closed field k. At a common point P, their intersection multiplicity is dim<sub>k</sub>(𝒪<sub>P</sub>/(F,G)), where 𝒪<sub>P</sub> is the local ring of the ambient plane.
+**Definition.** At a common point P of two plane curves F and G with no common component over an algebraically closed field k, the intersection multiplicity is dim<sub>k</sub> 𝒪<sub>P</sub>/(F,G): the size of the local ring of the plane at P after imposing both equations.
 
 **Problem.** Take two affine plane curves over an algebraically closed field k, with no common component. Their total intersection multiplicity is the dimension of k\[x,y\] modulo their two equations.
 
-**How the definition helps.** The global quotient splits into the local quotients, so its dimension is the sum of their dimensions (our own). Finitely many intersection points and the Nullstellensatz make the global quotient finite dimensional (our own). The Chinese remainder theorem then splits this ring into one local ring for each intersection point (our own).
+**How the definition helps.** The quotient k\[x,y\]/(F,G) is finite dimensional and, by the Chinese remainder theorem, splits into one local quotient 𝒪<sub>P</sub>/(F,G) for each intersection point (our own). Its dimension is therefore the sum of the local multiplicities (our own).
 
 **Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “the dimension is dimension as a k-vector space.”
 
@@ -322,11 +322,11 @@
 
 *True by definition.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** At a point P of the affine plane over an algebraically closed field k, the local ring allows fractions with denominators nonzero at P. At an isolated intersection, the multiplicity is the dimension over k after imposing both curve equations in this ring.
+**Definition.** At an isolated intersection point P of two affine plane curves over an algebraically closed field k, the intersection multiplicity is the dimension over k of the local ring at P (fractions whose denominators are nonzero at P) modulo both curve equations.
 
 **Problem.** An invertible affine change of coordinates preserves the intersection multiplicity of two plane curves at corresponding isolated intersection points.
 
-**How the definition helps.** The coordinate change gives an isomorphism of the two quotients because it transports both equations and all allowed denominators (our own). Isomorphic vector spaces have the same dimension (our own). With the usual counting rules instead, the work is to prove that this quotient dimension agrees with their intersection number (our own).
+**How the definition helps.** An affine coordinate change is a ring isomorphism that carries each equation and each allowed denominator to its partner, so the two quotients are isomorphic and have the same dimension (our own).
 
 **Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “the dimension is dimension as a k-vector space.”
 
@@ -340,11 +340,11 @@
 
 *True by definition.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** At a point P of the affine plane over an algebraically closed field k, the local ring allows fractions with denominators nonzero at P. At an isolated intersection, the multiplicity is the dimension over k after imposing both curve equations in this ring.
+**Definition.** At an isolated intersection point P of two affine plane curves over an algebraically closed field k, the intersection multiplicity is the dimension over k of the local ring at P (fractions whose denominators are nonzero at P) modulo both curve equations.
 
 **Problem.** At an intersection with a line outside the curve’s components, intersection multiplicity equals the root order of the curve equation restricted to the line.
 
-**How the definition helps.** Imposing the line equation leaves a single coordinate t, which we choose to vanish at the point (our own). If the root order is m, the restricted polynomial equals tᵐ times an invertible factor in the local ring (our own). The quotient therefore has basis 1, t, …, tᵐ⁻¹ and dimension m (our own). Theorem 3 in Fulton identifies this quotient definition with the usual intersection rules (our own).
+**How the definition helps.** Imposing the line equation leaves one coordinate t, vanishing at the point, and the curve equation becomes tᵐ times a unit, where m is the root order (our own). The quotient then has basis 1, t, …, tᵐ⁻¹, so its dimension is m (our own).
 
 **Wikipedia:** [Algebraic curve](https://en.wikipedia.org/wiki/Algebraic_curve). It says: “The multiplicity of an intersection point is the multiplicity of the corresponding root.”
 
@@ -354,15 +354,15 @@
 
 ### The chord rule identifies flexes with points killed by three
 
-**Remember:** A triple tangent means the point adds to itself to give its inverse.
+**Remember:** A triple tangent means three copies of the point sum to zero.
 
 *True by definition.* MSC 14H52 (Elliptic curves), 14H50. arXiv math.AG. Level 2: later undergraduate.
 
-**Definition.** A flex is a point where the tangent meets a smooth plane cubic with multiplicity three at that point. Choose a flex O as the group identity. The sum of two points is the inverse of the third intersection on their line, using the tangent for a repeated point.
+**Definition.** A flex of a smooth plane cubic is a point where the tangent line meets the cubic with multiplicity three at that point. With a flex O as the identity, any three points on one line sum to O, counted with multiplicity.
 
 **Problem.** A point P on the smooth cubic is a flex if and only if P + P + P = O.
 
-**How the definition helps.** The tangent’s third point equals P exactly when doubling P gives its inverse (our own). Bézout’s theorem guarantees that the third point exists, counting multiplicity (our own). To find the inverse of a point, take the third point on its line through O, with the tangent used at O (our own). The work for using the rule as group addition lies in proving associativity (our own).
+**How the definition helps.** The tangent at P meets the cubic at P, P and a third point R, so P + P + R = O (our own). Thus P + P + P = O exactly when R = P, which says that P is a flex (our own).
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “In the projective plane, each line will intersect a cubic at three points when accounting for multiplicity.”
 
@@ -374,11 +374,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14H52 (Elliptic curves), 11G05. arXiv math.AG, math.NT. Level 2: later undergraduate.
 
-**Definition.** Over a field k of characteristic different from 2 and 3, take the smooth cubic Y²Z = X³+aXZ²+bZ³ with a,b ∈ k. To add two points, take the residual third intersection of their secant, using the tangent for a repeated point. Negate its Y-coordinate to obtain the sum.
+**Definition.** On the smooth cubic Y²Z = X³ + aXZ² + bZ³ over a field k of characteristic not 2 or 3, the sum of two points is the reflection Y ↦ −Y of the third point where their line meets the cubic, using the tangent for a repeated point.
 
 **Problem.** The chord-tangent rule defines an abelian group with identity O = \[0:1:0\]. The k-rational points form a subgroup.
 
-**How the definition helps.** Bézout counts three intersections with multiplicity, including O on every vertical line (our own). Reflection interchanges the other two points on such a line, giving the identity rule (our own). The identification P ↦ \[P−O\] with the degree-zero divisor class group gives associativity by Riemann–Roch (our own). For k-rational inputs the line, residual point and reflection are all defined over k (our own).
+**How the definition helps.** Bézout gives every line three intersections, and the line through P and O is vertical, so its third point is the reflection of P and P + O = P (our own). Associativity follows by sending P to the divisor class of P − O and using Riemann–Roch (our own). For k-rational points the line, the third point and the reflection are all defined over k (our own).
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “In the projective plane, each line will intersect a cubic at three points when accounting for multiplicity.”
 
@@ -386,7 +386,7 @@
 
 ### Defining geometric reducedness by all field extensions makes it survive base change
 
-**Remember:** An extension of the new field is already an extension of the original field.
+**Remember:** Every extension of the new field also extends the old one.
 
 *True by definition.* MSC 14A05 (Relevant commutative algebra), 13B02. arXiv math.AC, math.AG. Level 3: graduate.
 
@@ -406,11 +406,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A10 (Varieties and morphisms), 14F06. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A space with k-valued functions carries a sheaf of k-algebras of functions to k. A continuous map f is a morphism if every section φ on every target open V pulls back to a section on f⁻¹(V). The pullback is the function φ ∘ f.
+**Definition.** A space with functions is a space carrying a sheaf of k-algebras of k-valued functions. A continuous map f is a morphism if, for every open V of the target, every function φ of the sheaf on V gives a function φ ∘ f of the sheaf on f⁻¹(V).
 
 **Problem.** Let f be a continuous map between spaces with functions, and let open covers Uᵢ and Vᵢ satisfy f(Uᵢ) ⊂ Vᵢ. Then f is a morphism exactly when each restriction Uᵢ → Vᵢ is a morphism.
 
-**How the definition helps.** Pullbacks restrict to pullbacks, so a morphism passes each local test (our own). Conversely, on Uᵢ ∩ f⁻¹(V), each local test gives the section φ ∘ f for a section φ on V (our own). These functions agree on overlaps, so the sheaf axiom makes φ ∘ f a section on f⁻¹(V) (our own).
+**How the definition helps.** Membership in a sheaf is a local condition, so φ ∘ f belongs to the sheaf on f⁻¹(V) as soon as it does on each piece Uᵢ ∩ f⁻¹(V) (our own). The restricted morphisms Uᵢ → Vᵢ give exactly this, and the converse holds because restrictions of pullbacks are pullbacks (our own).
 
 **nLab:** [algebraic variety](https://ncatlab.org/nlab/show/algebraic+variety). It says: “The advantage of this notion of morphism between spaces with k-valued functions is that it is a property, rather than additional data (as in a morphism of ringed spaces).”
 
@@ -424,11 +424,11 @@
 
 *Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** An affine scheme is the spectrum of one ring. A scheme has affine diagonal if the map x ↦ (x, x) has affine inverse images of affine opens.
+**Definition.** A scheme X has affine diagonal if the diagonal map X → X × X, x ↦ (x, x), has affine inverse image over every affine open. The inverse image of U × V is U ∩ V.
 
 **Problem.** In a scheme with affine diagonal, any two affine opens have affine intersection.
 
-**How the definition helps.** The diagonal has U ∩ V as the inverse image of U × V, in our own explanation. The product of two affine opens is affine, so the condition applies. For our own counterexample, glue two affine planes along the plane minus its origin. Their intersection has the same polynomial functions as the whole plane but lacks the origin, so it cannot be affine.
+**How the definition helps.** If U and V are affine, so is U × V, and the diagonal pulls it back to U ∩ V (our own). Without the condition it fails: glue two affine planes along the plane minus its origin, and they meet in the punctured plane, which is not affine (our own).
 
 **Paper or page:** [Coherent, Lemma 30.2.5.](https://stacks.math.columbia.edu/tag/0BDX). It says: “for U, V ⊂ X affine open, the intersection U ∩ V is affine”
 
@@ -440,11 +440,11 @@
 
 *True by definition.* MSC 14A15 (Schemes and morphisms), 13A99. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An affine scheme is the spectrum of a commutative ring, possibly the zero ring. Its points are the proper prime ideals of that ring.
+**Definition.** An affine scheme is the spectrum of any commutative ring, the zero ring included. Its points are the prime ideals, which by definition are proper.
 
 **Problem.** The empty scheme is affine, because it is the spectrum of the zero ring.
 
-**How the definition helps.** Every ideal of the zero ring contains 0 = 1, so none is proper (our own). Its spectrum has no points and is therefore the empty scheme (our own).
+**How the definition helps.** In the zero ring 0 = 1, so every ideal is the whole ring and none is prime (our own). Its spectrum therefore has no points and is the empty scheme (our own).
 
 **Wikipedia:** [Zero ring](https://en.wikipedia.org/wiki/Zero_ring). It says: “The spectrum of the zero ring is the empty scheme.”
 
@@ -452,15 +452,15 @@
 
 ### Closed immersions are exactly the proper monomorphisms of schemes
 
-**Remember:** Properness and injectivity on T-valued points for every scheme T characterize closed immersions.
+**Remember:** Closed immersions are proper maps injective on every T-valued point.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A15 (Schemes and morphisms), 18A20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A morphism is proper if it is separated, of finite type and universally closed, which means closed after every base change. A monomorphism is a morphism that is injective on T-valued points for every scheme T; this is a property of the functor of points. A closed immersion identifies X with a closed subscheme of S.
+**Definition.** A monomorphism of schemes is a morphism X → S that is injective on T-valued points for every scheme T. A proper morphism is separated, of finite type and universally closed, meaning closed after every base change.
 
 **Problem.** A morphism of schemes is a closed immersion exactly when it is a proper monomorphism. It is also one exactly when it is proper, unramified and universally injective.
 
-**How the definition helps.** The functor-of-points test packages all the injectivity requirements into the monomorphism hypothesis (our own). The proper monomorphism criterion gives a closed immersion, using that a proper quasi-finite morphism is finite (our own). For a proper unramified universally injective morphism, the diagonal is a surjective open immersion, so the morphism is a monomorphism (our own).
+**How the definition helps.** A proper monomorphism has finite fibres, so it is finite, and a finite monomorphism is a closed immersion (our own). For the third condition, an unramified universally injective map has a diagonal that is a surjective open immersion, hence an isomorphism, so the map is a monomorphism (our own).
 
 **Paper or page:** [Stacks Project, Etale, Lemma 41.7.2](https://stacks.math.columbia.edu/tag/04XV). It says: “Let f : X → S be a morphism of schemes. The following are equivalent: (1) f is a closed immersion, (2) f is a proper monomorphism, (3) f is proper, unramified, and universally injective”
 
@@ -474,11 +474,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms), 14F06. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a finite-rank locally free sheaf ℰ on S, its total space is Specₛ Sym(ℰ∨), where ℰ∨ is its dual.
+**Definition.** For a finite-rank locally free sheaf ℰ on S, its total space is the relative spectrum Spec<sub>S</sub> Sym(ℰ∨) of the symmetric algebra on the dual ℰ∨. So maps into it are algebra maps out of Sym(ℰ∨) (our own).
 
 **Problem.** Maps over S from a scheme T to the total space match the global sections of the pullback of ℰ to T.
 
-**How the definition helps.** For f from T to S, the relative spectrum represents algebra maps Sym(f\*ℰ∨) → 𝒪<sub>T</sub> (our own). By the symmetric algebra’s universal property, these are linear maps f\*ℰ∨ → 𝒪<sub>T</sub> (our own). Finite local freeness identifies them with global sections of f\*ℰ (our own).
+**How the definition helps.** Algebra maps Sym(f\*ℰ∨) → 𝒪<sub>T</sub> are the same as linear maps f\*ℰ∨ → 𝒪<sub>T</sub>, by the universal property of the symmetric algebra (our own). Since ℰ is finite locally free, these linear maps are the global sections of f\*ℰ (our own).
 
 **nLab:** [relative spectrum](https://ncatlab.org/nlab/show/relative+spectrum). It says: “However, one can construct their total spaces, using the symmetric algebra over the structure sheaf, obtaining a sheaf of algebras and then use the relative spectrum.”
 
@@ -490,11 +490,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Define the category of affine schemes as the category of commutative rings with all arrows reversed. The usual definition builds Spec A as a space of prime ideals with a sheaf of local rings.
+**Definition.** Define the category of affine schemes as the opposite of the category of commutative rings, so that each ring map A → B becomes a map Spec B → Spec A.
 
-**Problem.** Take ring maps R → A and R → B. The fiber product of Spec A and Spec B over Spec R is the spectrum of A ⊗ B over R. The Stacks Project shows that it is also the fiber product among all locally ringed spaces.
+**Problem.** For ring maps R → A and R → B, the fiber product of Spec A and Spec B over Spec R is Spec(A ⊗<sub>R</sub> B). It is also the fiber product among all locally ringed spaces (Stacks Project).
 
-**How the definition helps.** The pushout of R → A and R → B is A ⊗<sub>R</sub> B, so reversing arrows gives the affine fiber product (our own). For every locally ringed space X, maps X → Spec C correspond naturally to ring maps C → Γ(X,𝒪<sub>X</sub>) (our own). The same tensor product therefore represents the fiber product among locally ringed spaces (our own).
+**How the definition helps.** The pushout of commutative rings is the tensor product, so reversing arrows makes Spec(A ⊗<sub>R</sub> B) the fiber product (our own). Maps from any locally ringed space X to Spec C match ring maps C → Γ(X,𝒪<sub>X</sub>), so the same object is the fiber product there too (our own).
 
 **Paper or page:** [Schemes, Lemma 26.6.7](https://stacks.math.columbia.edu/tag/01I4). It says: “Moreover, the products and fibre products in the category of affine schemes are the same as in the category of locally ringed spaces.”
 
@@ -506,11 +506,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A morphism is a closed immersion if over every affine target open Spec R it is isomorphic over Spec R to Spec(R/I) → Spec R. Here I is an ideal of R and the arrow comes from the quotient map.
+**Definition.** A morphism X → S is a closed immersion if over each affine open Spec R of S it is Spec(R/I) → Spec R for some ideal I, the map given by the quotient R → R/I.
 
 **Problem.** A closed immersion stays a closed immersion after any base change, that is, after pullback along any map into its target.
 
-**How the definition helps.** On affine charts, B ⊗<sub>R</sub> (R/I) ≅ B/IB for every R-algebra B (our own). Thus each pulled-back chart is again defined by a quotient map (our own). The affine-local criterion for closed immersions gives the result on the entire new target (our own).
+**How the definition helps.** Over an affine chart, base change along Spec B → Spec R gives B ⊗<sub>R</sub> R/I ≅ B/IB, again a quotient (our own). Being a closed immersion can be checked on an affine cover of the target, so the pullback is a closed immersion (our own).
 
 **Paper or page:** [Morphisms, Lemma 29.2.4](https://stacks.math.columbia.edu/tag/01QR). It says: “The base change of a closed immersion is a closed immersion.”
 
@@ -522,11 +522,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms), 14C20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a vector bundle ℰ on S, its projective bundle represents the functor of line quotients. For each f from T to S, its T-points classify surjections f\*ℰ → Q onto line bundles up to isomorphism of quotients.
+**Definition.** The projective bundle of a vector bundle ℰ on S represents line quotients: its points over f: T → S are the surjections f\*ℰ → Q onto line bundles, up to isomorphism of quotients.
 
 **Problem.** For a vector bundle ℰ and a line bundle ℒ, the projective bundles of ℰ and ℰ ⊗ ℒ are canonically isomorphic.
 
-**How the definition helps.** Tensoring a line quotient by f\*ℒ gives a line quotient of f\*(ℰ ⊗ ℒ) (our own). Tensoring by the dual of f\*ℒ gives the inverse bijection (our own). These bijections are natural in T, so the representing projective bundles are canonically isomorphic (our own).
+**How the definition helps.** Tensoring with f\*ℒ turns a line quotient of f\*ℰ into one of f\*(ℰ ⊗ ℒ), and tensoring with its dual undoes this (our own). The bijection is natural in T, so the two representing schemes are canonically isomorphic (our own).
 
 **Paper or page:** [Constructions, Lemma 27.20.1](https://stacks.math.columbia.edu/tag/02NC). It says: “There is a canonical isomorphism”
 
@@ -534,15 +534,15 @@
 
 ### Defining relative normalization by a universal property makes it functorial
 
-**Remember:** Pull back one normalization and the other's universal property gives the map.
+**Remember:** The normalization is the first integral stop between Y and X.
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms), 13B22. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a quasi-compact quasi-separated map Y → X, its relative normalization is an initial factorization Y → X′ → X with X′ integral over X. Each such factorization through Z admits a unique map X′ → Z commuting with both arrows.
+**Definition.** For a quasi-compact quasi-separated map Y → X, the relative normalization is the initial factorization Y → X′ → X with X′ integral over X. Every other such factorization Y → Z → X receives a unique compatible map X′ → Z.
 
 **Problem.** Take a commutative square with maps Y₂ → Y₁ and X₂ → X₁, and vertical maps Y₂ → X₂ and Y₁ → X₁ that are quasi-compact and quasi-separated. Then a unique map X′₂ → X′₁ between the normalizations makes the diagram commute.
 
-**How the definition helps.** With the universal definition, functoriality follows from the universal property alone (our own). Pull back X′₁ along X₂ → X₁. The result is still integral over X₂, and Y₂ maps into it, so the initial property gives the map (our own). The real work moves into proving that the integral closure construction has this universal property for quasi-compact, quasi-separated maps (our own).
+**How the definition helps.** Pull X′₁ back along X₂ → X₁: the result is integral over X₂ and receives Y₂, so the initial property of X′₂ gives the unique map (our own). The real work is proving that the integral closure has this universal property (our own).
 
 **Paper or page:** [Morphisms, Lemma 29.53.5](https://stacks.math.columbia.edu/tag/035J). It says: “Then there exists a unique arrow X′₂ → X′₁ fitting into a commutative diagram”
 
@@ -554,11 +554,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a quasi-coherent 𝒪<sub>S</sub>-algebra 𝒜, its relative spectrum represents the following functor on S-schemes. For each f from T to S, take the set of 𝒪<sub>T</sub>-algebra maps f\*𝒜 → 𝒪<sub>T</sub>.
+**Definition.** The relative spectrum of a quasi-coherent 𝒪<sub>S</sub>-algebra 𝒜 represents the functor that sends each f: T → S to the set of 𝒪<sub>T</sub>-algebra maps f\*𝒜 → 𝒪<sub>T</sub>.
 
 **Problem.** Let g be a map from S′ to S. The relative spectrum of g\*𝒜 over S′ is the fiber product of S′ with the relative spectrum of 𝒜 over S.
 
-**How the definition helps.** With the test-map definition, both sides have the same test maps (our own). Pulling 𝒜 back to S′ and then to T gives the same algebra as pulling it straight back to T. The Stacks Project states the result as an isomorphism of the two rules on test schemes. The real work moves into showing that the glued affine spectra have exactly these test maps, so that a scheme represents the rule (our own).
+**How the definition helps.** For T over S′, pulling 𝒜 back to S′ and then to T gives the same algebra as pulling it straight back to T, so both sides have the same T-points (our own). The real work is showing that a scheme represents this functor, by gluing affine spectra (our own).
 
 **Paper or page:** [Constructions, Lemma 27.4.1](https://stacks.math.columbia.edu/tag/01LS). It says: “Let F′ be the functor associated to (S′, 𝒜′) above. Then there is a canonical isomorphism”
 
@@ -570,11 +570,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A morphism Y → S is separated if the diagonal Y → Y ×ₛ Y is a closed immersion.
+**Definition.** A morphism Y → S is separated if the diagonal Y → Y ×<sub>S</sub> Y is a closed immersion. Then equality of two T-valued points of Y is a closed condition on T (our own).
 
 **Problem.** Let a and b be maps from X to Y over S, with Y separated over S. They agree on a largest closed subscheme Z of X. A map into X factors through Z exactly when its composites with a and b agree.
 
-**How the definition helps.** Pull the diagonal back along the pair (a,b) to obtain Z (our own). Closed immersions remain closed immersions under pullback (our own). The pullback property says a map into X factors through Z exactly when a and b agree after composition (our own).
+**How the definition helps.** Z is the pullback of the diagonal along (a,b): X → Y ×<sub>S</sub> Y, and pullbacks of closed immersions are closed immersions (our own). By the pullback property, a map into X factors through Z exactly when its composites with a and b agree (our own).
 
 **Paper or page:** [Schemes, Lemma 26.21.5](https://stacks.math.columbia.edu/tag/01KM). It says: “Moreover, if Y is separated over S, then Z is a closed subscheme.”
 
@@ -582,7 +582,7 @@
 
 ### Defining Weil restriction by points makes it commute with base change
 
-**Remember:** On test rings, both base changes give points over the same tensor product.
+**Remember:** The R-points of a Weil restriction are X-points over L ⊗ R.
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
@@ -620,11 +620,11 @@
 
 *Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** An affine scheme is the space described by one coordinate ring. It is integral when that ring is an integral domain. It is geometrically integral over a field when the ring stays a domain after every extension of the field.
+**Definition.** An affine scheme over a field k is geometrically integral if its coordinate ring S stays an integral domain after tensoring with every field extension K of k.
 
 **Problem.** The product over a field of an integral affine scheme and a geometrically integral affine scheme is integral.
 
-**How the definition helps.** Geometric integrality keeps the second coordinate ring a domain over the fraction field of the first, in our own proof. Tensoring over a field preserves injections, so the product ring embeds in that domain. In our own example, ℂ is a domain, but ℂ ⊗ℝ ℂ is isomorphic to ℂ × ℂ and has zero divisors.
+**How the definition helps.** Tensoring over a field preserves injections, so R ⊗ₖ S embeds in K ⊗ₖ S, where R is the domain and K its fraction field (our own). That ring is a domain by geometric integrality (our own). Plain integrality is not enough: ℂ is a domain, but ℂ ⊗\_ℝ ℂ ≅ ℂ × ℂ has zero divisors (our own).
 
 **Paper or page:** [Algebra, Lemma 10.49.3.](https://stacks.math.columbia.edu/tag/0FWF), [Algebra, Lemma 10.49.4.](https://stacks.math.columbia.edu/tag/09P9). It says: “Let k be a field. Let S be a geometrically integral k-algebra. Let R be a k-algebra and an integral domain. Then R ⊗ₖ S is an integral domain.”
 
@@ -636,11 +636,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A15 (Schemes and morphisms), 13B21. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** A morphism is integral if over every affine target open Spec A its inverse image is affine Spec B. Every b ∈ B must satisfy a monic polynomial over A. A morphism is universally closed if every base change maps closed subsets to closed subsets.
+**Definition.** A morphism is integral if it is affine and, over each affine open Spec A of the target, every element of the source ring satisfies a monic polynomial over A. It is universally closed if every base change sends closed sets to closed sets.
 
 **Problem.** A morphism of schemes is integral exactly when it is affine and universally closed.
 
-**How the definition helps.** Asking for closedness after every base change makes the condition strong enough to recover integrality. Plain closedness is too weak: Spec(k\[x\]) → Spec(k) is closed, but k\[x\] is not integral over k (our own example). After base change to the affine line it becomes the projection of the plane to a line, which sends the hyperbola xy = 1 onto a set that is not closed. Integral maps stay integral after base change and are closed by going up, and the remaining work is a ring lemma (our own summary).
+**How the definition helps.** Integral maps stay integral after base change and are closed by going up, so they are universally closed (our own). Plain closedness is too weak: Spec k\[x\] → Spec k is closed, yet k\[x\] is not integral over k (our own). Its base change to the line projects the hyperbola xy = 1 onto the punctured line, which is not closed.
 
 **Paper or page:** [Stacks Project, Morphisms, Lemma 29.44.7](https://stacks.math.columbia.edu/tag/01WM). It says: “Let f : X → S be a morphism of schemes. The following are equivalent (1) f is integral, and (2) f is affine and universally closed.”
 
@@ -654,11 +654,11 @@
 
 *Rules out counterexamples.* MSC 14A15 (Schemes and morphisms), 13B10, 18A40. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** A locally ringed space is a space with a sheaf of rings whose stalks are local rings. A morphism of locally ringed spaces must give local homomorphisms on stalks: it must send the maximal ideal into the maximal ideal.
+**Definition.** A locally ringed space has local rings as stalks. A morphism between two of them must have local stalk maps, which pull the maximal ideal back to the maximal ideal.
 
 **Problem.** For every locally ringed space X, morphisms X → Spec(A) of locally ringed spaces correspond bijectively to ring maps A → Γ(X, 𝒪ₓ). So Spec is right adjoint to global sections.
 
-**How the definition helps.** Given A → Γ(X,𝒪<sub>X</sub>), locality forces x to map to the inverse image of the maximal ideal of 𝒪<sub>X</sub>,x (our own). The inverse image of D(a) is the open where a becomes a unit, and localization uniquely gives the sheaf map there (our own). Without locality, a valuation ring’s inclusion into its fraction field also defines a ringed-space map to its closed point (our own).
+**How the definition helps.** Given A → Γ(X,𝒪<sub>X</sub>), locality forces each point x to go to the prime of A pulled back from the maximal ideal of its stalk, and localization then fixes the sheaf map (our own). Without locality, the inclusion of a valuation ring V into its fraction field K gives a second ringed-space map Spec K → Spec V, onto the closed point (our own).
 
 **Paper or page:** [Stacks Project, Schemes, Lemma 26.6.4](https://stacks.math.columbia.edu/tag/01I1). It says: “Let X be a locally ringed space. Let Y be an affine scheme. The map Mor(X, Y) ⟶ Hom(Γ(Y, 𝒪), Γ(X, 𝒪)) which maps f to f♯ (on global sections) is bijective.”
 
@@ -676,7 +676,7 @@
 
 **Problem.** A morphism of schemes is finite if and only if it is proper and has finite fibres.
 
-**How the definition helps.** Properness and finite fibres allow Zariski’s Main Theorem to factor the morphism as an open immersion followed by a finite map (our own). Properness makes that immersion closed as well, hence finite (our own). Conversely, a finite map is proper with finite fibres (our own). The punctured affine line includes with finite fibres but lacks closed image (our own).
+**How the definition helps.** Zariski’s Main Theorem factors the map as an open immersion followed by a finite map, and properness makes that open immersion also closed, hence finite (our own). Conversely, finite maps are proper with finite fibres (our own). Properness is needed: the inclusion of the punctured line into the line has finite fibres but is not finite (our own).
 
 **Paper or page:** [More Morphisms, Lemma 37.44.1.](https://stacks.math.columbia.edu/tag/02LS). It says: “Let f : X → S be a morphism of schemes. The following are equivalent: f is finite, f is proper with finite fibres, f is proper and locally quasi-finite”
 
@@ -692,7 +692,7 @@
 
 **Problem.** For a quasi-compact quasi-separated morphism f, the direct image f\_\*ℱ of every quasi-coherent sheaf ℱ is quasi-coherent.
 
-**How the definition helps.** Above each affine target open, finitely many affines cover its preimage and finitely many cover each pairwise overlap (our own). Gluing describes sections by a kernel between finite products, both preserved by localization (our own). For infinitely many disjoint copies of Spec ℤ, direct image gives the product ∏ℤ (our own). Localizing at 2 misses the sequence (1/2ⁿ)ₙ≥₁ of sections on the inverse image of D(2) (our own).
+**How the definition helps.** Above each affine open, finitely many affines cover the preimage and its overlaps, so sections form a kernel of finite products, which localization preserves (our own). Without these finiteness conditions it fails: for infinitely many disjoint copies of Spec ℤ, the direct image is ∏ℤ (our own). Localizing ∏ℤ at 2 misses the section (1/2ⁿ)ₙ≥₁ over D(2) (our own).
 
 **Paper or page:** [Stacks Project, Schemes, Lemma 26.24.1](https://stacks.math.columbia.edu/tag/01LC). It says: “Let f : X → S be a morphism of schemes. If f is quasi-compact and quasi-separated then f⁎ transforms quasi-coherent 𝒪ₓ-modules into quasi-coherent 𝒪ₛ-modules.”
 
@@ -702,15 +702,15 @@
 
 ### Separated and proper morphisms use the diagonal in the product of schemes
 
-**Remember:** Close the relative diagonal for separatedness, then add finite type and universal closedness for properness.
+**Remember:** A closed diagonal makes limits unique; universal closedness makes them exist.
 
 *Makes the theorem clean to state or prove.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
 **Definition.** A morphism X → Y is separated if its diagonal X → X ×ᵧ X is a closed immersion. It is proper if it is separated, of finite type, and closed after every base change.
 
-**Problem.** Consider a quasi-separated finite type morphism X → Y and all valuation rings A with fraction field K. Separatedness requires at most one compatible lift Spec A → X for every diagram Spec K → X over Spec A → Y. Properness requires exactly one lift in every such diagram.
+**Problem.** For a quasi-separated finite type morphism X → Y, test every valuation ring A with fraction field K and every map Spec K → X over Spec A → Y. The morphism is separated exactly when each such diagram has at most one lift Spec A → X, and proper exactly when it has exactly one.
 
-**How the definition helps.** The closed-diagonal test copies the Hausdorff condition but uses the fibre product of schemes, which is not the product of the underlying spaces. So the notion is useful even though the underlying space of a separated scheme is typically not Hausdorff. The valuative criteria then turn separated and proper into uniqueness and existence of limits along valuation rings. The criteria themselves are theorems (EGA II 7.2.3 and 7.3.8, due to Chevalley for properness).
+**How the definition helps.** The valuative criteria (EGA II 7.2.3 and 7.3.8) turn the closed diagonal into uniqueness of limits along valuation rings, and universal closedness into their existence. The diagonal uses the scheme fibre product, not the product of spaces, so it works although separated schemes are typically not Hausdorff.
 
 **nLab:** [separated morphism of schemes](https://ncatlab.org/nlab/show/separated+morphism+of+schemes), [valuative criterion of separatedness](https://ncatlab.org/nlab/show/valuative+criterion+of+separatedness), [valuative criterion of properness](https://ncatlab.org/nlab/show/valuative+criterion+of+properness), [proper morphism](https://ncatlab.org/nlab/show/proper+morphism). It says: “For example, the underlying topological space of a separated scheme is typically not Hausdorff.”
 
@@ -724,11 +724,11 @@
 
 *True by definition.* MSC 14A15 (Schemes and morphisms), 54D10. arXiv math.AG, math.GN. Level 3: graduate.
 
-**Definition.** A generic point of a closed subset Z is a point whose closure equals Z. In Spec A the closure of a prime p is V(p), the set of primes containing p.
+**Definition.** A generic point of a closed set Z is a point whose closure is all of Z. In Spec A the closure of a prime p is V(p), the primes containing p, so p is the generic point of V(p).
 
 **Problem.** Every irreducible closed subset of a scheme has exactly one generic point. For a constructible locus in an irreducible variety, containing the generic point is equivalent to containing a dense open subset.
 
-**How the definition helps.** Choose an affine open meeting the irreducible closed subset Z (our own). Its intersection with Z is dense in Z and corresponds to a unique prime, whose closure in the scheme is Z (our own). Any generic point belongs to every open meeting Z, so affine uniqueness suffices (our own). A dense constructible subset of an irreducible variety contains a dense open subset (our own).
+**How the definition helps.** An affine open meeting Z meets it in a dense irreducible closed subset V(p), whose unique generic point is p (our own). Any generic point of Z lies in every open set meeting Z, so it lies in this affine open and equals p (our own). The second claim uses that a dense constructible set in an irreducible variety contains a dense open set (our own).
 
 **Wikipedia:** [Generic point](https://en.wikipedia.org/wiki/Generic_point). It says: “Oscar Zariski, a colleague of Weil's at São Paulo just after World War II, always insisted that generic points should be unique.”
 
@@ -744,7 +744,7 @@
 
 **Problem.** For a morphism of schemes, three conditions are equivalent: it is injective on K-valued points for every field K, it is universally injective, and it is radicial.
 
-**How the definition helps.** Universal injectivity tests the base changes that ordinary pointwise injectivity misses (our own). The field-point criterion identifies this condition with injectivity over every field and with radiciality (our own). For example, Spec ℂ → Spec ℝ is injective on points, but base change to ℂ splits its source into two points (our own).
+**How the definition helps.** A K-valued point of X is a point with an embedding of its residue field into K, so injectivity on all K-points tests both points and residue fields (our own). Each embedding extends in at most one way, for every K, exactly when the residue field extension is purely inseparable (our own). Radicial maps stay radicial under base change, hence universally injective, and base change to Spec K turns universal injectivity into injectivity on K-points (our own).
 
 **Paper or page:** [Stacks Project, Morphisms, Lemma 29.10.2](https://stacks.math.columbia.edu/tag/01S4). It says: “The following are equivalent: (1) For every field K the induced map Mor(Spec(K), X) → Mor(Spec(K), S) is injective. (2) The morphism f is universally injective. (3) The morphism f is radicial.”
 
@@ -758,11 +758,11 @@
 
 *Rules out counterexamples.* MSC 14A15 (Schemes and morphisms), 14A22, 16W50. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** Let A be a commutative Noetherian nonnegatively graded ring. A finite graded A-module M is irrelevant if its associated sheaf on Proj A is zero (our own). Equivalently, the degree-zero part of M\[1/f\] vanishes for every homogeneous f of positive degree (our own).
+**Definition.** For a commutative Noetherian nonnegatively graded ring A, a finite graded A-module M is irrelevant if its sheaf on Proj A is zero, that is, M\[1/f\] has zero degree-zero part for every homogeneous f of positive degree (our own).
 
 **Problem.** For every commutative noetherian graded ring A, finitely generated graded modules modulo irrelevant modules form a category equivalent to coherent sheaves on Proj A. With torsion modules in place of irrelevant ones, this needs extra hypotheses such as generation in degree one.
 
-**How the definition helps.** The graded Serre quotient theorem identifies coherent sheaves with the quotient by the kernel of sheafification (our own). For A = k\[x\] with deg x = 2, the shift A(1) has only odd degrees even after inverting x (our own). It therefore sheafifies to zero although no power of x kills its generator (our own).
+**How the definition helps.** Coherent sheaves are the quotient of finite graded modules by the kernel of sheafification, and that kernel is exactly the irrelevant modules (our own). For A = k\[x\] with deg x = 2, the shift A(1) lives in odd degrees even after inverting x, so it sheafifies to zero though no power of x kills it (our own).
 
 **Paper or page:** [Coherent, Proposition 30.15.3](https://stacks.math.columbia.edu/tag/0BXF), [Coherent, Proposition 30.14.4](https://stacks.math.columbia.edu/tag/0BXD). It says: “Let A be a Noetherian graded ring. Set X = Proj(A). The functor M ↦ M̃ induces an equivalence Mod<sup>fg</sup><sub>A</sub>/Mod<sup>fg</sup><sub>A, irrelevant</sub> ⟶ Coh(𝒪<sub>X</sub>)”
 
@@ -774,11 +774,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A15 (Schemes and morphisms), 13A15. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** The spectrum Spec R consists of the prime ideals of a commutative ring R, with closed sets V(I) = {p \| I ⊆ p}. A unital homomorphism f from R to S sends each prime of S back to its inverse image in R.
+**Definition.** The spectrum Spec R is the set of prime ideals of a commutative ring R, with closed sets V(I), the primes containing I. A ring map R → S sends each prime of S back to its inverse image, which is again prime.
 
 **Problem.** Every ring homomorphism R → S gives a continuous map Spec S → Spec R. So Spec is a functor that reverses arrows, and with the structure sheaf, affine schemes are commutative rings with the arrows reversed.
 
-**How the definition helps.** Contraction preserves primality and composes in reverse order (our own). The inverse image of V(I) is V(IS), proving continuity (our own). Under ℤ → ℚ the maximal ideal (0) contracts to a nonmaximal prime (our own). With structure sheaves, the affine scheme–ring correspondence identifies morphisms with ring homomorphisms in reverse (our own).
+**How the definition helps.** Inverse images of primes are prime and compose in reverse order, so Spec reverses arrows (our own). The inverse image of V(I) is V(IS), so the map is continuous (our own). Maximal ideals do not work: under ℤ → ℚ the maximal ideal (0) pulls back to a prime that is not maximal (our own).
 
 **Wikipedia:** [Spectrum of a ring](https://en.wikipedia.org/wiki/Spectrum_of_a_ring). It says: “since the inverse image of a prime ideal by a ring homomorphism is always a prime ideal.”
 
@@ -790,11 +790,11 @@
 
 *True by definition. Confidence: medium.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a quasi-separated finite type morphism X → S, the valuative criterion tests every valuation ring R with fraction field K. Each S-map Spec K → X over a given Spec R → S must extend uniquely to an S-map Spec R → X.
+**Definition.** A quasi-separated finite type morphism X → S satisfies the valuative criterion if, for every valuation ring R with fraction field K, each S-map Spec K → X over a given Spec R → S extends uniquely to Spec R → X.
 
 **Problem.** Projective n-space over any base scheme S is proper over S.
 
-**How the definition helps.** Projective space is of finite type and separated over S, so the valuative criterion applies (our own). A K-point has homogeneous coordinates, and the valuation orders the principal fractional ideals of their nonzero entries (our own). Divide by an entry generating the largest ideal to obtain integral coordinates with a unit entry (our own). Such tuples represent extensions over the local ring R and differ only by unit scaling, giving uniqueness (our own).
+**How the definition helps.** Dividing the homogeneous coordinates of a K-point by an entry of smallest valuation gives coordinates in R with one entry 1 (our own). This is an extension over Spec R, and any two extensions differ by a unit of R, so it is unique (our own). Projective space is quasi-separated and of finite type over S, so the criterion makes it proper (our own).
 
 **Paper or page:** [Constructions, Lemma 27.13.4](https://stacks.math.columbia.edu/tag/01NH). It says: “satisfies the existence and uniqueness parts of the valuative criterion”
 
@@ -806,7 +806,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 14A20 (Generalizations (algebraic spaces, stacks)), 14L30. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An algebraic space is an étale sheaf isomorphic to the sheaf quotient of a scheme U by an étale equivalence relation R ⇉ U. Both projections from the relation are étale.
+**Definition.** An algebraic space is the étale-sheaf quotient of a scheme U by an equivalence relation R ⇉ U whose two projections are étale.
 
 **Problem.** The quotient of an algebraic space by a free action of a finite group is an algebraic space. The quotient of a scheme by such an action need not be a scheme.
 
@@ -860,11 +860,11 @@
 
 *True by definition.* MSC 14B10 (Infinitesimal methods in algebraic geometry), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** At a K-rational point x of a K-scheme, let 𝔪 be the maximal ideal of its local ring. The tangent space is Hom<sub>K</sub>(𝔪/𝔪²,K), and the dual numbers are K\[ε\]/(ε²).
+**Definition.** The tangent space at a K-rational point x is the dual of 𝔪/𝔪², where 𝔪 is the maximal ideal of the local ring at x. The dual numbers K\[ε\]/(ε²) have ε² = 0, so maps from them see 𝔪 only modulo 𝔪².
 
 **Problem.** K-maps from Spec K\[ε\]/(ε²) to a K-scheme X correspond to K-rational points equipped with tangent vectors. Every K-morphism therefore induces maps on tangent spaces at corresponding rational points.
 
-**How the definition helps.** Reduction modulo ε gives the point x, and the ε-coefficient of the resulting local algebra map restricts to a functional on 𝔪/𝔪² (our own). Conversely, a functional λ defines the map a ↦ a(x)+ελ(a−a(x)), since λ kills products in 𝔪² (our own). Composition gives functoriality (our own).
+**How the definition helps.** A local K-algebra map to K\[ε\]/(ε²) has the form a ↦ a(x) + ελ(a − a(x)), and it respects products exactly when λ is a functional on 𝔪 that kills 𝔪² (our own). Composition then gives the maps on tangent spaces (our own).
 
 **Wikipedia:** [Zariski tangent space](https://en.wikipedia.org/wiki/Zariski_tangent_space). It says: “morphisms from Spec K\[t\]/(t²) to a scheme X over K correspond to a choice of a rational point x ∈ X(k) and an element of the tangent space at x.”
 
@@ -872,15 +872,15 @@
 
 ### Schlessinger's criterion uses hulls instead of representability
 
-**Remember:** A hull maps onto all deformations and matches them exactly to first order.
+**Remember:** A hull covers all deformations and matches them at first order.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14B12 (Local deformation theory, Artin approximation, etc.), 14D15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Fix Schlessinger’s category of local Artin algebras with residue field k and a set-valued functor F taking k to a singleton. A hull is a complete Noetherian local algebra R with residue field k and a formally smooth natural transformation Hom<sub>cont</sub>(R,−) → F. The transformation must induce a bijection on the dual numbers k\[ε\]/(ε²).
+**Definition.** A hull of a deformation functor F on local Artin k-algebras is a complete Noetherian local k-algebra R with a map Hom(R,−) → F. The map must be formally smooth, lifting along surjections, and bijective on the dual numbers k\[ε\]/(ε²).
 
 **Problem.** A deformation functor F has a hull exactly when H1, H2 and H3 hold, where H3 says that the tangent space is finite-dimensional (Schlessinger). F is prorepresentable exactly when H4 holds as well.
 
-**How the definition helps.** A hull requires smooth lifting and first-order uniqueness, so Schlessinger’s criterion separates its existence from full representability (our own). His theorem gives a hull under H1–H3 and requires the additional uniqueness condition H4 for prorepresentability (our own).
+**How the definition helps.** A hull asks only for smooth lifting and a match on tangent spaces, not for a bijection on every Artin algebra (our own). So Schlessinger can give a hull exactly under H1–H3, while full prorepresentability needs the extra uniqueness condition H4 (our own).
 
 **nLab:** [deformation functor](https://ncatlab.org/nlab/show/deformation+functor). It says: “The main theorem of Schlessinger's paper says that (H1), (H2), and (H3) are satisfied if and only if F has a hull.”
 
@@ -894,11 +894,11 @@
 
 *True by definition. Confidence: medium.* MSC 14B15 (Local cohomology and algebraic geometry), 14F06. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let Z be closed in X with open complement U, and let ℱ be a sheaf of abelian groups on X. Define its supported cohomology complex as the cone of the restriction RΓ(X,ℱ) → RΓ(U,ℱ\|U), shifted by −1.
+**Definition.** Let Z be closed in X with open complement U, and let ℱ be a sheaf of abelian groups on X. The supported cohomology complex is the mapping fiber of restriction RΓ(X,ℱ) → RΓ(U,ℱ\|U), that is, its cone shifted by −1.
 
 **Problem.** Cohomology with support in Z fits in a long exact sequence with the cohomology of X and of U. In derived terms, the three form a distinguished triangle.
 
-**How the definition helps.** With the fiber definition, the sequence is the one that every mapping fiber has, so nothing needs proof (our own). The real work moves into showing that the fiber agrees with the derived functor of supported sections (our own). On an injective sheaf, restriction to U is onto, so the plain kernel already computes the fiber (our own).
+**How the definition helps.** Every mapping fiber sits in a distinguished triangle with the map’s source and target, so the long exact sequence comes for free (our own). The real work is showing that this fiber is the derived functor of sections supported in Z (our own). On an injective sheaf, restriction to U is onto, so the kernel already computes the fiber (our own).
 
 **Paper or page:** [Cohomology, Lemma 20.34.5](https://stacks.math.columbia.edu/tag/0G71). It says: “There is a distinguished triangle”
 
@@ -910,7 +910,7 @@
 
 *True by definition.* MSC 14B25 (Local structure of morphisms in algebraic geometry: étale, flat, etc.), 14B10. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Consider every affine S-scheme T and every closed subscheme T₀ defined by a nilpotent ideal. An S-scheme X is formally smooth if every S-map T₀ → X extends to an S-map T → X. It is smooth over S if it is also locally of finite presentation.
+**Definition.** An S-scheme X is smooth if it is locally of finite presentation and lifts along nilpotent thickenings. That is, for every affine S-scheme T and closed subscheme T₀ cut out by a nilpotent ideal, every S-map T₀ → X extends to T.
 
 **Problem.** Smooth morphisms are stable under base change and composition.
 
@@ -924,13 +924,13 @@
 
 ### Flatness keeps fibre dimension and Hilbert polynomial constant in families
 
-**Remember:** Tensoring with each source stalk preserves injections of modules over the corresponding base stalk.
+**Remember:** Flat means tensoring with every stalk keeps injections injective.
 
 *Makes the theorem clean to state or prove.* MSC 14B25 (Local structure of morphisms in algebraic geometry: étale, flat, etc.), 14D05. arXiv math.AG, math.AC. Level 3: graduate.
 
 **Definition.** A morphism f from X to S is flat if 𝒪<sub>X</sub>,x is flat over 𝒪<sub>S</sub>,f(x) for every x ∈ X. An A-module is flat if tensoring with it preserves every injection of A-modules.
 
-**Problem.** For flat morphisms of locally Noetherian schemes, the local dimension at x equals the base local dimension plus the fibre local dimension at x. For a flat projective family over a connected locally Noetherian base with fixed relative polarization, all fibres have the same Hilbert polynomial. Hence they have the same degree and arithmetic genus.
+**Problem.** For flat morphisms of locally Noetherian schemes, the local dimension at x is the base local dimension plus the fibre local dimension. In a flat projective family with fixed relative polarization over a connected locally Noetherian base, all fibres have the same Hilbert polynomial, hence the same degree and arithmetic genus.
 
 **How the definition helps.** The dimension formula for flat local maps gives the first equality (our own). The Hilbert polynomial theorem for projective flat families gives local constancy, and connectedness then gives one polynomial (our own). Its coefficients determine degree and arithmetic genus (our own).
 
@@ -946,11 +946,11 @@
 
 *Rules out counterexamples.* MSC 14B25 (Local structure of morphisms in algebraic geometry: étale, flat, etc.), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A morphism is étale if it is flat, locally of finite presentation, and its fibres are disjoint unions of spectra of finite separable field extensions. It is universally injective if it stays injective on points after every base change. A monomorphism is a morphism that is injective on T-valued points for every scheme T.
+**Definition.** A morphism is étale if it is flat, locally of finite presentation, and its fibres are disjoint unions of spectra of finite separable field extensions. It is universally injective if it stays injective on points after every base change. For an étale map, this rules out residue field extensions of degree above one (our own).
 
 **Problem.** A morphism of schemes is an open immersion exactly when it is étale and universally injective. It is also one exactly when it is a flat monomorphism, locally of finite presentation.
 
-**How the definition helps.** Universal injectivity excludes nontrivial finite separable field extensions, whose geometric fibres have multiple points (our own). For an étale universally injective morphism, the diagonal is a surjective open immersion, hence an isomorphism (our own). This gives a flat monomorphism locally of finite presentation, which the open immersion criterion identifies as an open immersion (our own). Conversely, every open immersion has these properties (our own).
+**How the definition helps.** An étale universally injective map has a diagonal that is a surjective open immersion, hence an isomorphism, so it is a monomorphism, injective on T-valued points for every T (our own). A flat monomorphism locally of finite presentation is an open immersion, and every open immersion has all these properties (our own).
 
 **Paper or page:** [Stacks Project, Etale, Theorem 41.14.1](https://stacks.math.columbia.edu/tag/025G). It says: “Let f : X → Y be a morphism of schemes. The following are equivalent: (1) f is an open immersion, (2) f is universally injective and étale, and (3) f is a flat monomorphism, locally of finite presentation.”
 
@@ -978,15 +978,15 @@
 
 ### Unique lifts cancel formally unramified maps from formally étale composites
 
-**Remember:** Unique lifts for the composite plus uniqueness below give unique lifts above.
+**Remember:** Étale means exactly one lift; unramified means at most one.
 
 *True by definition.* MSC 14B25 (Local structure of morphisms in algebraic geometry: étale, flat, etc.), 13B40. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** For every square-zero closed immersion T ⊂ T′, take maps T → X and T′ → Y agreeing over Y on T. A lift is a Y-map T′ → X extending T → X. Formal étaleness requires exactly one lift in every such diagram, and formal unramifiedness requires at most one.
+**Definition.** A lifting problem for X → Y gives a square-zero closed immersion T ⊂ T′, a map T → X and a map T′ → Y agreeing on T, and asks for a Y-map T′ → X extending T → X. The map is formally étale if every lifting problem has exactly one solution, and formally unramified if it has at most one.
 
 **Problem.** Let X → Y → Z be maps of schemes. If Y → Z is formally unramified and X → Z is formally étale, then X → Y is formally étale.
 
-**How the definition helps.** The lifting definitions let us solve the problem over Z before checking it over Y. Lift T → X using the given map T′ → Z. The resulting map T′ → Y and the given one agree on T and over Z, so formal unramifiedness forces them to agree. Any second lift over Y would already be a second lift over Z (our own account of the proof).
+**How the definition helps.** Given a problem over Y, compose to Z and use formal étaleness of X → Z to get a lift T′ → X (our own). Its composite T′ → Y agrees with the given one on T and over Z, so formal unramifiedness of Y → Z makes them equal (our own). A second lift over Y would be a second lift over Z, so the lift is unique (our own).
 
 **nLab:** [formally étale morphism](https://ncatlab.org/nlab/show/formally+%C3%A9tale+morphism). It says: “If there exists at most one such extension, it is called a formally unramified morphism. The formally étale morphisms are precisely those that are both formally smooth and formally unramified.”
 
@@ -1051,7 +1051,7 @@
 
 **Problem.** Grothendieck showed that this functor is represented by a projective scheme. So every flat family of subschemes is pulled back from one universal family.
 
-**How the definition helps.** The functor includes nonreduced fibres, such as the double point obtained when two distinct points collide (our own example). Grothendieck’s Hilbert scheme theorem supplies the projective representing scheme. Its identity map corresponds to the universal family.
+**How the definition helps.** Grothendieck’s theorem gives a projective scheme H representing the functor, and its identity map corresponds to a universal family. Every flat family over T is then the pullback along its map T → H. Flatness allows nonreduced fibres, such as the double point formed when two points collide (our own example).
 
 **Wikipedia:** [Hilbert scheme](https://en.wikipedia.org/wiki/Hilbert_scheme). It says: “H is universal with respect to all flat families of subschemes of X having Hilbert polynomial P.”
 
@@ -1061,15 +1061,15 @@
 
 ### Pure motives are the universal target of Weil cohomologies
 
-**Remember:** Motives are varieties cut into pieces by idempotent cycles.
+**Remember:** A motive is a variety cut into pieces by idempotent correspondences.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14C15 ((Equivariant) Chow groups and rings; motives). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Take a smooth projective variety X of pure dimension d and a rational codimension-d Chow class p on X × X. The pair (X,p) defines an effective Chow motive when p ∘ p = p under correspondence composition. Allow finite direct sums and integer Tate twists to obtain rational Chow motives.
+**Definition.** A rational Chow motive (X,p) is a smooth projective variety X of pure dimension d with a projector p. Here p is a rational Chow class of codimension d on X × X with p ∘ p = p under composition of correspondences. Finite direct sums and integer Tate twists of such pairs are also motives, and maps between motives are correspondences.
 
 **Problem.** Every Weil cohomology of smooth projective varieties factors through rational Chow motives, uniquely up to canonical isomorphism compatibly with its action on correspondences.
 
-**How the definition helps.** The cycle class map lets correspondences act by pullback, multiplication and pushforward (our own). A projector acts through its image, and a Tate twist acts by the corresponding cohomological twist. These prescriptions determine the realization functor up to canonical isomorphism.
+**How the definition helps.** Every Weil cohomology lets correspondences act through the cycle class map, so it can send (X,p) to the image of p acting on the cohomology of X (our own). A Tate twist goes to the matching cohomological twist. These rules fix the realization functor up to canonical isomorphism.
 
 **nLab:** [pure motive](https://ncatlab.org/nlab/show/pure+motive), [motive](https://ncatlab.org/nlab/show/motive), [Chow motive](https://ncatlab.org/nlab/show/Chow+motive). It says: “such that every good cohomology theory factors through the functor M.”
 
@@ -1084,11 +1084,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14C15 ((Equivariant) Chow groups and rings; motives), 14C35, 14C40. arXiv math.AG, math.KT. Level 3: graduate.
 
-**Definition.** An algebraic cycle is a finite integer combination of subvarieties. Two cycles are rationally equivalent if their difference is a sum of divisors of rational functions on subvarieties one dimension higher. The Chow group is cycles modulo rational equivalence.
+**Definition.** The Chow group is algebraic cycles, finite integer sums of subvarieties, modulo rational equivalence. A cycle is rationally equivalent to zero when it is a sum of divisors of rational functions on subvarieties one dimension higher.
 
 **Problem.** For a smooth quasi-projective scheme X over a field, the Chern character identifies K₀(X) ⊗ ℚ with CH\*(X) ⊗ ℚ.
 
-**How the definition helps.** Rational equivalence gives the Chow ring in which the Chern character takes values (our own). The rational Riemann–Roch comparison for smooth X gives the isomorphism.
+**How the definition helps.** Rational equivalence is the relation K-theory already imposes: the divisor of a function f on W is the leading term of the class of 𝒪<sub>W</sub>/f, which is zero in K₀ (our own). The Chern character, made an isomorphism rationally by Riemann–Roch for smooth X, then gives the identification.
 
 **Wikipedia:** [Chow group](https://en.wikipedia.org/wiki/Chow_group). It says: “This isomorphism shows the importance of rational equivalence, compared to any other adequate equivalence relation on algebraic cycles.”
 
@@ -1102,11 +1102,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14C17. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a projective scheme over a field, identify real curve cycles when every line bundle has the same degree on them. The closed cone of curves is the closure of the cone generated by effective curves in this numerical space.
+**Definition.** The closed cone of curves of a projective scheme is the closure of the cone spanned by effective curves, in the real space of curve classes. Two curves give the same class when every line bundle has the same degree on them.
 
 **Problem.** On a projective scheme, a line bundle is ample exactly when it is positive on every nonzero class in the closed cone of curves (Kleiman). So ampleness depends only on the degrees of the bundle on curves.
 
-**How the definition helps.** Degree extends linearly to numerical curve classes, so positivity on the closed cone uses only those degrees (our own). Kleiman’s criterion identifies strict positivity on its nonzero classes with ampleness.
+**How the definition helps.** Degree is a linear function on this space, so positivity on the cone depends only on degrees on curves (our own). Kleiman’s criterion says that strict positivity on its nonzero classes is equivalent to ampleness.
 
 **Wikipedia:** [Ample line bundle](https://en.wikipedia.org/wiki/Ample_line_bundle). It says: “An ample line bundle on a projective variety X has positive degree on every curve in X. The converse is not quite true, but there are corrected versions of the converse, the Nakai–Moishezon and Kleiman criteria for ampleness.”
 
@@ -1120,11 +1120,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14B25. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An effective Cartier divisor on X is a closed subscheme cut out locally by one non-zero-divisor. It is relative to S if it is also flat over S.
+**Definition.** A relative effective Cartier divisor for X → S is a closed subscheme D of X cut out locally by one non-zero-divisor, such that D is flat over S. Flatness keeps the local equation a non-zero-divisor after any base change.
 
 **Problem.** Let D be a relative effective Cartier divisor for X → S. After any base change S′ → S, the pullback of D is again an effective Cartier divisor, so D restricts to a divisor on each fibre.
 
-**How the definition helps.** Flatness of the quotient preserves injectivity of multiplication by the local equation after base change (our own). Without flatness, the divisor x = 0 in the plane over the x-axis has zero equation on the fibre over zero (our own).
+**How the definition helps.** Flatness of D keeps the sequence 0 → 𝒪(−D) → 𝒪<sub>X</sub> → 𝒪<sub>D</sub> → 0 exact after base change, so the pulled-back equation is still a non-zero-divisor (our own). Without flatness this fails: over the x-axis, the divisor x = 0 in the plane has equation zero on the fibre over 0 (our own).
 
 **Wikipedia:** [Divisor (algebraic geometry)](https://en.wikipedia.org/wiki/Divisor_%28algebraic_geometry%29). It says: “A relative effective Cartier divisor for X over S is an effective Cartier divisor D on X which is flat over S.”
 
@@ -1132,15 +1132,15 @@
 
 ### Defining twists as tensor powers of 𝒪(1) makes their degrees add
 
-**Remember:** Tensoring powers of one line bundle adds their exponents.
+**Remember:** Twists are powers of 𝒪(1), so exponents add.
 
 *True by definition. Confidence: medium.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** On projective space, define 𝒪(n) as the nth tensor power of the line bundle 𝒪(1), using its dual for negative n. The graded description instead builds 𝒪(n) from the polynomial ring with its degrees shifted by n.
+**Definition.** On projective space, define 𝒪(n) as the nth tensor power of the line bundle 𝒪(1), using the dual of 𝒪(1) for negative n.
 
 **Problem.** On projective space, 𝒪(a) ⊗ 𝒪(b) ≅ 𝒪(a + b) for all integers a and b.
 
-**How the definition helps.** With the tensor power definition, the formula is the rule for adding exponents, after cancelling copies of 𝒪(1) against its dual (our own). This needs 𝒪(1) to be a line bundle, so that its dual is a tensor inverse. The real work moves into a comparison theorem. The Stacks Project shows that the nth tensor power of 𝒪(1) agrees with the graded shift when degree one elements cover the space.
+**How the definition helps.** Then 𝒪(a) ⊗ 𝒪(b) has a + b factors of 𝒪(1) after cancelling copies of 𝒪(1) against its dual, a tensor inverse because 𝒪(1) is a line bundle (our own). The work moves into the Stacks Project comparison: this tensor power agrees with the graded shift of the polynomial ring when degree-one elements cover the space.
 
 **Wikipedia:** [Coherent sheaf](https://en.wikipedia.org/wiki/Coherent_sheaf). It says: “We can also find that the tensor product of the line bundles 𝒪ₓ(a) ⊗ 𝒪ₓ(b) ≅ 𝒪ₓ(a+b)”
 
@@ -1150,15 +1150,15 @@
 
 ### Defining zero schemes by test maps makes them commute with pullback
 
-**Remember:** A test map sees the same zero condition before or after base change.
+**Remember:** A map lands in the zero scheme when it kills the section.
 
 *True by definition. Confidence: medium.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let s be a section of a line bundle ℒ on X. Define its zero scheme Z(s) by test maps: a map f into X factors through Z(s) exactly when f\*s is zero. The usual definition cuts out Z(s) by the ideal of local equations of s.
+**Definition.** The zero scheme Z(s) of a section s of a line bundle ℒ on X is defined by test maps: a map f into X factors through Z(s) exactly when the pullback f\*s is zero.
 
 **Problem.** Take any map f from Y to X. The zero scheme of f\*s is the fiber product of Y with Z(s) over X.
 
-**How the definition helps.** With the test-map definition, both schemes have the same test maps, so they are equal (our own). A map from T to Y kills the pullback of f\*s exactly when the composite to X kills the pullback of s. The real work moves into showing that the local equations define a closed subscheme with this property (Stacks Project, Divisors, Lemma 31.14.9). This must hold even for test schemes with nilpotents, nonzero elements with a power equal to zero.
+**How the definition helps.** A map T → Y kills the pullback of f\*s exactly when the composite T → X kills the pullback of s, so both schemes have the same test maps and are equal (our own). The work moves into showing that the local equations of s cut out a closed subscheme with this property, also for test schemes with nilpotents (Stacks Project, Divisors, Lemma 31.14.9).
 
 **Paper or page:** [Divisors, Lemma 31.14.9](https://stacks.math.columbia.edu/tag/02OR). It says: “we have f∗s = 0 in Γ(Y, f∗ℒ) if and only if f factors through Z(s).”
 
@@ -1166,15 +1166,15 @@
 
 ### Determinants give hypersurface adjunction
 
-**Remember:** Top forms give the canonical line, and the conormal line supplies the missing factor.
+**Remember:** Ambient top forms equal top forms of D times the conormal line.
 
 *True by definition.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 32L05. arXiv math.AG, math.CV. Level 3: graduate.
 
-**Definition.** The canonical line bundle consists of holomorphic differential forms of top degree. The conormal bundle of a smooth hypersurface records functions vanishing on it, modulo products of two vanishing functions.
+**Definition.** The canonical bundle is the line bundle of top-degree holomorphic forms, the determinant of the cotangent bundle. For a smooth hypersurface D, the conormal bundle, functions vanishing on D modulo products of two such, is the line bundle 𝒪(−D) restricted to D.
 
 **Problem.** Let D be a smooth hypersurface in a complex manifold X. Its canonical bundle is the restriction to D of the ambient canonical bundle tensored with the line bundle of D.
 
-**How the definition helps.** Taking top exterior powers turns the exact sequence of differentials into a product of line bundles. In our own calculation, restriction maps ambient differentials onto differentials along D, with kernel the conormal line. The local equation of D identifies the conormal line with the dual of the line bundle of D restricted to D. Moving that factor across gives the formula.
+**How the definition helps.** Determinants multiply along exact sequences, so the conormal sequence 0 → 𝒪(−D)\|<sub>D</sub> → Ω<sub>X</sub>\|<sub>D</sub> → Ω<sub>D</sub> → 0 gives K<sub>X</sub>\|<sub>D</sub> ≅ 𝒪(−D)\|<sub>D</sub> ⊗ K<sub>D</sub> (our own). Moving the conormal factor across gives K<sub>D</sub> ≅ (K<sub>X</sub> ⊗ 𝒪(D))\|<sub>D</sub>.
 
 **Wikipedia:** [Adjunction formula](https://en.wikipedia.org/wiki/Adjunction_formula). It says: “The conormal bundle I/I² is i\*O(−D), which, combined with the formula above, gives”
 
@@ -1184,15 +1184,15 @@
 
 ### Factorial schemes make Weil divisors and Cartier divisors the same
 
-**Remember:** Two kinds of divisor, one meaning wherever local rings factor uniquely.
+**Remember:** Unique factorization gives every codimension-one prime one local equation.
 
 *Makes the theorem clean to state or prove.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14M05, 14C22. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** A Noetherian scheme is locally factorial if each local ring is a unique factorization domain. A Weil divisor is a finite integer combination of integral closed subschemes of codimension one. A Cartier divisor is locally a nonzero rational function up to multiplication by a unit on an integral scheme.
+**Definition.** A Noetherian scheme is locally factorial when every local ring is a unique factorization domain, so every height-one prime is principal. Then each prime divisor, an integral closed subscheme of codimension one, has one local equation, so every Weil divisor is Cartier.
 
-**Problem.** On a factorial scheme every Weil divisor is locally principal. If the scheme is also integral and separated, the divisor class group equals the Picard group of line bundles. On a singular scheme the two groups can differ.
+**Problem.** On a locally factorial Noetherian scheme, every Weil divisor is locally principal. So if the scheme is integral and separated, its divisor class group equals its Picard group, which can fail on singular schemes.
 
-**How the definition helps.** In each factorial local ring, height-one primes have generators, whose powers multiply to a local equation for any Weil divisor. On an integral separated factorial scheme, Cartier divisors modulo principal divisors classify line bundles (our own). On the affine quadric cone xy = z², the ruling line x = z = 0 gives a non-Cartier class (our own).
+**How the definition helps.** In a unique factorization domain each height-one prime has one generator, and a product of powers of these generators is a local equation for any Weil divisor. On an integral separated scheme, Cartier divisors modulo principal ones classify line bundles (our own). On the quadric cone xy = z², the line x = z = 0 is not Cartier (our own).
 
 **Wikipedia:** [Divisor (algebraic geometry)](https://en.wikipedia.org/wiki/Divisor_%28algebraic_geometry%29). It says: “On singular varieties, this property can also fail, and so one has to distinguish between codimension-1 subvarieties and varieties which can locally be defined by one equation.”
 
@@ -1204,11 +1204,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 14M05. arXiv math.AG. Level 3: graduate.
 
-**Definition.** On a normal variety X, the Weil divisor class group Cl(X) consists of finite integer sums of prime divisors modulo divisors of nonzero rational functions.
+**Definition.** On a normal variety X, the class group Cl(X) is integer sums of prime divisors, the codimension-one subvarieties, modulo divisors of nonzero rational functions. It sees only codimension-one points and the function field, which do not change when a set of codimension two is removed.
 
 **Problem.** For a closed subset Z of codimension at least two in a normal variety X, restriction identifies Cl(X) with Cl(X − Z). Over a perfect field, the canonical class of the smooth locus therefore extends uniquely to X.
 
-**How the definition helps.** Restriction preserves every codimension-one generic point, its local ring and the function field, so it preserves divisors and principal relations (our own). Over a perfect field a normal variety is smooth in codimension one. Thus the complement of the smooth locus has codimension at least two.
+**How the definition helps.** Removing Z of codimension at least two keeps every prime divisor, its local ring and the function field, so restriction is a bijection on divisors and on principal relations (our own). Over a perfect field a normal variety is smooth in codimension one, so the singular locus has codimension at least two and the canonical class extends.
 
 **Wikipedia:** [Divisor (algebraic geometry)](https://en.wikipedia.org/wiki/Divisor_%28algebraic_geometry%29). It says: “If Z has codimension at least 2 in X, then the restriction Cl(X) → Cl(X − Z) is an isomorphism.”
 
@@ -1222,11 +1222,11 @@
 
 *True by definition. Confidence: medium.* MSC 14C20 (Divisors, linear systems, invertible sheaves). arXiv math.AG. Level 3: graduate.
 
-**Definition.** An effective Cartier divisor corresponds to a line bundle with a section whose local equations are non-zero-divisors, up to isomorphism preserving the section. Addition tensors both the bundles and their sections.
+**Definition.** View an effective Cartier divisor D as a line bundle 𝒪(D) with a section whose local equations are non-zero-divisors, up to isomorphism preserving the section. The sum D₁ + D₂ is then the tensor product of the bundles, with the product of the sections.
 
 **Problem.** For effective Cartier divisors D₁ and D₂, exactly one isomorphism 𝒪(D₁) ⊗ 𝒪(D₂) ≅ 𝒪(D₁ + D₂) carries their tensor section to the canonical section.
 
-**How the definition helps.** Tensoring pairs gives the required isomorphism under the correspondence between regular sections and effective Cartier divisors (our own). A local unit fixing the product section must equal one, since its local equation is a non-zero-divisor (our own).
+**How the definition helps.** Under this view the tensor product of the two pairs is the pair for D₁ + D₂, which gives the isomorphism (our own). It is unique because a local unit u with u·s = s must be 1, as the local equation s is a non-zero-divisor (our own).
 
 **Paper or page:** [Divisors, Lemma 31.14.4](https://stacks.math.columbia.edu/tag/02OP). It says: “Let D = D₁ + D₂. Then there is a unique isomorphism”
 
@@ -1234,15 +1234,15 @@
 
 ### Properness algebraizes holomorphic line bundles
 
-**Remember:** Proper complex varieties have compact analytic spaces.
+**Remember:** Proper means compact analytically, and compactness is where GAGA works.
 
 *Rules out counterexamples.* MSC 14C22 (Picard groups), 32L05. arXiv math.AG, math.CV. Level 3: graduate.
 
-**Definition.** Analytification takes a complex algebraic variety and allows holomorphic functions in place of regular algebraic functions. A complex variety is proper precisely when its associated analytic space is compact.
+**Definition.** A complex variety is proper exactly when its analytic space, the same space with holomorphic functions allowed in place of regular ones, is compact.
 
 **Problem.** Every holomorphic line bundle on the analytic space of a proper complex variety comes from an algebraic line bundle. This fails on the product of two punctured complex lines.
 
-**How the definition helps.** Compactness excludes the product of two punctured complex lines, and proper GAGA algebraizes holomorphic line bundles. In this example the Laurent polynomial ring is factorial, so all algebraic line bundles are trivial (our own). Cartan’s vanishing theorem and the exponential sequence identify analytic line bundles with second integral cohomology, which is ℤ by retraction onto the torus (our own).
+**How the definition helps.** Proper GAGA turns holomorphic line bundles on a compact analytic space into algebraic ones. On (ℂ\*)², algebraic line bundles are trivial because the Laurent polynomial ring is factorial (our own). Analytic line bundles there form H²((ℂ\*)², ℤ) ≅ ℤ, by Cartan’s theorem B and the exponential sequence (our own).
 
 **nLab:** [GAGA](https://ncatlab.org/nlab/show/GAGA). It says: “Typically GAGA-type theorems hold for proper (compact) varieties, but not for non-proper varieties.”
 
@@ -1256,11 +1256,11 @@
 
 *Rules out counterexamples.* MSC 14C22 (Picard groups), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For f: X → S and each S-scheme T, put X<sub>T</sub> = X ×<sub>S</sub> T. The relative Picard functor is the fppf sheafification of T ↦ Pic(X<sub>T</sub>) modulo the image of Pic(T) under pullback.
+**Definition.** The relative Picard functor of f: X → S sends an S-scheme T to the line bundles on X<sub>T</sub> = X ×<sub>S</sub> T modulo those pulled back from T, and then sheafifies in the fppf topology.
 
 **Problem.** The functor T ↦ Pic(X<sub>T</sub>) can fail to be a sheaf and hence fail to be representable. For projective flat families of finite presentation with geometrically integral fibres over a locally Noetherian base, the relative Picard functor is representable by a scheme.
 
-**How the definition helps.** For X = S a nontrivial line bundle on T becomes trivial on a cover, so the naive functor fails the sheaf condition (our own). The quotient removes these base classes, and sheafification imposes descent. Grothendieck’s Picard scheme theorem gives representability under the stated hypotheses.
+**How the definition helps.** When X = S, a nontrivial line bundle on T becomes trivial on a cover, so the naive functor T ↦ Pic(X<sub>T</sub>) breaks the sheaf condition (our own). Dividing out pulled-back bundles and sheafifying removes this failure. Grothendieck’s Picard scheme theorem then gives representability under the stated hypotheses.
 
 **nLab:** [Picard scheme](https://ncatlab.org/nlab/show/Picard+scheme). It says: “has no hope of being representable as it is not even a sheaf.”
 
@@ -1274,11 +1274,11 @@
 
 *True by definition. Confidence: medium.* MSC 14C22 (Picard groups), 14F06. arXiv math.AG. Level 3: graduate.
 
-**Definition.** The frame sheaf of a line bundle assigns each open set its bases of sections. It is an 𝒪\*-torsor, meaning it has sections locally and any two frames on the same open set differ by a unique unit.
+**Definition.** The frame sheaf of a line bundle sends each open set to the bases of the bundle there. It is an 𝒪\*-torsor: it has sections locally, and any two frames on the same open set differ by a unique unit.
 
 **Problem.** Isomorphism classes of line bundles on a scheme X match the elements of H¹(X, 𝒪\*), the first sheaf cohomology of the units. This group is the Picard group of X.
 
-**How the definition helps.** With the torsor description, the theorem is a special case of a general fact. For any abelian sheaf ℋ, isomorphism classes of ℋ-torsors match H¹(X, ℋ) (Stacks Project, Cohomology, Lemma 20.4.3). The real work moves into that general fact and into checking that frames and line bundles determine each other (our own). From a torsor one recovers the line bundle by gluing copies of 𝒪 along the units (our own).
+**How the definition helps.** So line bundles are 𝒪\*-torsors, and for any abelian sheaf ℋ, ℋ-torsors up to isomorphism match H¹(X, ℋ) (Stacks Project, Cohomology, Lemma 20.4.3). A torsor gives back its line bundle by gluing copies of 𝒪 along the units, so frames and bundles determine each other (our own).
 
 **Paper or page:** [Cohomology, Lemma 20.4.3](https://stacks.math.columbia.edu/tag/02FQ). It says: “There is a canonical bijection between the set of isomorphism classes of ℋ-torsors and H¹(X, ℋ).”
 
@@ -1286,15 +1286,15 @@
 
 ### Admissible faces make boundaries square-zero
 
-**Remember:** Check all faces so that every face of a face is still allowed.
+**Remember:** Test every face, so faces of faces stay allowed.
 
 *Rules out counterexamples.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Bloch's cycle complex in degree n uses cycles on X × Δⁿ, where Δⁿ is the algebraic simplex with coordinates of sum one. A face of Δⁿ sets some coordinates to zero. A subvariety of codimension r is allowed if it meets X × F in codimension at least r there, for every face F.
+**Definition.** A codimension-r cycle on X × Δⁿ, with Δⁿ the algebraic simplex whose coordinates sum to one, is allowed when it meets X × F in codimension at least r for every face F. A face sets some coordinates to zero, and testing all faces, not only the facets, keeps restrictions allowed.
 
 **Problem.** On a smooth variety X over a field, the boundary is the alternating sum of restrictions to the faces of codimension one. It maps allowed cycles to allowed cycles, and applying it twice gives zero.
 
-**How the definition helps.** Checking every face lets each restricted cycle satisfy the same rule on smaller faces, so the boundary stays inside the complex. The face identities give each double restriction twice with opposite signs. Our own example: with X a point, the line t₁ + t₂ = 0 in Δ² meets every edge properly but contains the vertex where t₁ and t₂ vanish. So its restriction to the edge t₁ = 0 fails the rule.
+**How the definition helps.** A face of a face is a face, so the restriction of an allowed cycle to a facet is again allowed, and the boundary stays in the complex. Each double restriction appears twice with opposite signs, so the boundary squared is zero. Our own example: for X a point, the line t₁ + t₂ = 0 in Δ² meets each edge properly but passes through a vertex, so its restriction to the edge t₁ = 0 is not allowed.
 
 **Wikipedia:** [Bloch's higher Chow group](https://en.wikipedia.org/wiki/Bloch%27s_higher_Chow_group). It says: “the subgroup generated by closed subvarieties that intersect properly with X × F for each face F of Δᑫ.”
 
@@ -1308,11 +1308,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Fix a quasi-projective variety X over a field and an integer r. In degree n, use cycles of dimension r+n whose generators meet X × F in dimension at most r+dim(F) for every simplex face F. Higher Chow groups are the homology of this complex with alternating face boundary.
+**Definition.** For a quasi-projective variety X over a field, the higher Chow groups are the homology of Bloch’s chain complex. In degree n it has cycles of dimension r+n on X × Δⁿ meeting each X × F in dimension at most r + dim F, for every simplex face F, with the alternating sum of face restrictions as boundary.
 
 **Problem.** Let Z be closed in X and let U be its complement. The higher Chow groups of Z, X and U form a long exact sequence for each r. Degree zero recovers localization for ordinary Chow groups.
 
-**How the definition helps.** The chain complex adds groups in positive degrees, so localization has connecting maps beyond ordinary Chow groups. Our own explanation starts with the subcomplex of cycles supported on Z. Dividing by this subcomplex gives a short exact sequence of complexes and hence a long exact sequence in homology. Bloch’s localization theorem proves that restricting this quotient to U induces an isomorphism on homology.
+**How the definition helps.** Cycles supported on Z form a subcomplex, so dividing by it gives a long exact sequence in homology (our own). Bloch’s localization theorem says that this quotient computes the higher Chow groups of U. In degree zero the sequence is the ordinary one CH(Z) → CH(X) → CH(U) → 0.
 
 **Wikipedia:** [Bloch's higher Chow group](https://en.wikipedia.org/wiki/Bloch%27s_higher_Chow_group). It says: “it yields the long exact sequence for higher Chow groups (called the localization sequence).”
 
@@ -1327,11 +1327,11 @@
 
 *True by definition.* MSC 14C25 (Algebraic cycles), 14F42. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a smooth variety X over a perfect field, motivic cohomology Hᵖ(X,ℤ(q)) is Hom(M(X),ℤ(q)\[p\]) in the category of motives. The comparison with higher cycles identifies this group with CHᵠ(X,2q−p).
+**Definition.** For a smooth variety X over a perfect field, motivic cohomology Hᵖ(X, ℤ(q)) is the group of maps from the motive M(X) to ℤ(q)\[p\]. A comparison theorem identifies this group with the higher Chow group CHᵠ(X, 2q−p).
 
 **Problem.** Every morphism between smooth schemes over a perfect field induces a functorial pullback on higher Chow groups. The pullback preserves codimension and degree.
 
-**How the definition helps.** Writing classes as maps makes pullback composition with the map of motives. Naive pullback of cycles fails (our own example). Pulling the origin of the affine line back along its own inclusion gives the whole point, so codimension drops from one to zero. The comparison theorem identifies the map groups with higher Chow groups, while the direct cycle construction must move representatives before intersecting.
+**How the definition helps.** A morphism X → Y gives a map of motives M(X) → M(Y), and composing with it pulls classes back with p and q unchanged. The comparison theorem moves this pullback to higher Chow groups. Naive pullback of cycles fails (our own): pulling the origin of the line back along its own inclusion gives the whole point, so codimension drops from one to zero.
 
 **Wikipedia:** [Bloch's higher Chow group](https://en.wikipedia.org/wiki/Bloch%27s_higher_Chow_group). It says: “whenever Y is smooth, any map to Y is contravariant.”
 
@@ -1345,11 +1345,11 @@
 
 *True by definition. Confidence: medium.* MSC 14C30 (Transcendental methods, Hodge theory (algebro-geometric aspects)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A mixed Hodge–Tate structure has an increasing weight filtration W and a decreasing Hodge filtration F, with only even weight quotients. On the quotient of weight 2p, the Hodge filtration is everything at step p and zero at step p + 1. The key subspace is the complex intersection W₂ₚ ∩ Fᵖ.
+**Definition.** A mixed Hodge–Tate structure has an increasing weight filtration W and a decreasing Hodge filtration F, with only even weight quotients. On the quotient of weight 2p, the Hodge step Fᵖ is everything and Fᵖ⁺¹ is zero. Hence the complex subspace W₂ₚ ∩ Fᵖ covers that quotient and meets lower weights only in zero (our own).
 
 **Problem.** Projection maps W₂ₚ ∩ Fᵖ isomorphically onto the weight quotient of weight 2p. These subspaces split the weight filtration over ℂ, and maps of mixed Hodge–Tate structures preserve the splitting.
 
-**How the definition helps.** Intersecting the two steps selects one lift of each quotient vector without choosing complements (our own). By the definition of the induced filtration, the intersection maps onto the quotient because its induced pth Hodge step is the whole quotient (our own). Its kernel vanishes because every lower weight has zero pth step (our own). Maps preserve both filtrations and hence each intersection (our own).
+**How the definition helps.** The two facts in the definition make projection from W₂ₚ ∩ Fᵖ to the weight-2p quotient onto and injective, so these subspaces split W over ℂ (our own). Maps preserve both filtrations, hence each intersection, so they preserve the splitting (our own).
 
 **Wikipedia:** [Mixed Hodge structure](https://en.wikipedia.org/wiki/Mixed_Hodge_structure). It says: “are pure Hodge structures of weight k.”
 
@@ -1361,11 +1361,11 @@
 
 *True by definition.* MSC 14C30 (Transcendental methods, Hodge theory (algebro-geometric aspects)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A pure real Hodge structure of weight w is a real vector space whose complexification decomposes into spaces Hᵃᵇ with a+b=w. Complex conjugation exchanges Hᵃᵇ and Hᵇᵃ. For a mixed Hodge complex, degree n cohomology of weight-graded piece m is pure of weight m+n.
+**Definition.** A pure Hodge structure of weight w is a real vector space whose complexification splits into pieces Hᵃᵇ with a + b = w, swapped by complex conjugation. In a mixed Hodge complex, the nth cohomology of the weight-graded piece m is pure of weight m + n, and a Hodge morphism between pure structures of different weights is zero.
 
 **Problem.** For a mixed Hodge complex, the weight spectral sequence degenerates at page two: every differential from page two onward vanishes.
 
-**How the definition helps.** The first page has pure weight q in position (p,q), and its first differential preserves q (our own). Deligne’s compatibility of the weight spectral sequence with Hodge structures makes E₂ pure of weight q there and makes later differentials Hodge morphisms. For r ≥ 2, the target has weight q+1−r, so the differential vanishes and purity persists inductively (our own).
+**How the definition helps.** Deligne shows that the differentials are Hodge morphisms and that E₂ in position (p,q) is pure of weight q. For r ≥ 2, the differential dᵣ goes to a term of weight q + 1 − r, a different weight, so it vanishes and purity persists (our own).
 
 **Paper or page:** [Variation of mixed Hodge structure and its applications](https://arxiv.org/abs/2304.00672). It says: “The spectral sequence associated to (K𝒪, W) degenerates at E₂-terms.”
 
@@ -1373,15 +1373,15 @@
 
 ### Integral lattices ensure finite monodromy in type (0, 0)
 
-**Remember:** A compact isometry group meets a lattice group in finitely many points.
+**Remember:** A lattice has finitely many vectors of each length.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14D07 (Variation of Hodge structures (algebro-geometric aspects)), 32G20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A variation of Hodge structure of type (0, 0) is a local system of rational vector spaces with one Hodge component. A polarization gives a positive definite symmetric form preserved by monodromy. An integral structure gives a full lattice in each fiber, also preserved by monodromy.
+**Definition.** A polarized integral variation of Hodge structure of type (0, 0) is a local system of rational vector spaces, with one Hodge component, whose monodromy preserves a positive definite form and a full lattice in each fibre.
 
 **Problem.** A polarized integral variation of type (0, 0) on a connected complex manifold has finite monodromy. With rational coefficients alone, the monodromy group can be infinite.
 
-**How the definition helps.** A lattice has finitely many vectors of each norm, so isometries have only finitely many possible images for a lattice basis (our own). On an elliptic curve, send one generating loop to the rational rotation with cosine 3/5 and sine 4/5, and the other to identity (our own). This preserves the rational Euclidean form but has trace 6/5, whereas finite-order matrices have algebraic-integer trace (our own).
+**How the definition helps.** Monodromy then lies in the isometry group of a lattice, which is finite because a lattice has finitely many vectors of each length (our own). Without the lattice it fails: on an elliptic curve, send one loop to the rotation with cosine 3/5 and sine 4/5 and the other to the identity (our own). This rotation preserves the rational form but has infinite order, since its trace 6/5 is not an algebraic integer (our own).
 
 **Paper or page:** [On exact sequences of Hodge theoretic fundamental groups](https://arxiv.org/abs/2503.13307). It says: “Then 𝕍 is of finite monodromy.”
 
@@ -1393,11 +1393,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14D23 (Stacks and moduli problems), 14B25. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An algebraic stack is Deligne–Mumford if some scheme maps onto it by an étale surjective map. The diagonal 𝒳 → 𝒳 × 𝒳 encodes the automorphism groups of objects. Unramified means locally of finite type with zero relative differentials.
+**Definition.** An algebraic stack is Deligne–Mumford if some scheme maps onto it by an étale surjective map. Its diagonal 𝒳 → 𝒳 × 𝒳 records the automorphism groups of objects, so asking it to be unramified asks every stabilizer group to be discrete and reduced.
 
 **Problem.** An algebraic stack is Deligne–Mumford exactly when its diagonal is unramified. Equivalently, the stabilizer at every geometric point is discrete and reduced.
 
-**How the definition helps.** The criterion turns the existence of an étale cover into a condition on stabilizer groups that one can check point by point. For stable curves of genus at least 2, automorphism group schemes are finite and reduced, so the moduli stack is Deligne–Mumford (our own summary). 'Reduced' cannot be dropped: in characteristic p, μₚ is finite but not reduced, and its classifying stack is not Deligne–Mumford (our own example). The hard part is the direction from unramified diagonal to an étale cover, which needs a slicing argument (our own).
+**How the definition helps.** The criterion turns the existence of an étale cover into a check on stabilizer groups, point by point; the hard direction builds the cover by a slicing argument (our own). ‘Reduced’ cannot be dropped: in characteristic p, μₚ is finite but not reduced, and its classifying stack is not Deligne–Mumford (our own example). So the moduli stack of stable curves of genus at least 2, with finite reduced automorphism groups, is Deligne–Mumford (our own).
 
 **Paper or page:** [J. Alper, Stacks and Moduli, Theorem 2.3 (Characterization of Deligne–Mumford Stacks)](https://sites.math.washington.edu//~jarod/moduli.pdf). It says: “Let 𝒳 be an algebraic stack. The following are equivalent: (1) the stack 𝒳 is a Deligne–Mumford; (2) the diagonal 𝒳 → 𝒳 × 𝒳 is unramified; and (3) every point of 𝒳 has a discrete and reduced stabilizer group.”
 
@@ -1412,11 +1412,11 @@
 
 *True by definition.* MSC 14E05 (Rational and birational maps), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let I be the ideal sheaf of a closed subscheme of X, the sheaf of functions that vanish on it. The blowup of X along it is a morphism π to X such that I generates a locally principal ideal upstairs, given by a non-zero-divisor. Every morphism with this property must factor uniquely through π.
+**Definition.** The blowup of X along a closed subscheme with ideal sheaf I is the universal morphism π to X that makes I locally principal, generated by a non-zero-divisor. Every other morphism with this property factors through π in exactly one way.
 
 **Problem.** The blowup of X along a closed subscheme is unique up to unique isomorphism, so it does not depend on coordinates or on an embedding. The blowup of an open subset U is the restriction of the blowup of X over U.
 
-**How the definition helps.** Universal factorization gives inverse maps between any two blowups, uniquely over X (our own). For a test scheme over U, the pulled-back ideal is the same whether computed over U or X. Thus the restricted blowup has the required universal property over U (our own).
+**How the definition helps.** Universal factorization gives inverse maps between any two blowups, unique over X (our own). Whether a test scheme over U makes the ideal invertible does not depend on viewing it over U or over X, so the restriction is the blowup of U (our own).
 
 **Wikipedia:** [Blowing up](https://en.wikipedia.org/wiki/Blowing_up). It says: “From this perspective, a blowup is the universal (in the sense of category theory) way to turn a subvariety into a Cartier divisor.”
 
@@ -1424,15 +1424,15 @@
 
 ### Asking that local kernels be finitely generated makes coherent sheaves abelian
 
-**Remember:** Use finitely many local generators and locally finitely generated relations for every finite list.
+**Remember:** Every finite list of local sections has finitely generated relations.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F06 (Sheaves in algebraic geometry), 18F20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A sheaf F of modules on a ringed space is coherent if it is locally finitely generated and satisfies the following condition. For every open U, finite p and module map 𝒪<sub>U</sub>ᵖ → F\|<sub>U</sub>, the kernel is locally finitely generated.
+**Definition.** A sheaf of modules F on a ringed space is coherent if it is locally finitely generated and, for every open U and finite p, every map 𝒪<sub>U</sub>ᵖ → F\|<sub>U</sub> has a locally finitely generated kernel.
 
 **Problem.** On any ringed space, coherent sheaves form an abelian category that is closed under extensions. If two terms of a short exact sequence are coherent, so is the third.
 
-**How the definition helps.** The kernel condition makes coherence survive kernels, cokernels and extensions, on any ringed space. The naive notion, finitely presented, does not behave well outside Noetherian schemes; the nLab notes that even the structure sheaf can be finitely presented but not coherent. The two-out-of-three property is a basic result of Serre. On Noetherian schemes the two notions agree, so nothing is lost there.
+**How the definition helps.** The kernel condition is what survives kernels, cokernels and extensions on any ringed space, so the abelian category and the two-out-of-three property follow (Serre). Finitely presented sheaves lack it outside Noetherian schemes; the nLab notes that even the structure sheaf can fail to be coherent. On Noetherian schemes the two notions agree.
 
 **nLab:** [coherent sheaf](https://ncatlab.org/nlab/show/coherent+sheaf). It says: “this is not true on a general scheme or general analytic space; sometimes even the structure sheaf”
 
@@ -1446,11 +1446,11 @@
 
 *True by definition.* MSC 14F06 (Sheaves in algebraic geometry), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A sheaf of modules on a ringed space is quasi-coherent if locally it is the cokernel of a map between free modules. On an affine scheme, an alternative definition says the sheaf comes from a module over the ring.
+**Definition.** A sheaf of modules on a ringed space is quasi-coherent if locally it is the cokernel of a map between free modules.
 
 **Problem.** For a map of ringed spaces from X to Y, the pullback to X of a quasi-coherent module on Y is quasi-coherent.
 
-**How the definition helps.** Local presentations make pullback a direct application of how it acts on free modules and quotients. Pullback preserves free modules and cokernels (our own account of the Stacks result). With the affine definition, one needs the theorem that pullback along a ring map A → B corresponds to tensoring with B.
+**How the definition helps.** Pullback is right exact and sends free modules to free modules, so it sends a local presentation to a local presentation (our own account of the Stacks result).
 
 **Paper or page:** [Modules, Lemma 17.10.4](https://stacks.math.columbia.edu/tag/01BG), [Modules, Lemma 17.16.3](https://stacks.math.columbia.edu/tag/01CC). It says: “The pullback \\(f<sup>\*\\mathcal{G}\\</sup>) of a quasi-coherent \\(\\mathcal{O}<sub>Y</sub>\\)-module is quasi-coherent.”
 
@@ -1467,11 +1467,11 @@
 
 *True by definition. Confidence: medium.* MSC 14F06 (Sheaves in algebraic geometry), 14B25. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a finite affine cover of a quasi-compact separated scheme, the degree p Čech cochains are products of sections on intersections of p+1 distinct charts. Order the charts and use the alternating sum of restrictions as differential. Čech cohomology is the cohomology of this complex.
+**Definition.** For a finite affine cover of a quasi-compact separated scheme, Čech cohomology is the cohomology of the complex of products of sections on intersections of p+1 distinct ordered charts, with the alternating sum of restrictions as differential. Each term uses only sections over affines, which base change tensors with B.
 
 **Problem.** Let B be a flat A-algebra, and let X′ and ℱ′ be the base changes to B. Then Hⁱ(X, ℱ) ⊗ B over A is Hⁱ(X′, ℱ′) for every i.
 
-**How the definition helps.** With the Čech definition, the proof is short, because the Čech complex for X′ is the complex for X tensored with B (our own). Tensoring with a flat module commutes with taking cohomology of a complex. The real work moves into the theorem that Čech cohomology agrees with derived functor cohomology for quasi-coherent sheaves on separated schemes (our own). That theorem rests on the vanishing of higher cohomology on affine schemes.
+**How the definition helps.** The Čech complex for X′ is the complex for X tensored with B, and flat tensoring commutes with cohomology (our own). The work moves into the theorem that Čech cohomology equals sheaf cohomology for quasi-coherent sheaves on separated schemes, which rests on vanishing on affines (our own).
 
 **Paper or page:** [Coherent, Lemma 30.5.2](https://stacks.math.columbia.edu/tag/02KH). It says: “Hⁱ(X, ℱ) ⊗ₐ B = Hⁱ(X′, ℱ′).”
 
@@ -1485,11 +1485,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 16E35. arXiv math.AG, math.RT. Level 3: graduate.
 
-**Definition.** In a k-linear category, a full strong exceptional collection is an ordered generating list E₁,…,Eₘ with End(Eᵢ)=k for each i. For all i,j and t≠0, Hom(Eᵢ,Eⱼ\[t\]) vanishes, and Hom(Eⱼ,Eᵢ) vanishes for j&gt;i.
+**Definition.** A full strong exceptional collection is an ordered list E₁,…,Eₘ that generates a k-linear category, with End(Eᵢ) = k, no maps from a later Eⱼ to an earlier Eᵢ, and Hom(Eᵢ, Eⱼ\[t\]) = 0 for all i, j and t ≠ 0. So their sum T has no self-extensions in nonzero degree, and its endomorphisms form an ordinary algebra.
 
-**Problem.** Let X be smooth projective over k, with a full strong exceptional collection of sum T in Dᵇ(X). Then RHom(T,−) identifies Dᵇ(X) with the bounded derived category of finitely generated right End(T)-modules. For Beilinson’s collection on ℙⁿ, End(T) is a quiver path algebra with relations.
+**Problem.** If a smooth projective X over k has a full strong exceptional collection with sum T, then RHom(T,−) identifies Dᵇ(X) with Dᵇ of finitely generated right End(T)-modules. For Beilinson’s collection on ℙⁿ, End(T) is a quiver path algebra with relations.
 
-**How the definition helps.** The sum T generates and has no nonzero-degree self-extensions, so Bondal’s tilting theorem applies (our own). It identifies T with the free right End(T)-module and gives the stated equivalence.
+**How the definition helps.** The sum T generates and has no self-extensions in nonzero degree, so Bondal’s tilting theorem applies (our own). It sends T to the free module End(T) and gives the equivalence.
 
 **nLab:** [exceptional collection](https://ncatlab.org/nlab/show/exceptional+collection). It says: “It is a full exceptional collection if in addition it generates the category.”
 
@@ -1506,11 +1506,11 @@
 
 *True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** For schemes over S, a Fourier–Mukai kernel K on X ×<sub>S</sub> Y defines the transform M ↦ Rp₂\*(Lp₁\*M ⊗ᴸ K). Here p₁ and p₂ project to X and Y.
+**Definition.** A Fourier–Mukai transform with kernel K on X ×<sub>S</sub> Y pulls a complex back from X, tensors it with K, and pushes it forward to Y: M ↦ Rp₂\*(Lp₁\*M ⊗ᴸ K).
 
 **Problem.** Let X,Y,Z be quasi-compact separated schemes over S, with Y flat and X and Z Tor-independent over S. For quasi-coherent derived kernels, the composite transform has a kernel on X ×<sub>S</sub> Z.
 
-**How the definition helps.** Tor-independent base change and the projection formula combine the two transforms into one (our own). On X ×<sub>S</sub> Y ×<sub>S</sub> Z, let pᵢⱼ project to factors i and j. The composite kernel is Rp₁₃\*(Lp₁₂\*K ⊗ᴸ Lp₂₃\*K′) (our own).
+**How the definition helps.** Base change and the projection formula merge two pull–tensor–push steps into one on X ×<sub>S</sub> Y ×<sub>S</sub> Z, where pᵢⱼ projects to factors i and j (our own). The composite kernel is Rp₁₃\*(Lp₁₂\*K ⊗ᴸ Lp₂₃\*K′) (our own). The flatness and Tor-independence hypotheses make the base change step valid.
 
 **Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “Given two kernels K₁ ∈ Dᵇ(X×Y) and K₂ ∈ Dᵇ(Y×Z), the composed functor ΦK₂ ∘ ΦK₁ is also a Fourier-Mukai transform.”
 
@@ -1527,11 +1527,11 @@
 
 *True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18F30, 18G80. arXiv math.AG, math.KT. Level 3: graduate.
 
-**Definition.** An object E is exceptional if Hom(E, E) = k and Hom(E, E\[t\]) = 0 for t ≠ 0. An exceptional collection is a list of exceptional objects E₁, …, Eₘ with Hom(Eⱼ, Eᵢ\[t\]) = 0 for all i &lt; j and all t. It is full if the Eᵢ generate the whole triangulated category. Each Eᵢ generates a copy of the derived category of finite-dimensional vector spaces, whose K₀ is ℤ.
+**Definition.** A full exceptional collection is an ordered list E₁, …, Eₘ that generates the triangulated category, with no maps of any degree from a later Eⱼ to an earlier Eᵢ. Each Eᵢ is exceptional, Hom(Eᵢ, Eᵢ) = k and Hom(Eᵢ, Eᵢ\[t\]) = 0 for t ≠ 0, so it spans a copy of the derived category of vector spaces, whose K₀ is ℤ.
 
 **Problem.** Let X be smooth projective. If Dᵇ(X) has a full exceptional collection E₁, …, Eₘ, then K₀(X) is the free abelian group on \[E₁\], …, \[Eₘ\]. So a smooth projective complex curve of positive genus has no full exceptional collection.
 
-**How the definition helps.** Fullness and semiorthogonality give a semiorthogonal decomposition with one vector-space derived category per exceptional object (our own). Additivity of K₀ gives one free generator \[Eᵢ\] per component. For a smooth projective complex curve C, K₀(C) ≅ ℤ ⊕ Pic(C), and positive genus gives an uncountable Jacobian in Pic(C) (our own).
+**How the definition helps.** The collection splits the category into m copies of vector spaces, and K₀ adds over such a splitting, so each piece gives one free generator \[Eᵢ\] (our own). A curve C of positive genus has K₀(C) ≅ ℤ ⊕ Pic(C), which contains the uncountable Jacobian and so is not finitely generated (our own).
 
 **Wikipedia:** [Semiorthogonal decomposition](https://en.wikipedia.org/wiki/Semiorthogonal_decomposition). It says: “In particular, if X is a smooth projective variety such that Dᵇ(X) has a full exceptional collection E₁,…,Eₘ, then the Grothendieck group of algebraic vector bundles on X is the free abelian group on the classes of these objects”
 
@@ -1546,11 +1546,11 @@
 
 *True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** A Fourier–Mukai transform pulls back to X × Y, tensors with a kernel K, and pushes forward to Y. The kernel K is perfect if it is locally a bounded complex of vector bundles. Its dual K∨ is the complex of maps from K to the structure sheaf.
+**Definition.** A Fourier–Mukai transform with kernel K pulls back from X to X × Y, tensors with K, and pushes forward to Y. K is perfect if it is locally a bounded complex of vector bundles, so its dual K∨ = RHom(K, 𝒪) makes tensoring with K∨ adjoint to tensoring with K.
 
 **Problem.** Let Y be flat, proper and Gorenstein over Noetherian S, with relative dualizing complex ω, and X of finite type over S. For a perfect kernel K on X ×<sub>S</sub> Y, the reverse transform with kernel K∨ ⊗ p<sub>Y</sub>\*ω is left adjoint to its transform.
 
-**How the definition helps.** Each step of pull–tensor–push has a known left adjoint, and composing them gives pull–tensor–push again (our own). Pullback is left adjoint to push forward, and tensoring with K∨ is left adjoint to tensoring with K (our own). The left adjoint of pullback from X is push forward twisted by ω (our own). That step is Grothendieck duality for the proper projection X × Y → X, which carries the work and needs the Gorenstein condition.
+**How the definition helps.** Each of the three steps has a left adjoint, and composing them in reverse order gives pull–tensor–push again (our own). Pullback to X × Y is left adjoint to push forward to Y, and tensoring with K∨ is left adjoint to tensoring with K (our own). Grothendieck duality for the proper projection to X, using the Gorenstein condition, makes push forward twisted by ω left adjoint to pullback from X (our own).
 
 **Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “Fourier-Mukai transforms always have left and right adjoints, both of which are also kernel transformations.”
 
@@ -1566,11 +1566,11 @@
 
 *True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 14N05. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** For projections p₁,p₂ from X × X, a kernel K acts by F ↦ Rp₁\*(K ⊗ᴸ Lp₂\*F). The diagonal structure sheaf acts as the identity.
+**Definition.** A kernel K on X × X acts on Dᵇ(X) by F ↦ Rp₁\*(K ⊗ᴸ Lp₂\*F), and the structure sheaf of the diagonal acts as the identity. So a resolution of 𝒪\_Δ by kernels E ⊠ G builds every F from copies of E, with coefficients RΓ(F ⊗ G).
 
-**Problem.** On projective space Pⁿ, the line bundles O(−n), …, O(−1), O form a full strong exceptional collection (Beilinson). Strong means that there are no maps between them in nonzero degrees. So every object of Dᵇ(Pⁿ) is built from them by shifts, sums and cones.
+**Problem.** On projective space Pⁿ, the line bundles O(−n), …, O(−1), O form a full strong exceptional collection, with no maps between them in nonzero degrees (Beilinson). So every object of Dᵇ(Pⁿ) is built from them by shifts, sums and cones.
 
-**How the definition helps.** Beilinson’s diagonal resolution builds the identity kernel from 𝒪(−i) ⊠ Ωⁱ(i) for 0 ≤ i ≤ n. Each such kernel sends F to 𝒪(−i) tensored with the derived global sections of F ⊗ Ωⁱ(i) (our own). These are sums of shifts of 𝒪(−i), giving generation. The line-bundle cohomology formula on ℙⁿ gives strong exceptionality (our own).
+**How the definition helps.** Beilinson resolves 𝒪\_Δ on ℙⁿ × ℙⁿ by the kernels 𝒪(−i) ⊠ Ωⁱ(i) for 0 ≤ i ≤ n, so every F is built from the 𝒪(−i), which gives generation (our own). The cohomology of line bundles on ℙⁿ gives the vanishing that makes the collection strong and exceptional (our own).
 
 **Wikipedia:** [Derived noncommutative algebraic geometry](https://en.wikipedia.org/wiki/Derived_noncommutative_algebraic_geometry). It says: “In the derived category Dᵇ(ℙⁿ) the line bundles 𝒪(−n), 𝒪(−n+1), …, 𝒪(−1), 𝒪 form a full strong exceptional collection.”
 
@@ -1586,11 +1586,11 @@
 
 *True by definition.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** In a k-linear category with finite-dimensional Hom spaces, a Serre functor is an autoequivalence S with isomorphisms Hom(A,B) ≅ Hom(B,SA)\* natural in both objects. The star denotes k-linear duality.
+**Definition.** A Serre functor on a k-linear category with finite-dimensional Hom spaces is an autoequivalence S with isomorphisms Hom(A,B) ≅ Hom(B,SA)\*, natural in both objects, where the star is the k-linear dual. It is defined by Hom spaces alone, so every equivalence of categories carries one Serre functor to the other.
 
 **Problem.** If smooth projective varieties X and Y have equivalent bounded derived categories of coherent sheaves, then X and Y have the same dimension.
 
-**How the definition helps.** Because the Serre functor depends only on the category, an equivalence F from Dᵇ(X) to Dᵇ(Y) commutes with the two Serre functors (our own). Serre duality carries the work: it makes the Serre functor E ↦ E ⊗ ω\[n\], which is the shift \[n\] on a skyscraper sheaf k(x). So P = F(k(x)) satisfies P ⊗ ω\[m\] ≅ P\[n\], with m = dim Y and ω the canonical bundle of Y (our own). Tensoring with a line bundle keeps the degrees of the cohomology sheaves of P, so n = m (our own).
+**How the definition helps.** So an equivalence F from Dᵇ(X) to Dᵇ(Y) commutes with the Serre functors, which Serre duality computes as E ↦ E ⊗ ω\[dim\] (our own). The skyscraper k(x) satisfies S(k(x)) ≅ k(x)\[n\], so P = F(k(x)) satisfies P ⊗ ω<sub>Y</sub>\[m\] ≅ P\[n\] with m = dim Y (our own). Tensoring with a line bundle keeps the degrees where the cohomology sheaves of P live, so n = m (our own).
 
 **nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “Any autoequivalence F : 𝒜 → 𝒜 commutes with a Serre functor: there is a natural graded isomorphism of functors F ∘ S ⥲ S ∘ F.”
 
@@ -1605,11 +1605,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80, 14F06. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** A Serre functor on a triangulated category over a field is an equivalence S with natural isomorphisms Hom(K, L) ≅ Hom(L, S K)\*. A scheme is Gorenstein if its local rings have finite injective dimension over themselves. Then its dualizing complex ω•, the complex that gives Grothendieck duality, is locally a line bundle placed in one degree.
+**Definition.** A Serre functor on a triangulated category over a field is an equivalence S with natural isomorphisms Hom(K, L) ≅ Hom(L, S K)\*. On a Gorenstein scheme, one whose local rings have finite injective dimension over themselves, the dualizing complex ω• is locally a shifted line bundle, so tensoring with it is an equivalence on perfect complexes.
 
-**Problem.** Let X be a proper Gorenstein scheme over a field k. Then K ↦ ω• ⊗ K is a Serre functor on perfect complexes on X, which are locally bounded complexes of vector bundles. So Hom(K, L) ≅ Hom(L, ω• ⊗ K)\* for all perfect complexes K and L.
+**Problem.** Let X be a proper Gorenstein scheme over a field k. Then K ↦ ω• ⊗ K is a Serre functor on perfect complexes, so Hom(K, L) ≅ Hom(L, ω• ⊗ K)\* for all perfect complexes K and L.
 
-**How the definition helps.** The Serre functor turns the many forms of Serre duality, one for each pair of sheaves and each degree, into one statement about one functor. The work is Grothendieck duality for the map from X to a point, which supplies ω• and the duality isomorphism. The Gorenstein condition makes ω• invertible, so tensoring with it keeps complexes perfect and is an equivalence (our own). For a smooth projective variety this functor is E ↦ E ⊗ ω\[n\], as the nLab states.
+**How the definition helps.** The Serre functor packs Serre duality, for every pair of complexes and every degree, into one functor. Grothendieck duality for the map from X to a point supplies ω• and the duality isomorphism, and the Gorenstein condition makes ω• invertible (our own). On a smooth projective variety this functor is E ↦ E ⊗ ω\[n\], as the nLab states.
 
 **nLab:** [Serre functor](https://ncatlab.org/nlab/show/Serre+functor). It says: “In the derived category of coherent sheaves on a smooth projective variety X, the functor (· ⊗ ω<sub>X</sub>)\[n\] is a Serre functor, in view of Serre-Grothendieck duality, where ω<sub>X</sub> is the canonical sheaf and n is the dimension of X.”
 
@@ -1625,11 +1625,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F10 (Differentials and other special sheaves; D-modules; Bernstein-Sato ideals and polynomials), 14M05. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** For a pure n-dimensional Cohen–Macaulay scheme X over a field, the dualizing sheaf is the degree −n cohomology of the normalized dualizing complex. On smooth X it is the sheaf of top differential forms.
+**Definition.** For a Cohen–Macaulay scheme X of pure dimension n over a field, the normalized dualizing complex has cohomology only in degree −n, and the dualizing sheaf ω is that one sheaf. On smooth X, ω is the sheaf of top differential forms.
 
 **Problem.** Let X be proper, Cohen–Macaulay and of pure dimension n over a field, with dualizing sheaf ω. For every coherent sheaf E, Hⁱ(X, E) is dual to Extⁿ⁻ⁱ(E, ω), even for singular X such as complete intersections.
 
-**How the definition helps.** The normalized dualizing complex on X is ω\[n\], so Grothendieck duality reduces to a statement involving a single sheaf (our own). In degree i, duality for the proper structure map gives Hⁱ(X,E)\* ≅ Extⁿ⁻ⁱ(E,ω).
+**How the definition helps.** Since the dualizing complex is ω\[n\], Grothendieck duality for the proper map to the point gives Hⁱ(X,E)\* ≅ Extⁿ⁻ⁱ(E,ω) in each degree (our own).
 
 **Wikipedia:** [Serre duality](https://en.wikipedia.org/wiki/Serre_duality). It says: “As a first step in generalizing Serre duality, Grothendieck showed that this version works for schemes with mild singularities, Cohen–Macaulay schemes, not just smooth schemes.”
 
@@ -1644,11 +1644,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
 
-**Definition.** A divisor has simple normal crossings when its components through each point are smooth and become distinct coordinate hyperplanes in suitable local coordinates. For positive coefficients aⱼ, form the product of the factors \|zⱼ\| raised to −2aⱼ. The multiplier ideal tests local integrability of \|f\|² times this product.
+**Definition.** A divisor ∑ aⱼDⱼ with positive coefficients has simple normal crossings when, near each point, its components are distinct coordinate hyperplanes zⱼ = 0 in suitable local coordinates. Its multiplier ideal consists of the holomorphic f with \|f\|² ∏ⱼ\|zⱼ\|<sup>(−2aⱼ)</sup> locally integrable, a test that splits into one test per coordinate.
 
 **Problem.** A divisor with simple normal crossings has the whole local function ring as its multiplier ideal everywhere exactly when every coefficient is below one.
 
-**How the definition helps.** Coordinate hyperplanes separate the integral of the constant function into one-variable factors, each finite precisely below one. Our own counterexample uses three lines through the origin in the complex plane of dimension two, each with coefficient ¾. Blowing up the origin produces order 9/4 in the weighted divisor and order one in the Jacobian. The resulting one-variable integral diverges.
+**How the definition helps.** For f = 1 the integral is a product of one-variable integrals of \|z\|<sup>(−2a)</sup>, each finite exactly when a &lt; 1. Without normal crossings this fails (our own): three lines through the origin of ℂ², each with coefficient ¾, have nontrivial multiplier ideal. After blowing up the origin, the exceptional curve has coefficient 9/4 and Jacobian order 1, and 1 − 9/4 &lt; −1, so the integral diverges.
 
 **Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “measures singularities coming from the fractional parts of D.”
 
@@ -1660,11 +1660,11 @@
 
 *True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 3: graduate.
 
-**Definition.** For a nonzero ideal generated locally by g₁,…,gₘ, its multiplier ideal at c &gt; 0 tests a holomorphic function f by integration. It requires \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ to have finite integral near each point.
+**Definition.** The multiplier ideal of an ideal generated locally by g₁,…,gₘ at c &gt; 0 consists of the holomorphic f with \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ integrable near each point. An integral can be computed after any change of variables, at the cost of the squared Jacobian.
 
 **Problem.** On a smooth complex variety, resolve the ideal so its pullback has coordinate factors with orders mⱼ. Membership requires ordⱼ(f∘π) + kⱼ ≥ ⌊cmⱼ⌋ along every such divisor, where kⱼ is the vanishing order of the resolution Jacobian.
 
-**How the definition helps.** The integral definition turns the divisor formula into separate tests in one complex variable. In our own calculation, changing variables adds the squared Jacobian to the numerator. Each radial integral converges exactly when its exponent exceeds −1, giving the stated integer bound. Constructing the resolution is the deep step.
+**How the definition helps.** Changing variables along the resolution multiplies the integrand by the squared Jacobian, so the test becomes one-variable tests along the coordinate divisors (our own). Each converges exactly when ordⱼ(f∘π) + kⱼ − cmⱼ &gt; −1, which for integers is the stated bound. The deep step is the existence of the resolution.
 
 **Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “where the fᵢ are a finite set of local generators of the ideal.”
 
@@ -1676,11 +1676,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F18 (Multiplier ideals), 32U05. arXiv math.CV, math.AG. Level 3: graduate.
 
-**Definition.** A plurisubharmonic weight φ is an upper semicontinuous function that is subharmonic on complex lines in local coordinates. Its multiplier ideal 𝒥(φ) consists of local holomorphic functions f with \|f\|² exp(−2φ) locally integrable.
+**Definition.** The multiplier ideal 𝒥(φ) of a plurisubharmonic weight φ, an upper semicontinuous function that is subharmonic on complex lines, consists of the local holomorphic f with \|f\|² exp(−2φ) locally integrable. This finite weighted L² norm is the input and the output of the Ohsawa–Takegoshi extension theorem.
 
 **Problem.** On a smooth hypersurface Y where the restricted weight is not identically minus infinity on any component, every multiplier ideal germ extends locally. Its extension belongs to the multiplier ideal on the ambient complex manifold.
 
-**How the definition helps.** The integral definition gives exactly the hypothesis and conclusion of the weighted holomorphic extension theorem. In our own explanation, a definition using vanishing orders would require comparing resolutions on two different spaces. The Ohsawa–Takegoshi theorem supplies the extension with finite integral.
+**How the definition helps.** Ohsawa–Takegoshi extends a holomorphic function on Y with finite weighted L² norm to one on the ambient manifold with finite norm, so 𝒥(φ\|<sub>Y</sub>) ⊂ 𝒥(φ)\|<sub>Y</sub>. A definition by vanishing orders would instead need comparing resolutions on two different spaces (our own).
 
 **Paper or page:** [Analyticity theorems for parameter-dependent plurisubharmonic functions](https://arxiv.org/abs/2405.07786v1). It says: “\\mathcal{I} (\\varphi \|<sub>Y</sub>) \\subset \\mathcal{I} (\\varphi ) \|<sub>Y</sub> .”
 
@@ -1695,11 +1695,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Fix a variety over a finite field and a prime ℓ different from its characteristic. For a bounded constructible ℓ-adic complex, its trace function at each rational point sums geometric Frobenius traces on stalk cohomology with alternating signs.
+**Definition.** For a bounded constructible ℓ-adic complex K on a variety over a finite field, with ℓ not the characteristic, the trace function sends each rational point x to the alternating sum of the traces of geometric Frobenius on the stalk cohomology of K at x.
 
 **Problem.** Let f be a morphism of varieties over a finite field and K such a complex on its source. At each rational point y, the trace of Rf!K equals the sum of trace values of K over rational points above y. This holds over every finite extension.
 
-**How the definition helps.** The compactly supported direct image collects the cohomology with compact supports of each fiber into one complex on the target. Our own explanation uses the base change theorem to identify its value at y with that fiber cohomology. The Grothendieck trace formula then converts its alternating trace into the required sum.
+**How the definition helps.** The trace function uses only stalks, and proper base change makes the stalk of Rf!K at y the compactly supported cohomology of the fibre (our own). The Grothendieck trace formula turns the alternating Frobenius trace on that cohomology into the sum of trace values over the rational points of the fibre.
 
 **Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “where the cohomology groups are replaced by cohomology with coefficients in the sheaf.”
 
@@ -1707,15 +1707,15 @@
 
 ### Compact support by zero extension turns excision into a short exact sequence
 
-**Remember:** Extend by zero to turn an open and its complement into an exact sequence.
+**Remember:** Extend by zero, and open plus closed gives an exact sequence.
 
 *True by definition. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14F06. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Choose an open immersion j from a separated variety X into a proper variety X̄. For an étale torsion sheaf F on X, define Hⁱ<sub>c</sub>(X,F) as Hⁱ(X̄,j!F), where j! extends by zero.
+**Definition.** For a torsion étale sheaf F on a separated variety X, define Hⁱ<sub>c</sub>(X,F) = Hⁱ(X̄, j!F), where j: X → X̄ is an open immersion into a proper variety and j! extends by zero. Extension by zero is exact, so short exact sequences of sheaves on X give long exact sequences.
 
 **Problem.** Let Z be a closed subvariety of X with open complement U. For torsion coefficients, compactly supported cohomology of U, X and Z fits into a long exact sequence.
 
-**How the definition helps.** Excision follows by taking cohomology of the open–closed short exact sequence after extension by zero (our own). The sequence embeds the zero extension from U in F, with quotient the direct image of F restricted to Z. Extension by zero to the compactification preserves exactness, and proper base change gives independence of compactification (our own).
+**How the definition helps.** With U open and Z its closed complement, F contains the extension by zero of F restricted to U, with quotient the pushforward of F restricted to Z (our own). Extending by zero to X̄ keeps this exact, and its cohomology gives the long exact sequence. Proper base change shows the groups do not depend on the compactification (our own).
 
 **Paper or page:** [Etale Cohomology, Lemma 59.70.8](https://stacks.math.columbia.edu/tag/095L). It says: “there is a canonical short exact sequence”
 
@@ -1729,11 +1729,11 @@
 
 *True by definition.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 12G05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** For a field K with separable closure Kˢ, let G = Gal(Kˢ/K) with its profinite topology. A discrete G-module is an abelian group with G-action such that every element has open stabilizer. Its Galois cohomology groups are the right derived functors of G-invariants.
+**Definition.** Galois cohomology of a field K is the right derived functors of G-invariants on discrete G-modules, where G = Gal(Kˢ/K) and discrete means every element has open stabilizer. Taking the stalk at Kˢ makes étale sheaves on K the same as discrete G-modules, with global sections becoming invariants.
 
 **Problem.** For an abelian sheaf on the small étale site of K, étale cohomology equals Galois cohomology of the corresponding discrete G-module.
 
-**How the definition helps.** With the derived-functor definition, both theories derive the same functor, so they agree at once. The Stacks Project lemma shows that taking stalks is an equivalence from étale sheaves on the field to discrete G-modules. Under it, global sections become G-fixed elements (our own). With continuous cochains, one needs a separate theorem that cochains compute these derived functors (our own).
+**How the definition helps.** Both theories derive the same functor under the stalk equivalence of the Stacks Project, so they agree (our own). With continuous cochains, one would need a separate theorem that cochains compute these derived functors (our own).
 
 **Paper or page:** [Etale Cohomology, Lemma 59.59.1](https://stacks.math.columbia.edu/tag/04JQ). It says: “The stalk functor induces an equivalence of categories”
 
@@ -1747,11 +1747,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 18F20. arXiv math.AG, math.CT. Level 3: graduate.
 
-**Definition.** In the Stacks Project, a family {Tᵢ → T} is an fpqc covering if each map is flat and the images cover T. Also, each affine open of T must be the image of a quasi-compact open of the disjoint union of the Tᵢ. The name abbreviates the French 'fidèlement plat quasi-compact', which means faithfully flat and quasi-compact.
+**Definition.** In the Stacks Project, a family {Tᵢ → T} is an fpqc covering if the maps are flat, their images cover T, and each affine open of T is the image of a quasi-compact open of the disjoint union of the Tᵢ. The condition is local over affines of T, so an infinite open cover passes.
 
 **Problem.** With this definition, every Zariski, étale, smooth and fppf covering is an fpqc covering, including infinite open covers. Every representable functor is a sheaf for the fpqc topology.
 
-**How the definition helps.** Flat maps locally of finite presentation are open, so affine opens in their sources give open images (our own). Over each target affine, finitely many such images suffice by quasi-compactness. This includes Zariski, étale, smooth and fppf covers. Faithfully flat descent of morphisms gives the sheaf property for representables (our own).
+**How the definition helps.** Flat maps locally of finite presentation are open, so over each affine of T finitely many affine opens of the sources cover it (our own). So Zariski, étale, smooth and fppf covers are fpqc. Faithfully flat descent of morphisms makes every representable functor a sheaf (our own).
 
 **Paper or page:** [Stacks Project, Topologies, Lemma 34.9.7](https://stacks.math.columbia.edu/tag/022C), [Stacks Project, Descent, Lemma 35.13.7](https://stacks.math.columbia.edu/tag/023Q). It says: “Any fppf covering is an fpqc covering, and a fortiori, any syntomic, smooth, étale or Zariski covering is an fpqc covering.”
 
@@ -1766,11 +1766,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14F42. arXiv math.AG, math.KT. Level 3: graduate.
 
-**Definition.** A Nisnevich covering of U is a family of étale maps Vᵢ → U with the following property. For every u in U, some v in some Vᵢ lies over u and induces an isomorphism κ(u) → κ(v).
+**Definition.** A Nisnevich covering of U is a family of étale maps Vᵢ → U such that every point u of U has a point v above it in some Vᵢ with the same residue field, κ(u) ≅ κ(v).
 
-**Problem.** On finite-dimensional Noetherian schemes, algebraic K-theory of perfect complexes satisfies Nisnevich descent in its nonconnective form. Zariski descent also holds, while étale descent can fail. Nisnevich cohomological dimension is at most the Krull dimension, and Nisnevich neighbourhoods give étale excision.
+**Problem.** On finite-dimensional Noetherian schemes, nonconnective K-theory of perfect complexes satisfies Nisnevich and Zariski descent, while étale descent can fail. Nisnevich cohomological dimension is at most the Krull dimension, and Nisnevich neighbourhoods give étale excision.
 
-**How the definition helps.** The residue-field condition selects étale neighbourhoods that preserve the points where excision takes place (our own). The Thomason–Trobaugh descent theorem supplies K-theory descent, and the Nisnevich cohomological dimension theorem supplies the bound.
+**How the definition helps.** Each point lifts with no residue field extension, as in a Zariski cover, so the étale neighbourhoods keep the points where excision takes place (our own). The Thomason–Trobaugh descent theorem supplies K-theory descent, and the Nisnevich cohomological dimension theorem supplies the bound.
 
 **nLab:** [Nisnevich site](https://ncatlab.org/nlab/show/Nisnevich+site), [motivic homotopy theory](https://ncatlab.org/nlab/show/motivic+homotopy+theory). It says: “Algebraic K-theory satisfies descent over the Nisnevich site -- as is true for the Zariski site but not in full generality for the etale site”
 
@@ -1780,15 +1780,15 @@
 
 ### Twisting by roots of unity makes Poincaré duality canonical
 
-**Remember:** Twist by roots of unity, and the orientation of a variety comes for free.
+**Remember:** Twist by roots of unity, and orientations come for free.
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Over a field of characteristic different from ℓ, the Tate module ℤℓ(1) is the inverse limit of ℓ-power roots of unity under ℓth powers. For an ℓ-adic module A, define A(k) by tensoring with k copies for k≥0 and −k copies of its dual for k&lt;0.
+**Definition.** Over a field of characteristic other than ℓ, the Tate module ℤℓ(1) is the inverse limit of the ℓ-power roots of unity, with its Galois action. The twist A(k) tensors A with k copies of ℤℓ(1), or −k copies of its dual for k &lt; 0, so no generator is chosen.
 
 **Problem.** In ℓ-adic cohomology, Poincaré duality, the Thom isomorphism and the cycle map hold canonically when written with Tate twists, with no choice of orientation. They also commute with the Galois action.
 
-**How the definition helps.** The twist keeps the Galois action on roots of unity, so the formulas need no choice of a generator (our own). The trace identifies H² of the geometric projective line with coefficients in ℤℓ(1) canonically with ℤℓ. Étale duality and purity give the corresponding duality, Thom and cycle class maps.
+**How the definition helps.** The trace identifies H² of the geometric projective line with coefficients in ℤℓ(1) canonically with ℤℓ, with no choice of a root of unity (our own). Étale duality and purity then give the duality, Thom and cycle class maps, all compatible with the Galois action.
 
 **nLab:** [Tate twist](https://ncatlab.org/nlab/show/Tate+twist). It says: “Tate twists play an important role in cohomology theories with this dual geometric and arithmetic aspect, allowing one to express Poincaré duality canonically, that is, without choosing an orientation of one's geometric object”
 
@@ -1798,15 +1798,15 @@
 
 ### Weil cohomology gives rationality and the functional equation of zeta functions
 
-**Remember:** Count points as fixed points of Frobenius; the zeta function becomes a ratio of polynomials.
+**Remember:** Count points as Frobenius fixed points, and zeta becomes a polynomial ratio.
 
 *True by definition.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14G10. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** For a smooth projective variety X over 𝔽<sub>q</sub>, define Z(X,t) = exp(∑ₙ≥₁ \#X(𝔽<sub>qⁿ</sub>)tⁿ/n). A Weil cohomology supplies finite-dimensional graded spaces, cycle classes, a Künneth isomorphism and Poincaré duality for computing the Frobenius traces.
+**Definition.** The zeta function of a smooth projective variety X over 𝔽<sub>q</sub> is Z(X,t) = exp(∑ₙ≥₁ \#X(𝔽<sub>qⁿ</sub>)tⁿ/n). A Weil cohomology supplies finite-dimensional graded spaces with cycle classes, Künneth and Poincaré duality, so the Lefschetz formula counts these points as alternating traces of Frobenius powers.
 
 **Problem.** Given a Weil cohomology theory, the zeta function of a smooth projective variety over a finite field is rational and satisfies a functional equation.
 
-**How the definition helps.** The Lefschetz formula identifies each point count with the alternating trace of the corresponding Frobenius power (our own). Substitution in the defining series gives an alternating product of determinants det(1−tF), hence rationality. Poincaré duality pairs reciprocal Frobenius factors with the dimension twist, yielding the functional equation.
+**How the definition helps.** Putting the trace formula into the series turns Z into an alternating product of determinants det(1 − tF), one per cohomology degree, hence rational (our own). Poincaré duality pairs the Frobenius eigenvalues in degree i with those in degree 2d − i, which gives the functional equation.
 
 **nLab:** [Weil cohomology theory](https://ncatlab.org/nlab/show/Weil+cohomology+theory), [Weil conjectures](https://ncatlab.org/nlab/show/Weil+conjectures), [Lefschetz trace formula](https://ncatlab.org/nlab/show/Lefschetz+trace+formula). It says: “It was realized that the all except one of the conjectures (the Riemann hypothesis) would follow formally from the existence of a suitable cohomology theory on algebraic varieties”
 
@@ -1816,15 +1816,15 @@
 
 ### Étale root-extracting covers make first μₙ-cohomology capture n-torsion line bundles
 
-**Remember:** Extract roots locally to see which line bundles become trivial after n tensor powers.
+**Remember:** Units have nth roots étale-locally, so μₙ-torsors see n-torsion line bundles.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14C22. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a positive integer n invertible on X, μₙ is the étale sheaf assigning each U → X the units u satisfying uⁿ=1. For any unit a on U, adjoining a root of Tⁿ−a gives a finite étale cover on which a becomes an nth power.
+**Definition.** For n invertible on X, μₙ is the étale sheaf of nth roots of unity. Every unit a becomes an nth power on the finite étale cover made by adjoining a root of Tⁿ − a, so taking nth powers is onto on étale units.
 
 **Problem.** Let n be invertible on a scheme X. Then first étale cohomology with coefficients in μₙ maps onto the line bundles whose nth power is trivial. The kernel is the global units modulo nth powers.
 
-**How the definition helps.** The étale topology makes 1 → μₙ → units → units → 1 exact, so the claim is read off its long exact sequence (our own). Its terms give global units modulo nth powers, then H¹ of μₙ, then the n-torsion in H¹ of the units. The work moves into Hilbert's Theorem 90, which says that étale H¹ of the units is the group of line bundles (our own). Zariski cohomology fails here: for X = Spec ℚ and n = 2 it is zero, but ℚ\* modulo squares is not (our own).
+**How the definition helps.** So 1 → μₙ → units → units → 1 is exact on the étale site, and its long exact sequence gives global units modulo nth powers, then H¹ of μₙ, then the n-torsion of H¹ of the units (our own). Hilbert’s Theorem 90 makes étale H¹ of the units the group of line bundles (our own). In the Zariski topology this fails: for X = Spec ℚ and n = 2 the group is zero, but ℚ\* modulo squares is not (our own).
 
 **nLab:** [Kummer sequence](https://ncatlab.org/nlab/show/Kummer+sequence). It says: “then if n is invertible over the site then there is a short exact sequence”
 
@@ -1838,11 +1838,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For an affine scheme X = Spec C over a divided power base S = Spec A, crystalline cohomology is derived global sections on Cris(X/S). The site uses divided power thickenings of opens of X compatible with S, covered by open coverings of the thickenings.
+**Definition.** For X = Spec C over a divided power base S = Spec A, crystalline cohomology is derived global sections on the site Cris(X/S) of divided power thickenings of opens of X compatible with S. This site uses no presentation of C, so any de Rham complex needs to be compared only with it.
 
-**Problem.** Let A be a divided power base over ℤ₍ₚ₎ compatible with the canonical divided powers on (p), and let p be nilpotent on C. For any smooth A-algebra P′ surjecting onto C, evaluate the quasi-coherent crystal ℱ on its p-adically completed divided power envelope. The resulting module’s completed divided power de Rham complex computes RΓ(Cris(X/S),ℱ).
+**Problem.** Let A be a divided power base over ℤ₍ₚ₎ compatible with the divided powers on (p), and let p be nilpotent on C. Take any smooth A-algebra P′ surjecting onto C, and evaluate the quasi-coherent crystal ℱ on its p-adically completed divided power envelope. The completed divided power de Rham complex of this module computes RΓ(Cris(X/S),ℱ).
 
-**How the definition helps.** Since the crystalline cohomology is defined without a presentation, each de Rham complex only has to be compared with it, not with the others. The Stacks Project first proves the comparison for one presentation in Proposition 64.21.3. Two presentations P′ and P″ can be compared through P′ ⊗ P″, which is again smooth (our own). The divided power Poincaré lemma shows that the extra variables add no cohomology (our own).
+**How the definition helps.** Because the cohomology is defined without a presentation, each de Rham complex is compared with it directly, as the Stacks Project does for one presentation (Proposition 64.21.3). Two presentations P′ and P″ compare through P′ ⊗ P″, which is again smooth, and the divided power Poincaré lemma shows the extra variables add no cohomology (our own).
 
 **Paper or page:** [Crystalline, Lemma 64.21.4](https://stacks.math.columbia.edu/tag/07LH). It says: “Then the complex M′ ⊗<sup>∧<sub>D′</sub></sup> Ω\*<sub>D′</sub> computes RΓ(Cris(X/S), ℱ).”
 
@@ -1856,11 +1856,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** For X over 𝔽ₚ, crystalline cohomology over ℤₚ uses derived global sections of the structure sheaf on the crystalline sites over ℤ/pⁿ. Take their derived inverse limit over n, using the canonical divided powers on (p).
+**Definition.** For X over 𝔽ₚ, crystalline cohomology over ℤₚ is the derived inverse limit over n of derived global sections of the structure sheaf on the crystalline site over ℤ/pⁿ, which uses all divided power thickenings of opens of X. Because no lift is chosen, every map of 𝔽ₚ-schemes acts on it by pullback.
 
 **Problem.** For a smooth scheme over 𝔽ₚ, absolute Frobenius induces a natural endomorphism on its crystalline cohomology over ℤₚ. No lift of Frobenius on a characteristic-zero model is required.
 
-**How the definition helps.** Using all thickenings gives pullback for maps of the original scheme (our own explanation). In characteristic p, raising functions to the pth power defines the absolute Frobenius map. Over 𝔽ₚ it fixes the base, so its pullback acts on crystalline cohomology. Computing this action through differential forms on a smooth lift uses the crystalline comparison theorem (our own explanation).
+**How the definition helps.** Absolute Frobenius, raising functions to the pth power, is a map of schemes over 𝔽ₚ, so it acts by pullback (our own explanation). On a smooth lift, the crystalline comparison theorem computes this action through differential forms (our own explanation).
 
 **nLab:** [crystalline cohomology](https://ncatlab.org/nlab/show/crystalline+cohomology). It says: “Crystalline cohomology is the abelian sheaf cohomology with respect to the crystalline site of a scheme.”
 
@@ -1872,11 +1872,11 @@
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Divided powers on an ideal are operations γₙ that obey the identities for xⁿ/n!, even when division by n! is impossible. The divided power envelope of an ideal J of B is the universal B-algebra in which J lands in a divided power ideal compatible with the base. Every such map from B factors uniquely through it.
+**Definition.** Divided powers on an ideal are operations γₙ that obey the rules of xⁿ/n!, even where n! cannot be inverted. The divided power envelope of an ideal J of B is the universal B-algebra in which J lands in a divided power ideal compatible with the base.
 
-**Problem.** Let B′ → B be a surjection of algebras over a divided power base, with kernel K. Let J be an ideal of B containing the base divided power ideal, and J′ its inverse image in B′. Then the envelope of J is the envelope of J′ modulo all γₙ(k) with n ≥ 1 and k in K.
+**Problem.** Let B′ → B be a surjection of algebras over a divided power base, with kernel K, and let J′ be the inverse image of an ideal J of B that contains the base ideal. Then the envelope of J is the envelope of J′ modulo all γₙ(k) with n ≥ 1 and k in K.
 
-**How the definition helps.** The universal property identifies which relations to impose without computing a presentation (our own explanation). A map factors through the quotient ring exactly when it kills the kernel of B′ → B. Respecting divided powers then forces it to kill every positive divided power of each kernel element. The work is proving these relations allow the operations to descend to the quotient envelope (our own argument).
+**How the definition helps.** A map out of the envelope of J′ factors through B exactly when it kills K, and respecting divided powers it must then kill every γₙ(k) (our own explanation). The work is showing that these relations suffice for the operations to descend to the quotient (our own argument).
 
 **Paper or page:** [Lemma 64.2.3.](https://stacks.math.columbia.edu/tag/07HB). It says: “where K′ is the ideal generated by the elements γ̄ₙ(k) for n ≥ 1 and k ∈ K.”
 
@@ -1890,11 +1890,11 @@
 
 *Rules out counterexamples.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13N05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** The divided power algebra k⟨x⟩ is free over k on x⁽ⁿ⁾ for n≥0, with x⁽⁰⁾=1 and x⁽ⁿ⁾x⁽ᵐ⁾=binom(n+m,n)x⁽ⁿ⁺ᵐ⁾. Its divided power differential kills constants and sends x⁽ⁿ⁾ to x⁽ⁿ⁻¹⁾dx for n≥1.
+**Definition.** The divided power algebra k⟨x⟩ is free over k on symbols x⁽ⁿ⁾, standing for xⁿ/n!, with x⁽ⁿ⁾x⁽ᵐ⁾ = binom(n+m, n) x⁽ⁿ⁺ᵐ⁾. Its differential sends x⁽ⁿ⁾ to x⁽ⁿ⁻¹⁾dx for n ≥ 1 and kills x⁽⁰⁾ = 1, so every x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾.
 
 **Problem.** For every ring k, the divided power de Rham complex of k⟨x⟩ has cohomology k in degree 0 and nothing in degree 1. Over the ordinary polynomial ring 𝔽ₚ\[x\], this fails: xᵖ is a nonconstant closed function and xᵖ⁻¹dx is a closed form with no primitive.
 
-**How the definition helps.** Each basis form x⁽ⁿ⁾dx has the primitive x⁽ⁿ⁺¹⁾, so integration needs no division by n + 1. In 𝔽ₚ\[x\], a primitive of xᵖ⁻¹dx would need xᵖ/p, and d(xᵖ) = pxᵖ⁻¹dx = 0 (our own example). This is why crystalline cohomology uses thickenings with divided powers.
+**How the definition helps.** Integration term by term needs no division, so every one-form is exact, and a function is closed only when it is constant. In 𝔽ₚ\[x\], d(xᵖ) = pxᵖ⁻¹dx = 0, and a primitive of xᵖ⁻¹dx would need xᵖ/p (our own example).
 
 **Wikipedia:** [Crystalline cohomology](https://en.wikipedia.org/wiki/Crystalline_cohomology). It says: “in order to prove exactness of the de Rham complex, one needs some sort of Poincaré lemma, whose proof in turn uses integration, and integration requires various divided powers, which exist in characteristic 0 but not always in characteristic p.”
 
@@ -1904,15 +1904,15 @@
 
 ### The crystal condition gives an integrable connection
 
-**Remember:** Compare two pullbacks to differentiate, and use their triple compatibility for integrability.
+**Remember:** A crystal identifies the two pullbacks, and their difference is a derivative.
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A crystal in 𝒪X/S-modules is a sheaf ℱ on the crystalline site Cris(X/S), whose objects are divided power thickenings of open parts of X. Take a morphism from a thickening U′ to a thickening U. Then the comparison map from the pullback of ℱ on U to ℱ on U′ must be an isomorphism.
+**Definition.** A crystal on Cris(X/S), the site of divided power thickenings of opens of X, is a sheaf ℱ whose comparison map from the pullback of ℱ on U to ℱ on U′ is an isomorphism for every morphism of thickenings U′ → U. In particular, it identifies the two pullbacks of ℱ to the first-order neighbourhood of the diagonal.
 
 **Problem.** Every crystal in 𝒪X/S-modules on the crystalline site comes with a canonical integrable connection.
 
-**How the definition helps.** The crystal identifies the two pullbacks on the first-order divided power neighbourhood of the diagonal. Compare the two pullbacks of each section under this identification and take their difference to obtain its differential (our own). Compatibility of the identifications on triple products gives zero curvature (our own).
+**How the definition helps.** Under this identification, the difference of the two pullbacks of a section is its differential, which defines the connection (our own). The identifications agree on triple products, which makes the curvature zero (our own).
 
 **Paper or page:** [Crystalline, Lemma 64.15.1](https://stacks.math.columbia.edu/tag/07J6). It says: “Let ℱ be a crystal in 𝒪<sub>X/S</sub>-modules on Cris(X/S). Then ℱ comes equipped with a canonical integrable connection.”
 
@@ -1926,11 +1926,11 @@
 
 *True by definition.* MSC 14F35 (Homotopy theory and fundamental groups in algebraic geometry), 11R32. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Fix a separable closure of the function field K of a normal integral scheme X. Let M be the compositum there of finite Galois extensions whose normalizations of X are finite étale over X. The generic-point description of the étale fundamental group is Gal(M/K).
+**Definition.** For a normal integral scheme X with function field K, let M be the compositum, in a fixed separable closure, of the finite Galois extensions of K in which the normalization of X is finite étale over X. The generic-point description of the étale fundamental group is Gal(M/K), a quotient of Gal(Kˢ/K) by restriction.
 
 **Problem.** The absolute Galois group of K maps onto the étale fundamental group of X, based at a geometric point over the generic point.
 
-**How the definition helps.** With the Galois-group definition, the map is restriction of automorphisms to M, and restriction to a Galois subextension is always onto (our own). With Grothendieck's definition, the Stacks Project proposition must first identify the map with this quotient. That identification recovers each cover as the normalization of X in a finite extension inside M (our own).
+**How the definition helps.** Restriction of automorphisms to a Galois subextension is always onto, so the map is surjective (our own). With Grothendieck’s definition, the Stacks Project must first identify the map with this quotient, by recovering each cover as the normalization of X in a finite extension inside M (our own).
 
 **Paper or page:** [Pione, Proposition 58.11.3](https://stacks.math.columbia.edu/tag/0BQM). It says: “is identified with the quotient map”
 
@@ -1944,11 +1944,11 @@
 
 *Rules out counterexamples.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 3: graduate.
 
-**Definition.** On the complex affine line, for the weight exp(−x³), define the twisted derivative by Dg = (g′ − 3x²g) dx. Algebraic twisted de Rham cohomology in degree one consists of polynomial one-forms modulo derivatives Dg of polynomials.
+**Definition.** On the complex affine line, twist by the weight exp(−x³): the twisted derivative is Dg = (g′ − 3x²g) dx, which raises the degree of any nonzero polynomial g by two. Algebraic twisted de Rham cohomology in degree one is polynomial one-forms modulo the forms Dg with g a polynomial.
 
 **Problem.** The form dx is nonzero in algebraic twisted de Rham cohomology. It becomes exact in the complex of entire forms with the same twisted differential.
 
-**How the definition helps.** A nonzero polynomial g gives g′−3x²g of degree deg(g)+2, so dx has no polynomial primitive (our own). For an entire primitive, integrate exp(−x³) from zero to x and multiply by exp(x³) (our own). Differentiation verifies Dg=dx.
+**How the definition helps.** Since Dg has degree at least 2 for every nonzero polynomial g, dx is not of this form, so its class is nonzero (our own). The entire function g(x) = exp(x³)∫₀ˣ exp(−t³)dt satisfies Dg = dx, as differentiation shows (our own).
 
 **Paper or page:** [Une introduction aux périodes](https://arxiv.org/abs/2210.03407v1). It says: “L'intégration induit un accouplement parfait”
 
@@ -1958,15 +1958,15 @@
 
 ### Cohomology rank bounds period equations
 
-**Remember:** Differentiate classes and use their finite rank.
+**Remember:** Derivatives stay in an r-dimensional space, so r+1 must be dependent.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A connection along a derivation ∂ of a function field K is an additive operator ∇ on a K-vector space satisfying ∇(av)=∂(a)v+a∇v. For a smooth projective family over a smooth complex curve, the Gauss–Manin connection on relative de Rham cohomology differentiates periods along transported cycles.
+**Definition.** The Gauss–Manin connection differentiates relative de Rham classes of a smooth projective family over a curve along a derivation ∂ of the base function field K, with ∇(av)=∂(a)v+a∇v. All derivatives of a class stay in the same r-dimensional K-space, and integrating ∇v over a transported cycle gives the derivative of the period of v.
 
 **Problem.** Fix a nonzero derivation of the base function field and a cohomology degree of rank r. All periods of any given rational section satisfy one nonzero linear differential equation over that field of order at most r.
 
-**How the definition helps.** Differentiating the cohomology class puts all derivatives in one r-dimensional space, instead of requiring separate calculations for each integral. In our own argument, the section and its first r derivatives are linearly dependent over the function field. Compatibility of the connection with integration turns this dependence into the same equation for every transported cycle.
+**How the definition helps.** The section and its first r derivatives lie in one r-dimensional space, so they are linearly dependent over the function field (our own). Integration over transported cycles commutes with the connection, so this one dependence is a differential equation for every period.
 
 **Wikipedia:** [Picard–Fuchs equation](https://en.wikipedia.org/wiki/Picard%E2%80%93Fuchs_equation). It says: “In algebraic geometry, this equation has been shown to be a very special case of a general phenomenon, the Gauss–Manin connection.”
 
@@ -1976,15 +1976,15 @@
 
 ### Relative classes cancel endpoint terms
 
-**Remember:** Subtract the endpoint values when the path has endpoints.
+**Remember:** Whatever df adds along the path, f subtracts at the endpoints.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** On a smooth affine curve X over ℚ, let D be a finite reduced set of points. Represent a relative de Rham class by a regular one-form ω on X and a function g on D. For each regular function f on X, identify (ω, g) with (ω + df, g + f restricted to D).
+**Definition.** A relative de Rham class on a smooth affine curve X over ℚ, relative to a finite set of points D, is a pair (ω, g). Here ω is a regular one-form on X and g is a function on D, and (ω + df, g + f restricted to D) is the same class for every regular function f on X.
 
-**Problem.** For a path chain γ with rational coefficients and endpoints in D, the value ∫γ ω − g(∂γ) depends only on the relative classes. Here g(∂γ) sums the signed endpoint values.
+**Problem.** For a path chain γ with rational coefficients and endpoints in D, the value ∫γ ω − g(∂γ) depends only on the relative class. Here g(∂γ) sums the signed values of g at the endpoints.
 
-**How the definition helps.** In our own calculation, the endpoint function cancels the change in the integral when we add df. Stokes’ theorem kills boundaries because ω is closed, and paths contained in D contribute zero. The affine relative de Rham theorem replaces the abstract cohomology group by these explicit pairs.
+**How the definition helps.** By Stokes’ theorem, adding df changes the integral by f(∂γ), and the change in g removes exactly that amount (our own). The affine relative de Rham theorem says that these explicit pairs compute the relative cohomology group.
 
 **Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2). It says: “if Y ⊂ X is closed subvariety, we have comp: H•dR(X, Y, 𝕂) ⊗𝕂 ℂ ≅ H•B(X, Y, ℚ) ⊗ℚ ℂ.”
 
@@ -1994,15 +1994,15 @@
 
 ### Top forms represent relative periods
 
-**Remember:** Top forms suffice even when the cycle has a boundary.
+**Remember:** A top form has nothing left to restrict to the boundary.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 3: graduate.
 
-**Definition.** Let X be a smooth affine variety of dimension n over a subfield of ℂ. Let D consist of smooth hypersurfaces that locally meet like coordinate hyperplanes. Compute relative de Rham cohomology using regular forms on X whose pullbacks to every component of D vanish.
+**Definition.** Let X be smooth affine of dimension n over a subfield of ℂ, and D smooth hypersurfaces meeting like coordinate hyperplanes. Relative de Rham cohomology uses regular forms on X that pull back to zero on every component of D. Every n-form qualifies, because each component has dimension n − 1.
 
 **Problem.** Every relative de Rham class in degree n has a representative that is a single regular n-form on X.
 
-**How the definition helps.** Every n-form restricts to zero on each component of dimension n − 1, so the relative complex contains all top forms. In our own argument, these forms are closed because X has dimension n. The comparison with the complex using forms on all boundary intersections uses a local calculation with forms on coordinate hyperplanes. Affineness then lets global forms compute cohomology.
+**How the definition helps.** Every n-form pulls back to zero on D and is closed because X has dimension n, so it is a degree n cocycle of the relative complex (our own). A local calculation on coordinate hyperplanes shows that this complex computes relative cohomology, and affineness lets global forms do so.
 
 **Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2). It says: “Each class in the top-degree cohomology group HⁿdR(X,D,𝕂) has a representative in Ωⁿ(X).”
 
@@ -2012,15 +2012,15 @@
 
 ### Zero periods force algebraic primitives
 
-**Remember:** A closed algebraic form with no periods is already exact.
+**Remember:** On affine varieties, a zero class means a global algebraic primitive.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 3: graduate.
 
-**Definition.** On a smooth affine variety over a field k ⊂ ℂ, compute de Rham cohomology using global algebraic differential forms. A closed form has derivative zero. Its cohomology class is zero exactly when it is the derivative of a global algebraic form over k.
+**Definition.** On a smooth affine variety over a field k ⊂ ℂ, algebraic de Rham cohomology uses global algebraic differential forms over k. So a closed form has zero class exactly when it is d of a global algebraic form over k.
 
 **Problem.** Let p ≥ 1. If a closed algebraic p-form integrates to zero over every rational p-cycle of the complex variety, it has an algebraic primitive over k.
 
-**How the definition helps.** On a smooth affine variety, a zero class in the global de Rham complex has a global algebraic primitive. Grothendieck’s comparison theorem and the integration pairing show that vanishing periods kill the class after extending scalars to ℂ. Scalar extension is injective on vectors, so the class vanishes over k (our own).
+**How the definition helps.** Once the class is zero, the affine definition gives a primitive over k. Grothendieck’s comparison theorem and the perfect integration pairing turn zero periods into a zero class over ℂ. Extending scalars from k to ℂ is injective, so the class is already zero over k (our own).
 
 **Paper or page:** [Une introduction aux périodes](https://arxiv.org/abs/2210.03407v1). It says: “Soit X ⊂ 𝔸ⁿ une variété affine lisse. L'intégration induit un accouplement parfait”
 
@@ -2030,15 +2030,15 @@
 
 ### A base point splits torus motives
 
-**Remember:** Split off the unit in each coordinate of a split torus.
+**Remember:** Each torus coordinate contributes one unit and one Tate twist.
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 3: graduate.
 
-**Definition.** For G = 𝔾ₘ over a perfect field, the reduced motive is the complement of the unit summand selected by the point 1. Define ℤ(1)\[1\] as this reduced motive, with \[1\] the degree shift and ℤ(j) the jth tensor power for j≥0.
+**Definition.** The motive of 𝔾ₘ over a perfect field splits as ℤ ⊕ ℤ(1)\[1\], where ℤ is the unit summand cut out by the point 1 and ℤ(1)\[1\] is the rest. Here ℤ(j) is the jth tensor power of ℤ(1), and \[1\] is the degree shift.
 
 **Problem.** The split torus with r coordinates is the product of r copies of G. Its motive contains ℤ(j)\[j\] with multiplicity r choose j for 0 ≤ j ≤ r, and these summands exhaust it.
 
-**How the definition helps.** The structure map retracts the base-point inclusion, so M(G) splits as ℤ ⊕ ℤ(1)\[1\]. The product formula gives the motive of Gʳ as the rth tensor power of this sum (our own). Choosing the second summand in j factors gives ℤ(j)\[j\] with multiplicity binom(r,j) (our own).
+**How the definition helps.** The motive of a product is the tensor product of the motives, so the motive of Gʳ is the rth tensor power of ℤ ⊕ ℤ(1)\[1\] (our own). Each choice of the second summand in j of the r factors gives one copy of ℤ(j)\[j\] (our own).
 
 **nLab:** [motivic cohomology](https://ncatlab.org/nlab/show/motivic+cohomology). It says: “the multiplicative group 𝔾ₘ := 𝔸¹ − {0}”
 
@@ -2049,15 +2049,15 @@
 
 ### Cycle degrees bound motivic cohomology
 
-**Remember:** No chains in negative degrees means no motivic cohomology above twice the weight.
+**Remember:** Motivic degree p is cycle degree 2q − p, never negative.
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14C25. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a smooth variety X over a field and q≥0, Bloch’s degree-n chains are cycles of codimension q on X × Δⁿ for n≥0. Each generator must meet X × F in codimension at least q there for every face F. The differential alternates face restrictions, and the chain groups vanish in negative degrees.
+**Definition.** Bloch’s cycle complex of a smooth variety X in weight q ≥ 0 has, in degree n ≥ 0, the codimension-q cycles on X × Δⁿ meeting each face X × F in codimension at least q. It has no chains in negative degrees. Motivic cohomology H(p,q) is its homology in degree 2q − p.
 
 **Problem.** For smooth varieties over a field, integral motivic cohomology H(p,q) vanishes when q ≥ 0 and p &gt; 2q.
 
-**How the definition helps.** Our own deduction uses the absence of chains in negative degrees. If p exceeds 2q, the required homology degree is negative. Voevodsky’s comparison theorem identifies this cycle calculation with the alternative definition using complexes of sheaves.
+**How the definition helps.** If p &gt; 2q, then 2q − p is negative, and the complex has no chains there (our own). Voevodsky’s comparison theorem identifies motivic cohomology with this cycle homology.
 
 **nLab:** [motivic cohomology](https://ncatlab.org/nlab/show/motivic+cohomology). It says: “Hᵖ,ᑫ(X,ℤ) = CHᑫ(X,2q−p).”
 
@@ -2067,15 +2067,15 @@
 
 ### Derived coefficients retain roots of unity
 
-**Remember:** Reducing the complex keeps the kernel of the power map.
+**Remember:** Derived reduction modulo n keeps what multiplication by n kills.
 
 *Rules out counterexamples.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 3: graduate.
 
-**Definition.** To compute motivic cohomology modulo n, replace ℤ/n by two copies of ℤ in degrees −1 and 0. Multiplication by n connects them. Tensor this complex with the integral coefficients for the chosen weight.
+**Definition.** Motivic cohomology modulo n tensors the weight-q complex with the two-term complex ℤ → ℤ, multiplication by n, in degrees −1 and 0. This derived reduction keeps the kernel of multiplication by n one degree lower, as well as the cokernel.
 
 **Problem.** For every field k and n ≥ 2, H(0,1) with ℤ/n coefficients is the group of n-th roots of unity in k.
 
-**How the definition helps.** Derived reduction keeps the kernel of multiplication by n one degree below the units (our own). The weight-one comparison places the units in degree one, so degree zero over k is the kernel of u ↦ uⁿ on k\*. Over ℂ, this retains roots of unity that reducing the zero integral degree-zero group would lose (our own).
+**How the definition helps.** In weight one the complex is the units k\* in degree one, so the reduction puts the kernel of u ↦ uⁿ in degree zero (our own). That kernel is the group of n-th roots of unity. Reducing the integral degree-zero group, which is zero, would lose them (our own).
 
 **Wikipedia:** [Motivic cohomology](https://en.wikipedia.org/wiki/Motivic_cohomology). It says: “The theories with different coefficients are related by the universal coefficient theorem, as in topology.”
 
@@ -2089,11 +2089,11 @@
 
 *Rules out counterexamples.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14F20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A distinguished Nisnevich square consists of an open immersion U → X, an étale map V → X and their fibre product W. For Z the reduced closed complement of U, the projection V ×<sub>X</sub> Z → Z must be an isomorphism.
+**Definition.** A distinguished Nisnevich square covers X by an open U and an étale map V → X that is an isomorphism over the closed complement of U. Precisely, V ×<sub>X</sub> Z → Z is an isomorphism for Z the reduced complement, and W = U ×<sub>X</sub> V.
 
-**Problem.** Writing M for the motive of a space, gluing gives an exact triangle M(W) → M(U) ⊕ M(V) → M(X) → M(W)\[1\]. The last term shifts M(W) by one degree.
+**Problem.** For every distinguished Nisnevich square, the motives form an exact triangle M(W) → M(U) ⊕ M(V) → M(X) → M(W)\[1\], where \[1\] is the degree shift.
 
-**How the definition helps.** Nisnevich descent makes this a gluing square for motives and gives the stated triangle. If U is empty and V → X is Spec ℂ → Spec ℝ, the complement condition fails (our own). After extension to ℂ, the triangle would identify two unit summands with one (our own).
+**How the definition helps.** Motives satisfy Nisnevich descent, and such a square is a Nisnevich cover, so the triangle follows. The complement condition excludes U empty with V → X equal to Spec ℂ → Spec ℝ (our own). The triangle would then give M(Spec ℂ) ≅ M(Spec ℝ), which fails after extension to ℂ: two points against one (our own).
 
 **nLab:** [motive](https://ncatlab.org/nlab/show/motive). It says: “whose underlying presheaves on Sm/S are (∞,1)-sheaves for the Nisnevich topology”
 
@@ -2107,11 +2107,11 @@
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14C25. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For smooth X over a perfect field, a motivic class of bidegree (p,q) is a map M(X) → ℤ(q)\[p\]. Its cup product with another class tensors the maps, adds their twists and shifts, and precomposes with the diagonal M(X) → M(X) ⊗ M(X).
+**Definition.** For smooth X over a perfect field, a motivic class of bidegree (p,q) is a map M(X) → ℤ(q)\[p\]. The cup product of two classes is their tensor product precomposed with the diagonal M(X) → M(X) ⊗ M(X).
 
-**Problem.** Motivic cup products are associative and commute with sign (−1) to the power pp′ for classes of cohomological degrees p and p′.
+**Problem.** Motivic cup products are associative. Swapping classes of cohomological degrees p and p′ changes the product by the sign (−1) to the power pp′.
 
-**How the definition helps.** Repeating the diagonal sends x to (x,x,x) in either order, so the two ways to multiply three classes agree. Exchanging the factors also preserves the diagonal. Our own sign calculation uses the symmetry of shifted complexes, which contributes a minus sign precisely when both degrees are odd. The comparison with intersections of algebraic cycles requires a theorem allowing the cycles to move.
+**How the definition helps.** The diagonal is coassociative and symmetric, so both properties pass to the product. Both ways to double the diagonal give x ↦ (x,x,x), which gives associativity. The sign comes from the symmetry of shifted complexes, which gives −1 exactly when both degrees are odd (our own).
 
 **Wikipedia:** [Motivic cohomology](https://en.wikipedia.org/wiki/Motivic_cohomology). It says: “the motivic cohomology groups Hⁱ(X,ℤ(j)) form a bigraded ring for every scheme X of finite type over a field.”
 
@@ -2125,11 +2125,11 @@
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 3: graduate.
 
-**Definition.** On a smooth variety X over a field, the weight-one model is the Zariski sheaf of invertible regular functions placed in degree one. Its degree-p hypercohomology gives H(p,1).
+**Definition.** On a smooth variety X over a field, weight-one motivic cohomology is computed by the Zariski sheaf of invertible regular functions placed in degree one. So H(p,1) is the cohomology of the units sheaf in degree p − 1.
 
 **Problem.** The group H(1,1) is the group of global units, and H(2,1) is the group of line bundles up to isomorphism.
 
-**How the definition helps.** The one-term model makes H(p,1) ordinary cohomology of the units sheaf in degree p − 1. Degree zero gives global units. Our own explanation of degree one uses the transition functions that glue trivial line bundles together. The comparison theorem identifies this model with Voevodsky’s complex built from algebraic cycles.
+**How the definition helps.** Degree p − 1 = 0 gives the global units. Degree one cohomology of the units sheaf classifies line bundles, glued from trivial bundles by unit transition functions (our own). The comparison theorem identifies this model with Voevodsky’s complex built from cycles.
 
 **Wikipedia:** [Motivic cohomology](https://en.wikipedia.org/wiki/Motivic_cohomology). It says: “the shift \[−1\] means that this sheaf is viewed as a complex in degree 1.”
 
@@ -2139,15 +2139,15 @@
 
 ### Extra terms force holomorphic flatness
 
-**Remember:** Keeping the next form forces the connection form to be closed.
+**Remember:** One more form in the complex forces the connection to be flat.
 
 *Rules out counterexamples.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 53C08. arXiv math.AG, math.DG. Level 3: graduate.
 
-**Definition.** In degree two and weight two, holomorphic Deligne cocycles use transition functions gᵢⱼ and local one-forms Aᵢ with Aⱼ−Aᵢ=dlog(gᵢⱼ). The functions satisfy gᵢⱼgⱼₖ=gᵢₖ on triple overlaps, and changes of local frame give equivalent data. Weight three also requires dAᵢ=0 for every i.
+**Definition.** A degree-two holomorphic Deligne cocycle is a line bundle with connection in local data, up to change of frame: functions gᵢⱼ with gᵢⱼgⱼₖ=gᵢₖ and one-forms Aᵢ with Aⱼ−Aᵢ=dlog(gᵢⱼ). Weight two allows all such data. Weight three adds one more term to the complex, which forces dAᵢ=0 for every i.
 
 **Problem.** Degree-two holomorphic Deligne classes in weight three classify holomorphic line bundles with flat holomorphic connection up to isomorphism. Weight two classifies all holomorphic line bundles with holomorphic connection.
 
-**How the definition helps.** The extra derivative forces each local connection form to be closed, exactly the flatness condition (our own). On the trivial line over ℂ², the form z dw has nonzero derivative dz∧dw and therefore works only in weight two (our own). Gluing the local frames and connections gives the classification (our own).
+**How the definition helps.** The condition dAᵢ=0 is exactly flatness of the connection (our own). For example, z dw on the trivial line over ℂ² has derivative dz∧dw ≠ 0, so it counts only in weight two (our own). Gluing the frames and connection forms gives the classification (our own).
 
 **nLab:** [Deligne cohomology](https://ncatlab.org/nlab/show/Deligne+cohomology). It says: “using holomorphic differential forms”
 
@@ -2163,11 +2163,11 @@
 
 *True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** On a complex manifold the weight-p Deligne complex has (2πi)ᵖℤ in degree zero, then 𝒪, Ω¹,…,Ωᵖ⁻¹ with inclusion and exterior differentials. Its reduction modulo m is the mapping cone of multiplication by m.
+**Definition.** The weight-p Deligne complex on a complex manifold is (2πi)ᵖℤ → 𝒪 → Ω¹ → … → Ωᵖ⁻¹, by inclusion and then exterior derivatives. Its reduction modulo m is the cone of multiplication by m, which kills the forms because m is invertible on them.
 
 **Problem.** On a complex manifold, weight p Deligne cohomology with coefficients modulo m equals ordinary cohomology with coefficients (2πi)ᵖℤ modulo m, for p,m ≥ 1.
 
-**How the definition helps.** Every term is flat over ℤ, so the cone is quasi-isomorphic to the termwise quotient by m (our own). Multiplication by m is invertible on holomorphic functions and forms. Only the constant lattice modulo m remains in degree zero, giving ordinary cohomology (our own).
+**How the definition helps.** Every term is torsion-free, so the cone equals the termwise quotient by m (our own). Holomorphic functions and forms are complex vector spaces, so their quotient by m is zero. Only (2πi)ᵖℤ modulo m remains, in degree zero, which gives ordinary cohomology (our own).
 
 **Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “or of holomorphic forms, respectively”
 
@@ -2181,11 +2181,11 @@
 
 *True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** For Z(p)=(2πi)ᵖℤ, the Deligne complex is modeled by the cone of Z(p) → Ω•/Fᵖ shifted by −1. Here Ω• is the holomorphic de Rham complex, and Fᵖ keeps its terms in degrees at least p.
+**Definition.** Weight p Deligne cohomology is the cohomology of the cone of Z(p) → Ω•/Fᵖ, shifted by −1, where Z(p)=(2πi)ᵖℤ and Ω•/Fᵖ keeps holomorphic forms of degree below p. The cone gives a long exact sequence linking Deligne, integral and Hodge-quotient cohomology.
 
-**Problem.** On a smooth projective complex variety, degree 2p Deligne cohomology of weight p maps onto integral classes whose complex images have type (p,p). Its kernel is the intermediate Jacobian, the degree 2p−1 complex cohomology modulo Fᵖ and the image of scaled integral cohomology.
+**Problem.** On a smooth projective complex variety, degree 2p Deligne cohomology of weight p maps onto the integral classes whose complex images have type (p,p). Its kernel is the intermediate Jacobian: degree 2p−1 complex cohomology modulo Fᵖ and the image of cohomology with Z(p) coefficients.
 
-**How the definition helps.** The cone places the quotient defining the Jacobian directly in its exact sequence (our own). Passing from the truncated holomorphic complex to the cone uses the de Rham comparison theorem (our own). Hodge decomposition identifies the image in degree 2p, including integral torsion (our own).
+**How the definition helps.** In the cone’s long exact sequence, the Jacobian quotient comes just before degree 2p Deligne cohomology and integral classes come after it (our own). The holomorphic de Rham theorem and Hodge degeneration identify the cohomology of Ω•/Fᵖ with complex cohomology modulo Fᵖ (our own). Hodge decomposition shows that an integral class dies there exactly when its image has type (p,p), torsion included (our own).
 
 **nLab:** [intermediate Jacobian](https://ncatlab.org/nlab/show/intermediate+Jacobian). It says: “is characterised as being the fiber of a canonical map from (complex analytic) Deligne cohomology”
 
@@ -2199,11 +2199,11 @@
 
 *True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 3: graduate.
 
-**Definition.** The weight-one Deligne complex on a complex manifold is the inclusion 2πiℤ → 𝒪 in degrees zero and one. Its Deligne cohomology is the hypercohomology of this complex.
+**Definition.** The weight-one Deligne complex on a complex manifold is the inclusion 2πiℤ → 𝒪 in degrees zero and one. The exponential identifies its quotient 𝒪/2πiℤ with the sheaf 𝒪\* of nowhere-zero holomorphic functions.
 
 **Problem.** Degree two Deligne cohomology of weight one classifies holomorphic line bundles up to isomorphism, with addition corresponding to tensor product.
 
-**How the definition helps.** Exponentiation replaces the two terms by nowhere-zero holomorphic functions in degree one without changing cohomology (our own). Local logarithms prove this replacement works (our own). Degree one classes of those functions give the transition functions that glue a line bundle (our own).
+**How the definition helps.** Local logarithms make 0 → 2πiℤ → 𝒪 → 𝒪\* → 0 exact, so the complex equals 𝒪\* in degree one (our own). Degree one classes of 𝒪\* are transition functions that glue line bundles, and products glue tensor products (our own).
 
 **Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “the group of isomorphism classes of smooth (or holomorphic, depending on the context) principal C×-bundles”
 
@@ -2213,15 +2213,15 @@
 
 ### Constructible sets are exactly what images of morphisms produce
 
-**Remember:** Build constructible sets from finite unions of differences of retrocompact opens.
+**Remember:** Finite unions of open-minus-open pieces, which images of morphisms preserve.
 
 *Makes the theorem clean to state or prove.* MSC 14F45 (Topological properties in algebraic geometry), 14A15. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A constructible set is a finite union of sets of the form U minus V, where U and V are retrocompact open sets. Retrocompact means that the intersection with every quasi-compact open set is quasi-compact, where quasi-compact means every open cover has a finite subcover. In a Noetherian space, these are the finite unions of locally closed sets.
+**Definition.** A constructible set is a finite union of differences U minus V of retrocompact open sets, those whose intersection with every quasi-compact open is quasi-compact. In a Noetherian space, these are the finite unions of locally closed sets.
 
 **Problem.** Chevalley's theorem says that a finitely presented morphism of schemes sends locally constructible sets to locally constructible sets.
 
-**How the definition helps.** Constructible sets include images that a single locally closed set cannot describe. For (x,y) ↦ (x,xy), the image consists of the open x≠0 together with the origin (our own). Chevalley’s theorem gives stability under finitely presented images, with retrocompact opens in the general definition.
+**How the definition helps.** Images need finite unions: (x,y) ↦ (x,xy) has image the open set x≠0 plus the origin, which is not locally closed (our own). Chevalley’s theorem shows that these unions are stable under finitely presented images. The general definition needs the opens to be retrocompact.
 
 **Wikipedia:** [Constructible set (topology)](https://en.wikipedia.org/wiki/Constructible_set_%28topology%29). It says: “Chevalley's theorem in the generality stated above would fail if the simplified definition of constructible sets (without restricting to retrocompact open sets in the definition) were used.”
 
@@ -2235,11 +2235,11 @@
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 11M41. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Let X be a nonempty scheme of finite type over ℤ, such as the space given by finitely many polynomial equations with integer coefficients. A closed point x has a finite residue field, the field of values at that point. Define the arithmetic zeta function as the product of (1 − N(x)⁻ˢ)⁻¹ over closed points x, where N(x) is the field size.
+**Definition.** The arithmetic zeta function of a nonempty scheme X of finite type over ℤ is the product, over its closed points x, of (1 − N(x)⁻ˢ)⁻¹. Here N(x) is the size of the finite residue field at x.
 
 **Problem.** If U is a closed part of X and V is its open complement, then ζ(X, s) = ζ(U, s)ζ(V, s). Also, ζ(X, s) is the product of the zeta functions of the reductions modulo all primes p. Both identities hold when the real part of s exceeds the dimension of X.
 
-**How the definition helps.** The closed-point definition gives both product formulas by partitioning the set of factors. Each closed point belongs to exactly one piece and to exactly one reduction modulo a prime. The work moves into proving absolute convergence in the stated region, which justifies regrouping the infinite product (our own).
+**How the definition helps.** Each closed point lies in exactly one of U and V, and over exactly one prime p, so both identities regroup the same factors. Regrouping is valid because the product converges absolutely when the real part of s exceeds dim X (our own).
 
 **Wikipedia:** [Arithmetic zeta function](https://en.wikipedia.org/wiki/Arithmetic_zeta_function). It says: “the zeta function of X is the product of the ones of the reduction of X modulo the primes p”
 
@@ -2251,11 +2251,11 @@
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Over a finite field, an effective zero-cycle assigns a nonnegative integer multiplicity to each closed point, with finite support. Its degree sums the multiplicities times the residue field degrees. The zeta series counts effective zero-cycles by degree.
+**Definition.** Over a finite field, the zeta series counts effective zero-cycles by degree: finite formal sums of closed points with nonnegative multiplicities. A closed point of residue degree e is one Frobenius orbit of e geometric points.
 
 **Problem.** For a quasi-projective variety over a finite field, its nth zeta coefficient counts rational points of its nth symmetric power, which parametrizes unordered n-tuples.
 
-**How the definition helps.** In our own explanation, a rational unordered tuple is precisely a multiset that Frobenius preserves. Multiplicities are constant on each orbit, so such tuples correspond to effective zero-cycles of degree n. The symmetric power realizes unordered tuples as a quotient by permutations. Grouping extension point counts by Frobenius orbits recovers the usual exponential formula for the zeta series.
+**How the definition helps.** A rational point of the nth symmetric power is an unordered n-tuple of geometric points that Frobenius preserves (our own). Such a multiset has constant multiplicity on each Frobenius orbit, so it is exactly an effective zero-cycle of degree n.
 
 **Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “For X a quasi-projective variety over 𝔽q, Nᵣ(Symⁿ X) = φ(Nᵣ(X), N₂ᵣ(X), …, Nₙᵣ(X))”
 
@@ -2265,15 +2265,15 @@
 
 ### Zeta numerators count Jacobian points
 
-**Remember:** Take the determinant of one minus t times Frobenius on the Jacobian’s Tate module.
+**Remember:** Set t to one, and det(1 − F) counts Frobenius-fixed Jacobian points.
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 11G20. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Take a smooth projective geometrically connected curve over a field of size q. Let F be the q-power Frobenius acting on the ℓ-adic Tate module of its Jacobian, for a prime ℓ different from the characteristic. The zeta numerator is det(1 − tF) on this module tensored with ℚ.
+**Definition.** For a smooth projective geometrically connected curve over a field of size q, the zeta numerator is det(1 − tF). Here F is the q-power Frobenius on the ℓ-adic Tate module of the Jacobian tensored with ℚ, for a prime ℓ other than the characteristic.
 
 **Problem.** The value of this numerator at one equals the number of rational points of the Jacobian.
 
-**How the definition helps.** Setting t equal to one gives det(1 − F), which the degree theorem identifies with the degree of the map 1 − F on the Jacobian (our own explanation). The differential of 1 − F is the identity, so its degree counts the points of its kernel. That kernel is exactly the set of rational points of the Jacobian. The cited comparison connects this numerator with the zeta function defined by counting points on the curve.
+**How the definition helps.** At t = 1 this is det(1 − F), the degree of the isogeny 1 − F of the Jacobian (our own explanation). The differential of 1 − F is the identity, so its degree counts its kernel. That kernel is the set of Frobenius-fixed points, which are the rational points.
 
 **Paper or page:** [The Torelli locus and Newton polygons](https://arxiv.org/abs/2509.00998). It says: “The characteristic polynomial of the Frobenius endomorphism of Jac(C) is P(Jac(C)/𝔽q,T) = T²ᵍL(C/𝔽q,T⁻¹).”
 
@@ -2285,11 +2285,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14G12 (Hasse principle, weak and strong approximation, Brauer-Manin obstruction), 14G05. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** For a variety over a number field, consider a point in each completion, with integral coordinates outside finitely many primes on a fixed integral model. A Brauer class assigns each local point a class of algebras with a numerical invariant in ℚ/ℤ. The Brauer–Manin set keeps exactly the families for which these invariants sum to zero for every Brauer class.
+**Definition.** The Brauer–Manin set of a variety over a number field contains the families of local points, one in each completion and integral at almost all primes, that pass every Brauer test. A family passes the test of a Brauer class when the invariants in ℚ/ℤ of its local evaluations sum to zero.
 
 **Problem.** Every rational point gives a family in the Brauer–Manin set. An empty Brauer–Manin set therefore rules out a rational point even when points exist in every completion.
 
-**How the definition helps.** At a rational point, every local evaluation restricts the same global Brauer class (our own). Global reciprocity makes its local invariants sum to zero. Thus the diagonal family passes every test, and an empty Brauer–Manin set precludes a rational point.
+**How the definition helps.** A rational point evaluates each Brauer class to a global class, so global reciprocity makes the local invariants sum to zero (our own). So the family given by a rational point passes every test.
 
 **Paper or page:** [Pullback Method with Applications to Severi-Brauer Fibrations](https://arxiv.org/abs/2410.15125v3). It says: “Moreover, the obstruction is captured by a single Brauer class of order p.”
 
@@ -2303,11 +2303,11 @@
 
 *True by definition.* MSC 14G12 (Hasse principle, weak and strong approximation, Brauer-Manin obstruction), 11G10. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** For an abelian variety A over a number field k, an A-torsor becomes A acting by translations over an algebraic closure of k. The Tate–Shafarevich group consists of isomorphism classes of A-torsors having a point over every completion of k.
+**Definition.** Let A be an abelian variety over a number field k. An A-torsor is a k-variety with an A-action that becomes A acting on itself by translations over an algebraic closure. The Tate–Shafarevich group consists of the isomorphism classes of A-torsors that have a point over every completion of k.
 
 **Problem.** Every everywhere locally soluble A-torsor has a k-point if and only if the Tate–Shafarevich group of A vanishes.
 
-**How the definition helps.** A k-point identifies its torsor with A by translation, so a torsor has a k-point exactly when its class is zero (our own). Applying this test to every class in the group gives the equivalence.
+**How the definition helps.** A k-point serves as an origin, so a torsor has a k-point exactly when it is isomorphic to A, the zero class (our own). So every such torsor has a k-point exactly when the group has no nonzero class.
 
 **Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “the group measures the extent to which the Hasse principle fails to hold for rational equations”
 
@@ -2321,11 +2321,11 @@
 
 *Rules out counterexamples.* MSC 14G15 (Finite ground fields in algebraic geometry), 14G05. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** A torsor for an algebraic group is a space that becomes a copy of the group acting by translations over an algebraic closure. Over a finite field, require the group to be smooth and to remain connected over the algebraic closure.
+**Definition.** A torsor under an algebraic group G over a finite field is a space with a G-action that becomes G acting on itself by translations over an algebraic closure. Here G must be smooth and stay connected over the algebraic closure.
 
 **Problem.** Every torsor under a smooth connected algebraic group over a finite field has a rational point.
 
-**How the definition helps.** Connectedness excludes the point-free quadratic extension torsor under the constant group of order two (our own). For a geometric torsor point t write F(t)=ta, with F the finite-field Frobenius. Lang’s theorem supplies g with a=g⁻¹F(g), so t g⁻¹ is Frobenius-fixed and gives a rational point (our own).
+**How the definition helps.** For connected G, Lang’s theorem writes every element a as g⁻¹F(g), with F the Frobenius. Pick a geometric point t with F(t) = ta; then tg⁻¹ is fixed by Frobenius, a rational point (our own). Connectedness excludes the constant group of order two, whose torsor from the quadratic extension has no rational point (our own).
 
 **Wikipedia:** [Lang's theorem](https://en.wikipedia.org/wiki/Lang%27s_theorem). It says: “and, consequently, any G-bundle on Spec 𝔽q is isomorphic to the trivial one.”
 
@@ -2339,11 +2339,11 @@
 
 *True by definition.* MSC 14G15 (Finite ground fields in algebraic geometry), 11T30. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Define Weil restriction of X from a field extension L to k by the functor of points. On a k-algebra R, its points are the points of X over R ⊗ₖ L. This replaces writing equations in a chosen basis of L over k.
+**Definition.** The Weil restriction of X from L to k is defined by its points: over a k-algebra R, they are the points of X over R ⊗ₖ L. So counting its points over a field means splitting this tensor product into fields.
 
 **Problem.** Let X be quasi-projective over the degree d extension of 𝔽q. Let M count its points over the extension of 𝔽q of degree lcm(d,n). Over the degree n extension, its Weil restriction to 𝔽q has M raised to the power gcd(d,n) points.
 
-**How the definition helps.** In our own deduction, the functor gives the desired count as soon as the tensor product splits into fields. The tensor product has gcd(d,n) factors, each of degree lcm(d,n) over the base field. Their embeddings of the defining field differ by Frobenius, so all factors give equal counts. The representability theorem supplies a variety with this prescribed functor of points.
+**How the definition helps.** Over the degree n extension of 𝔽q, the tensor product with the degree d field splits into gcd(d,n) copies of the degree lcm(d,n) field (our own). Each factor gives M points, since the embeddings differ only by Frobenius. The representability theorem supplies a variety with this functor of points.
 
 **Wikipedia:** [Weil restriction](https://en.wikipedia.org/wiki/Weil_restriction). It says: “(In particular, the k-rational points of \\operatorname{Res}<sub>L/k</sub>X are the L-rational points of X.)”
 
@@ -2355,11 +2355,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14G17 (Positive characteristic ground fields in algebraic geometry), 14H52. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** For an elliptic curve E in characteristic p and n≥1, E\[pⁿ\] is the scheme-theoretic fibre of multiplication by pⁿ over the origin. Its length is the dimension of its coordinate algebra over the base field. The curve is supersingular if E\[p\] has only the origin over an algebraic closure.
+**Definition.** For an elliptic curve E in characteristic p, the kernel E\[pⁿ\] is the scheme-theoretic fibre of multiplication by pⁿ over the origin, so it records multiplicities. Its length is the dimension of its coordinate algebra, and E is supersingular when E\[p\] has only the origin as a geometric point.
 
 **Problem.** For every positive integer n, this kernel has length p²ⁿ. On a supersingular elliptic curve, it has only one geometric point.
 
-**How the definition helps.** The group scheme records multiplicities, so one geometric point can account for the entire length, in our own explanation. The degree theorem says multiplication by pⁿ has degree p²ⁿ and every fiber has that length. On a supersingular curve, a point killed by pⁿ must already be the origin, by repeatedly using the assertion for p.
+**How the definition helps.** Multiplication by pⁿ has degree p²ⁿ, so its fibre over the origin has length p²ⁿ. On a supersingular curve, a geometric point killed by pⁿ is the origin, by induction from E\[p\]. So one point carries the whole length (our own).
 
 **nLab:** [the Barsotti-Tate group of an abelian variety](https://ncatlab.org/nlab/show/the+Barsotti-Tate+group+of+an+abelian+variety). It says: “Then A(p) := ⋃ⱼ ker pʲ idₐ is a p-divisible group.”
 
@@ -2373,11 +2373,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14G22 (Rigid analytic geometry), 54D05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** For a nonarchimedean affinoid algebra A, its Berkovich spectrum consists of bounded multiplicative seminorms on A extending the base absolute value. Give it the weakest topology making evaluation at every a in A continuous.
+**Definition.** A point of the Berkovich spectrum of a nonarchimedean affinoid algebra A is a bounded multiplicative seminorm on A extending the base absolute value, a way to measure the size of every function. The topology is the weakest one making each evaluation x ↦ \|a\|ₓ continuous.
 
 **Problem.** Smooth Berkovich analytic spaces over ℚₚ are locally contractible and hence locally connected. Domains in ℚₚⁿ with their subspace topology are totally disconnected.
 
-**How the definition helps.** Evaluation on seminorms gives an ordinary topology in which local contractibility can be stated (our own). Berkovich’s local contractibility theorem for smooth analytic spaces supplies the proof. In ℚₚⁿ, clopen balls separate any two distinct points (our own).
+**How the definition helps.** Seminorms can vary continuously, for example the sup norms on discs of growing radius, so the space has paths (our own). Berkovich’s theorem proves that smooth spaces are locally contractible. In ℚₚⁿ, clopen balls separate any two distinct points (our own).
 
 **nLab:** [analytic spectrum](https://ncatlab.org/nlab/show/analytic+spectrum), [p-adic number](https://ncatlab.org/nlab/show/p-adic+number), [Berkovich space](https://ncatlab.org/nlab/show/Berkovich+space). It says: “Moreover, one may sensibly assign to an p-adic domain a topological space which is well behaved (in particular locally connected and even locally contractible), this is the analytic spectrum construction.”
 
@@ -2391,11 +2391,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14G22 (Rigid analytic geometry), 14F20. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** On a rigid affinoid space, an affinoid-domain covering is admissible if it has a finite affinoid refinement covering the space. General admissible covers satisfy this test after pullback along every map from an affinoid space.
+**Definition.** A covering of a rigid analytic space is admissible when, after pullback to any affinoid space, finitely many affinoid domains, each inside a member, cover it. This forbids splitting the closed unit disc into the open disc \|T\| &lt; 1 and the circle \|T\| = 1.
 
 **Problem.** In the G-topology, the closed unit disc over ℚₚ behaves as a connected space, and Tate's acyclicity theorem holds. So rigid analytic spaces have analytic continuation, coherent sheaves and a working sheaf theory.
 
-**How the definition helps.** The admissible topology specifies the coverings used in Tate’s acyclicity theorem for affinoids (our own). A disjoint admissible decomposition of the disc would glue zero and one to a nonconstant idempotent in ℚₚ⟨T⟩, a domain. Tate’s theorem gives the sheaf property and acyclicity, while the rigid identity theorem gives analytic continuation on irreducible domains (our own).
+**How the definition helps.** Tate’s acyclicity theorem holds for finite affinoid coverings, so it gives the sheaf property for exactly these covers (our own). An admissible split of the disc into two disjoint pieces would give a nonconstant idempotent in ℚₚ⟨T⟩, which is a domain. The rigid identity theorem gives analytic continuation on irreducible domains (our own).
 
 **nLab:** [rigid analytic geometry](https://ncatlab.org/nlab/show/rigid+analytic+geometry), [Berkovich space](https://ncatlab.org/nlab/show/Berkovich+space). It says: “regarded with their subspace topology, fails, as also all these domains are totally disconnected.”
 
@@ -2410,11 +2410,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)). arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** Fix a geometric base point on the thrice-punctured projective line over ℚ̄. Its geometric fundamental group consists of natural automorphisms of the functor sending every finite étale cover to its fibre at that point.
+**Definition.** The geometric fundamental group of the thrice-punctured line over ℚ̄, at a fixed geometric base point, is the group of compatible permutations of the fibres of all finite étale covers. A field automorphism acts on it by conjugating the covers.
 
 **Problem.** Every nonidentity automorphism of the algebraic numbers over ℚ acts nontrivially on this fundamental group, even after ignoring conjugation.
 
-**How the definition helps.** An inner action preserves the isomorphism class of every connected cover (our own). For a nonidentity field automorphism, choose an elliptic curve whose j-invariant it moves. Belyi’s theorem realizes the punctured curve as a cover branched only at 0, 1 and ∞ before puncturing. Isomorphic covers have isomorphic smooth compactifications, contradicting the change in j (our own).
+**How the definition helps.** An inner action fixes the isomorphism class of every connected cover (our own). By Belyi’s theorem, an elliptic curve whose j-invariant the automorphism moves becomes such a cover after removing finitely many points. Its conjugate cover has a different j-invariant, so it is not isomorphic, and the action is not inner (our own).
 
 **Paper or page:** [Lecture Notes on Modular Infinity Operads and Grothendieck-Teichmueller Theory](https://arxiv.org/abs/2210.13640). It says: “There is an injection Gal(ℚ) ↪︎ GT̂.”
 
@@ -2430,11 +2430,11 @@
 
 *Rules out counterexamples.* MSC 14G35 (Modular and Shimura varieties), 11F23. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** Over ℂ, mark each elliptic curve with an ordered basis of its N-torsion, the points killed by N, for N ≥ 3. The j-invariant alone records the isomorphism class of a single unmarked curve.
+**Definition.** A level-N structure on an elliptic curve over ℂ, for N ≥ 3, is an ordered basis of its N-torsion, the points killed by N. Only the identity automorphism of the curve fixes such a basis, so marked curves have no symmetries (our own).
 
 **Problem.** For N ≥ 3, every family of elliptic curves with marked N-torsion bases is the pullback of one universal marked family, along a unique map. The j-line has no such universal family for unmarked curves.
 
-**How the definition helps.** Every automorphism preserving the marking fixes the entire torsion basis and must be the identity (our own). Without markings, one can glue a constant family along a connected double cover using negation (our own). For a curve with only the automorphisms ±1, this gives a nonconstant twist with constant j (our own). Constructing the parameter curve and its universal family still requires the full-level moduli theorem (our own).
+**How the definition helps.** Objects without nonidentity automorphisms can have a universal family, and the full-level moduli theorem constructs it (our own). Without markings, gluing a constant curve to itself by −1 along a connected double cover gives a nonconstant family with constant j (our own). So the j-line carries no universal family.
 
 **nLab:** [modular curve](https://ncatlab.org/nlab/show/modular+curve). It says: “A modular curve is a moduli space of elliptic curves over the complex numbers equipped with level-n structure, for some n ∈ ℕ.”
 
@@ -2448,11 +2448,11 @@
 
 *True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 11G50. arXiv math.NT, math.AG. Level 3: graduate.
 
-**Definition.** An arithmetic divisor assigns finitely supported integers to finite primes and conjugation-invariant real coefficients to complex embeddings of a number field. Its degree sums the prime coefficients weighted by log of the residue field size, plus all embedding coefficients. For a nonzero field element a, its principal divisor has coefficients ord\_𝔭(a) and −log\|σ(a)\|, respectively.
+**Definition.** An arithmetic divisor on a number field has an integer at each finite prime, almost all zero, and a conjugation-invariant real number at each complex embedding. Its degree sums the prime coefficients times log of the residue field size, plus the embedding coefficients. A nonzero a gives the principal divisor with coefficients ord\_𝔭(a) and −log\|σ(a)\|.
 
 **Problem.** Every principal arithmetic divisor has degree zero. So the arithmetic degree is well defined on classes of arithmetic divisors.
 
-**How the definition helps.** The product formula makes the finite and infinite terms cancel (our own). Summing prime valuations with their logarithmic weights gives log\|Norm(a)\|, while summing the embedding coefficients gives its negative. Thus adding a principal divisor preserves the degree.
+**How the definition helps.** The product formula makes the finite and infinite terms cancel (our own). The prime terms sum to log\|Norm(a)\|, and the embedding terms sum to −log\|Norm(a)\|.
 
 **nLab:** [arithmetic Chow group](https://ncatlab.org/nlab/show/arithmetic+Chow+group). It says: “pairs consisting of a codimension p subvariety of X together with a Green current for it.”
 
@@ -2462,15 +2462,15 @@
 
 ### Forgetting currents recovers Chow groups
 
-**Remember:** Lift rational relations to erase the cycle while keeping its remaining Green data.
+**Remember:** Forget the current: relations lift, and a smooth form remains.
 
 *Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** In codimension p an arithmetic cycle pairs a cycle Z with a Green current g of bidegree (p−1,p−1) satisfying that ddᶜg+δ<sub>Z</sub> is smooth. Use real currents with the arithmetic conjugation convention, modulo ∂- and ∂̄-exact terms. Arithmetic Chow classes further quotient by principal pairs from rational functions, pairing their divisors with the pushed-forward currents −log\|f\|².
+**Definition.** An arithmetic cycle of codimension p pairs a cycle Z with a Green current g, a real (p−1,p−1)-current with ddᶜg + δ<sub>Z</sub> smooth, modulo ∂- and ∂̄-exact terms. Arithmetic Chow classes also set to zero each pair (div f, −log\|f\|²) pushed forward from a rational function f on a codimension p−1 subvariety.
 
 **Problem.** On a regular projective arithmetic variety, forgetting the Green current maps arithmetic Chow classes onto ordinary Chow classes. The kernel consists exactly of classes with zero cycle and a smooth form.
 
-**How the definition helps.** Lifting the ordinary divisor relations lets us subtract them from an arithmetic representative until its cycle is zero (our own). Existence of Green currents gives surjectivity (our own). Analytic regularity replaces the remaining current by a smooth form modulo the derivatives allowed in the group (our own).
+**How the definition helps.** The cycle of each principal pair is rationally trivial, so forgetting g is well defined; every cycle has a Green current, so it is onto (our own). In the kernel the cycle is a sum of divisors div f, so subtracting their principal pairs leaves (0, g) with ddᶜg smooth (our own). Analytic regularity makes this g a smooth form modulo the allowed terms (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “\\widetilde{C}<sup>2p-1</sup>(p)\\overset {\\operatorname{a}<sub>C</sub>}{\\longrightarrow } \\operatorname{\\widehat{CH}}<sup>p</sup>(\\mathcal{X},C) \\overset {\\zeta <sub>C</sub>}{\\longrightarrow } \\operatorname{CH}<sup>p</sup>(\\mathcal{X})\\to 0”
 
@@ -2485,11 +2485,11 @@
 
 *True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG. Level 3: graduate.
 
-**Definition.** An arithmetic divisor pairs a divisor D, a formal sum of hypersurfaces, with a conjugation-invariant real function g off D. If f is a local equation for D, then g + log \|f\|² must extend smoothly. The first arithmetic Chow group identifies pairs differing by (div(u), −log \|u\|²) for a nonzero rational function u.
+**Definition.** An arithmetic divisor is a pair (D, g) of a divisor D and a real, conjugation-invariant function g off D, with g + log\|f\|² smooth for every local equation f of D. So exp(−g) behaves like the squared length of a section with divisor D (our own), and pairs (div u, −log\|u\|²) count as zero.
 
 **Problem.** On a smooth projective integral variety over an arithmetic field, the first arithmetic Chern class identifies hermitian line bundles with arithmetic divisor classes.
 
-**How the definition helps.** The logarithmic condition turns the singular function into a smooth metric in each local frame (our own). In the line bundle of D, give its canonical rational section squared norm exp(−g) (our own). Dividing the section by f gives a local frame with smooth positive squared norm exp(−g − log \|f\|²) (our own). Principal pairs change the rational section and preserve the resulting metric up to isometry (our own).
+**How the definition helps.** Give the canonical section of 𝒪(D) squared norm exp(−g); dividing by f gives a local frame with smooth positive squared norm (our own). A principal pair changes the section by u and leaves the metric the same up to isometry (our own). Conversely, a rational section s of a hermitian line bundle gives (div s, −log‖s‖²), and the two constructions are inverse (our own).
 
 **Paper or page:** [Arithmetic Cycles with Modulus](https://arxiv.org/abs/2501.03408v1). It says: “The assignment (ℒ, ‖·‖) ↦ ĉ₁(ℒ, ‖·‖) defines a group isomorphism”
 
@@ -2500,15 +2500,15 @@
 
 ### Section changes preserve Chern classes
 
-**Remember:** Record both the divisor and the norm of the section.
+**Remember:** A new section shifts the pair by a principal pair, zero.
 
 *True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** A hermitian line bundle assigns a smoothly varying norm to each complex fiber, compatibly with conjugation. Its first arithmetic Chern class records a rational section’s divisor of zeros and poles and its negative log squared norm. The arithmetic Chow group sets (div(u), −log \|u\|²) equal to zero for every nonzero rational function u.
+**Definition.** A hermitian line bundle has a smooth norm on each complex fibre, compatible with conjugation. Its first arithmetic Chern class is the pair (div s, −log‖s‖²) for a nonzero rational section s. The arithmetic Chow group sets (div u, −log\|u\|²) to zero for each nonzero rational function u.
 
 **Problem.** On a regular integral arithmetic variety, every nonzero rational section of a hermitian line bundle gives the same first arithmetic Chern class.
 
-**How the definition helps.** The quotient removes exactly the change that a new section introduces (our own). Multiplying a section by u adds div(u) to the divisor and subtracts log \|u\|² from the second entry (our own). The Poincaré–Lelong formula shows that the second entry has the singularities required by the first (our own).
+**How the definition helps.** Replacing s by us adds exactly (div u, −log\|u\|²), which the Chow group sets to zero (our own). The Poincaré–Lelong formula shows that −log‖s‖² is a Green current for div s, so the pair is a valid class (our own).
 
 **Wikipedia:** [Arakelov theory](https://en.wikipedia.org/wiki/Arakelov_theory). It says: “is the quotient of this group by the subgroup generated by certain "trivial" cycles.”
 
@@ -2522,11 +2522,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** A divisor D on a compact connected Riemann surface specifies point masses δ(D) of total integer weight deg(D). Choose a smooth positive area form μ of mass one. The normalized Green function has mean zero for μ and solves the Poisson equation with source deg(D)μ − δ(D).
+**Definition.** Fix a compact connected Riemann surface and a smooth positive area form μ of mass one. The normalized Green function of a divisor D solves the Poisson equation with source deg(D)μ − δ(D), where δ(D) puts each multiplicity of D at its point. It must also have mean zero for μ, which fixes the free additive constant.
 
 **Problem.** Each divisor D has exactly one normalized Green function for μ.
 
-**How the definition helps.** The mean condition removes the only freedom in solving the equation, an additive constant (our own). Without it, every constant solves the equation for the zero divisor (our own). Existence follows from the Poisson equation on a compact surface because the source has total mass zero (our own).
+**How the definition helps.** Two solutions differ by a harmonic function, which on a compact connected surface is constant, and zero mean picks one (our own). A solution exists because the source has total mass zero (our own). Without the mean condition, every constant solves the equation for the zero divisor (our own).
 
 **nLab:** [Arakelov geometry](https://ncatlab.org/nlab/show/Arakelov+geometry). It says: “he defined the intersection numbers using the complementary piece at infinity.”
 
@@ -2540,11 +2540,11 @@
 
 *True by definition. Confidence: medium.* MSC 14G50 (Applications to coding theory and cryptography of arithmetic geometry), 11T71. arXiv math.AG. Level 3: graduate.
 
-**Definition.** On a smooth projective geometrically connected curve over a finite field, let D sum distinct rational points outside the support of a divisor G. The evaluation code evaluates functions with div(f)≥−G at D, including the zero function. The residue code takes residues at D of differentials with div(ω)≥G−D, including the zero differential.
+**Definition.** Take a smooth projective geometrically connected curve over a finite field, a sum D of distinct rational points, and a divisor G avoiding them. The evaluation code is the vectors of values at D of f = 0 and of functions with div(f) ≥ −G. The residue code is the vectors of residues at D of ω = 0 and of differentials with div(ω) ≥ G − D.
 
 **Problem.** If 2g − 2 &lt; deg(G) &lt; deg(D), the residue code equals the ordinary dot-product dual of the evaluation code. Here g is the genus of the curve.
 
-**How the definition helps.** Every dot product equals the sum of residues of fω, since f is regular and ω has at most simple poles at D (our own). The product is regular elsewhere, so the residue theorem gives zero. In the stated degree range Riemann–Roch gives dimensions deg(G)+1−g and deg(D)−deg(G)−1+g, which sum to the code length.
+**How the definition helps.** For such f and ω, fω has at most simple poles, only at D, so the dot product of their vectors is the sum of all residues of fω (our own). The residue theorem makes this sum zero. In the stated degree range, Riemann–Roch gives dimensions deg(G)+1−g and deg(D)−deg(G)−1+g, which sum to the code length.
 
 **Paper or page:** [Weierstrass Semigroup, Pure Gaps and Codes on Function Fields](https://arxiv.org/abs/2304.02128). It says: “Given the AG codes $C<sub>\\mathcal L</sub>(D, G)$ and $C<sub>\\Omega</sub>(D, G)$ with parameters $\[N, k, d\]$ and $\[N, k<sub>\\Omega</sub>, d<sub>\\Omega</sub>\]$ respectively, we have that if $2g-2&lt;{  deg}(G)&lt;N$, then
 $$
@@ -2558,15 +2558,15 @@ $$”
 
 ### Stability removes blowup models
 
-**Remember:** Extra rational components with too few branches do not survive stabilization.
+**Remember:** Every rational component must meet the rest at least three times.
 
 *Rules out counterexamples.* MSC 14H10 (Families, moduli of curves (algebraic)), 14G20. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** A model of a curve over a discrete valuation field is a proper flat family over its valuation ring with identified generic fibre. In genus at least two it is stable if its geometric fibres are connected nodal curves satisfying the following condition. Every genus-zero component of the normalization contains at least three preimages of nodes.
+**Definition.** A stable model of a curve of genus at least two over a discrete valuation field is a proper flat family over the valuation ring with the curve as generic fibre. Its geometric fibres are connected nodal curves in which every genus-zero component of the normalization contains at least three preimages of nodes.
 
 **Problem.** A smooth projective geometrically connected curve of genus at least two has at most one stable model up to unique isomorphism fixing the original curve.
 
-**How the definition helps.** Stability excludes the extra models obtained by blowing up a smooth point of the special fiber, in our own explanation. For example, blowing up a rational smooth point inserts a projective line that meets the rest of the fiber only once. The new family still has only ordinary crossings, but this line violates stability. The uniqueness theorem for stable models handles all possible competing models.
+**How the definition helps.** Blowing up a smooth rational point of the special fibre gives another model, but the new projective line meets the rest only once, so stability excludes it (our own). The uniqueness theorem for stable models handles all other competing models.
 
 **Paper or page:** [Moduli Curves](https://stacks.math.columbia.edu/tag/0E97). It says: “there exists a unique isomorphism X → X′ of models.”
 
@@ -2574,15 +2574,15 @@ $$”
 
 ### Stable curves give the Deligne–Mumford compactification of the moduli of curves
 
-**Remember:** Allow nodes so that limits exist; forbid infinite symmetry so the stack stays Deligne–Mumford.
+**Remember:** Allow nodes so limits exist; demand finite symmetry.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14H10 (Families, moduli of curves (algebraic)), 14D23. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A stable n-pointed curve of genus g is a proper geometrically connected nodal curve of arithmetic genus g with n distinct marked smooth points. Its geometric automorphism group preserving all markings must be finite.
+**Definition.** A stable n-pointed curve of genus g is a proper geometrically connected nodal curve of arithmetic genus g with n distinct smooth marked points and only finitely many automorphisms fixing them. This rules out rational components with fewer than three special points, nodes or markings.
 
 **Problem.** The stack M̄(g, n) of stable curves is a smooth proper Deligne–Mumford stack that contains the stack M(g, n) of smooth curves. Deligne and Mumford used it to prove that M(g) is irreducible.
 
-**How the definition helps.** Nodal fibres allow stable reduction, while stability excludes rational tails with fewer than three special points and their infinite automorphisms (our own). Stable reduction gives properness, the unramified diagonal criterion gives the Deligne–Mumford property, and deformation theory gives smoothness. Deligne and Mumford used the compactification to prove irreducibility of the smooth moduli space.
+**How the definition helps.** Allowing nodes lets every family acquire a stable limit, which gives properness, and finite automorphisms give the Deligne–Mumford property (our own). Deformation theory of nodes gives smoothness. Deligne and Mumford then proved M(g) irreducible by studying the compactification.
 
 **nLab:** [basic ideas of moduli stacks of curves and Gromov-Witten theory](https://ncatlab.org/nlab/show/basic+ideas+of+moduli+stacks+of+curves+and+Gromov-Witten+theory), [Deligne-Mumford compactification](https://ncatlab.org/nlab/show/Deligne-Mumford+compactification), [stable map](https://ncatlab.org/nlab/show/stable+map). It says: “Deligne and Mumford were able to prove many theorems about the ordinary moduli space of curves by studying instead the compactification. For example they were able to prove that M<sub>g</sub>,n is irreducible.”
 
@@ -2597,11 +2597,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14H20 (Singularities of curves, local rings), 14C40, 13H10. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** The arithmetic genus of a projective curve C over a field is 1−χ(C,𝒪<sub>C</sub>). For a geometrically integral curve it equals dim H¹(C,𝒪<sub>C</sub>).
+**Definition.** The arithmetic genus of a projective curve C over a field is 1 − χ(C,𝒪<sub>C</sub>), computed from cohomology rather than from a smooth model. For a geometrically integral curve it equals dim H¹(C,𝒪<sub>C</sub>).
 
 **Problem.** For an integral projective Gorenstein curve over an algebraically closed field and a Cartier divisor D, ℓ(D)−ℓ(K−D)=deg(D)+1−g. Here g is the arithmetic genus and K is a canonical Cartier divisor.
 
-**How the definition helps.** Curve Riemann–Roch gives χ(𝒪(D))=deg(D)+1−g. Gorenstein duality identifies the dual of H¹(C,𝒪(D)) with H⁰(C,𝒪(K−D)), giving the formula (our own).
+**How the definition helps.** Riemann–Roch for Euler characteristics gives χ(𝒪(D)) = deg(D) + 1 − g with this g, whether or not C is singular. Gorenstein duality identifies the dual of H¹(C,𝒪(D)) with H⁰(C,𝒪(K−D)), which gives the formula (our own).
 
 **Wikipedia:** [Riemann–Roch theorem](https://en.wikipedia.org/wiki/Riemann%E2%80%93Roch_theorem), [Arithmetic genus](https://en.wikipedia.org/wiki/Arithmetic_genus). It says: “the same statement as above holds, provided that the geometric genus as defined above is replaced by the arithmetic genus”
 
@@ -2615,11 +2615,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H50 (Plane and space curves), 14H20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For an integral projective curve C over an algebraically closed field, the arithmetic genus is 1−χ(C,𝒪<sub>C</sub>). The geometric genus is the genus of its normalization.
+**Definition.** For an integral projective curve C over an algebraically closed field, the arithmetic genus is 1 − χ(C,𝒪<sub>C</sub>), so it depends only on the cohomology of the structure sheaf. The geometric genus is the genus of the normalization.
 
 **Problem.** An integral projective plane curve of degree d over an algebraically closed field has arithmetic genus (d−1)(d−2)/2. Its geometric genus is smaller whenever it is singular.
 
-**How the definition helps.** The degree-d equation gives 0 → 𝒪(−d) → 𝒪 → 𝒪<sub>C</sub> → 0 on the plane. Taking Euler characteristics gives the formula even at singular curves (our own). At a singular point normalization contributes positive length to the quotient of the two structure sheaves, lowering the geometric genus (our own).
+**How the definition helps.** The equation gives 0 → 𝒪(−d) → 𝒪 → 𝒪<sub>C</sub> → 0 on the plane, so χ(𝒪<sub>C</sub>) depends only on d and gives (d−1)(d−2)/2 (our own). At a singular point the normalization’s structure sheaf is strictly larger, and this extra length lowers the geometric genus (our own).
 
 **Wikipedia:** [Genus–degree formula](https://en.wikipedia.org/wiki/Genus%E2%80%93degree_formula). It says: “If the curve is non-singular, then the geometric genus and the arithmetic genus are equal, but if the curve is singular, with only ordinary singularities, then the geometric genus is smaller.”
 
@@ -2627,7 +2627,7 @@ $$”
 
 ### A marked point is part of an elliptic curve
 
-**Remember:** Mark a rational point on a smooth projective genus-one curve to choose its origin.
+**Remember:** A genus-one curve becomes a group once you mark its origin.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14H52 (Elliptic curves), 11G05. arXiv math.AG, math.NT. Level 3: graduate.
 
@@ -2645,15 +2645,15 @@ $$”
 
 ### Elliptic curves as lattice quotients have n² points killed by n
 
-**Remember:** Dividing the lattice by n gives an n by n grid modulo the lattice.
+**Remember:** Points killed by n form an n-by-n grid modulo the lattice.
 
 *True by definition.* MSC 14H52 (Elliptic curves), 33E05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Over ℂ, describe an elliptic curve as ℂ/Λ, with Λ the integer span of two real-linearly independent complex numbers. In this quotient, numbers differing by an element of Λ represent the same point. The cubic definition uses a nonsingular plane cubic with a distinguished origin and addition by chords and tangents.
+**Definition.** Over ℂ, an elliptic curve is ℂ/Λ, where Λ is the integer span of two ℝ-linearly independent complex numbers. A point z is killed by n exactly when nz lies in Λ.
 
 **Problem.** For a positive integer n, the points P with nP = 0 form a group isomorphic to (ℤ/nℤ) × (ℤ/nℤ). Thus there are n² such points.
 
-**How the definition helps.** The lattice quotient definition turns nP = 0 into a divisibility test: the class of z is killed by n exactly when nz lies in Λ. In a lattice basis, z then has coordinates in (1/n)ℤ modulo ℤ, which gives two independent coordinates in ℤ/nℤ (our own computation). A cubic calculation would instead need to control the polynomial equations for multiplication by n. The work moves into identifying the complex cubic and its addition with the lattice quotient.
+**How the definition helps.** In a basis of Λ, nz ∈ Λ means both coordinates of z lie in (1/n)ℤ, taken modulo ℤ. This gives two independent coordinates in ℤ/nℤ (our own computation). The real work is identifying the complex cubic with this lattice quotient.
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “This also allows an easy understanding of the torsion points on an elliptic curve: if the lattice Λ is spanned by the fundamental periods ω₁ and ω₂, then the n-torsion points are the (equivalence classes of) points of the form”
 
@@ -2665,11 +2665,11 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14H52 (Elliptic curves), 11G05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Over a field of characteristic different from 2 and 3, a short Weierstrass model is the projective closure of y²=x³+ax+b with origin at infinity. It is nonsingular precisely when 4a³+27b²≠0.
+**Definition.** Over a field of characteristic other than 2 and 3, a short Weierstrass curve is the projective closure of y² = x³ + ax + b with origin at infinity. It is nonsingular, free of cusps and nodes, exactly when 4a³ + 27b² ≠ 0.
 
 **Problem.** The Mordell–Weil theorem says that the group of rational points of an elliptic curve over ℚ is finitely generated.
 
-**How the definition helps.** The non-singular condition rules out cubics whose groups are the additive or multiplicative group of ℚ, which are not finitely generated. On the cuspidal cubic y² = x³, the smooth rational points form a group isomorphic to ℚ under addition (our own example). On the nodal cubic y² = x²(x + 1), they form ℚ\* under multiplication (our own example). The proof of Mordell–Weil, with the weak theorem and heights, stays real work.
+**How the definition helps.** Nonsingularity removes cubics whose smooth points form the additive or multiplicative group of ℚ, which are not finitely generated. On y² = x³ the smooth rational points form ℚ under addition, and on y² = x²(x + 1) they form ℚ\* (our own examples). Mordell–Weil itself still needs the weak theorem and heights.
 
 **Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “The curve is required to be non-singular, which means that the curve has no cusps or self-intersections.”
 
@@ -2681,11 +2681,11 @@ $$”
 
 *True by definition.* MSC 14H52 (Elliptic curves), 13C20. arXiv cs.LO, math.AG. Level 3: graduate.
 
-**Definition.** For an elliptic Weierstrass curve over F, let A be the coordinate ring of its affine chart. Assign each affine F-point (x,y) the class of the ideal (X−x,Y−y) among invertible fractional ideals modulo principal ideals. Assign the origin at infinity the identity class.
+**Definition.** Send each affine F-point (x,y) of a Weierstrass elliptic curve to the class of the ideal (X−x, Y−y) in the class group of its affine coordinate ring, invertible fractional ideals modulo principal ones. Send the origin at infinity to the identity class.
 
 **Problem.** The chord-and-tangent addition on the points of a Weierstrass elliptic curve over any field is associative, so the points form an abelian group.
 
-**How the definition helps.** Points become elements of a group that is already known to be associative, so the group law is inherited. The paper's Lemma 8 shows that the map turns addition of points into multiplication of ideal classes. The quoted Lemma 11 says that the map is injective, so the abelian group axioms carry over from the class group. The proof works in any characteristic and avoids Riemann–Roch, and what stays hard is the injectivity, a computation with norms and degrees (our own remark).
+**How the definition helps.** Points become elements of a known abelian group, so the group axioms carry over once the map respects addition and is injective. Lemma 8 of the paper shows that the map turns addition of points into multiplication of classes. The quoted Lemma 11 gives injectivity, by a computation with norms and degrees that works in any characteristic (our own remark).
 
 **Paper or page:** [An Elementary Formal Proof of the Group Law on Weierstrass Elliptic Curves in any Characteristic](https://arxiv.org/abs/2302.10640v2), [An Elementary Formal Proof of the Group Law on Weierstrass Elliptic Curves in any Characteristic](https://arxiv.org/abs/2302.10640v2). It says: “The function W(F) → Cl(F\[W\]) is injective.”
 
@@ -2699,11 +2699,11 @@ $$”
 
 *True by definition.* MSC 14H52 (Elliptic curves), 14K05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** For a positive integer n invertible in the field and a geometric n-torsion point P, choose F with divisor \[n\]\*((P)−(O)) on the elliptic curve. For each geometric n-torsion point Q, define the translation pairing as F(X+Q)/F(X), using the same ratio convention throughout.
+**Definition.** For n invertible in the field and geometric n-torsion points P and Q, choose F with divisor \[n\]\*((P)−(O)), the pullback of (P)−(O) under multiplication by n. The pairing is the ratio F(X+Q)/F(X), which is constant because translation by Q preserves that pulled-back divisor (our own).
 
 **Problem.** The Weil pairing computed by the translation definition takes values in the nth roots of unity.
 
-**How the definition helps.** Translation by Q preserves the divisor pulled back under \[n\], so the ratio has zero divisor and is constant (our own). Iterating the translation n times multiplies F by this constant to the nth power. Since nQ=O, the product is one (our own).
+**How the definition helps.** Multiplying the ratio over X, X+Q, …, X+(n−1)Q gives F(X+nQ)/F(X), which is the nth power of the constant (our own). Since nQ = O, this equals one (our own).
 
 **Wikipedia:** [Weil pairing](https://en.wikipedia.org/wiki/Weil_pairing). It says: “then by construction G has the same divisor”
 
@@ -2717,11 +2717,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14H60 (Vector bundles on curves and their moduli), 32L05. arXiv math.AG, math.DG. Level 3: graduate.
 
-**Definition.** The slope of a vector bundle on a curve is its degree divided by its rank. A bundle is stable when every proper nonzero subbundle has strictly smaller slope. It is semistable when every such subbundle has slope at most that of the bundle.
+**Definition.** The slope of a vector bundle on a curve is its degree divided by its rank. A bundle is stable when every proper nonzero subbundle has strictly smaller slope.
 
-**Problem.** Fix a point on a compact Riemann surface of positive genus. A rank-n, degree-d holomorphic bundle is stable exactly when it arises by the Narasimhan–Seshadri construction from an irreducible unitary representation of the punctured surface group. The puncture monodromy is the prescribed scalar of degree d, so the representation descends projectively to the closed surface group.
+**Problem.** On a compact Riemann surface of positive genus with a fixed point, a rank-n degree-d holomorphic bundle is stable exactly when it comes from an irreducible unitary representation of the punctured surface group. The loop around the point goes to the prescribed scalar for degree d, so the representation descends projectively to the closed surface group.
 
-**How the definition helps.** The strict slope test states the bundle condition in the Narasimhan–Seshadri correspondence for irreducible representations with prescribed central monodromy (our own). In degree zero, 𝒪(p) ⊕ 𝒪(−p) fails this test because it contains a positive-degree line (our own). Narasimhan–Seshadri proves both directions.
+**How the definition helps.** Narasimhan–Seshadri proves both directions, and the strict slope test is exactly its bundle condition for irreducible representations (our own). In degree zero, 𝒪(p) ⊕ 𝒪(−p) fails the test because it contains a line of positive degree (our own).
 
 **Wikipedia:** [Narasimhan–Seshadri theorem](https://en.wikipedia.org/wiki/Narasimhan%E2%80%93Seshadri_theorem). It says: “says that a holomorphic vector bundle over a compact Riemann surface is stable if and only if it comes from an irreducible projective unitary representation of the fundamental group.”
 
@@ -2738,11 +2738,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H60 (Vector bundles on curves and their moduli), 53C07, 53D30. arXiv math.DG, math.AG. Level 3: graduate.
 
-**Definition.** A Higgs bundle on a compact Riemann surface is a holomorphic bundle E with a holomorphic map φ: E → E ⊗ K. Stability requires deg(F)/rank(F) &lt; deg(E)/rank(E) for every nonzero proper subbundle F satisfying φ(F) ⊂ F ⊗ K. Polystability means a direct sum of stable Higgs bundles of equal slope.
+**Definition.** A Higgs bundle on a compact Riemann surface is a holomorphic bundle E with a holomorphic map φ: E → E ⊗ K, where K is the canonical bundle. It is stable when every nonzero proper subbundle F with φ(F) ⊂ F ⊗ K has smaller slope, degree over rank, than E. Polystable means a direct sum of stable Higgs bundles of equal slope.
 
 **Problem.** Let (E,φ) be a degree-zero Higgs bundle on a compact Riemann surface. It is polystable exactly when a Hermitian metric solves Hitchin’s equations for its Chern connection and Higgs field.
 
-**How the definition helps.** Only invariant subbundles enter the slope test in the Hitchin–Simpson correspondence, which supplies the metric equivalence (our own). In genus at least two choose L²=K and E=L ⊕ L⁻¹. Map L isomorphically to L⁻¹ ⊗ K and kill L⁻¹. The only invariant generic line is L⁻¹, of negative degree, although L destabilizes the underlying bundle (our own).
+**How the definition helps.** The Hitchin–Simpson correspondence uses exactly this invariant-subbundle slope test (our own). In genus at least two take L² = K and E = L ⊕ L⁻¹, with φ mapping L isomorphically onto L⁻¹ ⊗ K and killing L⁻¹. The only invariant line subbundle is L⁻¹, of negative degree, so (E,φ) is stable though L destabilizes E (our own).
 
 **Paper or page:** [The Algebraic and Analytic Compactifications of the Hitchin Moduli Space](https://arxiv.org/abs/2304.08198), [The moduli space of solutions to the Extended Bogomolny equations on Σ×ℝ₊](https://arxiv.org/abs/2401.10999). It says: “A Higgs bundle (E,φ) is polystable if and only if there exists a Hermitian metric H such that the corresponding Chern connection A and Higgs field ϕ=φ+φ† solve the Hitchin equations”
 
@@ -2757,11 +2757,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14K02 (Isogeny), 14K05. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** An isogeny is a surjective homomorphism of abelian varieties with finite kernel. Its degree is the degree of the extension of function fields that it induces by pullback. Counting points in the kernel gives only the separable degree, which misses inseparable maps such as Frobenius.
+**Definition.** An isogeny is a surjective homomorphism of abelian varieties with finite kernel. Its degree is the degree of the function field extension it induces by pullback, which also counts inseparable parts such as Frobenius.
 
 **Problem.** The degree of a composite of isogenies is the product of their degrees, also in positive characteristic.
 
-**How the definition helps.** With the field definition, multiplicativity is the tower law for the fields K(C) ⊂ K(B) ⊂ K(A) (our own). A kernel count also multiplies, but it equals the degree only for separable isogenies (our own). For example, the p-power Frobenius of an elliptic curve has degree p and no nonzero kernel points (our own). To use the order of the kernel group scheme instead, one must first prove that it equals the field degree (our own).
+**How the definition helps.** With field degrees, multiplicativity is the tower law for K(C) ⊂ K(B) ⊂ K(A) (our own). Counting kernel points misses the inseparable degree: the p-power Frobenius of an elliptic curve has degree p but no nonzero kernel points (our own).
 
 **Wikipedia:** [Isogeny](https://en.wikipedia.org/wiki/Isogeny). It says: “The degree of the extension K(A) / im f\* is called degree of isogeny”
 
@@ -2771,15 +2771,15 @@ $$”
 
 ### Complete connected algebraic groups are automatically commutative
 
-**Remember:** An abelian variety is a complete connected group variety.
+**Remember:** Complete and connected: the commutator map has nowhere to go.
 
 *Rules out counterexamples.* MSC 14K05 (Algebraic theory of abelian varieties), 14L10. arXiv math.AG. Level 3: graduate.
 
-**Definition.** An abelian variety over an algebraically closed field is a connected smooth algebraic group proper over that field.
+**Definition.** An abelian variety over an algebraically closed field is a connected smooth algebraic group that is proper (complete) over the field. Properness lets the rigidity lemma apply: a map from X × Y with X complete, constant on one slice, is constant on all parallel slices.
 
 **Problem.** Every complete connected algebraic group over an algebraically closed field is commutative.
 
-**How the definition helps.** The commutator map is constant on both identity slices, so rigidity makes it constant everywhere (our own proof). Disconnected finite groups can be noncommutative, as can nonproper connected groups such as GL₂ (our own examples).
+**How the definition helps.** The commutator map (x,y) ↦ xyx⁻¹y⁻¹ is constant on the slices x = e and y = e, so rigidity makes it constant, equal to e (our own proof). Finite noncommutative groups show that connectedness is needed, and GL₂ shows that properness is needed (our own examples).
 
 **nLab:** [abelian variety](https://ncatlab.org/nlab/show/abelian+variety). It says: “gives at least two proofs that every complete algebraic group over an algebraically closed field is automatically abelian.”
 
@@ -2812,11 +2812,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14K15 (Arithmetic ground fields for abelian varieties), 11F80. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** Let A be an abelian variety over a finite separable extension L/K. Its Weil restriction represents the functor sending each K-algebra R to A(L ⊗<sub>K</sub> R).
+**Definition.** Let A be an abelian variety over a finite separable extension L/K. Its Weil restriction is the variety whose points over each K-algebra R are A(L ⊗<sub>K</sub> R). So over a separable closure its points are one copy of A per K-embedding of L (our own).
 
 **Problem.** For every prime ℓ invertible in K, the Weil restriction has Tate module induced from the absolute Galois representation on Tℓ(A). Its underlying group has one summand isomorphic to Tℓ(A) per K-embedding of L into a separable closure.
 
-**How the definition helps.** Over a separable closure of K, the tensor product splits into one factor per K-embedding of L (our own). Galois permutes the corresponding torsion modules, and the stabilizer of one factor acts through its usual torsion representation (our own). Taking inverse limits under multiplication by ℓ gives the induced module (our own).
+**How the definition helps.** Galois permutes these copies, and the stabilizer of one copy acts on it through the usual action on the torsion of A (our own). Taking ℓ-power torsion and inverse limits gives the induced module (our own).
 
 **nLab:** [Tate module](https://ncatlab.org/nlab/show/Tate+module). It says: “of the directed diagram given by kernels of the endomorphisms of A defined by multiplication by pⁿ”
 
@@ -2852,7 +2852,7 @@ $$”
 
 **Problem.** The Albanese variety of an abelian variety, pointed at its identity, is that same abelian variety.
 
-**How the definition helps.** With the universal property, the identity map is the candidate, and one only checks that it is universal. This holds because every pointed map between abelian varieties is a homomorphism, by the rigidity lemma (our own). With the Picard construction, the claim instead needs biduality, the theorem that the dual of the dual of A is A (our own). For general X, the work goes into proving that the Albanese exists (our own).
+**How the definition helps.** With the universal property, one only checks that the identity of A is universal. It is, because every pointed map between abelian varieties is a homomorphism, by the rigidity lemma (our own). A Picard construction would instead need biduality, the theorem that the dual of the dual of A is A (our own).
 
 **nLab:** [Albanese variety](https://ncatlab.org/nlab/show/Albanese+variety). It says: “Moreover, the Albanese variety of the Albanese variety is the Albanese variety.”
 
@@ -2866,11 +2866,11 @@ $$”
 
 *True by definition.* MSC 14L05 (Formal groups, \\(p\\)-divisible groups), 55N22. arXiv math.AG, math.AT. Level 3: graduate.
 
-**Definition.** Write F(x,y) = x+y+∑ᵢ,ⱼ≥₁ aᵢⱼxⁱyʲ over the polynomial ring ℤ\[aᵢⱼ\]. The Lazard ring is its quotient by all coefficients of F(x,y)−F(y,x) and F(F(x,y),z)−F(x,F(y,z)).
+**Definition.** The Lazard ring L is the polynomial ring on the coefficients aᵢⱼ of a general power series F(x,y) = x+y+∑ᵢ,ⱼ≥₁ aᵢⱼxⁱyʲ, divided by exactly the relations that make F commutative and associative.
 
 **Problem.** Every one-dimensional commutative formal group law over a commutative ring R comes from F by a unique ring map L → R.
 
-**How the definition helps.** These relations hold for the coefficients of every one-dimensional commutative formal group law. Its coefficients therefore specify a ring map from the quotient, and their values determine that map uniquely (our own explanation).
+**How the definition helps.** A ring map L → R is a choice of values for the aᵢⱼ that obeys exactly these relations, which is a formal group law over R (our own explanation). The map is unique because its values on the aᵢⱼ are the coefficients of the law (our own explanation).
 
 **nLab:** [formal group](https://ncatlab.org/nlab/show/formal+group), [Lazard ring](https://ncatlab.org/nlab/show/Lazard+ring). It says: “But this is guaranteed by the vary choice of relations imposed in the definition of the Lazard ring.”
 
@@ -2885,11 +2885,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14L15 (Group schemes), 14H52. arXiv math.AG, math.NT. Level 3: graduate.
 
-**Definition.** The order of a finite group scheme over a field k is the dimension of its coordinate ring over k.
+**Definition.** The order of a finite group scheme over a field k is the dimension over k of its coordinate ring, so it counts nilpotent functions as well as points.
 
 **Problem.** For an elliptic curve E over a field and a prime p, the p-torsion E\[p\] is a finite flat group scheme of order p². This holds in every characteristic, even when E\[p\] has fewer than p² points.
 
-**How the definition helps.** The order counts nilpotents as well as geometric points (our own explanation). Multiplication by p on an elliptic curve is finite flat of degree p², so its identity fibre has order p² (our own).
+**How the definition helps.** E\[p\] is the kernel of multiplication by p, a finite flat map of degree p², so its coordinate ring has dimension p² (our own). When points are missing, nilpotent functions make up the count (our own).
 
 **Wikipedia:** [Group scheme](https://en.wikipedia.org/wiki/Group_scheme). It says: “it is a finite flat group scheme of order p² that has either p connected components (if the curve is ordinary) or one connected component (if the curve is supersingular).”
 
@@ -2901,11 +2901,11 @@ $$”
 
 *True by definition.* MSC 14L15 (Group schemes), 16T05. arXiv math.QA, math.AG. Level 3: graduate.
 
-**Definition.** A commutative Hopf k-algebra is a commutative k-algebra H whose affine scheme Spec H has multiplication, identity and inverse morphisms satisfying the group axioms.
+**Definition.** A commutative Hopf k-algebra is a commutative k-algebra H whose spectrum Spec H is a group object, a scheme with multiplication, identity and inverse morphisms that obey the group axioms.
 
 **Problem.** Let H be a commutative Hopf algebra over k. For each commutative k-algebra R, the algebra maps H → R form a group, naturally in R.
 
-**How the definition helps.** Applying maps from Spec R to the group axioms gives the group axioms on Homₖ(H,R) (our own). Composition with each k-algebra map R → S preserves these operations (our own).
+**How the definition helps.** An algebra map H → R is a point of Spec H with values in R, and the group morphisms act on these points (our own). The group axioms are identities of morphisms, so they hold on points, naturally in R (our own).
 
 **nLab:** [Hopf algebra](https://ncatlab.org/nlab/show/Hopf+algebra). It says: “A commutative Hopf monoid in a symmetric monoidal category V is the same as a group object in the opposite category CMon(V)ᵒᵖ”
 
@@ -2913,15 +2913,15 @@ $$”
 
 ### Keeping only stable points gives group quotients that are varieties
 
-**Remember:** Invariant sections detect semistability; closed orbits with finite stabilisers give stability.
+**Remember:** Invariant sections see semistable points; stable ones have closed orbits, finite stabilisers.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14L24 (Geometric invariant theory), 14L30. arXiv math.AG. Level 3: graduate.
 
-**Definition.** Fix a reductive group action on a projective variety with a linearised ample line bundle L. A point is semistable if some invariant section of some positive power of L is nonzero there. A semistable point is stable if its orbit is closed among semistable points and its stabiliser is finite.
+**Definition.** For a reductive group acting on a projective variety with a linearised ample line bundle L, a point is semistable if some invariant section of a positive power of L is nonzero there. It is stable if, in addition, its orbit is closed among semistable points and its stabiliser is finite.
 
 **Problem.** Let a reductive group act on a projective variety with a linearised ample line bundle. Then the semistable points have a good quotient that is a projective variety, and on the stable points this quotient is geometric.
 
-**How the definition helps.** Mumford’s quotient theorem constructs the projective quotient from invariant sections (our own summary). On the stable locus every orbit is closed, so each quotient fibre consists of one orbit (our own).
+**How the definition helps.** The invariant sections serve as homogeneous coordinates of the quotient, so they define it exactly on the semistable points, and Mumford’s theorem makes it a projective variety (our own summary). Closed orbits make each fibre over a stable point a single orbit (our own).
 
 **nLab:** [geometric invariant theory](https://ncatlab.org/nlab/show/geometric+invariant+theory). It says: “such that the quotient stack on these is "close" to being represented by another projective variety”
 
@@ -2931,15 +2931,15 @@ $$”
 
 ### Polystable orbits are exactly those that meet the moment map's zero set
 
-**Remember:** Polystability asks whether the orbit of a nonzero lift is closed.
+**Remember:** Polystable: a lift's orbit is closed, so it has a shortest vector.
 
 *Rules out counterexamples.* MSC 14L24 (Geometric invariant theory), 53D20. arXiv math.DG, math.AG. Level 3: graduate.
 
-**Definition.** For a complex reductive group acting on projective space through a representation, a point is polystable if its nonzero lift has closed affine orbit.
+**Definition.** For a complex reductive group acting on projective space through a representation, a point is polystable if the orbit of a nonzero lift in the vector space is closed.
 
 **Problem.** Use the moment map μ of the linearisation and a Hermitian metric invariant under a maximal compact subgroup K. A projective orbit is polystable exactly when it meets μ⁻¹(0), and the intersection is then one K-orbit.
 
-**How the definition helps.** Kempf–Ness identifies closed affine orbits by minimum norm and makes the minimizing vectors a single compact-group orbit (our own summary). With weights 1, −1, 0, the lift (1,0,1) approaches (0,0,1) without reaching it (our own example). Its orbit is therefore excluded.
+**How the definition helps.** By Kempf–Ness, the moment map vanishes exactly at the shortest vectors of an orbit, a closed orbit contains such vectors, and they form one K-orbit (our own summary). With weights 1, −1, 0, the orbit of the lift (1,0,1) approaches (0,0,1) without reaching it, so that point is not polystable (our own example).
 
 **Paper or page:** [Stability conditions and canonical metrics](https://arxiv.org/abs/2302.04966), [Stability conditions and canonical metrics](https://arxiv.org/abs/2302.04966). It says: “A point x∈X is GIT polystable for the G action if and only if G·x intersects μ⁻¹(0). Furthermore, if x is polystable then G·x intersects μ⁻¹(0) is a unique K-orbit.”
 
@@ -2954,11 +2954,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14M05 (Varieties defined by ring conditions (factorial, Cohen-Macaulay, seminormal)), 13B22. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** An affine integral variety has a coordinate ring that is a domain. It is normal if that ring contains each fraction satisfying a monic polynomial over the ring.
+**Definition.** An affine integral variety is normal if its coordinate ring, a domain, contains every fraction that satisfies a monic polynomial over the ring. It follows that a fraction lies in the ring once it has no pole along any irreducible hypersurface (our own).
 
 **Problem.** Remove a closed subset of codimension at least two from a normal affine integral variety. Every regular function on the remainder extends uniquely across the missing set.
 
-**How the definition helps.** Normality makes it enough to test a fraction along the subsets of codimension one (our own explanation). The cited intersection theorem says that the local rings at these subsets together detect membership in the coordinate ring. In our own example, take the polynomials in ℚ\[x, y\] with no linear terms, a ring that is not normal. Off the origin, x³/x² and xy²/y² define the function x, but x is not in the ring.
+**How the definition helps.** Removing a set of codimension two deletes no hypersurface, so a function on the remainder has no pole along any hypersurface and lies in the coordinate ring. In our own example, the polynomials in ℚ\[x, y\] with no linear terms form a ring that is not normal. Off the origin x = x³/x² = xy²/y² is regular, but x is not in the ring.
 
 **Paper or page:** [Algebra, Lemma 10.157.6.](https://stacks.math.columbia.edu/tag/031T). It says: “R = \\bigcap\\nolimits\_{\\text{height}(\\mathfrak p) = 1} R<sub>\\mathfrak p</sub>”
 
@@ -2966,15 +2966,15 @@ $$”
 
 ### Normality rules out finite birational maps that glue or pinch
 
-**Remember:** A normal variety cannot be simplified by a finite birational map.
+**Remember:** Every integral fraction is already there, so finite birational covers add nothing.
 
 *Rules out counterexamples.* MSC 14M05 (Varieties defined by ring conditions (factorial, Cohen-Macaulay, seminormal)), 14E05. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** A variety is normal if every local ring contains each element of its fraction field integral over that ring and is a domain.
+**Definition.** A variety is normal if each local ring is a domain that contains every element of its fraction field integral over it. So a finite birational map onto a normal variety brings no new functions (our own).
 
 **Problem.** A birational morphism with finite fibres between integral varieties over an algebraically closed field is an open immersion if the target is normal. A normal point has only one branch.
 
-**How the definition helps.** Normality rules out the cusp, whose normalization is finite and birational but fails to be an isomorphism. Zariski’s main theorem factors a separated quasi-finite birational morphism of integral varieties through an open immersion into a finite birational model (our own). Integral closure identifies that model with the normal target and gives one branch at each normal point over an algebraically closed field (our own).
+**How the definition helps.** Zariski’s main theorem factors the morphism as an open immersion then a finite birational map, which is an isomorphism onto the normal target since its functions are integral (our own). Branches at a point match the points of the normalization above it, so a normal point has one branch (our own). The cusp x² = y³ shows the need: t ↦ (t³, t²) is finite and birational but not an isomorphism.
 
 **Wikipedia:** [Normal scheme](https://en.wikipedia.org/wiki/Normal_scheme), [Zariski's main theorem](https://en.wikipedia.org/wiki/Zariski%27s_main_theorem). It says: “the cuspidal cubic curve X in the affine plane A² defined by x² = y³ is not normal, because there is a finite birational morphism A¹ → X (namely, t maps to (t³, t²)) which is not an isomorphism.”
 
@@ -2989,11 +2989,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14M15 (Grassmannians, Schubert varieties, flag manifolds), 15A75. arXiv math.AG, math.RA. Level 3: graduate.
 
-**Definition.** The Grassmannian Gr(k, V) is the set of k-dimensional subspaces of V. The Plücker map sends a subspace W with basis w₁, …, wₖ to the line through w₁ ∧ ⋯ ∧ wₖ.
+**Definition.** The Plücker map sends a k-dimensional subspace W of V to the line spanned by w₁ ∧ ⋯ ∧ wₖ, for any basis w₁, …, wₖ of W. A change of basis multiplies this wedge by a nonzero determinant, so the line depends only on W (our own).
 
 **Problem.** The Plücker map is injective, so the Grassmannian is a subset of projective space. Its image is cut out by homogeneous quadratic equations, the Plücker relations, so the Grassmannian is a projective algebraic variety.
 
-**How the definition helps.** Basis changes multiply the wedge by a nonzero determinant, so it defines a projective point (our own). From its representative u one recovers the subspace as {v ∈ V : v ∧ u = 0} (our own). The Plücker relations characterize exactly the decomposable wedges.
+**How the definition helps.** The wedge u determines W as the set of v with v ∧ u = 0, so the map is injective (our own). The Plücker relations are quadratic equations that hold exactly for wedges of k vectors.
 
 **Wikipedia:** [Plücker embedding](https://en.wikipedia.org/wiki/Pl%C3%BCcker_embedding), [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “This is an embedding of the Grassmannian into the projectivization ℙ(⋀ᵏ V). The image can be completely characterized as the intersection of a number of quadrics, the Plücker quadrics”
 
@@ -3005,11 +3005,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14M25 (Toric varieties, Newton polyhedra, Okounkov bodies), 52A39. arXiv math.AG, math.MG. Level 3: graduate.
 
-**Definition.** A Laurent polynomial may have negative exponents. Its Newton polytope is the convex hull of its exponent vectors. The algebraic torus is the set of points in ℂⁿ with all coordinates nonzero.
+**Definition.** Solutions are counted in the algebraic torus (ℂ∖{0})ⁿ, the points with no coordinate zero. There, multiplying a Laurent polynomial (one that allows negative exponents) by a monomial changes no solution and only translates its Newton polytope, the convex hull of its exponents.
 
 **Problem.** For generic coefficients on fixed supports, n Laurent equations in n variables have as many torus solutions as the mixed volume of their Newton polytopes. Normalize mixed volume so that n copies of one polytope give its volume multiplied by n factorial.
 
-**How the definition helps.** Multiplication by a monomial preserves torus solutions and translates the Newton polytope (our own). On the affine line, multiplying x−1 by x adds the root zero (our own example). Bernstein’s theorem gives the mixed-volume count for generic coefficients (our own summary).
+**How the definition helps.** Translation does not change mixed volume, and in the torus multiplication by a monomial does not change solutions, so both sides of the count behave alike (our own). Outside the torus they do not: on the line, multiplying x − 1 by x adds the root zero (our own example). Bernstein’s theorem gives the count for generic coefficients (our own summary).
 
 **Wikipedia:** [Bernstein–Kushnirenko theorem](https://en.wikipedia.org/wiki/Bernstein%E2%80%93Kushnirenko_theorem). It says: “the number of nonzero complex solutions of a system of Laurent polynomial equations f₁ = ⋯ = fₙ = 0 is equal to the mixed volume of the Newton polytopes of such polynomials”
 
@@ -3020,15 +3020,15 @@ $$”
 
 ### Requiring normality makes toric varieties correspond exactly to fans
 
-**Remember:** Normal toric varieties are fans, and fans are normal toric varieties.
+**Remember:** Normal toric charts are cones, and the cones glue into a fan.
 
 *Rules out counterexamples.* MSC 14M25 (Toric varieties, Newton polyhedra, Okounkov bodies). arXiv math.AG. Level 3: graduate.
 
-**Definition.** A normal toric variety is a normal separated variety containing a split torus as a dense open orbit extending its translation action. A fan is a finite collection of strongly convex rational polyhedral cones in the torus’s real cocharacter space. It contains every face of each cone, and any two cones intersect in a common face.
+**Definition.** A normal toric variety is a normal separated variety that contains a split torus as a dense open subset, with the torus action on itself extending to the variety. Normality makes each torus-invariant affine chart the semigroup ring of the characters in a rational cone (our own). The dual cones, in the cocharacter space, form a fan: finitely many strongly convex rational cones, closed under taking faces, any two meeting in a common face.
 
 **Problem.** For a fixed split torus, fans in its cocharacter lattice classify normal toric varieties up to isomorphism restricting to the identity on the torus.
 
-**How the definition helps.** Cone charts have integrally closed semigroup rings, which excludes the nonnormal cusp with its dense torus (our own). The toric classification theorem recovers the fan from the torus orbits and glues its charts to recover the variety (our own summary).
+**How the definition helps.** Without normality the cusp, which has a dense torus, gives a chart from a non-saturated semigroup and no cone (our own). The fundamental theorem of toric geometry recovers the fan from the charts and glues the charts of a fan back into the variety (our own summary).
 
 **Wikipedia:** [Toric variety](https://en.wikipedia.org/wiki/Toric_variety). It says: “This correspondence is called the fundamental theorem for toric geometry, and it gives a one-to-one correspondence between normal toric varieties and fans of strongly convex rational cones.”
 
@@ -3043,11 +3043,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG, math.SG. Level 3: graduate.
 
-**Definition.** For cohomology classes a,b on a smooth complex projective variety, their small quantum product satisfies (a ∗ b,c) = ∑\_β qᵝ⟨a,b,c⟩\_β for every c. Here ( , ) is the intersection pairing, β ranges over effective curve classes, and the brackets denote genus-zero three-point Gromov–Witten invariants.
+**Definition.** The small quantum product a ∗ b on the cohomology of a smooth complex projective variety is defined by its pairings (a ∗ b, c) = ∑\_β qᵝ⟨a,b,c⟩\_β. The sum runs over effective curve classes β, and ⟨a,b,c⟩\_β is a genus-zero three-point Gromov–Witten invariant.
 
 **Problem.** The small quantum product of a smooth complex projective variety is associative.
 
-**How the definition helps.** The three-point definition lets one state the four-point splitting identity as associativity (our own). Each bracketing gives the contribution from one way a four-marked sphere splits into two spheres (our own). The parameter space of stable four-marked spheres is a projective line, where the two boundary points have equal cohomology classes (our own). The splitting theorem identifies each boundary contribution with the corresponding pair of three-point counts (our own).
+**How the definition helps.** Paired with a fourth class, each bracketing of a ∗ b ∗ c is a sum of products of two three-point counts, one for a way a four-marked sphere splits into two (our own). The stable four-marked spheres form a projective line, and two of its splitting points have equal cohomology classes, so the two sums agree (our own). The splitting axiom of Gromov–Witten theory identifies each boundary contribution with these products (our own).
 
 **Paper or page:** [Gromov-Witten invariants in family and quantum cohomology](https://arxiv.org/abs/2408.06616v2). It says: “T<sub>i</sub>\*(T<sub>j</sub> \* T<sub>k</sub>)\\  =\\  (T<sub>i</sub> \*T<sub>j</sub>)\*T<sub>k</sub>.”
 
@@ -3058,15 +3058,15 @@ $$”
 
 ### Stability removes infinite component symmetries
 
-**Remember:** Finite symmetry requires three special points on contracted spheres and one on contracted elliptic curves.
+**Remember:** Finite symmetry: three special points on contracted spheres, one on contracted tori.
 
 *Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG. Level 3: graduate.
 
-**Definition.** A stable map from a connected projective nodal marked complex curve has finitely many automorphisms preserving the map and each mark. Marks are distinct smooth points. Special points on a normalized component are the marks and the preimages of nodes.
+**Definition.** A stable map is a map from a connected projective nodal curve with distinct smooth marks that has only finitely many automorphisms, the reparametrizations of the curve that fix each mark and commute with the map.
 
-**Problem.** Stability holds exactly when every contracted genus-zero component has at least three special points and every contracted genus-one component has at least one. A component is contracted when its image is a point.
+**Problem.** Stability holds exactly when every contracted genus-zero component has at least three special points and every contracted genus-one component has at least one. Special points are the marks and the preimages of nodes, and a component is contracted when its image is a point.
 
-**How the definition helps.** Permuting finitely many components and special points adds only finitely many possibilities (our own). A contracted sphere has finite pointwise stabilizer exactly from three special points onward, and a contracted elliptic curve needs one (our own). Higher-genus components already have finite automorphism groups (our own). On a nonconstant component the symmetries embed into the automorphism group of a finite function field extension (our own).
+**How the definition helps.** On a contracted component the map imposes no condition, so its symmetries are those of the curve fixing its special points (our own). Only the identity of a sphere fixes three points, an elliptic curve has finitely many automorphisms fixing one point, and higher genus has finitely many anyway (our own). On a nonconstant component the map itself leaves only finitely many symmetries (our own).
 
 **Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “The above stability condition is then equivalent to saying that the group of automorphisms of f is finite.”
 
@@ -3080,11 +3080,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14P05 (Real algebraic sets), 13A15. arXiv math.AG, math.AC. Level 3: graduate.
 
-**Definition.** An ideal I in ℝ\[x₁,…,xₙ\] is real radical if ∑ⱼ fⱼ² ∈ I implies every fⱼ ∈ I for every finite list of polynomials.
+**Definition.** An ideal I in ℝ\[x₁,…,xₙ\] is real radical if, for every finite list of polynomials, ∑ⱼ fⱼ² ∈ I implies every fⱼ ∈ I. This is the test that the ideal of a real set always passes, since a sum of real squares is zero only when each square is.
 
 **Problem.** Let I be a real radical ideal in a polynomial ring in finitely many variables over ℝ. Then I consists exactly of the polynomials vanishing on all common real zeros of I.
 
-**How the definition helps.** Every real vanishing ideal passes the test because a sum of real squares vanishes only when every summand vanishes (our own). The real Nullstellensatz gives the converse. The prime ideal (x²+y²) misses x although x vanishes at its only real zero (our own example).
+**How the definition helps.** Every ideal of polynomials vanishing on a real set is therefore real radical, and the real Nullstellensatz gives the converse (our own). The prime ideal (x² + y²) is not real radical: it misses x, although x vanishes at its only real zero (our own example).
 
 **Wikipedia:** [Real radical](https://en.wikipedia.org/wiki/Real_radical). It says: “However, one can recover a similar theorem, the real Nullstellensatz, by using the real radical in place of the (ordinary) radical.”
 
@@ -3114,9 +3114,9 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14T10 (Foundations of tropical geometry and relations with algebra), 14T20. arXiv math.AG. Level 3: graduate.
 
-**Definition.** For a Laurent polynomial f = ∑ᵤ aᵤxᵘ, its tropical hypersurface consists of weights w where minᵤ(val(aᵤ)+u·w) occurs at least twice among nonzero terms. For a torus subvariety with ideal I, intersect these hypersurfaces over all nonzero f ∈ I.
+**Definition.** For a Laurent polynomial f = ∑ᵤ aᵤxᵘ, its tropical hypersurface is the set of weights w where the least of the values val(aᵤ)+u·w over nonzero terms is attained at least twice. For a torus subvariety with ideal I, intersect these hypersurfaces over all nonzero f ∈ I.
 
-**Problem.** Over an algebraically closed field with a nontrivial real valuation, this intersection equals the closure of coordinatewise valuations of the variety’s points. It also equals the weights whose initial ideal contains no monomial. For one hypersurface, the valuation statement is Kapranov’s theorem.
+**Problem.** Over an algebraically closed field with a nontrivial real valuation, this intersection is the closure of the coordinatewise valuations of the variety’s points, and also the set of weights whose initial ideal contains no monomial. For one hypersurface the first equality is Kapranov’s theorem.
 
 **How the definition helps.** At a zero of f, a unique term of least valuation could never cancel (our own). The minimum terms form the initial form, linking ties to initial ideals (our own). The fundamental theorem of tropical geometry identifies both descriptions with the closure of valuation vectors.
 
@@ -3152,11 +3152,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14A15 (Schemes and morphisms), 18F70, 18N60. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** For a commutative ring A, its Zariski locale has frame generators D(f) for f ∈ A. Impose D(0)=0, D(1)=1, D(fg)=D(f)∧D(g), and D(f+g)≤D(f)∨D(g) for all f,g.
+**Definition.** The Zariski locale of a commutative ring A keeps only the lattice of open sets of Spec A, without points. It is presented by one basic open D(f) for each f ∈ A, with relations D(0)=0, D(1)=1, D(fg)=D(f)∧D(g) and D(f+g)≤D(f)∨D(g).
 
 **Problem.** This definition of Spec A needs no axiom of choice, works in relative situations and extends to the étale topology. Its 0-truncated, 0-localic schemes are exactly the ordinary schemes (Lurie, Structured Spaces, Proposition 4.2.9).
 
-**How the definition helps.** The frame presentation uses ring operations and makes sense internally without choosing prime ideals (our own). Passing to structured sheaf topoi also allows étale charts (our own). Lurie’s comparison theorem recovers ordinary schemes in the stated truncated, localic case (our own).
+**How the definition helps.** The presentation uses only ring operations, so it needs no prime ideals and hence no axiom of choice (our own). Replacing locales by structured topoi allows étale charts, and Lurie’s comparison theorem recovers ordinary schemes in the 0-truncated, 0-localic case (our own).
 
 **nLab:** [scheme as a locally affine structured (infinity,1)-topos](https://ncatlab.org/nlab/show/scheme+as+a+locally+affine+structured+%28infinity%2C1%29-topos). It says: “it is in some sense coincidental that Spec A is described by a topological space. What arises more canonically is the lattice of open subsets of Spec A”
 
@@ -3170,11 +3170,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14A20 (Generalizations (algebraic spaces, stacks)), 14G22, 14D15. arXiv math.AG. Level 4: research.
 
-**Definition.** Over a complete discrete valuation ring with fraction field K, a separated gluing triple consists of three objects. They are a separated locally finite-type K-algebraic space U, a separated formal algebraic space locally of finite type over the ring, and an overlap map. This map embeds the rigid generic fibre as an open subspace of U’s analytification.
+**Definition.** Over a complete discrete valuation ring with fraction field K, a separated gluing triple has three parts. The first two are a separated algebraic space U over K and a separated formal algebraic space over the ring, both locally of finite type. The third is an open embedding of the formal space’s rigid generic fibre into the analytification of U.
 
 **Problem.** Over a complete discrete valuation ring, separated gluing triples are equivalent to separated algebraic spaces of locally finite type. Some gluings give an algebraic space that is not a scheme, even when U and the special fibre are projective.
 
-**How the definition helps.** Matsumoto’s examples require algebraic spaces even with projective generic and special pieces. The gluing theorem constructs the algebraic space using Nagata compactification and Artin contraction (our own summary).
+**How the definition helps.** The triple records an algebraic space by its generic part, its formal completion along the special fibre and their overlap, and the gluing theorem rebuilds the space by Nagata compactification and Artin contraction (our own summary). Matsumoto’s examples show that the result can fail to be a scheme even when U and the special fibre are projective.
 
 **Paper or page:** [Beauville-Laszlo gluing of algebraic spaces](https://arxiv.org/abs/2410.20500v1), [Beauville-Laszlo gluing of algebraic spaces](https://arxiv.org/abs/2410.20500v1). It says: “Examples due to Matsumoto imply that the result of such a gluing might be a genuine algebraic space (not a scheme) even if U and the special fiber of 𝔛 are projective.”
 
@@ -3188,9 +3188,9 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A21 (Logarithmic algebraic geometry, log schemes), 13D03, 14F25. arXiv math.AG, math.AT. Level 4: research.
 
-**Definition.** For a coaugmented complex C, its free coaugmented derived binomial ring B(C) is characterized by a natural mapping equivalence. For every derived binomial ring D, maps B(C) → D correspond to maps from C to the underlying complex of D preserving the coaugmentation.
+**Definition.** The free coaugmented derived binomial ring B(C) on a coaugmented complex C is the derived binomial ring generated by C. Maps B(C) → D to any derived binomial ring D correspond naturally to coaugmentation-preserving maps from C to D.
 
-**Problem.** Let X be an fs log complex analytic space, and let π map its Kato–Nakayama space, the space of boundary angles, to X. Then the derived pushforward of the constant sheaf ℤ along π is the free coaugmented derived binomial ring on the two-term exponential complex. That complex maps 𝒪 to the group completion of the log structure.
+**Problem.** Let X be an fs log complex analytic space, and let π map its Kato–Nakayama space, the space of boundary angles, to X. Then Rπ∗ℤ is the free coaugmented derived binomial ring on the two-term exponential complex from 𝒪 to the group completion of the log structure.
 
 **How the definition helps.** Freeness expresses the integral pushforward using one complex of generators (our own explanation). The integral comparison theorem identifies that free object with the Kato–Nakayama cochains and extends Steenbrink’s rational formula.
 
@@ -3206,7 +3206,7 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16E35, 14J32. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** Put Aᵉ = A ⊗ Aᵒᵖ for an algebra A over a field. It is d-Calabi–Yau if A is perfect over Aᵉ and RHom<sub>A</sub>ᵉ(A,Aᵉ) is isomorphic to A\[−d\] as a bimodule complex.
+**Definition.** An algebra A over a field is d-Calabi–Yau if A is perfect as a module over A ⊗ Aᵒᵖ and its bimodule dual RHom<sub>A⊗Aᵒᵖ</sub>(A, A ⊗ Aᵒᵖ) is isomorphic to A\[−d\] as a bimodule complex.
 
 **Problem.** Let X be a smooth connected variety of dimension d, projective over an affine variety, with a tilting generator ℰ. Then End ℰ is Calabi–Yau of dimension d exactly when the canonical sheaf of X is trivial.
 
@@ -3224,7 +3224,7 @@ $$”
 
 *True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16S38. arXiv math.RA, math.AG. Level 4: research.
 
-**Definition.** A noncommutative projective line is the pair (QGr A, πA), where A is an Artin–Schelter regular algebra of global dimension 2 generated in degree one. Here QGr A is the category of graded A-modules modulo torsion modules, and πA is the image of A.
+**Definition.** A noncommutative projective line is the category QGr A of graded A-modules modulo torsion modules, with the image πA of A. Here A is an Artin–Schelter regular algebra of global dimension 2 generated in degree one.
 
 **Problem.** Over an algebraically closed field, every noncommutative projective line is equivalent to ℙ¹ with its structure sheaf. This includes the quantum planes k⟨x,y⟩/(xy−qyx) for q ≠ 0 and the Jordan plane k⟨x,y⟩/(xy−yx−x²).
 
@@ -3246,7 +3246,7 @@ $$”
 
 **Definition.** A projective triple (C,O,s) consists of a k-linear abelian category C, an object O and an autoequivalence s. Its coordinate ring has degree-n piece Hom(O,sⁿO) for n ≥ 0, with multiplication by shifted composition.
 
-**Problem.** For connected noetherian Artin–Schelter regular A of dimension at least two, the coordinate ring of (QGr A,πA,shift) recovers A. Suppose (C,O,s) is ample, C is noetherian, O is noetherian and Hom(O,M) is finite over End(O) for each M. Then C is equivalent to qgr of its coordinate ring.
+**Problem.** For connected noetherian Artin–Schelter regular A of dimension at least two, the coordinate ring of (QGr A, πA, shift) recovers A. If (C,O,s) is ample, C and O are noetherian and each Hom(O,M) is finite over End(O), then C is equivalent to qgr of its coordinate ring.
 
 **How the definition helps.** The triple supplies both the graded pieces and their multiplication (our own). For connected noetherian Artin–Schelter regular A of dimension at least two, the first two local cohomology groups vanish, giving the stated identification (our own). Artin–Zhang reconstruction gives the categorical equivalence (our own).
 
@@ -3263,7 +3263,7 @@ $$”
 
 *True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16E40. arXiv math.RA, math.AG. Level 4: research.
 
-**Definition.** An associative k-algebra A over a field k is quasi-free if every k-algebra map A → E/N lifts to E. Here E ranges over associative k-algebras and N over nilpotent two-sided ideals.
+**Definition.** An associative algebra A over a field k is quasi-free if every k-algebra map A → E/N lifts to E, for every associative k-algebra E and every nilpotent two-sided ideal N.
 
 **Problem.** If A is finitely generated and quasi-free, then for each n the scheme Repₙ(A) of n-dimensional representations is smooth. This scheme sends a commutative ring C to the algebra maps from A to the matrix ring Mₙ(C).
 
@@ -3284,7 +3284,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16P40. arXiv math.RA, math.AG. Level 4: research.
 
-**Definition.** A connected graded noetherian algebra R is schematic if it admits finitely many homogeneous left Ore denominator sets, each meeting R₊, with this property. For every choice of one element from each set, the left ideal they generate contains some power of R₊.
+**Definition.** A connected graded noetherian algebra R is schematic if finitely many Ore localizations cover it, as affine charts cover Proj. Precisely, there are finitely many homogeneous left Ore sets meeting R₊ such that one element from each set always generates a left ideal containing a power of R₊.
 
 **Problem.** For a schematic algebra R, coherent sheaves on the noncommutative site of its Ore localizations form a category equivalent to Proj R. Here Proj R means finitely generated graded modules modulo torsion modules.
 
@@ -3303,7 +3303,7 @@ $$”
 
 *True by definition.* MSC 14A22 (Noncommutative algebraic geometry), 16W50, 14A15. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** Let A be a noetherian connected graded algebra over a field k, so A₀ = k, not necessarily commutative. A graded module is torsion when each element is killed by A≥n, the part of A in degrees at least n, for some n. Artin and Zhang define qgr A as finitely generated graded modules modulo torsion modules, and call it the noncommutative projective scheme of A.
+**Definition.** For a noetherian connected graded algebra A over a field k (A₀ = k, not necessarily commutative), Artin and Zhang define qgr A as finitely generated graded modules modulo torsion modules. A module is torsion when each element is killed by the part of A in degrees at least n, for some n.
 
 **Problem.** Two finitely generated graded A-modules that agree in all large degrees become isomorphic in qgr A. In particular, a module M and each truncation M≥n give the same object.
 
@@ -3323,7 +3323,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 14E15, 16S38. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** A noncommutative crepant resolution of a normal noetherian Gorenstein domain R is End<sub>R</sub>(M) for some nonzero finitely generated reflexive module M satisfying two conditions. The endomorphism ring has finite global dimension and is maximal Cohen–Macaulay over R.
+**Definition.** A noncommutative crepant resolution of a normal noetherian Gorenstein domain R is an algebra End<sub>R</sub>(M), for a nonzero finitely generated reflexive module M, that has finite global dimension and is maximal Cohen–Macaulay over R.
 
 **Problem.** Let R be a normal Gorenstein domain, and let Y → Spec R be a projective crepant resolution with a tilting bundle 𝒯. Then End 𝒯 is a noncommutative crepant resolution of R, derived equivalent to Y.
 
@@ -3341,7 +3341,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A22 (Noncommutative algebraic geometry), 16S38, 16W50. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** Given an automorphism σ and line bundle L on a projective k-scheme, set L₀ = 𝒪 and Lₙ = ⊗₀≤ᵢ&lt;ₙ (σⁱ)\*L. Multiply degree-m section a and degree-n section b by taking a ⊗ (σᵐ)\*b. Call L σ-ample if Hⁱ(X,F ⊗ Lₙ) vanishes for each coherent F, every i &gt; 0 and all sufficiently large n.
+**Definition.** For a line bundle L and automorphism σ of a projective k-scheme X, the twisted homogeneous coordinate ring has degree-n piece the sections of Lₙ = L ⊗ σ\*L ⊗ ⋯ ⊗ (σⁿ⁻¹)\*L. A degree-m section a and a degree-n section b multiply to a ⊗ (σᵐ)\*b. L is σ-ample if, for each coherent F and every i &gt; 0, Hⁱ(X, F ⊗ Lₙ) vanishes for all large n.
 
 **Problem.** For σ-ample L, the twisted section ring B is noetherian and qgr B is equivalent to coherent sheaves on X. For a three-dimensional elliptic Sklyanin algebra S, a central element g annihilates the point modules and S/gS is the corresponding twisted section ring.
 
@@ -3362,7 +3362,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 16H05. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** A derived Azumaya algebra over a connective E∞ ring R is an R-algebra A whose module ∞-category Mod(A) is invertible among R-linear module ∞-categories. The Brauer group is the group of such algebras modulo Morita equivalence, under ⊗. Classical Azumaya algebras are the ordinary algebras with this property.
+**Definition.** A derived Azumaya algebra over a connective E∞ ring R is an R-algebra A whose module ∞-category is invertible under the tensor product of R-linear ∞-categories. Such algebras modulo Morita equivalence form the derived Brauer group.
 
 **Problem.** For a quasi-compact, quasi-separated scheme X, every class in étale H²(X, 𝔾ₘ) is represented by a derived Azumaya algebra, including the non-torsion classes (Toën). Classical Azumaya algebras give at most the torsion part.
 
@@ -3381,7 +3381,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 14C17. arXiv math.AG. Level 4: research.
 
-**Definition.** In derived algebraic geometry, the intersection of two subschemes is their derived fibre product. Its ring of functions is the derived tensor product of the two structure sheaves (the sheaves of functions on the subschemes). The homotopy groups of this derived ring are the Tor groups.
+**Definition.** In derived geometry, two subschemes intersect in their derived fibre product, whose functions are the derived tensor product of their structure sheaves. Its homotopy groups are the Tor groups, so the higher Tor terms that correct the naive count are built in.
 
 **Problem.** Let complementary-dimensional subvarieties of a smooth complex projective variety meet in finitely many points. The sum of their local alternating Tor lengths equals the degree of the product of their cohomology classes.
 
@@ -3437,11 +3437,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 14F08, 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** Points of the Balmer spectrum are proper thick tensor ideals P of perfect complexes satisfying the prime ideal condition. For every a,b with a ⊗ b ∈ P, at least one factor belongs to P. The sets {P : a ∉ P}, for perfect complexes a, form a basis of closed sets.
+**Definition.** The points of the Balmer spectrum of perfect complexes are the prime tensor ideals, the proper thick tensor ideals P such that a ⊗ b ∈ P forces a ∈ P or b ∈ P. Its closed sets are generated by the supports {P : a ∉ P} of perfect complexes a.
 
 **Problem.** For a noetherian scheme X, Spc of the perfect complexes on X is homeomorphic to X. With its natural structure sheaf it is isomorphic to X as a scheme.
 
-**How the definition helps.** Tensor ideals retain support, and Thomason’s classification identifies the prime ideals with points of X (our own). Balmer’s reconstruction theorem recovers the structure sheaf from localized categories (our own). Mukai’s equivalence between a non-self-dual abelian variety and its dual cannot preserve tensor products (our own).
+**How the definition helps.** Thomason’s classification of thick tensor ideals by supports makes the prime ones the points of X, and Balmer recovers the structure sheaf from localized categories (our own). Without the tensor product this fails: Mukai’s equivalence identifies the derived categories of an abelian variety and its dual, which need not be isomorphic (our own).
 
 **nLab:** [spectrum of a tensor triangulated category](https://ncatlab.org/nlab/show/spectrum+of+a+tensor+triangulated+category). It says: “If one restricts to perfect complexes then often the variety may be reconstructed from the spectrum of its category of coherent sheaves.”
 
@@ -3457,7 +3457,7 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14A30 (Fundamental constructions in algebraic geometry involving higher and derived categories (homotopical algebraic geometry, derived algebraic geometry, etc.)), 18N60, 14A15. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** A Zariski structure on X is a finite-limit-preserving functor from the opposite category of finitely presented commutative rings to sheaves of sets on X. For every finite family generating the unit ideal, the corresponding basic opens must map to a jointly epimorphic family.
+**Definition.** A Zariski structure on X is a finite-limit-preserving functor from the opposite category of finitely presented commutative rings to sheaves of sets on X. For every finite family generating the unit ideal, the basic opens must map to a jointly surjective family, so locally one element is invertible.
 
 **Problem.** For the Zariski geometry of commutative rings, finite-limit-preserving functors to sheaves of sets on X correspond to sheaves of rings. Imposing the covering condition gives exactly those ring sheaves whose stalks are local rings.
 
@@ -3479,7 +3479,7 @@ $$”
 
 **Problem.** If the hypersurface defined by W is smooth as a scheme, every finite free matrix factorization of W is contractible.
 
-**How the definition helps.** Smoothness makes W and its partial derivatives generate the unit ideal by the Nullstellensatz (our own). Differentiating d² gives d(∂d)+(∂d)d = (∂W)·1, while h = d/2 gives dh+hd = W·1 (our own). Combining these homotopies with coefficients expressing 1 yields a contraction (our own). For W = x², taking both maps equal to x prevents contraction at zero (our own).
+**How the definition helps.** Smoothness makes W and its partial derivatives generate the unit ideal, and each is null-homotopic: ∂d is a homotopy for ∂W, and d/2 is one for W (our own). Combining these homotopies with the polynomial coefficients that express 1 gives a contraction (our own). For W = x², which is not smooth, the factorization with both maps x is not contractible at zero (our own).
 
 **nLab:** [matrix factorization](https://ncatlab.org/nlab/show/matrix+factorization). It says: “For example, matrix factorization categories are related to derived categories of singularities.”
 
@@ -3529,7 +3529,7 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14C05 (Parametrization (Chow and Hilbert schemes)), 14D22, 14B12. arXiv math.AG. Level 4: research.
 
-**Definition.** Fix a function hᵢ on the integers for each cohomological degree i. A fibre-full family is a flat closed subscheme of projective space over a base with projection π satisfying this condition. For every i and m, Rⁱπ∗𝒪(m) is locally free of rank hᵢ(m) and commutes with base change.
+**Definition.** A fibre-full family is a flat family of closed subschemes of projective space, with projection π, in which every cohomology dimension is fixed. For all i and m, Rⁱπ∗𝒪(m) is locally free of the given rank hᵢ(m) and commutes with base change.
 
 **Problem.** For fixed cohomology functions, a quasi-projective scheme represents fibre-full families with the prescribed dimensions. It is locally closed in the Hilbert scheme.
 
@@ -3588,7 +3588,7 @@ $$”
 
 **Problem.** Every cycle class with rational coefficients on 𝒜 decomposes canonically as a tautological part plus a part that pairs to zero with every tautological class.
 
-**How the definition helps.** Once the pairing is defined, the decomposition holds by definition. In our own words, this is orthogonal projection, which works because the pairing is nondegenerate on the tautological ring. The abstract says the main new result is that the top Hodge class vanishes on the boundary of every toroidal compactification. That vanishing makes the pairing independent of the chosen extension to the boundary.
+**How the definition helps.** The decomposition is orthogonal projection onto the tautological ring, which works because the pairing is nondegenerate there (our own). The new result is that the top Chern class of the Hodge bundle vanishes on the boundary of every toroidal compactification, so the pairing does not depend on the compactification.
 
 **Paper or page:** [Tautological projection for cycles on the moduli space of abelian varieties](https://arxiv.org/abs/2401.15768v4), [Tautological projection for cycles on the moduli space of abelian varieties](https://arxiv.org/abs/2401.15768v4). It says: “every cycle class decomposes canonically as a sum of a tautological and a non-tautological part.”
 
@@ -3620,11 +3620,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14C17 (Intersection theory, characteristic classes, intersection multiplicities in algebraic geometry), 14N35, 14A30. arXiv math.AG. Level 4: research.
 
-**Definition.** For a perfect obstruction theory of amplitude \[−1,0\], the virtual fundamental class is the zero-section Gysin pullback of the intrinsic normal cone’s cycle. The obstruction theory embeds that cone in its associated vector bundle stack.
+**Definition.** For a perfect obstruction theory of amplitude \[−1,0\], place the intrinsic normal cone inside the vector bundle stack given by the obstruction theory and intersect it with the zero section. The result, the virtual fundamental class, lies in the degree given by the virtual rank, the expected dimension.
 
 **Problem.** Fix a smooth complex projective target and stable maps with prescribed genus, markings and curve class. Their moduli stack carries a virtual class of expected dimension. Integration against it defines Gromov–Witten invariants even when components exceed that dimension.
 
-**How the definition helps.** The zero-section pullback puts the class in the Chow group graded by the virtual rank (our own). The Behrend–Fantechi construction applies to the standard stable-map obstruction theory for smooth projective targets (our own). Properness allows integration against this class (our own).
+**How the definition helps.** Intersection with the zero section lands in the Chow group of the virtual rank, whatever the actual dimension of the space (our own). The Behrend–Fantechi construction applies to the standard obstruction theory of stable maps to a smooth projective target, and properness allows integration (our own).
 
 **nLab:** [virtual fundamental class](https://ncatlab.org/nlab/show/virtual+fundamental+class), [perfect obstruction theory](https://ncatlab.org/nlab/show/perfect+obstruction+theory), [hidden smoothness principle](https://ncatlab.org/nlab/show/hidden+smoothness+principle). It says: “The virtual fundamental class always lives in the expected dimension.”
 
@@ -3661,7 +3661,7 @@ $$”
 
 **Problem.** If every multiplicity of D is one, this group equals the zeroth Suslin homology of C − D. The equality can fail when a multiplicity exceeds one.
 
-**How the definition helps.** With multiplicity one, the modulus tests only the values at the missing points, exactly the boundary condition in Suslin’s curve calculation. Our own example doubles the point at infinity on the projective line over ℚ. Requiring a function to equal one through first order leaves an extra additive copy of ℚ in the modulus group. The affine line has zeroth Suslin homology ℤ because Suslin homology is invariant under products with the affine line.
+**How the definition helps.** With multiplicity one, the modulus condition tests only values at the missing points, which is exactly the relation in Suslin’s calculation for curves. If the point at infinity on the projective line over ℚ is doubled, the condition also fixes a first derivative, and an extra copy of ℚ appears in the modulus group (our own example). The affine line has zeroth Suslin homology only ℤ, since Suslin homology is invariant under the affine line (our own).
 
 **nLab:** [Chow groups with modulus](https://ncatlab.org/nlab/show/Chow+groups+with+modulus). It says: “Chow groups with modulus are a non-homotopy invariant variant of Chow groups.”
 
@@ -3753,7 +3753,7 @@ $$”
 
 **Problem.** In this quotient, right multiplication by a fixes the class of 1. Right multiplication by b − 1 has rank at most one and square zero.
 
-**How the definition helps.** The quotient converts continuation of polylogarithms around a puncture into multiplication subject to explicit relations (our own). Every element is a scalar plus an element of J, and J(b − 1) vanishes in the quotient (our own). Thus only the scalar can contribute to the image, and a second multiplication kills that image (our own). Hain’s comparison theorem identifies this loop model with the system defined by classical polylogarithms (our own).
+**How the definition helps.** Every element is a scalar plus an element of J, and J(b − 1) is zero in the quotient, so multiplication by b − 1 sees only the scalar (our own). The image is at most one-dimensional, and b − 1 lies in J, so a second multiplication lands in the zero set J(b − 1); also a − 1 is zero, so a fixes the class of 1 (our own). Hain’s comparison theorem identifies this model with the system of classical polylogarithms (our own).
 
 **Paper or page:** [Chern-Simons invariants of hyperbolic three-manifolds, mixed Tate motives, and motivic path torsor of augmented character varieties](https://arxiv.org/abs/2502.11950). It says: “The polylogarithm variation ℳ⁽ⁿ⁾ is the quotient of the variation of mixed Hodge structure”
 
@@ -3771,7 +3771,7 @@ $$”
 
 **Problem.** In this model the formal loops in the zeroth Hodge step form the additive group. The parameter c corresponds to exp(cB).
 
-**How the definition helps.** Counting letters reduces membership in the Hodge subgroup to a one-variable equation (our own). A remaining series f satisfies f(x + y) = f(x)f(y) for commuting variables x and y (our own). Its formal logarithm is additive and hence linear in characteristic zero (our own). Identifying the geometric Hodge filtration with this word-counting rule requires the elliptic connection theorem (our own).
+**How the definition helps.** A group-like series with no word containing A involves only B, so it is f(B) with f(x + y) = f(x)f(y) by the coproduct (our own). In characteristic zero the logarithm of f is additive, hence linear, so f = exp(cB) (our own). Matching this word rule to the geometric Hodge filtration uses the elliptic connection theorem (our own).
 
 **Paper or page:** [The de Rham period map for punctured elliptic curves and the KZB equation](https://arxiv.org/abs/2306.02171). It says: “\\text{words }w \\text{ in }A, B \\text{ s.t. }\\mathrm{deg}<sub>A</sub>w\\leq -j”
 
@@ -3781,15 +3781,15 @@ $$”
 
 ### Defining good moduli spaces by exact invariants gives their geometry for free
 
-**Remember:** Two conditions on pushforward give the main properties of a GIT quotient.
+**Remember:** Exact pushforward that keeps every function: a stack behaves like a quotient.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14D23 (Stacks and moduli problems), 14D22, 14L24. arXiv math.AG. Level 4: research.
 
-**Definition.** A good moduli space morphism π from an algebraic stack to an algebraic space is quasi-compact and has exact pushforward on quasi-coherent sheaves. The natural map 𝒪<sub>X</sub> → π∗𝒪\_𝒳 must also be an isomorphism.
+**Definition.** A good moduli space is a map π : 𝒳 → X from an algebraic stack to an algebraic space that behaves like taking invariants. Precisely, π is quasi-compact, π∗ is exact on quasi-coherent sheaves, and 𝒪<sub>X</sub> → π∗𝒪\_𝒳 is an isomorphism.
 
 **Problem.** Let π : 𝒳 → X be a good moduli space with X quasi-separated. Then π is surjective and universally closed, and it gives a bijection between the closed points of 𝒳 and of X. If 𝒳 is Noetherian, π is also universal for maps to algebraic spaces.
 
-**How the definition helps.** Exact pushforward and descent of functions abstract the invariants used in affine quotients (our own). Alper’s good moduli space theorem derives the topological and universal properties from these conditions (our own).
+**How the definition helps.** Exactness makes images of closed substacks closed and keeps disjoint closed substacks apart, which gives universal closedness and the bijection on closed points (our own). Alper’s good moduli space theorem derives these properties and the universal property from these conditions (our own).
 
 **Paper or page:** [J. Alper, Stacks and Moduli, Theorem 2.9 (good moduli spaces)](https://sites.math.washington.edu//~jarod/moduli.pdf). It says: “If π : 𝒳 → X is a good moduli space with X quasi-separated, then (1) π is surjective and universally closed; … In particular, π induces a bijection between closed points in 𝒳 and closed points in X”
 
@@ -3804,11 +3804,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14D23 (Stacks and moduli problems), 14P25, 18N10. arXiv math.AG. Level 4: research.
 
-**Definition.** For a groupoid with involution σ, a fixed object is a pair (x,φ) with φ : x → σ(x) and σ(φ)φ = id<sub>x</sub>. An arrow u : (x,φ) → (y,ψ) satisfies ψu = σ(u)φ.
+**Definition.** A fixed object of a groupoid with involution σ is an object x with a chosen isomorphism φ : x → σ(x) satisfying σ(φ)φ = id<sub>x</sub>. A map (x,φ) → (y,ψ) is an arrow u with ψu = σ(u)φ.
 
 **Problem.** Let 𝒳 be a separated Deligne–Mumford stack of finite type over ℝ, and let complex conjugation act on its complex groupoid. Then the isomorphism classes of fixed objects, with the quotient topology, are homeomorphic to the real points of 𝒳 with the real analytic topology.
 
-**How the definition helps.** The cocycle condition on φ and the compatibility of arrows give precisely complex-to-real descent data (our own). For the constant group of order two, its classifying stack has two real torsor classes above one complex class (our own). The cited fixed-locus theorem identifies the topologies.
+**How the definition helps.** A pair (x,φ) is exactly descent data from ℂ to ℝ, so a fixed object is a real point (our own). For the classifying stack of a group of order two, one complex point has two real forms, which fixing on the nose would merge (our own). The cited fixed-locus theorem identifies the topologies.
 
 **Paper or page:** [Topological groupoids with involution and real algebraic stacks](https://arxiv.org/abs/2504.02760v2), [Topological groupoids with involution and real algebraic stacks](https://arxiv.org/abs/2504.02760v2). It says: “We prove that when the topological groupoid with involution arises from a Deligne-Mumford stack over ℝ, this fixed locus coincides with the real locus of the stack.”
 
@@ -3818,15 +3818,15 @@ $$”
 
 ### Regular stacks are those where every bounded coherent complex is perfect
 
-**Remember:** Regularity can be tested on a smooth cover, and perfectness is local.
+**Remember:** Regular means every coherent sheaf has a finite vector bundle resolution.
 
 *True by definition. Confidence: medium.* MSC 14D23 (Stacks and moduli problems), 14F08. arXiv math.AG. Level 4: research.
 
-**Definition.** A Noetherian algebraic stack is regular when it has a smooth cover by a regular scheme. A perfect complex is one that is locally a finite complex of vector bundles. The test compares perfect complexes with complexes whose cohomology is bounded and coherent.
+**Definition.** A Noetherian algebraic stack is regular when it has a smooth cover by a regular scheme. By Serre’s theorem, this means every coherent sheaf on the cover is locally resolved by a finite complex of vector bundles, so it is perfect.
 
-**Problem.** A decent, quasi-compact, locally Noetherian algebraic stack is regular exactly when every complex with bounded coherent cohomology is perfect. This is Serre's regularity theorem moved from local rings to stacks.
+**Problem.** A decent, quasi-compact, locally Noetherian algebraic stack is regular exactly when every complex with bounded coherent cohomology is perfect. This is Serre’s regularity theorem moved from local rings to stacks.
 
-**How the definition helps.** With the derived test, a statement about perfect complexes is a statement about regularity, with no cover to choose. The work moves into the comparison of the cover definition with the derived test. With it, the authors prove stacky forms of conjectures of Antieau–Gepner–Heller and Bondal–Van den Bergh, which Neeman proved for schemes. Those forms still need extra hypotheses, such as finite Krull dimension.
+**How the definition helps.** Perfectness is local for the smooth topology, so on a regular cover Serre’s theorem makes bounded coherent complexes perfect (our own). The converse needs the authors’ comparison of the cover definition with this derived test. With it they prove stacky forms of conjectures of Antieau–Gepner–Heller and Bondal–Van den Bergh.
 
 **Paper or page:** [Regularity and bounded t-structures for algebraic stacks](https://arxiv.org/abs/2504.02813v1). It says: “such a stack is regular if and only if all complexes with bounded and coherent cohomology are perfect. This naturally enables us to extend various statements known for schemes to algebraic stacks.”
 
@@ -3840,11 +3840,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14D23 (Stacks and moduli problems), 14H60. arXiv math.AG. Level 4: research.
 
-**Definition.** Semistable bundles are S-equivalent if the direct sums of their stable Jordan–Hölder factors are isomorphic. Stack points over an algebraically closed field are quasi-S-equivalent if they admit filtrations with isomorphic associated graded points. A filtration is a map from \[𝔸¹/𝔾ₘ\] with the given value at 1 and its associated graded at 0.
+**Definition.** Semistable bundles are S-equivalent when the direct sums of their stable Jordan–Hölder factors, their polystable bundles, are isomorphic. Each bundle degenerates to its polystable bundle along a filtration, a map from \[𝔸¹/𝔾ₘ\]. For stacks, points are quasi-S-equivalent when filtrations degenerate them to isomorphic associated graded points.
 
 **Problem.** Geometric points representing semistable bundles on a smooth projective curve have the same moduli image exactly when they are S-equivalent. For locally reductive stacks of finite type with adequate moduli space, the corresponding criterion is quasi-S-equivalence.
 
-**How the definition helps.** A common degeneration forces the two points to have the same moduli image (our own). For bundles, Jordan–Hölder gives the common polystable representative (our own). Zhang’s comparison theorem supplies the converse for locally reductive stacks (our own).
+**How the definition helps.** A filtration joins a point to its associated graded point, so the moduli map gives both the same image (our own). For bundles the associated graded point is the polystable bundle from Jordan–Hölder (our own). Zhang’s comparison theorem supplies the converse for locally reductive stacks (our own).
 
 **Paper or page:** [S-equivalence for algebraic stacks](https://arxiv.org/abs/2411.04053v1). It says: “Two semistable vector bundles are identified in the adequate moduli space if and only if they are S-equivalent.”
 
@@ -3855,15 +3855,15 @@ $$”
 
 ### Nilpotent singular support makes the geometric Langlands equivalence true
 
-**Remember:** Add exactly the sheaves with nilpotent singular support, and the two sides match.
+**Remember:** Add only sheaves with nilpotent singular support, and the sides match.
 
 *Makes the theorem clean to state or prove.* MSC 14D24 (Geometric Langlands program (algebro-geometric aspects)), 14F10, 14D23. arXiv math.AG, math.RT. Level 4: research.
 
-**Definition.** Consider ind-coherent sheaves on the derived stack of Langlands-dual de Rham local systems. The nilpotent spectral category consists of those whose singular support lies in the global nilpotent cone. This cone requires the horizontal coadjoint parameter to be nilpotent.
+**Definition.** The nilpotent spectral category consists of ind-coherent sheaves on the derived stack of Langlands-dual de Rham local systems whose singular support lies in the global nilpotent cone. Singular support measures how far a sheaf is from quasi-coherent, so this adds to quasi-coherent sheaves only the nilpotent directions.
 
 **Problem.** Fix a connected reductive group and a smooth projective complex curve. The de Rham geometric Langlands equivalence identifies the half-canonically twisted D-modules on the bundle stack with the nilpotent spectral category.
 
-**How the definition helps.** The nilpotent support condition specifies which additional spectral objects the equivalence requires. Lafforgue’s example with SL₂ on ℙ¹ rules out using only quasi-coherent sheaves (our own summary). The geometric Langlands theorem proves the equivalence (our own).
+**How the definition helps.** Quasi-coherent sheaves alone are too few, as Lafforgue’s example with SL₂ on ℙ¹ shows (our own summary). Nilpotent singular support adds exactly the objects the automorphic side needs (our own). The proof of the geometric Langlands conjecture gives the equivalence (our own).
 
 **nLab:** [geometric Langlands correspondence](https://ncatlab.org/nlab/show/geometric+Langlands+correspondence). It says: “A refined formulation of the conjecture due to Arinkin &amp; Gaitsgory 12, meant to fix this failure, replaces plain quasicoherent sheaves with certain "nilpotent" ind-objects of quasicoherent sheaves”
 
@@ -3874,15 +3874,15 @@ $$”
 
 ### Generalized pairs make adjunction hold for log canonical centers of any codimension
 
-**Remember:** Keep the boundary and the birational nef divisor when testing discrepancies.
+**Remember:** Restricting to a center leaves a boundary plus a nef moduli part.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14E30 (Minimal model program (Mori theory, extremal rays)), 14B05. arXiv math.AG. Level 4: research.
 
-**Definition.** A generalized pair consists of a normal variety Z, a boundary B and a birational model carrying a nef real Cartier divisor M′. Its pushforward M must make K<sub>Z</sub>+B+M real Cartier. Generalized log canonicity means that every boundary coefficient on higher models, computed by pulling back K<sub>Z</sub>+B+M and the nef data, is at most one.
+**Definition.** A generalized pair on a normal variety Z is a boundary B plus a nef part M, pushed forward from a nef ℝ-Cartier divisor on a higher model, with K<sub>Z</sub>+B+M ℝ-Cartier. Adjunction to a log canonical center with normalization ν : Z → W gives such a pair, ν\*(K<sub>X</sub>+Δ) ∼ℝ K<sub>Z</sub>+B+M (our own). It is generalized log canonical when, pulled back with the nef data to every higher model, all boundary coefficients are at most one.
 
 **Problem.** Let W be a log canonical center of a pair (X, Δ), of any codimension, with normalization Z. Then (X, Δ) is log canonical near W exactly when the induced generalized pair on Z is generalized log canonical (Fujino–Hashizume).
 
-**How the definition helps.** The nef term records the part of adjunction that the boundary on the normalized center cannot record (our own). Fujino–Hashizume’s adjunction and inversion theorem identifies generalized log canonicity there with log canonicity near the center.
+**How the definition helps.** Adjunction to a center of high codimension produces the nef moduli part M, which a plain boundary cannot record (our own). Fujino–Hashizume prove that generalized log canonicity of this pair matches log canonicity of (X, Δ) near W.
 
 **Paper or page:** [Adjunction and inversion of adjunction](https://arxiv.org/abs/2105.14531v2), [Adjunction and inversion of adjunction](https://arxiv.org/abs/2105.14531v2). It says: “We establish adjunction and inversion of adjunction for log canonical centers of arbitrary codimension in full generality.”
 
@@ -3896,11 +3896,11 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F06 (Sheaves in algebraic geometry), 18E10. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** An adequate module on the big site of S is, locally on S, the kernel of a map between two modules induced by quasi-coherent sheaves. The module induced by F sends each f : T → S to Γ(T,f\*F). A module is parasitic if it vanishes on every flat S-scheme.
+**Definition.** An adequate module on the big site of S is, locally on S, the kernel of a map between modules T ↦ Γ(T, f\*F) induced by quasi-coherent sheaves F. It is parasitic when it vanishes on every flat S-scheme.
 
 **Problem.** Adequate modules on the big site form an abelian category, and the inclusion into all 𝒪-modules is exact. Quasi-coherent sheaves on S are the Serre quotient of adequate modules by parasitic ones.
 
-**How the definition helps.** Kernels on the big site can detect torsion created by base change (our own). For multiplication by p over ℤ, the kernel vanishes on flat schemes but is nonzero over 𝔽ₚ (our own). The theorem on adequate functors gives exact abelian closure and identifies the quotient by parasitic modules with quasi-coherent sheaves.
+**How the definition helps.** Quasi-coherent modules on the big site are not closed under kernels, because base change is not exact (our own). Multiplication by p over ℤ has a kernel that vanishes on flat schemes but not over 𝔽ₚ, so it is parasitic (our own). The theorem on adequate functors gives the exact abelian category and identifies the quotient by parasitic modules with quasi-coherent sheaves.
 
 **Paper or page:** [Adequate, Lemma 46.5.11](https://stacks.math.columbia.edu/tag/06VQ), [Adequate, Lemma 46.6.2](https://stacks.math.columbia.edu/tag/06ZN). It says: “The subcategory 𝒞 ⊂ Adeq(𝒪) of parasitic adequate modules is a Serre subcategory. Moreover, the functor v induces an equivalence of categories Adeq(𝒪) / 𝒞 = QCoh(𝒪<sub>S</sub>).”
 
@@ -3912,11 +3912,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14F06 (Sheaves in algebraic geometry), 14J17. arXiv math.AG. Level 4: research.
 
-**Definition.** A reflexive sheaf is a coherent sheaf that equals its double dual. Take an open embedding of a normal surface X into a normal surface whose complement is a finite set of points. X is codim-2-saturated when every such embedding is an isomorphism.
+**Definition.** A normal surface X is codim-2-saturated when every open embedding of X into a normal surface with finite complement is an isomorphism. Reflexive sheaves, those equal to their double dual, cannot see finitely many points, so this removes the only ambiguity they leave.
 
 **Problem.** Every normal surface has a canonical codim-2-saturated model. This model can be rebuilt from the category of reflexive sheaves on the surface.
 
-**How the definition helps.** Reflexive sheaves cannot see finitely many points, so the definition excludes exactly the surfaces that differ by such points. In our own example, the affine plane and the affine plane without the origin have equivalent categories of reflexive sheaves. So no reconstruction theorem can hold for all normal surfaces. The hard part is categorical: the paper shows that the category is quasi-abelian and introduces weakly localising Serre subcategories.
+**How the definition helps.** Reflexive sheaves extend uniquely across finitely many points, so the definition removes exactly the surfaces they cannot tell apart. In our own example, the affine plane with and without the origin have equivalent categories of reflexive sheaves. The proof shows that the category is quasi-abelian and uses weakly localising Serre subcategories.
 
 **Paper or page:** [Reconstruction of a surface from the category of reflexive sheaves](https://arxiv.org/abs/2302.04635v3). It says: “We reconstruct the codim-2-saturated model of a normal surface X from the additive category of reflexive sheaves on X.”
 
@@ -3930,11 +3930,11 @@ $$”
 
 *True by definition.* MSC 14F06 (Sheaves in algebraic geometry), 32C35. arXiv math.AG. Level 4: research.
 
-**Definition.** A coherent sheaf is reflexive when the natural map to its double dual is an isomorphism. The reflexive pullback of a sheaf is the double dual of its ordinary pullback.
+**Definition.** The reflexive pullback of a sheaf is the double dual of its ordinary pullback. A reflexive sheaf, one equal to its double dual, on a normal variety is determined by its sections off any closed set of codimension at least two.
 
 **Problem.** Let f be a proper birational morphism between normal varieties and F a reflexive coherent sheaf on the target. Then the pushforward along f of the reflexive pullback of F is F.
 
-**How the definition helps.** Pullback followed by double dual gives a map from F to the pushforward (our own). Outside a target subset of codimension at least two, f is an isomorphism (our own). Sections upstairs restrict there and then extend uniquely downstairs by reflexivity (our own). These maps are inverse because sections of torsion-free sheaves are determined on dense open subsets (our own).
+**How the definition helps.** Off a closed set Z of codimension at least two in the target, f is an isomorphism, so the two sheaves agree there (our own). Sections of the pushforward over U then sit between F(U) and F(U minus Z) (our own). Reflexivity makes these two equal, so the pushforward is F (our own).
 
 **Paper or page:** [Rational singularities and q-birational morphism](https://arxiv.org/abs/2301.04262v5). It says: “Suppose that $\\mathcal {F}$ is any reflexive sheaf on $X$. Then $\\mathcal {F}\\cong f\_\*(f<sup>\*\\mathcal</sup> {F})<sup>DD</sup>$.”
 
@@ -3970,7 +3970,7 @@ $$”
 
 **Problem.** This definition of QC(X) makes sense for any presheaf or stack, including ind-schemes and derived stacks. For a scheme, it agrees with the classical category of quasicoherent sheaves.
 
-**How the definition helps.** The functor-of-points definition needs only maps from affine schemes, so it applies to any presheaf or stack. Every ingredient has a higher-categorical version, so the same definition gives derived quasicoherent sheaves. The real content is in descent theorems. They show that the limit agrees with the classical category on schemes and behaves well for flat covers of stacks, as Hollander proves.
+**How the definition helps.** The definition uses only maps from affine schemes, so it applies to any presheaf or stack, and each ingredient has a derived version. Descent theorems do the real work. They show that the limit agrees with the classical category on schemes and behaves well for flat covers of stacks (Hollander).
 
 **nLab:** [quasicoherent sheaf](https://ncatlab.org/nlab/show/quasicoherent+sheaf). It says: “all notions involved, sheaf, stack, morphism of stacks, have natural, immediate and well understood generalizations to higher category theory.”
 
@@ -4002,9 +4002,9 @@ $$”
 
 *Rules out counterexamples.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** On a smooth projective n-fold over an algebraically closed field k, a point object P satisfies S(P) ≅ P\[n\], End(P)=k and Hom(P,P\[i\])=0 for i&lt;0. Here S is the Serre functor. An invertible object L has, for each point object P, exactly one nonzero Hom(L,P\[i\]), of dimension one.
+**Definition.** Point objects and invertible objects are defined from the triangulated structure and the Serre functor S alone. A point object P has S(P) ≅ P\[n\], End(P) = k and Hom(P,P\[i\]) = 0 for i &lt; 0. An invertible object L has, for each point object P, exactly one i with Hom(L,P\[i\]) nonzero, and that space has dimension one.
 
-**Problem.** Let X be a connected smooth projective variety over an algebraically closed field k with ample or anti-ample canonical bundle. Every k-linear exact autoequivalence is a composite of pullback by an automorphism, tensor product with a line bundle and a shift. Their group up to isomorphism is (Pic(X) ⋊ Aut(X)) × ℤ.
+**Problem.** Let X be a connected smooth projective variety over an algebraically closed field k with ample or anti-ample canonical bundle. Every k-linear exact autoequivalence of Dᵇ(X) is a composite of pullback by an automorphism, tensor with a line bundle and a shift, so their group is (Pic(X) ⋊ Aut(X)) × ℤ.
 
 **How the definition helps.** Ample or anti-ample canonical bundle identifies point objects with shifted skyscrapers and invertible objects with shifted line bundles. These intrinsic tests are preserved by k-linear equivalences (our own). Bondal–Orlov reconstruction identifies the residual equivalence after removing the shift and line bundle twist with pullback by an automorphism (our own).
 
@@ -4022,11 +4022,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 14K05, 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** The normalized Poincaré bundle P on A × Â represents algebraically trivial line bundles on A rigidified at the identity. The Fourier–Mukai transform sends F to Rp₂∗(p₁\*F ⊗ P) for the two projections. The reverse transform uses P with its factors exchanged.
+**Definition.** The Fourier–Mukai transform S sends F on A to Rp₂∗(p₁\*F ⊗ P), where P is the normalized Poincaré bundle on A × Â, whose restriction to A × {ξ} is the line bundle ξ. The reverse transform Ŝ uses P with its factors exchanged.
 
 **Problem.** The composite of S and Ŝ is (−1)\* \[−g\], the pullback by x ↦ −x followed by a shift by −g. In particular S is an equivalence from Dᵇ(A) to Dᵇ(Â) (Mukai).
 
-**How the definition helps.** Composition convolves the two Poincaré kernels (our own). At (a,b), the fibre computes cohomology of the algebraically trivial bundle represented by a+b on Â (our own). Vanishing for nontrivial bundles forces support on the antidiagonal (our own). Mukai’s convolution calculation identifies the kernel with its structure sheaf shifted by −g (our own).
+**How the definition helps.** The composite is a transform whose kernel at (a,b) computes the cohomology of the line bundle on Â given by a+b (our own). A nontrivial algebraically trivial line bundle has no cohomology, so the kernel lives on the antidiagonal (our own). Mukai’s calculation identifies it with the antidiagonal’s structure sheaf shifted by −g (our own).
 
 **Wikipedia:** [Fourier–Mukai transform](https://en.wikipedia.org/wiki/Fourier%E2%80%93Mukai_transform). It says: “The Fourier–Mukai transformation is nearly involutive”
 
@@ -4041,11 +4041,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** An exceptional pair (E,F) has derived endomorphism complexes of E and F both equal to k up to quasi-isomorphism, and RHom(F,E)=0. Its left mutation L<sub>E</sub>(F) is the cone of the evaluation RHom(E,F) ⊗ E → F.
+**Definition.** An exceptional pair (E,F) has RHom(E,E) = RHom(F,F) = k and RHom(F,E) = 0. Its left mutation L<sub>E</sub>(F) is the cone of evaluation RHom(E,F) ⊗ E → F, which removes from F exactly the part that E sees.
 
 **Problem.** If (E, F) is an exceptional pair, then (L(F), E) is again an exceptional pair, and it generates the same subcategory as (E, F). Repeating mutations along a full exceptional collection gives an action of the braid group on such collections.
 
-**How the definition helps.** Applying RHom(E,−) to the triangle gives RHom(E,L<sub>E</sub>(F))=0 (our own). Applying RHom(F,−) and RHom(−,L<sub>E</sub>(F)) then identifies the derived endomorphisms of L<sub>E</sub>(F) with those of F (our own). The triangle recovers either pair from the other, so their generated subcategories agree (our own). The braid action uses the braid relations theorem for mutations (our own).
+**How the definition helps.** Applying RHom(E,−) to the defining triangle gives RHom(E, L<sub>E</sub>(F)) = 0, and the other two checks follow the same way (our own). The triangle recovers either pair from the other, so they generate the same subcategory (our own). The braid action uses the braid relations theorem for mutations (our own).
 
 **Paper or page:** [Full exceptional collections on Fano threefolds and groups generated by spherical twists on K3 surfaces](https://arxiv.org/abs/2412.06023). It says: “Then the action of the semidirect product B₄ ⋌ ℤ⁴ by mutations and shifts on the set of full exceptional collections in 𝒟ᵇ(X) is transitive and free.”
 
@@ -4080,7 +4080,7 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** A spanning class Ω detects zero in both directions in a triangulated category. If all Hom(ω,X\[i\]) vanish for ω ∈ Ω and integers i, then X = 0. The same implication must hold with Hom(X,ω\[i\]) instead.
+**Definition.** A spanning class Ω in a triangulated category detects zero objects from both sides. If Hom(ω,X\[i\]) = 0 for all ω ∈ Ω and all integers i, or if Hom(X,ω\[i\]) = 0 for all of them, then X = 0.
 
 **Problem.** Let F : Perf(X) → Perf(Y) be a k-linear exact functor between proper k-schemes, with X regular. It is fully faithful exactly when it induces isomorphisms on every Ext group between every pair of closed-point skyscrapers.
 
@@ -4118,9 +4118,9 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 18G80. arXiv math.AG. Level 4: research.
 
-**Definition.** Fix a norm on the real span of the finite-rank charge lattice. A stability condition satisfies the support property if some C &gt; 0 satisfies \|Z(v(E))\| ≥ C‖v(E)‖ for every nonzero semistable object E.
+**Definition.** The support property says that semistable objects cannot have small central charge compared with the size of their class. Precisely, for a norm on the real span of the finite-rank charge lattice, some C &gt; 0 satisfies \|Z(v(E))\| ≥ C‖v(E)‖ for every nonzero semistable object E.
 
-**Problem.** Bridgeland's deformation theorem, in the form with the support property, says the following. Every small change of the central charge lifts to a nearby stability condition. So the space of such stability conditions is a complex manifold.
+**Problem.** Every small enough change of the central charge lifts to a nearby stability condition with the support property. So the space of such stability conditions is a complex manifold (Bridgeland’s deformation theorem).
 
 **How the definition helps.** A perturbation of operator norm below C keeps every formerly semistable class away from zero charge relative to its norm (our own). Bridgeland’s deformation theorem supplies the nearby slicing and gives local complex coordinates through the central charge (our own).
 
@@ -4137,7 +4137,7 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14F08 (Derived categories of sheaves, dg categories, and related constructions in algebraic geometry), 14A30, 18G80. arXiv math.AG, math.CT. Level 4: research.
 
-**Definition.** A tensor aisle is the aisle of a t-structure closed under derived tensor product with every complex whose positive cohomology vanishes. A Thomason filtration is a decreasing integer-indexed sequence of unions of closed subsets with quasi-compact open complements.
+**Definition.** A Thomason filtration of X assigns to each integer i a Thomason subset φ(i), a union of closed sets with quasi-compact open complements, with φ(i) ⊇ φ(i+1). A tensor aisle is a t-structure aisle closed under derived tensor with every complex that has no positive cohomology.
 
 **Problem.** For a noetherian scheme X, compactly generated tensor t-structures on D(Qcoh X) correspond to Thomason filtrations of X. The filtration φ gives the aisle of complexes whose i-th cohomology sheaf has support in φ(i).
 
@@ -4159,7 +4159,7 @@ $$”
 
 **Problem.** For a quasi-compact quasi-separated scheme X, taking the union of supports bijects thick tensor ideals of perfect complexes with Thomason subsets. These subsets are unions of closed sets with quasi-compact open complements.
 
-**How the definition helps.** On ℙ¹ the thick subcategory generated by 𝒪 has full support but omits 𝒪(1), so it fails tensor closure (our own example). Thomason’s classification shows that support determines every thick tensor ideal (our own).
+**How the definition helps.** Closure under tensoring makes a thick subcategory depend only on supports, and Thomason’s classification proves this (our own). Without it the bijection fails: on ℙ¹ the thick subcategory generated by 𝒪 has full support but omits 𝒪(1) (our own example).
 
 **Paper or page:** [Thick subcategories on weighted projective curves and nilpotent representations of quivers](https://arxiv.org/abs/2407.01207). It says: “Assume that 𝕏 is a weighted projective line: that is, X≅ℙ¹. Then any admissible subcategory 𝒯 ⊂ Dᵇ(coh 𝕏) is generated by an exceptional collection.”
 
@@ -4195,7 +4195,7 @@ $$”
 
 **Problem.** Two such weights give the same multiplier ideal if they differ by bounded amounts locally, including near their common set of infinite values.
 
-**How the definition helps.** In our own proof, a uniform bound on the weight difference bounds the ratio of exponential factors above and below by positive constants. Their common zero locus for the generators has measure zero and does not affect the integrals. The alternative algebraic construction resolves the zero set until it looks locally like coordinate hyperplanes. Change of variables on this resolution connects its formula with local integrability.
+**How the definition helps.** If two weights differ by at most C, their exponential factors differ by a factor between exp(−2C) and exp(2C), so the same functions are integrable (our own proof). The common zero set of the generators has measure zero, so it does not affect the integrals.
 
 **Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “is locally integrable, where the fᵢ are a finite set of local generators of the ideal.”
 
@@ -4213,7 +4213,7 @@ $$”
 
 **Problem.** For two such weights on a complex manifold, 𝒥(φ+ψ) is contained in the product ideal 𝒥(φ)𝒥(ψ).
 
-**How the definition helps.** The ideals express a relation between three integrability tests as one inclusion. Our own summary puts the two weights on separate factors of a product space. The product formula separates the two ideals there. The restriction theorem on the diagonal gives the inclusion because the two weights add there.
+**How the definition helps.** On X × X, the weight φ(x)+ψ(y) has multiplier ideal equal to the product of the two ideals (our own summary). On the diagonal this weight becomes φ+ψ, and the Ohsawa–Takegoshi restriction theorem gives the inclusion.
 
 **Wikipedia:** [Multiplier ideal](https://en.wikipedia.org/wiki/Multiplier_ideal). It says: “is locally integrable, where the fᵢ are a finite set of local generators of the ideal.”
 
@@ -4229,9 +4229,9 @@ $$”
 
 **Definition.** A quasi-plurisubharmonic weight φ is locally the sum of a smooth function and a plurisubharmonic function. Its multiplier ideal consists of holomorphic germs f for which \|f\|² exp(−2φ) is locally integrable.
 
-**Problem.** On a positive-dimensional smooth complex projective variety, a general member of a base-point-free linear system preserves the multiplier ideal under restriction. The exceptional members lie in a pluripolar subset of the parameter space.
+**Problem.** On a positive-dimensional smooth complex projective variety, a general member H of a base-point-free linear system satisfies 𝒥(φ\|<sub>H</sub>) = 𝒥(φ)\|<sub>H</sub>. The exceptional members lie in a pluripolar subset of the parameter space.
 
-**How the definition helps.** The two ideals distinguish restricting integrable functions from testing integrability after restriction. In our own summary, Fubini’s theorem restricts local generators for almost every member, while weighted extension gives the reverse inclusion. Xia’s analytic Bertini theorem supplies the stronger pluripolar bound.
+**How the definition helps.** Fubini’s theorem gives one inclusion for almost every member, and weighted Ohsawa–Takegoshi extension gives the other (our own summary). Xia’s analytic Bertini theorem improves “almost every” to “outside a pluripolar set”.
 
 **Paper or page:** [Analytic Bertini theorem](https://arxiv.org/abs/2110.14971v2). It says: “Then there is a pluripolar subset Σ ⊆ Λ”
 
@@ -4241,15 +4241,15 @@ $$”
 
 ### Newton polyhedra compute multiplier ideals
 
-**Remember:** Volume adds one to each exponent before the interior test.
+**Remember:** Add one to each exponent, then test the interior of cP.
 
 *True by definition.* MSC 14F18 (Multiplier ideals). arXiv math.CV, math.AG. Level 4: research.
 
-**Definition.** The Newton polyhedron P of a nonzero monomial ideal is the convex hull of all its monomial exponents. For generators gⱼ, its multiplier ideal at c &gt; 0 consists of holomorphic germs f with \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ locally integrable.
+**Definition.** The Newton polyhedron P of a nonzero monomial ideal is the convex hull of the exponents of its monomials. For generators gⱼ, its multiplier ideal at c &gt; 0 consists of holomorphic germs f with \|f\|²/(∑ⱼ\|gⱼ\|²)ᶜ locally integrable.
 
 **Problem.** For a monomial ideal in complex affine space, its multiplier ideal at c is generated by monomials xᵛ with v+(1,…,1) inside cP. Here “inside” excludes the boundary.
 
-**How the definition helps.** The integral definition replaces a resolution of singularities with an exponential decay test in logarithmic coordinates. In our own calculation, the volume element shifts each exponent by one. Convergence requires strict decay along every nonzero ray in the nonnegative orthant, exactly the interior condition. Orthogonality under coordinate rotations reduces the test to individual monomials.
+**How the definition helps.** In logarithmic coordinates, \|xᵛ\|²/(∑ⱼ\|gⱼ\|²)ᶜ is integrable exactly when v+(1,…,1) lies in the interior of cP, the extra one coming from the volume element (our own calculation). The torus symmetry in each coordinate splits the test into separate monomials, so the ideal is monomial (our own).
 
 **Paper or page:** [Multiplicities of Jumping Numbers](https://arxiv.org/abs/2102.07080v3). It says: “denotes the interior of the scaled Newton polyhedron P(c·𝔞).”
 
@@ -4263,7 +4263,7 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14F42, 14C25. arXiv math.AG. Level 4: research.
 
-**Definition.** An unramified class extends over each codimension-one point of X. It is curve-tame if, after every finitely generated field extension, its pullback along every morphism from a normal curve is tame at infinity. This tests each missing valuation on the regular compactification of the curve.
+**Definition.** An unramified class extends over each codimension-one point of X. It is curve-tame when, after any finitely generated field extension, its pullback to every normal curve over X is tamely ramified at the curve’s missing points at infinity.
 
 **Problem.** Let X be smooth and geometrically connected over a field k of characteristic p. Suppose degree identifies zeroth Suslin homology with ℤ over every finitely generated extension of k. Then for each i, the curve-tame unramified classes of degree i + 1 with coefficients ℤ/p(i) all come from k.
 
@@ -4313,15 +4313,15 @@ $$”
 
 ### Strict local rings are what the étale topos of Spec ℤ classifies
 
-**Remember:** Rewrite 'some root is simple' as 'an ideal contains 1', so the definition becomes geometric.
+**Remember:** Say “some root is simple” as “these coefficients generate 1”.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 03G30. arXiv math.AG, math.LO. Level 4: research.
 
-**Definition.** For a monic polynomial p with formal roots sᵢ, form Q(x)=∏ᵢ(1+p′(sᵢ)x). Call p unramifiable if the nonconstant coefficients of Q generate the unit ideal. A strict local ring is a local ring where every positive-degree unramifiable p has a root r with p′(r) invertible.
+**Definition.** A strict local ring is a local ring in which every unramifiable monic polynomial of positive degree has a simple root, a root r with p′(r) invertible. Here p is unramifiable when the nonconstant coefficients of ∏ᵢ(1+p′(sᵢ)x), over its formal roots sᵢ, generate the unit ideal.
 
 **Problem.** The étale topos of Spec ℤ classifies strict local rings. So its points are the strict Henselian local rings (Hakim, Wraith).
 
-**How the definition helps.** Unit-ideal membership and existence of a simple root admit geometric formulas (our own). This presentation allows the Hakim–Wraith theorem to identify the classifying topos with the étale topos of Spec ℤ (our own).
+**How the definition helps.** Both conditions, generating the unit ideal and having a root with invertible derivative, are geometric formulas, so strict local rings form a geometric theory (our own). The Hakim–Wraith theorem identifies its classifying topos with the étale topos of Spec ℤ (our own).
 
 **nLab:** [strict local ring](https://ncatlab.org/nlab/show/strict+local+ring), [classifying topos](https://ncatlab.org/nlab/show/classifying+topos). It says: “We need to knead the definition of strict Henselian ring into being geometric.”
 
@@ -4336,7 +4336,7 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 14B25. arXiv math.AG. Level 4: research.
 
-**Definition.** The pro-étale site of X consists of weakly étale X-schemes with fpqc covering families. A morphism is weakly étale if both it and its diagonal are flat. On this site define ℤℓ as the inverse limit of the constant sheaves ℤ/ℓⁿ and set ℚℓ = ℤℓ\[1/ℓ\].
+**Definition.** The pro-étale site of X has weakly étale X-schemes, those flat with flat diagonal, and fpqc covering families. On it, ℤℓ = lim ℤ/ℓⁿ is a genuine sheaf, and ℚℓ = ℤℓ\[1/ℓ\].
 
 **Problem.** For a quasi-compact quasi-separated scheme X, ℓ-adic cohomology with rational coefficients is the sheaf cohomology of ℚℓ on its pro-étale site. This computes it directly from one coefficient sheaf.
 
@@ -4354,11 +4354,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F20 (Étale and other Grothendieck topologies and (co)homologies), 11T23. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a weight-zero lisse ℚ̄ℓ-sheaf F of positive rank on a nonempty open U ⊆ 𝔸¹ over 𝔽<sub>q</sub>, with ℓ prime to q. Using a fixed complex embedding, take the limit superior of q⁻ⁿ∑ₓ\|tr(Frobₓ on Fₓ)\|² over x ∈ U(𝔽\_(qⁿ)), using degree-n Frobenius.
+**Definition.** The trace mean square of F is the limit superior of q⁻ⁿ∑ₓ\|tr(Frobₓ on Fₓ)\|², summed over x ∈ U(𝔽\_(qⁿ)). Here F is a weight-zero lisse ℚ̄ℓ-sheaf of positive rank on a nonempty open U ⊆ 𝔸¹ over 𝔽<sub>q</sub>, with ℓ prime to q and a fixed complex embedding.
 
-**Problem.** This limit superior equals the dimension of the linear maps from F to itself that commute with all geometric symmetries. It equals one exactly when F has no proper nonzero subspace stable under those symmetries.
+**Problem.** This limit superior equals the dimension of the endomorphisms of F over the algebraic closure of 𝔽<sub>q</sub>. It equals one exactly when F is geometrically irreducible.
 
-**How the definition helps.** The squared trace is the trace on End(F) by purity (our own). The trace formula and Deligne’s bound leave the Frobenius trace on geometric endomorphisms up to vanishing error (our own). Simultaneous powers of the finitely many unit-modulus eigenvalues approach one, giving the dimension as limit superior (our own). Geometric semisimplicity and Schur’s lemma give the irreducibility test (our own).
+**How the definition helps.** By purity, \|tr(Frobₓ)\|² is the Frobenius trace on End(F) (our own). The trace formula and Deligne’s bound reduce the mean to the trace on geometric endomorphisms, whose eigenvalues have modulus one, so the limit superior counts them (our own). Geometric semisimplicity and Schur’s lemma turn dimension one into irreducibility (our own).
 
 **Wikipedia:** [Grothendieck trace formula](https://en.wikipedia.org/wiki/Grothendieck_trace_formula). It says: “Taking logarithmic derivatives of both formal power series produces a statement on sums of traces for each finite field extension E of the base field k:”
 
@@ -4373,11 +4373,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Over R = ℤₚ\[\[λ\]\]/(λⁿ), a module with operator consists of an R-module complex M and a ℤₚ-linear operator Θ satisfying Θ(λx)=λx+λΘ(x). Liu associates such a pair to a sheaf by pulling back along the chart ρ and differentiating its chosen infinitesimal automorphism.
+**Definition.** Over R = ℤₚ\[\[λ\]\]/(λⁿ), a module with operator is an R-module complex M with a ℤₚ-linear operator Θ satisfying Θ(λx) = λx + λΘ(x). Liu’s chart ρ turns a sheaf on WCartₙ into such a pair, with Θ the derivative of the chart’s infinitesimal automorphism.
 
-**Problem.** For n ≤ p, sending ℰ to (ρ\*ℰ, Θ) is fully faithful, meaning it is bijective on maps. Its image is the ℤₚ-complete objects on which Θᵖ − Θ is locally nilpotent modulo p. Cohomology on WCartₙ is the fibre of Θ.
+**Problem.** For n ≤ p, ℰ ↦ (ρ\*ℰ, Θ) is fully faithful, with image the ℤₚ-complete objects on which Θᵖ − Θ is locally nilpotent modulo p. Cohomology on WCartₙ is the fibre of Θ.
 
-**How the definition helps.** The operator records infinitesimal descent along Liu’s chart (our own). For 1 ≤ n ≤ p, Liu’s comparison theorem identifies the essential image by the stated nilpotence and completeness conditions (our own). In this description derived global sections are the fibre of Θ.
+**How the definition helps.** The operator records infinitesimal descent along Liu’s chart, so cohomology is the fibre of Θ (our own). For 1 ≤ n ≤ p, Liu’s comparison theorem identifies the essential image by the stated nilpotence and completeness conditions (our own).
 
 **Paper or page:** [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051), [On the prismatization of 𝒪K beyond the Hodge-Tate locus](https://arxiv.org/abs/2409.02051). It says: “Let n≤p, then for any ℰ∈𝒟(WCart<sub>n</sub>), the natural morphism RΓ(WCart<sub>n</sub>, ℰ)→ρ<sup>\*ℰ</sup> induces a canonical identification RΓ(WCart<sub>n</sub>, ℰ)=fib(ρ<sup>\*ℰ</sup> →Θ\_ℰ ρ<sup>\*ℰ</sup>).”
 
@@ -4411,11 +4411,11 @@ $$”
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Fix a complete algebraically closed extension C of ℚₚ with integers 𝒪 and a compatible system ε of primitive p-power roots of unity. Put μ = \[ε\] − 1 in Ainf = W(𝒪♭). The relative AΩ complex applies Lη(μ) to the derived direct image of the pro-étale Ainf sheaf along the relative period morphism.
+**Definition.** Fix the integers 𝒪 of a complete algebraically closed extension of ℚₚ, and put μ = \[ε\] − 1 in Ainf = W(𝒪♭), with ε a compatible system of primitive p-power roots of unity. The relative Ainf complex AΩ is the décalage Lη(μ) of the derived pushforward of the pro-étale sheaf 𝔸inf along the relative period map. Décalage becomes an isomorphism once μ is inverted, so it changes nothing there.
 
 **Problem.** Let f be a proper smooth map of flat p-adic formal schemes locally of finite type over 𝒪. After inverting μ, relative Ainf-cohomology identifies with relative p-adic étale cohomology of the generic fibers derived-tensored with the base period sheaf 𝔸inf\[1/μ\].
 
-**How the definition helps.** Inverting μ identifies the décalage with the original complex. Relative primitive comparison gives the étale comparison up to modules annihilated by W(𝔪♭). This ideal contains μ, so localization kills those modules (our own explanation).
+**How the definition helps.** Inverting μ removes the décalage and leaves the pro-étale pushforward of 𝔸inf. Relative primitive comparison identifies this with étale cohomology tensored with 𝔸inf, up to modules killed by W(𝔪♭). That ideal contains μ, so inverting μ kills those modules (our own explanation).
 
 **Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983). It says: “Let 𝔛 and 𝔜 be flat p-adic formal schemes locally of finite type over 𝒪, and let f : 𝔛 → 𝔜 be a proper smooth morphism. Then RΓ<sub>A<sub>inf</sub></sub>(𝔛/𝔜) ⊗ᴸ<sub>A<sub>inf</sub></sub> A<sub>inf</sub>\[1/μ\] ≅ RΓ<sub>A<sub>inf</sub></sub>(𝔛/𝔜)<sup>∧</sup> ⊗ᴸ<sub>A<sub>inf</sub></sub> A<sub>inf</sub>\[1/μ\] ≅ Rf<sub>η, proét\*</sub>Ẑ<sub>p</sub> ⊗ᴸ<sub>Ẑ<sub>p</sub></sub> 𝔸<sub>inf,Y</sub>\[1/μ\]”
 
@@ -4430,11 +4430,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A crystalline prism is a pair (A,(p)) where A is a p-adically complete, p-torsion-free δ-ring.
+**Definition.** A crystalline prism is a pair (A,(p)) where A is a p-adically complete, p-torsion-free δ-ring. Since A has no p-torsion, the ideal (p) has divided powers, so A is a base for crystalline cohomology of A/p-algebras (our own).
 
 **Problem.** Let (A, (p)) be a crystalline prism and R a smooth A/p-algebra. The completed Frobenius pullback of the prismatic cohomology of R is the crystalline cohomology of R over A, compatibly with Frobenius.
 
-**How the definition helps.** The ideal (p) has canonical divided powers, so both theories use the same base (our own explanation). The crystalline comparison theorem identifies their complexes after completed Frobenius pullback.
+**How the definition helps.** Both theories use the same base A, because (p) has canonical divided powers (our own explanation). The crystalline comparison theorem identifies their complexes after completed Frobenius pullback.
 
 **nLab:** [prismatic cohomology](https://ncatlab.org/nlab/show/prismatic+cohomology). It says: “Let A,(p) be a bounded prism and let R be a smooth A/p-algebra. There exists a canonical isomorphism φ<sub>A</sub><sup>\*Δ<sub>R</sup>/A</sub><sup>∧</sup> ≅ RΓ<sub>crys</sub>(R/A) in D(A), compatible with the action of Frobenius on both sides.”
 
@@ -4447,15 +4447,15 @@ $$”
 
 ### Décalage along ζₚ − 1 turns Hodge–Tate cohomology into twisted differential forms
 
-**Remember:** Apply décalage along ζₚ − 1 to the integral pro-étale direct image.
+**Remember:** Décalage along ζₚ − 1 turns pro-étale cohomology into twisted forms.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** For a smooth map of p-adic formal schemes over 𝒪, let ν denote the relative pro-étale period morphism. The relative Hodge–Tate complex is Lη(ζₚ − 1)Rν∗Ô⁺, where ζₚ is a primitive pth root of unity.
+**Definition.** The relative Hodge–Tate complex Ω̃ is Lη(ζₚ − 1)Rν∗Ô⁺, the décalage along ζₚ − 1 of the integral completed structure sheaf pushed along the relative pro-étale period map ν. Here ζₚ is a primitive pth root of unity.
 
 **Problem.** Let 𝒪 be the integers of a complete algebraically closed extension of ℚₚ, and let 𝔛 → 𝔜 be smooth over 𝒪. For each i ≥ 0, Hⁱ(Ω̃) almost identifies with the pulled-back relative i-forms twisted by {−i}. This identification is exact when 𝔜 is locally of finite type over 𝒪.
 
-**How the definition helps.** Décalage quotients cohomology by the classes killed by ζₚ − 1 and introduces a degree-dependent twist (our own explanation). The relative Hodge–Tate comparison identifies the result using the local computation of Faltings.
+**How the definition helps.** Décalage removes the part of cohomology killed by ζₚ − 1 and rescales degree i, which gives the twist {−i} (our own explanation). The relative Hodge–Tate comparison, using Faltings’s local computation, identifies the result with differential forms.
 
 **Paper or page:** [Relative $A<sub>\\rm inf</sub>$-cohomology](https://arxiv.org/abs/2206.07983), [Cohomology](https://stacks.math.columbia.edu/tag/0F8N). It says: “induces an Ô⁺ᵃ<sub>D</sub>-module identification q\*Ωⁱ<sub>𝔛/𝔜</sub>{−i}ᵃ → Hⁱ(Ω̃<sub>𝔛/𝔜</sub>)ᵃ, for every i ≥ 0. If in addition 𝔜 is locally of finite type over 𝒪, then the almost can be dropped.”
 
@@ -4470,9 +4470,9 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** For a μ-torsion-free complex K, degree i of ημK consists of x ∈ μⁱKⁱ with dx ∈ μⁱ⁺¹Kⁱ⁺¹. Applying this construction to a torsion-free model defines Lη(μ). Here μ = \[ε\] − 1 for a compatible system ε of primitive p-power roots of unity.
+**Definition.** Décalage along μ keeps in degree i the elements divisible by μⁱ whose differential is divisible by μⁱ⁺¹: (ημK)ⁱ = {x ∈ μⁱKⁱ : dx ∈ μⁱ⁺¹Kⁱ⁺¹} for K without μ-torsion. Lη(μ) applies this to a torsion-free model, with μ = \[ε\] − 1 for compatible primitive p-power roots of unity ε.
 
-**Problem.** Let R be a small smooth algebra with torus coordinates and R∞ its completed tower of p-power coordinate roots. Locally, Lη(μ) of continuous ℤₚᵈ-cohomology with coefficients Ainf(R∞) maps to Ainf-cohomology with cone cohomology killed by W(𝔪♭). The source identifies with the q-de Rham complex of the coordinate lift of R.
+**Problem.** For a small smooth algebra R with torus coordinates, Lη(μ) of continuous ℤₚᵈ-cohomology of Ainf(R∞), over the tower R∞ of p-power coordinate roots, is the q-de Rham complex of the coordinate lift of R. Locally this complex maps to Ainf-cohomology with cone cohomology killed by W(𝔪♭).
 
 **How the definition helps.** Décalage kills the fractional-exponent summands because μ kills their cohomology (our own explanation). On integral exponents it divides each Koszul operator γᵢ − 1 by μ, giving the q-differentials. Almost purity enters the comparison with the pro-étale complex (our own summary).
 
@@ -4489,7 +4489,7 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 13D09. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a complex M whose terms have no f-torsion, the décalage ηf M is the subcomplex {x ∈ fⁱMⁱ : dx ∈ fⁱ⁺¹Mⁱ⁺¹} of M\[1/f\]. Ainf-cohomology is AΩ = Lη(μ) Rν∗Ainf, the décalage along μ of the sheaf Ainf pushed from the pro-étale to the Zariski site. Here Ainf = W(𝒪♭) is Fontaine's period ring, and μ = \[ε\] − 1 for a compatible system ε of p-power roots of unity.
+**Definition.** For a complex M without f-torsion, the décalage ηf M is the subcomplex of M\[1/f\] of elements x ∈ fⁱMⁱ with dx ∈ fⁱ⁺¹Mⁱ⁺¹. Ainf-cohomology is AΩ = Lη(μ)Rν∗Ainf, the décalage along μ = \[ε\] − 1 of the pro-étale period sheaf Ainf = W(𝒪♭) pushed to the Zariski site.
 
 **Problem.** If fg is a nonzerodivisor on every term of M, then ηf ηg M = ηfg M. So the Frobenius φ of Ainf gives an isomorphism from the Frobenius twist of AΩ onto Lη(ξ̃) AΩ, where ξ̃ = φ(μ)/μ.
 
@@ -4508,11 +4508,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14D23. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Under the Rees equivalence, a filtered complex corresponds to a quasi-coherent complex on the quotient 𝔸¹/𝔾ₘ by scaling. Its graded module has degree n piece Filⁿ, with the coordinate acting by the filtration maps (our own description).
+**Definition.** Under the Rees equivalence, a filtered complex is the same as a quasi-coherent complex on 𝔸¹/𝔾ₘ, the line modulo scaling. The corresponding graded module has Filⁿ in degree n, and the coordinate acts by the filtration maps (our own description).
 
 **Problem.** Let X be a bounded, p-quasisyntomic, quasi-compact and quasi-separated p-adic formal scheme. Pushing the structure sheaf of its filtered prismatization along its map to 𝔸¹/𝔾ₘ gives Nygaard-filtered absolute prismatic cohomology.
 
-**How the definition helps.** The map to 𝔸¹/𝔾ₘ stores a filtration as a sheaf, so the Nygaard filtration becomes the pushforward of one structure sheaf. Functoriality and multiplicativity of the filtration then come from pushforward (our own). The work went into identifying this pushforward, which Hauck states as a theorem.
+**How the definition helps.** Because 𝔸¹/𝔾ₘ stores a filtration as a sheaf, the Nygaard filtration can be the pushforward of one structure sheaf. Functoriality and multiplicativity then come from pushforward (our own). Hauck’s theorem identifies this pushforward with Nygaard-filtered prismatic cohomology.
 
 **nLab:** [prismatization](https://ncatlab.org/nlab/show/prismatization). It says: “The filtered prismatization of X is the stack X<sup>𝒩</sup> over ℤ<sub>p</sub><sup>𝒩</sup> obtained via transmutation from 𝔾<sub>a</sub><sup>𝒩→ℤ<sub>p</sub>^𝒩</sup>”
 
@@ -4533,7 +4533,7 @@ $$”
 
 **Problem.** Every map from a prism to a perfect prism factors uniquely through its perfection.
 
-**How the definition helps.** The direct limit makes Frobenius invertible and forces the map to every perfect target (our own explanation). At stage n, compose the original map with the nth inverse power of the target Frobenius. These maps agree along the system, and completeness extends their common map to the completion (our own argument). The substantive theorem proves that this completed ring and its extended ideal form a perfect prism.
+**How the definition helps.** The colimit makes Frobenius invertible, and the substantive theorem shows the completion is a perfect prism. A map to a perfect prism B extends at stage n by composing with the nth inverse power of B’s Frobenius, and these extensions are forced (our own argument). Completeness of B extends the common map to the completion (our own argument).
 
 **Paper or page:** [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105v4). It says: “Moreover, it is the universal perfect prism over (A, I).”
 
@@ -4548,11 +4548,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S25. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** A Hodge–Tate vector bundle crystal assigns a finite projective A/I-module to each prism (A,I) over 𝒪. For each prism map it specifies a base-change isomorphism, compatible with identities and composition.
+**Definition.** A Hodge–Tate crystal on 𝒪 assigns a finite projective A/I-module to each prism (A,I) over 𝒪, with base-change isomorphisms compatible with composition. Its value M on a Breuil–Kisin prism carries one operator θ, which records all the gluing data (our own summary).
 
 **Problem.** Let 𝒪 be the integers of a finite extension of ℚₚ. For a Hodge–Tate crystal with Breuil–Kisin pair (M,θ), the complex M → M with differential θ computes prismatic cohomology in degrees zero and one. Vector bundle crystals with full prismatic coefficients also have vanishing cohomology above degree one.
 
-**How the definition helps.** The gluing data along the Breuil–Kisin prism reduce to one operator, so cohomology is the cone of one map. Theorem 4.5 states this two-term complex, and Theorem 1.11 states the vanishing for full coefficients. The work went into computing the self-products of the Breuil–Kisin prism, where the gluing data become one operator (our own summary).
+**How the definition helps.** On the self-products of the Breuil–Kisin prism the gluing data reduce to θ, so cohomology is the cone of θ and lives in degrees zero and one (our own summary). The vanishing above degree one for full prismatic coefficients is a separate theorem in the same paper.
 
 **Paper or page:** [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024), [Hodge--Tate prismatic crystals and Sen theory](https://arxiv.org/abs/2311.07024). It says: “Let 𝕄 ∈ Vect((𝒪<sub>K</sub>)\_Δ,\*, 𝒪\_Δ) (a such object is called a crystal). Then H<sup>i</sup>((𝒪<sub>K</sub>)\_Δ, 𝕄) = 0, ∀ i ≥ 2”
 
@@ -4570,7 +4570,7 @@ $$”
 
 **Problem.** Laurent F-crystals on X are equivalent to ℤₚ-local systems on the adic generic fibre of X. These are étale sheaves of finite free ℤₚ-modules, a family version of Galois representations.
 
-**How the definition helps.** The definition uses every prism and no tower or coordinates, so it makes sense for every bounded X. On a perfect prism, the completed A\[1/I\] is the Witt vector ring of a perfect ring of characteristic p (our own). There, Katz's Artin–Schreier–Witt theory matches étale φ-modules with local systems (our own). The work went into the Bhatt–Scholze proof, which reduces to perfect prisms (our own summary).
+**How the definition helps.** The Frobenius isomorphism makes the module an étale φ-module, and étale φ-modules over Witt rings are local systems (our own). On a perfect prism the completed A\[1/I\] is such a Witt ring, and Katz’s Artin–Schreier–Witt theory gives the match (our own). Bhatt–Scholze reduce the general case to perfect prisms (our own summary).
 
 **Paper or page:** [Prismatic F-crystals and Lubin-Tate (φq,Γ)-modules](https://arxiv.org/abs/2303.07620). It says: “Let X be a bounded formal scheme adic over Spf ℤ<sub>p</sub> with adic generic fiber X\_η. Then there is an equivalence Vect(X\_Δ, 𝒪\_Δ\[1/ℐ\]<sup>∧\_</sup>(p))<sup>φ = 1</sup> ≃ Loc\_ℤ<sub>p</sub>(X\_η).”
 
@@ -4586,9 +4586,9 @@ $$”
 
 **Definition.** A prismatic F-crystal is locally filtered free if its Nygaard-filtered Frobenius pullback locally splits as a finite sum of shifted filtered free lines. For the prism (A,I), the standard line has filtration Iⁿ for n ≥ 0 and A for n &lt; 0 (our own gloss).
 
-**Problem.** For a base formal W-scheme 𝔛, forgetting is an equivalence from F-gauges to locally filtered free prismatic F-crystals. It is bi-exact, meaning that it and its inverse keep exact sequences exact. Effective F-crystals of height at most p − 2 are automatically locally filtered free.
+**Problem.** For a base formal W-scheme 𝔛, forgetting is a bi-exact equivalence from F-gauges to locally filtered free prismatic F-crystals, so both directions keep exact sequences exact. Effective F-crystals of height at most p − 2 are automatically locally filtered free.
 
-**How the definition helps.** The condition asks the Nygaard filtration to have a local basis, which is the extra structure an F-gauge records. So F-gauges become an explicit condition on crystals. The height bound p − 2 lets Imai, Kato and Youcis check this condition directly (Proposition 3.3).
+**How the definition helps.** The condition asks the Nygaard filtration to have a local basis, which is the extra structure an F-gauge records. The height bound p − 2 lets Imai, Kato and Youcis check this condition directly (Proposition 3.3).
 
 **Paper or page:** [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282), [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282), [An integral analogue of Fontaine's crystalline functor](https://arxiv.org/abs/2504.16282). It says: “The equivalence R\_𝔛: 𝐕𝐞𝐜𝐭(𝔛<sup>syn</sup>) ⥲ 𝐕𝐞𝐜𝐭<sup>φ,lff</sup>(𝔛\_Δ) given by the forgetful functor is bi-exact.”
 
@@ -4602,11 +4602,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14F20. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a smooth proper formal scheme over 𝒪, its Ainf-cohomology is RΓ(Lη(μ)Rν∗𝔸inf). Here 𝒪 is the valuation ring of a complete algebraically closed extension of ℚₚ, and μ comes from compatible primitive p-power roots of unity.
+**Definition.** Ainf-cohomology of a smooth proper formal scheme over 𝒪 is RΓ(Lη(μ)Rν∗𝔸inf), one complex that specializes both to étale and to crystalline cohomology. Here 𝒪 is the valuation ring of a complete algebraically closed extension of ℚₚ, and μ comes from compatible primitive p-power roots of unity.
 
 **Problem.** Let 𝒳 be a smooth proper formal scheme over the integers of a p-adic field K, with perfect residue field k. The torsion in étale Hⁱ of the geometric generic fibre has length at most that of the torsion in crystalline Hⁱ(𝒳k/W(k)).
 
-**How the definition helps.** After base change to 𝒪, one object RΓ(Ainf) specializes to both cohomologies, so the inequality concerns one module. Inverting μ gives étale cohomology tensored with Ainf\[1/μ\], and base change to W(k̄) gives crystalline cohomology. For a Breuil–Kisin–Fargues module, the torsion length can only grow at the closed point (our own summary of Bhatt–Morrow–Scholze). The work moves into the étale and crystalline comparison theorems for RΓ(Ainf).
+**How the definition helps.** Inverting μ gives étale cohomology tensored with Ainf\[1/μ\], and base change to W(k̄) gives crystalline cohomology, so both come from one module. Its cohomology groups are Breuil–Kisin–Fargues modules, whose torsion can only grow at the closed point (our own summary of Bhatt–Morrow–Scholze). The étale and crystalline comparison theorems for RΓ(Ainf) do the work.
 
 **Paper or page:** [Bounding crystalline torsion from étale torsion](https://arxiv.org/abs/2506.13543). It says: “There is an inequality length(Hⁱ\_ét(𝒳<sub>K</sub>̄, ℤ<sub>p</sub>)<sub>tors</sub>) ≤ length(Hⁱ<sub>crys</sub>(𝒳<sub>k</sub>/W(k))<sub>tors</sub>). In particular, if Hⁱ<sub>crys</sub>(𝒳<sub>k</sub>/W(k))<sub>tors</sub> = 0, then Hⁱ\_ét(𝒳<sub>K</sub>̄, ℤ<sub>p</sub>)<sub>tors</sub> = 0.”
 
@@ -4621,11 +4621,11 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S80. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A p-adic power series is overconvergent on the closed unit disc if it converges on a disc of radius greater than one. For the affine line over 𝔽ₚ, Monsky–Washnitzer cohomology uses these series over ℚₚ and their differentials. Its first group consists of forms f(x) dx modulo derivatives of overconvergent functions.
+**Definition.** A p-adic power series is overconvergent when it converges on some disc of radius greater than one, not only on the closed unit disc. Monsky–Washnitzer cohomology of the affine line over 𝔽ₚ uses such series over ℚₚ, so its first group is overconvergent forms f(x) dx modulo derivatives.
 
 **Problem.** Every overconvergent one-form in one variable over ℚₚ has an overconvergent primitive. Thus the first Monsky–Washnitzer cohomology of the affine line over 𝔽ₚ vanishes.
 
-**How the definition helps.** Integration divides the coefficient of xⁿ⁻¹ by n, increasing its p-adic norm by at most n. Any slightly smaller radius still above one absorbs that factor (our own proof). On the unit disc alone, take coefficients pᵏ in degrees p²ᵏ − 1 for k ≥ 1 and zero elsewhere. Integration gives coefficients p⁻ᵏ, which do not tend to zero (our own example).
+**How the definition helps.** Integration divides the coefficient of xⁿ⁻¹ by n, which multiplies its size by at most n, and any smaller radius still above one absorbs that growth (our own proof). On the closed unit disc alone this fails. Coefficients pᵏ in degrees p²ᵏ − 1 integrate to p⁻ᵏ, which do not tend to zero (our own example).
 
 **nLab:** [Monsky-Washnitzer cohomology](https://ncatlab.org/nlab/show/Monsky-Washnitzer+cohomology). It says: “Monsky-Washnitzer cohomology is a cohomology theory for affine algebraic schemes over fields of positive characteristic.”
 
@@ -4639,11 +4639,11 @@ $$”
 
 *True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a bounded prism (A,I). For a derived A/I-algebra R, its derived prismatic cohomology universally represents maps from R to the derived reductions P ⊗ᴸ<sub>A</sub> A/I. Here P ranges over derived (p,I)-complete δ-algebras over A.
+**Definition.** Fix a bounded prism (A,I). Derived prismatic cohomology of a derived A/I-algebra R is the universal derived (p,I)-complete δ-algebra P over A with a map R → P ⊗ᴸ<sub>A</sub> A/I, so it is left adjoint to reduction modulo I.
 
 **Problem.** The derived prismatic construction sends pushouts of derived A/I-algebras to pushouts of complete derived δ-rings over A.
 
-**How the definition helps.** The universal mapping property describes maps out of either construction by the same pair of compatible maps (our own proof). This gives the pushout formula directly. The comparison theorem identifies the result on p-complete animated algebras with Bhatt and Scholze’s derived prismatic cohomology. Animated algebras here are derived commutative rings modeled by simplicial commutative rings.
+**How the definition helps.** A left adjoint preserves all colimits, pushouts included (our own proof). The comparison theorem identifies this construction on p-complete animated algebras, that is derived commutative rings, with Bhatt and Scholze’s derived prismatic cohomology.
 
 **Paper or page:** [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447v1). It says: “is left adjoint to $- \\otimes <sub>A</sub> \\overline{A}$.”
 
@@ -4661,7 +4661,7 @@ $$”
 
 **Problem.** For quasi-syntomic R, sending a p-divisible group to its prismatic Dieudonné crystal is contravariant and fully faithful, meaning bijective on maps. It is an anti-equivalence, an equivalence that reverses arrows, when R has a quasi-syntomic cover by a perfectoid ring.
 
-**How the definition helps.** One definition works over every quasi-syntomic base, so one theorem covers bases that earlier Dieudonné theories treated one at a time. Over perfectoid rings its value at Fontaine's prism agrees with the Scholze–Weinstein and Lau modules. The work went into the Anschütz–Le Bras proof, which descends from quasiregular semiperfectoid rings (our own summary).
+**How the definition helps.** One definition works over every quasi-syntomic base, so one theorem covers bases that earlier Dieudonné theories treated one at a time. Over perfectoid rings its value at Fontaine’s prism agrees with the Scholze–Weinstein and Lau modules. The Anschütz–Le Bras proof descends from quasiregular semiperfectoid rings (our own summary).
 
 **Wikipedia:** [Dieudonné module](https://en.wikipedia.org/wiki/Dieudonn%C3%A9_module). It says: “Very recently, the notion of prismatic cohomology (due to Bhatt and Scholze) has been used by Anschütz-Le Bras, Madapusi-Mondal, and Mondal to obtain generalisations of the notion of Dieudonné crystal in mixed characteristic.”
 
@@ -4677,11 +4677,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A quasiregular semiperfectoid ring is a p-complete quasisyntomic ring R receiving a map from a perfectoid ring, with Frobenius surjective on R/p. Quasisyntomic means R has bounded p-power torsion and L(R/ℤₚ) ⊗ᴸ<sub>R</sub> R/p has Tor amplitude in degrees −1 and 0.
+**Definition.** A quasiregular semiperfectoid ring is a p-complete quasisyntomic ring R that receives a map from a perfectoid ring and has Frobenius surjective on R/p. Quasisyntomic means bounded p-power torsion and L(R/ℤₚ) ⊗ᴸ<sub>R</sub> R/p of Tor amplitude in degrees −1 and 0.
 
 **Problem.** Let (A, I) be a perfect prism and R a quasiregular semiperfectoid A/I-algebra. Then the prismatic cohomology Δ(R/A) is a ring in degree 0. It is a prism over (A, I), and it is the final object of the prismatic site of R.
 
-**How the definition helps.** Bhatt and Scholze’s Proposition 7.10 constructs a universal prism and identifies its ring with discrete relative prismatic cohomology. Universality gives finality because arrows on the site reverse prism maps (our own explanation).
+**How the definition helps.** Bhatt and Scholze construct a universal prism over R and identify its ring with discrete relative prismatic cohomology (Proposition 7.10). Universality gives finality because arrows in the prismatic site reverse prism maps (our own explanation).
 
 **Paper or page:** [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447). It says: “Then Δ<sub>R</sub>/A is discrete and naturally admits the structure of a prism over (A,I). Moreover, it is the final object in the relative (or absolute) prismatic site of R.”
 
@@ -4713,15 +4713,15 @@ $$”
 
 ### Syntomic cohomology is the fiber of canonical minus Frobenius
 
-**Remember:** Syntomic cohomology: degree-zero piece, compared by inclusion and by Frobenius.
+**Remember:** Syntomic cohomology: degree-zero sections where both routes to M\[1/t\] agree.
 
 *True by definition. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 19D55. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Over 𝔽ₚ, a perfect prismatic F-gauge has a perfect graded complex over ℤₚ\[t,u\]/(tu − p), with t of degree −1 and u of degree 1. It carries a Frobenius identification between the degree-zero parts after inverting u and t.
+**Definition.** Over 𝔽ₚ, a perfect prismatic F-gauge is a perfect graded complex M over ℤₚ\[t,u\]/(tu − p), with t of degree −1 and u of degree 1, plus a Frobenius identification of the degree-zero parts of M\[1/u\] and M\[1/t\]. Its syntomic cohomology is its sections on the glued stack, which compare M⁰ along two routes into M\[1/t\]⁰: invert t, or invert u and apply Frobenius (our own description).
 
 **Problem.** For such a gauge M, syntomic cohomology is the fiber of the difference of two maps from M⁰ to M\[1/t\]⁰. The first localizes at t, and the second localizes at u and applies the Frobenius identification.
 
-**How the definition helps.** Sections on the glued stack form the homotopy equalizer of the two restrictions. In a stable category this equalizer is the fiber of their difference (our own explanation).
+**How the definition helps.** Sections on a stack glued from two pieces form the homotopy equalizer of the two restriction maps. In a stable category this equalizer is the fiber of the difference of the two maps (our own explanation).
 
 **Paper or page:** [Special Values without Semi-Simplicity Via K-Theory](https://arxiv.org/abs/2404.18367). It says: “the syntomic cohomology of a given M ∈ F-Gauge<sup>perf\_Δ</sup> is computed by RΓ<sub>syn</sub>(M) = fib(M⁰ —(t<sup>∞</sup> − φ∘u<sup>∞</sup>)→ M\[1/t\])”
 
@@ -4735,11 +4735,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14L05. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** An F-gauge on X is a vector bundle on its syntomification Xˢʸⁿ. Modulo pⁿ, it has weights in {0,1} if its Hodge–Tate graded restriction vanishes in every other weight (our own description).
+**Definition.** An F-gauge on X is a vector bundle on its syntomification Xˢʸⁿ, one stack that holds Dieudonné-type data over every base. Modulo pⁿ, it has weights in {0,1} if its Hodge–Tate graded restriction vanishes in every other weight (our own description).
 
 **Problem.** Under the base hypotheses of Theorem C, for every n ≥ 1, level-n Barsotti–Tate groups correspond to vector bundles on Xˢʸⁿ modulo pⁿ. The bundles have Hodge–Tate weights in {0,1}, and the equivalence respects Cartier duality.
 
-**How the definition helps.** The stack Xˢʸⁿ gives one category in which Dieudonné-type data live for every n and every base. The group attached to a bundle M is explicit: its points over C are truncated syntomic cohomology of C with coefficients in M. So the work moves into showing that this functor is represented by a truncated Barsotti–Tate group, which is Theorem C of the paper. The weights 0 and 1 match the two Hodge–Tate weights of p-divisible groups (our own).
+**How the definition helps.** The weights 0 and 1 match the two Hodge–Tate weights of a p-divisible group, so these bundles are the right linear data (our own). The group attached to a bundle M has as points over C the truncated syntomic cohomology of C with coefficients in M. Theorem C of the paper shows that this functor is represented by a truncated Barsotti–Tate group.
 
 **Paper or page:** [An algebraicity conjecture of Drinfeld and the moduli of p-divisible groups](https://arxiv.org/abs/2412.10226), [An algebraicity conjecture of Drinfeld and the moduli of p-divisible groups](https://arxiv.org/abs/2412.10226). It says: “Then there is a canonical equivalence of categories 𝒢ₙ : Vect<sub>0,1</sub>(X<sup>syn</sup> ⊗ ℤ/pⁿℤ) ≃→ BTₙ(X) compatible with Cartier duality.”
 
@@ -4749,15 +4749,15 @@ $$”
 
 ### Augmentation powers bound integral length
 
-**Remember:** Each augmentation factor takes one letter to detect.
+**Remember:** Each factor γ − 1 eats at least one form.
 
 *Makes the theorem clean to state or prove.* MSC 14F35 (Homotopy theory and fundamental groups in algebraic geometry), 58A12. arXiv math.AG. Level 4: research.
 
-**Definition.** Fix a base point on a smooth complex algebraic curve and form the real group algebra of its fundamental group. The augmentation ideal J consists of sums whose coefficients add to zero. For s ≥ 0, the quotient by Jˢ⁺¹ kills every product of s + 1 elements of J.
+**Definition.** Fix a base point on a smooth complex algebraic curve and take the real group algebra of its fundamental group. Its augmentation ideal J is spanned by the differences γ − 1 of a loop and the constant loop, and Jˢ⁺¹ is spanned by the products of s + 1 such differences (our own).
 
-**Problem.** Every deformation-invariant linear combination of iterated integrals of length at most s defines a linear functional on this quotient. Length counts the one-forms integrated in order along the loop.
+**Problem.** Every deformation-invariant linear combination of iterated integrals of length at most s (at most s one-forms integrated in order along the loop) vanishes on Jˢ⁺¹. So it defines a linear functional on the quotient of the group algebra by Jˢ⁺¹.
 
-**How the definition helps.** The quotient states a common bound for all loop tests of length at most s (our own). The ideal J is spanned by differences γ − 1, where 1 denotes the constant loop (our own). Chen’s composition formula assigns consecutive blocks of forms to the factors of a product (our own). Subtracting the constant loop cancels every empty block, so s forms cannot supply s + 1 factors (our own).
+**How the definition helps.** Chen’s formula splits an integral of r forms over a product of loops into consecutive blocks of forms, one block per factor (our own). Each factor γ − 1 cancels the empty block, so it needs at least one form (our own). So s forms cannot supply s + 1 factors, and the integral vanishes on Jˢ⁺¹ (our own).
 
 **Paper or page:** [Higher order modular forms and mixed Hodge theory](https://arxiv.org/abs/0909.0714). It says: “⟨∫ ω₁ … ωᵣ, ∏ᵢ₌₁ˢ (αᵢ − 1)⟩ = { ∏ᵢ₌₁ˢ ∫αⱼ ωⱼ if r = s; 0 if r &lt; s }.”
 
@@ -4767,15 +4767,15 @@ $$”
 
 ### Length two detects puncture commutators
 
-**Remember:** Two letters can tell which puncture comes first.
+**Remember:** Ordered integrals notice which puncture is circled first.
 
 *Makes the theorem clean to state or prove.* MSC 14F35 (Homotopy theory and fundamental groups in algebraic geometry), 58A12. arXiv math.AG. Level 4: research.
 
-**Definition.** On the complex plane minus 0 and 1, measure winding with α = dz/(2πiz) and β = dz/(2πi(z − 1)). Integrate α then β over increasing times on one path. Choose positive based loops a and b around their respective punctures, each with zero winding around the other.
+**Definition.** On ℂ minus 0 and 1, the ordered integral of α = dz/(2πiz) then β = dz/(2πi(z − 1)) along a path integrates α at an earlier time and β at a later time. Take positive based loops a and b around 0 and 1, each with zero winding around the other puncture.
 
 **Problem.** The ordered integral on the loop aba⁻¹b⁻¹ equals one, although every ordinary integral of a closed one-form on that loop vanishes.
 
-**How the definition helps.** Chen’s formula gives I(uv) = I(u) + I(v) + A(u)B(v), where A and B integrate α and β. Applying it to the commutator leaves A(a)B(b) − A(b)B(a) = 1 (our own calculation). Ordinary closed-form integrals are additive and therefore vanish on commutators.
+**How the definition helps.** Chen’s formula I(uv) = I(u) + I(v) + A(u)B(v), with A and B the single integrals of α and β, makes the ordered integral depend on order. On the commutator the terms leave A(a)B(b) − A(b)B(a) = 1 (our own calculation). Ordinary closed-form integrals are additive, so they vanish on commutators.
 
 **Paper or page:** [Higher order modular forms and mixed Hodge theory](https://arxiv.org/abs/0909.0714). It says: “⟨∫ ω₁ … ωᵣ, ∏ᵢ₌₁ˢ (αᵢ − 1)⟩ = { ∏ᵢ₌₁ˢ ∫αⱼ ωⱼ if r = s; 0 if r &lt; s }.”
 
@@ -4789,11 +4789,11 @@ $$”
 
 *True by definition.* MSC 14F35 (Homotopy theory and fundamental groups in algebraic geometry). arXiv math.AG. Level 4: research.
 
-**Definition.** A unipotent connection has a finite filtration by subconnections with trivial successive quotients. A universal pointed unipotent connection is a pro-object U with a vector e at the base point. For every vector v there in any unipotent connection V, exactly one connection map U → V sends e to v.
+**Definition.** A universal pointed unipotent connection is a pro-object U with a vector e at the base point. For every vector v at the base point of any unipotent connection V, one filtered by subconnections with trivial quotients, exactly one connection map U → V sends e to v.
 
 **Problem.** Transporting the universal marked vector determines transport of every starting vector in every unipotent connection on the curve.
 
-**How the definition helps.** Universality replaces a separate transport calculation in each bundle with the image of one transported vector (our own). A map respecting connections commutes with transport along every path (our own). The substantive theorem identifies the explicit elliptic Knizhnik–Zamolodchikov–Bernard equation, marked by 1, with this universal object.
+**How the definition helps.** A connection map commutes with transport along every path, so transporting e and mapping it to V gives the transport of v (our own). The substantive theorem identifies the explicit elliptic Knizhnik–Zamolodchikov–Bernard equation, marked by 1, with this universal object.
 
 **Paper or page:** [The de Rham period map for punctured elliptic curves and the KZB equation](https://arxiv.org/abs/2306.02171). It says: “represents the universal unipotent pointed connection on X.”
 
@@ -4807,9 +4807,9 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** For compatible primitive p-power roots ε, put q = \[ε\] and μ = q − 1. The relative AΩ complex applies Lη(μ) to the derived direct image of the pro-étale Ainf sheaf. In a torus coordinate T, its local q-derivative sends Tⁿ to \[n\]q Tⁿ⁻¹, where \[n\]q = (qⁿ − 1)/(q − 1).
+**Definition.** The relative AΩ complex applies Lη(μ) to the derived direct image of the pro-étale Ainf sheaf, where μ = q − 1 and q = \[ε\] for compatible primitive p-power roots of unity ε. In a torus coordinate T it is locally a q-de Rham complex, whose q-derivative sends Tⁿ to \[n\]q Tⁿ⁻¹ with \[n\]q = 1 + q + ⋯ + qⁿ⁻¹.
 
-**Problem.** Let 𝔛 → 𝔜 be a smooth map of p-adic formal schemes over the integers 𝒪 of a complete algebraically closed extension of ℚₚ. Derived base change of AΩ along θ gives the relative de Rham complex up to modules annihilated by the maximal ideal of 𝒪. The comparison is exact when 𝔜 is locally of finite type over 𝒪.
+**Problem.** Let 𝔛 → 𝔜 be a smooth map of p-adic formal schemes over 𝒪, the integers of a complete algebraically closed extension of ℚₚ. Derived base change of AΩ along θ gives the relative de Rham complex up to modules killed by the maximal ideal of 𝒪. When 𝔜 is locally of finite type over 𝒪, the comparison is exact.
 
 **How the definition helps.** Fontaine’s map θ sends q to one, so \[n\]q specializes to n and the q-derivative becomes ordinary differentiation (our own calculation). Gaisin–Koshikawa’s de Rham comparison supplies the local model and the required derived base change.
 
@@ -4830,7 +4830,7 @@ $$”
 
 **Problem.** The periods form a subring of the complex numbers that contains the rational numbers.
 
-**How the definition helps.** Use the equivalent description of real periods as differences of finite volumes. Products of domains multiply volumes by Fubini, and disjoint unions add volumes after padding dimensions with unit intervals (our own argument). Rational lengths give nonnegative rationals, and differences give their negatives. The usual complex arithmetic formulas now give closure for complex periods.
+**How the definition helps.** Real periods are exactly the differences of volumes of bounded semialgebraic sets defined over ℚ, so it suffices to add and multiply volumes. A product of domains multiplies volumes by Fubini, and a disjoint union adds them after padding dimensions with unit intervals (our own argument). Rationals are lengths of intervals, and the usual complex arithmetic formulas then give closure for complex periods.
 
 **Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “Sums and products of periods remain periods, so that the periods form a ring”
 
@@ -4847,11 +4847,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 13D03, 14F30. arXiv math.AG, math.AC. Level 4: research.
 
-**Definition.** A universal filtered divided power thickening of A is terminal among filtered derived divided power R-algebras thickening A. Every such thickening admits a contractible space of filtration-preserving divided power maps to it over A.
+**Definition.** A universal filtered divided power thickening of A is a terminal one: every filtered derived divided power R-algebra thickening A has a contractible space of filtration-preserving divided power maps to it over A.
 
 **Problem.** For a derived commutative algebra A over R, derived de Rham cohomology with its Hodge filtration is the largest filtered divided power thickening of A. For a smooth map R → A it agrees with the classical de Rham complex.
 
-**How the definition helps.** With derived divided power algebras defined, derived de Rham cohomology gets a characterization by a universal property. Our own explanation is that the older definition, due to Illusie, uses a chosen resolution of A. A universal property determines the object up to unique equivalence, so no choice of resolution enters. The abstract says the approach recovers Illusie's derived de Rham cohomology.
+**How the definition helps.** A terminal object is unique up to unique equivalence, so derived de Rham cohomology defined this way needs no choices. The older definition, due to Illusie, uses a chosen resolution of A (our own explanation). The abstract says the approach recovers Illusie’s derived de Rham cohomology.
 
 **Paper or page:** [Divided Powers and Derived De Rham Cohomology](https://arxiv.org/abs/2405.05153v2). It says: “together with the Hodge filtration on it, in terms of the universal property as the largest filtered divided power thickening of A.”
 
@@ -4865,11 +4865,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** To compute p-completed derived de Rham cohomology dR(B/A), choose a simplicial polynomial A-algebra resolution of B. Apply the de Rham complex degreewise, realize the result, and take its derived p-completion.
+**Definition.** Derived de Rham cohomology dR(B/A) extends the de Rham complex to every A-algebra B, including non-smooth ones such as A/I. It resolves B by simplicial polynomial A-algebras, applies the de Rham complex degreewise, realizes the result, and takes its derived p-completion.
 
 **Problem.** Let (A, I) be a bounded prism and X a smooth proper formal scheme over A/I. The Frobenius twist of prismatic cohomology of X, tensored with dR((A/I)/A), is dR(X/A).
 
-**How the definition helps.** The resolution defines dR((A/I)/A) for the quotient map itself. The prismatic de Rham comparison uses this complex as its coefficient algebra after Frobenius pullback (our own explanation).
+**How the definition helps.** Because dR is defined for the quotient map A → A/I, it can serve as the coefficient algebra of the comparison. After Frobenius pullback, prismatic cohomology tensored with this algebra gives dR(X/A), functorially in X (our own explanation).
 
 **Paper or page:** [Comparison of prismatic cohomology and derived de Rham cohomology](https://arxiv.org/abs/2012.14064). It says: “Let (A,I) be a bounded prism, and let X be a smooth proper (p-adic) formal scheme over Spf(A/I). Then we have a functorial isomorphism RΓ\_Δ(X/A) ⊗ᴸ<sub>A, φ<sub>A</sub></sub> A ⊗ᴸ<sub>A</sub> dR<sup>∧<sub></sup>(A/I)/A</sub> ≅ RΓ(X, dR<sup>∧<sub>−</sup>/A</sub>),”
 
@@ -4879,15 +4879,15 @@ $$”
 
 ### Derived F-zips exist for every smooth proper map in characteristic p
 
-**Remember:** Keep the complexes when the Hodge–de Rham spectral sequence does not degenerate.
+**Remember:** Filter the de Rham complex itself, not its cohomology.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14F30, 14C30. arXiv math.AG. Level 4: research.
 
-**Definition.** A derived F-zip in characteristic p consists of a perfect complex with finite descending and ascending filtrations by perfect complexes. For each index it includes an equivalence from the Frobenius pullback of the descending graded piece to the corresponding ascending piece.
+**Definition.** A derived F-zip in characteristic p is a perfect complex with a finite descending and a finite ascending filtration by perfect complexes. For each index it has an equivalence from the Frobenius pullback of the descending graded piece to the ascending graded piece.
 
 **Problem.** Every smooth proper morphism in characteristic p gives a derived F-zip. This derived F-zip is strong exactly when the Hodge–de Rham spectral sequence degenerates and the Hodge sheaves are locally free.
 
-**How the definition helps.** The Hodge and conjugate filtrations exist on the de Rham complex before taking cohomology. Cartier comparison identifies their graded pieces after Frobenius pullback (our own explanation). The strongness criterion tests degeneration and local freeness on cohomology.
+**How the definition helps.** The de Rham complex carries the Hodge and conjugate filtrations at the level of complexes, before taking cohomology. The Cartier isomorphism identifies their graded pieces after Frobenius pullback (our own explanation). The strongness criterion then tests degeneration and local freeness on cohomology.
 
 **Paper or page:** [Derived F-zips](https://arxiv.org/abs/2208.01517v5), [Derived F-zips](https://arxiv.org/abs/2208.01517v5). It says: “As there are Enriques-surfaces in characteristic 2 with non-degenerate Hodge-de Rham spectral sequence, this gives a new approach, which could previously not be obtained by the classical theory of F-zips.”
 
@@ -4901,11 +4901,11 @@ $$”
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 4: research.
 
-**Definition.** On a smooth projective complex curve, remove finitely many points. Take a vector bundle with a flat algebraic connection, a rule for differentiating sections with zero curvature. Define middle de Rham cohomology as the image of compactly supported cohomology in ordinary cohomology.
+**Definition.** On a smooth projective complex curve minus finitely many points, take a vector bundle with a flat algebraic connection. Its middle de Rham cohomology is the image of compactly supported cohomology in ordinary cohomology.
 
 **Problem.** Middle cohomology in degree one pairs perfectly with middle cohomology of the dual connection. A perfect pairing identifies either space with the linear dual of the other.
 
-**How the definition helps.** Taking the image removes precisely the classes that pair to zero with everything on the other side. Duality first pairs compactly supported cohomology of either connection with ordinary cohomology of its dual. The maps that forget supports are transposes for those pairings. In our own linear algebra argument, their kernels are exactly the classes one must divide out to obtain a perfect pairing.
+**How the definition helps.** Taking the image removes exactly the classes that pair to zero with everything on the other side (our own linear algebra argument). Duality pairs compactly supported cohomology of a connection with ordinary cohomology of its dual, and the maps that forget supports are transposes for these pairings. Their kernels are the classes divided out, so the pairing on images is perfect (our own).
 
 **Paper or page:** [Quadratic relations between periods of connections](https://arxiv.org/abs/2005.11525v4). It says: “These pairings are non-degenerate and their matrices satisfy the following relations”
 
@@ -4915,15 +4915,15 @@ $$”
 
 ### Period pairings make Bessel matrices invertible
 
-**Remember:** Recognize the Bessel matrix as a comparison matrix.
+**Remember:** Perfect pairings have invertible matrices, and Bessel moments form one.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG. Level 4: research.
 
-**Definition.** For a connection with a period pairing, choose bases of de Rham cohomology and rapid decay homology. Its period matrix records the integral of each basis form over each basis cycle.
+**Definition.** For a connection whose de Rham cohomology and rapid decay homology are paired perfectly by integration, the period matrix records the integral of each basis form over each basis cycle.
 
 **Problem.** Fix k ≥ 1 and put n = ⌊(k − 1)/2⌋. The matrix indexed by 0 ≤ b,j ≤ n with entries ∫₀∞ I₀(t)ᵇ K₀(t)ᵏ⁻ᵇ t²ʲ dt is invertible. Here I₀ and K₀ are the order-zero modified Bessel functions.
 
-**How the definition helps.** Writing the integrals as a period matrix reduces invertibility to a perfect pairing, one that detects every nonzero vector on either side. Corollary 26 identifies the Bessel matrix with this matrix up to nonzero row and column factors. In our own argument, these factors preserve invertibility. Finding the bases and computing the integrals supply the substantive comparison.
+**How the definition helps.** The matrix of a perfect pairing is invertible in any bases. Corollary 26 identifies the Bessel matrix with this period matrix up to nonzero row and column factors, which keep it invertible (our own). The substantive work is finding the bases and computing the integrals.
 
 **Paper or page:** [On the Periods of Twisted Moments of the Kloosterman Connection](https://arxiv.org/abs/2306.15216v2). It says: “Moreover, P is invertible.”
 
@@ -4937,11 +4937,11 @@ $$”
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14C15, 18M25. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a neutral Tannakian category of motives over ℚ with de Rham and Betti fiber functors. For every commutative ℚ-algebra R, the period torsor parametrizes tensor-natural isomorphisms between the two functors after scalar extension to R. The Betti motivic Galois group parametrizes tensor-natural automorphisms of the Betti functor.
+**Definition.** The period torsor is the scheme of tensor-natural isomorphisms from the de Rham to the Betti fiber functor on a neutral Tannakian category of motives over ℚ. The Betti motivic Galois group, the tensor-natural automorphisms of the Betti functor, acts on it by composition.
 
 **Problem.** The algebra of formal periods has a coaction, an algebra map describing how its functions change under Betti symmetries.
 
-**How the definition helps.** In our own argument, a Betti symmetry acts on every comparison by composition. Evaluating a function on the resulting comparison gives the coaction. Associativity gives its composition law. The torsor theorem identifies this function algebra with formal periods originally given by geometric generators and relations.
+**How the definition helps.** A Betti symmetry acts on every comparison by composition, and evaluating a function after this action gives the coaction (our own argument). Associativity of composition gives its composition law. The torsor theorem identifies this function algebra with formal periods given by geometric generators and relations.
 
 **nLab:** [motivic Galois group](https://ncatlab.org/nlab/show/motivic+Galois+group). It says: “We show that the spectrum of Kontsevich's algebra of formal periods is a torsor under the motivic Galois group for mixed motives over the rational numbers.”
 
@@ -4954,11 +4954,11 @@ $$”
 
 ### Rapid decay recovers missing periods
 
-**Remember:** Use paths to infinity, but only where the coefficient dies.
+**Remember:** Paths may run to infinity, but only where the weight dies.
 
 *Makes the theorem clean to state or prove.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** On a smooth complex affine curve, weight integrals by exp(−f) for a regular function f. Complete the curve by adding points at infinity. Rapid decay homology allows paths to end there in directions where the weight tends to zero faster than every power of the local distance.
+**Definition.** On a smooth complex affine curve with a regular function f, rapid decay homology uses paths that may run off to the points at infinity. They may end there only in directions where the weight exp(−f) tends to zero faster than every power of the local distance.
 
 **Problem.** The complex affine line has zero ordinary first homology. For f(x) = x², its rapid decay homology contains a class with nonzero integral.
 
@@ -4972,7 +4972,7 @@ $$”
 
 ### Tate inversion extends the period algebra
 
-**Remember:** Invert the Tate line to invert its comparison.
+**Remember:** Invert the Tate line, and its period 2πi gets inverted.
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14C15. arXiv math.AG, math.NT. Level 4: research.
 
@@ -4980,7 +4980,7 @@ $$”
 
 **Problem.** The numerical period algebra of all Nori motives over ℚ is the effective period algebra with 1/(2πi) adjoined.
 
-**How the definition helps.** Adjoining the inverse line turns its period into a reciprocal because tensor products multiply comparison coefficients. In our own calculation, tensoring an effective object with inverse powers divides its coefficients by powers of 2πi. Every full motive arises this way. Nori’s theorem supplies the result that this construction gives a category with duals.
+**How the definition helps.** Tensor products multiply periods, so inverting the Tate line inverts its period 2πi. Every full motive is an effective one tensored with an inverse power of the Tate line, so its periods are effective periods divided by powers of 2πi (our own calculation). Nori’s theorem shows that this construction gives a category with duals.
 
 **Paper or page:** [Functional Transcendence of Periods and the Geometric André–Grothendieck Period Conjecture](https://arxiv.org/abs/2208.05182v2). It says: “by inverting ℋ¹ι(𝔾ₘ, {1}) is a rigid tensor category with fiber functor Hι.”
 
@@ -4995,7 +4995,7 @@ $$”
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry), 14C15, 18M25. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Let T range over tensor-natural isomorphisms from de Rham to Betti realization after scalar extension. For an object M, choose a de Rham vector v and a Betti linear functional λ. Their motivic period is the function T ↦ λ(Tv).
+**Definition.** A motivic period of an object M is the function that sends each tensor-natural comparison T from de Rham to Betti realization, after scalar extension, to λ(Tv). Here v is a de Rham vector of M and λ is a Betti linear functional on M.
 
 **Problem.** Multiplying two motivic periods gives the period of the tensor product, with vector v ⊗ w and functional λ ⊗ μ.
 
@@ -5013,11 +5013,11 @@ $$”
 
 *True by definition.* MSC 14F40 (de Rham cohomology and algebraic geometry). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Let f be a regular function on a smooth complex affine variety. For integrals weighted by exp(−f), define the twisted derivative of a form ω as Dω = dω − df ∧ ω. A rapid decay cycle may approach infinity where the weight decays faster than every power of the distance to the boundary.
+**Definition.** For a regular function f on a smooth complex affine variety, the twisted derivative Dω = dω − df ∧ ω is the one with exp(−f)Dω = d(exp(−f)ω) (our own calculation). A rapid decay cycle may approach infinity only where exp(−f) decays faster than every power of the distance to the boundary.
 
 **Problem.** The weighted integral of a twisted exact form on a rapid decay cycle is zero. Ordinary exactness cannot replace twisted exactness because dx integrates to √π with weight exp(−x²) on the real line.
 
-**How the definition helps.** The twisted derivative includes the term from differentiating the weight. Our own calculation gives exp(−f)Dω = d(exp(−f)ω). Stokes’ theorem gives zero on a rapid decay cycle because decay removes the boundary term for algebraic forms. The comparison theorem proves the stronger result that the pairing detects every nonzero class.
+**How the definition helps.** The weighted integral of Dω is the integral of an exact form, so Stokes’ theorem gives zero. On a rapid decay cycle the boundary term vanishes, because the weight beats the growth of every algebraic form (our own).
 
 **Paper or page:** [Une introduction aux périodes](https://arxiv.org/abs/2210.03407v1). It says: “L'intégration induit un accouplement parfait”
 
@@ -5027,7 +5027,7 @@ $$”
 
 ### Building motives by inverting affine-line projections makes M(X × 𝔸¹) ≅ M(X)
 
-**Remember:** Once projections along affine lines are invertible, adding an affine line changes nothing.
+**Remember:** Invert the affine-line projections, and adding an affine line changes nothing.
 
 *True by definition. Confidence: medium.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14C15. arXiv math.AG. Level 4: research.
 
@@ -5035,7 +5035,7 @@ $$”
 
 **Problem.** For a smooth variety X, the projection X × 𝔸¹ → X induces an isomorphism of effective motives.
 
-**How the definition helps.** In the localization definition, this projection is one of the maps made invertible, so the claim holds by definition. In the other model, one must show that the motives of X × 𝔸¹ and X agree after passing to 𝔸¹-invariant complexes (our own). The work moves into the theorem that the two models are equivalent. That theorem uses Voevodsky's results on homotopy-invariant sheaves with transfers (our own).
+**How the definition helps.** The projection is one of the maps made invertible, so the isomorphism holds by definition. The work moves into the theorem that this model is equivalent to the one built from 𝔸¹-invariant complexes. That theorem uses Voevodsky’s results on homotopy-invariant sheaves with transfers (our own).
 
 **Paper or page:** [Integral cohomology of dual boundary complexes is motivic](https://arxiv.org/abs/2408.17301v1). It says: “M(X × 𝔸¹) ≅ M(X)”
 
@@ -5049,11 +5049,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 4: research.
 
-**Definition.** Start with the rational motives ℚ(n), the basic coefficient objects in each integer weight n. Generate a subcategory by allowing shifts of degree, cones that encode maps, and arbitrary direct sums. This is the localizing category of mixed Tate motives.
+**Definition.** The localizing category of mixed Tate motives is the smallest subcategory of rational motives that contains the Tate motives ℚ(n) for every integer n and is closed under shifts, cones and arbitrary direct sums.
 
 **Problem.** Over a perfect field, each rational motive M receives a universal map T → M from a mixed Tate motive. Every map from a mixed Tate motive to M factors uniquely through it.
 
-**How the definition helps.** Closure under arbitrary sums and generation by compact Tate objects allow Brown representability. For each motive M, the functor Hom(−,M) on mixed Tate motives is cohomological and sends sums to products. Its representing object T gives the universal map T → M (our own argument).
+**How the definition helps.** Closure under arbitrary sums, with the compact generators ℚ(n), lets Brown representability apply. For each motive M, the functor Hom(−,M) on mixed Tate motives is cohomological and sends sums to products, so a Tate motive T represents it (our own argument). The representing map T → M is the universal one.
 
 **nLab:** [mixed Tate motive](https://ncatlab.org/nlab/show/mixed+Tate+motive). It says: “it follows from a theorem of Amnon Neeman that the inclusion admits a right adjoint.”
 
@@ -5063,15 +5063,15 @@ $$”
 
 ### Dual motives give Poincaré duality
 
-**Remember:** Dualize the motive to reverse its cohomology arrows.
+**Remember:** A motive’s dual is itself, twisted down by its dimension.
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14C15. arXiv math.AG. Level 4: research.
 
-**Definition.** For a smooth projective variety X of pure dimension d over a perfect field, let M denote its motive. Define motivic cohomology Hᵖ˒ᑫ(X) as Hom(M,ℤ(q)\[p\]) and motivic homology Hₚ˒ᑫ(X) as Hom(ℤ(q)\[p\],M).
+**Definition.** For a smooth projective variety X of pure dimension d over a perfect field, with motive M, motivic cohomology Hᵖ˒ᑫ(X) is Hom(M,ℤ(q)\[p\]) and motivic homology Hₚ˒ᑫ(X) is Hom(ℤ(q)\[p\],M). The motive M is dualizable, with dual M(−d)\[−2d\].
 
 **Problem.** If X has pure dimension d, motivic cohomology H(p,q) is canonically isomorphic to motivic homology in degree 2d − p and weight d − q.
 
-**How the definition helps.** Dualizing reverses each map M → ℤ(q)\[p\]. The smooth projective duality theorem identifies the dual of M with M(−d)\[−2d\]. Moving this twist and shift to the source gives a map ℤ(d−q)\[2d−p\] → M (our own deduction).
+**How the definition helps.** Dualizing turns a map M → ℤ(q)\[p\] into a map ℤ(−q)\[−p\] → M(−d)\[−2d\]. Twisting by d and shifting by 2d gives a map ℤ(d−q)\[2d−p\] → M (our own deduction).
 
 **Wikipedia:** [Motivic cohomology](https://en.wikipedia.org/wiki/Motivic_cohomology). It says: “there is a Poincaré duality isomorphism”
 
@@ -5103,11 +5103,11 @@ $$”
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 4: research.
 
-**Definition.** Effective motives allow positive Tate twists, which tensor an object with the weight-one coefficient object ℤ(1). Shifting ℤ(1) by two degrees gives the motive of the projective line modulo the summand contributed by its base point. Define stable motives by formally making the Tate twist invertible.
+**Definition.** Stable motives are formed from effective motives by formally making the Tate twist invertible, where the twist tensors with ℤ(1) and ℤ(1)\[2\] is the reduced motive of the projective line.
 
 **Problem.** Tensoring both source and target with ℤ(1) preserves all groups of maps between stable motives.
 
-**How the definition helps.** An inverse twist undoes a simultaneous twist of both objects and therefore of every map between them. Our own comparison concerns the effective category, where an inverse twist is unavailable. Voevodsky’s cancellation theorem proves that passing to stable motives preserves the groups of maps between effective motives.
+**How the definition helps.** In stable motives, tensoring by ℤ(1) has an inverse, so it is a bijection on every group of maps. Voevodsky’s cancellation theorem proves the harder fact that passing to stable motives preserves the groups of maps between effective motives.
 
 **nLab:** [motive](https://ncatlab.org/nlab/show/motive). It says: “at the Tate motive ℤ(1)\[2\].”
 
@@ -5117,11 +5117,11 @@ $$”
 
 ### The Kummer pair gives an extension
 
-**Remember:** Use two sections, then remove one to see the extension.
+**Remember:** Kummer motive: the loop class plus a path between two points.
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 11G55. arXiv math.AG, math.KT. Level 4: research.
 
-**Definition.** On S = ℙ¹ℤ ∖ {0,1,∞}, let z denote the affine coordinate. The Kummer motive is the cohomological motive of 𝔾ₘ over S relative to t = 1 and t = 1/z, shifted by one.
+**Definition.** Over S = ℙ¹ℤ ∖ {0,1,∞} with coordinate z, the Kummer motive is the cohomological motive of 𝔾ₘ over S relative to the two sections t = 1 and t = 1/z, shifted by one.
 
 **Problem.** The Kummer motive is an extension of the weight −1 Tate object ℚ(−1) by the unit ℚ(0) in the abelian category of mixed Tate motives.
 
@@ -5139,11 +5139,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14M17. arXiv math.AG, math.AT. Level 4: research.
 
-**Definition.** For each n ≥ 1, define Q₂ₙ in affine (2n + 1)-space over ℤ by ∑ᵢ₌₁ⁿ xᵢyᵢ = z(1 − z).
+**Definition.** For each n ≥ 1, Q₂ₙ is the affine quadric ∑ᵢ₌₁ⁿ xᵢyᵢ = z(1 − z) in (2n + 1)-space over ℤ. It is smooth over ℤ and a homogeneous space for SO₂ₙ₊₁ over ℤ.
 
 **Problem.** Over every field, including fields of characteristic 2, Q₂ₙ satisfies affine representability (Theorem 2). That is, 𝔸¹-homotopy classes of maps from a smooth affine scheme into Q₂ₙ are naive homotopy classes.
 
-**How the definition helps.** One equation over ℤ gives a single model of the sphere that works in every characteristic. The paper shows that Q₂ₙ is a homogeneous space for SO₂ₙ₊₁ over ℤ, and this gives affine representability. In our own explanation, the usual sphere, a sum of squares equal to 1, is not smooth in characteristic 2.
+**How the definition helps.** The same equation is smooth in every characteristic, unlike a sum of squares equal to 1, which is singular in characteristic 2 (our own explanation). The paper’s identification of Q₂ₙ as a homogeneous space for SO₂ₙ₊₁ then gives affine representability.
 
 **Paper or page:** [Affine representability of quadrics revisited](https://arxiv.org/abs/2104.08208v2). It says: “the identification as a homogeneous space allows us to give a characteristic independent affine representability statement for motivic spheres.”
 
@@ -5157,11 +5157,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 19E15. arXiv math.AG, math.KT. Level 4: research.
 
-**Definition.** For rational Tate motives over S, the mixed Tate heart is the intersection of the two halves of the motivic t-structure. Its objects have motivic cohomological degree zero.
+**Definition.** For rational Tate motives over S, the mixed Tate heart is the abelian category of objects lying in both halves of the motivic t-structure, that is, in motivic cohomological degree zero.
 
 **Problem.** Let S be a nonempty open subscheme of the spectrum of the integers of a number field. For each integer n, rational motivic cohomology H¹(S,ℚ(n)) classifies extensions of ℚ(0) by ℚ(n) in the mixed Tate heart.
 
-**How the definition helps.** A short exact sequence in the heart gives a connecting map from ℚ(0) to ℚ(n)\[1\]. The t-structure identifies these maps bijectively with extension classes. By definition their group is rational motivic cohomology H¹(S,ℚ(n)) (our own deduction).
+**How the definition helps.** In the heart of any t-structure, extensions of A by B correspond bijectively to maps A → B\[1\] in the triangulated category. With A = ℚ(0) and B = ℚ(n), these maps form rational motivic cohomology H¹(S,ℚ(n)) by definition (our own deduction).
 
 **Paper or page:** [Mixed Artin-Tate motives over number rings](https://arxiv.org/abs/1003.1267). It says: “Both categories enjoy a non-degenerate t-structure called motivic t-structure.”
 
@@ -5175,9 +5175,9 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14F42 (Motivic cohomology; motivic homotopy theory), 14F20. arXiv math.AG. Level 4: research.
 
-**Definition.** For the étale-to-Zariski morphism ε, put K = Rε∗μₘ⊗ⁿ on X. Its canonical truncation triangle is τ≤ₙK → K → τ&gt;ₙK → (τ≤ₙK)\[1\].
+**Definition.** Push étale cohomology with μₘ⊗ⁿ coefficients to the Zariski site of X, giving K = Rε∗μₘ⊗ⁿ. Cut K at degree n: τ≤ₙK keeps its cohomology sheaves up to degree n, τ&gt;ₙK keeps those above, and τ≤ₙK → K → τ&gt;ₙK is a triangle.
 
-**Problem.** Let X be smooth over a perfect field, let m be invertible there, and take n ≥ 0. Mod-m motivic and étale motivic cohomology in degree i occur consecutively in a long exact sequence. Next come degree-i refined unramified cohomology of index i − n − 1 and degree-(i + 1) motivic cohomology.
+**Problem.** Let X be smooth over a perfect field, with m invertible there and n ≥ 0. Mod-m weight-n cohomology fits in a long exact sequence: motivic in degree i, étale motivic in degree i, refined unramified in degree i with index i − n − 1, motivic in degree i + 1.
 
 **How the definition helps.** Hypercohomology takes the truncation triangle to a long exact sequence. Beilinson–Lichtenbaum identifies the lower truncation with the motivic complex. Alexandrou and Schreieder identify the upper term with refined unramified cohomology, interpreted as zero at negative indices.
 
@@ -5194,11 +5194,11 @@ $$”
 
 *True by definition.* MSC 14F42 (Motivic cohomology; motivic homotopy theory). arXiv math.AG. Level 4: research.
 
-**Definition.** Let ε map the étale site of X to its Zariski site and put K = Rε∗μℓ⊗ʲ. The canonical map τ≤ⱼK → K preserves cohomology sheaves through degree j, and its source has zero cohomology sheaves above j.
+**Definition.** Push étale cohomology with μℓ⊗ʲ coefficients to the Zariski site of X, giving K = Rε∗μℓ⊗ʲ. Its truncation τ≤ⱼK keeps exactly the cohomology sheaves of K in degrees up to j and none above.
 
 **Problem.** Let X be smooth over a field, with ℓ a prime invertible there and j ≥ 0. In weight j the mod-ℓ motivic-to-étale cycle map is bijective through degree j and injective in degree j + 1.
 
-**How the definition helps.** The cone has no cohomology through degree j, so its hypercohomology vanishes there. The long exact sequence gives the stated bijections and injection. Beilinson–Lichtenbaum identifies the truncation map with the cycle comparison (our own deduction).
+**How the definition helps.** The cone of τ≤ⱼK → K has cohomology sheaves only above degree j, so its hypercohomology vanishes through degree j. The long exact sequence then gives bijections through degree j and an injection in degree j + 1. Beilinson–Lichtenbaum identifies τ≤ⱼK with the mod-ℓ motivic complex, so this map is the cycle map (our own deduction).
 
 **Wikipedia:** [Motivic cohomology](https://en.wikipedia.org/wiki/Motivic_cohomology). It says: “is an isomorphism for all j ≥ i and is injective for all j ≥ i − 1.”
 
@@ -5212,11 +5212,11 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)), 14D23. arXiv math.AG. Level 4: research.
 
-**Definition.** For a finite group G acting on a point, the atlas nerve of its classifying stack has Gⁿ in degree n. The face maps drop an endpoint or multiply adjacent entries, and degeneracy maps insert the identity.
+**Definition.** For a finite group G acting on a point, cohomology of the classifying stack is computed on its atlas nerve, which has Gⁿ in degree n, so its cochains are the group cochains of G. Its faces drop an end entry or multiply neighbouring entries, and its degeneracies insert the identity.
 
 **Problem.** For the classifying stack of the complex m-th roots of unity, degree two integral Deligne–Beilinson cohomology of weight one is ℤ/m. The ordinary point has zero in that degree and weight.
 
-**How the definition helps.** The overlap cochains compute group cohomology, so they retain the symmetry group that disappears on the ordinary point (our own). Averaging over the group kills positive-degree complex cohomology, leaving its degree two integral cohomology ℤ/m (our own). The descent theorem justifies computing on these overlaps (our own).
+**How the definition helps.** Overlap cochains compute group cohomology, which keeps the symmetry group that the ordinary point forgets (our own). Averaging over the group kills positive-degree complex cohomology, so what remains in degree two and weight one is H²(μₘ,ℤ) = ℤ/m (our own). The descent theorem justifies computing on these overlaps (our own).
 
 **Paper or page:** [Deligne-Beilinson cohomology of the universal K3 surface](https://arxiv.org/abs/2201.02367v1). It says: “Let 𝒳 be a Deligne-Mumford stack of finite type over ℂ. Then there is an exact sequence”
 
@@ -5234,7 +5234,7 @@ $$”
 
 **Problem.** Between smooth projective complex varieties, applying a correspondence of degree r before taking the Abel–Jacobi invariant gives the same result as applying it afterwards. The target uses codimension p+r for an input of codimension p.
 
-**How the definition helps.** The Deligne cycle class respects each operation that defines the correspondence (our own). This replaces a comparison of integrals on bounding chains by the product and pushforward theorems for cycle classes (our own). Identifying the result with Griffiths’s invariant still uses the comparison theorem (our own).
+**How the definition helps.** The Abel–Jacobi invariant is a Deligne cycle class, and Deligne cycle classes respect pullback, products and pushforward, the three steps of a correspondence (our own). This replaces a comparison of integrals on bounding chains (our own). Identifying the Deligne class with Griffiths’s invariant still uses the comparison theorem (our own).
 
 **Paper or page:** [Vanishing criteria for Ceresa cycles](https://arxiv.org/abs/2406.03891v2). It says: “Moreover for every α ∈ CHᵖ(X)ₕₒₘ, γ∗(AJₓᵖ(α)) = AJʏᵖ⁺ʳ(γ∗(α)).”
 
@@ -5285,11 +5285,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
 
-**Definition.** Choose a smooth projective compactification of X with normal crossings boundary D. The real Deligne–Beilinson complex computes the homotopy fiber of filtered logarithmic forms FᵖΩ•(log D) mapping to complex cochains modulo ℝ(p). Here ℝ(p) = (2πi)ᵖℝ.
+**Definition.** Take a smooth projective compactification of X with normal crossings boundary D. Real Deligne–Beilinson cohomology of weight p is the cohomology of the homotopy fiber of FᵖΩ•(log D) → complex cochains modulo ℝ(p), with ℝ(p) = (2πi)ᵖℝ, and FᵖΩ•(log D) has nothing below degree p.
 
 **Problem.** On a smooth complex quasi-projective variety, take n &lt; p. Degree n real Deligne–Beilinson cohomology of weight p equals ordinary degree n−1 cohomology with coefficients ℝ(p−1).
 
-**How the definition helps.** In the cone, filtered forms start in degree p, so only the shifted quotient contributes below p (our own). Replacing the logarithmic de Rham complex by ordinary complex cochains uses the de Rham comparison theorem (our own).
+**How the definition helps.** Below degree p only the shifted quotient term contributes, so degree n gives degree n − 1 cohomology with coefficients ℂ/ℝ(p) ≅ ℝ(p−1) (our own). Replacing the logarithmic de Rham complex by ordinary complex cochains uses the de Rham comparison theorem (our own).
 
 **Paper or page:** [The Mahler measure of exact polynomials and special L-values of K3 surfaces](https://arxiv.org/abs/2412.00893v3). It says: “Then it defines a class in Deligne cohomology”
 
@@ -5304,11 +5304,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
 
-**Definition.** A rational mixed Hodge structure carries filtrations by weight and holomorphic degree, with a pure Hodge decomposition on each weight quotient. Absolute Hodge cohomology takes derived maps from the weight-zero line ℚ(0) into the variety’s cochain complex with these filtrations. A twist by p lowers both Hodge indices by p.
+**Definition.** Rational absolute Hodge cohomology is derived maps from the weight-zero line ℚ(0) into the variety’s cochains with their mixed Hodge structure: weight and Hodge filtrations, with a pure Hodge decomposition on each weight quotient. A twist by p lowers both Hodge indices by p.
 
 **Problem.** In degree n, rational absolute Hodge cohomology surjects onto filtration-preserving maps from ℚ(0) to the twisted degree n cohomology of a complex algebraic variety. Its kernel classifies extensions with quotient ℚ(0) and subobject the twisted degree n−1 cohomology.
 
-**How the definition helps.** Derived maps organize the calculation by extension degree (our own). Rational mixed Hodge structures have no higher extensions beyond degree one (our own). Thus only ordinary maps and single extensions remain, avoiding an explicit calculation with filtered cochains (our own).
+**How the definition helps.** Rational mixed Hodge structures have no extensions beyond degree one, so derived maps split into ordinary maps and single extensions (our own). This gives the two-step sequence, with Hodge classes in degree n and extensions from degree n − 1 (our own).
 
 **Paper or page:** [Nori motives (and mixed Hodge modules) with integral coefficients](https://arxiv.org/abs/2407.01462v2). It says: “then we recover the absolute Hodge cohomology groups of Beilinson”
 
@@ -5323,7 +5323,7 @@ $$”
 
 *True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
 
-**Definition.** For a rank-r bundle E on X, let π send each one-dimensional quotient of a fiber to its base point. On ℙ(E), define h = c₁ᴰ(𝒪(1)) using the tautological quotient line. Its jth power acts by α ↦ hʲ ∪ π∗α (our own description).
+**Definition.** Let π: ℙ(E) → X be the bundle of one-dimensional quotients of the fibers of a rank-r bundle E. Its hyperplane class h = c₁ᴰ(𝒪(1)) is the Deligne first Chern class of the tautological quotient line, and summand j is the image of α ↦ hʲ ∪ π∗α (our own description).
 
 **Problem.** Over a smooth complex quasi-projective variety, the projective bundle of a rank r vector bundle has r summands in Deligne–Beilinson degree n and weight p. Pullback followed by multiplication by hʲ identifies summand j with base cohomology in degree n−2j and weight p−j, for 0 ≤ j &lt; r.
 
@@ -5341,11 +5341,11 @@ $$”
 
 *True by definition.* MSC 14F43 (Other algebro-geometric (co)homologies (e.g., intersection, equivariant, Lawson, Deligne (co)homologies)). arXiv math.AG. Level 4: research.
 
-**Definition.** In weight p, the integral Deligne complex is the homotopy fiber of the difference map from integral ℤ(p)-cochains and Fᵖ forms to complex cochains. Its degree-n terms include a comparison cochain in degree n−1.
+**Definition.** In weight p, the integral Deligne complex is the homotopy fiber of the difference map from ℤ(p)-cochains and Fᵖ forms to complex cochains, so a degree-n element carries a comparison cochain of degree n − 1. Intermediate Jacobian classes are those represented by a comparison cochain alone (our own).
 
 **Problem.** On a smooth projective complex variety, the intermediate Jacobians form an ideal in the integral Deligne ring restricted to degrees twice the weights. Every product of two elements of this ideal vanishes.
 
-**How the definition helps.** A Jacobian class has a representative with only a comparison cochain, so two such representatives multiply to zero (our own). The cone sequence identifies these classes with the kernel of the map to ordinary cohomology (our own). Comparing this product with the product on truncated holomorphic complexes takes a separate argument (our own).
+**How the definition helps.** In the Deligne product a comparison cochain multiplies only the other two components, so two pure comparison representatives multiply to zero (our own). The cone sequence identifies these classes with the kernel of the map to ordinary cohomology (our own). Comparing this product with the product on truncated holomorphic complexes takes a separate argument (our own).
 
 **nLab:** [Beilinson–Deligne cup product](https://ncatlab.org/nlab/show/Beilinson%E2%80%93Deligne+cup+product). It says: “It is a morphism of complexes, so it induces a cup product in Deligne cohomology.”
 
@@ -5363,7 +5363,7 @@ $$”
 
 **Problem.** For a smooth complex quasi-projective variety, degree one integral Deligne–Beilinson cohomology of weight one is the group of invertible regular functions.
 
-**How the definition helps.** The logarithmic pole condition picks out algebraic units among nowhere-zero holomorphic functions f (our own). It requires df/f to have only logarithmic poles at the boundary (our own). On the affine line, exp(z) fails because dz has a double pole at infinity (our own). Esnault and Viehweg prove the test by extending functions meromorphically across the boundary.
+**How the definition helps.** Among nowhere-zero holomorphic functions f, the logarithmic condition keeps those whose df/f has only logarithmic poles along D, and these are the algebraic units (our own). On the affine line, exp(z) fails because dz has a double pole at infinity (our own). Esnault and Viehweg prove the test by extending such functions meromorphically across the boundary.
 
 **Wikipedia:** [Deligne cohomology](https://en.wikipedia.org/wiki/Deligne_cohomology). It says: “a cohomology theory for algebraic varieties”
 
@@ -5468,15 +5468,15 @@ $$”
 
 ### Witt Frobenius handles field extensions
 
-**Remember:** Witt Frobenius keeps the point counts from extensions of degrees divisible by r.
+**Remember:** Witt Frobenius keeps only point counts over degrees divisible by r.
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a variety over a finite field, let Z be its zeta series. Its nth ghost coordinate is the coefficient of tⁿ in tZ′/Z and counts points over the extension of degree n. On integral series with constant term one, the rth Witt Frobenius takes coordinate rn as its new coordinate n.
+**Definition.** For a variety over a finite field with zeta series Z, the nth ghost coordinate, the coefficient of tⁿ in tZ′/Z, counts points over the degree-n extension. The rth Witt Frobenius makes old ghost coordinate rn the new coordinate n.
 
 **Problem.** For each positive integer r, the rth Witt Frobenius gives the zeta series after extending the base field by degree r.
 
-**How the definition helps.** In our own explanation, the coordinate shift reads the required point counts directly from the original series. An extension of degree n over the new field has degree rn over the original field. The Witt construction realizes this shift on integral series, where all the coordinates together determine the series.
+**How the definition helps.** A degree-n extension of the degree-r field is the degree-rn extension of the original field, so the shifted coordinates are exactly the new point counts (our own explanation). The Witt construction realizes this shift on integral series, where the ghost coordinates determine the series.
 
 **Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “Moreover, the Frobenius operator Frᵣ on W(ℤ) corresponds to base change”
 
@@ -5490,11 +5490,11 @@ $$”
 
 *True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a variety over a finite field, its zeta series Z has integer coefficients and constant term one. Its nth ghost coordinate, the coefficient of tⁿ in tZ′/Z, counts points over the extension of degree n. Define Witt multiplication of series by multiplying their ghost coordinates term by term.
+**Definition.** For a variety over a finite field with zeta series Z, the nth ghost coordinate, the coefficient of tⁿ in tZ′/Z, counts points over the degree-n extension. Witt multiplication of integral series with constant term one multiplies ghost coordinates term by term.
 
 **Problem.** The zeta function of a product of varieties over a finite field is the Witt product of their zeta functions.
 
-**How the definition helps.** In our own explanation, a point of a product is a pair, so its two point counts multiply in every extension. Witt multiplication therefore gives the product variety’s zeta series directly. Constructing this multiplication on integral series takes work. There the ghost coordinates determine the series uniquely.
+**How the definition helps.** A point of a product is a pair of points, so point counts multiply over every extension (our own explanation). Witt multiplication multiplies exactly these ghost coordinates, so it gives the product variety’s zeta series. Constructing this multiplication on integral series takes work, and there the ghost coordinates determine the series.
 
 **Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “For X and Y ∈ Var(𝔽q), the zeta function X ×𝔽q Y is given by the Witt product”
 
@@ -5566,7 +5566,7 @@ $$”
 
 **Problem.** Over a characteristic-zero field, any two normalized associators differ by exactly one graded Grothendieck–Teichmüller symmetry of scale one.
 
-**How the definition helps.** Two isomorphisms with the same source and target differ by exactly one target automorphism. In our own explanation, composing the second with the inverse of the first produces that automorphism. It preserves the prescribed crossing. Bar-Natan identifies these maps with solutions of the associator equations and the target symmetries with the scale-one group.
+**How the definition helps.** Two isomorphisms with the same source and target differ by exactly one automorphism of the target: compose the second with the inverse of the first (our own explanation). This automorphism preserves the prescribed crossing. Bar-Natan identifies these isomorphisms with solutions of the associator equations and these automorphisms with the scale-one group.
 
 **nLab:** [Drinfeld associator](https://ncatlab.org/nlab/show/Drinfeld+associator). It says: “This acts freely on the set of Drinfeld associators.”
 
@@ -5580,11 +5580,11 @@ $$”
 
 *True by definition.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)), 14F35. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** In the pro-ℓ abelian cover tower of the three-punctured line, put u = γ₀ − 1 and v = γ₁ − 1 for deck generators. Over ℤℓ\[\[u,v\]\], cycles form the kernel of (A,B) ↦ uA + vB. The reduced Gassner cocycle gives the scalar of the semilinear Galois action in the basis (−v,u).
+**Definition.** In the pro-ℓ abelian cover tower of the three-punctured line, put u = γ₀ − 1 and v = γ₁ − 1 for the deck generators γ₀ and γ₁. Cycles are the pairs (A,B) over ℤℓ\[\[u,v\]\] with uA + vB = 0, and the reduced Gassner cocycle is the scalar of the semilinear Galois action on the generator (−v,u).
 
 **Problem.** In the basis given by the lifted loop commutator, the reduced Gassner cocycle equals Ihara’s power series.
 
-**How the definition helps.** The two descriptions give the same scalar once the cycle (−v,u) is identified with the lifted commutator. In our own calculation, uA + vB = 0 forces (A,B) to be a multiple of (−v,u), since u and v are relatively prime. Kodani, Morishita and Terashima compute the two edge coefficients of the lifted commutator and compare the actions.
+**How the definition helps.** Since u and v are relatively prime, uA + vB = 0 forces (A,B) to be a multiple of (−v,u), so the action is one scalar (our own calculation). Kodani, Morishita and Terashima identify (−v,u) with the lifted loop commutator and compute its scalar as Ihara’s power series.
 
 **Wikipedia:** [Iwasawa algebra](https://en.wikipedia.org/wiki/Iwasawa_algebra). It says: “More precisely, Λ(G) is the inverse limit of the group rings Zₚ(G/H) as H runs through the open normal subgroups of G.”
 
@@ -5599,11 +5599,11 @@ $$”
 
 *True by definition.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)). arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Take the pro-ℓ geometric fundamental group of the projective line minus 0, 1 and ∞, based at the tangent from 0 toward 1. Abelianize its closed commutator subgroup. This module is free over the completed group ring of the abelianized group, with basis the loop commutator c around 0 and 1.
+**Definition.** Abelianize the closed commutator subgroup of the pro-ℓ fundamental group of the projective line minus 0, 1 and ∞, based at the tangent from 0 toward 1. This module is free over the completed group ring of the abelianized group, with basis the commutator c of the loops around 0 and 1.
 
 **Problem.** For Galois elements σ and τ, define b(σ) by σ(c) = b(σ)c. Then b(στ) = b(σ)σ(b(τ)), so b is a cocycle.
 
-**How the definition helps.** Our own explanation reads b from the action on one basis vector, replacing a calculation with the power series coefficients. Acting on b(τ)c by σ changes both the coefficient and the basis vector. The substantive result identifies the commutator as a free basis over the completed group ring.
+**How the definition helps.** Freeness on one basis vector makes the coefficient b(σ) unique. Applying σ to τ(c) = b(τ)c changes both the coefficient and the basis vector, giving σ(b(τ))b(σ)c (our own calculation). The substantive result is that the commutator is a free basis over the completed group ring.
 
 **Wikipedia:** [Iwasawa algebra](https://en.wikipedia.org/wiki/Iwasawa_algebra). It says: “More precisely, Λ(G) is the inverse limit of the group rings Zₚ(G/H) as H runs through the open normal subgroups of G.”
 
@@ -5633,15 +5633,15 @@ $$”
 
 ### Ihara’s series specializes to Jacobi sums
 
-**Remember:** Finite characters extract Jacobi sums from one power series.
+**Remember:** One power series scales the commutator; characters turn it into Jacobi sums.
 
 *Makes the theorem clean to state or prove.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)), 11L05. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** In the pro-ℓ commutator module of the three-punctured line, choose the standard loop commutator c as basis. Ihara’s series for σ is the coefficient B(σ) in σ(c) = B(σ)c over the completed group ring ℤℓ\[\[u,v\]\]. The standard deck generators act as 1 + u and 1 + v.
+**Definition.** Ihara’s series B(σ) is the scalar by which a Galois element σ multiplies the basic loop commutator c in the pro-ℓ commutator module of the three-punctured line. It is a power series in ℤℓ\[\[u,v\]\], where the two standard loops act as 1 + u and 1 + v.
 
-**Problem.** Fix an odd prime ℓ, a positive power m of ℓ, and a primitive mth root ζ. Take arithmetic Frobenius σ at a prime of ℚ(ζ) away from ℓ and indices a,b with a,b,a+b nonzero modulo m. If a or b is prime to ℓ, evaluating B(σ) at (ζᵃ − 1,ζᵇ − 1) gives the corresponding Jacobi sum.
+**Problem.** Let ℓ be an odd prime, m a power of ℓ, ζ a primitive mth root of unity, and σ the arithmetic Frobenius at a prime of ℚ(ζ) away from ℓ. If a, b and a + b are nonzero modulo m and a or b is prime to ℓ, then B(σ) at (ζᵃ − 1, ζᵇ − 1) is the corresponding Jacobi sum.
 
-**How the definition helps.** The character sends the two deck generators to ζᵃ and ζᵇ, which specializes the scalar on the commutator module. Weil’s theorem computes Frobenius on that character component of Fermat homology by the Jacobi sum (our own summary of Ihara’s argument).
+**How the definition helps.** Setting u = ζᵃ − 1 and v = ζᵇ − 1 makes the two loops act by ζᵃ and ζᵇ, so it picks out one character part of the commutator module. That part is a piece of Fermat curve homology, where Weil’s theorem says Frobenius acts by the Jacobi sum (our own summary of Ihara’s argument).
 
 **Wikipedia:** [Iwasawa algebra](https://en.wikipedia.org/wiki/Iwasawa_algebra). It says: “More precisely, Λ(G) is the inverse limit of the group rings Zₚ(G/H) as H runs through the open normal subgroups of G.”
 
@@ -5652,15 +5652,15 @@ $$”
 
 ### Open subgroups admit zero extension
 
-**Remember:** The point makes the open subgroup stable under Galois.
+**Remember:** Finite spans under translation and Galois survive extension by zero.
 
 *True by definition.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)), 14F35. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Take a finite unbranched algebraic cover of geometrically connected smooth curves over a number field, with compatible rational base points. A representative function is a continuous ℚₚ-valued function on a geometric fundamental group whose translates span a finite-dimensional space. Call it Galois-finite if its Galois conjugates also span a finite-dimensional space.
+**Definition.** A representative function on a geometric fundamental group is a continuous ℚₚ-valued function whose translates span a finite-dimensional space. It is Galois-finite if its Galois conjugates also span a finite-dimensional space.
 
-**Problem.** Every Galois-finite representative function on the covering curve’s group extends to one on the base curve’s group.
+**Problem.** Take a finite unbranched cover of geometrically connected smooth curves over a number field, with compatible rational base points. Every Galois-finite representative function on the cover’s group extends to one on the base curve’s group.
 
-**How the definition helps.** Our own proof uses representative functions in place of abstract coordinate rings so that extension by zero makes sense. The covering correspondence identifies the smaller group with an open subgroup stable under Galois. Extension by zero therefore preserves the dimension of the Galois span. There are finitely many cosets, each contributing a translated copy of the original finite translation span.
+**How the definition helps.** The cover identifies its group with an open subgroup of finite index that Galois preserves, so extension by zero keeps both spans finite (our own proof). Each of the finitely many cosets adds one translated copy of the original span.
 
 **Paper or page:** [Universality of the Galois action on the fundamental group of ℙ¹ ∖ {0,1,∞}](https://arxiv.org/abs/2109.09301). It says: “If (X,x) → (Y,y) is a finite etale cover of K-schemes equipped with base points”
 
@@ -5670,15 +5670,15 @@ $$”
 
 ### Quadratic terms detect nonzero braiding
 
-**Remember:** The xy coefficient tells whether the hexagons have a nonzero parameter.
+**Remember:** The xy coefficient is the hexagon parameter squared over 24.
 
 *Rules out counterexamples.* MSC 14G32 (Universal profinite groups (relationship to moduli spaces, projective and moduli towers, Galois theory)). arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Over an algebraically closed field of characteristic zero, consider group-like series Φ in the completed free algebra on primitive generators x,y satisfying Drinfeld’s pentagon. A series is group-like if its constant term is one and ΔΦ = Φ ⊗ Φ. Retain the series with nonzero coefficient of the word xy.
+**Definition.** Over an algebraically closed field of characteristic zero, take series Φ in the completed free algebra on primitive x, y that are group-like (constant term one and ΔΦ = Φ ⊗ Φ) and satisfy Drinfeld’s pentagon. Keep those whose coefficient c of the word xy is nonzero.
 
-**Problem.** Each retained solution satisfies Drinfeld’s two hexagon equations, which express compatibility with exchanging inputs, for a nonzero parameter unique up to sign.
+**Problem.** Each retained series satisfies Drinfeld’s two hexagon equations, which express compatibility with exchanging inputs, for a nonzero parameter unique up to sign.
 
-**How the definition helps.** The coefficient test excludes exactly the solutions that need parameter zero. Furusho proves that the pentagon implies the hexagons and that the parameter squared equals 24 times the xy coefficient. Our own example is Φ = 1, which satisfies the pentagon but admits only parameter zero.
+**How the definition helps.** Furusho proves that the pentagon implies both hexagons for a parameter μ with μ² = 24c, so c ≠ 0 gives μ ≠ 0, unique up to sign. Our own example Φ = 1 satisfies the pentagon but allows only μ = 0.
 
 **nLab:** [Drinfeld associator](https://ncatlab.org/nlab/show/Drinfeld+associator). It says: “The set of "0-associators" is what is called the Grothendieck-Teichmueller group.”
 
@@ -5692,11 +5692,11 @@ $$”
 
 *True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 19E08. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Arithmetic K₀ uses hermitian vector bundles and differential form classes. For every hermitian exact sequence with terms A,B,C, impose \[A\] − \[B\] + \[C\] = a(η). Here η is its secondary Bott–Chern Chern character, and a includes its form class.
+**Definition.** Arithmetic K₀ is generated by hermitian vector bundles and classes of differential forms. For each exact sequence of hermitian bundles A → B → C, it imposes \[A\] − \[B\] + \[C\] = a(η), where a(η) is the class of the secondary Bott–Chern form η that measures how the Chern character forms fail to add (our own).
 
 **Problem.** On a regular projective arithmetic variety, the arithmetic Chern character gives a group homomorphism from arithmetic K-theory to rational arithmetic Chow groups.
 
-**How the definition helps.** The defining relation accounts for the discrepancy that would obstruct additivity under the ordinary relation \[B\] = \[A\] + \[C\] (our own). The characteristic-class theorem identifies the discrepancy in the target with the very same Bott–Chern form (our own).
+**How the definition helps.** The arithmetic Chern character of an exact sequence fails to add by exactly the Bott–Chern form η, which the relation already contains (our own). So the character respects every relation and is a homomorphism (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “φ̂(ℱ∗) − φ̂(𝒢∗) + φ̂(ℋ∗) = a(φ̃(τ̄))”
 
@@ -5706,15 +5706,15 @@ $$”
 
 ### Compatible wavefront bounds permit current products
 
-**Remember:** Opposite singular directions can cancel and make a product undefined.
+**Remember:** Products exist when no singular direction meets its opposite.
 
 *Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A wavefront bound for a current, a generalized differential form, specifies which nonzero covectors may carry singularities. For arithmetic Chow groups, the bound is a closed cone invariant under complex conjugation. Two bounds are compatible if they contain no opposite covectors at the same point.
+**Definition.** A wavefront bound for a current, a generalized differential form, is a closed cone of nonzero covectors, invariant under complex conjugation, that contains every direction in which the current is singular. Two bounds S and T are compatible if, at each point, no covector in S has its negative in T.
 
 **Problem.** On a regular arithmetic variety, compatible bounds S and T give a product of arithmetic Chow classes with rational coefficients. Its bound is S ∪ T ∪ (S + T), where addition pairs covectors at the same point.
 
-**How the definition helps.** Compatibility excludes cancellation of opposite singular directions, so the distribution product theorem applies (our own). A point mass has opposite singular directions and has no canonical square as a distribution (our own). Passing to arithmetic classes also requires proving that the product respects the cycle relations (our own).
+**How the definition helps.** Compatibility rules out opposite singular directions that could cancel, so the product theorem for distributions applies (our own). A point mass has opposite singular directions and has no canonical square (our own). The arithmetic theorem also checks that the product respects the cycle relations (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Moreover, if S ∩ (−S′) = ∅, there is a graded bilinear map”
 
@@ -5728,11 +5728,11 @@ $$”
 
 *True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A current is a generalized differential form that acts on smooth test forms. For a proper map, its direct image evaluates a test form by first pulling that form back. Arithmetic Chow groups with current coefficients allow this direct image even when a smooth input acquires singularities.
+**Definition.** Arithmetic Chow groups with current coefficients pair cycles with currents, generalized differential forms defined by their action on smooth test forms. The direct image of a current under a proper map f acts on a test form ω by acting on f\*ω, so it exists even when a smooth input gives a singular output.
 
 **Problem.** For composable proper maps between regular arithmetic varieties, successive direct images of arithmetic Chow classes with current coefficients equal the direct image along the composite.
 
-**How the definition helps.** Allowing currents keeps both direct images defined, and testing against a form reduces their composition to two successive pullbacks (our own). Algebraic cycles already satisfy the composition rule (our own). The arithmetic theorem also checks the cycle relations and controls the singular directions of the result (our own).
+**How the definition helps.** For a composite g ∘ f, the direct image tests (g ∘ f)\*ω = f\*g\*ω, which is what two successive direct images test (our own). The arithmetic theorem also checks the cycle relations and controls the singular directions of the result (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “Furthermore, the relation (g ∘ f)∗ = g∗ ∘ f∗ is satisfied.”
 
@@ -5742,15 +5742,15 @@ $$”
 
 ### Deligne classes determine compatible lifts
 
-**Remember:** A curvature form can vary without changing the class it represents.
+**Remember:** Curvature carries the cycle’s class; shifting the Green current moves within it.
 
 *Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a codimension-p arithmetic cycle (Z,g), its Green current g makes ω = δ<sub>Z</sub> + ddᶜg a smooth form. Here δ<sub>Z</sub> integrates over Z, and ω is the curvature of (Z,g).
+**Definition.** The curvature of a codimension-p arithmetic cycle (Z,g) is the smooth form ω = δ<sub>Z</sub> + ddᶜg, where δ<sub>Z</sub> integrates over Z and g is a Green current. So ω has the Deligne class of Z, and adding a smooth form η to g changes ω by the exact form ddᶜη (our own).
 
 **Problem.** On a regular projective arithmetic variety, consider a Chow class and a closed real Deligne form of matching degree. They admit a common arithmetic lift exactly when their Deligne classes agree.
 
-**How the definition helps.** Curvature turns the lifting problem into a comparison between the class of the form and the class of the cycle (our own). Once a Green current exists, changing its form component adds a differential to the curvature (our own). Exactness shows that this accounts for every compatible pair (our own).
+**How the definition helps.** The curvature always has the class of the cycle, so agreement of classes is necessary (our own). Conversely, a closed form in that class differs from ω by some ddᶜη, and replacing g by g + η reaches it (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “CHᵖ(𝒳) ⊕ ZC²ᵖ(p) ⟶ H²ᵖ(C∗(p)) ⟶ 0”
 
@@ -5765,11 +5765,11 @@ $$”
 
 *True by definition.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a cycle Z of codimension p, two Green currents represent the same Green term if their difference equals ∂u + ∂̄v. Here u and v are currents of bidegrees (p−2,p−1) and (p−1,p−2), respectively.
+**Definition.** For a cycle of codimension p, the Green term of a Green current is its class modulo currents ∂u + ∂̄v, with u of bidegree (p−2,p−1) and v of bidegree (p−1,p−2).
 
 **Problem.** For properly intersecting cycles on a smooth projective variety over an arithmetic field, the two orders of the Green star product agree modulo these derivatives.
 
-**How the definition helps.** The quotient discards the derivative terms that exchanging the two factors introduces (our own). The usual formula on representatives treats the factors differently, so commutativity there would be too strong (our own). The analytic work uses representatives with logarithmic singularities to justify integration by parts along the intersection (our own).
+**How the definition helps.** Swapping the two factors in the star product changes the result only by terms ∂u + ∂̄v, which the quotient discards (our own). On representatives the formula treats the factors unequally, so commutativity holds only in the quotient (our own). The analytic work uses logarithmic representatives to justify integration by parts (our own).
 
 **nLab:** [arithmetic Chow group](https://ncatlab.org/nlab/show/arithmetic+Chow+group). It says: “pairs consisting of a codimension p subvariety of X together with a Green current for it.”
 
@@ -5802,11 +5802,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 58J52. arXiv math.AG. Level 4: research.
 
-**Definition.** An arithmetic complex records a complex of bundles with metrics and an additional differential form or current. Analytic torsion corrects its direct image for the choice of metrics. A torsion theory is self-dual when dualizing these data, including the relative dualizing twist and the sign on forms, preserves its correction rule.
+**Definition.** An arithmetic complex is a complex of bundles with metrics, together with a differential form or current. A theory of analytic torsion assigns to each metrized projective map a correction for how the direct image of such complexes depends on the metrics. It is self-dual if dualizing, with the relative dualizing twist and the sign on forms, turns each correction into the correction of the dual.
 
 **Problem.** For a metrized projective map between smooth complex varieties, self-dual torsion makes arithmetic duality commute with direct image up to natural isomorphism. On the source one tensors the dual with the relative dualizing complex, which accounts for duality along the fibers.
 
-**How the definition helps.** Self-duality gives the same metric correction on both sides of the ordinary duality isomorphism (our own). Grothendieck duality supplies that underlying isomorphism, and the torsion comparison proves it respects the extra arithmetic data (our own).
+**How the definition helps.** Self-duality gives the same metric correction on both sides of Grothendieck’s duality isomorphism, so that isomorphism lifts to arithmetic complexes (our own).
 
 **Paper or page:** [Generalized holomorphic analytic torsion](https://arxiv.org/abs/1011.3702v2). It says: “Let T be a self-dual theory of generalized analytic torsion classes.”
 
@@ -5816,15 +5816,15 @@ $$”
 
 ### Smooth curvature detects ordinary classes
 
-**Remember:** Allow currents first, then detect the smooth subgroup by curvature.
+**Remember:** Ordinary classes are exactly those with smooth curvature.
 
 *Makes the theorem clean to state or prove.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For an arithmetic cycle (Z,g) with current coefficients, define its curvature by ω = ddᶜg + δ<sub>Z</sub>, where δ<sub>Z</sub> integrates over Z. Its singular curvature class is the image of ω in currents modulo smooth forms.
+**Definition.** The curvature of an arithmetic cycle (Z,g) with current coefficients is ω = ddᶜg + δ<sub>Z</sub>, where δ<sub>Z</sub> integrates over Z; ordinary cycles have smooth curvature. Its singular class is ω modulo smooth forms, which vanishes exactly when the curvature is smooth.
 
 **Problem.** Suppose an arithmetic variety has projective generic fiber, the variety obtained over the base field of fractions. Ordinary arithmetic Chow homology embeds in the version with currents, with image exactly the classes whose curvature vanishes modulo smooth forms.
 
-**How the definition helps.** Taking curvature modulo smooth forms expresses the entire obstruction to an ordinary representative in one class (our own). The comparison theorem proves injectivity and shows that smooth curvature suffices to recover such a representative (our own).
+**How the definition helps.** Ordinary classes have smooth curvature, so they land in the stated image (our own). The comparison theorem proves injectivity and gives every class with smooth curvature an ordinary representative (our own).
 
 **Paper or page:** [Semipurity of tempered Deligne cohomology](https://arxiv.org/abs/1011.3714v1). It says: “denotes the subspace of currents that can be represented by smooth differential forms.”
 
@@ -5834,15 +5834,15 @@ $$”
 
 ### Tight triangles multiply Todd classes
 
-**Remember:** An orthogonal cancellation carries no secondary metric defect.
+**Remember:** Tight triangles carry the cone metric, so no secondary correction appears.
 
 *Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 14C17. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A metrized distinguished triangle is tight if it is tightly isomorphic to the hermitian cone triangle of its first arrow. A tight isomorphism is a derived isomorphism with meager hermitian cone, so this condition compares the third metric with the induced cone metric.
+**Definition.** A metrized distinguished triangle is tight if the metric on its third complex agrees with the metric induced on the cone of its first arrow, up to a tight isomorphism. A tight isomorphism is one whose hermitian cone is meager, so it carries no secondary characteristic classes (our own).
 
 **Problem.** On a regular arithmetic variety, the rational arithmetic Todd class of the middle complex in a tight triangle equals the product for the outer complexes.
 
-**How the definition helps.** Tightness forces the secondary class measuring the discrepancy between the two sides to vanish (our own). Even an identity map between lines can have a metric discrepancy if their norms differ (our own). The multiplicative characteristic-class theorem identifies precisely which correction to discard (our own).
+**How the definition helps.** Tightness makes the Bott–Chern secondary class of the triangle vanish, and that class is the only correction to multiplicativity of Todd classes (our own). Even an identity map between lines carries a secondary class if the two norms differ (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “In particular, if τ̄ is tightly distinguished, the equality”
 
@@ -5857,11 +5857,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A wavefront set records the nonzero covectors, or directional linear functionals, along which a generalized form fails to be smooth. In an arithmetic Chow group with current coefficients, a closed cone S bounds the permitted singular directions and respects complex conjugation. A map is transverse to S if its derivative pulls no covector in S back to zero.
+**Definition.** In arithmetic Chow groups with current coefficients, a closed cone S of nonzero covectors, invariant under complex conjugation, bounds the directions in which a current may be singular. A map f is transverse to S if its derivative pulls no covector in S back to zero.
 
 **Problem.** A transverse map between regular arithmetic varieties pulls arithmetic Chow classes with bound S back to classes bounded by the pulled-back cone.
 
-**How the definition helps.** Transversality excludes the directions that prevent a distribution from having a well-defined restriction (our own). For example, restricting a point mass to its own point would require assigning it a point value (our own). The distribution pullback theorem constructs the restriction, and the arithmetic theorem checks that it respects the cycle relations (our own).
+**How the definition helps.** Transversality means f kills no permitted singular direction, so the pullback theorem for distributions applies (our own). Restricting a point mass to its own point fails this test, since it would need a point value (our own). The arithmetic theorem then checks the cycle relations (our own).
 
 **Paper or page:** [The arithmetic Grothendieck-Riemann-Roch theorem for general projective morphisms](https://arxiv.org/abs/1211.1783v1). It says: “If $N<sub>f</sub>\\cap S=\\emptyset $, then there is a pull-back morphism”
 
@@ -5871,15 +5871,15 @@ $$”
 
 ### A principal kernel of θ makes perfectoid rings of characteristic p perfect
 
-**Remember:** Surjective Frobenius alone allows semiperfect rings; principal θ-kernel rules them out.
+**Remember:** In characteristic p, the principal θ-kernel is p, forcing perfection.
 
 *Rules out counterexamples. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 13A35. arXiv math.AG, math.AC. Level 4: research.
 
-**Definition.** A ring R is integral perfectoid if it is π-adically complete for some π with πᵖ dividing p and Frobenius is surjective on R/p. Also, Fontaine’s map θ from W(R♭) to R must have principal kernel, where R♭ is the inverse limit of R/p under Frobenius.
+**Definition.** A ring R is integral perfectoid if it is π-adically complete for some π with πᵖ dividing p, Frobenius is surjective on R/p, and the kernel of Fontaine’s map θ from W(R♭) to R is principal. Here R♭ is the inverse limit of R/p under Frobenius.
 
 **Problem.** A ring of characteristic p is integral perfectoid if and only if it is perfect.
 
-**How the definition helps.** The principal-kernel criterion excludes semiperfect rings with nilpotents, by the characteristic-p characterization of integral perfectoid rings. For example, adjoining all p-power roots of x to 𝔽ₚ\[x\] and killing x leaves a nonzero pth root of zero (our own example). Conversely, for perfect R its tilt is R, and reduction W(R) → R has kernel (p).
+**How the definition helps.** In characteristic p the kernel of θ contains p, and a principal kernel is then generated by p, so R = W(R♭)/p = R♭ is perfect (our own). Without this condition, adjoining all p-power roots of x to 𝔽ₚ\[x\] and killing x gives a semiperfect ring with nilpotents (our own example). Conversely, a perfect R is its own tilt, and W(R) → R has kernel (p).
 
 **nLab:** [perfect ring](https://ncatlab.org/nlab/show/perfect+ring). It says: “A ring R of characteristic p is said to be perfect if the Frobenius map φ: R → R is an isomorphism. If instead φ is merely assumed to be surjective, R is said to be semiperfect.”
 
@@ -5894,11 +5894,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 18E35, 13C60. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Fix a perfectoid base field K with valuation ring 𝒪<sub>K</sub> and maximal ideal 𝔪. A module M is almost zero if every element of 𝔪 annihilates M. Almost modules form the quotient of 𝒪<sub>K</sub>-modules by this subcategory.
+**Definition.** Over the valuation ring 𝒪<sub>K</sub> of a perfectoid field K, with maximal ideal 𝔪, almost modules treat every module killed by 𝔪 as zero. Formally, they are the quotient of 𝒪<sub>K</sub>-modules by these almost zero modules.
 
 **Problem.** For an affinoid perfectoid space over K and a pseudo-uniformizer π of K, every positive-degree cohomology group of 𝒪⁺/π vanishes in almost modules.
 
-**How the definition helps.** The quotient sends every module annihilated by 𝔪 to zero. Scholze’s almost-vanishing theorem gives exactly this annihilation for the higher cohomology groups (our own explanation).
+**How the definition helps.** Scholze’s almost vanishing theorem says 𝔪 kills each higher cohomology group of 𝒪⁺/π on an affinoid perfectoid space, and the quotient sends such groups to zero (our own explanation).
 
 **nLab:** [solid module](https://ncatlab.org/nlab/show/solid+module), [almost module](https://ncatlab.org/nlab/show/almost+module). It says: “The theory of almost modules is necessary in order to make the structure sheaf 𝒪ₓ⁺/π acyclic on affinoid perfectoid spaces”
 
@@ -5909,15 +5909,15 @@ $$”
 
 ### As diamonds, a perfectoid space and its tilt are the same
 
-**Remember:** Diamonds only see characteristic p test objects, so tilting changes nothing.
+**Remember:** A diamond sees X only through untilts of characteristic p spaces.
 
 *True by definition.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For an analytic adic space X over ℤₚ, evaluate X♢ on each characteristic-p perfectoid space T as follows. Take isomorphism classes of triples consisting of a perfectoid space U, an identification U♭ ≅ T, and a map U → X.
+**Definition.** The diamond X♢ of an analytic adic space X over ℤₚ is the functor on characteristic-p perfectoid spaces T that sends T to the set of untilts U of T with a map U → X, up to isomorphism.
 
 **Problem.** For a perfectoid space X, the diamond X♢ is represented by the tilt X♭. For any analytic adic space X over ℤₚ, the diamond has the same underlying space and the same étale site as X.
 
-**How the definition helps.** For perfectoid X, tilting identifies the triples on T with maps T → X♭, giving representability (our own argument). For general X, Scholze’s diamond comparison theorem identifies the underlying spaces and étale sites.
+**How the definition helps.** When X is perfectoid, tilting turns a map U → X from an untilt of T into a map T → X♭, so X♭ represents X♢ (our own argument). For general X, Scholze’s comparison theorem identifies the underlying spaces and étale sites.
 
 **Paper or page:** [On the Unipotent p-adic Simpson Correspondence](https://arxiv.org/abs/2403.04565). It says: “The associated diamond functor preserves étaleness, and induces an equivalence of (finite) étale sites X\_ét ≅ X♢\_ét, X<sub>f</sub>ét ≅ X♢<sub>f</sub>ét.”
 
@@ -5927,15 +5927,15 @@ $$”
 
 ### Building the Fargues–Fontaine curve from Witt vectors makes untilts into points
 
-**Remember:** An untilt gives a Witt-vector quotient, and Frobenius identifies its orbit.
+**Remember:** Each untilt is a point; Frobenius glues its twists.
 
 *Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22, 11S20. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Let C be an algebraically closed characteristic-p perfectoid field, and choose ϖ with 0 &lt; \|ϖ\| &lt; 1. In Spa W(𝒪<sub>C</sub>) with its (p,\[ϖ\])-adic topology, let Y be the locus where neither p nor \[ϖ\] vanishes. The analytic Fargues–Fontaine curve over ℚₚ is the quotient of Y by the powers of Witt Frobenius.
+**Definition.** Let C be an algebraically closed perfectoid field of characteristic p, and choose ϖ with 0 &lt; \|ϖ\| &lt; 1. Let Y be the part of Spa W(𝒪<sub>C</sub>) where neither p nor \[ϖ\] vanishes, so that each characteristic-0 untilt of C gives a point of Y through Fontaine’s map θ. The analytic Fargues–Fontaine curve is Y modulo the powers of Witt Frobenius.
 
 **Problem.** The closed points of the Fargues–Fontaine curve correspond to the untilts of C of characteristic 0, up to Frobenius. The residue field at each point is the corresponding untilt.
 
-**How the definition helps.** An untilt gives Fontaine’s surjection θ onto its valuation ring. The induced valuation defines a point of Y, and the quotient identifies its Frobenius translates (our own explanation). Fargues and Fontaine’s closed-point classification gives the converse and identifies the residue field on the schematic curve.
+**How the definition helps.** Each untilt gives a surjection θ onto its valuation ring, whose kernel defines a point of Y, and Frobenius moves it to the point of the Frobenius-twisted untilt (our own explanation). Fargues and Fontaine’s classification of closed points gives the converse and identifies the residue fields.
 
 **nLab:** [Fargues-Fontaine curve](https://ncatlab.org/nlab/show/Fargues-Fontaine+curve). It says: “The Fargues-Fontaine curve X<sub>C</sub> is a complete algebraic curve whose closed points parametrize the untilts of C. Such an untilt may be recovered as the residue field of the corresponding point.”
 
@@ -5949,11 +5949,11 @@ $$”
 
 *True by definition. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14F30. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** The analytic Fargues–Fontaine curve over ℚₚ identifies points of a period space Y along orbits of its Frobenius automorphism φ. A line bundle looks locally like one copy of the ring of functions. For integer n, define the twist of degree n by gluing the trivial line bundle along these orbits with action p⁻ⁿφ.
+**Definition.** The analytic Fargues–Fontaine curve is a period space Y modulo its Frobenius automorphism φ. The twist of degree n is the line bundle made by gluing the trivial bundle on Y along Frobenius orbits through the action p⁻ⁿφ, so a section is a function f with p⁻ⁿφ(f) = f (our own).
 
 **Problem.** Global sections of the twist n on the analytic Fargues–Fontaine curve are functions f on Y that satisfy φ(f) = pⁿf.
 
-**How the definition helps.** Gluing along the orbit makes a global section exactly a function fixed by the specified action (our own explanation). Its equation p⁻ⁿφ(f) = f gives the eigenvalue immediately. In the algebraic construction, the eigenvectors instead form the graded ring used to construct the curve. The work here lies in constructing the period space and descending the bundle to its quotient (our own comparison).
+**How the definition helps.** A global section is a function on Y fixed by the gluing action p⁻ⁿφ, and p⁻ⁿφ(f) = f says φ(f) = pⁿf (our own explanation). The work lies in constructing Y and descending the bundle to the quotient (our own).
 
 **nLab:** [Fargues-Fontaine curve](https://ncatlab.org/nlab/show/Fargues-Fontaine+curve). It says: “The (relative) Fargues-Fontaine curve $X<sub>S</sub>$ is then defined to be $Y<sub>S</sub>/\\phi<sub>S</sub><sup>{\\mathbb{Z}}$</sup>, where $\\phi<sub>S</sub>$ is the Frobenius on $S$.”
 
@@ -5961,15 +5961,15 @@ $$”
 
 ### Perfect prisms are the same thing as integral perfectoid rings
 
-**Remember:** A perfect prism has invertible Frobenius and recovers its perfectoid ring modulo I.
+**Remember:** A perfect prism is Witt vectors of a tilt, cut by θ.
 
 *Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14F30, 13F35. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A perfect prism is a δ-ring A with bijective Frobenius and a Cartier divisor ideal I satisfying p ∈ I + φ(I)A. The ring A must be derived complete for (p,I).
+**Definition.** A perfect prism is a δ-ring A with bijective Frobenius φ, with a Cartier divisor ideal I such that p ∈ I + φ(I)A and A is derived (p,I)-complete. Bijective Frobenius makes A the Witt vectors of the perfect ring A/p.
 
 **Problem.** The functor (A, I) ↦ A/I is an equivalence from perfect prisms to integral perfectoid rings. Its inverse sends R to the Witt vectors W(R♭) of the tilt, with the ideal ker θ.
 
-**How the definition helps.** Quotienting by I gives a ring, while Fontaine’s surjection gives a ring together with its kernel. Bhatt and Scholze prove these constructions land in the stated categories and undo each other (our own summary).
+**How the definition helps.** Since A = W(A/p) with A/p perfect, the quotient A/I is perfectoid with tilt A/p, and I is the kernel of θ. Bhatt and Scholze prove that the two constructions are inverse (our own summary).
 
 **nLab:** [prismatic cohomology](https://ncatlab.org/nlab/show/prismatic+cohomology). It says: “A prism (A,I) is perfect if A is perfect. The category of perfect prisms is equivalent to the category of integral perfectoid rings”
 
@@ -5981,7 +5981,7 @@ $$”
 
 ### Perfectoid fields share their Galois group with their tilt
 
-**Remember:** Take the inverse limit along Frobenius on integers modulo p, then take fractions.
+**Remember:** Tilt by taking Frobenius roots modulo p; Galois groups stay the same.
 
 *Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 12J25. arXiv math.AG, math.NT. Level 4: research.
 
@@ -5989,7 +5989,7 @@ $$”
 
 **Problem.** For any perfectoid field K, the absolute Galois groups of K and of its tilt are isomorphic. So a question about a mixed characteristic field becomes one about a characteristic p field.
 
-**How the definition helps.** The perfectoid tilting theorem identifies the categories of finite étale algebras over K and K♭. Choosing compatible geometric points identifies their fiber functors and hence their absolute Galois groups (our own argument). Almost purity supplies the finite étale comparison.
+**How the definition helps.** Scholze’s tilting theorem, proved with almost purity, identifies finite étale algebras over K and over K♭. Choosing compatible geometric points then identifies their absolute Galois groups (our own argument).
 
 **Wikipedia:** [Perfectoid space](https://en.wikipedia.org/wiki/Perfectoid_space). It says: “the almost purity theorem implies that for any perfectoid field K the absolute Galois groups of K and K♭ are isomorphic.”
 
@@ -5999,15 +5999,15 @@ $$”
 
 ### Perfectoid rings are stably uniform, so their adic spectra are sheafy
 
-**Remember:** Perfectoid survives rational localization, so uniformity does too, and sheafiness follows.
+**Remember:** Every rational localization stays uniform, so the presheaf glues.
 
 *Rules out counterexamples.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A Tate ring A is uniform if its power-bounded elements form a bounded subset. A Huber pair (A,A⁺) is stably uniform if every rational localization is uniform, including A itself.
+**Definition.** A Tate ring A is uniform if its power-bounded elements form a bounded subset. A Huber pair (A,A⁺) is stably uniform if A and every rational localization of it are uniform.
 
 **Problem.** For a perfectoid Huber pair (A,A⁺), the structure presheaf on Spa(A,A⁺) is a sheaf. Its positive-degree Čech cohomology vanishes for rational covers of rational opens.
 
-**How the definition helps.** The nonsheafy examples of Buzzard and Verberkmoes fail stable uniformity. Rational localizations of perfectoid rings remain perfectoid and therefore uniform. The acyclicity theorem for stably uniform Tate rings now applies (our own summary).
+**How the definition helps.** The acyclicity theorem for stably uniform Tate rings gives sheafiness, and perfectoid pairs are stably uniform because rational localizations of perfectoid rings stay perfectoid. The nonsheafy examples of Buzzard and Verberkmoes fail stable uniformity (our own summary).
 
 **Paper or page:** [Adic spaces](https://arxiv.org/abs/2405.06435), [Adic spaces](https://arxiv.org/abs/2405.06435), [Adic spaces](https://arxiv.org/abs/2405.06435). It says: “Every perfectoid Huber pair (A,A⁺) is sheafy and the structure sheaf is acyclic.”
 
@@ -6026,7 +6026,7 @@ $$”
 
 **Problem.** For a perfectoid ring R, tilting gives an equivalence between finite étale R-algebras and finite étale R♭-algebras. For a perfectoid space X, it gives an equivalence between the étale sites of X and of its tilt X♭.
 
-**How the definition helps.** The tilt puts a characteristic-p ring or space on the other side of each comparison. Scholze’s tilting theorem identifies finite étale algebras and étale sites using almost purity (our own summary).
+**How the definition helps.** Scholze’s tilting theorem, proved with almost purity, identifies finite étale algebras over R and R♭, and the étale sites of X and X♭. Since the tilt has characteristic p, étale questions move there (our own summary).
 
 **nLab:** [perfectoid space](https://ncatlab.org/nlab/show/perfectoid+space). It says: “this is generalized by the statement that the perfectoid spaces over fields related this way are equivalent.”
 
@@ -6058,11 +6058,11 @@ $$”
 
 *Rules out counterexamples. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14G22, 14B05. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A reduced scheme X is absolutely weakly normal if every universal homeomorphism Y → X from a reduced scheme is an isomorphism. A universal homeomorphism induces a homeomorphism on underlying spaces after every base change. For the formal schemes here, apply absolute weak normality on affine formal charts to their coordinate rings.
+**Definition.** A reduced scheme X is absolutely weakly normal if every universal homeomorphism Y → X from a reduced scheme, a map that stays a homeomorphism after every base change, is an isomorphism. For formal schemes, ask this of the coordinate rings of affine formal charts.
 
 **Problem.** Let O be the integers of a p-adic field. The diamond functor into v-sheaves over Spd O is fully faithful on flat, separated, absolutely weakly normal formal schemes topologically of finite type over O.
 
-**How the definition helps.** A cusp and its normalization differ by a universal homeomorphism, which their diamonds cannot detect (our own example). Absolute weak normality excludes the cusp. The quoted full-faithfulness theorem recovers morphisms on the restricted category.
+**How the definition helps.** Diamonds cannot tell apart two schemes joined by a universal homeomorphism, such as a cusp and its normalization (our own example). Absolute weak normality removes such pairs, and the quoted full-faithfulness theorem recovers morphisms on what remains.
 
 **Paper or page:** [On the p-adic theory of local models](https://arxiv.org/abs/2201.01234), [On the p-adic theory of local models](https://arxiv.org/abs/2201.01234), [Morphisms, Lemma 29.47.7.](https://stacks.math.columbia.edu/tag/0EUS). It says: “The functor X ↦ X♢ from the category of absolute weakly normal formal schemes flat, separated and topologically of finite type over O, to v-sheaves over Spd O is fully faithful.”
 
@@ -6072,15 +6072,15 @@ $$”
 
 ### Tilted line bundles encode tensor roots
 
-**Remember:** Tilted transition functions are towers of units linked by pth powers.
+**Remember:** A tilted unit is a tower of pth roots.
 
 *Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a perfectoid space X, tilted units on each open correspond to sequences of units on the corresponding open of X. Every unit in the sequence equals the pth power of the next (our own description).
+**Definition.** On a perfectoid space X, a unit of the tilt over an open set is the same as a sequence of units u₀, u₁, … on that open set of X with each uᵢ equal to the pth power of uᵢ₊₁ (our own description).
 
 **Problem.** Suppose the ring of global functions of the perfectoid space X is itself perfectoid. The Picard group of its tilt is the group of sequences of line bundle classes on X linked by pth tensor power.
 
-**How the definition helps.** The description of tilted functions turns each gluing function for a line bundle into a sequence (our own explanation). Its coordinates glue line bundles on X whose classes satisfy the required tensor relations. The hard direction starts with classes and produces compatible gluing data. The perfectoid hypothesis on global functions removes the obstruction to doing this (our own explanation).
+**How the definition helps.** Applied to gluing functions, this turns a line bundle on the tilt into a sequence of line bundles on X, each the pth tensor power of the next (our own explanation). The converse needs the perfectoid hypothesis on global functions to produce compatible gluing data (our own explanation).
 
 **Paper or page:** [Untilting Line Bundles on Perfectoid Spaces](https://arxiv.org/abs/2102.04354v3). It says: “Then θ : Pic X♭ → lim Pic X is an isomorphism.”
 
@@ -6090,15 +6090,15 @@ $$”
 
 ### Even stabilizers preserve Weil pairings
 
-**Remember:** Give each non-separating node an even stabilizer to retain the pairing.
+**Remember:** Odd stabilizers at nonseparating nodes break the two-torsion pairing.
 
 *Rules out counterexamples.* MSC 14H10 (Families, moduli of curves (algebraic)), 14H40. arXiv math.AG. Level 4: research.
 
-**Definition.** On a balanced tame twisted curve, a node is nonseparating if the partial normalization there remains connected. The even-order condition requires the cyclic stabilizer of every nonseparating node to have even order.
+**Definition.** On a balanced tame twisted curve, the even-order condition asks that every nonseparating node, one whose partial normalization stays connected, have a cyclic stabilizer of even order.
 
 **Problem.** Consider a proper connected balanced tame twisted curve without markings over an algebraically closed field of characteristic different from two. The Weil pairing on its two-torsion line bundles is nondegenerate exactly when the even-order condition holds.
 
-**How the definition helps.** Proposition 5.9 identifies odd stabilizer order at a nonseparating node as precisely the obstruction to nondegeneracy. Gluing two distinct points of a smooth connected projective curve creates such a node with trivial stabilizer (our own example).
+**How the definition helps.** Proposition 5.9 shows that an odd stabilizer at a nonseparating node is exactly what makes the Weil pairing degenerate. Gluing two distinct points of a smooth connected projective curve gives such a node with trivial stabilizer (our own example).
 
 **Paper or page:** [Weil pairing on twisted curves](https://arxiv.org/abs/2310.09012v1). It says: “The Weil pairing on 𝒳 is non-degenerate if and only if the stabilizers of the non-separating nodes are of even order”
 
@@ -6112,11 +6112,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14H30 (Coverings of curves, fundamental group), 14H40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Over a field of characteristic zero, a curve here is a smooth proper scheme of pure dimension one (our own). It may have several connected components, including after extension to an algebraic closure.
+**Definition.** Over a field of characteristic zero, a curve here is a smooth proper scheme of pure dimension one that need not be connected, even after extension to an algebraic closure (our own).
 
-**Problem.** Let a finite group G act on a curve X, freely on a dense open subset. The quotient X/G is again a curve. On Jacobians, pushforward after pullback multiplies by \|G\|, and pullback after pushforward sums the actions of G.
+**Problem.** Let a finite group G act on a curve X, freely on a dense open subset; then X/G is again a curve. On Jacobians, pushforward after pullback multiplies by \|G\|, and pullback after pushforward sums the actions of G.
 
-**How the definition helps.** Allowing several components gives one statement even when G permutes the components (our own). The paper reduces to the connected case, where the norm and pullback identities apply.
+**How the definition helps.** Allowing several components keeps Galois closures inside the class of curves, so one statement covers the case where G permutes the components (our own). The paper reduces to the connected case, where the norm and pullback identities apply.
 
 **Paper or page:** [On Galois covers of curves and arithmetic of Jacobians](https://arxiv.org/abs/2407.18258). It says: “it is convenient to work throughout with curves that are not assumed to be geometrically connected (or even connected); such curves arise naturally when taking Galois closures of covers of curves.”
 
@@ -6130,11 +6130,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H30 (Coverings of curves, fundamental group), 14F35. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Let f be a finite nonconstant map between smooth curves over a field of characteristic zero. Choose local coordinates u and t vanishing at a rational point x and its image. If t ∘ f begins with auᵉ, send the tangent coordinate v to avᵉ.
+**Definition.** Let f be a finite nonconstant map between smooth curves over a field of characteristic zero, with local coordinates u at a rational point x and t at f(x). If t ∘ f begins with auᵉ, then f acts on tangents by this leading term, sending the tangent coordinate v to avᵉ.
 
 **Problem.** Every nonzero tangent at f(x) lifts at x after a finite extension of the ground field.
 
-**How the definition helps.** Our own explanation uses the first nonzero term to reduce lifting a tangent w to solving avᵉ = w. Adjoining one root suffices. For t = u² at zero, the ordinary derivative sends every tangent to zero. Changing either coordinate rescales both sides by the corresponding tangent transformation.
+**How the definition helps.** Lifting a tangent w means solving avᵉ = w, which needs only one adjoined root (our own explanation). The ordinary derivative fails: for t = u² at zero, it sends every tangent to zero.
 
 **Paper or page:** [Universality of the Galois action on the fundamental group of ℙ¹ ∖ {0,1,∞}](https://arxiv.org/abs/2109.09301). It says: “there exists a tangential base point xᵥ defined over a finite Kummer extension of F”
 
@@ -6148,11 +6148,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H30 (Coverings of curves, fundamental group), 11G20. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** In characteristic p, an Artin–Schreier cover of the line has an equation yᵖ − y = f(x). Translating y by h(x) changes f by hᵖ − h. Over the algebraic closure, choose a reduced equation, meaning that every pole order is prime to p.
+**Definition.** An Artin–Schreier cover of the line in characteristic p has equation yᵖ − y = f(x), and replacing y by y + h changes f by hᵖ − h. The equation is reduced if, over the algebraic closure, every pole of f has order prime to p; then each pole order m is the ramification jump there (our own).
 
 **Problem.** For a connected degree p cover of the projective line in this form, its genus satisfies 2g = (p − 1)(∑(m + 1) − 2). Sum over the geometric poles of order m.
 
-**How the definition helps.** In our own explanation, reduction makes each pole order m equal to the local ramification jump, the index where the ramification group changes. For our own example in odd characteristic, xᵖ + x² reduces to x + x² by subtracting xᵖ − x. The jump at infinity is two. The ramification theorem gives each pole a contribution of (p − 1)(m + 1) in the Riemann–Hurwitz genus formula.
+**How the definition helps.** Once each pole order m is the ramification jump, the ramification theorem gives each pole a contribution (p − 1)(m + 1) to the Riemann–Hurwitz formula (our own explanation). For example, in odd characteristic xᵖ + x² reduces to x + x² by subtracting xᵖ − x, so the jump at infinity is two (our own).
 
 **Paper or page:** [A Mass Formula For Artin--Schreier Curves Over Finite Fields](https://arxiv.org/abs/2203.10187). It says: “Let π be an Artin–Schreier cover with equation yᵖ − y = u(x)”
 
@@ -6164,11 +6164,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14H30 (Coverings of curves, fundamental group), 14F35. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** Let x be a rational point on a smooth connected curve C over a field of characteristic zero. A tangential base point specifies a nonzero tangent vector at x. It selects sheets near x using compatible roots of a local coordinate with derivative one along that vector.
+**Definition.** A tangential base point at a rational point x of a smooth connected curve over a field of characteristic zero is a nonzero tangent vector v at x. It picks sheets of covers of the punctured curve by compatible roots of a local coordinate with derivative one along v, as if x were still there.
 
 **Problem.** Removing x gives a surjection from the fundamental group based at the tangent to the fundamental group of C based at x. These groups describe symmetries of finite unbranched algebraic covers.
 
-**How the definition helps.** The tangent specifies a base point on the punctured curve that can still be compared with x. Petrov identifies the sheets there with the sheets at x whenever the cover extends across x. In our own explanation, surjectivity also uses the fact that removing finitely many points leaves a connected smooth covering curve connected.
+**How the definition helps.** The tangent gives a base point on the punctured curve whose sheets match those at x for every cover that extends across x (Petrov). Surjectivity follows because a connected covering curve stays connected after removing finitely many points (our own explanation).
 
 **Paper or page:** [Universality of the Galois action on the fundamental group of ℙ¹ ∖ {0,1,∞}](https://arxiv.org/abs/2109.09301). It says: “the geometric fibers of U at x and of U\|C∖x at xᵥ are canonically identified.”
 
@@ -6182,11 +6182,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14H30 (Coverings of curves, fundamental group), 14F35. arXiv math.AG. Level 4: research.
 
-**Definition.** Choose a rational point x on a smooth geometrically connected curve over a characteristic-zero field k, and a nonzero rational tangent v at x. In a parameter t with dt(v)=1, the tangential fiber consists of lifts to the cover over the union of k̄((t¹⁄ⁿ)) for n ≥ 1.
+**Definition.** Let x be a rational point on a smooth geometrically connected curve over a characteristic-zero field k, with a nonzero rational tangent v at x. For a parameter t with dt(v) = 1, the tangential fiber is the set of lifts of the cover over the union of k̄((t¹⁄ⁿ)) for n ≥ 1, a stand-in for the missing fiber at x.
 
 **Problem.** After extending scalars to an algebraic closure, filling x gives a canonical surjection from the punctured curve’s étale fundamental group to that of C. These groups act on the sheets of all finite étale covers.
 
-**How the definition helps.** The tangent selects a fiber on the punctured curve that agrees with the ordinary fiber for every cover extending across x. Each connected cover of C stays connected after deleting the points above x (our own). The correspondence between connected covers and transitive finite group actions then gives surjectivity (our own).
+**How the definition helps.** For every cover extending across x, the tangential fiber agrees with the ordinary fiber at x. Each connected cover of C stays connected after deleting the points above x, so the induced map of groups is surjective (our own).
 
 **Paper or page:** [Universality of the Galois action on the fundamental group of $\\mathbb{P}<sup>1\\setminus\\{0</sup>,1,\\infty\\}$](https://arxiv.org/abs/2109.09301). It says: “the geometric fibers of U at x and of U\|C∖x at xᵥ are canonically identified.”
 
@@ -6214,11 +6214,11 @@ $$”
 
 ### The chord rule gives elliptic curves a structure without a chosen zero
 
-**Remember:** Commutativity, cancellation, and swapping the outermost and innermost arguments govern the chord operation.
+**Remember:** The third point on a chord defines the operation.
 
 *Makes the theorem clean to state or prove.* MSC 14H52 (Elliptic curves), 08A02. arXiv math.AG, math.RA. Level 4: research.
 
-**Definition.** An elliptic group is a set with a commutative operation ∗ satisfying two identities for all x, y, z, w. They are x ∗ (x ∗ y) = y and x ∗ (y ∗ (z ∗ w)) = w ∗ (y ∗ (z ∗ x)).
+**Definition.** An elliptic group abstracts the chord rule, where x ∗ y is the third point on the line through x and y. It is a set with a commutative operation ∗ such that x ∗ (x ∗ y) = y and x ∗ (y ∗ (z ∗ w)) = w ∗ (y ∗ (z ∗ x)) for all x, y, z, w.
 
 **Problem.** Choose any element c of an elliptic group. The operation x + y = c ∗ (x ∗ y) makes it an abelian group with zero c. Different choices of c give isomorphic groups.
 
@@ -6236,11 +6236,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14H57 (Dessins d'enfants theory). arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** A tree dessin is a plane tree whose black and white vertices alternate along edges. A frame marks one black vertex and one white vertex. The polynomial representing the tree sends black vertices to zero and white vertices to one.
+**Definition.** A tree dessin is a plane tree whose black and white vertices alternate along edges, drawn by a polynomial that sends black vertices to 0 and white vertices to 1. A frame marks one black and one white vertex, which fixes the two free constants of an affine change of variable.
 
 **Problem.** Each framed tree determines exactly one complex polynomial whose finite critical values lie in {0,1} and whose marked vertices have coordinates 0 and 1.
 
-**How the definition helps.** Our own explanation uses the two marks to fix the affine coordinate uniquely. The tree correspondence first gives a polynomial up to an affine change of variable. Without the marks, B(z) = 3z² − 2z³ and B(−z/2) represent the same tree. Both polynomials fix 0 and 1.
+**How the definition helps.** The tree fixes its polynomial up to an affine change of variable z ↦ az + b, and placing the two marked vertices at 0 and 1 fixes a and b (our own explanation). Without marks, B(z) = 3z² − 2z³ and B(−z/2) represent the same tree.
 
 **Paper or page:** [Three arithmetic sites](https://arxiv.org/abs/2003.01387). It says: “Every framed tree dessin T is isomorphic to the framed tree dessin D(B) of a unique (!) dynamical Belyi polynomial B.”
 
@@ -6254,11 +6254,11 @@ $$”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 14H60 (Vector bundles on curves and their moduli), 14D23. arXiv math.AG. Level 4: research.
 
-**Definition.** At each marked point, give the vector bundle’s fiber a decreasing flag with strictly increasing weights in \[0,1) on its successive quotients. Parabolic slope equals degree plus the sum of each weight times its quotient dimension, all divided by rank.
+**Definition.** A parabolic bundle is a vector bundle with, at each marked point, a decreasing flag in the fiber whose successive quotients carry strictly increasing weights in \[0,1). Its parabolic slope is the degree plus the sum of each weight times its quotient dimension, all divided by rank.
 
 **Problem.** Fix the parabolic weights. The Harder–Narasimhan filtration has semistable successive quotients of strictly decreasing parabolic slopes. Bundles of each fixed Harder–Narasimhan type form a locally closed substack of the moduli stack.
 
-**How the definition helps.** Parabolic slope gives the filtration used to define the types, so the strata can be stated at all. The abstract says the stratification is based on this notion of Mehta and Seshadri. Our own explanation is that ordinary slope ignores the flags, so it cannot sort parabolic bundles by their flags. The work is to show that the strata are substacks, not only sets of points.
+**How the definition helps.** Parabolic slope builds the filtration and its types, so the strata can be stated; ordinary slope ignores the flags (our own). The abstract bases the stratification on this notion of Mehta and Seshadri. The work is to show that the strata are locally closed substacks.
 
 **Paper or page:** [Harder-Narasimhan stratification for the moduli stack of parabolic vector bundles](https://arxiv.org/abs/2101.08871v3), [Harder-Narasimhan stratification for the moduli stack of parabolic vector bundles](https://arxiv.org/abs/2101.08871v3). It says: “For every set of parabolic weights, we construct a Harder-Narasimhan stratification for the moduli stack of parabolic vector bundles on a curve. It is based on the notion of parabolic slope, introduced by Mehta and Seshadri.”
 
@@ -6277,7 +6277,7 @@ $$”
 
 **Problem.** The sections of finite order form a group isomorphic to the saturation of T modulo T.
 
-**How the definition helps.** Saturation turns finite order in a quotient into a membership test before taking the quotient, in our own explanation. Shioda identifies the group of sections with divisor classes modulo T. A class in that quotient has finite order precisely when a positive multiple belongs to T. Thus the saturation gives the answer without computing addition of sections.
+**How the definition helps.** Shioda’s theorem identifies the group of sections with Néron–Severi classes modulo T. A class in that quotient has finite order exactly when a positive multiple lies in T, that is, when it lies in the saturation (our own explanation).
 
 **Paper or page:** [Elliptic fibrations on toric K3 hypersurfaces and mirror symmetry derived from Fano polytopes](https://arxiv.org/abs/2208.01465v2). It says: “Let MW(π, O)ₜₒᵣ be the torsion part of MW(π, O). Then, MW(π, O)ₜₒᵣ ≃ T̂/T.”
 
@@ -6289,11 +6289,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14J27 (Elliptic surfaces, elliptic or Calabi-Yau fibrations), 14J28. arXiv math.AG, math.NT. Level 4: research.
 
-**Definition.** For a projective complex elliptic K3 surface with a zero section, take divisor classes modulo algebraic equivalence. The trivial lattice is the subgroup generated by the zero section and all fiber components.
+**Definition.** For a projective complex elliptic K3 surface with a zero section, the trivial lattice is the subgroup of the Néron–Severi group, divisor classes modulo algebraic equivalence, generated by the zero section and all fiber components.
 
 **Problem.** The group of sections has rank equal to the rank of the divisor class group modulo algebraic equivalence minus the trivial lattice rank.
 
-**How the definition helps.** The trivial lattice collects the classes that disappear when divisors are converted into sections, in our own explanation. Restrict a divisor to the generic fiber and subtract its degree times the chosen origin. Shioda’s theorem identifies the resulting quotient group with the sections. Taking ranks gives the formula.
+**How the definition helps.** Shioda’s theorem identifies the group of sections with the Néron–Severi group modulo the trivial lattice, so taking ranks gives the formula. The map restricts a divisor to the generic fiber and subtracts its degree times the zero section (our own explanation).
 
 **Paper or page:** [Elliptic fibrations on toric K3 hypersurfaces and mirror symmetry derived from Fano polytopes](https://arxiv.org/abs/2208.01465v2). It says: “There is an isomorphism MW(π, O) ≃ NS(S)/T of groups.”
 
@@ -6323,11 +6323,11 @@ $$”
 
 *True by definition.* MSC 14L15 (Group schemes), 17B45, 18M05. arXiv math.RT, math.AG. Level 4: research.
 
-**Definition.** Let G be an affine group scheme over a symmetric tensor category, with coordinate ring O(G) and coproduct Δ, which encodes group multiplication. A map β from X ⊗ O(G) to O(G) is right invariant if it commutes with right translation. The counit η evaluates a function at the identity of G.
+**Definition.** Let G be an affine group scheme over a symmetric tensor category, with coordinate ring O(G), coproduct Δ and counit η, which evaluates at the identity. A map β from X ⊗ O(G) to O(G) is right invariant if it commutes with right translation: Δ ∘ β = (β ⊗ 1) ∘ (1 ⊗ Δ).
 
 **Problem.** A right-invariant map β is recovered from η ∘ β by the formula β = ((η ∘ β) ⊗ 1) ∘ (1 ⊗ Δ). So a right-invariant derivation is determined by its value at the identity.
 
-**How the definition helps.** Right invariance carries the value at the identity to every point, so there is no free choice elsewhere. In our own reading, right invariance is the equation Δ ∘ β = (β ⊗ 1) ∘ (1 ⊗ Δ). Apply η ⊗ 1 to both sides, and the counit law (η ⊗ 1) ∘ Δ = 1 turns the equation into the formula. Showing that the tangent space has the structure of a restricted Lie algebra takes separate work.
+**How the definition helps.** Apply η ⊗ 1 to the invariance equation, and the counit law (η ⊗ 1) ∘ Δ = 1 turns it into the formula (our own reading). The restricted Lie algebra structure on the tangent space takes separate work.
 
 **Paper or page:** [Group schemes and their Lie algebras over a symmetric tensor category](https://arxiv.org/abs/2507.02031v1). It says: “If βₓ : X ⊗ O(G) → O(G) is right invariant then βₓ can be recovered from η ∘ βₓ via the formula”
 
@@ -6345,7 +6345,7 @@ $$”
 
 **Problem.** For integral λ, take L(λ) on G/B associated to the character −λ of B. If λ+ρ lies on a reflecting wall, all cohomology vanishes. Otherwise only degree ℓ(w) contributes, giving the dual irreducible module of highest weight w·λ, where w uniquely makes w·λ dominant.
 
-**How the definition helps.** With the dot action, the two cases become one test: either a dot reflection fixes λ, or one dot move makes it dominant. Without it, the statement needs a list of shifted chambers. The work went into Bott's computation of the sheaf cohomology, or into Demazure's later short proof.
+**How the definition helps.** With the dot action, the two cases become one test: either a dot reflection fixes λ, or one Weyl element moves λ by the dot action to a dominant weight. Without it, the statement needs a list of shifted chambers. Bott’s computation, or Demazure’s short proof, supplies the cohomology.
 
 **Wikipedia:** [Borel–Weil–Bott theorem](https://en.wikipedia.org/wiki/Borel%E2%80%93Weil%E2%80%93Bott_theorem). It says: “For any integral weight λ and w in the Weyl group W, we set w\*λ := w(λ+ρ)−ρ, where ρ denotes the half-sum of positive roots of G.”
 
@@ -6361,9 +6361,9 @@ $$”
 
 **Definition.** For projective X, consider all finite flat families of degree-r subschemes of X, allowing arbitrary base schemes. The r-th cactus scheme is the scheme-theoretic closure of the union of their relative linear spans in the ambient projective space (our own).
 
-**Problem.** Take a Veronese variety of high degree, the image of projective space under all monomials of a fixed degree. Its r-th cactus scheme equals the zero scheme of suitable catalecticant minors outside the (r−1)-th cactus variety. Catalecticant minors are minors of matrices built from the coefficients of a form.
+**Problem.** Take a Veronese variety of high degree, the image of projective space under all monomials of a fixed degree. Outside the (r−1)-th cactus variety, its r-th cactus scheme equals the zero scheme of suitable catalecticant minors, minors of matrices built from the coefficients of a form.
 
-**How the definition helps.** Once the cactus variety is a scheme, the comparison can be an equality of schemes, not only of point sets. Our own explanation is that a set cannot tell an equation from its square. The relative spans over non-reduced bases give the nilpotent structure. The work is to compare these spans with the determinantal equations.
+**How the definition helps.** Once the cactus variety is a scheme, the comparison can be an equality of schemes, since a set cannot tell an equation from its square (our own). The relative spans over non-reduced bases give the nilpotent structure. The work is to compare these spans with the determinantal equations.
 
 **Paper or page:** [Cactus scheme, catalecticant minors, and scheme theoretic equations](https://arxiv.org/abs/2410.21908v1). It says: “In this article, we equip the cactus variety with a scheme structure, via "relative linear spans" of families of finite schemes over a potentially non-reduced base.”
 
@@ -6373,15 +6373,15 @@ $$”
 
 ### Central differences give genus recursions
 
-**Remember:** A symmetric shift connects each genus to the earlier ones.
+**Remember:** Shift t both ways by λ/2π; odd derivatives cancel.
 
 *True by definition.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 81T30. arXiv math.AG. Level 4: research.
 
-**Definition.** The resolved conifold is the total space of two copies of the degree minus one line bundle over the projective line. Let Fᵍ(t) generate its positive-degree genus-g curve counts, with degree d weighted by exp(2πidt). Form the free energy by summing λ²ᵍ⁻²Fᵍ(t) over all genera g ≥ 0.
+**Definition.** For the resolved conifold, the total space of two copies of the degree minus one line bundle over the projective line, let Fᵍ(t) generate the positive-degree genus-g curve counts, with degree d weighted by exp(2πidt). The free energy puts all genera in one series, the sum of λ²ᵍ⁻²Fᵍ(t) over g ≥ 0.
 
 **Problem.** Put D = (1/2π)d/dt. For g ≥ 1, the sum over 1 ≤ j ≤ g + 1 of D²ʲFᵍ⁺¹⁻ʲ divided by (2j)! equals zero.
 
-**How the definition helps.** Combining the genera in one series turns a symmetric shift in t into a recursion (our own). Adding the shifts by λ/(2π) and −λ/(2π) cancels the odd derivatives (our own). At order λ²ᵍ only the second derivative involves genus g (our own). The difference equation for the resolved conifold supplies the substantive theorem.
+**How the definition helps.** The difference equation for the resolved conifold shifts t by ±λ/(2π) in the free energy, and adding the two shifts cancels the odd derivatives (our own). Collecting the terms of order λ²ᵍ gives the stated sum, since only the second derivative involves genus g (our own).
 
 **Paper or page:** [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2). It says: “For every g ≥ 1 the difference equation gives a recursive differential equation”
 
@@ -6395,11 +6395,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)). arXiv math.AG. Level 4: research.
 
-**Definition.** A stable map is a map from a marked nodal curve with finitely many symmetries preserving the marks and map. Call a vector bundle E convex if every genus-zero stable map f from C has H¹(C, f\*E) = 0. This cohomology group measures obstructions to extending sections of the pulled-back bundle.
+**Definition.** A vector bundle E on X is convex if H¹(C, f\*E) = 0 for every genus-zero stable map f from C, a map from a marked nodal curve with finitely many symmetries. Then the spaces H⁰(C, f\*E) form a vector bundle over the moduli space of maps (our own).
 
 **Problem.** Let a regular section of a convex bundle E on a smooth complex projective variety X cut out a smooth locus Y of expected codimension. Fix the marks and ambient curve class in genus zero. The sum of pushed-forward virtual cycles from Y equals the ambient virtual cycle capped with the top Chern class of the bundle of sections.
 
-**How the definition helps.** Convexity makes the section spaces H⁰(C, f\*E) fibers of a vector bundle on the moduli space (our own). Without convexity, even the identity map of the projective line has H¹(ℙ¹, O(−2)) ≠ 0 (our own). The induced section vanishes exactly on maps into Y (our own). The virtual zero locus theorem gives the stated top Chern class formula (our own).
+**How the definition helps.** The given section of E induces a section of this bundle that vanishes exactly on maps into Y, so the virtual zero locus theorem gives the top Chern class formula (our own). Without convexity, the identity map of the projective line has H¹(ℙ¹, O(−2)) ≠ 0 (our own).
 
 **Paper or page:** [Quantum Lefschetz without curves](https://arxiv.org/abs/2403.01011v1). It says: “When the complex is a single bundle we recover results of Kim-Kresch-Pantev.”
 
@@ -6415,9 +6415,9 @@ $$”
 
 **Definition.** The reduced Donaldson–Thomas series is the full series divided by its degree-zero series, which counts only points. The denominator has constant coefficient one.
 
-**Problem.** Let X be a toric Calabi–Yau three-orbifold with transverse type A singularities, locally cyclic quotients with opposite weights across the singular curve. Restrict to curve classes whose generic stabilizer representations are multiples of the regular representation. Then the reduced Donaldson–Thomas series equals the stable-pair series.
+**Problem.** Let X be a toric Calabi–Yau three-orbifold with transverse type A singularities, and restrict to curve classes whose generic stabilizer representations are multiples of the regular representation. Then the reduced Donaldson–Thomas series equals the stable-pair series.
 
-**How the definition helps.** Division removes the points-only factor before the two curve series are compared (our own). The stabilizer is the local symmetry group, and its regular representation permutes a basis indexed by its elements (our own). The proof compares normalized local series at torus fixed points and glues their contributions (our own).
+**How the definition helps.** Division removes the factor from points that move freely, which stable pairs never count, so both sides count only curves (our own). The proof compares normalized local series at torus fixed points and glues their contributions (our own).
 
 **Paper or page:** [The orbifold DT/PT vertex correspondence](https://arxiv.org/abs/2302.02342v4). It says: “DT′ₘᵣ(𝒳) = PTₘᵣ(𝒳).”
 
@@ -6432,11 +6432,11 @@ $$”
 
 *Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG. Level 4: research.
 
-**Definition.** A logarithmic map’s decorated graph records domain components, target strata, curve classes and integral contact orders along branches. Its tropical realizations assign vertex positions and nonnegative edge lengths compatible with these strata and contact orders. A realizable type is rigid if fixing the base length to one leaves a single tropical realization (our own).
+**Definition.** The type of a logarithmic map records its decorated graph: domain components, target strata, curve classes and contact orders along branches. A type is rigid if, with the base length fixed to one, it has exactly one tropical realization, one compatible choice of vertex positions and nonnegative edge lengths (our own).
 
-**Problem.** Fix the genus, marks and curve class. The virtual class of maps to the central fiber equals the sum of the pushed-forward virtual classes for rigid types, with positive rational weights. A virtual class is the cycle that gives the expected intersection counts.
+**Problem.** Fix the genus, marks and curve class. The virtual class of maps to the central fiber, the cycle that gives the expected counts, equals the sum over rigid types of their pushed-forward virtual classes with positive rational weights.
 
-**How the definition helps.** The type records exactly which limiting maps contribute to each term (our own). The degeneration formula supplies the weights and proves the equality of cycles. Intersecting that equality with incidence conditions gives the corresponding numerical formula (our own).
+**How the definition helps.** Each limiting map has a type, and the rigid types index the terms of the sum (our own). The degeneration formula supplies the weights and proves the equality of cycles.
 
 **Paper or page:** [Gromov-Witten theory, degenerations, and the tautological ring](https://arxiv.org/abs/2510.04779v1). It says: “The constant mγ is a positive rational number.”
 
@@ -6446,7 +6446,7 @@ $$”
 
 ### Multiple covers isolate primitive counts
 
-**Remember:** One multiple-cover series can record infinitely many degrees.
+**Remember:** Li₃ packs a curve with all its multiple covers.
 
 *True by definition.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 81T30. arXiv math.AG. Level 4: research.
 
@@ -6454,7 +6454,7 @@ $$”
 
 **Problem.** For the resolved conifold, the genus-zero Gopakumar–Vafa number is one in degree one and zero in every higher degree.
 
-**How the definition helps.** The whole genus-zero curve series is one basis element, the trilogarithm (our own). Each basis element starts with coefficient 1 in its own degree, so the coefficients are unique (our own). The work goes into the multiple-cover computation for maps to the exceptional rational curve (our own).
+**How the definition helps.** The genus-zero series is exactly Li₃(q), so n₁ = 1 and every other n<sub>d</sub> = 0 (our own). The coefficients are unique because Li₃(qᵈ) starts in degree d with coefficient 1 (our own). The work goes into the multiple-cover computation for maps to the exceptional curve (our own).
 
 **Paper or page:** [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2). It says: “F̃₀(t) = Li₃(q).”
 
@@ -6487,7 +6487,7 @@ $$”
 
 *Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14D23. arXiv math.AG. Level 4: research.
 
-**Definition.** A twisted curve can have finite symmetry groups at marks and nodes. For a map between complex orbifolds, representability means that it injects every point’s symmetry group into the symmetry group at its image. Require this condition on the maps used to count curves in an orbifold.
+**Definition.** A map of orbifolds is representable if it maps each point’s symmetry group injectively into the symmetry group of its image. Curve counts in an orbifold use representable maps from twisted curves, curves with finite symmetry groups at marks and nodes.
 
 **Problem.** A representable map from a twisted curve to an ordinary scheme has trivial symmetry groups at every mark and node.
 
@@ -6505,11 +6505,11 @@ $$”
 
 *True by definition.* MSC 14P10 (Semialgebraic sets and related spaces), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Let k ⊂ ℂ and take an oriented closed semialgebraic chain G defined over k ∩ ℝ in complex affine space. Choose k-rational f and ω regular on G, with deg ω = dimℝ G. The integral of exp(−f)ω is a naive exponential period when f\|G is proper, Im f is bounded, and Re f is bounded below.
+**Definition.** A naive exponential period over k ⊂ ℂ is an integral of exp(−f)ω over a semialgebraic chain G in complex affine space of any dimension, with all data defined over k. Precisely, G is oriented, closed and defined over k ∩ ℝ, f and ω are k-rational and regular on G with deg ω = dimℝ G, f\|G is proper, Im f is bounded and Re f is bounded below.
 
 **Problem.** Let k ⊂ ℂ be algebraic over its real subfield. Then replacing k by its algebraic closure in ℂ does not change the set of naive exponential periods.
 
-**How the definition helps.** Allowing any ambient dimension lets an extra coordinate encode coefficients from a finite extension. Only finitely many coefficients occur, and one algebraic element generates their extension. Real polynomial conditions cut out its chosen complex root by its real and imaginary parts. This is our own summary of the descent in Lemma 6.6.
+**How the definition helps.** Since any ambient dimension is allowed, an extra coordinate can carry a coefficient from a finite extension of k. One algebraic element generates the finitely many coefficients, and real polynomial conditions on its real and imaginary parts cut out its chosen root. This is our own summary of the descent in Lemma 6.6.
 
 **Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “the product of an algebraic function and the exponential of an algebraic function”
 
@@ -6523,11 +6523,11 @@ $$”
 
 *Rules out counterexamples.* MSC 14P10 (Semialgebraic sets and related spaces), 14F40. arXiv math.NT, math.AG. Level 4: research.
 
-**Definition.** Choose an oriented closed ℚ-semialgebraic domain G in complex affine space. Take ℚ-rational f and ω regular on G, with the degree of ω equal to the real dimension of G. The integral of exp(−f)ω is a naive exponential period if f\|G is proper, Im f is bounded, and Re f is bounded below.
+**Definition.** A naive exponential period is an integral of exp(−f)ω over an oriented closed ℚ-semialgebraic domain G in complex affine space, with f and ω ℚ-rational and regular on G and deg ω = dimℝ G. It requires f\|G to be proper with values in a half-strip: Im f bounded and Re f bounded below.
 
 **Problem.** Every such integral of exp(−f)ω converges absolutely. Without the phase bound, the imaginary axis with f(z)=z and ω=dz meets the other conditions but gives a divergent absolute integral.
 
-**How the definition helps.** The strip and compact-preimage condition force the real part of f to grow along any sequence escaping to infinity. In our own counterexample, the weight has absolute value one everywhere on the imaginary axis. The convergence proof bounds algebraic growth and extends the weighted form to the boundary of a compact space.
+**How the definition helps.** In a half-strip, properness forces Re f to grow as points escape to infinity, so exp(−f) decays. The convergence proof bounds the algebraic growth of ω and extends the weighted form to the boundary of a compact space. In our own counterexample, \|exp(−z)\| = 1 on the whole imaginary axis.
 
 **Wikipedia:** [Period (number theory)](https://en.wikipedia.org/wiki/Period_%28number_theory%29). It says: “Permitting the integrand Q to be the product of an algebraic function and the exponential of an algebraic function”
 

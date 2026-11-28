@@ -4,11 +4,11 @@
 
 *True by definition.* MSC 97F40 (Integers, rational numbers (educational aspects)), 11A07. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** For x ≥ 0, view the floor of x as the number of positive integers at most x. The usual presentation calls it the greatest integer at most x.
+**Definition.** For x ≥ 0, read ⌊x⌋ as the number of positive integers at most x.
 
 **Problem.** Let x ≥ 0 and let n be a positive integer. Then ⌊x⌋ + ⌊x + 1/n⌋ + ⋯ + ⌊x + (n − 1)/n⌋ = ⌊nx⌋.
 
-**How the definition helps.** Our own proof partitions the positive integers at most nx by residue modulo n. Each has a unique form nk − j with integers k ≥ 1 and 0 ≤ j &lt; n. For fixed j, the condition nk − j ≤ nx becomes k ≤ x + j/n. Thus this class contributes exactly ⌊x + j/n⌋.
+**How the definition helps.** Count the positive integers at most nx by their residue modulo n (our own proof). Each one is nk − j with k ≥ 1 and 0 ≤ j &lt; n, and nk − j ≤ nx means k ≤ x + j/n. So the class of j contributes ⌊x + j/n⌋, and the classes together give ⌊nx⌋.
 
 **Paper or page:** [Hermite's identity and the quadratic reciprocity law](https://arxiv.org/abs/2206.01170v1). It says: “For all real values x ≥ 0 and all natural numbers n ≥ 1 we have ⌊x⌋ + ⌊x + 1/n⌋ + … + ⌊x + (n−1)/n⌋ = ⌊nx⌋.”
 
@@ -18,15 +18,15 @@
 
 ### Mediants minimize the denominator
 
-**Remember:** Add the two fraction vectors.
+**Remember:** The mediant is the sum of the two fraction vectors.
 
 *True by definition.* MSC 97F40 (Integers, rational numbers (educational aspects)), 11B57. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** For fractions a/b and c/d in lowest terms with positive denominators, call (a + c)/(b + d) their mediant. Think of the fractions as vectors (b, a) and (d, c), not just points on the number line.
+**Definition.** Treat reduced fractions a/b and c/d with positive denominators as integer vectors (b, a) and (d, c), so that their mediant (a + c)/(b + d) is the vector sum. When bc − ad = 1 these two vectors form a basis of the integer lattice.
 
 **Problem.** If a/b &lt; c/d and bc − ad = 1, the mediant is the unique fraction between them with smallest positive denominator.
 
-**How the definition helps.** In our own proof the endpoint vectors form an integer basis because their determinant is one. An intermediate reduced fraction has a vector with positive integer coordinates m and n in this basis. Its denominator mb + nd reaches its minimum b + d only when m = n = 1. That sum vector is primitive because its basis coordinates are (1, 1), so the mediant attains the minimum.
+**How the definition helps.** Because the vectors form a lattice basis, a fraction strictly between them has a vector m(b, a) + n(d, c) with positive integers m and n (our own proof). Its denominator mb + nd takes its smallest value b + d only when m = n = 1, which gives the mediant.
 
 **Wikipedia:** [Mediant (mathematics)](https://en.wikipedia.org/wiki/Mediant_%28mathematics%29). It says: “The vertex of the parallelogram opposite to the origin of coordinates is the point (b+d,a+c), which is the mediant of a/b and c/d.”
 
@@ -38,11 +38,11 @@
 
 *True by definition.* MSC 97F40 (Integers, rational numbers (educational aspects)), 11A63. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** A number has a terminating decimal if it admits a representation as an integer divided by 10ᵏ for some nonnegative integer k. Reading the k decimal places as powers of ten gives this test without performing long division.
+**Definition.** A number has a terminating decimal exactly when it equals an integer divided by 10ᵏ for some k ≥ 0, since k decimal places count units of 10⁻ᵏ.
 
 **Problem.** A reduced fraction terminates in base ten exactly when its positive denominator has no prime factors other than 2 and 5.
 
-**How the definition helps.** The fraction form reduces termination to whether the denominator divides some power of ten (our own). In our own proof, reducing cancels only factors already in the power of ten. Conversely, the denominator can be multiplied by enough twos and fives to reach a power of ten (our own). The work is connecting positional decimal notation to the denominator 10ᵏ (our own).
+**How the definition helps.** A reduced fraction p/q equals an integer over 10ᵏ exactly when q divides 10ᵏ, because p and q share no factor (our own). The divisors of powers of ten are exactly the numbers 2ᵃ5ᵇ (our own).
 
 **Wikipedia:** [Repeating decimal](https://en.wikipedia.org/wiki/Repeating_decimal). It says: “if all the prime factors of the denominator of the fully reduced fractional form are also factors of the base.”
 
@@ -56,11 +56,11 @@
 
 *True by definition.* MSC 97F50 (Real numbers, complex numbers (educational aspects)), 12D05. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Describe a point on the unit circle by its counterclockwise angle from 1, measured in turns. Two real numbers represent the same point when they differ by an integer. Cartesian coordinates use the real and imaginary parts instead.
+**Definition.** Describe a point on the unit circle by its counterclockwise angle from 1, measured in turns and counted modulo one turn. By Euler's formula, multiplying unit complex numbers adds their angles (our own).
 
 **Problem.** For every positive integer n, the complex nth roots of 1 under multiplication form a group isomorphic to the integers modulo n under addition.
 
-**How the definition helps.** In turn coordinates, raising to the nth power multiplies the angle by n (our own). In our own description, the solutions are the n multiples of 1/n modulo one turn, so their indices add modulo n. The work is proving that angles add when unit complex numbers multiply, by Euler’s formula (our own).
+**How the definition helps.** Raising to the nth power multiplies the angle by n, so the nth roots of 1 have angles j/n for j = 0, …, n − 1 (our own). Multiplying two roots adds their angles, so their indices j add modulo n (our own).
 
 **Paper or page:** [Isomorphism between Roots of Unity under Multiplication and Integers under Modulo Addition](https://proofwiki.org/wiki/Isomorphism_between_Roots_of_Unity_under_Multiplication_and_Integers_under_Modulo_Addition). It says: “Then (Rₙ, ×) and (ℤₙ, +ₙ) are isomorphic algebraic structures.”
 
@@ -72,11 +72,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 97G30 (Area and volume (educational aspects)), 51N20, 01A50. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Use half the determinant of the vectors from the first vertex to the second and third, in that order. This gives a signed triangle area that reverses sign when the vertex order reverses.
+**Definition.** The signed area of a triangle PQR is half the determinant of the vectors Q − P and R − P. It is positive when the vertices run counterclockwise and changes sign when their order reverses.
 
-**Problem.** For a simple polygon traced counterclockwise, sum the signed triangle areas from any fixed point to successive edges to get its area.
+**Problem.** For a simple polygon P₁…Pₙ traced counterclockwise and any point O, the signed areas of the triangles OPᵢPᵢ₊₁ sum to the area of the polygon.
 
-**How the definition helps.** Signed areas cancel along shared edges, so the reference point can lie anywhere (our own proof). Triangulate the simple polygon and orient every triangle counterclockwise. Expanding determinants shows that each triangle’s three edge contributions sum to its area. Opposite orientations cancel the two contributions from every internal edge, leaving only the polygon boundary.
+**How the definition helps.** Triangulate the polygon, orient each triangle counterclockwise, and check that the three signed areas from O to its edges sum to its area. Each internal edge appears in two triangles with opposite directions, so its two contributions cancel and only the boundary edges remain (our own proof).
 
 **Wikipedia:** [Shoelace formula](https://en.wikipedia.org/wiki/Shoelace_formula). It says: “The triangle formula sums up the oriented areas Aᵢ of triangles OPᵢPᵢ₊₁:”
 
@@ -88,11 +88,11 @@
 
 *Rules out counterexamples.* MSC 97G40 (Plane and solid geometry (educational aspects)), 01A50, 51M04. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** For a triangle with three noncollinear vertices, its circumcenter is the center of the circle through those vertices. Its centroid is the average of their position vectors. Unless the triangle is equilateral, the line through these centers is its Euler line.
+**Definition.** The Euler line of a triangle is the line through its circumcenter, the center of the circle through the three vertices, and its centroid, the average of the vertex position vectors. The two points coincide only in an equilateral triangle, so only there is no line determined.
 
 **Problem.** Every nonequilateral triangle determines a unique Euler line, which also contains the orthocenter, where the altitudes meet.
 
-**How the definition helps.** Only an equilateral triangle has coincident centroid and circumcenter, so the other triangles determine a unique line through them. To check the orthocenter claim, take the circumcenter as origin and write a, b, c for the vertex vectors (our own). Equal radii give (b + c)·(b − c) = 0, so a + b + c lies on the altitude from a. Cyclically it lies on every altitude, and it equals three times the centroid vector.
+**How the definition helps.** Put the circumcenter at the origin and write a, b, c for the vertex vectors (our own). Equal radii give (b + c)·(b − c) = 0, so a + b + c lies on the altitude from a, and in the same way on every altitude. So the orthocenter is a + b + c, three times the centroid, on the line through the origin and the centroid.
 
 **Wikipedia:** [Euler line](https://en.wikipedia.org/wiki/Euler_line). It says: “In equilateral triangles, these four points coincide, but in any other triangle they are all distinct from each other”
 
@@ -100,15 +100,15 @@
 
 ### Rhombi include squares for the diagonal test
 
-**Remember:** Four equal sides allow square corners.
+**Remember:** Four equal sides, square corners allowed.
 
 *Makes the theorem clean to state or prove.* MSC 97G40 (Plane and solid geometry (educational aspects)), 01A20, 51M04. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** A rhombus is a simple plane quadrilateral with four equal sides. Here the quadrilateral has positive area and four distinct vertices. Euclid’s definition excluded squares.
+**Definition.** A rhombus is a simple quadrilateral of positive area with four equal sides, squares included. Each vertex is then equally far from its two neighbours, so both ends of each diagonal lie on the perpendicular bisector of the other diagonal.
 
 **Problem.** A simple quadrilateral is a rhombus exactly when its diagonals bisect each other at right angles.
 
-**How the definition helps.** Including squares makes perpendicular diagonals that bisect each other an exact test for a rhombus. In our own proof, each pair of opposite vertices lies on the perpendicular bisector of the other pair. Conversely, the four right triangles at the intersection have equal corresponding legs, so their hypotenuses are equal.
+**How the definition helps.** Opposite vertices lie on the perpendicular bisector of the other diagonal, so the diagonals are perpendicular and bisect each other (our own proof). Conversely, the four right triangles at the crossing have equal legs, so the four sides are equal. Excluding squares, as Euclid did, would break this exact test.
 
 **Wikipedia:** [Rhombus](https://en.wikipedia.org/wiki/Rhombus). It says: “Euclid's original definition and some English dictionaries' definition of rhombus excludes squares, but modern mathematicians prefer the inclusive definition.”
 
@@ -124,11 +124,11 @@
 
 *True by definition.* MSC 97G50 (Transformation geometry (educational aspects)), 51M05. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Two plane figures are similar if a dilation by some positive factor followed by a rigid motion maps one figure onto the other. The factor may equal one.
+**Definition.** Two plane figures are similar if a dilation by some positive factor, possibly one, followed by a rigid motion maps one onto the other.
 
 **Problem.** Similarity is an equivalence relation on plane figures.
 
-**How the definition helps.** Allowing scale factor one makes each figure similar to itself (our own explanation). Inverses have reciprocal scale factors, and composing two similarities multiplies their factors. An enlargement followed by its inverse illustrates why excluding factor one also breaks the composition rule.
+**How the definition helps.** Factor one makes every figure similar to itself (our own explanation). Inverting a similarity inverts its factor and composing similarities multiplies factors, which gives symmetry and transitivity. If factor one were excluded, an enlargement followed by its inverse would break transitivity (our own explanation).
 
 **Wikipedia:** [Similarity (geometry)](https://en.wikipedia.org/wiki/Similarity_%28geometry%29). It says: “Two congruent shapes are similar, with a scale factor of 1.”
 
@@ -140,11 +140,11 @@
 
 *True by definition.* MSC 97G60 (Plane and spherical trigonometry (educational aspects)), 51M09. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** A great circle is the intersection of a sphere with a plane through its center. Antipodal points lie at opposite ends of a diameter.
+**Definition.** A great circle is the intersection of a sphere with a plane through its center. So great circles through two points correspond to planes that contain the center and both points. Antipodal points lie at opposite ends of a diameter.
 
 **Problem.** Two distinct nonantipodal points on a given sphere determine exactly one great circle of that sphere.
 
-**How the definition helps.** Defining great circles by center planes reduces uniqueness to the plane spanned by two independent radius vectors (our own explanation). Opposite poles give dependent vectors and lie on infinitely many great circles. Starting instead from locally shortest spherical paths requires proving that these paths trace arcs of great circles.
+**How the definition helps.** Two distinct nonantipodal points have linearly independent radius vectors, which span exactly one plane through the center (our own explanation). Antipodal points have dependent vectors, and every plane containing their diameter gives a great circle through them.
 
 **Wikipedia:** [Great circle](https://en.wikipedia.org/wiki/Great_circle). It says: “For any pair of distinct non-antipodal points on the sphere, there is a unique great circle passing through both.”
 
@@ -156,11 +156,11 @@
 
 *True by definition. Confidence: medium.* MSC 97G60 (Plane and spherical trigonometry (educational aspects)), 51M04. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Measure the directions of rays counterclockwise from one fixed ray at their common vertex. Their directed angle is the second direction minus the first, modulo 360°. The ordinary smaller angle forgets the turn direction.
+**Definition.** Give each ray from a common vertex a direction, its counterclockwise angle from one fixed ray. The directed angle from ray A to ray B is the direction of B minus the direction of A, modulo 360°.
 
 **Problem.** The directed angle from ray A to B plus that from B to C equals that from A to C modulo 360°.
 
-**How the definition helps.** Subtracting directions makes the middle direction cancel (our own). In our own counterexample, directions 0°, 90°, and 0° give two smaller angles of 90° but an overall angle of 0°. The geometric work is showing that differences of direction agree with ordinary angles on counterclockwise turns of at most 180° (our own).
+**How the definition helps.** The middle direction cancels: (B − A) + (C − B) = C − A (our own). The ordinary smaller angle fails, since directions 0°, 90° and 0° give two angles of 90° but a total of 0° (our own counterexample).
 
 **Wikipedia:** [Angle](https://en.wikipedia.org/wiki/Angle). It says: “the amount of rotation about the vertex of one ray to the other.”
 
@@ -172,11 +172,11 @@
 
 *True by definition.* MSC 97G70 (Analytic geometry, vector algebra (educational aspects)), 51N20. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Describe each line by any nonzero vector parallel to it. Define two line directions to be perpendicular when their dot product is zero. Slopes use a quotient that is undefined for vertical lines.
+**Definition.** Describe a line by any nonzero vector along it, and call two lines perpendicular when their direction vectors have dot product zero. Unlike a slope, this test never divides, so vertical lines need no special case (our own).
 
 **Problem.** In orthonormal plane coordinates, directions (a, b) and (c, d) are perpendicular exactly when ac + bd = 0. Both direction vectors must be nonzero.
 
-**How the definition helps.** The zero dot product works for every direction vector because it never divides by a horizontal component (our own). In our own comparison, the negative reciprocal slope test cannot handle the vertical direction. The work is to prove the dot product formula in terms of the cosine of the angle (our own).
+**How the definition helps.** In orthonormal coordinates, the dot product of nonzero vectors is the product of their lengths and the cosine of their angle (our own). So it vanishes exactly at a right angle. The negative-reciprocal slope test, by contrast, is undefined for a vertical direction (our own comparison).
 
 **Wikipedia:** [Dot product](https://en.wikipedia.org/wiki/Dot_product). It says: “the cosine of the (non oriented) angle between two vectors of length one is defined as their dot product.”
 
@@ -188,11 +188,11 @@
 
 *True by definition.* MSC 97H60 (Linear algebra (educational aspects)), 15A03. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Define rank as the smallest k for which A = BC, where B has k columns and C has k rows. Allow k = 0 for the zero matrix. The usual definition counts independent columns.
+**Definition.** Define the rank of a matrix A as the smallest k with A = BC, where B has k columns and C has k rows. Take k = 0 for the zero matrix. Transposing gives Aᵀ = CᵀBᵀ with the same k, so A and Aᵀ have the same rank (our own proof).
 
 **Problem.** Every real matrix has row and column spaces of equal dimension.
 
-**How the definition helps.** Transposing both factors reverses them, so A and its transpose have the same minimum shared dimension (our own proof). Any factorization A = BC places every column of A in the span of the columns of B. Choosing a column-space basis for B and the corresponding coordinate columns for C attains the column-space dimension. Applying this equality to the transpose gives the row-space dimension.
+**How the definition helps.** In any factorization A = BC the columns of A lie in the span of the k columns of B, and a basis of the column space as B attains this, so the rank is the column-space dimension (our own proof). Applied to Aᵀ, the same rank is the row-space dimension.
 
 **Paper or page:** [On the Column and Row Ranks of a Matrix](https://arxiv.org/abs/2112.06638v1). It says: “is equal to the dimension of its row space, i.e., the row rank and the column rank of a matrix A are equal.”
 
@@ -206,11 +206,11 @@
 
 *True by definition.* MSC 97K20 (Combinatorics (educational aspects)), 11B39. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Encode each positive odd part 2k + 1 by k dominoes followed by one square. Concatenate these rows in the order of the parts.
+**Definition.** Write each odd part 2k + 1 as k dominoes followed by one square, and join these rows in order. The result is a tiling of length n by squares and dominoes that ends in a square, and cutting after each square recovers the parts.
 
 **Problem.** For n ≥ 1, ordered sums of n into positive odd parts are counted by the nth Fibonacci number, starting with 1, 1.
 
-**How the definition helps.** Our own bijection removes the final square to give an unrestricted tiling of length n − 1. Appending a square and cutting after every square recovers the odd parts. Splitting by first tile gives the Fibonacci recurrence, with one tiling each at lengths zero and one.
+**How the definition helps.** Removing the final square gives a bijection with all tilings of length n − 1 (our own bijection). Splitting by the first tile shows that tilings obey the Fibonacci recurrence, with one tiling each at lengths zero and one.
 
 **Paper or page:** [Classical Fibonacci compositions](https://arxiv.org/abs/2509.04493v1). It says: “the number of compositions of n with only odd parts is the nth Fibonacci number”
 
@@ -224,11 +224,11 @@
 
 *True by definition.* MSC 97K30 (Graph theory (educational aspects)), 05C05. arXiv math.HO. Level 1: early undergraduate.
 
-**Definition.** Choose a root vertex of a tree. For every other vertex, call the first edge on the unique path to the root its parent edge. The unrooted definition has no such assignment.
+**Definition.** Pick a root of a tree, and give each other vertex its parent edge, the first edge on its unique path to the root. This pairs each nonroot vertex with one edge.
 
 **Problem.** A finite tree with n vertices has n − 1 edges.
 
-**How the definition helps.** Orienting edges toward the root pairs every nonroot vertex with exactly one outgoing edge. In our own explanation, removing an edge leaves two components. Its endpoint in the component without the root must use that edge first to reach the root. The work is proving that a connected graph without cycles has a unique path between any two vertices.
+**How the definition helps.** Every edge is the parent edge of exactly one vertex: removing it splits the tree in two, and its endpoint on the side without the root must use it first (our own explanation). So the n − 1 nonroot vertices match the edges one to one.
 
 **nLab:** [tree](https://ncatlab.org/nlab/show/tree). It says: “for every vertex x in G there is exactly one directed path from x to the root.”
 
@@ -244,11 +244,11 @@
 
 *True by definition.* MSC 97H60 (Linear algebra (educational aspects)), 46C05. arXiv math.HO. Level 2: later undergraduate.
 
-**Definition.** Define squared length as the inner product of a vector with itself. A geometric proof can instead start from two triangles and the law of cosines.
+**Definition.** Define the squared length of a vector as its inner product with itself. It expands like a square: ‖x ± y‖² = ‖x‖² + ‖y‖² ± (⟨x, y⟩ + ⟨y, x⟩).
 
 **Problem.** The sum of the squared diagonal lengths equals the sum of the squared side lengths of a parallelogram.
 
-**How the definition helps.** For adjacent side vectors x and y, the diagonals have lengths ‖x + y‖ and ‖x − y‖ (our own explanation). Expanding their squared lengths as inner products cancels the mixed terms. What remains is 2‖x‖² + 2‖y‖², the sum over the four sides.
+**How the definition helps.** For side vectors x and y the diagonals are x + y and x − y (our own explanation). Adding their expanded squared lengths cancels the mixed terms and leaves 2‖x‖² + 2‖y‖², the sum over the four sides.
 
 **Wikipedia:** [Parallelogram law](https://en.wikipedia.org/wiki/Parallelogram_law). It says: “in an inner product space the parallelogram law is an algebraic identity, readily established using the properties of the inner product:”
 
@@ -264,11 +264,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 97H60 (Linear algebra (educational aspects)), 15A23. arXiv math.HO. Level 2: later undergraduate.
 
-**Definition.** Allow a row permutation P in the factorization PA = LU. Here L is lower triangular with ones on its diagonal and U is upper triangular. The narrower factorization insists on A = LU.
+**Definition.** Allow a row permutation P before factoring, PA = LU, with L lower triangular with ones on its diagonal and U upper triangular. The permutation lets elimination swap a nonzero entry from lower down into a zero pivot position.
 
 **Problem.** For every invertible real square matrix A, some row permutation P gives PA = LU.
 
-**How the definition helps.** Allowing row swaps lets elimination use a nonzero entry below a zero diagonal entry. In our own example, the matrix with rows (0, 1) and (1, 0) has no factorization of the stated kind without a swap. Its first row forces the first diagonal entry of U to vanish, making U singular. After each elimination step, the remaining square block is invertible, so its first column contains a nonzero entry (our own explanation).
+**How the definition helps.** After each elimination step the remaining block is invertible, so its first column has a nonzero entry to swap into the pivot (our own explanation). Without swaps the matrix with rows (0, 1) and (1, 0) fails (our own example). Its first row forces the first diagonal entry of U to be zero, which makes U singular.
 
 **Wikipedia:** [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition). It says: “Without a proper ordering or permutations in the matrix, the factorization may fail to materialize.”
 
@@ -284,11 +284,11 @@
 
 *True by definition.* MSC 97I50 (Integral calculus (educational aspects)), 26A42. arXiv math.HO. Level 2: later undergraduate.
 
-**Definition.** For a bounded function on a closed interval, the oscillation on each subinterval is its supremum minus its infimum there. Darboux integrability means every ε &gt; 0 admits a finite partition whose sum of widths times oscillations is less than ε.
+**Definition.** A bounded function on a closed interval is Darboux integrable if, for every ε &gt; 0, some finite partition makes the sum of width times oscillation, supremum minus infimum, over its subintervals less than ε. So a few short subintervals cost little, however badly the function behaves there.
 
 **Problem.** A real function bounded on a closed interval and continuous at every interior point is Darboux integrable.
 
-**How the definition helps.** In our own proof the two endpoint intervals contribute at most twice a bound on \|f\| times their total width. Choose them short enough that this is below ε/2. Uniform continuity on the remaining closed interval gives a fine enough partition for its contribution to fall below ε/2. The combined partition meets the Darboux criterion.
+**How the definition helps.** Bound \|f\| by some M &gt; 0 and make the two end subintervals so short that their total width is below ε/(4M), so they contribute less than ε/2 (our own proof). On the closed middle interval f is uniformly continuous, so a fine partition makes its contribution less than ε/2 as well.
 
 **Paper or page:** [Bounded Function Continuous on Open Interval is Darboux Integrable](https://proofwiki.org/wiki/Bounded_Function_Continuous_on_Open_Interval_is_Darboux_Integrable). It says: “Let f be continuous on (a, b). Let f be bounded on \[a, b\]. Then f is Darboux integrable on \[a, b\].”
 

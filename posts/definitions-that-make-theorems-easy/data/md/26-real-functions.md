@@ -4,11 +4,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A lower Dedekind cut contains some but not all rationals, contains every rational below each member, and has no greatest member. The sum of two cuts contains exactly the sums made by taking one rational from each cut.
+**Definition.** A lower Dedekind cut is a set of rationals that is neither empty nor all of ℚ, contains every rational below each member, and has no greatest member. The sum of two cuts is the set of all sums a + b with a from the first cut and b from the second.
 
 **Problem.** Addition of lower Dedekind cuts is associative.
 
-**How the definition helps.** Both groupings collect the same three-term sums because rational addition is associative. Our own comparison avoids first defining real addition through limits of approximations. The work moves to showing that all pairwise sums together form another cut.
+**How the definition helps.** Both (α + β) + γ and α + (β + γ) are the set of all sums a + b + c with one rational from each cut, because rational addition is associative. The only work is to check that a set of such sums is again a cut.
 
 **Paper or page:** [Addition of Cuts is Associative](https://proofwiki.org/wiki/Addition_of_Cuts_is_Associative). It says: “(α + β) + γ = α + (β + γ)”
 
@@ -20,11 +20,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A rational sequence is Cauchy if, for every positive tolerance, all sufficiently late terms lie within that distance of each other. A Cauchy real groups together rational Cauchy sequences whose differences tend to zero. Add and multiply their terms at matching positions.
+**Definition.** A Cauchy real is a class of rational Cauchy sequences, those whose late terms all lie within any given tolerance of each other, where two sequences are equal when their difference tends to zero. Sums and products are taken term by term.
 
 **Problem.** Constant sequences give distinct Cauchy reals for distinct rationals and preserve addition and multiplication.
 
-**How the definition helps.** Repeating each rational at every position makes sums and products agree at every position. Our own comparison uses the usual fraction description, which sends a/b to a times the inverse of b. Constant sequences avoid constructing that inverse for the embedding. Distinct constants stay a fixed distance apart, and one must check that the operations respect the grouping.
+**How the definition helps.** A rational q maps to the constant sequence q, q, q, …, and term-by-term operations give q + r and qr at every position. For q ≠ r the difference of the constant sequences stays at \|q − r\|, so they lie in different classes. One must still check that term-by-term operations respect the classes.
 
 **Paper or page:** [Embedding Division Ring into Quotient Ring of Cauchy Sequences](https://proofwiki.org/wiki/Embedding_Division_Ring_into_Quotient_Ring_of_Cauchy_Sequences). It says: “φ is a distance-preserving ring monomorphism.”
 
@@ -36,11 +36,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 26A15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** An interval is a set of real numbers that contains every number lying between any two of its elements. Under this definition the empty set, single points and the whole real line are intervals.
+**Definition.** An interval is a set of real numbers that contains every number between any two of its elements. So the empty set, single points and the whole real line are intervals.
 
 **Problem.** The image of a real interval under a continuous real-valued function is an interval.
 
-**How the definition helps.** The gap-free definition includes the singleton image of every constant function on a nonempty interval. Real intervals are exactly the connected subsets of ℝ, and continuous images of connected sets are connected. Thus every image satisfies the same interval definition, including the empty image (our own).
+**How the definition helps.** Intervals in this sense are exactly the connected subsets of ℝ, and continuous images of connected sets are connected. So every image is an interval, including the single point that a constant function produces (our own).
 
 **Wikipedia:** [Interval (mathematics)](https://en.wikipedia.org/wiki/Interval_%28mathematics%29). It says: “The intervals are precisely the connected subsets of ℝ. It follows that the image of an interval by any continuous function from ℝ to ℝ is also an interval. This is one formulation of the intermediate value theorem.”
 
@@ -52,11 +52,11 @@
 
 *Rules out counterexamples.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A closed interval \[a, b\] contains every real x with a ≤ x ≤ b. A sequence of intervals is nested if each interval lies inside the preceding one.
+**Definition.** A closed interval \[a, b\] keeps its endpoints: it contains every real x with a ≤ x ≤ b. Intervals are nested when each lies inside the one before, so every left endpoint is at most every right endpoint (our own).
 
 **Problem.** Nested nonempty bounded closed intervals have a common point. If their lengths tend to zero, the common point is unique.
 
-**How the definition helps.** Keeping both endpoints includes the least upper bound of the left endpoints in every interval (our own). Completeness supplies this bound because nesting puts every right endpoint above or equal to every left endpoint (our own). Two distinct common points would force every length to exceed or equal their distance (our own). The open intervals (0, 1/n) have no common point (our own).
+**How the definition helps.** Completeness gives the left endpoints a least upper bound, because every right endpoint bounds them, and it lies in every interval because each interval keeps its endpoints (our own). Two distinct common points would keep every length at least their distance (our own). The open intervals (0, 1/n) show that endpoints matter: they have no common point (our own).
 
 **Wikipedia:** [Nested intervals](https://en.wikipedia.org/wiki/Nested_intervals). It says: “Every interval in the sequence is contained in the previous one”
 
@@ -68,11 +68,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 40A05. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The limit superior of a sequence is the limit of the suprema of its tails. The limit inferior is the limit of the infima of its tails. The tails' suprema decrease and the infima increase, so both limits exist in the extended reals.
+**Definition.** The limit superior of a sequence is the limit of the suprema of its tails, and the limit inferior is the limit of their infima. The suprema decrease, the infima increase, and every term lies between them, so both limits exist in the extended reals.
 
 **Problem.** A sequence of extended reals converges exactly when its lim inf equals its lim sup. Theorems such as Fatou's lemma can be stated for sequences that need not converge.
 
-**How the definition helps.** Every term lies between its tail infimum and supremum, so equality of their limits forces convergence, including at either infinity. Conversely, convergence eventually puts each tail within any prescribed neighbourhood bounds of the limit, forcing both tail limits there too (our own). Fatou’s lemma uses these always-defined lower limits for nonnegative measurable functions (our own).
+**How the definition helps.** Each term lies between its tail infimum and tail supremum, so if both tend to the same value, the sequence is squeezed to it, including at either infinity. Conversely, convergence eventually puts each tail inside any neighbourhood of the limit, so both tail limits equal it (our own). Fatou’s lemma uses these always-defined lower limits for nonnegative measurable functions (our own).
 
 **Wikipedia:** [Limit inferior and limit superior](https://en.wikipedia.org/wiki/Limit_inferior_and_limit_superior). It says: “If the terms in the sequence are real numbers, the limit superior and limit inferior always exist, as the real numbers together with ±∞ (i.e. the extended real number line) are complete.”
 
@@ -84,11 +84,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A supremum is an upper bound with set members arbitrarily close to it. An infimum is a lower bound with the same property. A set is closed if it contains every limit of a convergent sequence of its members.
+**Definition.** A supremum is an upper bound that set members approach arbitrarily closely, and an infimum is a lower bound with the same property. A set is closed if it contains the limit of every convergent sequence of its members.
 
 **Problem.** A nonempty closed set of real numbers that is bounded above contains its supremum. If bounded below, it contains its infimum.
 
-**How the definition helps.** The approximation rule supplies a member within 1/n of the bound for each positive integer n (our own). These members converge to the bound, so closedness puts it in the set (our own). The rule agrees with the least upper bound definition because every smaller number fails to bound the set (our own). Reversing the inequalities gives the greatest lower bound case (our own).
+**How the definition helps.** Choose a member within 1/n of the supremum for each n; these members converge to the supremum, so closedness puts it in the set (our own). The approximation property matches the least upper bound definition, since any smaller number fails to bound the set (our own). Reversing inequalities gives the infimum case (our own).
 
 **Paper or page:** [Closed Subset of Real Numbers with Lower Bound contains Infimum](https://proofwiki.org/wiki/Closed_Subset_of_Real_Numbers_with_Lower_Bound_contains_Infimum). It says: “Then A contains its infimum.”
 
@@ -100,11 +100,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** An upper bound is at least every member of a set. The supremum is the least such bound. Define the infimum by negating every member, taking the supremum, and negating the result.
+**Definition.** Define the infimum of a set by negation: negate every member, take the supremum, the least upper bound, and negate the result.
 
 **Problem.** For every nonempty real set bounded below, its greatest lower bound equals the negative of the supremum of its negatives.
 
-**How the definition helps.** Negation turns each lower bound into an upper bound of the negatives (our own). Completeness gives the negatives a least upper bound because they form a nonempty set bounded above (our own). Negating that bound reverses every comparison, so the formula gives the usual greatest lower bound (our own).
+**How the definition helps.** Negation reverses order, so it turns lower bounds of the set into upper bounds of the negatives, and the greatest lower bound into the least upper bound (our own). Completeness gives the negatives a supremum because they form a nonempty set bounded above (our own).
 
 **Wikipedia:** [Infimum and supremum](https://en.wikipedia.org/wiki/Infimum_and_supremum). It says: “The infimum is, in a precise sense, dual to the concept of a supremum.”
 
@@ -118,11 +118,11 @@
 
 *Rules out counterexamples.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A lower Dedekind cut is a set containing some but not all rationals. It contains every rational below each of its members and has no greatest member.
+**Definition.** A lower Dedekind cut is a set containing some but not all rationals, containing every rational below each member, and having no greatest member. The last condition forbids a cut from containing its rational boundary q, since q would then be its greatest member.
 
 **Problem.** For each rational q, exactly one lower Dedekind cut has q as its least rational upper bound.
 
-**How the definition helps.** The cut must omit q because including q would give it a greatest member. Our own argument shows that every rational below q lies below some member, since it cannot bound the cut. All rationals below q form such a cut because another rational always lies between two distinct rationals. Allowing a greatest member would also admit this same cut with q added.
+**How the definition helps.** The cut must omit q, so it lies inside the rationals below q, and it contains each of them since none can bound the cut (our own). All rationals below q do form a cut, because another rational always lies between two distinct rationals. Allowing a greatest member would give a second cut, the same set with q added.
 
 **nLab:** [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut). It says: “we get two cuts for each rational number and must (as in the previous section) pass to a quotient”
 
@@ -136,11 +136,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 40A05. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The limit superior of a bounded real sequence is the limit of the least upper bounds of its tails. A tail consists of all terms from a given index onward. Another definition takes the largest limit of any convergent subsequence.
+**Definition.** The limit superior of a bounded real sequence is the limit of the least upper bounds of its tails, the terms from some index onward.
 
 **Problem.** For bounded real sequences, the limit superior of their sum cannot exceed the sum of their limit superiors.
 
-**How the definition helps.** On every tail, the sum of the two least upper bounds bounds the summed sequence (our own). Taking limits of the tail bounds gives the inequality (our own). The work moves to proving that the tail bounds converge to the largest subsequential limit (our own).
+**How the definition helps.** On every tail, the sum of the two tail suprema bounds the summed sequence, so the tail supremum of the sum is at most that sum (our own). Taking limits gives the inequality (our own).
 
 **Wikipedia:** [Limit inferior and limit superior](https://en.wikipedia.org/wiki/Limit_inferior_and_limit_superior). It says: “lim supₙ→∞ (aₙ + bₙ) ≤ lim supₙ→∞ aₙ + lim supₙ→∞ bₙ.”
 
@@ -152,11 +152,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** An upper bound is at least every member of a set. Its supremum is an upper bound s such that, for every ε &gt; 0, some member exceeds s − ε.
+**Definition.** The supremum of a set is an upper bound s that members approach arbitrarily closely: for every ε &gt; 0, some member exceeds s − ε.
 
 **Problem.** Let A and B be nonempty real sets bounded above. The supremum of all sums with one member from each set equals the sum of their suprema.
 
-**How the definition helps.** Each set supplies a member less than ε/2 away from its supremum (our own). Their sum lies less than ε below the sum of the suprema, which bounds every possible sum (our own). This approximation rule agrees with the least upper bound definition because lowering a least bound by any positive amount excludes some member (our own).
+**How the definition helps.** Pick members within ε/2 of each supremum; their sum lies within ε of sup A + sup B, which bounds every sum (our own). So sup A + sup B is the supremum of the sums. This approximation property agrees with the least upper bound definition (our own).
 
 **Paper or page:** [Supremum of Sum equals Sum of Suprema](https://proofwiki.org/wiki/Supremum_of_Sum_equals_Sum_of_Suprema). It says: “sup(A + B) = sup A + sup B”
 
@@ -184,11 +184,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 30B10. arXiv math.CA, math.CV. Level 1: early undergraduate.
 
-**Definition.** The limit superior (lim sup) of a sequence is the limit of the suprema of its tails. In the extended real numbers the lim sup always exists. For non-negative values, the rules 1/0 = +∞ and 1/(+∞) = 0 apply.
+**Definition.** The limit superior of a sequence is the limit of the suprema of its tails, which always exists in the extended reals. With the rules 1/0 = +∞ and 1/(+∞) = 0 for non-negative values, its reciprocal is always defined.
 
 **Problem.** The radius of convergence R of a power series Σcₙ(z − a)ⁿ is given by 1/R = lim sup ⁿ√\|cₙ\|. In words, 1/R is the largest limit point of the nth roots of the sizes of the coefficients.
 
-**How the definition helps.** Tail suprema always have an extended real limit, so the Cauchy–Hadamard formula applies to every coefficient sequence. For instance, coefficients alternating between zero and one have nth roots with no ordinary limit (our own). The root test gives convergence inside the stated radius and divergence outside it, including the cases R = 0 and R = ∞ (our own).
+**How the definition helps.** Because tail suprema always have a limit, the Cauchy–Hadamard formula applies to every coefficient sequence. This holds even when the nth roots have no limit, as for coefficients alternating between zero and one (our own). The root test gives convergence inside the radius and divergence outside it, including R = 0 and R = ∞ (our own).
 
 **Wikipedia:** [Cauchy–Hadamard theorem](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Hadamard_theorem), [Extended real number line](https://en.wikipedia.org/wiki/Extended_real_number_line). It says: “Thus, if one allows 1/0 to take the value +∞, then one can use this formula regardless of whether the limit-supremum is 0 or not.”
 
@@ -202,11 +202,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A lower Dedekind cut is a nonempty proper subset of ℚ that contains every rational below each member and has no greatest member. In the cut construction, reals are lower cuts ordered by inclusion.
+**Definition.** In the cut construction, a real number is a lower Dedekind cut, a nonempty proper subset of ℚ that contains every rational below each member and has no greatest member. Reals are ordered by inclusion, so an upper bound of a set of cuts is a cut containing all of them.
 
 **Problem.** Every non-empty set S of real numbers with an upper bound has a least upper bound, namely the union ⋃S of its cuts.
 
-**How the definition helps.** The union contains each cut and lies in every upper bound, since the order is inclusion (our own). It is nonempty and lies inside the given upper cut, so it is proper. Each member comes from a cut that supplies every smaller rational and some larger member. Thus the union is itself a cut (our own).
+**How the definition helps.** Since the order is inclusion, the union contains every cut in S and lies inside every upper bound (our own). It is a cut: it is nonempty, it lies inside a given upper bound so it is proper, and each member comes from a cut that supplies every smaller rational and a larger member (our own).
 
 **Wikipedia:** [Construction of the real numbers](https://en.wikipedia.org/wiki/Construction_of_the_real_numbers), [Least-upper-bound property](https://en.wikipedia.org/wiki/Least-upper-bound_property). It says: “If a nonempty set S of real numbers has any upper bound in R, then it has a least upper bound in R that is equal to ⋃S.”
 
@@ -218,11 +218,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A06 (One-variable calculus), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A tagged Riemann sum multiplies each piece’s length by the function value at any chosen point in that piece. The integral is the common limit of these sums as the longest piece shrinks.
+**Definition.** A tagged Riemann sum multiplies each piece’s length by the function value at a freely chosen point of that piece. The integral is the common limit of these sums, for every choice of tags, as the longest piece shrinks.
 
 **Problem.** Suppose F is continuous on \[a, b\], differentiable on (a, b), and its derivative extends to a Riemann integrable function on \[a, b\]. The integral of that extension is F(b) − F(a).
 
-**How the definition helps.** Unlike fixed endpoint samples, free tags can realize the average slope on each piece by the mean value theorem (our own). Each term then equals the change in F across that piece, so the sum equals F(b) − F(a) (our own). Integrability of the derivative ensures these particular sums approach its integral (our own).
+**How the definition helps.** By the mean value theorem, each piece has a tag where F′ equals the average slope of F on that piece, so each term is the change of F across it and the sum telescopes to F(b) − F(a) (our own). Integrability means these particular sums also tend to the integral (our own).
 
 **Paper or page:** [Fundamental Theorem of Calculus/Second Part](https://proofwiki.org/wiki/Fundamental_Theorem_of_Calculus/Second_Part). It says: “∫ₐᵇ f(t) dt = F(b) − F(a)”
 
@@ -238,7 +238,7 @@
 
 **Problem.** Suppose f and g have limits L and M at a point approached by other points of their common domain. If M ≠ 0, then f/g has limit L/M there.
 
-**How the definition helps.** The sequential test lets us apply the quotient law for sequences to any inputs approaching a. Along each such sequence, the denominators eventually stay away from zero. Our own proof uses the sequence law and the equivalence between the sequential test and the usual distance test.
+**How the definition helps.** The sequential definition reduces the claim to the quotient law for sequences, applied along each sequence xₙ → a with xₙ ≠ a. Along such a sequence g(xₙ) → M ≠ 0, so the denominators are eventually nonzero. This uses the equivalence of the sequential test with the usual distance test (our own).
 
 **Paper or page:** [Combination Theorem for Limits of Functions/Real/Quotient Rule](https://proofwiki.org/wiki/Combination_Theorem_for_Limits_of_Functions/Real/Quotient_Rule). It says: “provided that m ≠ 0.”
 
@@ -250,11 +250,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A06 (One-variable calculus), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For an integrable f, the integral from v to u is the negative of the integral from u to v. Equal limits give zero. The accumulated area F(x) is the integral from a to x for a fixed starting point a.
+**Definition.** Signed limits make the integral from v to u the negative of the integral from u to v, and zero when the limits are equal. Then the integral from p to q equals F(q) − F(p) in either order (our own), where F(x) is the integral of f from a fixed point a to x.
 
 **Problem.** Let f be continuous on an open interval containing the values of differentiable functions p and q. The derivative of the integral from p(x) to q(x) is f(q(x))q′(x) − f(p(x))p′(x), even where the endpoints cross.
 
-**How the definition helps.** Signed limits let us write the moving integral as F(q(x)) − F(p(x)) in either order (our own). Apply the chain rule twice (our own). The work moves to interval additivity with signed limits and the fundamental theorem that gives F′ = f (our own).
+**How the definition helps.** Signed limits write the moving integral as F(q(x)) − F(p(x)) whether or not p(x) ≤ q(x) (our own). The fundamental theorem gives F′ = f, and the chain rule applied twice gives the formula (our own).
 
 **nLab:** [fundamental theorem of calculus](https://ncatlab.org/nlab/show/fundamental+theorem+of+calculus). It says: “Taking for granted that ∫ᵤᵛ = ∫ₐᵛ − ∫ₐᵘ, this generalizes to”
 
@@ -266,11 +266,11 @@
 
 *True by definition.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define exp(x) by the sum of x to power n divided by n!, starting at n = 0. Another definition inverts the natural logarithm.
+**Definition.** Define exp(x) as the sum of xⁿ/n! over n ≥ 0. For x &gt; 0 every term is positive, so exp(x) exceeds each single term.
 
 **Problem.** For every nonnegative integer k, exp(x) divided by x to power k tends to infinity as x tends to infinity.
 
-**How the definition helps.** For x &gt; 0, the series has only positive terms, so its term of degree k + 1 gives a lower bound. Dividing by xᵏ leaves x/(k + 1)!, which tends to infinity. Our own comparison with the inverse logarithm requires convergence of the series and agreement of the two definitions.
+**How the definition helps.** For x &gt; 0 the term of degree k + 1 gives exp(x) &gt; xᵏ⁺¹/(k + 1)!. Dividing by xᵏ leaves x/(k + 1)!, which tends to infinity.
 
 **Paper or page:** [Exponential Dominates Polynomial](https://proofwiki.org/wiki/Exponential_Dominates_Polynomial). It says: “exp(αx) &gt; xᵏ”
 
@@ -284,11 +284,11 @@
 
 *Rules out counterexamples.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define arcsine as the inverse of sine restricted to \[−π/2, π/2\]. The unrestricted equation sin y = x can give several values of y.
+**Definition.** Arcsine is the inverse of sine restricted to \[−π/2, π/2\], an interval symmetric about zero on which sine takes each value in \[−1, 1\] exactly once (our own).
 
 **Problem.** Arcsine is a function on \[−1, 1\] and satisfies arcsin(−x) = −arcsin(x).
 
-**How the definition helps.** The chosen interval contains −y whenever it contains y, and sin(−y) = −sin y (our own). Sine takes each value in \[−1, 1\] exactly once on this interval, so the inverse is odd (our own). On the alternative interval \[π/2, 3π/2\], the inverse sends zero to π and therefore cannot be odd (our own).
+**How the definition helps.** If arcsin x = y, then −y lies in the same interval and sin(−y) = −x, so arcsin(−x) = −y (our own). A non-symmetric choice fails: on \[π/2, 3π/2\] the inverse sends 0 to π, so it is not odd (our own).
 
 **Wikipedia:** [Inverse trigonometric functions](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions). It says: “Since none of the six trigonometric functions are one-to-one, they must be restricted in order to have inverse functions.”
 
@@ -306,7 +306,7 @@
 
 **Problem.** Let the bases b and c be positive. Then (bʳ)ˢ = bʳˢ, bʳbˢ = bʳ⁺ˢ and (bc)ʳ = bʳcʳ for all real r and s.
 
-**How the definition helps.** The logarithm and exponential are inverses on positive bases, so ln(bʳ) = r ln b (our own). Applying the exponential addition law and the logarithm product law gives all three identities. For a negative base, the square root of (−1)² equals 1, whereas (−1) raised to 2 · ½ equals −1 (our own).
+**How the definition helps.** Since ln(bʳ) = r ln b, each law reduces to exp(u + v) = exp(u)exp(v) and ln(bc) = ln b + ln c (our own). Negative bases break the first law: ((−1)²) raised to ½ is 1, but (−1) raised to 2 · ½ is −1 (our own).
 
 **Wikipedia:** [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). It says: “exponentiation to a real power of a negative real number is much more difficult to define consistently, as it may be non-real and have several values.”
 
@@ -318,11 +318,11 @@
 
 *True by definition.* MSC 26A09 (Elementary functions), 33B10. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define exp(x) as the sum of xⁿ/n! over all n ≥ 0. The ratio test shows that the series converges for every real or complex x.
+**Definition.** Define exp(x) as the power series sum of xⁿ/n! over n ≥ 0, which converges absolutely for every real or complex x.
 
 **Problem.** The exponential function satisfies exp′ = exp, exp(0) = 1 and exp(x+y) = exp(x)exp(y).
 
-**How the definition helps.** At zero only the constant term survives, giving exp(0) = 1 (our own). Termwise differentiation of the power series shifts the index and reproduces exp. Absolute convergence permits the Cauchy product for exp(x)exp(y). The binomial theorem combines each total degree n into (x+y)ⁿ/n!.
+**How the definition helps.** Every law follows by manipulating the series term by term, which absolute convergence justifies. Termwise differentiation shifts the index and returns the same series, and only the constant term survives at zero (our own). The Cauchy product of exp(x) and exp(y) groups terms of total degree n into (x + y)ⁿ/n! by the binomial theorem.
 
 **Wikipedia:** [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function). It says: “In the sense of definition 2, the equation exp(x+y) = exp(x)exp(y) follows from the term-by-term manipulation of power series justified by uniform convergence, and the resulting equality of coefficients is just the Binomial theorem.”
 
@@ -330,15 +330,15 @@
 
 ### As the area under 1/t, the logarithm turns products into sums
 
-**Remember:** Scaling by y moves the area under 1/t without changing it.
+**Remember:** Stretching an interval under 1/t never changes its area.
 
 *True by definition.* MSC 26A09 (Elementary functions), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a &gt; 0, the natural logarithm ln a is the integral of 1/t from 1 to a. For a between 0 and 1 the integral is negative.
+**Definition.** The natural logarithm ln a, for a &gt; 0, is the area under the curve 1/t from 1 to a, counted negative when a &lt; 1. Stretching an interval \[1, y\] by a factor x turns it into \[x, xy\] and leaves the area under 1/t unchanged (our own).
 
 **Problem.** For all positive x and y, ln(xy) = ln x + ln y. Also ln′(x) = 1/x, and ln is a bijection onto the real line.
 
-**How the definition helps.** Splitting the defining integral at x and substituting t = xs in the second part gives the product law (our own). The fundamental theorem of calculus gives ln′(x) = 1/x &gt; 0, so ln is strictly increasing. The product law gives ln(2ⁿ) = n ln 2 for every integer n, and ln 2 &gt; 0. Continuity now gives every real value (our own).
+**How the definition helps.** Split the integral for ln(xy) at x; the piece from x to xy is the stretched piece from 1 to y, so it equals ln y (our own). The fundamental theorem of calculus gives ln′(x) = 1/x &gt; 0, so ln is continuous and strictly increasing. Since ln(2ⁿ) = n ln 2 with ln 2 &gt; 0, ln is unbounded both ways, and the intermediate value theorem gives every real value (our own).
 
 **Wikipedia:** [Natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm), [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function). It says: “The simplicity of this definition, which is matched in many other formulas involving the natural logarithm, leads to the term "natural".”
 
@@ -348,15 +348,15 @@
 
 ### Defining exp by f(x+y) = f(x)f(y) needs a regularity condition
 
-**Remember:** Without some regularity, f(x+y) = f(x)f(y) has wild solutions.
+**Remember:** Tame the solution at one spot, and only eˣ remains.
 
 *Rules out counterexamples.* MSC 26A09 (Elementary functions), 39B22. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Consider functions f from ℝ to ℝ satisfying f(1) = e and f(x+y) = f(x)f(y) for all real x,y. Require continuity at one point, monotonicity on an interval of positive length, or Lebesgue measurability.
+**Definition.** A regular exponential solution is a function f: ℝ → ℝ with f(x+y) = f(x)f(y) for all real x, y and f(1) = e that is also regular. Regular means continuous at one point, monotone on an interval of positive length, or Lebesgue measurable; this rules out the wild solutions built from a basis of ℝ over ℚ.
 
-**Problem.** Every function with f(x+y) = f(x)f(y), f(1) = e and one such regularity condition equals eˣ.
+**Problem.** Every function with f(x+y) = f(x)f(y), f(1) = e and one of these regularity conditions equals eˣ.
 
-**How the definition helps.** The equation forces f(0) = 1 and f(x) = f(x/2)² &gt; 0, since f(x)f(−x) = 1 (our own). Thus log f is additive and sends 1 to 1. The regularity theorem for Cauchy’s equation makes it linear under any listed condition, giving f(x) = eˣ. Discontinuous additive functions from a Hamel basis yield counterexamples by exponentiation (our own).
+**How the definition helps.** Such f is positive, since f(x) = f(x/2)² and f(x)f(−x) = f(0) = 1, so ln f is additive with value 1 at 1 (our own). The regularity theorem for Cauchy’s equation makes ln f linear under each listed condition, so f(x) = eˣ. Without regularity, exponentiating a discontinuous additive function from a Hamel basis gives a counterexample (our own).
 
 **Wikipedia:** [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function), [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “For the uniqueness, one must impose some regularity condition, since other functions satisfying f(x+y)=f(x)f(y) can be constructed using a basis for the real numbers over the rationals, as described by Hewitt and Stromberg.”
 
@@ -370,11 +370,11 @@
 
 *True by definition.* MSC 26A09 (Elementary functions), 26A06. arXiv math.CA, math.HO. Level 1: early undergraduate.
 
-**Definition.** For x &gt; 0, define ln x = ∫₁ˣ (1/t) dt. Another definition takes ln as the inverse of the real exponential exp.
+**Definition.** The natural logarithm ln x, for x &gt; 0, is ∫₁ˣ (1/t) dt, the area under the curve 1/t from 1 to a moving right edge at x.
 
 **Problem.** For x &gt; 0, the derivative of ln x is 1/x.
 
-**How the definition helps.** The integral definition gives the derivative immediately by the fundamental theorem of calculus. That theorem says that differentiating an integral with a variable upper endpoint gives the continuous integrand at that endpoint. With the inverse definition, one instead uses the derivative of exp and the rule for differentiating an inverse. The work moves into the fundamental theorem and showing that this integral is indeed the inverse of exp (our own comparison).
+**How the definition helps.** By the fundamental theorem of calculus, moving the right edge of an area under a continuous curve changes the area at the rate of the curve’s height. Here the height at x is 1/x. If ln is instead the inverse of exp, one needs the derivative of exp and the inverse function rule (our own comparison).
 
 **nLab:** [logarithm](https://ncatlab.org/nlab/show/logarithm). It says: “The real logarithms are handily defined using the Riemann integral of the reciprocal”
 
@@ -388,11 +388,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A09 (Elementary functions), 26D07. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define ln x, for x &gt; 0, as the signed area under 1/t from 1 to x. The signed area is negative when x &lt; 1. Another common definition makes ln the inverse of the exponential function.
+**Definition.** For x &gt; 0, ln x is the signed area under the decreasing curve 1/t between 1 and x, counted negative when x &lt; 1. Because the curve decreases, this area lies between the two rectangles over the same interval whose heights are the curve’s values 1 and 1/x at the ends (our own).
 
 **Problem.** For every x &gt; 0, 1 − 1/x ≤ ln x ≤ x − 1.
 
-**How the definition helps.** Since 1/t decreases, its integral lies between the two endpoint rectangle areas (our own). For x &gt; 1, these areas are (x−1)/x and x−1. For 0 &lt; x &lt; 1, integrating from x to 1 and reversing the sign gives the same ordered bounds. Both bounds equal zero at x = 1 (our own).
+**How the definition helps.** The bounds are the two rectangle areas with the sign attached. For x &gt; 1 the rectangles have areas (x − 1)/x and x − 1. For 0 &lt; x &lt; 1 the area from x to 1 lies between 1 − x and (1 − x)/x, and the minus sign gives the same bounds (our own).
 
 **Wikipedia:** [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function). It says: “Here, the natural logarithm function is defined in terms of a definite integral as above.”
 
@@ -402,15 +402,15 @@
 
 ### Radian measure makes the derivative of sine exactly cosine
 
-**Remember:** Measure angles by arc length, and calculus formulas lose their stray constants.
+**Remember:** In radians, a tiny angle equals its sine.
 
 *Makes the theorem clean to state or prove.* MSC 26A09 (Elementary functions), 97I40. arXiv math.CA, math.HO. Level 1: early undergraduate.
 
-**Definition.** The radian measure of an oriented angle is its signed arc length divided by the circle’s radius. One full positive turn measures 2π radians or 360 degrees.
+**Definition.** The radian measure of an oriented angle is its signed arc length on a circle divided by the radius, so a full turn is 2π radians. On the unit circle an angle of h radians cuts an arc of length h whose height sin h is nearly as long, so sin h/h → 1.
 
 **Problem.** If x measures an angle in radians, the derivative of sin x is cos x. If x measures an angle in degrees, the derivative is (π/180) cos x, with cosine also evaluated in degrees.
 
-**How the definition helps.** On the unit circle the radian increment equals signed arc length, giving sin h/h → 1 by the triangle and sector bounds. The half-angle identity then gives (cos h − 1)/h → 0. The addition formula yields the derivative cos x (our own). Converting a degree increment to radians multiplies it by π/180, so the chain rule gives the degree formula (our own).
+**How the definition helps.** The derivative of sine at 0 is the limit of sin h/h, which is 1 in radians by the triangle and sector bounds. The addition formula and (cos h − 1)/h → 0 move this to every x, giving cos x (our own). A degree increment is π/180 times a radian increment, so the chain rule gives the degree formula (our own).
 
 **Wikipedia:** [Radian](https://en.wikipedia.org/wiki/Radian). It says: “For example, the use of radians leads to the simple limit formula lim (h→0) sin h / h = 1, which is the basis of many other identities in mathematics, including d/dx sin x = cos x”
 
@@ -418,15 +418,15 @@
 
 ### Real powers defined by exp and ln obey the power rule
 
-**Remember:** Rewrite each power through exp and ln, and the chain rule does the rest.
+**Remember:** Every power is exp of a product.
 
 *True by definition. Confidence: medium.* MSC 26A09 (Elementary functions), 26A24. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For b &gt; 0 and real x, define bˣ = exp(x ln b), where ln is the inverse of the real exponential. Another construction takes roots for rational exponents and uses continuity to extend to real exponents.
+**Definition.** For b &gt; 0 and real x, bˣ is exp(x ln b), where ln is the inverse of exp. This writes every power as exp of a product, so its derivatives come from the chain rule.
 
 **Problem.** For x &gt; 0 and every real r, the derivative of xʳ is r xʳ⁻¹. Also, for b &gt; 0, the derivative of bˣ is bˣ ln b.
 
-**How the definition helps.** Writing each power through the exponential makes both derivatives applications of the chain rule (our own). For fixed r, differentiating exp(r ln x) gives r exp(r ln x)/x = r xʳ⁻¹. For fixed b, differentiating exp(x ln b) gives exp(x ln b) ln b (our own).
+**How the definition helps.** Each power is exp of a differentiable inner function, so the chain rule differentiates it (our own). For fixed r, exp(r ln x) has derivative r exp(r ln x)/x = r xʳ⁻¹. For fixed b, exp(x ln b) has derivative exp(x ln b) ln b = bˣ ln b (our own).
 
 **Wikipedia:** [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). It says: “So, eˣ ˡⁿ ᵇ can be used as an alternative definition of bˣ for any positive real b.”
 
@@ -434,15 +434,15 @@
 
 ### The logarithm integral bounds its growth by every positive power
 
-**Remember:** Bound 1/t by a power that is easier to integrate.
+**Remember:** The area under 1/t sits below a small power’s area.
 
 *True by definition.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define ln x for x &gt; 0 as the integral of 1/t from 1 to x. The alternative takes the inverse of exp.
+**Definition.** For x &gt; 0, ln x is the area under the curve 1/t from 1 to x. For t ≥ 1 and any a &gt; 0, the curve 1/t lies below the power t<sup>(a/2 − 1)</sup>, so this area is at most the easier area under that power (our own).
 
-**Problem.** For every a &gt; 0, ln x divided by x to power a tends to zero as x tends to infinity.
+**Problem.** For every a &gt; 0, ln x / xᵃ → 0 as x → ∞.
 
-**How the definition helps.** The integral lets us bound 1/t by t raised to (a/2 − 1) for t ≥ 1. Integration gives ln x ≤ (2/a)(√(xᵃ) − 1) for x ≥ 1. Dividing by xᵃ gives a bound tending to zero. Our own comparison with inverse exp requires showing that the integral defines the same logarithm.
+**How the definition helps.** Comparing the two areas gives ln x ≤ (2/a)(√(xᵃ) − 1) for x ≥ 1 (our own). Dividing by xᵃ leaves a bound below (2/a)/√(xᵃ), which tends to zero.
 
 **Wikipedia:** [Natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). It says: “("slowly" as compared to any power law of x).”
 
@@ -452,15 +452,15 @@
 
 ### The logarithm integral gives the exponential limit
 
-**Remember:** Take logs before raising to a large power.
+**Remember:** Logs turn the nth power into n times a small area.
 
 *True by definition.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define L(y) = ∫₁ʸ dt/t for y &gt; 0. Define exp as the inverse of L, instead of as a power series.
+**Definition.** Here the logarithm L(y) is the area ∫₁ʸ dt/t for y &gt; 0, and exp is its inverse, not a power series. L turns powers into multiples, L(yⁿ) = nL(y), and has slope L′(1) = 1 at y = 1 (our own).
 
 **Problem.** For every real x, (1 + x/n) to the nth power tends to exp(x) as n grows.
 
-**How the definition helps.** The logarithm turns the nth power into nL(1 + x/n) once the base is positive. Since L(1) = 0 and L′(1) = 1, this tends to x. Continuity of exp gives the stated limit. Our own argument uses the logarithm product law and the fact that L has a continuous inverse on all real numbers.
+**How the definition helps.** For x ≠ 0 and n large enough that 1 + x/n &gt; 0, L turns (1 + x/n)ⁿ into nL(1 + x/n) = x · (L(1 + x/n) − L(1))/(x/n). This tends to x because L′(1) = 1. Applying the continuous inverse exp gives the limit; x = 0 is trivial (our own).
 
 **Wikipedia:** [Characterizations of the exponential function](https://en.wikipedia.org/wiki/Characterizations_of_the_exponential_function). It says: “Define eˣ to be the unique number y &gt; 0 such that ∫₁ʸ dt/t = x.”
 
@@ -472,11 +472,11 @@
 
 *True by definition.* MSC 26A09 (Elementary functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For x &gt; 0, define ln x as the integral of 1/t from 1 to x. An alternative defines ln as the inverse of exp.
+**Definition.** For x &gt; 0, ln x is the area under 1/t from 1 to x, so ln(1 + x) is the area under 1/(1 + t) from 0 to x. That integrand is the geometric series 1 − t + t² − ⋯ when \|t\| &lt; 1, and each power tᵏ integrates to xᵏ⁺¹/(k + 1).
 
 **Problem.** For −1 &lt; x ≤ 1, ln(1 + x) = x − x²/2 + x³/3 − ⋯.
 
-**How the definition helps.** The integral turns a finite geometric sum for 1/(1 + t) into successive powers divided by their degrees. For \|x\| &lt; 1, the integrated error tends to zero because the powers shrink geometrically. At x = 1, its absolute value after degree N is at most ∫₀¹ tᴺ dt = 1/(N + 1). Our own proof also uses agreement with the inverse exponential definition.
+**How the definition helps.** Integrate the finite geometric sum 1 − t + ⋯ ± tᴺ⁻¹ and its remainder ±tᴺ/(1 + t) from 0 to x (our own). For \|x\| &lt; 1 the integrated remainder is at most \|x\|ᴺ⁺¹/((N + 1)(1 − \|x\|)), which tends to zero. At x = 1 it is at most ∫₀¹ tᴺ dt = 1/(N + 1) (our own).
 
 **Wikipedia:** [Natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). It says: “This is the Taylor series for ln x around 1.”
 
@@ -488,11 +488,11 @@
 
 *True by definition.* MSC 26A09 (Elementary functions), 33B10. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For real x, define sin x by the series ∑ₙ₌₀∞ (−1)ⁿx²ⁿ⁺¹/(2n+1)!, which converges for every x.
+**Definition.** For real x, sin x is the sum of the power series x − x³/3! + x⁵/5! − ⋯, which converges for every x. Every term has a factor x, so sin x / x is again a power series, with constant term 1.
 
 **Problem.** sin x / x → 1 as x → 0.
 
-**How the definition helps.** Dividing the sine series by x for x ≠ 0 gives 1 − x²/3! + x⁴/5! − ⋯. The resulting power series is continuous at zero and takes the value one there, giving the limit (our own).
+**How the definition helps.** For x ≠ 0, sin x / x = 1 − x²/3! + x⁴/5! − ⋯, a power series that converges everywhere. Power series are continuous, so this tends to its value 1 at zero (our own).
 
 **Wikipedia:** [Trigonometric functions](https://en.wikipedia.org/wiki/Trigonometric_functions). It says: “In fact, the functions sin and cos can be defined for all complex numbers in terms of the exponential function, via power series,”
 
@@ -506,11 +506,11 @@
 
 *True by definition.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A punctured limit L at a ignores a itself. For every ε &gt; 0, choose δ &gt; 0. Each domain point with 0 &lt; \|x − a\| &lt; δ must then satisfy \|f(x) − L\| &lt; ε.
+**Definition.** The punctured limit of f at a is the number L that f(x) approaches as x approaches a, ignoring the value at a itself. For every ε &gt; 0 some δ &gt; 0 gives \|f(x) − L\| &lt; ε at each domain point x with 0 &lt; \|x − a\| &lt; δ.
 
 **Problem.** Suppose other domain points approach a and f has finite punctured limit L there. Assigning f(a) = L is the unique way to make f continuous at a.
 
-**How the definition helps.** The punctured test already controls every nearby value except the one we assign. Our own proof checks the usual continuity test at the remaining input a, where the error is zero. Any continuous assignment must equal the punctured limit, which is unique.
+**How the definition helps.** Continuity at a is the punctured test plus the point a itself, where the choice f(a) = L makes the error zero (our own). Any other value fails, because continuity forces f(a) to equal the punctured limit, which is unique since other domain points approach a.
 
 **nLab:** [limit of a function](https://ncatlab.org/nlab/show/limit+of+a+function). It says: “Weierstrass's definition is also referred to as the punctured limit of a function”
 
@@ -524,11 +524,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A function f with domain D is continuous at a point x₀ of D if each ε &gt; 0 has a matching δ &gt; 0. The condition is \|f(x) − f(x₀)\| &lt; ε for all x in D with \|x − x₀\| &lt; δ. Only points of the domain are tested.
+**Definition.** A function f with domain D is continuous at a point x₀ of D if for each ε &gt; 0 some δ &gt; 0 gives \|f(x) − f(x₀)\| &lt; ε for all x in D with \|x − x₀\| &lt; δ. Only points of the domain are tested, so D need not contain an interval around x₀.
 
 **Problem.** A real function on \[a,b\] can be continuous at its endpoints. Every restriction of a continuous real function is continuous, and its reciprocal is continuous wherever defined.
 
-**How the definition helps.** Testing only domain points allows one-sided continuity at endpoints and preserves every continuity estimate after restriction (our own). Requiring a full open interval inside the domain would exclude the endpoints of \[a,b\]. On the subset where f ≠ 0, composing its continuous restriction with the continuous reciprocal map proves continuity of 1/f (our own).
+**How the definition helps.** Since only domain points count, an endpoint of \[a,b\] is tested from one side only, and a restriction is tested at fewer points (our own). Weierstrass’s version, which demanded an interval around x₀ inside the domain, fails at the endpoints. On the set where f ≠ 0, 1/f is the restriction of f followed by the continuous map y ↦ 1/y (our own).
 
 **Wikipedia:** [Continuous function](https://en.wikipedia.org/wiki/Continuous_function). It says: “Weierstrass had required that the interval x₀ − δ &lt; x &lt; x₀ + δ be entirely within the domain D, but Jordan removed that restriction.”
 
@@ -540,11 +540,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A real function f on D ⊆ ℝ is uniformly continuous if every ε &gt; 0 admits a δ &gt; 0 with the following property. For all x,y ∈ D, if \|x−y\| &lt; δ then \|f(x)−f(y)\| &lt; ε.
+**Definition.** A function f on D ⊆ ℝ is uniformly continuous if one δ works at every point: for every ε &gt; 0 there is δ &gt; 0 with \|f(x) − f(y)\| &lt; ε whenever x, y ∈ D and \|x − y\| &lt; δ.
 
 **Problem.** Every continuous function on a closed bounded interval \[a,b\] is Riemann integrable, in Darboux's form with upper and lower sums.
 
-**How the definition helps.** One δ for the whole interval controls all pieces of a partition at once. In our own detail, for any partition into pieces shorter than δ, the upper and lower sums differ by at most ε(b − a). Plain continuity gives a δ that depends on the point, and that does not control all pieces at once. The hard step moves into the Heine–Cantor theorem, which uses the compactness of \[a,b\].
+**How the definition helps.** One δ controls every piece of a partition at once: if all pieces are shorter than δ, the upper and lower sums differ by at most ε(b − a) (our own). Plain continuity gives a δ that depends on the point. The Heine–Cantor theorem supplies the single δ, since \[a,b\] is compact.
 
 **Wikipedia:** [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “The Darboux integrability of continuous functions follows almost immediately from this theorem.”
 
@@ -554,15 +554,15 @@
 
 ### An affine approximation makes differentiability imply continuity
 
-**Remember:** Both the linear change and the smaller error go to zero.
+**Remember:** A line plus a tiny error, and both shrink with h.
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A real function has derivative m at a if the line f(a) + mh approximates f(a + h) with error r(h). The error must satisfy r(h)/h → 0 as h → 0.
+**Definition.** A real function f has derivative m at a if f(a + h) = f(a) + mh + r(h) with an error r(h) that is small even compared with h, that is r(h)/h → 0 as h → 0.
 
 **Problem.** Every real function differentiable at a point is continuous there.
 
-**How the definition helps.** The approximation splits the change in f into mh and r(h), both of which tend to zero. For h ≠ 0, the error equals h times r(h)/h. Our own comparison recovers the usual slope limit by dividing the change by h.
+**How the definition helps.** The change f(a + h) − f(a) is mh + r(h), and both terms tend to zero. The error does because r(h) = h · (r(h)/h) is a product of two terms that tend to zero (our own).
 
 **Paper or page:** [Differentiable Function is Continuous](https://proofwiki.org/wiki/Differentiable_Function_is_Continuous). It says: “Let x₀ ∈ I such that f is differentiable at x₀. Then f is continuous at x₀.”
 
@@ -574,11 +574,11 @@
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Let f be a real function on an open interval containing a. It is differentiable at a if some function q continuous there satisfies f(x)−f(a)=q(x)(x−a) throughout the interval. Its derivative is q(a).
+**Definition.** A real function f on an open interval containing a is differentiable at a if its difference quotient extends to a function q continuous at a, so that f(x) − f(a) = q(x)(x − a) for all x in the interval. The derivative is q(a).
 
 **Problem.** If g is differentiable at a and f is differentiable at g(a), then f∘g is differentiable at a with derivative f′(g(a))g′(a).
 
-**How the definition helps.** Factoring both increments gives f(g(x))−f(g(a)) = q(g(x))r(x)(x−a), where q and r are the slope functions for f and g (our own). Since g is continuous at a, the new factor is continuous there. Its value at a is q(g(a))r(a) = f′(g(a))g′(a), as required (our own).
+**How the definition helps.** Factoring both increments gives f(g(x)) − f(g(a)) = q(g(x))r(x)(x − a), with q and r the slope functions of f and g (our own). The factor q(g(x))r(x) is continuous at a because g is, and its value there is f′(g(a))g′(a) (our own).
 
 **Wikipedia:** [Chain rule](https://en.wikipedia.org/wiki/Chain_rule). It says: “Constantin Carathéodory's alternative definition of the differentiability of a function can be used to give an elegant proof of the chain rule.”
 
@@ -592,11 +592,11 @@
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 26A15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The Lipschitz bound of a real function on an open interval is the supremum of absolute slopes between distinct points. Allow infinity when no finite bound exists. The usual inequality definition instead seeks the smallest constant that bounds every such slope.
+**Definition.** The Lipschitz bound of a real function on an open interval is the supremum of its absolute chord slopes \|f(x) − f(y)\|/\|x − y\| over distinct x and y, and it may be infinite. It is the smallest constant in the usual Lipschitz inequality.
 
 **Problem.** For a differentiable function on an open interval, the Lipschitz bound equals the supremum of the absolute derivative, allowing infinity.
 
-**How the definition helps.** Writing the optimal bound as a supremum of chord slopes lets the mean value theorem compare it directly with the derivative bound (our own). Each chord slope equals some derivative, and each derivative is a limit of chord slopes (our own). These two facts give opposite inequalities between the suprema, including when they are infinite (our own).
+**How the definition helps.** By the mean value theorem each chord slope equals some derivative value, so the Lipschitz bound is at most sup \|f′\| (our own). Each derivative value is a limit of chord slopes, which gives the reverse inequality, also when the suprema are infinite (our own).
 
 **nLab:** [Lipschitz map](https://ncatlab.org/nlab/show/Lipschitz+map). It says: “its Lipschitz norm is the supremum norm ‖f′‖∞ of its derivative f′.”
 
@@ -608,11 +608,11 @@
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define the logarithmic derivative of a real function f as the derivative of ln \|f\| where f is nonzero. The usual formula writes it as f′/f.
+**Definition.** The logarithmic derivative of a real function f, at points where f is nonzero, is the derivative of ln \|f\|, which the chain rule makes equal to f′/f. Since ln \|fg\| = ln \|f\| + ln \|g\|, it turns products into sums.
 
 **Problem.** At a point where each of finitely many differentiable real factors is nonzero, their product has logarithmic derivative equal to the sum of theirs.
 
-**How the definition helps.** The logarithm of the absolute value of the product is already a sum of logarithms (our own). Differentiation preserves that sum (our own). The work moves to the chain rule, which identifies the derivative of ln \|f\| with f′/f (our own).
+**How the definition helps.** Near the point, the logarithm of the absolute value of the product is the sum of the logarithms of the absolute values of the factors (our own). Differentiating that sum term by term gives the result, and the chain rule turns each term into f′/f (our own).
 
 **Wikipedia:** [Logarithmic derivative](https://en.wikipedia.org/wiki/Logarithmic_derivative). It says: “the logarithmic derivative of a product is the sum of the logarithmic derivatives of the factors”
 
@@ -624,11 +624,11 @@
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a function f with derivatives through order n at c, its order-n Taylor polynomial is the sum of f⁽ᵏ⁾(c)(x−c)ᵏ/k! over 0 ≤ k ≤ n.
+**Definition.** The order-n Taylor polynomial at c of a function f with derivatives through order n at c is ∑ₖ₌₀ⁿ f⁽ᵏ⁾(c)(x − c)ᵏ/k!. It is written in the basis (x − c)ᵏ/k!, whose jth derivative at c is 1 when j = k and 0 otherwise.
 
 **Problem.** Suppose f has derivatives through order n at c. Its order-n Taylor polynomial uniquely matches f(c) and those derivatives among all polynomials of degree at most n.
 
-**How the definition helps.** At c, the jth derivative of (x−c)ᵏ/k! equals one if j=k and zero otherwise, including j=0 (our own). Thus each prescribed derivative fixes exactly one coefficient in this basis, proving existence and uniqueness (our own).
+**How the definition helps.** In this basis the jth derivative at c of a polynomial is exactly its jth coefficient (our own). So prescribing f(c) and the derivatives through order n fixes every coefficient once and only once (our own).
 
 **nLab:** [Taylor's theorem](https://ncatlab.org/nlab/show/Taylor%27s+theorem). It says: “whose derivatives at c match those of f up to order k.”
 
@@ -640,11 +640,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 05A18. arXiv math.CA, math.CO. Level 1: early undergraduate.
 
-**Definition.** A partition of {1,…,n} is a collection of disjoint nonempty blocks whose union is {1,…,n}. In the higher chain rule, each block groups the differentiations applied to one inner factor (our own).
+**Definition.** A partition of {1,…,n} splits it into disjoint nonempty blocks. In the higher chain rule, each block lists the differentiations that land on one inner factor (our own).
 
-**Problem.** Suppose f and g have derivatives through order n on intervals where their composition is defined. The nth derivative of f∘g at x sums one product per partition of {1,…,n}. That product uses the outer derivative at g(x) of order the block count and one inner derivative at x of order each block’s size.
+**Problem.** Suppose f and g have derivatives through order n where f∘g is defined. Then (f∘g)⁽ⁿ⁾(x) is the sum over partitions π of {1,…,n} of f⁽ᵏ⁾(g(x)), with k the number of blocks, times the product over blocks B of g⁽ᵐ⁾(x), with m the size of B.
 
-**How the definition helps.** Each new derivative starts a singleton block by differentiating the outer factor or joins an existing block by differentiating its inner factor (our own). Removing the newest label recovers the unique preceding partition. Thus the product and chain rules generate each partition exactly once, starting with the ordinary first derivative (our own).
+**How the definition helps.** Differentiating a term once more either hits the outer factor, adding a new singleton block, or hits one inner factor, adding the new label to that block (our own). Removing the newest label recovers the unique earlier partition, so each partition arises exactly once. Induction from f′(g(x))g′(x) finishes the proof (our own).
 
 **Paper or page:** [A one-sentence elementary proof of the combinatorial Faà di Bruno's formula](https://arxiv.org/abs/2206.02031v2). It says: “where π ranges over the set Πₙ of all partitions of {1, …, n} and B ranges over the blocks in π.”
 
@@ -658,11 +658,11 @@
 
 *Rules out counterexamples.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The two-sided derivative at a is the common finite limit of the slopes from a to nearby points on either side. The symmetric derivative uses the slope between a − h and a + h as h tends to zero.
+**Definition.** The two-sided derivative at a is the finite number that the slopes (f(x) − f(a))/(x − a) approach as x approaches a from the left and from the right alike.
 
 **Problem.** If a real function has a local maximum or minimum at an interior point and a two-sided derivative there, that derivative is zero.
 
-**How the definition helps.** At a local maximum, slopes from the left are nonnegative and slopes from the right are nonpositive. Their common limit must be zero, and the signs reverse at a minimum. Our own example \|x\| + x/2 has a minimum at zero but symmetric derivative 1/2.
+**How the definition helps.** At a local maximum, left slopes are ≥ 0 and right slopes are ≤ 0, so their common limit is 0; a minimum reverses the signs. The symmetric derivative, the limit of (f(a + h) − f(a − h))/(2h), does not suffice: our own example \|x\| + x/2 has a minimum at 0 but symmetric derivative 1/2.
 
 **Paper or page:** [Theorem 4.3. (Fermat's theorem on stationary points)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Suppose f : U → ℝ is differentiable and p ∈ U is a local extrema. Then f′(p) = 0.”
 
@@ -674,11 +674,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 40A30. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The derivatives fₙ′ converge uniformly to g on I if for every ε &gt; 0 some integer N satisfies the following condition. For every n ≥ N and every x ∈ I, \|fₙ′(x)−g(x)\| &lt; ε.
+**Definition.** The derivatives fₙ′ converge uniformly to g on I if they come within any ε of g at all points of I at once: for every ε &gt; 0 some N gives \|fₙ′(x) − g(x)\| &lt; ε for all n ≥ N and all x ∈ I.
 
-**Problem.** Take real functions continuous on a closed bounded interval and differentiable in its interior. Suppose their values converge at one point of the interval and their derivatives converge uniformly in the interior. Then the functions converge uniformly, and their limit has the limiting derivative at each interior point.
+**Problem.** Let real functions fₙ be continuous on a closed bounded interval and differentiable inside it, with fₙ converging at one point and fₙ′ converging uniformly inside. Then fₙ converges uniformly, and its limit has derivative lim fₙ′ at each interior point.
 
-**How the definition helps.** The mean value theorem turns a uniform bound on derivative differences into the same bound on differences of secant slopes (our own). The convergent values at one point then make the functions uniformly Cauchy, so they converge uniformly (our own). Pass the secant bound to the limit in one function index before shrinking the secant interval (our own). On \[−1, 1\], the functions x ↦ √(x² + 1/n) converge uniformly to \|x\|, which has no derivative at zero (our own).
+**How the definition helps.** By the mean value theorem, uniformly close derivatives give uniformly close secant slopes, so convergence at one point makes fₙ uniformly Cauchy (our own). Fixing the secant, letting the index grow and then shrinking the secant gives the limit’s derivative (our own). Without the derivative condition it fails: √(x² + 1/n) tends uniformly to \|x\| on \[−1, 1\], which has no derivative at 0 (our own).
 
 **Wikipedia:** [Uniform convergence](https://en.wikipedia.org/wiki/Uniform_convergence). It says: “With additional hypotheses, differentiability can be transferred to the limit function as well.”
 
@@ -690,11 +690,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A36 (Antidifferentiation), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a continuous f on \[a, b\], define its integral as F(b) − F(a), where F is any antiderivative of f. The Riemann definition instead takes limits of sums of sampled values.
+**Definition.** For continuous f on \[a, b\], the integral of f is F(b) − F(a), the total change of any antiderivative F of f. So each rule for derivatives becomes a rule for integrals (our own).
 
 **Problem.** For continuously differentiable u and v on \[a, b\], the integral of uv′ plus the integral of u′v equals u(b)v(b) − u(a)v(a).
 
-**How the definition helps.** The product rule makes uv an antiderivative of u′v + uv′ (our own). Endpoint subtraction therefore gives the change in uv, and adding antiderivatives gives linearity of the integral. The mean value theorem makes the endpoint difference independent of the chosen antiderivative. The fundamental theorem of calculus supplies antiderivatives for continuous integrands and identifies this integral with the Riemann integral (our own).
+**How the definition helps.** The product rule makes uv an antiderivative of u′v + uv′, so the two integrals add up to the change in uv (our own). The mean value theorem makes this change independent of the chosen antiderivative. The fundamental theorem of calculus gives every continuous f an antiderivative and matches this integral with Riemann’s (our own).
 
 **nLab:** [fundamental theorem of calculus](https://ncatlab.org/nlab/show/fundamental+theorem+of+calculus). It says: “the antiderivatives and indefinite integrals of a function”
 
@@ -708,11 +708,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A36 (Antidifferentiation), 26A42. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a continuous real function f on an interval, choose any antiderivative F there. Define the signed integral from u to v in that interval as F(v) − F(u).
+**Definition.** For a continuous real function f on an interval, the signed integral from u to v is F(v) − F(u), the change between the two points of any antiderivative F of f.
 
-**Problem.** Let g be continuously differentiable on \[a, b\], and let f be continuous on an interval that contains g(\[a, b\]). Then the integral of f(g(x))g′(x) from a to b equals the signed integral of f from g(a) to g(b). Here g need not be one-to-one.
+**Problem.** Let g be continuously differentiable on \[a, b\], and let f be continuous on an interval containing g(\[a, b\]). Then the integral of f(g(x))g′(x) from a to b equals the signed integral of f from g(a) to g(b), even when g is not one-to-one.
 
-**How the definition helps.** The chain rule makes F ∘ g an antiderivative of x ↦ f(g(x))g′(x). Both endpoint differences therefore equal F(g(b)) − F(g(a)) regardless of the order of the endpoints (our own). The fundamental theorem of calculus supplies F and identifies the endpoint difference with the Riemann integral (our own).
+**How the definition helps.** By the chain rule, F ∘ g is an antiderivative of f(g(x))g′(x). So both integrals equal F(g(b)) − F(g(a)), in whichever order the endpoints come (our own). The fundamental theorem of calculus supplies F and matches this integral with the Riemann integral (our own).
 
 **Wikipedia:** [Integration by substitution](https://en.wikipedia.org/wiki/Integration_by_substitution). It says: “combining the chain rule and the definition of an antiderivative gives:”
 
@@ -720,15 +720,15 @@
 
 ### Darboux bounds ignore changes at finitely many points
 
-**Remember:** Squeeze the integral between lower and upper rectangle sums on one partition.
+**Remember:** A few points sit on pieces you can make arbitrarily thin.
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], each finite partition P gives two rectangle sums with the piece lengths as widths. The lower sum L(P) uses the infimum on each piece as height, and the upper sum U(P) uses the supremum. Darboux integrability means every ε &gt; 0 admits P with U(P)−L(P) &lt; ε, and the integral is the supremum of the lower sums.
+**Definition.** A bounded f on \[a,b\] is Darboux integrable if for every ε &gt; 0 some partition makes its upper and lower sums differ by less than ε, and its integral is the number they squeeze. Each sum adds piece length times the supremum or infimum of f there, so a piece counts only in proportion to its length.
 
 **Problem.** Changing finitely many values of a Riemann integrable function on a closed interval leaves it integrable and preserves its integral.
 
-**How the definition helps.** For the difference of the two functions, only pieces touching the changed points contribute to the Darboux sums (our own). With short enough pieces their total length is arbitrarily small, so both sums tend to zero (our own). Use linearity and the equivalence of Darboux and tagged integrals to get the unchanged integral (our own).
+**How the definition helps.** The difference h of the two functions is zero except at finitely many points, so only pieces containing those points add to its Darboux sums (our own). Making those pieces short makes both sums as small as wanted, so h is integrable with integral 0 (our own). Linearity and the equivalence of Darboux and Riemann integrals give the unchanged integral (our own).
 
 **Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “a finite number of points can always be covered by a finite collection of intervals with arbitrarily small total length”
 
@@ -740,11 +740,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For an integrable f on \[a, b\], its accumulated area at x is its integral from a to x. Each Darboux sum bounds this area using rectangles whose heights bound f on each piece.
+**Definition.** For an integrable f on \[a, b\], the accumulated area at x is the integral of f from a to x. Darboux sums trap the integral over any interval between rectangles whose heights bound f there. So when \|f\| ≤ M, its absolute value is at most M times the length (our own).
 
 **Problem.** Suppose \|f\| ≤ M on \[a, b\] and f is Riemann integrable there. Its accumulated area changes by at most M\|y − x\| between any two points x and y.
 
-**How the definition helps.** Darboux bounds place the integral over a short interval between two constant rectangles of heights −M and M (our own). Interval additivity identifies that integral with the change in accumulated area (our own). Unlike a derivative argument, this needs no continuity of f or differentiability of the accumulated area (our own).
+**How the definition helps.** By interval additivity, the change in accumulated area from x to y is the integral over the interval between them (our own). The Darboux bounds with constant heights −M and M put this integral within M\|y − x\| of zero (our own). Unlike a derivative argument, this needs no continuity of f (our own).
 
 **Paper or page:** [Darboux's Theorem](https://proofwiki.org/wiki/Darboux's_Theorem). It says: “M is an upper bound of f on \[a, b\]”
 
@@ -752,15 +752,15 @@
 
 ### Darboux gaps show that products stay integrable
 
-**Remember:** Weight each oscillation by its interval length and make their sum arbitrarily small.
+**Remember:** Product spreads are controlled by the factors’ spreads, piece by piece.
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], its oscillation on each partition piece is its supremum there minus its infimum there. The Darboux gap sums each oscillation times the corresponding piece length. The function is integrable if every ε &gt; 0 admits a finite partition with gap below ε.
+**Definition.** The Darboux gap of a bounded f on a partition of \[a,b\] adds, over the pieces, the largest spread \|f(x) − f(y)\| within each piece times its length. f is integrable when, for every ε &gt; 0, some finite partition makes this gap smaller than ε.
 
 **Problem.** The product of two Riemann integrable functions on a closed interval is Riemann integrable.
 
-**How the definition helps.** The Darboux gap tracks value spreads, so a bound for each product spread gives a bound for the whole gap (our own). Write f(x)g(x) − f(y)g(y) as f(x)(g(x) − g(y)) + g(y)(f(x) − f(y)) (our own). Combining both partitions only shrinks each gap, and boundedness controls the factors multiplying those gaps (our own). The Darboux criterion converts this estimate into convergence for every choice of sample points (our own).
+**How the definition helps.** Since f(x)g(x) − f(y)g(y) = f(x)(g(x) − g(y)) + g(y)(f(x) − f(y)), the spread of fg on a piece is at most M times the spreads of f and g, where M bounds \|f\| and \|g\| (our own). On a common refinement of small-gap partitions for f and g, the gap of fg is at most M times the sum of their gaps (our own). Darboux and Riemann integrability agree, so fg is Riemann integrable (our own).
 
 **Paper or page:** [Condition for Darboux Integrability](https://proofwiki.org/wiki/Condition_for_Darboux_Integrability). It says: “there exists a finite subdivision S of \[a, b\] such that U(S) – L(S) &lt; ε”
 
@@ -772,11 +772,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], its oscillation on each partition piece is its supremum there minus its infimum there. The Darboux gap sums each oscillation times the corresponding piece length. The function is integrable if every ε &gt; 0 admits a finite partition with gap below ε.
+**Definition.** The Darboux gap of a bounded f on a partition of \[a,b\] adds, over the pieces, the oscillation of f (supremum minus infimum) times the piece length, and adding points never increases it (our own). f is integrable when, for every ε &gt; 0, some partition makes the gap smaller than ε.
 
 **Problem.** Let f be bounded on \[a, b\] and let c lie strictly between a and b. The function is integrable on \[a, b\] exactly when it is integrable on both pieces.
 
-**How the definition helps.** A partition containing c has a gap equal to the two smaller gaps added together (our own). To restrict, insert c into a partition with small gap, which cannot increase the gap (our own). To join, put together two partitions with small gaps (our own). The link to arbitrary tagged sums uses the equivalence of Darboux and Riemann integrability (our own).
+**How the definition helps.** A partition containing c splits into partitions of \[a, c\] and \[c, b\], and its gap is the sum of their gaps (our own). To restrict, add c to a small-gap partition; to join, combine small-gap partitions of the two pieces (our own). Darboux and Riemann integrability agree (our own).
 
 **Paper or page:** [Existence of Integral on Union of Adjacent Intervals](https://proofwiki.org/wiki/Existence_of_Integral_on_Union_of_Adjacent_Intervals). It says: “f is Darboux integrable on \[a, c\] and \[c, b\]”
 
@@ -788,11 +788,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Darboux sums add rectangle areas using each piece’s greatest lower bound or least upper bound as height. A Darboux integrable function has partitions whose lower and upper sums come arbitrarily close to its integral. A region has Jordan area A if finite rectangle unions inside it and containing it can approximate A arbitrarily closely.
+**Definition.** A region has Jordan area A if finite unions of rectangles inside it and finite unions containing it both have areas arbitrarily close to A. For a nonnegative f, the lower and upper Darboux sums are exactly the areas of such inner and outer rectangle unions for the region under the graph (our own).
 
 **Problem.** The region between a nonnegative Riemann integrable function and the horizontal axis on a closed interval has Jordan area equal to the integral.
 
-**How the definition helps.** The rectangles in the Darboux sums provide the inner and outer rectangle unions (our own). Their area difference is the Darboux gap, which can be made arbitrarily small (our own). The work moves to the equivalence between Darboux bounds and tagged sums (our own).
+**How the definition helps.** For integrable f, some partition puts both Darboux sums within ε of the integral, so the inner and outer rectangle unions pin the area to the integral (our own). Darboux integrability matches Riemann integrability, which gives the stated form (our own).
 
 **Paper or page:** [Area under Curve/Lemma](https://proofwiki.org/wiki/Area_under_Curve/Lemma). It says: “Then A equals the Darboux integral of f over \[a, b\].”
 
@@ -804,11 +804,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 26A48. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], each finite partition gives an upper sum and a lower sum. Multiply each piece length by the supremum or infimum there, respectively, and add. Darboux integrability means the infimum of all upper sums equals the supremum of all lower sums.
+**Definition.** For bounded f on \[a,b\] and a partition, the upper sum adds each piece length times the supremum of f there, and the lower sum uses the infimum. f is Darboux integrable when the infimum of the upper sums equals the supremum of the lower sums. For monotone f, these heights are the values at the two ends of each piece (our own).
 
 **Problem.** Every monotone real function on a closed bounded interval \[a, b\] is Darboux integrable, and hence Riemann integrable.
 
-**How the definition helps.** On n equal pieces, monotonicity puts each supremum and infimum at opposite endpoints (our own). The differences telescope, giving total gap (b−a)\|f(b)−f(a)\|/n, which tends to zero (our own). The Darboux criterion gives integrability, and the equivalence theorem gives Riemann integrability (our own).
+**How the definition helps.** On n equal pieces, the gap between the sums is (b − a)/n times the sum of the end-value differences, which telescopes to (b − a)\|f(b) − f(a)\|/n (our own). This tends to zero, so the two bounds agree (our own). Darboux and Riemann integrability are equivalent (our own).
 
 **Paper or page:** [Monotone Real Function is Darboux Integrable](https://proofwiki.org/wiki/Monotone_Real_Function_is_Darboux_Integrable). It says: “Then f is Darboux integrable over \[a,b\].”
 
@@ -816,15 +816,15 @@
 
 ### Darboux sums reject the rational indicator
 
-**Remember:** Lower rectangles use each infimum, upper rectangles each supremum, and integrability closes the gap.
+**Remember:** Every piece sees heights 0 and 1, so the gap stays 1.
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], each finite partition P gives two rectangle sums with the piece lengths as widths. The lower sum L(P) uses the infimum on each piece as height, and the upper sum U(P) uses the supremum. Darboux integrability means every ε &gt; 0 admits P with U(P)−L(P) &lt; ε.
+**Definition.** For bounded f on \[a,b\], a partition gives a lower sum built on the infimum of f on each piece and an upper sum built on the supremum, each times the piece length. f is Darboux integrable when, for every ε &gt; 0, some partition makes the upper sum minus the lower sum smaller than ε.
 
 **Problem.** The function on \[0, 1\] that equals one on rational numbers and zero elsewhere is not Riemann integrable.
 
-**How the definition helps.** Every partition gives lower sum zero and upper sum one, since each piece contains both rational and irrational numbers (our own). Their gap can never become arbitrarily small, so the function fails the Darboux test (our own). The separate theorem that Riemann and Darboux integrability agree gives the conclusion for the Riemann integral (our own).
+**How the definition helps.** Every piece contains rational and irrational numbers, so every lower sum is 0 and every upper sum is 1 (our own). The gap is always 1, so the function fails the Darboux test (our own). Darboux and Riemann integrability agree, which gives the conclusion (our own).
 
 **Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “This function does not have a Riemann integral.”
 
@@ -838,11 +838,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For bounded f on \[a,b\], U(P) sums each piece length of a finite partition P times the supremum there. L(P) uses the infimum instead. Darboux integrability means inf U(P) = sup L(P) over all finite partitions.
+**Definition.** For bounded f on \[a,b\] and a finite partition P, the upper sum U(P) adds each piece length times the supremum of f there, and the lower sum L(P) uses the infimum. f is Darboux integrable when inf U(P) = sup L(P) over all partitions.
 
 **Problem.** A bounded f is integrable exactly when, for every ε &gt; 0, some partition has upper sum minus lower sum below ε. So every monotone function on \[a, b\] is integrable.
 
-**How the definition helps.** If the bounds agree, choose upper and lower sums within ε/2 of their common bound (our own). Their common refinement has gap below ε, while every partition gap bounds the difference between the two integral bounds (our own). For monotone f, the gap on n equal pieces telescopes to (b−a)\|f(b)−f(a)\|/n (our own). This tends to zero, and Darboux and Riemann integrability agree (our own).
+**How the definition helps.** One partition traps both bounds between L(P) and U(P), so a small gap forces equality; conversely, refine two near-optimal partitions together (our own). For monotone f, the gap on n equal pieces telescopes to (b − a)\|f(b) − f(a)\|/n, which tends to zero (our own). Darboux and Riemann integrability agree (our own).
 
 **Wikipedia:** [Darboux integral](https://en.wikipedia.org/wiki/Darboux_integral). It says: “An equivalent and sometimes useful criterion for the integrability of f is to show that for every ε &gt; 0 there exists a partition Pε of \[a, b\] such that”
 
@@ -856,11 +856,11 @@
 
 *Rules out counterexamples.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Thomae’s function is zero at irrational numbers. At a rational number p/q in lowest terms with q positive, the function equals 1/q. In lowest terms, the numerator and denominator have no common factor greater than one.
+**Definition.** Thomae’s function is 0 at each irrational number and 1/q at each rational p/q in lowest terms with q &gt; 0. So it exceeds a height 1/N only at rationals with denominator less than N, and a bounded interval holds finitely many of those (our own).
 
 **Problem.** Thomae’s function is Riemann integrable on every closed bounded interval and has integral zero.
 
-**How the definition helps.** The denominator rule leaves only finitely many points above each positive height on a bounded interval (our own). Pieces touching those points have arbitrarily small total length on fine partitions, and all remaining heights are small (our own). Every lower sum is zero because each piece contains an irrational number (our own). Giving every rational height one instead makes every upper sum equal the interval length (our own).
+**How the definition helps.** Every lower sum is 0, since each piece contains an irrational number (our own). On a fine partition, the few pieces touching points above height ε have tiny total length, and all other heights are at most ε, so upper sums tend to zero (our own). Giving every rational the height 1 instead makes every upper sum equal the interval length (our own).
 
 **Wikipedia:** [Thomae's function](https://en.wikipedia.org/wiki/Thomae%27s_function). It says: “f is Riemann integrable on any interval”
 
@@ -872,11 +872,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 26A06. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a &lt; b and f Riemann integrable on \[a,b\], define its integral from b to a as minus its integral from a to b. Define its integral from a to a as zero.
+**Definition.** For a &lt; b, the integral from b to a is minus the integral from a to b, and the integral from a to a is zero. This makes the integral signed, so going from a to b and back again gives zero.
 
-**Problem.** Let f be Riemann integrable on an interval containing a, b and c in any order. Its integrals from a to b and b to c sum to its integral from a to c. For continuous f, F(x) = ∫ₐˣ f has derivative f(x) at interior points on either side of a.
+**Problem.** If f is Riemann integrable on an interval containing a, b and c in any order, its integrals from a to b and from b to c add up to its integral from a to c. For continuous f, F(x) = ∫ₐˣ f has derivative f(x) at interior points on either side of a.
 
-**How the definition helps.** Ordered interval additivity gives every ordering after reversing limits and moving terms across the equality (our own). The fundamental theorem of calculus gives F′ = f for continuous f (our own).
+**How the definition helps.** With signs, each ordering of a, b and c is the ordered additivity rule after moving terms across the equality (our own). For x &lt; a, F(x) = −∫ₓᵃ f, so the fundamental theorem of calculus gives F′ = f on both sides of a (our own).
 
 **Wikipedia:** [Integral](https://en.wikipedia.org/wiki/Integral). It says: “The first convention is necessary in consideration of taking integrals over subintervals of \[a, b\]; the second says that an integral taken over a degenerate interval, or a point, should be zero.”
 
@@ -888,11 +888,11 @@
 
 *Rules out counterexamples.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a finite tagged partition P of \[a,b\], let S(P) sum each piece length times the signed function value at its tag. Its mesh is the largest piece length. The integral equals I if every ε &gt; 0 admits δ &gt; 0 with \|S(P)−I\| &lt; ε whenever the mesh is below δ.
+**Definition.** A Riemann sum S(P) of a tagged partition P of \[a,b\] adds each piece length times the signed value of f at its tag, so negative values subtract. The integral is I if for every ε &gt; 0 some δ &gt; 0 gives \|S(P) − I\| &lt; ε whenever every piece is shorter than δ.
 
 **Problem.** Let f and g be Riemann integrable on the same closed bounded interval. Every real linear combination is integrable there, and integration preserves that combination.
 
-**How the definition helps.** At every sample point, signed heights add before or after multiplication by the rectangle width (our own). Unsigned area fails for the constant functions one and minus one, whose sum has zero area (our own). The limit laws carry the equality of rectangle sums to the integrals (our own).
+**How the definition helps.** With signed values, the Riemann sum of αf + βg is α times that of f plus β times that of g for every tagged partition, so the limit laws give the same combination of integrals (our own). Unsigned area fails: the constant functions 1 and −1 each bound area 1, but their sum bounds area 0 (our own).
 
 **Paper or page:** [Linear Combination of Integrals/Definite](https://proofwiki.org/wiki/Linear_Combination_of_Integrals/Definite). It says: “The integral of this linear combination equals the same linear combination of their integrals.”
 
@@ -904,11 +904,11 @@
 
 *Rules out counterexamples.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 40A30. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A sequence fₙ converges uniformly to f on E if every ε &gt; 0 admits an integer N with the following property. For every n ≥ N and every x in E, \|fₙ(x)−f(x)\| &lt; ε.
+**Definition.** A sequence fₙ converges uniformly to f on E if the errors shrink everywhere at once: for every ε &gt; 0 some N gives \|fₙ(x) − f(x)\| &lt; ε for all n ≥ N and all x in E.
 
 **Problem.** If Riemann integrable functions on a closed bounded interval converge uniformly, their limit is integrable. Its integral is the limit of their integrals.
 
-**How the definition helps.** Uniform convergence bounds the error in every Riemann sum by the maximum allowed error times the interval length (our own). The upper and lower sum criterion then gives integrability of the limit (our own). On \[0, 1\], let the nth function equal n on (0, 1/n) and zero elsewhere (our own). Each integral equals one, but the pointwise limit is zero (our own).
+**How the definition helps.** If \|fₙ − f\| &lt; ε on all of \[a, b\], every upper and lower sum of f is within ε(b − a) of the matching sum of fₙ (our own). So f passes the Darboux test, and its integral is within ε(b − a) of that of fₙ (our own). Pointwise convergence is not enough: on \[0, 1\], the function equal to n on (0, 1/n) and 0 elsewhere has integral 1 but tends to 0 (our own).
 
 **Wikipedia:** [Uniform convergence](https://en.wikipedia.org/wiki/Uniform_convergence). It says: “the uniform limit of Riemann integrable functions is automatically Riemann integrable.”
 
@@ -922,11 +922,11 @@
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A real function f on an interval is convex if f((1−t)u+tw) ≤ (1−t)f(u)+tf(w) for every u,w in the interval and every t ∈ \[0,1\].
+**Definition.** A real function f on an interval is convex if every chord lies on or above the graph: f((1−t)u + tw) ≤ (1−t)f(u) + tf(w) for all u, w in the interval and t ∈ \[0,1\]. So a middle point v between u and w has its value on or below the chord from u to w.
 
 **Problem.** For u &lt; v &lt; w, a convex function has nondecreasing slopes on \[u, v\], \[u, w\], and \[v, w\], in that order.
 
-**How the definition helps.** The middle point v is a weighted mean of u and w. Writing the chord bound at v and rearranging gives both slope inequalities (our own). No derivative is needed (our own). The mean value theorem carries the work of proving the derivative test when that test applies (our own).
+**How the definition helps.** Write v = (1 − t)u + tw with t = (v − u)/(w − u), and apply the chord bound at v. Rearranging gives slope\[u, v\] ≤ slope\[u, w\] and slope\[u, w\] ≤ slope\[v, w\] (our own). No derivative is needed (our own).
 
 **nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “The proof is virtually trivial; just write v as a convex combination t u + (1−t)w and use the definition of convexity.”
 
@@ -934,15 +934,15 @@
 
 ### Epigraph intersections preserve convexity
 
-**Remember:** The region above the highest graph is the intersection of all the upper regions.
+**Remember:** Above the highest graph means above every graph.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The epigraph of a function consists of all points on or above its graph. Call the function convex if its epigraph contains the segment between any two of its points. The equivalent chord test requires each chord between graph points to lie on or above the graph.
+**Definition.** A function is convex if its epigraph, the set of points on or above its graph, contains the segment between any two of its points. A point lies above the pointwise supremum of a family exactly when it lies above every member.
 
-**Problem.** The pointwise supremum of convex functions on a common interval is convex if it is finite there. The pointwise supremum takes the least upper bound of the function values at each input.
+**Problem.** On a common interval, the pointwise supremum of convex functions is convex if it is finite everywhere there.
 
-**How the definition helps.** The epigraph of the supremum is the intersection of the individual epigraphs (our own). Each shared pair of points belongs to every epigraph, so the whole segment belongs to their intersection (our own). The remaining work is to show that raising either endpoint of a chord keeps the segment on or above the graph (our own).
+**How the definition helps.** The epigraph of the supremum is the intersection of the epigraphs (our own). A segment between two points of the intersection lies in every epigraph, hence in the intersection (our own).
 
 **nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “The pointwise maximum of two convex functions on D is again convex.”
 
@@ -952,15 +952,15 @@
 
 ### Ordered slopes give one-sided derivatives
 
-**Remember:** At an interior point, slopes approach from each side without oscillating.
+**Remember:** Chord slopes only rise, so they settle from each side.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26A24. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define convexity on an interval by ordering the slopes of adjacent chords. For x &lt; y &lt; z, the slope from x to y cannot exceed the slope from y to z. The geometric definition puts each chord on or above the graph.
+**Definition.** Here f is convex on an interval when its chord slopes rise from left to right: for x &lt; y &lt; z, the slope from x to y is at most the slope from y to z. This is equivalent to every chord lying on or above the graph (our own).
 
 **Problem.** A finite convex function on an open real interval has finite left and right derivatives at each point.
 
-**How the definition helps.** An outer chord slope is a weighted average of its two adjacent chord slopes, so it lies between them (our own). Thus slopes with one endpoint fixed increase or stay constant as the other endpoint moves right (our own). Chords to fixed points on either side bound the nearby slopes, so both one-sided limits exist and are finite (our own). Rearranging the usual chord inequality gives the adjacent slope test (our own).
+**How the definition helps.** The slope from x to z is a weighted average of the two adjacent slopes, so slopes with one end fixed rise as the other end moves right (our own). Near an interior point, chords to fixed points on each side bound these monotone slopes, so both one-sided limits exist and are finite (our own).
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “Moreover, f admits left and right derivatives, and these are monotonically non-decreasing.”
 
@@ -968,15 +968,15 @@
 
 ### Reflection makes increasing convex inverses concave
 
-**Remember:** Above an increasing graph becomes below its inverse when you swap coordinates.
+**Remember:** Swap the axes, and above an increasing graph becomes below its inverse.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A convex function has a convex region on or above its graph. A concave function has a convex region on or below it. An equivalent test compares the graph directly with its chords.
+**Definition.** A function is convex if the region on or above its graph is a convex set, and concave if the region on or below its graph is convex. For a strictly increasing function, swapping the coordinates turns the region above its graph into the region below the inverse’s graph, within the domain and range (our own).
 
 **Problem.** The inverse of a strictly increasing convex function on an open interval is concave on its range.
 
-**How the definition helps.** Within the input and output intervals, swapping coordinates turns points on or above the graph into points on or below the inverse graph (our own). Strict increase gives this correspondence (our own). A real convex function on an open interval is continuous, so its range is an interval (our own). Swapping coordinates preserves segments, so chords of the inverse lie on or below its graph (our own).
+**How the definition helps.** Strict increase makes the swap a bijection from the convex region above f, cut to the domain I and range J, onto the region below f⁻¹ (our own). Swapping preserves segments, so the region below f⁻¹ is convex (our own). A convex function on an open interval is continuous, so the range J is an interval (our own).
 
 **Paper or page:** [Inverse of Strictly Increasing Convex Real Function is Concave](https://proofwiki.org/wiki/Inverse_of_Strictly_Increasing_Convex_Real_Function_is_Concave). It says: “If f be strictly increasing on I, then f⁻¹ is concave on J.”
 
@@ -988,11 +988,11 @@
 
 *Rules out counterexamples.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A real function on an interval is strictly convex if every chord between distinct graph points lies above the graph between them. Ordinary convexity also allows the chord to lie on the graph.
+**Definition.** A real function on an interval is strictly convex if each chord between two distinct graph points lies strictly above the graph between them. So between two points with equal values, the midpoint has a strictly lower value.
 
 **Problem.** A strictly convex function on an interval has at most one point where it attains its minimum.
 
-**How the definition helps.** Two distinct minimizers would have a midpoint with a strictly smaller value (our own). The constant zero function on \[0, 1\] shows why ordinary convexity permits several minimizers (our own).
+**How the definition helps.** If two distinct points were both minimizers, their midpoint would have a value strictly below the minimum (our own). Ordinary convexity allows several minimizers, as the constant zero function on \[0, 1\] shows (our own).
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “A strictly convex function will have at most one global minimum.”
 
@@ -1004,11 +1004,11 @@
 
 *True by definition.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The total derivative at a is a linear map L that approximates the change from f(a) to f(a+h). The error divided by the length of h tends to zero as h approaches zero.
+**Definition.** The total derivative of f at a is one linear map L with f(a + h) = f(a) + Lh + r(h), where the error r(h) divided by the length of h tends to zero as h → 0. It approximates f in every direction at once.
 
-**Problem.** For every vector v, the function t ↦ f(a+tv) has slope Lv at zero if f has total derivative L at a.
+**Problem.** If f has total derivative L at a, then for every vector v, the function t ↦ f(a + tv) has slope Lv at t = 0.
 
-**How the definition helps.** One linear approximation controls every line through a before we choose a direction. In our own proof, take h = tv and divide the error by t for nonzero v. The error tends to zero after division, and the slope for v = 0 is zero. Computing line limits separately would still leave linearity and the total error bound to prove.
+**How the definition helps.** For nonzero v, put h = tv: then (f(a + tv) − f(a))/t = Lv + r(tv)/t, and r(tv)/t → 0 because r(tv)/\|tv\| → 0 (our own). For v = 0 the slope is 0 = Lv.
 
 **nLab:** [differentiable map](https://ncatlab.org/nlab/show/differentiable+map). It says: “then dfₓ(v) is its directional derivative along v.”
 
@@ -1018,15 +1018,15 @@
 
 ### Twice differentiable maps have symmetric second derivatives
 
-**Remember:** Twice differentiable means the derivative itself has a derivative, not only the partials.
+**Remember:** The derivative itself must be differentiable, not just its partials.
 
 *Rules out counterexamples.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A map f from an open set in ℝⁿ to ℝᵐ is twice differentiable if it is differentiable and its derivative df is again differentiable. Here df is a map from the open set into the space of linear maps from ℝⁿ to ℝᵐ. The second derivative d(df) at a point is then a bilinear map.
+**Definition.** A map f from an open set in ℝⁿ to ℝᵐ is twice differentiable if its derivative df, a map into the linear maps from ℝⁿ to ℝᵐ, is itself differentiable. Then d(df)ₓ(v, w) is the limit as t → 0 of \[f(x + tv + tw) − f(x + tv) − f(x + tw) + f(x)\]/t², which is symmetric in v and w (our own).
 
 **Problem.** If f is twice differentiable, its mixed partial derivatives are equal: ∂²f/∂xᵢ∂xⱼ = ∂²f/∂xⱼ∂xᵢ. Equivalently, the bilinear map d(df) is symmetric at every point.
 
-**How the definition helps.** Differentiability of df at x gives a linear approximation to df near x (our own). Along a shrinking parallelogram, the mean value theorem then gives the mixed difference divided by t² tending to d(df)ₓ(v,w), using sides tv,tw (our own). Swapping the sides preserves that difference and therefore its limit (our own). The function xy(x²−y²)/(x²+y²), extended by zero at the origin, has unequal mixed partials there and fails this differentiability condition (our own).
+**How the definition helps.** Differentiability of df at x and the mean value theorem make the mixed difference over t² tend to d(df)ₓ(v, w) (our own). The difference does not change when v and w swap, so neither does the limit (our own). Second partials alone are not enough: xy(x² − y²)/(x² + y²), extended by 0 at the origin, has unequal mixed partials there (our own).
 
 **nLab:** [differentiable map](https://ncatlab.org/nlab/show/differentiable+map). It says: “However, the theorem shows that if we require f to actually be twice differentiable rather than merely having second-order partial derivatives, then this cannot happen.”
 
@@ -1038,11 +1038,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a real function f on an open subset of ℝⁿ, choose a point a and a unit vector u. Its directional slope at a along u is the limit of (f(a+tu)−f(a))/t as t tends to zero, when this limit exists.
+**Definition.** Let f be a real function on an open subset of ℝⁿ. Its directional slope at a along a unit vector u is the limit of (f(a + tu) − f(a))/t as t → 0. Unit vectors compare steps of equal length, so for differentiable f the slope ∇f(a) · u depends only on the angle between u and the gradient (our own).
 
 **Problem.** For a differentiable real function, the greatest directional slope equals the length of its gradient. If the gradient is nonzero, that slope occurs in the gradient direction.
 
-**How the definition helps.** A unit vector removes speed from the comparison, so only the angle with the gradient matters (our own). Without that restriction, increasing an uphill velocity makes the rate arbitrarily large (our own). The chain rule gives the dot product formula, and the dot product is largest at alignment (our own).
+**How the definition helps.** By the chain rule the slope along u is ∇f(a) · u = \|∇f(a)\| cos θ, where θ is the angle to the gradient (our own). This is largest, equal to \|∇f(a)\|, when u points along a nonzero gradient (our own). Without unit length, scaling an uphill vector would make the rate arbitrarily large (our own).
 
 **Wikipedia:** [Gradient](https://en.wikipedia.org/wiki/Gradient). It says: “The steepness of the slope at that point is given by the magnitude of the gradient vector.”
 
@@ -1056,11 +1056,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26B12 (Calculus of vector functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A bilinear map B between finite-dimensional real vector spaces is linear in each input when we hold the other fixed. Examples include multiplication of real numbers and the dot product of vectors.
+**Definition.** A bilinear map B between finite-dimensional real vector spaces is linear in each input when the other is held fixed, like the product of numbers or the dot product. So a change in B(u, v) splits as B(Δu, v) + B(u, Δv) + B(Δu, Δv).
 
 **Problem.** Let u and v be differentiable at a, with derivatives U and V. The derivative of x ↦ B(u(x),v(x)) sends h to B(Uh,v(a)) + B(u(a),Vh).
 
-**How the definition helps.** Bilinearity gives one formula for differentiating products with scalar or vector outputs. Our own proof expands the change into two terms linear in the input changes and one term containing both changes. In finite dimensions, the last term is bounded by a constant times the product of their lengths.
+**How the definition helps.** Expand the change in B(u(x), v(x)) between a and a + h into these three terms (our own). The two linear terms give B(Uh, v(a)) + B(u(a), Vh) up to errors small compared with \|h\| (our own). In finite dimensions the cross term is at most a constant times \|Δu\|\|Δv\|, which is also small compared with \|h\|.
 
 **nLab:** [bilinear map](https://ncatlab.org/nlab/show/bilinear+map). It says: “a bilinear map f : A × B → C is a function of sets”
 
@@ -1074,11 +1074,11 @@
 
 *True by definition.* MSC 26B12 (Calculus of vector functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A smooth curve γ has an arc length parameter if every parameter interval \[s,t\] has traveled length t−s. Equivalently, ‖γ′(s)‖ = 1 throughout the parameter interval.
+**Definition.** A curve γ is parametrized by arc length if it has unit speed, ‖γ′(s)‖ = 1 at every s, so each parameter interval \[s, t\] has length t − s. Then γ′ · γ′ is the constant 1.
 
 **Problem.** When a twice continuously differentiable regular curve is measured by arc length, its acceleration is perpendicular to its velocity.
 
-**How the definition helps.** The squared speed is constant, and its derivative is twice the dot product of velocity and acceleration (our own). The work lies in showing that the derivative of arc length is speed and using it to change parameters (our own).
+**How the definition helps.** Differentiating γ′ · γ′ = 1 gives 2γ′ · γ″ = 0, so acceleration is perpendicular to velocity (our own). Every regular curve can be reparametrized this way, since arc length has derivative equal to the speed (our own).
 
 **Wikipedia:** [Differentiable curve](https://en.wikipedia.org/wiki/Differentiable_curve). It says: “is at a constant unit speed.”
 
@@ -1090,11 +1090,11 @@
 
 *True by definition.* MSC 26B15 (Integration of real functions of several variables: length, area, volume). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a smooth path γ on \[a,b\] and continuous f on its image, the scalar line integral is ∫ₐᵇ f(γ(t))‖γ′(t)‖ dt.
+**Definition.** The scalar line integral of a continuous f along a smooth path γ on \[a,b\] is ∫ₐᵇ f(γ(t))‖γ′(t)‖ dt, which weights f by the speed ‖γ′‖. Speed has no direction, so reversing the path does not change the weights (our own).
 
 **Problem.** Reversing a smooth curve leaves the scalar line integral of a continuous function unchanged.
 
-**How the definition helps.** The reversed path t ↦ γ(a+b−t) visits each point with the same speed (our own). Substituting s = a+b−t in the integral gives the original value (our own).
+**How the definition helps.** The reversed path t ↦ γ(a + b − t) has velocity −γ′(a + b − t), with the same speed (our own). The substitution s = a + b − t turns its integral into the original one (our own).
 
 **nLab:** [line integral](https://ncatlab.org/nlab/show/line+integral). It says: “whether increasing or decreasing”
 
@@ -1110,11 +1110,11 @@
 
 *Rules out counterexamples.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a positive boundary, walk with the region to your left. This rule sends you counterclockwise around the outside and clockwise around any hole. The simpler rule “walk counterclockwise” works only for an outside boundary.
+**Definition.** A boundary curve is positively oriented if walking along it keeps the region on your left. This sends you counterclockwise around the outer boundary and clockwise around each hole.
 
 **Problem.** Let a bounded plane region have a boundary of finitely many disjoint, simple, piecewise smooth closed curves, oriented positively. For a vector field with continuous first derivatives near the closed region, the circulation around this boundary equals the area integral of the scalar curl.
 
-**How the definition helps.** The left-hand rule makes the two copies of every cut run in opposite directions, so their integrals cancel (our own). On a ring centered at the origin, the field (−y, x)/(x² + y²) has zero curl (our own). Each counterclockwise circle contributes 2π, so the inner circle must run clockwise (our own). Green’s theorem on the pieces supplies the integral identity (our own).
+**How the definition helps.** Cut the region into pieces without holes; Green’s theorem holds on each, and the left-hand rule makes the two sides of every cut run in opposite directions, so they cancel (our own). With all circles counterclockwise it fails: on a ring around the origin, (−y, x)/(x² + y²) has zero curl, but each circle has circulation 2π (our own).
 
 **Wikipedia:** [Green's theorem](https://en.wikipedia.org/wiki/Green%27s_theorem). It says: “where the path of integration along C is counterclockwise.”
 
@@ -1128,11 +1128,11 @@
 
 *True by definition.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** The differential df assigns each velocity v the rate of change ∇f · v. To integrate df along a path, evaluate it on the path’s velocity and integrate over time.
+**Definition.** The differential df of f takes a velocity v and returns the rate of change of f in that direction, ∇f · v. To integrate df along a path, integrate df(γ′(t)) over time; this is the rate of change of f along the path (our own).
 
 **Problem.** Let f have continuous first derivatives. The line integral of its gradient ∇f along a piecewise smooth path from a to b is f(b) − f(a).
 
-**How the definition helps.** Using df turns the whole integrand into the rate of change of f along the path (our own). The chain rule gives this equality without integrating the coordinate terms separately (our own). The fundamental theorem of calculus gives the endpoint difference on each smooth piece, and the intermediate values cancel (our own).
+**How the definition helps.** By the chain rule, df(γ′(t)) = (f ∘ γ)′(t), so on each smooth piece the fundamental theorem of calculus makes the integral a change in f (our own). Adding the pieces, the intermediate values cancel, leaving f(b) − f(a) (our own).
 
 **Paper or page:** [Fundamental Theorem of Line Integrals](https://proofwiki.org/wiki/Fundamental_Theorem_of_Line_Integrals). It says: “∫₍C₎ ∇f · d𝐫 = f(𝐫(b)) − f(𝐫(a))”
 
@@ -1144,11 +1144,11 @@
 
 *Rules out counterexamples.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A function on a convex set is convex if its restriction to every line segment is convex. Testing lines parallel to the coordinate axes alone instead defines separate convexity.
+**Definition.** A function on a convex set is convex if it is convex along every line segment in the set, in every direction. Convexity along lines parallel to the axes only, called separate convexity, is weaker.
 
 **Problem.** A twice continuously differentiable function on an open convex set is convex exactly when its Hessian is positive semidefinite everywhere. That means the matrix of second derivatives gives a nonnegative quadratic value in every direction.
 
-**How the definition helps.** Each directional quadratic value is the second derivative along that line, so the one-variable test applies (our own). The function xy is linear on each coordinate line but concave on y = −x (our own). The work is the chain rule along a line and the one-variable second derivative test (our own).
+**How the definition helps.** Along the line through x in direction v, the second derivative is the Hessian’s quadratic value at v, so the one-variable second derivative test gives the result (our own). Directions between the axes matter: xy is linear along each coordinate line but concave along y = −x (our own).
 
 **nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “a twice-differentiable function f: D → ℝ is convex iff its Hessian is a positive semidefinite bilinear form.”
 
@@ -1156,15 +1156,15 @@
 
 ### Derivatives lower root multiplicity by one
 
-**Remember:** One derivative shifts the first nonzero derivative down by one place.
+**Remember:** Differentiating moves the first nonzero derivative one place earlier.
 
 *True by definition.* MSC 26C05 (Real polynomials: analytic properties, etc.). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For a root of a nonzero real polynomial, define its multiplicity as the least derivative order with nonzero value there. Order zero means the polynomial itself. The factor definition counts copies of the corresponding linear factor.
+**Definition.** The multiplicity of a root a of a nonzero real polynomial p is the order of the first derivative of p that is nonzero at a, where order zero is p itself.
 
 **Problem.** Differentiating a nonzero real polynomial lowers the multiplicity of each root by one. A root of multiplicity one is no longer a root.
 
-**How the definition helps.** The derivative starts the list of derivative values one place later (our own). The work moves to Taylor’s formula for polynomials, which shows that the first nonzero term gives the number of linear factors (our own).
+**How the definition helps.** The derivatives of p′ at a are those of p shifted one place, so the first nonzero one comes one order earlier (our own). Multiplicity one means p′(a) ≠ 0, so a is no longer a root. Taylor’s formula for polynomials shows that this count equals the number of factors x − a (our own).
 
 **Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “If a is a root of multiplicity k of a polynomial, then it is a root of multiplicity k − 1 of the derivative”
 
@@ -1172,15 +1172,15 @@
 
 ### Odd multiplicity makes roots cross
 
-**Remember:** An odd number of sign reversals still reverses the sign.
+**Remember:** Split off (x − a)ᵐ; only its parity decides the sign change.
 
 *True by definition.* MSC 26C05 (Real polynomials: analytic properties, etc.). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Let a be a real root of a nonzero real polynomial P. Its multiplicity is the integer m ≥ 1 such that (x−a)ᵐ divides P but (x−a)ᵐ⁺¹ does not.
+**Definition.** The multiplicity of a real root a of a nonzero real polynomial P is the largest m with P(x) = (x − a)ᵐQ(x) for a polynomial Q. Then Q(a) ≠ 0, so Q keeps one sign near a (our own).
 
 **Problem.** A nonzero real polynomial changes sign across a real root exactly when that root has odd multiplicity.
 
-**How the definition helps.** The remaining factor has constant sign nearby, so only the parity of the removed power matters (our own). The root zero of x² shows why not every root is a crossing (our own). The work is repeated division by x − a and continuity of the remaining factor (our own).
+**How the definition helps.** Near a, P has the sign of (x − a)ᵐ times a fixed sign, and (x − a)ᵐ changes sign at a exactly when m is odd (our own). The root 0 of x² is a root where the graph does not cross (our own).
 
 **Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “The graph traverses the x-axis at roots of odd multiplicity and does not traverse it at roots of even multiplicity”
 
@@ -1188,15 +1188,15 @@
 
 ### Tangent lines give Bernoulli’s inequality for real exponents
 
-**Remember:** The tangent at zero bounds each power in the direction its graph bends.
+**Remember:** Convex graphs lie above their tangents, and 1 + rx is one.
 
 *True by definition.* MSC 26D07 (Inequalities involving other types of functions), 26A51. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A differentiable real function f on an open interval is convex if f(y) ≥ f(x)+f′(x)(y−x) for every x,y there. Reverse the inequality for concavity.
+**Definition.** A differentiable function f on an open interval is convex when its graph lies above every tangent line: f(y) ≥ f(x) + f′(x)(y − x) for all x, y there. It is concave when its graph lies below every tangent line.
 
 **Problem.** For x &gt; −1 and r ≥ 1, the rth power of 1 + x is at least 1 + rx. For 0 &lt; r &lt; 1, the inequality reverses.
 
-**How the definition helps.** The tangent to the power function at x = 0 has height 1 + rx (our own). The second derivative shows which way the power function bends, and the tangent-line test gives the right direction (our own). The mean value theorem proves equivalence with the chord test (our own).
+**How the definition helps.** The tangent line to (1 + x)ʳ at x = 0 is 1 + rx, so the inequality is the tangent-line test at zero (our own). On x &gt; −1 the second derivative r(r − 1)(1 + x)ʳ⁻² is ≥ 0 for r ≥ 1 and ≤ 0 for 0 &lt; r &lt; 1, which fixes the direction (our own).
 
 **Wikipedia:** [Bernoulli's inequality](https://en.wikipedia.org/wiki/Bernoulli%27s_inequality). It says: “(1 + x)ʳ ≥ 1 + rx for every real number r ≥ 1 and x ≥ −1”
 
@@ -1204,15 +1204,15 @@
 
 ### Pairwise covariance proves Chebyshev’s sum inequality
 
-**Remember:** When both lists move together, every pair contributes a nonnegative product.
+**Remember:** Lists sorted alike make every pairwise product of differences nonnegative.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For two lists of length n, define their covariance as the sum of (aᵢ − aⱼ)(bᵢ − bⱼ) over all ordered pairs, divided by 2n². The usual formula subtracts the product of the means from the mean of the products.
+**Definition.** The covariance of two lists a and b of length n is half the average, over all n² ordered pairs (i, j), of (aᵢ − aⱼ)(bᵢ − bⱼ). It equals the mean of the products aᵢbᵢ minus the product of the means.
 
 **Problem.** If two real lists are both sorted in decreasing order, the mean of their termwise products is at least the product of their means.
 
-**How the definition helps.** Both differences in each pair have the same sign or one is zero (our own). The work goes into expanding the pairwise formula to recover the difference between the two means in the inequality (our own).
+**How the definition helps.** When both lists are sorted the same way, each product (aᵢ − aⱼ)(bᵢ − bⱼ) is ≥ 0, so the covariance is ≥ 0 (our own). Expanding the pairwise sum gives the second form, which is the inequality (our own).
 
 **Paper or page:** [Chebyshev's Sum Inequality/Discrete](https://proofwiki.org/wiki/Chebyshev's_Sum_Inequality/Discrete). It says: “Then: (1/n) ∑ₖ₌₁ⁿ aₖbₖ ≥ ((1/n) ∑ₖ₌₁ⁿ aₖ)((1/n) ∑ₖ₌₁ⁿ bₖ)”
 
@@ -1224,11 +1224,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** On an interval, a function is strictly convex if every chord between distinct graph points lies above the graph between its endpoints. Ordinary convexity allows the chord to touch the graph there.
+**Definition.** A function on an interval is strictly convex if, for any two distinct points of its graph, the graph lies strictly below the chord at every point strictly between them. So the graph has no straight piece.
 
 **Problem.** Take a weighted average with nonnegative weights totaling one. For a strictly convex function, averaging before or after applying the function gives equal results exactly when all positive-weight inputs coincide.
 
-**How the definition helps.** Strict convexity makes combining two distinct inputs with positive weight lose height (our own). Apply ordinary Jensen to the combined point and the remaining inputs (our own). Ordinary convexity leaves in f(x) = \|x\|, which gives equality at the average of 1 and 3 (our own).
+**How the definition helps.** If two distinct inputs have positive weight, replacing them by their weighted mean makes the weighted average of f-values strictly drop (our own). Ordinary Jensen for the shortened list then gives a strict inequality (our own). The function \|x\| is convex but not strictly, and the inputs 1 and 3 with equal weights give equality (our own).
 
 **nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “A function f is strictly convex if the inequality holds strictly whenever 0 &lt; t &lt; 1.”
 
@@ -1240,11 +1240,11 @@
 
 *Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Call a list strictly increasing if each entry is larger than its predecessor. Unlike a nondecreasing list, it cannot repeat a value.
+**Definition.** A list is strictly increasing if each entry is larger than the one before it, so no two entries tie.
 
 **Problem.** For two strictly increasing real lists of the same finite length, only pairing equal positions maximizes the sum of pairwise products.
 
-**How the definition helps.** Strict ordering makes the gain from correcting any reversed pair positive, since the gain is a product of two positive differences (our own). Every nonidentity permutation has a reversed pair (our own). If the first list is (1, 1) and the second is (2, 3), both pairings give 5 (our own).
+**How the definition helps.** Swapping a reversed pair changes the sum by a product of two positive differences, so it strictly increases the sum (our own). Every pairing other than the identity has a reversed pair, so it is not a maximum (our own). With ties, such as (1, 1) against (2, 3), both pairings give 5 (our own).
 
 **Wikipedia:** [Rearrangement inequality](https://en.wikipedia.org/wiki/Rearrangement_inequality). It says: “If y₁ &lt; ⋯ &lt; yₙ, then the only such σ is the identity.”
 
@@ -1252,15 +1252,15 @@
 
 ### The convex unit ball keeps the triangle inequality
 
-**Remember:** A convex unit ball gives a triangle inequality.
+**Remember:** Scale the convex unit ball until it just holds the vector.
 
 *Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** For real p ≥ 1, the p-unit ball B consists of finite vectors in a fixed dimension satisfying ∑\|xᵢ\|ᵖ ≤ 1. The p-norm of x is inf{s &gt; 0 : x ∈ sB}, equal to (∑\|xᵢ\|ᵖ)¹⁄ᵖ.
+**Definition.** For p ≥ 1, the p-norm ‖x‖ of a vector x is the infimum of the s &gt; 0 with x in sB, where B is the convex set of vectors with ∑\|xᵢ\|ᵖ ≤ 1. This infimum equals (∑\|xᵢ\|ᵖ)¹⁄ᵖ.
 
 **Problem.** For finite vectors and p ≥ 1, the p-norm of a sum is at most the sum of the two p-norms.
 
-**How the definition helps.** For p ≥ 1, convexity of the function t ↦ \|t\|ᵖ keeps every segment between points of the ball inside it (our own). For nonzero x and y, dividing x + y by the sum of their lengths gives a weighted average of unit vectors (our own). At p = ½, each coordinate vector in the plane has length one, but their sum has length four (our own).
+**How the definition helps.** For nonzero x and y, x + y is (‖x‖ + ‖y‖) times a weighted average of x/‖x‖ and y/‖y‖, and convexity keeps that average in B (our own). The ball B is convex because t ↦ \|t\|ᵖ is convex for p ≥ 1 (our own). At p = ½ the ball is not convex: the two coordinate vectors in the plane have length one, but their sum has length four (our own).
 
 **nLab:** [p-norm](https://ncatlab.org/nlab/show/p-norm). It says: “For 0 ≤ p &lt; 1 one may still make sense of the formulas that define p-norms for p ≥ 1 (see at Generalizations below), but the resulting concepts are no longer genuine norms.”
 
@@ -1268,15 +1268,15 @@
 
 ### The maximum norm includes Hölder’s endpoint
 
-**Remember:** At the endpoint, bound each factor by its largest absolute entry.
+**Remember:** Bound every entry of b by its largest absolute entry.
 
 *Makes the theorem clean to state or prove.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Extend the p-norm of a finite list to p = ∞ by using its largest absolute entry. Interpret 1/∞ as zero, so Hölder’s rule 1/p + 1/q = 1 includes p = 1 and q = ∞.
+**Definition.** The ∞-norm ‖b‖∞ of a finite list b is its largest absolute entry. With 1/∞ read as 0, the pair p = 1, q = ∞ satisfies 1/p + 1/q = 1, so Hölder’s inequality covers it.
 
 **Problem.** For finite lists a and b of the same length, ∑\|aᵢbᵢ\| ≤ (∑\|aᵢ\|)‖b‖∞.
 
-**How the definition helps.** The maximum bounds each entry of the second list, so the sum is at most that maximum times the first list’s 1-norm (our own). The work in justifying this extension is to show that the pth root of the sum of powers tends to the maximum (our own).
+**How the definition helps.** Each \|bᵢ\| is at most ‖b‖∞, so each term \|aᵢbᵢ\| is at most \|aᵢ\|‖b‖∞, and summing gives the bound (our own). The name fits because the p-norm tends to the largest absolute entry as p → ∞ (our own).
 
 **nLab:** [p-norm](https://ncatlab.org/nlab/show/p-norm). It says: “For p = ∞ the p-norm (found by taking the limit p → ∞) is the supremum (or essential supremum in the continuous case) of the absolute values of the components of vectors, then called the supremum norm.”
 
@@ -1284,15 +1284,15 @@
 
 ### Analytic functions equal their Taylor series
 
-**Remember:** A convergent power series has no freedom to choose its Taylor coefficients.
+**Remember:** A function that is a power series is its own Taylor series.
 
 *Rules out counterexamples.* MSC 26E05 (Real-analytic functions). arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A real function is analytic at a point if a convergent power series centered there equals the function near the point. Having derivatives of all orders is weaker.
+**Definition.** A real function is analytic at a point if, near that point, it equals the sum of a convergent power series centered there.
 
 **Problem.** A real analytic function agrees near each point of analyticity with its Taylor series there.
 
-**How the definition helps.** The local power series already represents the function, so only its coefficients need to be identified (our own). The work moves to termwise differentiation of a convergent power series, which extracts each coefficient at the center (our own). The smooth function exp(−1/x²), extended by zero at x = 0, has all derivatives zero there but is positive elsewhere (our own).
+**How the definition helps.** A convergent power series can be differentiated term by term, and this gives aₙ = f⁽ⁿ⁾(a)/n!, so the series is the Taylor series (our own). Smoothness alone is not enough: exp(−1/x²), extended by 0 at 0, has all derivatives zero at 0 but is positive elsewhere (our own).
 
 **Wikipedia:** [Analytic function](https://en.wikipedia.org/wiki/Analytic_function). It says: “a function that is locally represented by a convergent power series.”
 
@@ -1302,15 +1302,15 @@
 
 ### Logarithmic averaging gives the arithmetic–geometric mean inequality
 
-**Remember:** Average before applying the exponential and the result can only fall.
+**Remember:** Geometric mean: average the logarithms, then exponentiate.
 
 *True by definition.* MSC 26E60 (Means), 26D15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define a weighted geometric mean by taking the exponential of the weighted average of the logarithms. Use positive inputs and positive weights that sum to one. The usual formula multiplies each input raised to its weight.
+**Definition.** For positive inputs and positive weights that sum to one, the weighted geometric mean is the exponential of the weighted average of the logarithms. It equals the product of the inputs raised to their weights (our own).
 
 **Problem.** The weighted arithmetic mean is at least the weighted geometric mean for the same positive inputs and weights. Equality holds exactly when all inputs are equal.
 
-**How the definition helps.** The exponential curves strictly below every chord, so its value at the average logarithm cannot exceed the average of the exponentials (our own). Those exponentials are the original inputs, and equality requires all their logarithms to coincide (our own). The logarithm laws recover the usual product formula (our own).
+**How the definition helps.** With yᵢ = log xᵢ, the claim says that exp of an average is at most the average of exp, which is Jensen’s inequality for the strictly convex exponential (our own). Strict convexity gives equality only when all yᵢ, hence all inputs, are equal (our own).
 
 **Wikipedia:** [Geometric mean](https://en.wikipedia.org/wiki/Geometric_mean). It says: “The geometric mean can also be expressed as the exponential of the arithmetic mean of logarithms.”
 
@@ -1324,11 +1324,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26E60 (Means), 26D15. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Take positive numbers x₁, …, xₙ and a real p ≠ 0. The power mean Mₚ is the p-th root of the average of the p-th powers. By convention M₀ is the geometric mean, M₊∞ the maximum and M₋∞ the minimum.
+**Definition.** For positive x₁, …, xₙ and real p ≠ 0, the power mean Mₚ is the p-th root of the average of the p-th powers. Set M₀ to the geometric mean, the limit of Mₚ as p → 0, and M₊∞ and M₋∞ to the maximum and the minimum.
 
 **Problem.** The power mean inequality says that the p-th power mean is at most the q-th power mean whenever p &lt; q. For p in {−1, 0, 1} it gives harmonic ≤ geometric ≤ arithmetic.
 
-**How the definition helps.** Setting M₀ to the geometric mean fills the missing exponent with its limiting value. Apply L’Hôpital’s rule to log Mₚ at zero to obtain the average logarithm (our own). Jensen’s inequality gives monotonicity for finite nonzero exponents, and the limiting values include zero and both infinite endpoints (our own).
+**How the definition helps.** With the missing exponents filled by limits, one monotone statement covers every exponent (our own). Jensen’s inequality gives Mₚ ≤ M<sub>q</sub> for nonzero p &lt; q, and the cases with 0 or ±∞ follow by taking limits (our own). L’Hôpital’s rule on log Mₚ at p = 0 gives the average logarithm (our own).
 
 **Wikipedia:** [Generalized mean](https://en.wikipedia.org/wiki/Generalized_mean). It says: “For p = 0 we set it equal to the geometric mean (which is the limit of means with exponents approaching zero, as proved below)”
 
@@ -1340,11 +1340,11 @@
 
 *Rules out counterexamples.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Cauchy sequence has all sufficiently late terms within any prescribed positive distance of each other. A Cauchy real groups together rational Cauchy sequences whose differences tend to zero. Call one class larger if its terms eventually exceed the other’s by at least some fixed positive rational number.
+**Definition.** A Cauchy real is a class of rational Cauchy sequences, two sequences being equal when their difference tends to zero. One class is larger than another if, from some term on, its terms exceed the other’s by at least a fixed positive rational.
 
 **Problem.** Strict comparison of Cauchy reals does not depend on which sequences represent them.
 
-**How the definition helps.** A fixed positive gap survives small changes in both sequences. In our own proof, each sequence eventually changes by less than a quarter of the gap, leaving at least half. Eventual strict inequality alone fails because 1, 1/2, 1/3, … represents zero.
+**How the definition helps.** A fixed gap ε survives a change of representatives: each new sequence eventually differs from the old one by less than ε/4, which leaves a gap of at least ε/2 (our own). Eventual strict inequality alone is not well defined, since 1, 1/2, 1/3, … exceeds 0, 0, 0, … but represents zero.
 
 **nLab:** [Cauchy real number](https://ncatlab.org/nlab/show/Cauchy+real+number). It says: “with two sequences considered equivalent if their difference converges to zero.”
 
@@ -1352,15 +1352,15 @@
 
 ### Allowing infinite values makes the monotone convergence theorem statable
 
-**Remember:** An increasing sequence of nonnegative integrals may have limit +∞.
+**Remember:** Add +∞ so every increasing sequence has a limit.
 
 *Makes the theorem clean to state or prove.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 28A25. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The extended real line adds +∞ and −∞ to the real numbers, with −∞ ≤ a ≤ +∞ for all a. In measure theory, the product 0 · ∞ is defined as 0.
+**Definition.** The extended nonnegative reals \[0, +∞\] add +∞ to the nonnegative reals, so that every increasing sequence has a limit, its supremum (our own). Measure theory sets 0 · ∞ = 0.
 
 **Problem.** For an increasing sequence of non-negative measurable functions, the integral of the limit equals the limit of the integrals.
 
-**How the definition helps.** The extended nonnegative reals contain the supremum of every increasing sequence, so both sides exist even when infinite (our own). The monotone convergence theorem identifies them using approximation from below by nonnegative simple functions (our own).
+**How the definition helps.** Both the limit of the functions and the limit of their integrals then exist, possibly +∞, so the equation makes sense for every such sequence (our own). The proof that the two sides agree approximates from below by nonnegative simple functions (our own).
 
 **Wikipedia:** [Extended real number line](https://en.wikipedia.org/wiki/Extended_real_number_line). It says: “Without allowing functions to take on infinite values, such essential results as the monotone convergence theorem and the dominated convergence theorem would not make sense.”
 
@@ -1372,11 +1372,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 03E10. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Classically, a real number is a lower cut, a nonempty proper subset of ℚ that is downward closed and has no greatest member. The alternative takes classes of rational Cauchy sequences, whose terms get arbitrarily close together.
+**Definition.** A real number is a lower Dedekind cut: a nonempty proper subset of ℚ that is closed downward and has no largest element. So each real is a subset of ℚ, and different reals are different subsets (our own).
 
 **Problem.** There is an injection from ℝ into the power set of ℕ, the set of all subsets of ℕ.
 
-**How the definition helps.** With cuts, each real already is a subset of ℚ, and different reals are different subsets (our own). A fixed bijection between ℚ and ℕ then turns each cut into a subset of ℕ (our own). With Cauchy sequences, a real is a class of sequences, so one must first pick a canonical representative or a canonical subset (our own). The work moves to proving that lower cuts form a complete ordered field (our own).
+**How the definition helps.** A fixed bijection between ℚ and ℕ sends each cut to a subset of ℕ, and distinct cuts to distinct subsets (our own). With Cauchy sequences a real is a class of sequences, so one must first pick a canonical subset (our own).
 
 **nLab:** [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut). It says: “Any such set L of rational numbers is a lower cut.”
 
@@ -1384,15 +1384,15 @@
 
 ### Quotienting by null sequences makes the Cauchy reals a field
 
-**Remember:** Discard errors tending to zero, then invert every remaining nonzero class.
+**Remember:** Ignore errors that tend to zero, and every nonzero class inverts.
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Use the ring of rational Cauchy sequences with termwise addition and multiplication. Define the reals as its quotient by null sequences, those tending to zero. This identifies sequences whose difference tends to zero, rather than keeping every approximation separate.
+**Definition.** The Cauchy reals are the quotient of the ring of rational Cauchy sequences, with termwise operations, by the null sequences, those tending to zero. In the quotient, changing finitely many terms of a sequence does not change its class.
 
 **Problem.** The Cauchy reals form a field under termwise operations on representatives.
 
-**How the definition helps.** Identifying sequences whose difference tends to zero lets an inverse ignore finitely many zero terms. Our own proof uses the fact that a nonzero class eventually stays a fixed positive distance from zero. Reciprocals on that tail form a Cauchy sequence when extended by zero at earlier positions. The product eventually equals one, and the remaining ring laws follow once termwise operations respect the classes.
+**How the definition helps.** A nonzero class eventually stays a fixed distance from zero, so after changing finitely many terms its reciprocals form a Cauchy sequence (our own). Their product with the original sequence eventually equals one, which gives an inverse in the quotient (our own). The ring laws pass to the quotient because the null sequences form an ideal (our own).
 
 **Paper or page:** [Quotient Ring of Cauchy Sequences is Division Ring/Corollary 1](https://proofwiki.org/wiki/Quotient_Ring_of_Cauchy_Sequences_is_Division_Ring/Corollary_1). It says: “Then the quotient ring 𝒞 / 𝒩 is a field.”
 
@@ -1400,15 +1400,15 @@
 
 ### Rational Cauchy sequences supply limits of real Cauchy sequences
 
-**Remember:** Approximate each real by a rational, then take that rational sequence as the limit.
+**Remember:** Replace each real by a nearby rational; their class is the limit.
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A sequence is Cauchy if all sufficiently late terms lie within any prescribed positive distance of each other. A Cauchy real is a class of rational Cauchy sequences whose differences tend to zero.
+**Definition.** A Cauchy real is a class of rational Cauchy sequences, two being equal when their difference tends to zero. So each real comes with rational approximations, and a limit can be built from them.
 
 **Problem.** Every Cauchy sequence of Cauchy reals converges to a Cauchy real.
 
-**How the definition helps.** The sequence construction supplies a candidate limit directly as a class of rational approximations. Our own proof chooses a rational within 1/n of the nth real for each positive integer n. The triangle inequality makes these rationals Cauchy and shows that the original sequence converges to their class. Compared with constructing a limit from least upper bounds, the work moves to defining distance and proving that rationals approximate every class.
+**How the definition helps.** Choose a rational qₙ within 1/n of the nth real xₙ; the class of (qₙ) is the limit (our own). The triangle inequality shows both that (qₙ) is Cauchy and that (xₙ) converges to its class (our own).
 
 **Paper or page:** [Quotient of Cauchy Sequences is Metric Completion](https://proofwiki.org/wiki/Quotient_of_Cauchy_Sequences_is_Metric_Completion). It says: “(𝒞 / 𝒩, d′) is the metric completion of (R, d)”
 
@@ -1420,11 +1420,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A09 (Elementary functions), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a &gt; 0, define aˣ for rational x by roots and powers, and extend it to real x by continuity. Then define ln a as the derivative of aˣ at x = 0. The usual definition makes ln the area under 1/t and sets aˣ = exp(x ln a).
+**Definition.** For a &gt; 0, define aˣ for rational x by roots and powers and extend it to real x by continuity. Then define ln a as the slope of aˣ at x = 0, the limit of (aʰ − 1)/h as h → 0.
 
 **Problem.** For a &gt; 0 and every real x, the derivative of aˣ is aˣ ln a.
 
-**How the definition helps.** The exponent law factors the difference quotient at x as aˣ times (aʰ−1)/h (our own). The second factor tends to ln a by definition (our own). The work lies in proving that the slope at zero exists and agrees with the usual logarithm (our own).
+**How the definition helps.** The exponent law gives (aˣ⁺ʰ − aˣ)/h = aˣ · (aʰ − 1)/h, and the second factor tends to ln a by definition (our own). The work moves to proving that this limit exists and agrees with the usual logarithm (our own).
 
 **Paper or page:** [Derivative of General Exponential Function](https://proofwiki.org/wiki/Derivative_of_General_Exponential_Function), [Natural Logarithm as Derivative of Exponential at Zero](https://proofwiki.org/wiki/Natural_Logarithm_as_Derivative_of_Exponential_at_Zero). It says: “d(aˣ)/dx = aˣ ln a”
 
@@ -1432,15 +1432,15 @@
 
 ### Cauchy continuity lets a function extend to missing endpoints
 
-**Remember:** Cauchy inputs give Cauchy outputs, even when the inputs approach a missing endpoint.
+**Remember:** Cauchy inputs give Cauchy outputs, even near a missing endpoint.
 
 *True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A function is Cauchy continuous if it sends Cauchy sequences to Cauchy sequences. A Cauchy sequence has terms that eventually stay arbitrarily close to each other.
+**Definition.** A function is Cauchy continuous if it sends every Cauchy sequence, one whose terms eventually stay arbitrarily close together, to a Cauchy sequence.
 
 **Problem.** A Cauchy continuous real function on an interval extends uniquely and continuously to its finite endpoints. In particular, every uniformly continuous real function on an interval has this extension.
 
-**How the definition helps.** Interleaving two sequences approaching an endpoint makes their outputs share one limit. The interleaved inputs are Cauchy, so their outputs are Cauchy and converge in ℝ. Our own proof assigns that limit at each endpoint and tests interior continuity by interleaving with constant sequences. Uniform continuity guarantees Cauchy continuity because one input distance bound works for every pair.
+**How the definition helps.** A sequence tending to a missing endpoint is Cauchy, so its image is Cauchy and converges in ℝ; that limit is the value at the endpoint (our own). Interleaving two such sequences gives a Cauchy sequence, so all of them give the same limit, and the extension is continuous (our own). A uniformly continuous function is Cauchy continuous, because one input bound works for all pairs (our own).
 
 **Paper or page:** [Uniformly Continuous Function to Complete Metric Space has Unique Continuous Extension to Closure of Domain](https://proofwiki.org/wiki/Uniformly_Continuous_Function_to_Complete_Metric_Space_has_Unique_Continuous_Extension_to_Closure_of_Domain). It says: “Then there exists a unique continuous function g : A⁻ → Y”
 
@@ -1452,11 +1452,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A real function is lower semicontinuous if every sublevel set is closed. A sublevel set contains all points where the function is at most a specified height. On a metric space, this is equivalent to requiring that a value never exceed the limit inferior along any approaching sequence.
+**Definition.** A real function is lower semicontinuous if each sublevel set {x : f(x) ≤ t}, the points where f is at most t, is closed.
 
 **Problem.** A real-valued lower semicontinuous function on a nonempty compact interval attains its minimum.
 
-**How the definition helps.** Closed sublevel sets let compactness turn near-minimizers into a minimizer (our own). Let m be the infimum. The sublevel sets at heights m + 1/n are nonempty, closed and nested, so they share a point, and that point attains m (our own). If m were −∞, the same argument at heights −n would give a point with no real value (our own).
+**How the definition helps.** In a compact interval, nested nonempty closed sets have a common point (our own). Let m be the infimum: the sets {f ≤ m + 1/n} are nonempty, closed and nested, so a common point attains m (our own). If m were −∞, the sets {f ≤ −n} would share a point where f has no real value (our own).
 
 **nLab:** [semicontinuous map](https://ncatlab.org/nlab/show/semicontinuous+map). It says: “for each y ∈ U, f(y) &gt; a.”
 
@@ -1468,11 +1468,11 @@
 
 *True by definition.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A modulus of continuity for f is a nondecreasing function ω from nonnegative reals to nonnegative reals. It satisfies ω(0) = 0 and tends to zero at zero. For every pair of inputs, \|f(x) − f(y)\| ≤ ω(\|x − y\|).
+**Definition.** A modulus of continuity for f is a nondecreasing function ω from \[0, ∞) to \[0, ∞), with ω(0) = 0 and ω(t) → 0 as t → 0, such that \|f(x) − f(y)\| ≤ ω(\|x − y\|) for all inputs x, y.
 
 **Problem.** If f has modulus ω and g has modulus η on the range of f, then g ∘ f has modulus η ∘ ω.
 
-**How the definition helps.** The outer modulus bounds the output gap in terms of the inner output gap. Since η is nondecreasing, substituting the bound ω(\|x − y\|) gives the claimed result. Our own comparison with the usual distance test puts the work into finding a modulus for each function.
+**How the definition helps.** The bound \|g(f(x)) − g(f(y))\| ≤ η(\|f(x) − f(y)\|) becomes ≤ η(ω(\|x − y\|)), since η is nondecreasing (our own). The composite η ∘ ω is again nondecreasing and tends to 0 at 0, so it is a modulus (our own).
 
 **Wikipedia:** [Modulus of continuity](https://en.wikipedia.org/wiki/Modulus_of_continuity). It says: “then the composition map g ∘ f : X → Z has modulus of continuity ω₂ ∘ ω₁.”
 
@@ -1484,11 +1484,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For maps into a real interval, continuity can be tested with open rays, the sets above or below a cutoff. The inputs sent into each ray must form an open set relative to the domain.
+**Definition.** A map into a real interval is continuous exactly when, for every cutoff, the inputs sent above it and the inputs sent below it form relatively open sets.
 
 **Problem.** A strictly monotone real function on an interval has a continuous inverse on its range, even if the function itself has jumps.
 
-**How the definition helps.** The inverse of an increasing function sends values above f(c) precisely to inputs above c. Thus the preimage of the upper ray at c is an open ray intersected with the range. Lower rays work the same way, and a decreasing function reverses the rays. Our own proof uses the equivalence of the ray test and ordinary continuity, with cutoffs c in the original interval.
+**How the definition helps.** For increasing f, the inverse sends values above f(c) exactly to inputs above c, so the preimage of a ray is a ray in the range, which is relatively open (our own). Lower rays work the same way, and a decreasing f swaps the rays (our own). Jumps of f leave gaps in the range, but these do not affect the argument (our own).
 
 **Paper or page:** [Continuous Inverse Theorem](https://proofwiki.org/wiki/Continuous_Inverse_Theorem). It says: “Then g is strictly monotone and continuous on J.”
 
@@ -1500,11 +1500,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 26A21. arXiv math.CA, math.GN. Level 2: later undergraduate.
 
-**Definition.** For a real function f on ℝ, its oscillation at x is the infimum, over r &gt; 0, of the spreads on (x−r,x+r). The spread on I is sup{\|f(u)−f(v)\| : u,v ∈ I}, allowing +∞.
+**Definition.** The oscillation of f at x is the limit, as r → 0, of the spread sup{\|f(u) − f(v)\| : u, v in (x − r, x + r)}, allowing +∞. So f is continuous at x exactly when its oscillation there is zero.
 
 **Problem.** For any function f on the real line, the set of points where f is continuous is a countable intersection of open sets. So no function is continuous exactly at the rational numbers.
 
-**How the definition helps.** Oscillation turns continuity at a point into a number, so the set of continuity points is a level set. The set where the oscillation is less than 1/n is open, and the intersection over all n is the set of continuity points. The rationals are not a G-delta set, by the Baire category theorem (our own). So no function is continuous exactly on the rationals, although Thomae's function is continuous exactly on the irrationals (our own).
+**How the definition helps.** The set where the oscillation is less than 1/n is open, and the continuity points are the intersection of these sets over all n. The rationals are not such an intersection, by the Baire category theorem (our own).
 
 **Wikipedia:** [Oscillation (mathematics)](https://en.wikipedia.org/wiki/Oscillation_%28mathematics%29). It says: “the continuous points are the intersection of the sets where the oscillation is less than ε (hence a Gδ set) – and gives a very quick proof of one direction of the Lebesgue integrability condition.”
 
@@ -1516,11 +1516,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The oscillation of a real function on a set is the smallest upper bound of all absolute differences between its values there. Around a, measure it on domain points satisfying 0 &lt; \|x − a\| &lt; r.
+**Definition.** The oscillation of f on a set is the supremum of \|f(x) − f(y)\| over x, y in the set, the width of its range there. Near a, use the domain points with 0 &lt; \|x − a\| &lt; r.
 
 **Problem.** Suppose other domain points approach a. A finite punctured limit exists at a exactly when the oscillation on these sets tends to zero as r tends to zero.
 
-**How the definition helps.** Oscillation measures how closely the values cluster without choosing their limit first. Once the oscillation is finite, the nearby values lie between finite lower and upper bounds. Our own proof uses the nested interval theorem on their tightest closed intervals as the radii halve. Conversely, values within ε of one limit differ from each other by at most 2ε.
+**How the definition helps.** Oscillation tests clustering without naming the limit first. Values within ε of a limit differ by at most 2ε, which gives one direction. Conversely, the closed intervals spanned by the nearby values are nested and shrink to width zero, so the nested interval theorem gives one number, the limit (our own).
 
 **Wikipedia:** [Oscillation (mathematics)](https://en.wikipedia.org/wiki/Oscillation_%28mathematics%29). It says: “The oscillation of f on an interval I in its domain is the difference between the supremum and infimum of f:”
 
@@ -1532,11 +1532,11 @@
 
 *True by definition.* MSC 26A16 (Lipschitz (Hölder) classes). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A function is L-Lipschitz if each absolute change in value is at most L times the distance between inputs. For each x on the line, define its McShane extension as the infimum of f(a) + L\|x − a\| over original points a. This single formula replaces interpolation across individual gaps in the domain.
+**Definition.** Let f on a set A satisfy \|f(a) − f(b)\| ≤ L\|a − b\|. Its McShane extension is F(x) = inf over a in A of f(a) + L\|x − a\|, the lowest of the slope-L cones above the known values.
 
 **Problem.** A real function on any nonempty subset of the line with Lipschitz constant L extends to the whole line with the same bound.
 
-**How the definition helps.** Taking the infimum of distance bounds enforces the Lipschitz inequality everywhere at once (our own). Each expression f(a) + L\|x − a\| changes by at most L times the change in x, and infima keep this bound (our own). Every expression is at least f(b) − L\|x − b\| for a fixed original point b, so the infimum is finite (our own). At an original point x, the infimum is f(x), attained at a = x (our own).
+**How the definition helps.** Each cone x ↦ f(a) + L\|x − a\| changes by at most L times the change in x, and a finite infimum of such functions keeps this bound (our own). The infimum is finite because each cone lies above f(b) − L\|x − b\| for a fixed b in A (our own). At a point x of A the infimum is f(x), attained at a = x (our own).
 
 **nLab:** [Lipschitz map](https://ncatlab.org/nlab/show/Lipschitz+map). It says: “d(f(a), f(b)) ≤ K d(a, b)”
 
@@ -1550,11 +1550,11 @@
 
 *True by definition.* MSC 26A21 (Classification of real functions; Baire classification of sets and functions), 03E15, 26A24. arXiv math.CA, math.LO. Level 2: later undergraduate.
 
-**Definition.** A real function has Baire class one if it is the pointwise limit of a sequence of continuous functions. On the real line, an equivalent definition asks that the preimage of each open set be a countable union of closed sets.
+**Definition.** A real function has Baire class one if it is the pointwise limit of a sequence of continuous functions.
 
 **Problem.** Let f be differentiable at every point of the real line. Then its derivative f′ has Baire class one.
 
-**How the definition helps.** Difference quotients supply the continuous approximations required by the definition (our own). Each function x ↦ n(f(x+1/n)−f(x)) is continuous because differentiability implies continuity (our own). At every x these values tend to f′(x) as n tends to infinity (our own).
+**How the definition helps.** The difference quotients n(f(x + 1/n) − f(x)) are continuous, because a differentiable f is continuous, and they tend to f′(x) at every x (our own).
 
 **Wikipedia:** [Baire function](https://en.wikipedia.org/wiki/Baire_function). It says: “The derivative of any differentiable function is of class 1.”
 
@@ -1566,11 +1566,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The determinant of two plane vectors (u, v) and (s, t) is ut − vs. It compares their directions by multiplication and subtraction alone.
+**Definition.** The determinant of plane vectors (u, v) and (s, t) is ut − vs. It is zero exactly when the vectors are parallel or one of them is zero, and it needs no division.
 
 **Problem.** Let f and g be continuous on \[a, b\] and differentiable on (a, b), with a &lt; b. For some c in (a, b), the vectors (f′(c), g′(c)) and (f(b) − f(a), g(b) − g(a)) have determinant zero.
 
-**How the definition helps.** The determinant compares the tangent and the endpoint displacement even when either vector is zero. In our own proof, take the determinant of (f(t), g(t)) and the fixed endpoint displacement. Its endpoint values agree because their difference is the determinant of that displacement with itself. Rolle’s theorem gives a zero derivative somewhere inside, and differentiating gives the stated determinant.
+**How the definition helps.** Let D be the endpoint displacement and apply Rolle’s theorem to h(t) = det((f(t), g(t)), D) (our own). Then h(b) − h(a) = det(D, D) = 0, so h′(c) = 0 for some c in (a, b), and h′(c) is the stated determinant (our own).
 
 **nLab:** [mean value theorem](https://ncatlab.org/nlab/show/mean+value+theorem). It says: “f′(c) (g(b) − g(a)) = g′(c) (f(b) − f(a))”
 
@@ -1582,11 +1582,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A real function has derivative m at a if its differences factor as f(x) − f(a) = (x − a)q(x) near a. The factor q must be continuous at a with q(a) = m.
+**Definition.** A function f has derivative m at a if f(x) − f(a) = (x − a)q(x) near a, for a slope function q that is continuous at a with q(a) = m.
 
 **Problem.** Let f have a continuous inverse on an open interval about f(a). If f′(a) ≠ 0, that inverse is differentiable at f(a) with derivative 1/f′(a).
 
-**How the definition helps.** Factoring the forward difference gives the inverse difference factor 1/q(f⁻¹(y)). Its limit at f(a) equals 1/q(a). Our own local proof uses continuity of the inverse at f(a) and q(a) ≠ 0. Dividing the forward difference by x − a recovers the usual slope limit.
+**How the definition helps.** Put y = f(x); then x − a = (y − f(a)) / q(f⁻¹(y)), so the inverse has slope function 1/q(f⁻¹(y)) (our own). This is continuous at f(a), because f⁻¹ and q are continuous and q(a) ≠ 0, and its value there is 1/f′(a) (our own).
 
 **Paper or page:** [Derivative of Inverse Function](https://proofwiki.org/wiki/Derivative_of_Inverse_Function). It says: “∀ y ∈ Jᵒ: Df⁻¹(y) = 1/Df(x)”
 
@@ -1598,11 +1598,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A real function f has strict derivative a at x when the slope (f(y) − f(z))/(y − z) tends to a. Here y and z tend to x with y ≠ z. The ordinary derivative keeps one of the two points fixed at x.
+**Definition.** A function f has strict derivative a at x if the chord slope (f(y) − f(z))/(y − z) tends to a as y and z both tend to x with y ≠ z. The ordinary derivative fixes one end of the chord at x.
 
 **Problem.** Suppose a real function is defined on an open interval containing x and has a nonzero strict derivative there at x. It is one-to-one on some interval around x.
 
-**How the definition helps.** All nearby chord slopes stay within half the magnitude of the nonzero strict derivative from that derivative (our own). Thus no two distinct nearby points have equal values (our own).
+**How the definition helps.** For a ≠ 0, every chord slope near x lies within \|a\|/2 of a, so it is nonzero (our own). A nonzero chord slope means f(y) ≠ f(z), so f is one-to-one near x (our own).
 
 **Wikipedia:** [Strict differentiability](https://en.wikipedia.org/wiki/Strict_differentiability). It says: “the definition is made more restrictive by allowing both points used in the difference quotient to "move".”
 
@@ -1610,15 +1610,15 @@
 
 ### Taylor's small remainder gives the second derivative test
 
-**Remember:** Divide the remainder by the squared step and it tends to zero.
+**Remember:** Divide the remainder by h² and it tends to zero.
 
 *True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A second-order Peano remainder is an error r(h) with r(h)/h² → 0 as h → 0.
+**Definition.** A second-order Peano remainder is an error r(h) that is small compared with h², so r(h)/h² → 0 as h → 0. If f″(a) exists, f(a + h) = f(a) + f′(a)h + ½f″(a)h² + r(h) with such a remainder.
 
 **Problem.** At an interior point a where f′(a) = 0 and f″(a) exists, f″(a) &gt; 0 gives a strict local minimum. If f″(a) &lt; 0, it gives a strict local maximum.
 
-**How the definition helps.** The Peano remainder becomes negligible after division by h². When f′(a) = 0, Taylor’s theorem gives (f(a + h) − f(a))/h² → f″(a)/2. Since h² is positive for h ≠ 0, the sign of this limit determines the strict extremum when f″(a) ≠ 0. Our own argument uses the Peano expansion in place of a remainder evaluated at an unknown nearby point.
+**How the definition helps.** With f′(a) = 0, dividing by h² gives (f(a + h) − f(a))/h² → f″(a)/2 (our own). So for small h ≠ 0, f(a + h) − f(a) has the sign of f″(a), which gives the strict extremum (our own).
 
 **Wikipedia:** [Taylor's theorem](https://en.wikipedia.org/wiki/Taylor%27s_theorem). It says: “This is called the Peano form of the remainder.”
 
@@ -1632,11 +1632,11 @@
 
 *True by definition.* MSC 26A33 (Fractional derivatives and integrals). arXiv math.CA, math.AP. Level 2: later undergraduate.
 
-**Definition.** Fix 0 &lt; α &lt; 1 and write I(g)(t) = ∫₀ᵗ (t−s)⁻ᵅg(s) ds / Γ(1−α) for t &gt; 0. For continuously differentiable f, its Caputo derivative of order α is I(f′), and its Riemann–Liouville derivative is (I(f))′.
+**Definition.** Fix 0 &lt; α &lt; 1 and let I(g)(t) = ∫₀ᵗ (t − s)⁻ᵅ g(s) ds / Γ(1 − α) for t &gt; 0. For continuously differentiable f, the Caputo derivative I(f′) differentiates first, and the Riemann–Liouville derivative (I(f))′ integrates first.
 
 **Problem.** The Caputo derivative of a constant is zero. The Riemann–Liouville derivative of a nonzero constant on positive time is not zero.
 
-**How the definition helps.** The Caputo rule integrates the derivative of a constant, hence integrates zero (our own). For constant c, I(c)(t) = c t¹⁻ᵅ / ((1−α)Γ(1−α)) (our own). Differentiating gives c t⁻ᵅ / Γ(1−α), nonzero when c ≠ 0 (our own).
+**How the definition helps.** A constant has derivative zero, so the Caputo rule integrates zero (our own). For a constant c, I(c)(t) = c t¹⁻ᵅ / Γ(2 − α), whose derivative c t⁻ᵅ / Γ(1 − α) is nonzero for c ≠ 0 (our own).
 
 **Wikipedia:** [Caputo fractional derivative](https://en.wikipedia.org/wiki/Caputo_fractional_derivative). It says: “The Caputo fractional derivative of a constant c is given by”
 
@@ -1646,15 +1646,15 @@
 
 ### The Henstock integral makes every derivative integrable
 
-**Remember:** Henstock is Riemann with the mesh allowed to vary from point to point.
+**Remember:** Henstock is Riemann with a mesh that varies point by point.
 
 *Makes the theorem clean to state or prove.* MSC 26A39 (Denjoy and Perron integrals, other special integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A gauge δ assigns each point of \[a,b\] a positive radius. A tagged partition is δ-fine if every piece lies inside the open interval of radius δ(t) centered at its tag t within that piece. The Henstock integral equals I if every ε &gt; 0 admits a gauge making every δ-fine tagged sum differ from I by less than ε.
+**Definition.** A gauge δ gives each point of \[a, b\] a positive radius. A tagged partition is δ-fine if each piece lies in (t − δ(t), t + δ(t)) for its tag t, a point of that piece. The Henstock integral is I if for every ε &gt; 0 some gauge makes every δ-fine Riemann sum lie within ε of I.
 
 **Problem.** If f is differentiable on \[a, b\], then f′ is Henstock integrable and its integral from a to b is f(b) − f(a). No further hypothesis on f′ is needed.
 
-**How the definition helps.** At each tag t, differentiability gives a radius within which the linear approximation has error at most ε times the distance from t (our own). Apply the estimate to both endpoints of each piece and sum (our own). The increments telescope to f(b)−f(a), with total error at most ε(b−a) (our own). Cousin’s lemma supplies a fine partition for every gauge (our own).
+**How the definition helps.** Differentiability lets the gauge be chosen point by point, so that \|f(v) − f(u) − f′(t)(v − u)\| ≤ ε(v − u) for every piece \[u, v\] with tag t inside (t − δ(t), t + δ(t)) (our own). Summing these, the Riemann sum for f′ differs from the telescoping sum f(b) − f(a) by at most ε(b − a) (our own). Cousin’s lemma gives a δ-fine partition for every gauge (our own).
 
 **nLab:** [Henstock integral](https://ncatlab.org/nlab/show/Henstock+integral). It says: “The Henstock integral satisfies a very nice form of the fundamental theorem of calculus”
 
@@ -1664,15 +1664,15 @@
 
 ### With the Henstock integral, improper integrals are ordinary integrals
 
-**Remember:** A gauge can shrink near a bad endpoint, so the endpoint needs no special limit.
+**Remember:** The gauge shrinks near the bad endpoint, so no special limit.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26A39 (Denjoy and Perron integrals, other special integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A gauge δ assigns each point of \[a,b\] a positive radius. A tagged partition is δ-fine if every piece lies inside the open interval of radius δ(t) centered at its tag t within that piece. The Henstock integral equals I if every ε &gt; 0 admits a gauge making every δ-fine tagged sum differ from I by less than ε.
+**Definition.** A gauge δ gives each point of \[a, b\] a positive radius. A tagged partition is δ-fine if each piece lies in (t − δ(t), t + δ(t)) for its tag t, a point of that piece. The Henstock integral is I if for every ε &gt; 0 some gauge makes every δ-fine Riemann sum lie within ε of I.
 
 **Problem.** Suppose f on \[a,b\] is Henstock integrable on \[a,c\] for every a &lt; c &lt; b. Its Henstock integral on \[a,b\] exists exactly when ∫ₐᶜ f has a finite limit as c increases to b. The integral then equals that limit.
 
-**How the definition helps.** A gauge can be very small near b, so the Henstock integral already deals with the bad endpoint. So what is a definition for the improper Riemann integral is a theorem for the Henstock integral, and no separate definition is needed. The proof of Hake's theorem is the real work.
+**How the definition helps.** A gauge can be very small near b, so Henstock sums already control the bad endpoint without a separate limit. Thus the improper limit is a theorem, Hake’s theorem, rather than a definition, and its proof is the real work.
 
 **nLab:** [Henstock integral](https://ncatlab.org/nlab/show/Henstock+integral). It says: “in the strong sense that if either side exists, then so does the other, and they are equal.”
 
@@ -1686,11 +1686,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks. A step function with one jump takes one constant value before the jump and another from the jump onward.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. For this step g, every weight is zero except J on the one piece with u &lt; c ≤ v (our own).
 
 **Problem.** Let g be zero before an interior point c and equal to J at and after c. If f is bounded and continuous at c, then ∫ f dg exists and equals Jf(c).
 
-**How the definition helps.** Only the piece carrying the jump can have a nonzero weight (our own). Its sample point tends to c as the longest piece shrinks, so continuity of f supplies convergence (our own). A formula using g′ alone misses the jump, since g′ vanishes away from c (our own).
+**How the definition helps.** So each sum equals J f(t) for the tag t of that one piece, and t tends to c as the pieces shrink (our own). Continuity of f at c gives the limit J f(c) (our own).
 
 **Paper or page:** [Riemann-Stieltjes Integral with Step Integrator](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_with_Step_Integrator). It says: “∫ₐᵇ f dα = f(c)(α(b) − α(a))”
 
@@ -1702,11 +1702,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f on \[a,b\], its oscillation on each partition piece is its supremum there minus its infimum there. The Darboux gap sums each oscillation times the corresponding piece length. The function is integrable if every ε &gt; 0 admits a finite partition with gap below ε.
+**Definition.** A bounded f on \[a, b\] is Riemann integrable if for every ε &gt; 0 some partition has Darboux gap below ε. The gap is the sum over the pieces of the spread of f there, supremum minus infimum, times the piece length.
 
 **Problem.** Let f be Riemann integrable and let φ be continuous on a closed bounded interval containing the values of f. Then φ composed with f is Riemann integrable.
 
-**How the definition helps.** A small Darboux gap limits the total length of pieces where f varies by more than a fixed positive amount (our own). Uniform continuity of φ keeps the new spreads small on the other pieces (our own). Boundedness of φ controls the contribution from the exceptional pieces (our own). The proof uses uniform continuity on closed bounded intervals and the equivalence with tagged sums (our own).
+**How the definition helps.** A gap below εη forces the pieces where f spreads by more than η to have total length below ε (our own). Choose η by uniform continuity of φ, so φ ∘ f spreads little on the other pieces, and boundedness of φ caps the bad pieces (our own).
 
 **Paper or page:** [Condition for Darboux Integrability](https://proofwiki.org/wiki/Condition_for_Darboux_Integrability). It says: “there exists a finite subdivision S of \[a, b\] such that U(S) – L(S) &lt; ε”
 
@@ -1718,11 +1718,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f and nondecreasing g on \[a,b\], each upper sum uses the supremum of f on every partition piece \[u,v\]. Multiply each supremum by g(v)−g(u) and add, using infima instead for the lower sum. The mesh criterion requires their difference to tend to zero as the longest piece shrinks.
+**Definition.** For bounded f and nondecreasing g on \[a, b\], the Stieltjes gap of a partition adds, over the pieces \[u, v\], the spread sup f − inf f times the weight g(v) − g(u). The mesh criterion asks this gap to tend to zero as the longest piece shrinks.
 
 **Problem.** If f is monotone and g is continuous and nondecreasing on a closed interval, the mesh-limit Riemann–Stieltjes integral ∫ f dg exists.
 
-**How the definition helps.** Using upper and lower bounds in place of arbitrary samples gives a weighted gap with one term per piece (our own). For monotone f, its spreads on consecutive pieces add to its absolute change over the whole interval (our own). The gap is therefore at most that change times the largest increment of g (our own). Uniform continuity of g makes this bound vanish, and the weighted gap criterion gives convergence for arbitrary samples (our own).
+**How the definition helps.** For monotone f, the spreads on consecutive pieces add up to \|f(b) − f(a)\|, so the gap is at most \|f(b) − f(a)\| times the largest increment of g (our own). Uniform continuity of g makes that increment tend to zero with the mesh (our own). A small gap traps every tagged sum, so the integral exists (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “if f is of bounded variation and g is continuous”
 
@@ -1736,11 +1736,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f on \[a,b\], each finite partition gives rectangle sums using piece lengths as widths. Lower and upper sums use each piece’s infimum and supremum as heights, while tagged sums use values sampled within each piece. Darboux integrability means every ε &gt; 0 admits a partition with upper sum minus lower sum below ε.
+**Definition.** For bounded f on \[a, b\] and a partition, the lower and upper Darboux sums use the infimum and supremum of f on each piece as heights. They are the infimum and supremum of all tagged Riemann sums on that partition (our own). Darboux integrable means that for every ε &gt; 0 some partition has upper minus lower sum below ε.
 
 **Problem.** A bounded function on a closed interval is Darboux integrable exactly when its tagged Riemann sums converge as the longest piece shrinks. The two values agree.
 
-**How the definition helps.** On any partition the Darboux sums are the greatest lower and least upper bounds of all tagged sums (our own). Thus convergence for every choice of tags forces the Darboux gap to shrink (our own). Conversely, insert the cuts of a fixed partition with small gap into any fine partition (our own). Only pieces crossing those cuts need new samples, and their total length tends to zero (our own).
+**How the definition helps.** Since the Darboux sums are the extreme tagged sums, convergence of tagged sums forces the Darboux gap to shrink (our own). Conversely, add the cuts of a partition with small gap to any fine partition; only pieces that cross those cuts change, and their total length tends to zero (our own).
 
 **Paper or page:** [Equivalence of Definitions of Riemann and Darboux Integrals](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Riemann_and_Darboux_Integrals). It says: “the Riemann integral of f over \[a, b\] exists and is equal to L”
 
@@ -1752,11 +1752,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 28A25. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The Darboux construction brackets a bounded function with lower and upper step functions on partitions. Integrability means that the ordinary integrals of these two step functions can differ by arbitrarily little. Riemann’s tagged sums give an equivalent test.
+**Definition.** A bounded function on \[a, b\] is Darboux integrable if lower and upper step functions on partitions squeeze it, with integrals that differ by arbitrarily little.
 
 **Problem.** Every Darboux integrable function on a compact interval is Lebesgue integrable with the same integral.
 
-**How the definition helps.** Choose successive common refinements so the upper and lower step bounds are nested and their integral gap tends to zero (our own). Bounded convergence gives limits with equal integrals (our own). The nonnegative difference of the limits therefore vanishes almost everywhere (our own). Completeness of Lebesgue measure makes the sandwiched function measurable, and its integral equals the common Darboux value (our own).
+**How the definition helps.** Refine so the lower step functions increase and the upper ones decrease, with integral gap tending to zero (our own). Their limits ℓ ≤ f ≤ u have equal integrals by bounded convergence, so ℓ = u almost everywhere (our own). Completeness of Lebesgue measure makes f measurable, with the common Darboux value as its integral (our own).
 
 **Paper or page:** [Lebesgue Integral is Extension of Darboux Integral](https://proofwiki.org/wiki/Lebesgue_Integral_is_Extension_of_Darboux_Integral). It says: “Then it is also Lebesgue integrable, and furthermore:”
 
@@ -1768,11 +1768,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f on \[a,b\], its oscillation on each partition piece is its supremum there minus its infimum there. The Darboux gap sums each oscillation times the corresponding piece length. The function is integrable if every ε &gt; 0 admits a finite partition with gap below ε.
+**Definition.** The Darboux gap of a partition of \[a, b\] is the sum over the pieces of the piece length times the spread of f there, supremum minus infimum. This is the total area of the rectangles that cover the graph piece by piece (our own), and f is integrable if the gap can be made below any ε &gt; 0.
 
 **Problem.** The graph of a Riemann integrable function on a closed interval has Jordan area zero. This means finite rectangle covers of the graph can have arbitrarily small total area.
 
-**How the definition helps.** Each piece gives one covering rectangle from its lowest bound to its highest bound (our own). Thus the total area of the cover is the Darboux gap, even when the function has jumps (our own). The work moves to the equivalence between the small-gap criterion and convergence of tagged sums (our own).
+**How the definition helps.** A small gap therefore gives a rectangle cover of the graph with small total area, even when f has jumps (our own). Riemann and Darboux integrability agree, so this applies to every Riemann integrable f (our own).
 
 **Wikipedia:** [Darboux integral](https://en.wikipedia.org/wiki/Darboux_integral). It says: “the upper and lower sums add together the areas of rectangular slices”
 
@@ -1780,15 +1780,15 @@
 
 ### Indicators turn boundary length into a test for integrability
 
-**Remember:** The indicator is discontinuous where both sides are always nearby.
+**Remember:** The indicator jumps exactly on the boundary.
 
 *Makes the theorem clean to state or prove.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The indicator of a set E is one on E and zero elsewhere. The boundary consists of points whose every neighborhood meets both E and its complement. A set has length zero if countably many intervals can cover it with arbitrarily small total length.
+**Definition.** The indicator of a set E is 1 on E and 0 elsewhere. It is discontinuous exactly at the boundary of E, the points where every neighborhood meets both E and its complement (our own).
 
-**Problem.** Let E be a bounded set of real numbers inside an open interval (a, b). Its indicator is Riemann integrable on \[a, b\] exactly when its boundary has length zero.
+**Problem.** Let E be a bounded set of real numbers inside an open interval (a, b). Its indicator is Riemann integrable on \[a, b\] exactly when its boundary has length zero, that is, countably many intervals of arbitrarily small total length cover it.
 
-**How the definition helps.** The indicator turns the boundary of E into exactly the set whose every neighborhood contains both indicator values (our own). Off the boundary the indicator is constant on a neighborhood (our own). Lebesgue’s criterion says a bounded function is Riemann integrable exactly when its discontinuities have length zero (our own).
+**How the definition helps.** Lebesgue’s criterion says a bounded function is Riemann integrable exactly when its discontinuities have length zero (our own). For an indicator, that set of discontinuities is the boundary of E (our own).
 
 **nLab:** [Jordan content](https://ncatlab.org/nlab/show/Jordan+content). It says: “A Jordan content is a kind of content which may be used to define the Riemann integral of indicator functions over a bounded set”
 
@@ -1802,11 +1802,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks. A nondecreasing g gives every piece a nonnegative weight.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. For nondecreasing g, the weights are nonnegative, and they add up to g(b) − g(a) (our own).
 
 **Problem.** Suppose f is continuous and g is nondecreasing on \[a, b\]. Some c in \[a, b\] then satisfies ∫ f dg = f(c)(g(b) − g(a)).
 
-**How the definition helps.** Nonnegative weights place every sum between the minimum and maximum of f times the total weight g(b) − g(a) (our own). Continuity of f and monotonicity of g ensure the integral exists (our own). For positive total weight apply the intermediate value theorem to the weighted average, and for zero weight take any c (our own). With f(t) = t and g(t) = t(1 − t) on \[0, 1\], the total weight is zero but the integral is −1/6 (our own).
+**How the definition helps.** So every sum lies between min f and max f times g(b) − g(a), and so does the integral, which exists for continuous f (our own). If g(b) &gt; g(a), the intermediate value theorem gives c, and if g(b) = g(a), any c works (our own). Without monotone g this fails: f(t) = t and g(t) = t(1 − t) on \[0, 1\] give total weight 0 but integral −1/6 (our own).
 
 **Paper or page:** [Riemann-Stieltjes Integral of Constant Integrand](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_of_Constant_Integrand). It says: “∫ₐᵇ f dα = c α(b) − c α(a)”
 
@@ -1818,11 +1818,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Stieltjes sum multiplies each sampled value of f by the change of g across its piece, then adds the products. A refinement keeps all earlier cuts. The refinement integral is L if every tolerance admits a partition whose refinements give sums within that tolerance of L for every sample choice.
+**Definition.** A Stieltjes sum adds f(t)(g(v) − g(u)) over the pieces \[u, v\] with tags t. A refinement of a partition P keeps all cuts of P. The refinement integral is L if each tolerance has a partition P whose every refinement gives sums within it of L, for all tags.
 
 **Problem.** Fix a &lt; c &lt; b. If the refinement Stieltjes integrals on \[a, c\] and \[c, b\] exist, their sum is the refinement integral on \[a, b\].
 
-**How the definition helps.** Joining two controlling partitions forces every refinement to keep their common endpoint (our own). Each sum splits there, so the two errors add and can be made arbitrarily small (our own). For comparison, let g be zero through 0 and one thereafter, and let f be one before 0 and zero thereafter (our own). On \[−1, 1\] both half integrals vanish, yet fine partitions crossing zero can give sums of either zero or one (our own).
+**How the definition helps.** Join the controlling partitions of \[a, c\] and \[c, b\]; every refinement keeps the cut c, so each sum splits there and the two errors add (our own). In the mesh version a piece may straddle c (our own). For g zero up to 0 and one after, and f one before 0 and zero from 0 on, fine partitions of \[−1, 1\] give sums 0 or 1, though both halves give 0 (our own).
 
 **Paper or page:** [Sum of Riemann-Stieltjes Integrals on Adjacent Intervals/Part to Whole](https://proofwiki.org/wiki/Sum_of_Riemann-Stieltjes_Integrals_on_Adjacent_Intervals/Part_to_Whole). It says: “Then, f is Riemann-Stieltjes integrable with respect to α on \[a, b\], and:”
 
@@ -1834,11 +1834,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a tagged partition, the Stieltjes sum adds f(t)(g(v)−g(u)) over pieces \[u,v\] with tags t ∈ \[u,v\]. Its refinement integral equals I if every ε &gt; 0 admits a partition whose every tagged refinement gives a sum within ε of I.
+**Definition.** A tagged Stieltjes sum adds f(t)(g(v) − g(u)) over pieces \[u, v\] with tags t in \[u, v\]. The refinement integral equals I if for every ε &gt; 0 some partition P makes every tagged refinement of P, one that keeps all cuts of P, give a sum within ε of I.
 
 **Problem.** For a nondecreasing integrator, a refinement integral can exist at a shared jump when the functions are continuous from opposite sides there. A shared interior discontinuity prevents the mesh-limit integral from existing.
 
-**How the definition helps.** For example, let g jump from zero to one immediately after zero, and let f drop from one to zero at zero (our own). Keeping zero as a cut gives only zero products (our own). For a shared interior discontinuity, fine partitions can straddle it where the oscillation of f and the increment of g both stay positive (our own). Two tag choices then keep the sums apart (our own).
+**How the definition helps.** Putting the shared jump point into P keeps it as a cut, so no piece straddles it (our own). For example, let g jump from 0 to 1 just after 0 and f drop from 1 to 0 at 0; with 0 a cut, every product is zero (our own). The mesh limit cannot fix a cut, so fine pieces straddle a shared interior discontinuity and two tag choices keep the sums apart (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “A consequence is that with this definition, the integral ∫ f(x) dg(x) can still be defined in cases where f and g have a point of discontinuity in common.”
 
@@ -1850,11 +1850,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f and nondecreasing g on \[a,b\], each upper sum uses the supremum of f on every partition piece \[u,v\]. Multiply each supremum by g(v)−g(u) and add, using infima instead for the lower sum. The mesh criterion requires their difference to tend to zero as the longest piece shrinks.
+**Definition.** For bounded f and nondecreasing g on \[a, b\], the Stieltjes gap of a partition adds, over the pieces \[u, v\], the spread sup f − inf f times the weight g(v) − g(u). The mesh criterion asks this gap to tend to zero as the longest piece shrinks.
 
 **Problem.** Let f be bounded on \[a, b\] and continuous except at finitely many points. If g is nondecreasing and continuous at each of those points, then the mesh-limit Riemann–Stieltjes integral ∫ f dg exists.
 
-**How the definition helps.** Continuity of g lets neighborhoods around the finitely many exceptional points have arbitrarily small total weight (our own). Boundedness of f controls the gap there, while uniform continuity controls spreads outside smaller neighborhoods (our own). On sufficiently fine partitions each piece lies inside a chosen neighborhood or outside all smaller ones (our own). If both functions jump from zero to one at the same interior point, different sample choices can give zero or one (our own).
+**How the definition helps.** Continuity of g at the bad points gives them small neighborhoods of tiny total weight, where boundedness of f caps the gap (our own). Outside slightly smaller neighborhoods f is uniformly continuous, so its spreads are small on fine pieces (our own). If f and g both jump from 0 to 1 at the same interior point, different tags give sums 0 or 1 (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “if f and g share any points of discontinuity”
 
@@ -1866,11 +1866,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. When g has a continuous derivative, the mean value theorem makes each weight g′(s)(v − u) for some s in the piece (our own).
 
 **Problem.** Suppose f is bounded, ∫ f dg exists on \[a, b\], and g has a continuous derivative there. Then fg′ is Riemann integrable and its ordinary integral equals ∫ f dg.
 
-**How the definition helps.** The mean value theorem turns each increment of g into the piece length times a nearby value of g′ (our own). Uniform continuity makes the difference between that derivative and its value at the sample uniformly small (our own). The error in the whole sum is at most that difference bound times (b − a) times a bound for \|f\| (our own). Thus ordinary tagged sums for fg′ approach the given Stieltjes integral (our own).
+**How the definition helps.** By uniform continuity of g′, g′(s) is close to g′(t) at the tag, so the Stieltjes sum and the Riemann sum of fg′ differ by at most (b − a) sup\|f\| times a small bound (our own). Hence the Riemann sums of fg′ converge to ∫ f dg (our own).
 
 **Paper or page:** [Reduction of Riemann-Stieltjes Integral to Identity Integrator](https://proofwiki.org/wiki/Reduction_of_Riemann-Stieltjes_Integral_to_Identity_Integrator). It says: “Let g : \[a, b\] → ℝ be defined as: g(x) = f(x) α′(x)”
 
@@ -1878,15 +1878,15 @@
 
 ### Splitting at each tag makes Stieltjes integration by parts telescope
 
-**Remember:** Split at each sample to pair the two sums exactly.
+**Remember:** Swap cuts and tags; the two sums add to the product’s change.
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. Only values of f at tags and of g at cuts enter the sum.
 
 **Problem.** If ∫ f dg exists for bounded f and g on \[a, b\], then ∫ g df exists too. Their sum equals f(b)g(b) − f(a)g(a).
 
-**How the definition helps.** Splitting at the sample pairs two Stieltjes sums whose terms add to the exact change of the product (our own). Given a sample t of g, sample f at the outer endpoint of each positive-length piece created by splitting at t (our own). The product changes add to f(b)g(b) − f(a)g(a), while the refined sum for ∫ f dg approaches its limit (our own). This finite identity takes the place of the derivative product rule (our own).
+**How the definition helps.** Summation by parts turns a sum for ∫ g df into f(b)g(b) − f(a)g(a) minus a sum for ∫ f dg, whose cuts are the old tags and whose tags are the old cuts (our own). The new pieces are at most twice as long as the old ones, so the second sum tends to ∫ f dg (our own).
 
 **Paper or page:** [Integration by Parts/Riemann-Stieltjes Integral](https://proofwiki.org/wiki/Integration_by_Parts/Riemann-Stieltjes_Integral). It says: “∫ₐᵇ f dα + ∫ₐᵇ α df = f(b) α(b) − f(a) α(a)”
 
@@ -1898,11 +1898,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. Only values of f at tags and of g at cuts enter the sum.
 
 **Problem.** Let φ be continuous and strictly increasing on \[a, b\], and suppose ∫ f dg exists from φ(a) to φ(b). The integral of f composed with φ against g composed with φ exists on \[a, b\] and equals it.
 
-**How the definition helps.** Mapping the cuts and samples by φ gives exactly the Stieltjes sum on the image partition (our own). Uniform continuity of φ makes the longest image piece shrink with the longest original piece (our own). Ordinary substitution proofs use derivatives, but the equality here already holds for finite sums (our own).
+**How the definition helps.** Mapping the cuts and tags of a partition of \[a, b\] by φ gives a partition of \[φ(a), φ(b)\] with the same Stieltjes sum (our own). Uniform continuity of φ makes the longest image piece shrink with the longest original piece (our own).
 
 **Paper or page:** [Integration by Substitution/Riemann-Stieltjes Integral/Increasing](https://proofwiki.org/wiki/Integration_by_Substitution/Riemann-Stieltjes_Integral/Increasing). It says: “h is Riemann-Stieltjes integrable with respect to β on \[a, b\]”
 
@@ -1914,11 +1914,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks. A strictly increasing g gives every piece of positive length a positive weight.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. A strictly increasing g gives every piece of positive length a positive weight.
 
 **Problem.** Let a &lt; b, let f be continuous and nonnegative on \[a, b\], and let g be strictly increasing. If ∫ f dg = 0, then f is zero everywhere.
 
-**How the definition helps.** Continuity turns a positive value of f into a positive lower bound on a whole interval (our own). Strict increase gives that interval positive weight, and nonnegativity prevents cancellation elsewhere (our own). For a counterexample with a flat part, take g(t) = max(0, t − ½) on \[0, 1\] (our own). The continuous function f(t) = max(0, ½ − t) then has integral zero although f(0) is positive (our own).
+**How the definition helps.** If f(x₀) &gt; 0, continuity keeps f above f(x₀)/2 on an interval of positive length, which has positive weight, so the integral is positive (our own). Nonnegativity of f prevents cancellation elsewhere (our own). With a flat part, g(t) = max(0, t − ½) and f(t) = max(0, ½ − t) on \[0, 1\] give integral zero although f(0) &gt; 0 (our own).
 
 **Paper or page:** [Riemann-Stieltjes Integral of Constant Integrand](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_of_Constant_Integrand). It says: “∫ₐᵇ f dα = c α(b) − c α(a)”
 
@@ -1934,7 +1934,7 @@
 
 **Problem.** Whenever both original integrals exist, taking a linear combination of two integrators gives the same linear combination of their integrals. The same rule holds for two integrands with a fixed integrator.
 
-**How the definition helps.** An increment of a linear combination is the same linear combination of the increments (our own). Taking linear combinations of samples gives the law in the function being integrated (our own). Both identities hold for each tagged sum, so linearity of limits gives the two laws (our own). Weighted upper and lower sums alone use nonnegative weights, so signed combinations need an extension (our own).
+**How the definition helps.** The increment of c₁g₁ + c₂g₂ is c₁ times the increment of g₁ plus c₂ times the increment of g₂, so each tagged sum splits the same way (our own). Linearity of limits then gives the law, and the same argument works for two integrands (our own).
 
 **Paper or page:** [Linear Combination of Riemann-Stieltjes Integrals/Integrator](https://proofwiki.org/wiki/Linear_Combination_of_Riemann-Stieltjes_Integrals/Integrator). It says: “∫ₐᵇ f dγ = c₁ A + c₂ B”
 
@@ -1942,15 +1942,15 @@
 
 ### The Darboux criterion makes the positive part of integrable f integrable
 
-**Remember:** Clipping negative values to zero cannot widen the spread of values on an interval.
+**Remember:** Clipping at zero never widens the spread on a piece.
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For bounded f on \[a,b\], its oscillation on each partition piece is its supremum there minus its infimum there. The Darboux gap sums each oscillation times the corresponding piece length. The function is integrable if every ε &gt; 0 admits a finite partition with gap below ε.
+**Definition.** A bounded f on \[a, b\] is integrable if for every ε &gt; 0 some finite partition has Darboux gap below ε. The gap is the sum over the pieces of the spread of f there, supremum minus infimum, times the piece length.
 
 **Problem.** If f is Riemann integrable on \[a, b\], then so is f⁺ = max(f, 0).
 
-**How the definition helps.** The map t ↦ max(t,0) changes distances by at most a factor of one (our own). Hence clipping cannot increase any piece’s oscillation or the Darboux gap (our own). Every partition meeting the criterion for f also works for f⁺, and Darboux and Riemann integrability agree (our own).
+**How the definition helps.** The map t ↦ max(t, 0) never moves two values further apart, so the spread of f⁺ on each piece is at most that of f (our own). Hence every partition with small gap for f has small gap for f⁺, and Darboux and Riemann integrability agree (our own).
 
 **Paper or page:** [Positive Part of Darboux Integrable Function is Integrable](https://proofwiki.org/wiki/Positive_Part_of_Darboux_Integrable_Function_is_Integrable). It says: “Then f⁺ is Darboux integrable over \[a, b\].”
 
@@ -1962,11 +1962,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On each piece \[u, v\], a Riemann–Stieltjes sum multiplies a sampled value of f by g(v) − g(u). The integral ∫ f dg exists if all such sums approach one value as the longest piece shrinks.
+**Definition.** A Riemann–Stieltjes sum weights the sample f(t) on each piece \[u, v\] by g(v) − g(u), and ∫ f dg is the limit of these sums as the longest piece shrinks. For g(x) = x, each weight is the piece length v − u (our own).
 
 **Problem.** On a closed interval, f is Riemann–Stieltjes integrable with respect to g(x) = x exactly when it is Riemann integrable. The integrals agree.
 
-**How the definition helps.** Each increment g(v) − g(u) is the ordinary width v − u, making the tagged sums identical (our own). Thus existence and equality reduce to the same limit without an extra comparison theorem (our own). The underlying convergence question remains ordinary Riemann integrability (our own).
+**How the definition helps.** So each Stieltjes sum is the ordinary tagged Riemann sum, and the two limits are the same limit (our own).
 
 **Paper or page:** [Riemann-Stieltjes Integral by Norm of Subdivision/Riemann Integral](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_by_Norm_of_Subdivision/Riemann_Integral). It says: “∫ₐᵇ f dι = ∫ₐᵇ f(x) dx”
 
@@ -1980,11 +1980,11 @@
 
 *True by definition.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 40A30. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A regulated function on \[a, b\] is a uniform limit of step functions. Its integral is the limit of the integrals of the step functions. Bourbaki and Dieudonné advocated this integral instead of the Riemann integral.
+**Definition.** A regulated function on \[a, b\] is a uniform limit of step functions, and its integral is the limit of the step integrals. So the regulated integral is the continuous extension of the step integral to the uniform closure of the step functions.
 
 **Problem.** The integral of a regulated function exists and does not depend on the approximating sequence. The integral of a uniform limit of regulated functions is the limit of their integrals.
 
-**How the definition helps.** The integral on step functions is a bounded linear map, so it extends uniquely to the closure of the step functions. Existence and independence of the sequence are then one theorem from functional analysis. Passing to uniform limits is built into the definition. The cost is a smaller class than the Riemann integrable functions.
+**How the definition helps.** The step integral is linear with \|∫ s\| ≤ (b − a) sup\|s\|, so the continuous linear extension theorem gives existence and independence of the sequence. Uniform limits stay in the closure, and continuity of the extension passes the integral to the limit. The cost is a smaller class than the Riemann integrable functions.
 
 **Wikipedia:** [Regulated integral](https://en.wikipedia.org/wiki/Regulated_integral). It says: “One must check that this limit exists and is independent of the chosen sequence, but this is an immediate consequence of the continuous linear extension theorem of elementary functional analysis”
 
@@ -1994,15 +1994,15 @@
 
 ### The Stieltjes integral gives one expectation formula for every distribution
 
-**Remember:** Integrate against how much g grows, not against how long the interval is.
+**Remember:** Weight each value of f by how much g grows.
 
 *Makes the theorem clean to state or prove.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 60E05, 46E15. arXiv math.CA, math.PR. Level 2: later undergraduate.
 
-**Definition.** On \[a,b\], a Stieltjes sum adds f(t)(g(v)−g(u)) over partition pieces \[u,v\], with any tag t in each piece. The integral is the common limit of all such sums as the largest piece length tends to zero. On ℝ, take the two improper limits separately at −∞ and +∞.
+**Definition.** The Stieltjes integral ∫ f dg weights each value of f by the growth of g, not by interval length. It is the limit of the sums of f(t)(g(v)−g(u)) over the pieces \[u,v\] of a partition, with any tag t in each piece, as the largest piece shrinks to zero. On ℝ, take the limits at −∞ and +∞ separately.
 
-**Problem.** Let X have distribution function g, and let f be Borel measurable with E\[\|f(X)\|\] finite. Whenever its improper Riemann–Stieltjes integral exists, E\[f(X)\] = ∫ f dg for every such distribution.
+**Problem.** Let X have distribution function g, and let f be Borel measurable with E\[\|f(X)\|\] finite. If the improper Riemann–Stieltjes integral ∫ f dg exists, it equals E\[f(X)\], whatever kind of distribution X has.
 
-**How the definition helps.** Each increment g(v)−g(u) is the probability of u &lt; X ≤ v, regardless of the distribution type (our own). On finite intervals, expectations over those pieces lie between lower and upper Stieltjes sums, which converge together when the integral exists (our own). Absolute integrability lets the finite-interval expectations converge to E\[f(X)\] (our own).
+**How the definition helps.** Each weight g(v)−g(u) is exactly the probability that u &lt; X ≤ v, for every distribution (our own). So the expectation over a finite interval lies between the lower and upper Stieltjes sums, which meet when the integral exists (our own). Finite E\[\|f(X)\|\] lets the finite-interval expectations converge to E\[f(X)\] (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “holds if g is any cumulative probability distribution function on the real line, no matter how ill-behaved.”
 
@@ -2012,15 +2012,15 @@
 
 ### The supremum norm gives a sharp bound on the integral
 
-**Remember:** Bound every rectangle height by the supremum of the absolute value.
+**Remember:** No rectangle is taller than the supremum norm.
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The supremum norm of f is the least upper bound of \|f\| on the interval. The Darboux integral of an integrable function lies between all its lower and upper sums.
+**Definition.** The supremum norm ‖f‖ is the least upper bound of \|f\| on \[a, b\], so f lies between the constant functions −‖f‖ and ‖f‖. The integral of f lies between all its lower and upper Darboux sums.
 
-**Problem.** For Riemann integrable f on \[a, b\], the absolute value of its integral is at most (b − a) times its supremum norm. Integration is therefore continuous, and the constant function one attains equality.
+**Problem.** For Riemann integrable f on \[a, b\], the absolute value of its integral is at most (b − a)‖f‖. So integration is continuous for the supremum norm, and the constant function one attains equality.
 
-**How the definition helps.** The two constant functions with values plus and minus the supremum norm bound every Darboux sum (our own). The constant function one gives equality, so no smaller bound is possible (our own). Linearity of tagged sums and the equivalence with Darboux integration supply the remaining facts (our own).
+**How the definition helps.** Integration preserves order, so the bounds −‖f‖ ≤ f ≤ ‖f‖ give \|∫f\| ≤ (b − a)‖f‖ (our own). For a linear map, such a bound is continuity (our own). The constant function one gives equality, so no smaller constant works (our own).
 
 **Paper or page:** [Riemann Integral Operator is Continuous Linear Transformation](https://proofwiki.org/wiki/Riemann_Integral_Operator_is_Continuous_Linear_Transformation). It says: “Then T is a continuous mapping.”
 
@@ -2028,15 +2028,15 @@
 
 ### Total variation bounds the cost of resampling a Stieltjes sum
 
-**Remember:** Total variation bounds the sum of the absolute weights.
+**Remember:** Total variation caps the total size of the weights.
 
 *True by definition. Confidence: medium.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 26A45. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The total variation of g is the least upper bound of the sums of its absolute increments over all partitions. Bounded variation means that this bound is finite. Stieltjes sums weight each sample of f by the corresponding increment of g.
+**Definition.** The total variation of g is the least upper bound of the sums of \|g(v) − g(u)\| over the pieces of a partition. Bounded variation means that it is finite. A Stieltjes sum weights each sample of f by an increment of g, so its absolute weights total at most the variation (our own).
 
 **Problem.** Every continuous f on \[a, b\] has a Riemann–Stieltjes integral against any g of bounded variation there. Its absolute value is at most the maximum of \|f\| times the total variation of g.
 
-**How the definition helps.** Total variation bounds the sum of the absolute weights on every refinement (our own). Refining a partition changes its sum by at most the total variation times the largest spread of f on an original piece (our own). Two fine partitions have a common refinement, so uniform continuity makes their sums arbitrarily close (our own). Completeness gives the integral, and the same absolute weight bound gives its size (our own).
+**How the definition helps.** Since absolute weights total at most V, the variation, changing each sampled value by at most ε changes a sum by at most εV (our own). Refining moves samples only within original pieces, so by uniform continuity of f, two fine partitions have sums near their common refinement’s (our own). Completeness gives the limit, and the bound by max\|f\| times V gives its size (our own).
 
 **Wikipedia:** [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “if f is continuous and g is of bounded variation”
 
@@ -2044,15 +2044,15 @@
 
 ### Arc length as a polygon supremum ignores every reparametrization
 
-**Remember:** Changing the clock does not change the ordered points the path visits.
+**Remember:** Length is the longest inscribed polygon; speed never enters.
 
 *True by definition. Confidence: medium.* MSC 26A45 (Functions of bounded variation, generalizations), 53A04. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the length of a continuous path γ on \[a, b\] as the supremum of polygon lengths. Each polygon joins γ(t₀), …, γ(tₖ) for a partition a = t₀ &lt; … &lt; tₖ = b. For a continuously differentiable path, the other definition integrates the speed \|γ′(t)\|.
+**Definition.** The length of a continuous path γ on \[a, b\] is the supremum of the lengths of the polygons through γ(t₀), …, γ(tₖ), over partitions a = t₀ &lt; … &lt; tₖ = b. Each polygon uses only points of the path, in the order the path visits them.
 
 **Problem.** Let φ map \[c, d\] onto \[a, b\], and let φ be continuous and strictly increasing. Then the paths γ and γ ∘ φ have the same length.
 
-**How the definition helps.** The increasing bijection φ and its inverse carry partitions to partitions in both directions (our own). Corresponding partitions visit the same points in order, so their polygons have equal lengths (our own). Taking suprema gives equal path lengths (our own).
+**How the definition helps.** The increasing bijection φ and its inverse carry partitions to partitions in both directions, and corresponding partitions give the same polygon (our own). So both paths have the same polygon lengths and the same supremum (our own).
 
 **Wikipedia:** [Arc length](https://en.wikipedia.org/wiki/Arc_length). It says: “The arc length of the curve is the same regardless of the parameterization used to define the curve.”
 
@@ -2064,11 +2064,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A45 (Functions of bounded variation, generalizations), 42A20. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A function f on \[a,b\] has bounded variation when the sums Σ\|f(xᵢ) − f(xᵢ₋₁)\| over all partitions of \[a,b\] are bounded. In words, the total up-and-down movement of f is finite. Jordan's theorem says that this holds exactly when f is the difference of two non-decreasing functions.
+**Definition.** A function f on \[a,b\] has bounded variation when its total up-and-down movement, the supremum of Σ\|f(xᵢ) − f(xᵢ₋₁)\| over partitions, is finite. By Jordan's theorem, these are exactly the differences of two non-decreasing functions.
 
-**Problem.** Let f be 2π-periodic and of bounded variation on a period. Then the Fourier series of f converges at every point x to (f(x+) + f(x−))/2. This value is the average of the limits of f from the right and from the left.
+**Problem.** Let f be 2π-periodic and of bounded variation on a period. Then the Fourier series of f converges at every x to (f(x+) + f(x−))/2, the average of its one-sided limits.
 
-**How the definition helps.** A function of bounded variation is a difference of monotone functions, so a result for monotone functions carries over to it. Dirichlet proved convergence for piecewise monotone functions. The partial sums of a Fourier series depend linearly on the function, so his result passes to differences at once (our own remark). Jordan introduced bounded variation for exactly this extension.
+**How the definition helps.** Dirichlet proved this convergence for monotone functions, and Fourier partial sums depend linearly on the function, so it passes to differences of monotone functions (our own remark). Jordan's theorem makes these differences exactly the functions of bounded variation, which is why he introduced them.
 
 **Wikipedia:** [Dirichlet–Jordan test](https://en.wikipedia.org/wiki/Dirichlet%E2%80%93Jordan_test), [Bounded variation](https://en.wikipedia.org/wiki/Bounded_variation). It says: “It was extended in the late 19th century by Camille Jordan to functions of bounded variation in each period (any function of bounded variation is the difference of two monotonically increasing functions).”
 
@@ -2078,15 +2078,15 @@
 
 ### Lower bounds control reciprocal variation
 
-**Remember:** Keep every denominator away from zero before you sum the increments.
+**Remember:** Keep f a fixed distance from zero, and 1/f stays tame.
 
 *Rules out counterexamples.* MSC 26A45 (Functions of bounded variation, generalizations). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Total variation takes the supremum of sums of absolute increments over finite partitions. A function bounded away from zero has \|f(x)\| ≥ M for one M &gt; 0. This is stronger than never taking the value zero.
+**Definition.** A function f is bounded away from zero when one constant M &gt; 0 satisfies \|f(x)\| ≥ M for every x; never vanishing is not enough. Then every product \|f(x)f(y)\| is at least M².
 
-**Problem.** Let f have bounded variation on a closed interval and satisfy \|f\| ≥ M &gt; 0. Then 1/f has variation at most that of f divided by M².
+**Problem.** Let f have bounded variation on a closed interval and satisfy \|f\| ≥ M &gt; 0. Then the variation of 1/f is at most the variation of f divided by M².
 
-**How the definition helps.** Each absolute reciprocal difference equals \|f(y)−f(x)\|/\|f(x)f(y)\|, at most \|f(y)−f(x)\|/M² (our own). Summing over each partition and taking the supremum proves the bound (our own). On \[0,1\], set f(0)=1 and f(x)=x for x&gt;0 (our own). This function has bounded variation but its reciprocal is unbounded (our own).
+**How the definition helps.** Each increment of 1/f is \|f(y)−f(x)\|/\|f(x)f(y)\|, at most \|f(y)−f(x)\|/M², and summing over partitions gives the bound (our own). On \[0,1\], f(0)=1 and f(x)=x for x&gt;0 has bounded variation and never vanishes, but 1/f is unbounded (our own).
 
 **Paper or page:** [Reciprocal of Function of Bounded Variation Bounded away from Zero is of Bounded Variation](https://proofwiki.org/wiki/Reciprocal_of_Function_of_Bounded_Variation_Bounded_away_from_Zero_is_of_Bounded_Variation). It says: “That is, there exists M ∈ ℝ such that: \|f(x)\| ≥ M &gt; 0”
 
@@ -2098,11 +2098,11 @@
 
 *True by definition.* MSC 26A45 (Functions of bounded variation, generalizations), 26A48. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On a compact interval, take a function of bounded variation to be a difference of two bounded monotone functions. The usual definition bounds the sums of \|f(xᵢ) − f(xᵢ₋₁)\| over all finite partitions.
+**Definition.** On a compact interval, a function of bounded variation is a difference of two bounded monotone functions. This is equivalent to the usual finite bound on Σ\|f(xᵢ) − f(xᵢ₋₁)\| over all partitions.
 
 **Problem.** A function of bounded variation on a compact interval has at most countably many discontinuities.
 
-**How the definition helps.** A monotone function has at most countably many jumps, so a difference of two has at most countably many discontinuities, in our own proof. Wikipedia states that the two descriptions agree and draws this consequence. The work moves into Jordan's decomposition, which builds the monotone functions from the variation of f on \[a, x\], in our own account.
+**How the definition helps.** Each monotone part has at most countably many jumps, and f is continuous wherever both parts are, so f has at most countably many discontinuities (our own). The work lies in Jordan's decomposition, which builds the monotone parts from the variation of f on \[a, x\] (our own).
 
 **Wikipedia:** [Bounded variation](https://en.wikipedia.org/wiki/Bounded_variation). It says: “In particular, a BV function may have discontinuities, but at most countably many.”
 
@@ -2110,15 +2110,15 @@
 
 ### Absolute continuity leaves out the Cantor function
 
-**Remember:** Small total length in, small total change out, however you split the length.
+**Remember:** Small total length in, small total change out.
 
 *Makes the theorem clean to state or prove.* MSC 26A46 (Absolutely continuous real functions in one variable), 26A42. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A function f on \[a,b\] is absolutely continuous if, for every ε &gt; 0, there is a δ &gt; 0 with this property. For every finite family of disjoint subintervals (xᵢ, yᵢ) with total length Σ(yᵢ − xᵢ) &lt; δ, we have Σ\|f(yᵢ) − f(xᵢ)\| &lt; ε. In words, intervals of small total length give a small total change in f.
+**Definition.** A function f on \[a,b\] is absolutely continuous if intervals of small total length always give small total change in f. Precisely, for every ε &gt; 0 there is δ &gt; 0 such that Σ\|f(yᵢ) − f(xᵢ)\| &lt; ε for every finite family of disjoint subintervals (xᵢ, yᵢ) with Σ(yᵢ − xᵢ) &lt; δ.
 
 **Problem.** If f is absolutely continuous on \[a,b\], then f′ exists almost everywhere. For every x in \[a,b\], f(x) = f(a) + ∫ₐˣ f′(t) dt.
 
-**How the definition helps.** Absolute continuity controls total change on short interval families, including those covering a null set (our own). The Cantor function gains one across the surviving intervals at each stage although their total length tends to zero (our own). The fundamental theorem for absolutely continuous functions supplies both almost-everywhere differentiability and recovery by integrating the derivative (our own).
+**How the definition helps.** The definition forbids a large total change across intervals of tiny total length (our own). The Cantor function does this: it rises by one across intervals of total length tending to zero, though its derivative is zero almost everywhere (our own). The fundamental theorem for absolutely continuous functions then gives f′ almost everywhere and recovers f by integrating it (our own).
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity), [Cantor function](https://en.wikipedia.org/wiki/Cantor_function). It says: “The notion of absolute continuity allows one to generalize the fundamental theorem of calculus, originally in the framework of Riemann integration, to Lebesgue integration.”
 
@@ -2126,15 +2126,15 @@
 
 ### Lipschitz implies absolute continuity
 
-**Remember:** Sum the same Lipschitz bound over all the intervals.
+**Remember:** Change at most K times length, piece by piece and summed.
 
 *True by definition.* MSC 26A46 (Absolutely continuous real functions in one variable), 26A16. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Lipschitz function bounds each absolute change in value by a fixed multiple of the distance between inputs. Absolute continuity requires that sufficiently small total length guarantees arbitrarily small total absolute change across finitely many disjoint intervals. On a closed bounded interval, this is equivalent to being a constant plus an indefinite integral of an integrable function.
+**Definition.** A function is absolutely continuous on an interval if finitely many disjoint subintervals of small total length always have small total change. A Lipschitz function, one with \|f(x) − f(y)\| ≤ K\|x − y\|, bounds the change on each subinterval by K times its length.
 
 **Problem.** Every Lipschitz real function on a closed bounded interval is absolutely continuous.
 
-**How the definition helps.** The interval definition lets one sum the Lipschitz bound over the disjoint intervals (our own). The total change is at most the Lipschitz constant times the total length (our own). The work in the integral description moves to the fundamental theorem for absolutely continuous functions (our own).
+**How the definition helps.** Summing the Lipschitz bound over the subintervals bounds the total change by K times the total length, so δ = ε/K works (our own).
 
 **Paper or page:** [Lipschitz Continuous Real Function is Absolutely Continuous](https://proofwiki.org/wiki/Lipschitz_Continuous_Real_Function_is_Absolutely_Continuous). It says: “Let f be Lipschitz continuous on I. Then f is absolutely continuous on I.”
 
@@ -2142,15 +2142,15 @@
 
 ### Coefficient ratios control quotient monotonicity
 
-**Remember:** Larger inputs give higher indices more weight.
+**Remember:** Larger x pushes the weights toward higher indices.
 
 *Rules out counterexamples.* MSC 26A48 (Monotonic functions, generalizations), 30B10. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let f and g have real power series with coefficients aₙ and bₙ, common positive radius r, and every bₙ &gt; 0. For 0 &lt; x &lt; r, assign each index n probability bₙxⁿ/g(x). The mean of aₙ/bₙ with these probabilities equals f(x)/g(x).
+**Definition.** Let f = Σaₙxⁿ and g = Σbₙxⁿ have common radius r &gt; 0, with every bₙ &gt; 0. For 0 &lt; x &lt; r, f(x)/g(x) is the average of the ratios aₙ/bₙ with weights bₙxⁿ/g(x), and larger x shifts weight toward larger n.
 
-**Problem.** If the coefficient ratios never decrease, then f(x)/g(x) never decreases on (0,r).
+**Problem.** If the ratios aₙ/bₙ never decrease, then f(x)/g(x) never decreases on (0,r).
 
-**How the definition helps.** Differentiating the weighted mean and pairing indices i &lt; j gives nonnegative contributions when the ratios are nondecreasing (our own). Each contribution is (j−i)(aⱼ/bⱼ−aᵢ/bᵢ)bᵢbⱼxⁱ⁺ʲ⁻¹/g(x)² (our own). For f(x)=1/(1−x) and g(x)=1/(1−x)², the ratios instead decrease, and so does f/g=1−x (our own).
+**How the definition helps.** Shifting weight toward higher indices cannot lower the average of a nondecreasing sequence (our own). Precisely, the derivative of f/g is the sum over i &lt; j of (j−i)(aⱼ/bⱼ−aᵢ/bᵢ)bᵢbⱼxⁱ⁺ʲ⁻¹/g(x)², which is nonnegative (our own). For f = 1/(1−x) and g = 1/(1−x)², the ratios 1/(n+1) decrease, and so does f/g = 1−x (our own).
 
 **Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “Then the function x ↦ f(x)/g(x) is increasing (decreasing) on (0,r) if the sequence {aₙ/bₙ} is increasing (decreasing).”
 
@@ -2158,15 +2158,15 @@
 
 ### Disjoint jump intervals make monotone discontinuities countable
 
-**Remember:** Each jump gets a different rational number.
+**Remember:** Each jump gets its own rational number.
 
 *True by definition.* MSC 26A48 (Monotonic functions, generalizations), 26A15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** At an interior point of a monotone real function, the jump interval is the open interval between its left and right limits. It is empty when the limits agree.
+**Definition.** At an interior point of a monotone real function, the jump interval is the open interval between the left and right limits. The function is discontinuous there exactly when this interval is nonempty, and monotonicity makes the jump intervals at different points disjoint.
 
 **Problem.** A monotone real function on an interval has at most countably many interior discontinuities. Each occurs where the jump interval is nonempty.
 
-**How the definition helps.** Recording each jump as an interval gives it room for a rational number. Monotonicity makes different jump intervals disjoint, so the rationals chosen for them are distinct. The one-sided limits exist and bracket the function value, so the nonempty intervals account for every interior discontinuity. Our own comparison uses the whole interval between the limits in place of the numerical jump size.
+**How the definition helps.** Disjoint nonempty open intervals each contain a different rational number, so there are at most countably many of them (our own).
 
 **Wikipedia:** [Discontinuities of monotone functions](https://en.wikipedia.org/wiki/Discontinuities_of_monotone_functions). It says: “all discontinuities of such a (monotone) function are necessarily jump discontinuities and there are at most countably many of them.”
 
@@ -2174,15 +2174,15 @@
 
 ### Continuity upgrades midpoint convexity
 
-**Remember:** Repeatedly halve the interval, then use continuity to fill the gaps.
+**Remember:** Halving reaches dyadic weights; continuity fills in the rest.
 
 *Rules out counterexamples.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A real function f on an interval is midpoint-convex if f((x+y)/2) ≤ (f(x)+f(y))/2 for every pair x,y in the interval.
+**Definition.** A real function f on an interval is midpoint-convex if f((x+y)/2) ≤ (f(x)+f(y))/2 for all x, y in the interval. Repeated halving then gives the chord inequality f((1−t)x + ty) ≤ (1−t)f(x) + tf(y) for every dyadic t, and these t are dense in \[0,1\] (our own).
 
 **Problem.** A continuous midpoint-convex function on a real interval is convex.
 
-**How the definition helps.** Iteration gives the chord inequality for every dyadic weight, and continuity extends it to every weight by density (our own). Without continuity, choose a rational-linear map ℝ → ℝ that is not a real scalar multiple of the identity (our own). It has midpoint equality but is discontinuous, whereas every finite convex function on ℝ is continuous (our own).
+**How the definition helps.** Continuity carries the chord inequality from the dense dyadic weights to every weight, which is convexity (our own). Without continuity, a rational-linear map ℝ → ℝ that is not x ↦ cx has midpoint equality but is discontinuous (our own). It is not convex, because every finite convex function on ℝ is continuous (our own).
 
 **Wikipedia:** [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “Such functions are sometimes called Hamel functions.”
 
@@ -2192,15 +2192,15 @@
 
 ### Increasing ratios allow one turn
 
-**Remember:** An increasing ratio can cross one only once.
+**Remember:** Rising ratios cross one at most once.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A positive sequence is log-convex if the ratio of each term to its predecessor never decreases. Equivalently, each interior term squared is at most the product of its neighbors.
+**Definition.** A positive sequence aₙ is log-convex if the ratios aₙ₊₁/aₙ never decrease. Equivalently, aₙ² ≤ aₙ₋₁aₙ₊₁ for every interior n.
 
 **Problem.** A positive log-convex sequence is monotone or first decreases and then increases, with ties allowed.
 
-**How the definition helps.** Successive ratios show directly which steps go up and which go down. Our own explanation starts from the usual inequality involving three neighboring terms. Dividing by the first two terms shows that the second ratio is at least the first. Once a ratio exceeds one, every later step goes up.
+**How the definition helps.** A step goes up exactly when its ratio is at least one. The ratios never decrease, so every step with ratio below one comes before every step with ratio at least one (our own).
 
 **Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “If a₀ ≤ a₁, then a₀ ≤ a₁ ≤ a₂ ≤ …;”
 
@@ -2212,11 +2212,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 33B15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A positive real function on an interval is log-convex if its logarithm is convex there.
+**Definition.** A positive function f on an interval is log-convex if log f is convex, so the chord slopes of log f increase from left to right.
 
 **Problem.** The gamma function is the only positive function f on x &gt; 0 with three properties. The properties are f(1) = 1, f(x + 1) = x·f(x), and f is log-convex.
 
-**How the definition helps.** Convexity of log f bounds its secant slopes between neighboring integer slopes, which the recurrence fixes (our own). For 0 &lt; x ≤ 1 and n ≥ 2, this gives (n−1)ˣ ≤ f(n+x)/f(n) ≤ nˣ (our own). The recurrence expresses the middle term using f(x), and the bounds have ratio tending to one, giving uniqueness (our own). The gamma function satisfies the conditions, whereas a nonconstant positive period-one multiplier preserving f(1) breaks log-convexity (our own).
+**How the definition helps.** The recurrence fixes the chord slopes of log f between integers, log(n−1) on \[n−1, n\] and log n on \[n, n+1\], and increasing slopes trap the slope on \[n, n+x\] between them (our own). This gives (n−1)ˣ ≤ f(n+x)/f(n) ≤ nˣ for 0 &lt; x ≤ 1, and the recurrence writes the middle as f(x) times a known factor, with bounds whose ratio tends to one (our own). The gamma function satisfies all three conditions, so it is the only such function (our own).
 
 **Wikipedia:** [Bohr–Mollerup theorem](https://en.wikipedia.org/wiki/Bohr%E2%80%93Mollerup_theorem). It says: “Therefore, there is no other function defined on x &gt; 0 with all the properties assigned to Γ(x).”
 
@@ -2224,15 +2224,15 @@
 
 ### Ordered secants give convex functions a local Lipschitz bound
 
-**Remember:** Two outer secants bound all the slopes between them.
+**Remember:** Two outer chords bound every slope between them.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26A15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For three increasing inputs, compare the slopes between successive graph points. A function on an interval is convex if the first slope never exceeds the second. This rearranges the usual inequality that places the graph below each chord.
+**Definition.** A function on an interval is convex if its chord slopes increase: for u &lt; v &lt; w, the slope from u to v is at most the slope from v to w.
 
-**Problem.** A convex real function on an open interval is Lipschitz on each closed bounded subinterval inside it. This means one constant bounds every absolute change in value divided by the distance between distinct inputs in that subinterval.
+**Problem.** A convex real function on an open interval is Lipschitz on each closed bounded subinterval inside it. That is, one constant bounds \|f(x) − f(y)\|/\|x − y\| for distinct x, y in that subinterval.
 
-**How the definition helps.** Two outer secants bound every slope in the chosen subinterval by convexity (our own). Choose one extra point beyond each endpoint and join it to its nearer endpoint (our own). The larger absolute outer slope is then a Lipschitz constant for the entire subinterval (our own).
+**How the definition helps.** Pick s &lt; c and t &gt; d in the open interval around \[c, d\] (our own). Increasing slopes place every chord slope inside \[c, d\] between the slope from s to c and the slope from d to t (our own). The larger absolute value of these two slopes is a Lipschitz constant (our own).
 
 **nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “If f : (a, b) → ℝ is convex and u &lt; v &lt; w ∈ (a, b), then (f(u) − f(v))/(u − v) ≤ (f(u) − f(w))/(u − w) ≤ (f(v) − f(w))/(v − w).”
 
@@ -2242,15 +2242,15 @@
 
 ### Ordered slopes make differentiable convex functions continuously differentiable
 
-**Remember:** Trap nearby derivatives between slopes on either side.
+**Remember:** Nearby derivatives are trapped between chords on either side.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A secant slope is the change in function value divided by the change in input between two distinct points. Convexity on an interval means that for any three increasing inputs the first secant slope is at most the second.
+**Definition.** A function on an interval is convex if its chord slopes increase: for u &lt; v &lt; w, the slope from u to v is at most the slope from v to w. So a derivative at x lies between every chord slope ending at x and every chord slope starting at x.
 
 **Problem.** If a real convex function on an open interval is differentiable everywhere, its derivative is continuous there.
 
-**How the definition helps.** Ordered secants bound nearby derivatives between slopes that approach the derivative at the point. Fix u &lt; a &lt; v and take u &lt; x &lt; v. Letting a secant endpoint approach x bounds f′(x) between the slopes from u to x and from x to v. Our own proof first lets x approach a, then brings u and v toward a, using the slope form of the chord inequality.
+**How the definition helps.** Fix u &lt; a &lt; v. For x near a, f′(x) lies between the slope from u to x and the slope from x to v, which tend to the slopes from u to a and from a to v (our own). Letting u and v tend to a squeezes both to f′(a), so f′(x) tends to f′(a) (our own).
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “If a function is differentiable and convex then it is also continuously differentiable.”
 
@@ -2258,15 +2258,15 @@
 
 ### Sums preserve log-convexity
 
-**Remember:** Apply Hölder to the geometric means of the endpoint values.
+**Remember:** Value at a mean stays below the ends' geometric mean.
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26D15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A positive function is log-convex when its logarithm is convex. Equivalently, its value at a weighted mean is no greater than the weighted geometric mean of the endpoint values.
+**Definition.** A positive function f is log-convex if f((1−t)x + ty) ≤ f(x)¹⁻ᵗf(y)ᵗ for 0 ≤ t ≤ 1, so its value at a weighted mean is at most the weighted geometric mean of the end values. This is the same as log f being convex.
 
 **Problem.** Any finite sum of positive log-convex functions on a real interval is log-convex.
 
-**How the definition helps.** Apply the log-convexity bound to each summand and add (our own). For weights t and 1−t strictly between zero and one, Hölder’s inequality with exponents 1/t and 1/(1−t) combines the bounds (our own). The result is the weighted geometric mean of the endpoint sums, with equality automatic at t=0 and t=1 (our own).
+**How the definition helps.** Adding the bounds for each summand gives ∑ fₖ(x)¹⁻ᵗfₖ(y)ᵗ (our own). For 0 &lt; t &lt; 1, Hölder’s inequality with exponents 1/(1−t) and 1/t bounds this by (∑fₖ(x))¹⁻ᵗ(∑fₖ(y))ᵗ, the same bound for the sum (our own).
 
 **Wikipedia:** [Logarithmically convex function](https://en.wikipedia.org/wiki/Logarithmically_convex_function). It says: “log ∘ f is convex”
 
@@ -2278,11 +2278,11 @@
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a differentiable function on an open interval, define convexity by requiring every tangent line to lie below the graph. The usual chord definition requires the graph to lie below every chord.
+**Definition.** For a differentiable function on an open interval, convexity means every tangent line lies below the graph, which agrees with the usual chord definition. The tangent inequalities at x &lt; y trap the chord slope between f′(x) and f′(y).
 
 **Problem.** A differentiable real function on an open interval is convex exactly when its derivative is nondecreasing.
 
-**How the definition helps.** The two tangent inequalities trap the slope between two graph points between their derivatives. In our own reverse argument, the mean value theorem places that slope between the derivatives whenever the derivative is nondecreasing. This gives both tangent inequalities. The geometric work lies in proving that the tangent and chord definitions agree.
+**How the definition helps.** The two tangent inequalities give f′(x) ≤ (f(y)−f(x))/(y−x) ≤ f′(y), so f′ is nondecreasing. Conversely, if f′ is nondecreasing, the mean value theorem puts that chord slope between f′(x) and f′(y), which gives both tangent inequalities (our own). The separate geometric work is to show that the tangent and chord definitions agree.
 
 **Paper or page:** [Tangent Line to Convex Graph](https://proofwiki.org/wiki/Tangent_Line_to_Convex_Graph). It says: “Then all the tangent lines to f are below the graph of f.”
 
@@ -2294,11 +2294,11 @@
 
 *Rules out counterexamples.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a real function f on an open subset of ℝⁿ, the ith partial derivative at x is the limit of (f(x+teᵢ)−f(x))/t as t→0. Here eᵢ is the ith coordinate unit vector. Continuity at a means ∂ᵢf(x) tends to ∂ᵢf(a) as x tends to a.
+**Definition.** The partial derivative ∂ᵢf(x) is the slope of f along the ith coordinate direction at x. The partial derivatives are continuous at a when each ∂ᵢf(x) tends to ∂ᵢf(a) as x tends to a, so slopes on short coordinate segments near a are close to those at a.
 
 **Problem.** If all first partial derivatives exist near a and are continuous at a, the total derivative at a exists. Its matrix consists of those partial derivatives at a.
 
-**How the definition helps.** Continuity keeps slopes on each short coordinate segment close to their values at a. Our own proof splits the step into coordinate segments and applies the one-variable mean value theorem on each. Without continuity, xy/(x²+y²), assigned zero at the origin, has both partial derivatives there but is discontinuous.
+**How the definition helps.** Split the step from a to a + h into coordinate segments; on each, the mean value theorem gives a slope ∂ᵢf at a nearby point, close to ∂ᵢf(a) by continuity (our own). Without continuity, xy/(x²+y²), with value zero at the origin, has both partial derivatives at the origin but is not continuous there.
 
 **Paper or page:** [Diffgeo: Multivar](https://venhance.github.io/napkin/Napkin.pdf). It says: “Let f : U → ℝ and suppose that ∂f/∂eᵢ is defined for each i and moreover is continuous. Then f is differentiable”
 
@@ -2312,11 +2312,11 @@
 
 *True by definition.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A function is continuously differentiable, or C¹, when its total derivative varies continuously as a linear map. In finite dimensions this means continuity of each entry of its matrix.
+**Definition.** A map is continuously differentiable, or C¹, when its derivative matrix depends continuously on the point. In finite dimensions this means that every entry of the matrix is continuous.
 
 **Problem.** The composition of two C¹ maps between open sets in Euclidean spaces is C¹ wherever it is defined.
 
-**How the definition helps.** Viewing the derivative as one continuous matrix replaces a separate continuity proof for each partial derivative. The chain rule gives the matrix product Dg(f(x))Df(x). In our own argument, continuity of f and of matrix multiplication gives continuity of that product.
+**How the definition helps.** The chain rule gives D(g∘f)(x) = Dg(f(x))Df(x), a product of two continuous matrix-valued functions (our own). Matrix multiplication is continuous, so the product is continuous (our own).
 
 **nLab:** [Jacobian](https://ncatlab.org/nlab/show/Jacobian). It says: “The chain rule may be phrased by saying that the Jacobian matrix of the composition”
 
@@ -2330,11 +2330,11 @@
 
 *True by definition.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a map f between Euclidean spaces defined near a, its total derivative at a is a linear map L satisfying a limit condition. As nonzero h tends to zero, ‖f(a+h)−f(a)−Lh‖/‖h‖ tends to zero.
+**Definition.** The total derivative of f at a is the linear map L that approximates f near a, with error f(a+h) − f(a) − Lh small compared with ‖h‖. Precisely, this error divided by ‖h‖ tends to zero as nonzero h tends to zero.
 
 **Problem.** If f is differentiable at a and g at f(a), then g∘f is differentiable at a. Its total derivative is Dg(f(a))∘Df(a).
 
-**How the definition helps.** Using linear approximations makes the chain rule a composition of maps instead of a sum for each coordinate. In our own proof the inner change is bounded by a constant times the original step length. Thus both approximation errors, divided by the original step length, tend to zero.
+**How the definition helps.** Composing the two linear approximations gives a linear approximation of g∘f, so the chain rule is a composition of maps (our own). The inner change f(a+h) − f(a) is at most a constant times ‖h‖, so both errors divided by ‖h‖ tend to zero (our own).
 
 **Paper or page:** [Derivative of Composite Function/Jacobians](https://proofwiki.org/wiki/Derivative_of_Composite_Function/Jacobians). It says: “The Jacobian matrix of a composite function g ∘ f is obtained by multiplying the Jacobian matrices of f and g”
 
@@ -2348,11 +2348,11 @@
 
 *Rules out counterexamples.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A critical point is a point where the first derivative vanishes. It is nondegenerate if its Hessian, the matrix of second partial derivatives, has no zero eigenvalue.
+**Definition.** A critical point, where the first derivative vanishes, is nondegenerate if its Hessian, the matrix of second partial derivatives, has no zero eigenvalue. Then every eigenvalue of the Hessian is strictly positive or strictly negative.
 
 **Problem.** At a nondegenerate critical point of a C² real function, a Hessian with only positive eigenvalues gives a strict local minimum. Only negative eigenvalues give a strict local maximum, and mixed signs give a saddle point.
 
-**How the definition helps.** Excluding zero eigenvalues makes the quadratic Taylor term decide the type of critical point. In our own proof, a definite quadratic term dominates the smaller remainder uniformly in direction. With mixed signs, two eigenvectors give directions of increase and decrease. Our own examples x⁴+y⁴, −x⁴−y⁴ and x⁴−y⁴ give all three outcomes with identical zero Hessians.
+**How the definition helps.** With no zero eigenvalue, the quadratic Taylor term outweighs the remainder, uniformly in direction when it is definite and along eigenvectors of each sign when it is not (our own). The examples x⁴+y⁴, −x⁴−y⁴ and x⁴−y⁴ have the same zero Hessian but give a minimum, a maximum and a saddle (our own).
 
 **Wikipedia:** [Second partial derivative test](https://en.wikipedia.org/wiki/Second_partial_derivative_test). It says: “The following test can be applied at any critical point a for which the Hessian matrix is invertible”
 
@@ -2364,11 +2364,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The second total derivative D²f(a) is the derivative of the map x ↦ Df(x). It acts on two vectors and is linear in each. A C² function has continuous derivatives through order two.
+**Definition.** The second total derivative D²f(a) is the derivative of x ↦ Df(x), a map that takes two vectors and is linear in each. Applied to the same step h twice, it gives the second derivative of t ↦ f(a + th) at t = 0.
 
 **Problem.** For a C² function, the second-order Taylor polynomial is f(a) + Df(a)h + ½D²f(a)(h,h). The error divided by ‖h‖² tends to zero as h tends to zero.
 
-**How the definition helps.** Treating the second derivative as a map of two vectors collects all mixed partial derivatives into one term. Our own proof applies the one-variable Taylor theorem along the line t ↦ a+th. The chain rule inserts h into both inputs of the second derivative. Its continuity gives the stated error bound.
+**How the definition helps.** Taylor’s theorem in one variable along t ↦ a + th writes the error with D²f at points between a and a + h, applied to (h,h) (our own). Continuity of D²f at a makes this error small compared with ‖h‖² (our own).
 
 **nLab:** [Taylor's theorem](https://ncatlab.org/nlab/show/Taylor%27s+theorem). It says: “The Taylor polynomials of a differentiable function approximate it by polynomial functions”
 
@@ -2376,15 +2376,15 @@
 
 ### Uniform difference quotients let a parameter derivative pass through an integral
 
-**Remember:** Control every slice at once before passing the limit through.
+**Remember:** One error bound for every slice lets the limit pass through.
 
 *Makes the theorem clean to state or prove.* MSC 26B05 (Continuity and differentiation questions), 26B15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For fixed x and h ≠ 0, set Qₕ(y) = (f(x+h,y) − f(x,y))/h. These quotients converge uniformly to ∂ₓf when sup<sub>y</sub> \|Qₕ(y) − ∂ₓf(x,y)\| tends to zero as h → 0. The supremum covers the whole integration interval.
+**Definition.** The difference quotients (f(x+h,y) − f(x,y))/h converge uniformly to ∂ₓf(x,y) when one error bound, tending to zero with h, works for every y in the integration interval.
 
 **Problem.** Suppose f and its partial derivative in x are continuous on a closed rectangle. At interior x, the derivative of ∫ f(x,y) dy is ∫ (∂f/∂x)(x,y) dy, over the same fixed y interval.
 
-**How the definition helps.** Uniform convergence bounds the integral error by the interval length times one error bound. In our own proof the mean value theorem expresses each quotient as a partial derivative at a nearby point. Uniform continuity of that derivative on the closed rectangle gives the common bound.
+**How the definition helps.** Uniform convergence lets the limit pass through the integral, because the integral error is at most the interval length times the common bound (our own). The mean value theorem writes each quotient as ∂ₓf at a nearby point, and uniform continuity of ∂ₓf on the closed rectangle gives the common bound (our own).
 
 **Wikipedia:** [Leibniz integral rule](https://en.wikipedia.org/wiki/Leibniz_integral_rule). It says: “so we can take the limit where h approaches zero.”
 
@@ -2394,15 +2394,15 @@
 
 ### A differentiable inverse has the inverse derivative
 
-**Remember:** A bijection and its inverse both have continuous first derivatives.
+**Remember:** Differentiate both ways round, and the derivatives must undo each other.
 
 *Rules out counterexamples.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A C¹ diffeomorphism is a bijection between open sets whose forward and inverse maps both have continuous first derivatives.
+**Definition.** A C¹ diffeomorphism is a bijection between open sets such that both the map and its inverse have continuous first derivatives.
 
 **Problem.** For a C¹ diffeomorphism f the derivative Df(a) is invertible. The derivative of the inverse at f(a) is the inverse linear map of Df(a).
 
-**How the definition helps.** A differentiable inverse lets us apply the chain rule to both inverse identities. Their derivatives show that the two derivative maps undo each other. In our own counterexample, x ↦ x³ is a smooth bijection, but its derivative vanishes at zero and its inverse has no derivative there.
+**How the definition helps.** Both maps are differentiable, so the chain rule applies to the identities f⁻¹∘f = id and f∘f⁻¹ = id, and the two derivatives undo each other. In our own counterexample, x ↦ x³ is a smooth bijection whose derivative vanishes at zero, and its inverse has no derivative there.
 
 **Wikipedia:** [Inverse function theorem](https://en.wikipedia.org/wiki/Inverse_function_theorem). It says: “the existence and differentiability of f⁻¹”
 
@@ -2416,11 +2416,11 @@
 
 *Rules out counterexamples.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables), 26B15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a C¹ coordinate change g, use the absolute Jacobian determinant Jg = \|det Dg\| as the local volume factor. The signed determinant can be negative when g reverses orientation.
+**Definition.** For a C¹ coordinate change g, the local volume factor is the absolute Jacobian Jg = \|det Dg\|. Volume is never negative, while det Dg is negative where g reverses orientation.
 
 **Problem.** Let g be a one-to-one C¹ map between Euclidean spaces of equal dimension, with open domain and invertible derivative everywhere. For continuous f supported on a compact subset of the image, integrating f there gives the domain integral of (f∘g)Jg.
 
-**How the definition helps.** Our own reflection across a coordinate plane would give negative volume with the signed determinant. The absolute value gives the same substitution formula for either orientation. The change-of-variables proof must still pass from exact volume scaling for linear maps to variable derivatives.
+**How the definition helps.** A linear map scales volume by the absolute value of its determinant, whatever its orientation, so one formula serves both orientations. With the signed determinant, our own reflection across a coordinate plane would give negative volume. The proof still has to pass from linear maps to variable derivatives.
 
 **Wikipedia:** [Integration by substitution](https://en.wikipedia.org/wiki/Integration_by_substitution). It says: “the absolute value of the determinant of a matrix equals the volume of the parallelotope spanned by its columns or rows.”
 
@@ -2434,11 +2434,11 @@
 
 *Rules out counterexamples.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The rank of a derivative is the dimension of its image. A map has constant rank near a point when this number stays fixed throughout some neighborhood of the point.
+**Definition.** The rank of a derivative is the dimension of its image. A map has constant rank r near a point when every derivative in some neighborhood has rank exactly r, so no new output direction appears nearby.
 
 **Problem.** A continuously differentiable map of constant rank r locally has the form (x₁,…,xᵣ,0,…,0) after continuously differentiable changes of input and output coordinates.
 
-**How the definition helps.** Our own proof uses the inverse function theorem to make r independent outputs into input coordinates. Constant rank then forces the remaining outputs to depend only on those coordinates, so subtracting them straightens the image. Our own counterexample (x,y) ↦ (x,y²) has rank one at the origin and rank two nearby when y ≠ 0.
+**How the definition helps.** The inverse function theorem makes r independent outputs into input coordinates, and constant rank forces the other outputs to depend only on these (our own). Subtracting that dependence straightens the map (our own). The map (x,y) ↦ (x,y²) has rank one at the origin and rank two where y ≠ 0 (our own).
 
 **Wikipedia:** [Rank (differential topology)](https://en.wikipedia.org/wiki/Rank_%28differential_topology%29). It says: “Constant rank maps have a nice description in terms of local coordinates.”
 
@@ -2452,11 +2452,11 @@
 
 *Rules out counterexamples.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A map is C¹ if its total derivative exists near the point and varies continuously there. This is stronger than having a derivative at each point.
+**Definition.** A map is C¹ near a point if its total derivative exists throughout a neighborhood and varies continuously there. So derivatives at nearby points stay close to the derivative at the point, which is stronger than having a derivative at each point.
 
 **Problem.** A C¹ map between open sets of the same Euclidean dimension has a local C¹ inverse wherever its total derivative is invertible.
 
-**How the definition helps.** Continuity keeps nearby derivatives close to the invertible derivative at the chosen point. After a linear change of coordinates, the contraction mapping theorem gives a unique nearby input for each nearby output. Our own example is (x,y) ↦ (x + 2x² sin(1/x), y), with first component zero at x = 0. Its derivative at the origin is the identity, but sign changes in the first component’s slope prevent local injectivity.
+**How the definition helps.** Nearby derivatives close to the invertible one make a contraction, so the contraction mapping theorem gives each nearby output a unique nearby input. Our own example (x,y) ↦ (x + 2x² sin(1/x), y), with first component zero at x = 0, has the identity as derivative at the origin. Its first component’s slope changes sign arbitrarily close to zero, so it is not injective near the origin.
 
 **Wikipedia:** [Inverse function theorem](https://en.wikipedia.org/wiki/Inverse_function_theorem). It says: “the function should also be invertible near that point”
 
@@ -2466,15 +2466,15 @@
 
 ### Defining smoothness recursively gives the inverse the same regularity
 
-**Remember:** Each derivative lowers the smoothness order by one, down to continuity.
+**Remember:** Cᵏ means the derivative is Cᵏ⁻¹, one order at a time.
 
 *True by definition.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For an integer k greater than one, a map is Cᵏ when its total derivative is Cᵏ⁻¹. A C¹ map has a continuous total derivative.
+**Definition.** A map is C¹ when its total derivative is continuous, and for an integer k &gt; 1 it is Cᵏ when its total derivative, as a map to matrices, is Cᵏ⁻¹.
 
 **Problem.** If a Cᵏ map between open sets of the same Euclidean dimension has an invertible derivative at a point, its local inverse is Cᵏ.
 
-**How the definition helps.** Defining smoothness through the derivative lets us raise the inverse’s regularity one order at a time without expanding higher partial derivatives. The inverse function theorem supplies a C¹ inverse g and the identity Dg = (Df∘g)⁻¹. In our own induction, composition and smooth matrix inversion preserve each available derivative order up to k−1. The recursive definition then gives the next order for g.
+**How the definition helps.** The inverse function theorem gives a C¹ inverse g with Dg = (Df∘g)⁻¹, and matrix inversion is smooth. If g is Cʲ with j &lt; k, the right side is Cʲ, so g is Cʲ⁺¹ by the recursive definition (our own).
 
 **Wikipedia:** [Inverse function theorem](https://en.wikipedia.org/wiki/Inverse_function_theorem). It says: “the same is true for the inverse function.”
 
@@ -2486,11 +2486,11 @@
 
 *Rules out counterexamples.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A gradient is the vector of first partial derivatives. Equality constraints are regular at a point if their gradients there are linearly independent. Lagrange multipliers are coefficients expressing the objective gradient as a linear combination of the constraint gradients.
+**Definition.** Equality constraints are regular at a point when their gradients there are linearly independent. Lagrange multipliers are the coefficients that write the objective’s gradient as a combination of the constraint gradients, so independence makes them unique.
 
 **Problem.** At a local extremum of a C¹ objective under regular C¹ equality constraints, the Lagrange multiplier vector exists and is unique.
 
-**How the definition helps.** Linear independence makes the coefficients in the gradient equation unique. The Lagrange multiplier theorem gives their existence. In our own example, minimize y subject to y = 0 and 2y = 0. Both (1,0) and (0,½) satisfy the multiplier equation.
+**How the definition helps.** Linearly independent vectors give each vector in their span only one set of coefficients, and the Lagrange multiplier theorem gives existence. In our own example, minimize y subject to y = 0 and 2y = 0, where both (1,0) and (0,½) solve the multiplier equation.
 
 **Wikipedia:** [Lagrange multiplier](https://en.wikipedia.org/wiki/Lagrange_multiplier). It says: “The constraint qualification assumption when there are multiple constraints is that the constraint gradients at the relevant point are linearly independent.”
 
@@ -2502,11 +2502,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A tangent vector at a is the velocity of a differentiable curve through a that stays in the level set. A level is regular if the derivative maps onto the output space at every point of that level.
+**Definition.** A tangent vector to a level set at a is the velocity at a of a differentiable curve that stays in the level set, and the level F = c is regular if DF maps onto the output space at each of its points. Since F is constant along such a curve, its velocity v satisfies DF(a)v = 0.
 
 **Problem.** On a regular level F = c of a C¹ map, the tangent vectors at a are exactly the vectors v with DF(a)v = 0.
 
-**How the definition helps.** Taking curve velocities makes the tangent condition an equation obtained by differentiating the constant value along the curve. Our own proof of the converse uses the implicit function theorem to write the level set locally as a graph. Straight lines in the free coordinates then give curves with every velocity that satisfies the equation.
+**How the definition helps.** The chain rule applied to F(γ(t)) = c gives DF(a)v = 0. For the converse, our own proof uses the implicit function theorem to write the level set near a as a graph over free coordinates. Lines in those coordinates give curves with every velocity in the kernel.
 
 **nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “and such that dGₓ is surjective for each x ∈ S.”
 
@@ -2514,15 +2514,15 @@
 
 ### The Lagrangian Hessian gives the second derivative along constraints
 
-**Remember:** Subtract the constraints before taking second derivatives on feasible steps.
+**Remember:** On the constraint, L equals f but has no first-order term.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26B10 (Implicit function theorems, Jacobians, transformations with several variables), 26B05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For equality constraints G(x) = 0 and a multiplier vector λ, the Lagrangian is L(x) = f(x) − λ·G(x).
+**Definition.** For constraints G(x) = 0 and a multiplier vector λ, the Lagrangian L = f − λ·G equals f on the constraint set. Choosing λ with DL(a) = 0 removes its first-order term at a.
 
-**Problem.** Let a be a constrained critical point of C² data, with DG(a) surjective and λ chosen so DL(a) = 0. Along every C² constraint curve through a with velocity v, the second derivative of f there equals D²L(a)\[v,v\]. Positivity on every nonzero tangent gives a strict constrained local minimum.
+**Problem.** Let a be a constrained critical point of C² data, with DG(a) surjective and λ chosen so DL(a) = 0. Along every C² constraint curve through a with velocity v, the second derivative of f is D²L(a)\[v,v\], and positivity on every nonzero tangent gives a strict constrained local minimum.
 
-**How the definition helps.** The Lagrangian equals f on the constraint, and its zero derivative removes the curve’s acceleration from the second derivative formula. Our own argument uses twice continuously differentiable constraint curves. The implicit function theorem supplies local coordinates where the ordinary second derivative test proves the minimum.
+**How the definition helps.** Along a constraint curve γ, f∘γ = L∘γ, whose second derivative is D²L(a)\[v,v\] + DL(a)γ″(0), and the second term vanishes. The implicit function theorem supplies local coordinates on the constraint set, where the ordinary second derivative test proves the minimum.
 
 **nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “there is a function(al) l in Y\* such that x is a critical point of the function F − l∘G”
 
@@ -2536,11 +2536,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26B12 (Calculus of vector functions), 26B05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let A be a linear map between Euclidean spaces. Its operator norm ‖A‖ is the greatest length of Av over vectors v of length at most one.
+**Definition.** The operator norm ‖A‖ of a linear map A between Euclidean spaces is its largest stretch, the greatest length of Av over vectors v of length at most one. So ‖Av‖ ≤ ‖A‖‖v‖ for every v.
 
 **Problem.** Let f be differentiable on an open set containing the segment from a to b. If ‖Df‖ ≤ M on that segment, then ‖f(b) − f(a)‖ ≤ M‖b − a‖.
 
-**How the definition helps.** The operator norm bounds the change in every direction by one number. In our own proof, project onto the direction of f(b) − f(a) when this difference is nonzero. The ordinary mean value theorem bounds the projected change along the segment, which equals the length we need.
+**How the definition helps.** If f(b) ≠ f(a), let u be the unit vector along f(b) − f(a), so t ↦ u·f(a + t(b − a)) changes by ‖f(b) − f(a)‖ on \[0, 1\] (our own). The ordinary mean value theorem bounds that change by ‖Df‖‖b − a‖ ≤ M‖b − a‖ at some point of the segment (our own).
 
 **nLab:** [operator norm](https://ncatlab.org/nlab/show/operator+norm). It says: “the supremum of the norms of A-images of unit-norm vectors v ∈ V”
 
@@ -2548,15 +2548,15 @@
 
 ### Divergence of the gradient puts Green’s identities in product form
 
-**Remember:** Put the product of a function and a gradient into the divergence theorem.
+**Remember:** The Laplacian is divergence of gradient; apply the divergence theorem to u∇v.
 
 *True by definition.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the Laplacian Δv as the divergence of the gradient ∇v. The normal derivative ∂ₙv is the dot product of ∇v with the outward unit normal n.
+**Definition.** Define the Laplacian Δv as the divergence of the gradient ∇v, so the product rule gives div(u∇v) = uΔv + ∇u·∇v (our own). The normal derivative ∂ₙv is ∇v·n, with n the outward unit normal.
 
 **Problem.** Take functions u and v smooth up to the boundary of a smooth bounded region. The boundary integrals of u∂ₙv and u∂ₙv − v∂ₙu equal the interior integrals of uΔv + ∇u·∇v and uΔv − vΔu, respectively.
 
-**How the definition helps.** Defining the Laplacian through divergence puts uΔv inside the product rule for div(u∇v), without expanding second derivatives (our own). The divergence theorem converts this product’s outward flux to its interior integral (our own). Exchanging u and v and subtracting cancels the gradient dot products (our own).
+**How the definition helps.** The divergence theorem turns the interior integral of div(u∇v) into the boundary integral of u∂ₙv (our own). Exchanging u and v and subtracting cancels ∇u·∇v (our own).
 
 **Paper or page:** [Divergence of Product of Scalar Field with Gradient of Scalar Field](https://proofwiki.org/wiki/Divergence_of_Product_of_Scalar_Field_with_Gradient_of_Scalar_Field). It says: “div(U grad W) = U∇²W + (grad U) · (grad W)”
 
@@ -2568,11 +2568,11 @@
 
 *True by definition.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a smooth field F in ℝ³, its flux form β sends vectors u,v to det(F,u,v). Define divergence as the scalar coefficient of dβ relative to the usual volume form instead of summing coordinate derivatives.
+**Definition.** For a smooth field F in ℝ³, the flux form β sends vectors u, v to det(F, u, v), the flux of F through the parallelogram they span. Define div F by dβ = (div F) times the volume form, so by Stokes’s theorem its integral over a region is the outward flux.
 
 **Problem.** Let smooth bounded regions of positive volume lie inside balls centered at p whose radii tend to zero. For a smooth field near p, outward flux divided by volume tends to the divergence at p.
 
-**How the definition helps.** Defining divergence through the flux form makes outward flux equal to the integral of divergence by Stokes’s theorem (our own). Dividing by volume gives an average, which tends to the value at p by continuity (our own). A coordinate calculation identifies this definition with the sum of the three partial derivatives (our own).
+**How the definition helps.** Outward flux divided by volume is therefore the average of div F over the region (our own). The regions shrink to p and div F is continuous, so the average tends to div F(p) (our own). A coordinate calculation shows that this divergence is the usual sum of three partial derivatives (our own).
 
 **nLab:** [divergence](https://ncatlab.org/nlab/show/divergence). It says: “The formula does not depend on the shape of boundaries taken in limiting process”
 
@@ -2584,11 +2584,11 @@
 
 *Rules out counterexamples.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A domain is simply connected if it is path connected and every loop can shrink to a point inside the domain. A potential for a vector field is a function whose gradient is that field.
+**Definition.** A domain is simply connected if it is path connected and every loop in it can shrink to a point inside it. A shrinking loop sweeps out a surface, so Stokes’s theorem makes the circulation of a curl-free field around the loop zero (our own). A potential for a vector field is a function whose gradient is that field.
 
 **Problem.** On a simply connected open subset of ℝ³, every continuously differentiable vector field with zero curl has a potential.
 
-**How the definition helps.** Every loop contracts, and Stokes’s theorem on a smooth contraction makes its circulation zero (our own). Passing from a continuous contraction to a smooth one takes a smoothing theorem (our own). Integrating from a fixed point then gives a path-independent function whose gradient is the field. Off the z-axis, (−y,x,0)/(x² + y²) has zero curl but circulation 2π around the counterclockwise unit circle viewed from above (our own).
+**How the definition helps.** Zero circulation makes line integrals independent of path, so integrating from a fixed point gives a potential. Passing from a continuous contraction to a smooth one takes a smoothing theorem (our own). Off the z-axis, (−y,x,0)/(x² + y²) has zero curl but circulation 2π around the unit circle, counterclockwise as seen from above (our own).
 
 **nLab:** [Poincaré lemma](https://ncatlab.org/nlab/show/Poincar%C3%A9+lemma). It says: “a closed differential 1-form ω is exact, with potential function given at x ∈ X by the integral of ω from any fixed base point along any smooth path to x.”
 
@@ -2600,11 +2600,11 @@
 
 *True by definition.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a smooth field F in oriented Euclidean three-space, let α(u) = F · u. Define curl by dα(u,v) = det(curl F,u,v), where d is the exterior derivative and the determinant measures signed volume.
+**Definition.** For a smooth field F in oriented ℝ³, the 1-form α(u) = F·u measures circulation. Define curl F by dα(u, v) = det(curl F, u, v), so the integral of dα over a surface is the flux of curl F through it.
 
 **Problem.** Take disks centered at p with unit normal n and traverse their boundaries counterclockwise as seen from the tip of n. As their radii shrink, the line integral of F divided by disk area tends to curl F(p) · n.
 
-**How the definition helps.** Defining curl through dα makes Stokes’s boundary integral equal the integral of the normal curl over the disk. Dividing by area gives an average, which tends to the center value by continuity (our own). This avoids expanding the line integral in coordinates once the defining equation has been matched to coordinate curl (our own).
+**How the definition helps.** By Stokes’s theorem, the circulation around a disk’s boundary is the flux of curl F through the disk, the integral of curl F·n. Dividing by area gives the average of curl F·n over the disk, which tends to curl F(p)·n by continuity (our own).
 
 **nLab:** [curl](https://ncatlab.org/nlab/show/curl). It says: “the integral of a vector field v along the boundary of an oriented surface D in X is equal to the integral of the vector field's curl across the surface”
 
@@ -2612,15 +2612,15 @@
 
 ### Equalizing transfers give the derivative test for Schur convexity
 
-**Remember:** Test how the function changes when two entries move together.
+**Remember:** Majorization is a chain of transfers from larger to smaller entries.
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 26D15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** An equalizing transfer subtracts an amount from a larger entry and adds it to a smaller entry, without reversing their order. Say x majorizes y if finitely many such transfers and permutations can turn x into y.
+**Definition.** An equalizing transfer moves an amount from a larger entry to a smaller one without reversing their order. Say x majorizes y if permutations and finitely many such transfers turn x into y.
 
-**Problem.** Let f be symmetric and continuously differentiable on ℝⁿ. Then f respects majorization exactly when xᵢ &gt; xⱼ implies ∂ᵢf(x) ≥ ∂ⱼf(x) for every x, i and j. Respecting majorization means f(x) ≥ f(y) whenever x majorizes y.
+**Problem.** Let f be symmetric and continuously differentiable on ℝⁿ. Then f(x) ≥ f(y) whenever x majorizes y, exactly when xᵢ &gt; xⱼ implies ∂ᵢf(x) ≥ ∂ⱼf(x) for all x, i and j.
 
-**How the definition helps.** During each transfer the derivative along the path is the smaller entry’s partial derivative minus the larger entry’s partial derivative (our own). If this is nonpositive, the function cannot increase, and a tiny transfer gives the converse (our own). The work is to prove the transfer characterization from the usual test with sorted prefix sums (our own).
+**How the definition helps.** Along a transfer from xᵢ to xⱼ, f changes at rate ∂ⱼf − ∂ᵢf, which the condition makes nonpositive, so f cannot increase (our own). A tiny transfer gives the converse (our own). The work is to show that transfers give the usual majorization by sorted prefix sums (our own).
 
 **Wikipedia:** [Schur-convex function](https://en.wikipedia.org/wiki/Schur-convex_function). It says: “(xᵢ − xⱼ)(∂f/∂xᵢ − ∂f/∂xⱼ) ≥ 0”
 
@@ -2632,11 +2632,11 @@
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 49N15. arXiv math.OC, math.CA. Level 2: later undergraduate.
 
-**Definition.** For a real function f on a nonempty set D ⊆ ℝⁿ, its convex conjugate at p ∈ ℝⁿ is f\*(p) = sup<sub>x∈D</sub>(⟨p,x⟩ − f(x)).
+**Definition.** For a real function f on a nonempty set D ⊆ ℝⁿ, the convex conjugate f\*(p) = sup over x ∈ D of (⟨p,x⟩ − f(x)) is the largest gap between the linear function ⟨p,·⟩ and f.
 
 **Problem.** Fenchel’s inequality gives ⟨p,x⟩ ≤ f(x) + f\*(p) for every x ∈ D and p ∈ ℝⁿ. For x,y ≥ 0 and r,s &gt; 1 with 1/r + 1/s = 1, Young’s inequality gives xy ≤ xʳ/r + yˢ/s.
 
-**How the definition helps.** The supremum bounds each term, so rearranging gives Fenchel’s inequality. For f(t) = tʳ/r on t ≥ 0, ty − tʳ/r reaches its maximum at t = yˢ⁻¹ (our own). Its value is yˢ/s, giving Young’s inequality (our own).
+**How the definition helps.** A supremum is at least each of its terms, so ⟨p,x⟩ − f(x) ≤ f\*(p). For f(t) = tʳ/r on t ≥ 0, ty − tʳ/r is largest at t = yˢ⁻¹, with value yˢ/s, which gives Young’s inequality (our own).
 
 **Wikipedia:** [Convex conjugate](https://en.wikipedia.org/wiki/Convex_conjugate). It says: “The proof follows from the definition of convex conjugate:”
 
@@ -2650,11 +2650,11 @@
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 90C25. arXiv cs.LG, math.OC. Level 2: later undergraduate.
 
-**Definition.** A convex potential flow maps x to ∇f(x) for a differentiable strongly convex potential f. Strong convexity means some c &gt; 0 satisfies f(z) ≥ f(x) + ⟨∇f(x),z−x⟩ + c‖z−x‖² for every x and z.
+**Definition.** A convex potential flow is the map x ↦ ∇f(x) for a differentiable strongly convex potential f. Strong convexity means f(z) ≥ f(x) + ⟨∇f(x),z−x⟩ + c‖z−x‖² for a fixed c &gt; 0, so f clears every tangent plane by a quadratic margin. Then each tilted function f(x) − ⟨y,x⟩ grows to infinity and has one minimizer, where ∇f(x) = y (our own).
 
 **Problem.** For a differentiable strongly convex potential on all of Euclidean space, its gradient is one-to-one and onto.
 
-**How the definition helps.** For any y, the tangent bound at zero makes f(x) − ⟨y,x⟩ tend to infinity as ‖x‖ grows (our own). This continuous function attains a minimum, and strong convexity makes the minimizer unique (our own). Its minimizers are exactly the solutions of ∇f(x) = y by differentiable convexity (our own).
+**How the definition helps.** For each y, the tangent bound at zero makes f(x) − ⟨y,x⟩ tend to infinity, so this continuous function has a minimizer, unique by strong convexity (our own). For differentiable convex functions the minimizers are exactly the points with ∇f(x) = y (our own).
 
 **Paper or page:** [Convex Potential Flows: Universal Probability Distributions with Optimal Transport and Convex Optimization](https://arxiv.org/abs/2012.05942v2). It says: “The convexity implies invertibility and allows us to resort to convex optimization to solve the convex conjugate for efficient inversion.”
 
@@ -2668,11 +2668,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 90C25. arXiv math.OC, math.CA. Level 2: later undergraduate.
 
-**Definition.** The convex-analysis indicator ι of a set A takes the value zero on A and +∞ everywhere else.
+**Definition.** The convex-analysis indicator ι of a set A is zero on A and +∞ off A. Adding it to f leaves f unchanged on A and rules out every point outside A.
 
-**Problem.** Let f be convex with values in ℝ ∪ {+∞} and finite somewhere on the convex set A. Minimizing f over A is equivalent to minimizing f + ι over the whole space. Theorems about unconstrained minima then apply under their usual hypotheses.
+**Problem.** Let f be convex with values in ℝ ∪ {+∞} and finite somewhere on the convex set A. Minimizing f over A is equivalent to minimizing f + ι over the whole space, so theorems on unconstrained minima apply under their usual hypotheses.
 
-**How the definition helps.** The sum agrees with f on A and equals +∞ elsewhere, so both problems have the same infimum and minimizers (our own). Convexity of A makes its indicator convex, so the sum is convex (our own).
+**How the definition helps.** The sum agrees with f on A and is +∞ elsewhere, so both problems have the same infimum and minimizers (our own). A convex set has a convex indicator, so the sum is convex (our own).
 
 **Wikipedia:** [Indicator function (convex analysis)](https://en.wikipedia.org/wiki/Indicator_function_%28convex_analysis%29), [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “It is similar to the indicator function used in probability, but assigns +∞ instead of 0 to the outside elements.”
 
@@ -2686,11 +2686,11 @@
 
 *True by definition.* MSC 26D10 (Inequalities involving derivatives and differential and integral operators). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The p-norm of a nonnegative function is the pth root of the integral of its pth power. Define its Hardy average at x &gt; 0 as ∫₀¹ f(tx) dt. The usual formula integrates f from 0 to x and divides by x.
+**Definition.** Write the Hardy average of f at x &gt; 0 as ∫₀¹ f(tx) dt, an average over t of the dilations f(t·), each with p-norm t<sup>(−1/p)</sup> times that of f (our own). By substitution it equals the usual (1/x)∫₀ˣ f (our own).
 
 **Problem.** Let f be nonnegative and measurable on (0, ∞), with finite p-norm for p &gt; 1. Its Hardy average has p-norm at most p/(p − 1) times that of f.
 
-**How the definition helps.** Minkowski bounds the norm of the average by the average of the norms. Scaling the input by t multiplies the norm by t to the power −1/p (our own). The integral of this factor from 0 to 1 is p/(p − 1), and substitution recovers the prefix average (our own).
+**How the definition helps.** Minkowski’s integral inequality bounds the norm of the average by the average of the norms, ∫₀¹ t<sup>(−1/p)</sup> dt times the p-norm of f. That integral is p/(p − 1) for p &gt; 1 (our own).
 
 **Wikipedia:** [Hardy's inequality](https://en.wikipedia.org/wiki/Hardy%27s_inequality). It says: “by Minkowski's integral inequality.”
 
@@ -2700,15 +2700,15 @@
 
 ### Log coordinates give the exact Hardy bound
 
-**Remember:** Weight by exp(s/p) in log coordinates to turn dilations into translations.
+**Remember:** In log coordinates, Hardy's operator averages translates with total weight p/(p−1).
 
 *True by definition. Confidence: medium.* MSC 26D10 (Inequalities involving derivatives and differential and integral operators). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For p &gt; 1, the Hardy operator H averages a nonnegative function f on each interval \[0, x\]. Define its logarithmic coordinates by g(s) = exp(s/p) f(exp(s)). Substitution preserves the p-norm, the pth root of the integral of the absolute pth power.
+**Definition.** For p &gt; 1, the Hardy operator H averages a nonnegative function f over each interval \[0, x\]. In the logarithmic coordinates g(s) = exp(s/p) f(exp(s)), which preserve the p-norm, H becomes an integral of translates of g against a positive weight (our own).
 
 **Problem.** For nonnegative measurable functions of finite p-norm on (0, ∞), the smallest C satisfying ‖Hf‖ₚ ≤ C‖f‖ₚ is p/(p − 1).
 
-**How the definition helps.** In logarithmic coordinates, H integrates translates g(s − u) against the weight exp(−(1 − 1/p)u) for u ≥ 0 (our own). The integral triangle inequality bounds its norm by the total weight, p/(p − 1), since translation preserves norms (our own). For the indicator of \[0, L\], each point of \[M, L\] captures at least the weight from zero to M (our own). Let L tend to infinity first, then M, to attain the bound in the limit (our own).
+**How the definition helps.** In these coordinates, H integrates g(s − u) against exp(−(1 − 1/p)u) over u ≥ 0, a weight of total mass p/(p − 1) (our own). Translation preserves norms, so the integral triangle inequality gives the bound (our own). Taking g to be the indicator of \[0, L\], with L tending to infinity, shows that no smaller constant works (our own).
 
 **Wikipedia:** [Hardy's inequality](https://en.wikipedia.org/wiki/Hardy%27s_inequality). It says: “An integral version of Hardy's inequality states the following”
 
@@ -2722,11 +2722,11 @@
 
 *True by definition.* MSC 26D10 (Inequalities involving derivatives and differential and integral operators). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On \[0, 1\], take p, q &gt; 1 with 1/p + 1/q = 1. For continuous nonnegative h, define its p-norm as the largest ∫₀¹ hz among continuous nonnegative z with q-norm at most one. The q-norm takes the qth root of the integral of the qth power.
+**Definition.** On \[0, 1\], take p, q &gt; 1 with 1/p + 1/q = 1. Define the p-norm of a continuous nonnegative h as its largest pairing ∫₀¹ hz with a continuous nonnegative z of q-norm at most one.
 
 **Problem.** Let F be continuous and nonnegative on \[0, 1\]². The p-norm in x of its y-integral is at most the y-integral of its p-norms in x.
 
-**How the definition helps.** Exchanging the two integrals puts the same test function inside each slice, where its pairing is bounded by that slice’s p-norm (our own). Taking the largest pairing proves the bound (our own). Hölder’s inequality gives one direction of agreement with the usual integral formula (our own). For nonzero h, a test proportional to h raised to p − 1 gives equality (our own).
+**How the definition helps.** For each test z, exchanging the integrals gives the y-integral of each slice’s pairing with z, and each pairing is at most that slice’s p-norm (our own). Taking the largest pairing gives the inequality (our own). Hölder’s inequality, with equality for z proportional to h<sup>(p−1)</sup>, shows that this norm agrees with the usual formula (our own).
 
 **Wikipedia:** [Minkowski inequality](https://en.wikipedia.org/wiki/Minkowski_inequality). It says: “then Minkowski's integral inequality gives the usual Minkowski inequality as a special case”
 
@@ -2740,11 +2740,11 @@
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For positive a and b, define the perspective of f(t) = t log t as P(a, b) = b f(a/b). This treats the ratio and its weight together instead of treating a log ratio term on its own.
+**Definition.** For positive a and b and f(t) = t log t, the perspective P(a, b) = b f(a/b) = a log(a/b) applies f to the ratio a/b and weights the result by b.
 
 **Problem.** For positive lists a and b with totals A and B, the sum of their perspectives P(aᵢ, bᵢ) is at least P(A, B). This gives ∑ aᵢ log(aᵢ/bᵢ) ≥ A log(A/B).
 
-**How the definition helps.** The perspective is convex and scales linearly, so Jensen for pairs gives P(A, B) ≤ ∑ P(aᵢ, bᵢ) (our own). The work goes into proving convexity of the perspective by using the b-coordinates as weights for the ratios (our own).
+**How the definition helps.** Jensen’s inequality for the convex f, with weights bᵢ/B at the points aᵢ/bᵢ, gives f(A/B) ≤ ∑(bᵢ/B)f(aᵢ/bᵢ) (our own). Multiplying by B gives P(A, B) ≤ ∑ P(aᵢ, bᵢ) (our own).
 
 **Wikipedia:** [Log sum inequality](https://en.wikipedia.org/wiki/Log_sum_inequality). It says: “where the inequality follows from Jensen's inequality since bᵢ/b ≥ 0, ∑ᵢ₌₁ⁿ bᵢ/b = 1, and f is convex.”
 
@@ -2752,15 +2752,15 @@
 
 ### A convex set above unit length reverses Minkowski’s inequality
 
-**Remember:** Scale up until the average pth power reaches one when you divide.
+**Remember:** Power mean measures how far x shrinks before leaving a convex set.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Fix 0 &lt; p &lt; 1. Let U contain exactly the nonnegative vectors whose entries raised to p average at least one. Define the power mean of nonzero x as the largest t &gt; 0 with x/t in U, and assign zero mean to the zero vector.
+**Definition.** Fix 0 &lt; p &lt; 1. Let U be the set of nonnegative vectors whose pth powers average at least one, a convex set because t ↦ tᵖ is concave. The power mean of nonzero x is the largest t &gt; 0 with x/t in U, and the zero vector has mean zero.
 
 **Problem.** For 0 &lt; p &lt; 1, the power mean obeys a reverse triangle inequality for nonnegative vectors of the same size. The power mean of their sum is at least the sum of their power means.
 
-**How the definition helps.** Concavity of the pth power makes U convex, so a weighted average of two points in U stays there (our own). Divide each nonzero vector by its mean, and average the results with weights proportional to those means (our own). Solving for t recovers the pth root of the average of the pth powers (our own).
+**How the definition helps.** Dividing nonzero x and y by their means puts both in U, and their average with weights proportional to the means is x + y divided by the sum of the means (our own). Convexity keeps this point in U, so the mean of x + y is at least that sum (our own). Solving for t shows that the mean is the pth root of the average of pth powers (our own).
 
 **Paper or page:** [Minkowski's Inequality for Sums/Index Less than 1](https://proofwiki.org/wiki/Minkowski's_Inequality_for_Sums/Index_Less_than_1). It says: “If p &lt; 1, p ≠ 0, then: (∑ₖ₌₁ⁿ (aₖ + bₖ)ᵖ)¹⁄ᵖ ≥ (∑ₖ₌₁ⁿ aₖᵖ)¹⁄ᵖ + (∑ₖ₌₁ⁿ bₖᵖ)¹⁄ᵖ”
 
@@ -2772,11 +2772,11 @@
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Sort a finite nonnegative list from largest to smallest to form its decreasing rearrangement. Put each sorted entry on its own unit interval in order, then put zero on the rest of the positive real line.
+**Definition.** Turn a finite nonnegative list into a decreasing step function: sort it from largest to smallest, put the kth entry on \[k − 1, k), and put zero beyond the list.
 
 **Problem.** For p &gt; 1, take a nonnegative sequence with finite p-norm, the pth root of the sum of its pth powers. The sequence of averages of its first n entries has p-norm at most p/(p − 1) times the original norm.
 
-**How the definition helps.** At each positive integer, the step function’s integral average equals the corresponding sorted list average. Sorting can only increase each initial sum. The integral average decreases, so its pth power on each unit interval bounds its value at the right endpoint. The integral Hardy inequality now replaces a separate sum estimate, and truncation extends the result to infinite sequences (our own).
+**How the definition helps.** Sorting can only raise each initial sum, and at each integer n the step function’s integral average equals the average of the first n sorted entries (our own). This integral average decreases, so its pth power on \[n − 1, n\] is at least its value at n, and the integral Hardy inequality bounds the sum (our own). Truncation extends the result to infinite sequences (our own).
 
 **Wikipedia:** [Hardy's inequality](https://en.wikipedia.org/wiki/Hardy%27s_inequality). It says: “This follows directly from the integral form”
 
@@ -2790,11 +2790,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let f be nondecreasing on \[0, A\] with f(0) = 0. For 0 ≤ y ≤ f(A), define its generalized inverse g(y) as the infimum of x with f(x) ≥ y. An ordinary inverse requires an x with f(x) = y.
+**Definition.** Let f be nondecreasing on \[0, A\] with f(0) = 0. Its generalized inverse g(y) = inf{x : f(x) ≥ y}, for 0 ≤ y ≤ f(A), is the first point where the graph reaches height y, even when f jumps over y.
 
 **Problem.** For 0 ≤ a ≤ A and 0 ≤ b ≤ f(A), Young’s inequality gives ∫₀ᵃ f(x) dx + ∫₀ᵇ g(y) dy ≥ ab.
 
-**How the definition helps.** Vertical slices below the graph and horizontal slices above it cover the rectangle of sides a and b (our own). The slice widths above the graph are at most g(y) because f is nondecreasing (our own). The generalized inverse covers a step from zero to one, which has no ordinary inverse at height ½ (our own).
+**How the definition helps.** The region under the graph over \[0, a\] and the region of width g(y) at each height y in \[0, b\] together cover the rectangle \[0, a\] × \[0, b\] (our own). This works because f(x) &lt; y forces x ≤ g(y) when f is nondecreasing (our own). For a step from zero to one, g is defined at height ½ although no ordinary inverse is (our own).
 
 **Wikipedia:** [Young's inequality for products](https://en.wikipedia.org/wiki/Young%27s_inequality_for_products). It says: “let f denote a real-valued, continuous and strictly increasing function on \[0, c\] with c &gt; 0 and f(0) = 0. Let f⁻¹ denote the inverse function of f.”
 
@@ -2802,15 +2802,15 @@
 
 ### A supremum over test vectors gives Minkowski’s inequality
 
-**Remember:** A shared test set turns addition into an upper bound.
+**Remember:** A supremum of absolute linear functions is automatically subadditive.
 
 *True by definition. Confidence: medium.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a finite real vector x and p &gt; 1, choose q with 1/p + 1/q = 1. Define the p-norm of x as the largest \|x · z\| among vectors z of the same size with q-norm at most one. The q-norm takes the qth root of the sum of the absolute entries raised to q.
+**Definition.** For p &gt; 1 and q with 1/p + 1/q = 1, define the p-norm of a real vector x as the largest \|x·z\| over vectors z with q-norm at most one. So the p-norm is a supremum of absolute values of linear functions of x.
 
 **Problem.** For real vectors x and y, Minkowski’s inequality bounds the p-norm of x + y by the sum of their p-norms.
 
-**How the definition helps.** Take the supremum of the ordinary triangle inequality for each dot product (our own). Hölder’s inequality gives one side of the equivalence with the pth-root formula (our own). For x ≠ 0, a unit test vector proportional to sign(xᵢ) times \|xᵢ\| to the power p − 1 attains the bound (our own).
+**How the definition helps.** For each test z, \|(x + y)·z\| ≤ \|x·z\| + \|y·z\|, so taking the supremum gives Minkowski’s inequality (our own). Hölder’s inequality and the test z proportional to sign(xᵢ)\|xᵢ\|<sup>(p−1)</sup> show that this norm agrees with the pth-root formula (our own).
 
 **Paper or page:** [Minkowski's Inequality for Sums](https://proofwiki.org/wiki/Minkowski's_Inequality_for_Sums). It says: “If p &gt; 1, then: (∑ₖ₌₁ⁿ (aₖ + bₖ)ᵖ)¹⁄ᵖ ≤ (∑ₖ₌₁ⁿ aₖᵖ)¹⁄ᵖ + (∑ₖ₌₁ⁿ bₖᵖ)¹⁄ᵖ”
 
@@ -2818,15 +2818,15 @@
 
 ### Averaging permuted exponents gives Muirhead’s inequality
 
-**Remember:** Mix permutations of the exponents, then compare permutation averages of their monomials.
+**Remember:** Mixing the exponents can only lower a convex symmetric average.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Say a majorizes b if b is a weighted average of permutations of a, with nonnegative weights totaling one. For fixed positive inputs, raise each input to its assigned exponent and multiply. The symmetric monomial average averages this product over all permutations of the exponents.
+**Definition.** Say a majorizes b if b is a mixture of permutations of a, with nonnegative weights totaling one. For fixed positive inputs x, the symmetric monomial average of an exponent vector a averages the products of each xᵢ raised to a\_σ(i) over all permutations σ, and it is a convex, permutation-invariant function of a.
 
 **Problem.** For fixed positive inputs, the symmetric monomial average for a is at least the one for b whenever a majorizes b.
 
-**How the definition helps.** Each monomial is convex in its exponents because it is the exponential of a linear function of them (our own). Their average is convex and unchanged by permutations, so apply Jensen to the exponent mixture (our own). Rado’s theorem proves equivalence with the usual sorted-sum test (our own).
+**How the definition helps.** Each monomial is the exponential of a linear function of the exponents, so the average is convex and unchanged by permuting them (our own). Jensen’s inequality over the mixture then bounds the value at b by the value at a (our own). Rado’s theorem shows that this majorization agrees with the usual sorted-sum test (our own).
 
 **Wikipedia:** [Muirhead's inequality](https://en.wikipedia.org/wiki/Muirhead%27s_inequality). It says: “where the sum extends over all permutations σ of { 1, ..., n }.”
 
@@ -2836,15 +2836,15 @@
 
 ### Maximal subset sums give the rearrangement inequality
 
-**Remember:** Each prefix of a rearrangement can only lose against the largest entries.
+**Remember:** No k entries can outsum the k largest.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the kth largest-entry sum of a list as the maximum sum over all subsets of k positions. The equivalent sorted-list formula adds its first k entries after sorting from largest to smallest.
+**Definition.** The kth top sum of a list is the largest total of any k of its entries, which is the sum of its k largest entries. So the first k entries of any reordering add up to at most the kth top sum (our own).
 
 **Problem.** Pairing two real lists in the same sorted order maximizes their sum of pairwise products. Pairing them in opposite orders minimizes it.
 
-**How the definition helps.** A prefix of k entries from any reordering has sum at most the sum of the k largest entries (our own). Sort the first list in decreasing order and expand each entry as its last entry plus the subsequent drops (our own). The product sum then weights each second-list prefix sum by a nonnegative drop, with a fixed term from the total (our own). Sorting the second list decreasingly attains every maximum together, and negating that list gives the minimum (our own).
+**How the definition helps.** Sort the first list in decreasing order; the product sum is then the prefix sums of the second list weighted by nonnegative drops, plus a fixed multiple of its total (our own). Each prefix sum is at most the top sum, and sorting the second list decreasingly attains every top sum at once (our own). Negating the second list gives the minimum (our own).
 
 **Wikipedia:** [Rearrangement inequality](https://en.wikipedia.org/wiki/Rearrangement_inequality). It says: “for every permutation σ of 1, …, n.”
 
@@ -2854,15 +2854,15 @@
 
 ### Mixing permutations makes Karamata’s inequality Jensen’s inequality
 
-**Remember:** Mixing permutations cannot increase a sum of convex values.
+**Remember:** Averaging rearrangements of x can only lower a convex sum.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Say x majorizes y if y is a weighted average of coordinate permutations of x, with nonnegative weights summing to one. The sorted-sum definition compares decreasing prefix sums and requires equal totals.
+**Definition.** Say x majorizes y if y is a mixture of rearrangements of x: a weighted average of coordinate permutations of x, with nonnegative weights summing to one.
 
 **Problem.** If x majorizes y, the sum of a convex function’s values on x is at least its sum on y. For a strictly convex function, equality holds exactly when y is a permutation of x.
 
-**How the definition helps.** Apply Jensen at each coordinate and sum, since permuting coordinates leaves the sum unchanged (our own). Strict convexity forces all positive-weight permutations to agree at every coordinate if equality holds (our own). The work moves into Rado’s theorem, which matches the mixture definition with the sorted-sum definition (our own).
+**How the definition helps.** Jensen’s inequality at each coordinate bounds f(yᵢ) by the weighted average of f at the permuted entries, and summing gives the claim because each permutation keeps the sum (our own). For strictly convex f, equality forces all permutations with positive weight to give the same vector, so y is a permutation of x (our own). Rado’s theorem shows this definition agrees with the usual test by sorted prefix sums (our own).
 
 **Wikipedia:** [Majorization](https://en.wikipedia.org/wiki/Majorization). It says: “we have x ≺ y if and only if x is in the convex hull of all vectors obtained by permuting the coordinates of y.”
 
@@ -2873,15 +2873,15 @@
 
 ### Normalized coefficients make Newton’s inequalities survive differentiation
 
-**Remember:** Divide coefficient k by the number of k-element subsets.
+**Remember:** Averaged k-fold products survive differentiation unchanged.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Write the coefficients of a degree n polynomial in descending order, starting at position zero. Normalize the coefficient at position k by dividing by the number of ways to choose k of n objects. For the product of factors t + aᵢ, this averages all products of k distinct entries.
+**Definition.** For the polynomial ∏(t + aᵢ) of degree n, the kth normalized coefficient Sₖ is the coefficient of tⁿ⁻ᵏ divided by (n choose k), the average of all products of k distinct aᵢ. Differentiating and dividing by n keeps S₀, …, Sₙ₋₁ unchanged.
 
 **Problem.** The polynomial is a product of factors t + aᵢ with aᵢ ≥ 0. Each interior normalized coefficient is at least the geometric mean of its two neighbors.
 
-**How the definition helps.** Differentiating and dividing by n preserves every normalized coefficient except the last (our own). Rolle’s theorem keeps the derivative roots real and nonpositive, so induction gives every comparison except the last (our own). For positive entries, reversing the coefficients gives the missing comparison, and a limit covers zeros (our own). For a quadratic the claim follows from its nonnegative discriminant (our own).
+**How the definition helps.** The derivative keeps the normalized coefficients, and by Rolle’s theorem its roots stay real and nonpositive, so induction on n gives every comparison except the last (our own). For positive entries, reversing the coefficients gives the last one, and a limit covers zeros (our own). The base case is a quadratic, whose discriminant is nonnegative (our own).
 
 **Wikipedia:** [Newton's inequalities](https://en.wikipedia.org/wiki/Newton%27s_inequalities). It says: “Then the elementary symmetric means, given by Sₖ = eₖ/(n choose k),”
 
@@ -2891,15 +2891,15 @@
 
 ### Strict convexity identifies equality in Minkowski’s inequality
 
-**Remember:** A straight edge would allow equality in a new direction.
+**Remember:** No flat piece on the unit sphere, so equality needs one direction.
 
 *Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A norm is strictly convex if the midpoint of distinct unit vectors has norm less than one. This rules out line segments on the boundary of the unit ball.
+**Definition.** A norm is strictly convex if its unit sphere contains no line segment: the midpoint of two distinct unit vectors has norm less than one.
 
 **Problem.** Two nonzero vectors in a strictly convex norm attain equality in the triangle inequality exactly when one is a positive multiple of the other. This applies to the p-norm when 1 &lt; p &lt; ∞.
 
-**How the definition helps.** Strict convexity puts any nontrivial weighted average of distinct unit vectors inside the ball (our own). Normalize both vectors, then average with weights proportional to their norms (our own). For the p-norm, strict convexity of the absolute pth power supplies the work (our own). In the 1-norm, (1, 0) and (0, 1) still give equality (our own).
+**How the definition helps.** Normalize both vectors and average the two unit vectors with weights proportional to the norms; strict convexity makes the triangle inequality strict unless the unit vectors coincide (our own). The p-norm for 1 &lt; p &lt; ∞ is strictly convex because the pth power of the absolute value is strictly convex (our own). In the 1-norm, (1, 0) and (0, 1) give equality, so the condition is needed (our own).
 
 **Wikipedia:** [Minkowski inequality](https://en.wikipedia.org/wiki/Minkowski_inequality). It says: “with equality for 1 &lt; p &lt; ∞ if and only if f and g are positively linearly dependent”
 
@@ -2909,15 +2909,15 @@
 
 ### Taking an infimum of linear functions proves Hölder’s inequality
 
-**Remember:** One choice of scale cannot beat the best scale for each pair.
+**Remember:** The best common scale cannot beat separate best scales.
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Choose p, q &gt; 1 with 1/p + 1/q = 1. For nonnegative u and v, define their weighted geometric mean as the greatest lower bound of su/p + tv/q. Allow positive scales s and t with (log s)/p + (log t)/q = 0.
+**Definition.** For p, q &gt; 1 with 1/p + 1/q = 1, the weighted geometric mean of u, v ≥ 0 is the infimum of su/p + tv/q over positive scales s, t with s<sup>(1/p)</sup>·t<sup>(1/q)</sup> = 1. As an infimum of sums, the mean of a sum of pairs is at least the sum of their means (our own).
 
-**Problem.** For equal-length nonnegative lists a and b, ∑ aᵢbᵢ is at most the weighted geometric mean of ∑ aᵢᵖ and ∑ bᵢᑫ. In the usual notation, this bound is the p-norm of a times the q-norm of b.
+**Problem.** For nonnegative lists a and b of equal length, ∑ aᵢbᵢ is at most the weighted geometric mean of ∑ aᵢᵖ and ∑ bᵢᑫ. This bound is the p-norm of a times the q-norm of b.
 
-**How the definition helps.** A single choice of scales gives at least the sum of the separate lower bounds (our own). Apply this to pairs of pth and qth powers, then take the greatest lower bound for their sums (our own). Weighted arithmetic–geometric mean bounds each expression below by the usual product of powers (our own). For positive inputs equality occurs at su = tv, and zero inputs follow by limits (our own).
+**How the definition helps.** Each aᵢbᵢ is the mean of aᵢᵖ and bᵢᑫ, so superadditivity of the infimum gives the bound for the sums (our own). The weighted arithmetic–geometric mean inequality shows that the infimum equals u<sup>(1/p)</sup>·v<sup>(1/q)</sup> (our own).
 
 **Paper or page:** [Hölder's Inequality for Sums/Finite](https://proofwiki.org/wiki/Hölder's_Inequality_for_Sums/Finite). It says: “∑ₖ₌₁ⁿ \|xₖyₖ\| ≤ (∑ₖ₌₁ⁿ \|xₖ\|ᵖ)¹⁄ᵖ (∑ₖ₌₁ⁿ \|yₖ\|ᑫ)¹⁄ᑫ”
 
@@ -2929,11 +2929,11 @@
 
 *Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Sort two equal-length real lists in decreasing order. Say x weakly majorizes y if the first k entries of x sum to at least the corresponding sum of y for every k. Full majorization also requires equal totals.
+**Definition.** Sort two equal-length real lists in decreasing order. Then x majorizes y if each sum of the first k entries of x is at least the matching sum for y, and the two totals are equal.
 
 **Problem.** A list x majorizes y exactly when the sum of f on x is at least the sum on y for every convex f.
 
-**How the definition helps.** The two linear tests f(t) = t and f(t) = −t force equal totals (our own). Tests f(t) = max(t − c, 0) give the prefix inequalities by minimizing the sum of excesses plus kc over c (our own). In the other direction, Rado’s theorem gives an average of permutations, so Jensen applies (our own). Without equal totals, (2, 2) weakly majorizes (1, 1), but f(t) = −t reverses the bound (our own).
+**How the definition helps.** The linear tests f(t) = t and f(t) = −t force equal totals, and the tests max(t − c, 0) give the prefix inequalities (our own). Conversely, Rado’s theorem writes y as an average of permutations of x, so Jensen’s inequality applies (our own). Without equal totals, (2, 2) beats (1, 1) on every prefix, but f(t) = −t reverses the bound (our own).
 
 **Wikipedia:** [Majorization](https://en.wikipedia.org/wiki/Majorization). It says: “For every convex function h: ℝ → ℝ, ∑ᵢ₌₁ᵈ h(xᵢ) ≥ ∑ᵢ₌₁ᵈ h(yᵢ).”
 
@@ -2943,15 +2943,15 @@
 
 ### The adjoint of Hardy averaging gives Copson’s bound
 
-**Remember:** Transposing switches the two exponents without changing the bound.
+**Remember:** Copson’s operator is Hardy’s average turned on its side.
 
 *True by definition. Confidence: medium.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The Hardy matrix averages the first n entries in row n. Define the Copson operator C by interchanging its rows and columns. Thus (Cb)ₙ sums bₖ/k over k ≥ n.
+**Definition.** The Copson operator C is the transpose of Hardy’s averaging matrix, whose row n averages the first n entries. So (Cb)ₙ = ∑ₖ≥ₙ bₖ/k, and ⟨a, Cb⟩ = ⟨Ha, b⟩ for nonnegative sequences a and b.
 
 **Problem.** For q &gt; 1, take a nonnegative sequence b with finite q-norm, the qth root of the sum of its qth powers. The q-norm of Cb is at most q times the q-norm of b.
 
-**How the definition helps.** Transposing moves Hardy averaging onto the test sequence (our own). Choose a unit test in the conjugate p-norm, where 1/p + 1/q = 1 (our own). Hardy’s bound there is q, and Hölder’s attaining test recovers the q-norm of the result (our own). Finite truncation and a limit give the bound for infinite sequences (our own).
+**How the definition helps.** The q-norm of Cb is the supremum of ⟨a, Cb⟩ over nonnegative a of unit p-norm, where 1/p + 1/q = 1, and transposing turns this into ⟨Ha, b⟩ (our own). Hardy’s inequality bounds the p-norm of Ha by q times that of a, and Hölder’s inequality finishes (our own). Truncation and a limit handle infinite sequences (our own).
 
 **Wikipedia:** [Hardy's inequality](https://en.wikipedia.org/wiki/Hardy%27s_inequality). It says: “Its discrete version states that if a₁, a₂, a₃, … is a sequence of non-negative real numbers, then for every real number p &gt; 1 one has”
 
@@ -2965,11 +2965,11 @@
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For equal-length real lists, define the excess above c as the sum of max(xᵢ − c, 0). Say x weakly majorizes y if its excess is at least as large at every threshold c. The usual test compares sums of the k largest entries for every k.
+**Definition.** For equal-length real lists, x weakly majorizes y if at every threshold c the total excess ∑ max(xᵢ − c, 0) of x is at least that of y. This matches the usual test that compares the sums of the k largest entries.
 
 **Problem.** If x weakly majorizes y, the sum of any increasing convex function’s values on x is at least the sum on y.
 
-**How the definition helps.** Every upward change in slope contributes a nonnegative multiple of max(t − c, 0), which the threshold test compares directly (our own). Join the function values at the list entries by straight segments and extend constantly to the left of the smallest entry (our own). This gives a constant plus such terms, including the first slope at the smallest entry (our own). Equivalence with sorted sums follows by placing the threshold between consecutive sorted entries (our own).
+**How the definition helps.** On the list entries, every increasing convex function agrees with a constant plus nonnegative multiples of max(t − c, 0), and the threshold test compares each such term (our own). To see this, join its values at the entries of both lists by straight segments and extend it constantly to the left (our own). Placing the threshold between consecutive sorted entries gives the match with sorted sums (our own).
 
 **Paper or page:** [Integral means of solutions of the one-dimensional Poisson equation with Robin boundary conditions](https://arxiv.org/abs/2312.12535). It says: “Under these assumptions, the following inequality holds φ(x₁) + ⋯ + φ(xₙ) ≤ φ(y₁) + ⋯ + φ(yₙ).”
 
@@ -2981,11 +2981,11 @@
 
 *True by definition.* MSC 26E60 (Means), 26D15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let f and g be continuous and strictly increasing on the same interval. The quasi-arithmetic mean from f applies f to each input, averages with nonnegative weights totaling one, then applies the inverse of f.
+**Definition.** For f continuous and strictly increasing on an interval, the f-mean applies f to each input, takes a weighted average with nonnegative weights summing to one, then applies the inverse of f. So it is the ordinary weighted mean in the coordinate u = f(x).
 
-**Problem.** The f-mean never exceeds the g-mean for any finite weighted list exactly when g composed with the inverse of f is convex.
+**Problem.** Let f and g be continuous and strictly increasing on one interval. The f-mean never exceeds the g-mean for any finite weighted list exactly when g composed with the inverse of f is convex.
 
-**How the definition helps.** Writing the mean with the inverse of f turns the comparison into Jensen’s inequality for g composed with that inverse (our own). Indeed, applying g preserves the inequality, and the inputs in the new coordinates are the f-values (our own). Two-point averages give convexity back, and induction extends the chord inequality to all finite weighted lists (our own).
+**How the definition helps.** In the coordinate u = f(x), applying the increasing g turns the comparison into Jensen’s inequality for h = g composed with the inverse of f (our own). Two-point lists show that the comparison forces h to be convex (our own). Conversely, induction extends the chord inequality of h to all finite weighted lists (our own).
 
 **Wikipedia:** [Quasi-arithmetic mean](https://en.wikipedia.org/wiki/Quasi-arithmetic_mean). It says: “in order to ensure that an average of any finite (or infinite) subset of values within J will always correspond to a value in I.”
 
@@ -2999,11 +2999,11 @@
 
 *True by definition.* MSC 26E60 (Means), 26D15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let Sₖ be the average of all products of k distinct positive entries and set S₀ = 1. Define the kth Maclaurin mean as the geometric mean of the first k successive ratios Sⱼ/Sⱼ₋₁. Extend these means to nonnegative entries by continuity.
+**Definition.** Let Sₖ be the average of all products of k distinct positive entries, with S₀ = 1. The kth Maclaurin mean is the geometric mean of the first k ratios Sⱼ/Sⱼ₋₁, which equals the kth root of Sₖ, a formula that extends it to nonnegative entries.
 
 **Problem.** The Maclaurin means do not increase as k increases. They start at the arithmetic mean and end at the geometric mean.
 
-**How the definition helps.** Newton’s inequalities make the successive ratios nonincreasing, so each new ratio is at most the preceding mean (our own). Multiplying the ratios cancels the intermediate factors and recovers the usual kth root of Sₖ (our own). This root formula also gives the continuous extension to zero entries (our own).
+**How the definition helps.** Newton’s inequalities make the ratios Sⱼ/Sⱼ₋₁ nonincreasing, and a geometric mean cannot rise when a smaller term joins it (our own). The first mean S₁ is the arithmetic mean, and the nth root of Sₙ is the geometric mean (our own). Continuity extends the chain to zero entries (our own).
 
 **Wikipedia:** [Maclaurin's inequality](https://en.wikipedia.org/wiki/Maclaurin%27s_inequality). It says: “Maclaurin's inequality can be proved using Newton's inequalities or a generalised version of Bernoulli's inequality.”
 
@@ -3017,11 +3017,11 @@
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 12J15. arXiv math.CA. Level 3: graduate.
 
-**Definition.** An almost homomorphism f from ℤ to ℤ has \|f(m+n) − f(m) − f(n)\| ≤ C for some C and all integers m,n. A Eudoxus real groups together almost homomorphisms whose differences are bounded on ℤ. Multiply two classes by composing representatives.
+**Definition.** An almost homomorphism is a map f from ℤ to ℤ with f(m + n) − f(m) − f(n) bounded over all integers m, n. A Eudoxus real is a class of almost homomorphisms whose differences are bounded, and two classes multiply by composing representatives.
 
 **Problem.** Multiplication of Eudoxus reals is associative.
 
-**How the definition helps.** Composition of functions is associative, so associativity holds before passing to classes (our own). The nLab notes that one distributive law also holds before passing to classes. Commutativity needs a real proof, because composition is not commutative in general (our own). The work moves to proving that composition respects bounded differences and that the result is the usual real line (our own).
+**How the definition helps.** Composition of functions is associative, so associativity holds already for representatives (our own). The work goes into showing that composition respects bounded differences (our own).
 
 **nLab:** [Eudoxus real number](https://ncatlab.org/nlab/show/Eudoxus+real+number). It says: “becomes a commutative ring whose addition and multiplication are descended from + and ∘ on AL(ℤ).”
 
@@ -3029,15 +3029,15 @@
 
 ### Two-sided Dedekind cuts put a rational between any two ordered reals
 
-**Remember:** An overlap of the two cuts already contains the required rational.
+**Remember:** A rational shared by Uₓ and Lᵧ sits between x and y.
 
 *True by definition.* MSC 26A03 (Foundations: limits and generalizations, elementary topology of the line), 03F60. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A two-sided Dedekind cut consists of nonempty rational sets L,U, respectively downward and upward closed. Every lower member has a larger lower member, and every upper member has a smaller upper member. Every lower member lies below every upper member, and for rationals a &lt; b either a ∈ L or b ∈ U. Define x &lt; y when Uₓ intersects Lᵧ.
+**Definition.** A two-sided Dedekind cut is a pair of nonempty sets of rationals: a downward closed L with no greatest member, and an upward closed U with no least member. Every member of L lies below every member of U, and for rationals a &lt; b, either a ∈ L or b ∈ U. Set x &lt; y when Uₓ and Lᵧ share a rational.
 
 **Problem.** If x &lt; y are real numbers, then a rational number lies strictly between them.
 
-**How the definition helps.** Choose q ∈ Uₓ ∩ Lᵧ. Since Uₓ has no least member, it meets the lower cut of q, giving x &lt; q (our own). Since Lᵧ has no greatest member, it meets the upper cut of q, giving q &lt; y (our own).
+**How the definition helps.** A rational q in both Uₓ and Lᵧ lies between x and y (our own). Since Uₓ has no least member, it contains a rational below q, so x &lt; q; in the same way, q &lt; y (our own).
 
 **nLab:** [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut). It says: “We define x &lt; y to mean that there exists a rational number a such that x &lt; a &lt; y”
 
@@ -3045,15 +3045,15 @@
 
 ### Scaling ratios invert growth indices
 
-**Remember:** Scaling the input by a fixed factor scales the output asymptotically by its power.
+**Remember:** Stretch the input by a, and the output stretches by about a<sup>ρ</sup>.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26A12 (Rate of growth of functions, orders of infinity, slowly varying functions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Let f be positive and measurable on a positive half-line. It varies regularly with index ρ if f(ax)/f(x) tends to a raised to ρ as x tends to infinity, for each a &gt; 0.
+**Definition.** A positive measurable function f on a half-line varies regularly with index ρ if, for every a &gt; 0, the ratio f(ax)/f(x) tends to a<sup>ρ</sup> as x → ∞. So stretching the input by a stretches the output by about a<sup>ρ</sup>.
 
 **Problem.** If a positive, continuous, strictly increasing function varies regularly with index ρ &gt; 0, its inverse varies regularly with index 1/ρ.
 
-**How the definition helps.** Ratios express the inverse law even when a power alone does not describe growth (our own). For b &lt; a<sup>(1/ρ)</sup> &lt; c, regular variation gives f(bx) &lt; a f(x) &lt; f(cx) for large x (our own). Applying the inverse traps the inverse ratio between b and c, and unbounded growth makes this cover every large argument (our own). Bringing b and c together gives the limit (our own).
+**How the definition helps.** Read backwards, the definition says that multiplying the output by a needs an input stretch of about a<sup>(1/ρ)</sup> (our own). For b &lt; a<sup>(1/ρ)</sup> &lt; c, it gives f(bx) &lt; a·f(x) &lt; f(cx) for large x, and f takes every large value, so the inverse ratio lies between b and c (our own). Letting b and c approach a<sup>(1/ρ)</sup> gives the limit (our own).
 
 **Wikipedia:** [Slowly varying function](https://en.wikipedia.org/wiki/Slowly_varying_function). It says: “Similarly, a regularly varying function is a function of a real variable whose behaviour at infinity is similar to the behaviour of a power law function”
 
@@ -3061,15 +3061,15 @@
 
 ### Dini continuity gives pointwise Fourier convergence
 
-**Remember:** Dini continuity controls how much small oscillations can accumulate.
+**Remember:** Small changes near x must shrink fast enough to integrate against 1/r.
 
 *Rules out counterexamples.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 42A20. arXiv math.CA. Level 3: graduate.
 
-**Definition.** For a function f and a point x, let ω(r) be the supremum of \|f(y) − f(x)\| over points within distance r. Dini continuity at x means that ω(r)/r has finite integral near zero.
+**Definition.** Let ω(r) be the supremum of \|f(y) − f(x)\| over points y within distance r of x. Then f is Dini continuous at x if ω(r)/r has finite integral near zero, so the slope (f(x + t) − f(x))/t is integrable near t = 0.
 
 **Problem.** The Fourier series of an integrable periodic function converges to its value at every point where it is Dini continuous.
 
-**How the definition helps.** Our own explanation uses the Dini bound to make the amplitude in the Fourier error integral integrable. The Riemann–Lebesgue lemma then makes its oscillatory integral tend to zero, in our own proof. Ordinary continuity cannot substitute, as du Bois-Reymond’s continuous periodic example has a Fourier series that diverges at a point, in our own comparison.
+**How the definition helps.** The Fourier error at x integrates roughly this slope against sin((n + ½)t), and Dini continuity makes it integrable (our own). The Riemann–Lebesgue lemma then sends the integral to zero (our own). Mere continuity is not enough: du Bois-Reymond gave a continuous periodic function whose Fourier series diverges at a point (our own).
 
 **Wikipedia:** [Dini test](https://en.wikipedia.org/wiki/Dini_test). It says: “Then the Fourier series of f converges at t to f(t).”
 
@@ -3077,15 +3077,15 @@
 
 ### Everywhere approximate continuity gives intermediate values
 
-**Remember:** At every tolerance, the fraction of nearby points exceeding that error vanishes.
+**Remember:** Outside a set of density zero, nearby values stay close.
 
 *Rules out counterexamples.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 26A24. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A measurable real function is approximately continuous at a point if nearby points where it differs by more than any fixed tolerance have density zero. Density zero means that their fraction in shrinking intervals about the point tends to zero.
+**Definition.** A measurable real function f is approximately continuous at x if, for each tolerance ε &gt; 0, the points where it differs from f(x) by more than ε fill a fraction of small intervals about x that tends to zero.
 
 **Problem.** A real function approximately continuous at every point of an open interval takes every value between any two of its values.
 
-**How the definition helps.** In our own proof, approximate continuity everywhere makes each bounded function in this class the derivative of its indefinite integral. Darboux’s theorem says derivatives take every intermediate value. For an unbounded function, first apply arctangent, which is bounded, continuous and strictly increasing. Our own counterexample is the function that is zero on the negative half-line and one elsewhere, which is approximately continuous almost everywhere but skips values.
+**How the definition helps.** Everywhere approximate continuity makes a bounded function the derivative of its indefinite integral, and Darboux’s theorem gives derivatives every intermediate value (our own). For an unbounded function, first apply arctangent, which keeps approximate continuity (our own). A step from zero to one is approximately continuous except at the jump, and it skips values (our own).
 
 **Wikipedia:** [Approximately continuous function](https://en.wikipedia.org/wiki/Approximately_continuous_function). It says: “when f is essentially bounded, its points of approximate continuity coincide with its Lebesgue points.”
 
@@ -3097,11 +3097,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 26E35. arXiv math.CA, math.LO. Level 3: graduate.
 
-**Definition.** In nonstandard analysis, f has a natural extension f\* to the hyperreals. Then f is uniformly continuous on I if f\* sends any two infinitely close points of I\* to infinitely close values. Plain continuity asks this only when one of the two points is a real number.
+**Definition.** In nonstandard analysis, f is uniformly continuous on I if its extension f\* sends any two infinitely close points of I\* to infinitely close values. Plain continuity asks this only when one of the two points is real.
 
 **Problem.** Every continuous function on a closed bounded interval is uniformly continuous.
 
-**How the definition helps.** Each hyperreal point of the extended closed bounded interval is infinitely close to its real standard part in the interval (our own). Infinitely close points x and y share that standard part s, so continuity makes f\*(x) and f\*(y) infinitely close to f(s) (our own). Thus the extensions satisfy the uniform continuity test (our own).
+**How the definition helps.** On a closed bounded interval, every hyperreal point is infinitely close to a real point of the interval, its standard part, so the uniform test reduces to the plain one (our own). Infinitely close x and y share a standard part s, and continuity at s makes f\*(x) and f\*(y) both infinitely close to f(s) (our own).
 
 **Wikipedia:** [Nonstandard calculus](https://en.wikipedia.org/wiki/Nonstandard_calculus), [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “The fact that a continuous function on a compact interval I is necessarily uniformly continuous (the Heine–Cantor theorem) admits a succinct hyperreal proof.”
 
@@ -3113,13 +3113,13 @@
 
 **Remember:** One sequence of continuous functions converges at every point.
 
-*True by definition.* MSC 26A21 (Classification of real functions; Baire classification of sets and functions), 26A15. arXiv math.CA. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 26A21 (Classification of real functions; Baire classification of sets and functions), 26A15. arXiv math.CA. Level 3: graduate.
 
 **Definition.** A real function is of Baire class one if it is the pointwise limit of a sequence of continuous functions.
 
 **Problem.** Every Baire class one real function on the real line is continuous on a dense set of points.
 
-**How the definition helps.** For each ε &gt; 0, closed sets of points with pairwise tail differences ≤ ε cover each closed interval (our own). Baire’s theorem gives a subinterval in one such set, where the limit lies within ε of one continuous term (our own). Shrinking this interval bounds the limit’s oscillation by 3ε, so small oscillation holds on a dense open set (our own). Intersecting these sets for ε = 1/n gives a dense set of continuity points by Baire’s theorem (our own).
+**How the definition helps.** Baire’s theorem finds, in every interval, a subinterval where the tail terms stay within ε of each other, so the limit stays within ε of one continuous term there (our own). Shrinking that subinterval bounds the oscillation of the limit by 3ε, so small oscillation holds on a dense open set (our own). Intersecting these sets for ε = 1/n gives a dense set of continuity points, again by Baire’s theorem (our own).
 
 **Wikipedia:** [Baire function](https://en.wikipedia.org/wiki/Baire_function). It says: “the pointwise limit of a sequence of Baire class 0 functions.”
 
@@ -3131,11 +3131,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 26A27. arXiv math.CA. Level 3: graduate.
 
-**Definition.** At an interior point t, form the quotient (f(t+h) − f(t))/h. Its right and left limits superior and inferior are the four Dini derivatives, with infinite values allowed.
+**Definition.** The four Dini derivatives of f at t are the upper and lower limits of the slope (f(t + h) − f(t))/h as h tends to zero from the right and from the left, with ±∞ allowed. Unlike the derivative, they exist at every interior point.
 
-**Problem.** Almost everywhere on an interval, a real function has a finite derivative or satisfies one of three alternatives. Both upper slopes can be +∞ and both lower slopes −∞. Otherwise one upper slope equals the opposite lower slope finitely, while the remaining upper and lower slopes are +∞ and −∞ respectively.
+**Problem.** Almost everywhere on an interval, a real function has a finite derivative, or both upper Dini derivatives are +∞ and both lower ones are −∞. Otherwise one upper derivative equals the lower one from the opposite side and is finite, while the other upper is +∞ and the other lower is −∞.
 
-**How the definition helps.** The four extended slopes always exist at interior points, even where the ordinary derivative fails (our own). The Denjoy–Young–Saks theorem classifies their possible patterns outside a null set (our own).
+**How the definition helps.** Because the four Dini derivatives exist for every function, the theorem needs no hypothesis on f (our own). The Denjoy–Young–Saks theorem does the work of limiting their patterns outside a null set (our own).
 
 **Wikipedia:** [Dini derivative](https://en.wikipedia.org/wiki/Dini_derivative), [Denjoy–Young–Saks theorem](https://en.wikipedia.org/wiki/Denjoy%E2%80%93Young%E2%80%93Saks_theorem). It says: “The functions are defined in terms of the infimum and supremum in order to make the Dini derivatives as "bullet proof" as possible, so that the Dini derivatives are well-defined for almost all functions”
 
@@ -3149,11 +3149,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems), 28A15. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Let f be locally integrable. Call x a Lebesgue point of f when the average of \|f − f(x)\| over \[x − h, x + h\] tends to zero. This weakens continuity at x, which is the usual condition in the fundamental theorem of calculus.
+**Definition.** A point x is a Lebesgue point of a locally integrable f if the average of \|f − f(x)\| over \[x − h, x + h\] tends to zero as h → 0. This weakens continuity at x but still controls averages of f near x, which is what difference quotients of its integral are (our own).
 
 **Problem.** Let F(x) be the integral of f from a to x. Then F′(x) = f(x) at every Lebesgue point x of f inside the interval.
 
-**How the definition helps.** The definition bounds exactly the error that the difference quotient needs, in our own proof. In our own proof, the difference quotient error is at most twice the average of \|f − f(x)\| over \[x − \|h\|, x + \|h\|\]. The Lebesgue differentiation theorem carries the work, because it shows that almost every point is a Lebesgue point.
+**How the definition helps.** The difference quotient of F at x minus f(x) is an average of f − f(x) over an interval of length \|h\|, at most twice the average of \|f − f(x)\| over \[x − \|h\|, x + \|h\|\] (our own). At a Lebesgue point this tends to zero. The Lebesgue differentiation theorem makes almost every point a Lebesgue point.
 
 **Wikipedia:** [Lebesgue differentiation theorem](https://en.wikipedia.org/wiki/Lebesgue_differentiation_theorem). It says: “The points x for which this is true are called the Lebesgue points of f.”
 
@@ -3161,15 +3161,15 @@
 
 ### Clock changes preserve fractional composition
 
-**Remember:** Integrate against the clock increment and a power of the elapsed clock time.
+**Remember:** A fractional integral on a changed clock is the usual one.
 
 *True by definition.* MSC 26A33 (Fractional derivatives and integrals), 45D05. arXiv math.CA. Level 3: graduate.
 
-**Definition.** On \[a,b\], choose a continuously differentiable clock ψ with ψ′ &gt; 0. For α &gt; 0, integrate f(s) from a to t against the weight ψ′(s)(ψ(t) − ψ(s))ᵅ⁻¹/Γ(α). Here Γ denotes the gamma function.
+**Definition.** Fix a clock ψ on \[a, b\], continuously differentiable with ψ′ &gt; 0. The order-α integral for ψ, with α &gt; 0, integrates f(s) from a to t against ψ′(s)(ψ(t) − ψ(s))ᵅ⁻¹/Γ(α), which is the usual fractional integral in the new time u = ψ(s).
 
 **Problem.** On continuous inputs, applying these integrals successively with positive orders α and β gives the integral of order α + β for the same clock.
 
-**How the definition helps.** The derivative turns integration in s into ordinary integration in the new coordinate ψ(s). In our own derivation, this substitution turns each operator into the usual fractional integral with lower endpoint ψ(a). The ordinary composition law then gives the stated result. Its proof uses the beta integral to combine the two power kernels.
+**How the definition helps.** Substituting u = ψ(s) turns each operator into the usual fractional integral with lower endpoint ψ(a), so the usual composition law transfers (our own). That law combines the two power kernels by the beta integral.
 
 **Wikipedia:** [Riemann–Liouville integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Liouville_integral). It says: “the latter of which is a semigroup property.”
 
@@ -3183,11 +3183,11 @@
 
 *True by definition.* MSC 26A33 (Fractional derivatives and integrals), 44A35. arXiv math.CA. Level 3: graduate.
 
-**Definition.** For α &gt; 0, set k(t) = exp((α − 1) log t)/Γ(α) for t &gt; 0. Here Γ is the gamma function, with Γ(n + 1) = n! for nonnegative integers n. Define integration of order α by integrating k(t − s)f(s) from 0 to t.
+**Definition.** For α &gt; 0, integration of order α convolves f on \[0, t\] with the kernel tᵅ⁻¹/Γ(α), where Γ is the gamma function. Dividing by Γ(α) is what makes two such kernels convolve to the kernel of order α + β.
 
 **Problem.** Take an integrable input on \[0,T\] and positive orders α and β. Integrating successively gives integration of order α + β almost everywhere.
 
-**How the definition helps.** The gamma factors cancel the constant produced by convolving two power kernels (our own). Substituting s = tu reduces that constant to an integral on \[0,1\], called the beta integral (our own). The beta–gamma identity evaluates it as Γ(α)Γ(β)/Γ(α + β) (our own). At integer orders the same rule recovers repeated ordinary integration (our own).
+**How the definition helps.** Convolving the two kernels gives tᵅ⁺ᵝ⁻¹ times the beta integral Γ(α)Γ(β)/Γ(α + β), so the gamma factors leave exactly the kernel of order α + β (our own). Substituting s = tu reduces the convolution to this integral on \[0, 1\] (our own).
 
 **Paper or page:** [An extension of the Cartwright-McMullen theorem in fractional calculus for the smooth Stieltjes case](https://arxiv.org/abs/2309.07148v1). It says: “The Index Law holds. That is, $J<sub>a<sup>+</sub><sup>\\alpha</sup> </sup> \\circ J<sub>a<sup>+</sub><sup>\\beta</sup> </sup>=J<sub>a<sup>+</sub><sup>\\alpha</sup> +\\beta </sup>$ for all $\\alpha ,\\beta &gt; 0$.”
 
@@ -3199,11 +3199,11 @@
 
 *True by definition.* MSC 26A33 (Fractional derivatives and integrals), 45P05. arXiv math.CA, math.FA. Level 3: graduate.
 
-**Definition.** On L²(\[0,1\]), seek an operator whose square is integration from zero to x. Define half integration by integrating f(s)/√(π(x − s)) from zero to x.
+**Definition.** On L²(\[0, 1\]), half integration integrates f(s)/√(π(x − s)) from zero to x. Its kernel is chosen so that convolving it with itself gives the constant one, the kernel of ordinary integration.
 
 **Problem.** Applying this operator twice gives ordinary integration from zero to x.
 
-**How the definition helps.** Choosing a convolution kernel turns the operator square into the convolution square of one function. In our own proof, interchange the two integrals and rescale the inner interval to \[0,1\]. Its kernel integral becomes ∫₀¹ ds/√(s(1 − s)) divided by π, which equals one. The quoted classification of all square roots requires a separate theorem.
+**How the definition helps.** Applying the operator twice convolves its kernel with itself, after exchanging the two integrals (our own). Rescaling the inner interval to \[0, 1\] gives (1/π)∫₀¹ ds/√(s(1 − s)) = 1 (our own). That this operator and its negative are the only square roots of integration is a separate theorem.
 
 **Wikipedia:** [Riemann–Liouville integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Liouville_integral). It says: “the latter of which is a semigroup property.”
 
@@ -3217,11 +3217,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A39 (Denjoy and Perron integrals, other special integrals), 28A25. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A free partition divides \[a,b\] into intervals Iⱼ with tags tⱼ anywhere in \[a,b\]. For a positive function δ on \[a,b\], fineness means \|x−tⱼ\| &lt; δ(tⱼ) for every j and x ∈ Iⱼ. The McShane integral is S if every ε &gt; 0 admits δ making all fine sums ∑ⱼ f(tⱼ)·length(Iⱼ) differ from S by less than ε.
+**Definition.** The McShane integral is a gauge integral with free tags: each tag tⱼ may lie anywhere in \[a, b\], not only in its interval Iⱼ. For a positive gauge δ, a partition is fine if each Iⱼ lies within δ(tⱼ) of tⱼ. The integral is S if, for every ε &gt; 0, some δ makes every fine sum ∑ f(tⱼ)·length(Iⱼ) differ from S by less than ε.
 
 **Problem.** A function on \[a, b\] is McShane integrable exactly when it is Lebesgue integrable, with the same integral.
 
-**How the definition helps.** Free tags let one gauge sum formula describe all Lebesgue integrable real functions (our own). The McShane–Lebesgue equivalence theorem proves that both integrability tests agree and give the same value (our own).
+**How the definition helps.** Freeing the tags forces absolute integrability, which is what the Lebesgue integral requires (our own). The McShane–Lebesgue equivalence theorem proves that the two integrals agree (our own).
 
 **Wikipedia:** [McShane integral](https://en.wikipedia.org/wiki/McShane_integral). It says: “The fact that the tags are allowed to be outside the subintervals is why the partition is called free. It's also the only difference between the definitions of the Henstock-Kurzweil integral and the McShane integral.”
 
@@ -3235,11 +3235,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type), 28C05. arXiv math.CA, math.FA. Level 3: graduate.
 
-**Definition.** For a partition a = x₀ &lt; ⋯ &lt; xₙ = b, choose each tag cᵢ in \[xᵢ₋₁,xᵢ\]. The Riemann–Stieltjes integral is the common limit of ∑ᵢ f(cᵢ)(g(xᵢ) − g(xᵢ₋₁)) as the largest interval length tends to zero, over all tags and partitions.
+**Definition.** The Riemann–Stieltjes integral of f against g weighs each piece \[xᵢ₋₁, xᵢ\] of a partition by g(xᵢ) − g(xᵢ₋₁) instead of its length. It is the limit of ∑ f(cᵢ)(g(xᵢ) − g(xᵢ₋₁)), for any tags cᵢ in the pieces, as the longest piece shrinks to zero.
 
 **Problem.** Every continuous linear functional A on real C\[0,1\] with its supremum norm satisfies A(f) = ∫ f dα for some α of bounded variation.
 
-**How the definition helps.** Stieltjes increments represent point masses and distributed mass in one formula (our own). A unit jump at ½ gives point evaluation there (our own). Riesz’s representation theorem supplies an integrator of bounded variation for each continuous linear functional.
+**How the definition helps.** Increments of g can encode point masses, through jumps, and spread-out mass in one formula (our own). Riesz’s representation theorem supplies an integrator α of bounded variation for each continuous linear functional.
 
 **Wikipedia:** [Riesz–Markov–Kakutani representation theorem](https://en.wikipedia.org/wiki/Riesz%E2%80%93Markov%E2%80%93Kakutani_representation_theorem), [Riemann–Stieltjes integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral). It says: “The Riemann–Stieltjes integral appears in the original formulation of F. Riesz's theorem which represents the dual space of the Banach space C\[a,b\] of continuous functions in an interval \[a,b\] as Riemann–Stieltjes integrals against functions of bounded variation.”
 
@@ -3249,15 +3249,15 @@
 
 ### A variation clock gives compactness
 
-**Remember:** Charge each change in position to the new clock.
+**Remember:** Count length as time, and every curve moves at bounded speed.
 
 *Makes the theorem clean to state or prove.* MSC 26A45 (Functions of bounded variation, generalizations), 26B12. arXiv math.CA. Level 3: graduate.
 
-**Definition.** For a continuous curve in Euclidean space, accumulated variation is its length up to the current time. On a fixed nondegenerate compact interval, add elapsed time to accumulated variation, then divide by the final sum. For a curve of finite length, this gives a continuous strictly increasing clock from zero to one.
+**Definition.** For a continuous curve of finite length on a fixed interval \[a, b\] with a &lt; b, the new clock at time t is (t − a plus the length up to t), divided by (b − a plus the total length). This clock rises strictly from zero to one, and in it the curve is Lipschitz with constant b − a plus its length (our own).
 
 **Problem.** Suppose a sequence of such curves has bounded lengths and bounded starting points. In the new clock, some subsequence converges uniformly.
 
-**How the definition helps.** Each change in position is at most the length traveled, so the normalized clocks give a common bound on speed (our own). Bounded starting points and lengths keep every curve in one compact ball (our own). The Arzelà–Ascoli theorem now gives a uniformly convergent subsequence (our own). The cited proposition identifies a particular limit under stronger convergence hypotheses.
+**How the definition helps.** Bounded lengths give the reparametrized curves a common Lipschitz constant, and bounded starting points keep them in one compact ball (our own). The Arzelà–Ascoli theorem then gives a uniformly convergent subsequence (our own).
 
 **Paper or page:** [On the relaxation of polyconvex functionals with linear growth under strict convergence in BV](https://arxiv.org/abs/2508.11041v1). It says: “are Lipschitz continuous with uniformly bounded Lipschitz constants”
 
@@ -3265,15 +3265,15 @@
 
 ### Continuity removes exponential jump terms
 
-**Remember:** No jumps means small increments make the Taylor errors vanish.
+**Remember:** A continuous f has no jumps, so df has no point masses.
 
 *Rules out counterexamples.* MSC 26A45 (Functions of bounded variation, generalizations), 26A24. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A real function has locally bounded variation if sums of absolute increments stay bounded over partitions of each compact interval. Its signed Stieltjes measure df assigns f(b) − f(a) to (a,b\] when f is right-continuous. A jump contributes its size as mass at one point.
+**Definition.** A function of locally bounded variation, one whose sums of absolute increments stay bounded on each compact interval, has a signed Stieltjes measure df. For right-continuous f, df gives (a, b\] the mass f(b) − f(a). A jump puts mass at one point, so continuity means df has no point masses.
 
 **Problem.** For continuous f of locally bounded variation, d(exp f) = exp(f) df.
 
-**How the definition helps.** Continuity makes the largest increment on a fine partition small, so the linear Taylor terms give the entire measure (our own). On a compact interval, the total error is bounded by a constant times that increment bound times total variation (our own). For a right-continuous jump from zero to one, the two sides assign masses e − 1 and e respectively (our own).
+**How the definition helps.** Without jumps, every increment on a fine partition is small, so each change of exp(f) equals exp(f) times the change of f up to an error quadratic in the increment (our own). The total error is at most a constant times the largest increment times the total variation, which tends to zero (our own). For a right-continuous jump from zero to one, the two sides give masses e − 1 and e (our own).
 
 **Paper or page:** [Semiclassical estimates for measure potentials on the real line](https://arxiv.org/abs/2303.17722v2). It says: “Then, as measures on a bounded Borel set of ℝ, d(eᶠ) = eᶠ df.”
 
@@ -3285,11 +3285,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A46 (Absolutely continuous real functions in one variable), 26A42. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A function f on \[a,b\] is absolutely continuous if some Lebesgue integrable g satisfies f(x) = f(a) + ∫ₐˣ g(t) dt throughout \[a,b\].
+**Definition.** A function f on \[a, b\] is absolutely continuous if it is an indefinite integral: f(x) = f(a) + ∫ₐˣ g(t) dt on \[a, b\] for some Lebesgue integrable g.
 
 **Problem.** If f is absolutely continuous on \[a, b\] and f′ = 0 almost everywhere, then f is constant. Almost everywhere means outside a set of length zero.
 
-**How the definition helps.** Lebesgue differentiation gives f′ = g almost everywhere (our own). Since f′ vanishes almost everywhere, every integral of g vanishes, so f(x) = f(a) throughout (our own). The fundamental theorem for the Lebesgue integral identifies this definition with the usual interval condition.
+**How the definition helps.** The Lebesgue differentiation theorem gives g = f′ = 0 almost everywhere, so every integral of g vanishes and f(x) = f(a) (our own). The fundamental theorem for the Lebesgue integral shows that this definition agrees with the usual one by sums over small intervals.
 
 **nLab:** [absolutely continuous function](https://ncatlab.org/nlab/show/absolutely+continuous+function). It says: “That the next definition is equivalent is the fundamental theorem of calculus for the Lebesgue integral on the real line.”
 
@@ -3301,11 +3301,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A46 (Absolutely continuous real functions in one variable), 26A36. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A function f on \[a,b\] is absolutely continuous if some Lebesgue integrable g satisfies f(x) = f(a) + ∫ₐˣ g(t) dt throughout \[a,b\].
+**Definition.** A function f on \[a, b\] is absolutely continuous if it is an indefinite integral: f(x) = f(a) + ∫ₐˣ g(t) dt on \[a, b\] for some Lebesgue integrable g.
 
 **Problem.** An absolutely continuous function f on \[a, b\] is differentiable almost everywhere, and f(x) = f(a) + ∫ₐˣ f′ for all x.
 
-**How the definition helps.** With the integral definition, a density g is given, and only g = f′ almost everywhere remains, in our own account. The Lebesgue differentiation theorem supplies that step. The main work moves into the theorem that the integral form agrees with the interval definition. Wikipedia lists the two as equivalent conditions.
+**How the definition helps.** The definition already supplies a density g, so only g = f′ almost everywhere remains, and the Lebesgue differentiation theorem gives it (our own). The real work moves into showing that this integral form agrees with the usual definition by sums over small intervals, which Wikipedia lists as equivalent.
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “there exists a Lebesgue integrable function g on \[a,b\] such that f(x) = f(a) + ∫ₐˣ g(t) dt for all x in \[a,b\].”
 
@@ -3317,11 +3317,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26A46 (Absolutely continuous real functions in one variable). arXiv math.CA. Level 3: graduate.
 
-**Definition.** On (a,b), an integrable g is the weak derivative of integrable f if ∫fφ′ = −∫gφ for every smooth φ compactly supported in (a,b). An absolutely continuous representative agrees with f almost everywhere and is absolutely continuous.
+**Definition.** On (a, b), an integrable g is the weak derivative of an integrable f if ∫fφ′ = −∫gφ for every smooth φ with compact support in (a, b). This is integration by parts, so f minus the indefinite integral of g has weak derivative zero (our own).
 
 **Problem.** An integrable real function with an integrable weak derivative on a bounded interval has a unique absolutely continuous representative on the closed interval.
 
-**How the definition helps.** The indefinite integral of g has weak derivative g, so subtracting it from f leaves a function with weak derivative zero (our own). Such a function equals a constant almost everywhere on an interval (our own). Adding that constant to the integral gives an absolutely continuous representative on \[a,b\] (our own). Continuity forces two such representatives agreeing almost everywhere to agree everywhere (our own).
+**How the definition helps.** A function with weak derivative zero on an interval is constant almost everywhere, so f agrees almost everywhere with a constant plus the indefinite integral of g (our own). That function is absolutely continuous on \[a, b\], and continuity makes it the only such representative (our own).
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “it coincides almost everywhere with an absolutely continuous function”
 
@@ -3333,11 +3333,11 @@
 
 *Rules out counterexamples.* MSC 26A48 (Monotonic functions, generalizations), 26E05. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A smooth real function is absolutely monotone on an interval if it and every derivative are nonnegative there.
+**Definition.** A smooth real function is absolutely monotone on an interval if it and all its derivatives are nonnegative there. Then every Taylor partial sum at x is at most the value f(y) at any point y to the right of x (our own).
 
 **Problem.** Every absolutely monotone function on an open interval is real analytic there. That means its Taylor series equals the function near each point.
 
-**How the definition helps.** In our own explanation, the derivative signs bound Taylor coefficients using the function value at a point farther right. Bernstein’s theorem uses this control to show that the Taylor remainder tends to zero. Our own counterexample equals exp(−1/x) for x &gt; 0 and zero elsewhere. It is smooth and nondecreasing, yet its Taylor series at zero vanishes while the function is positive immediately to the right.
+**How the definition helps.** These bounds make the Taylor remainder tend to zero, which is Bernstein’s theorem. Our own counterexample is exp(−1/x) for x &gt; 0 and zero elsewhere: it is smooth and nondecreasing, but its Taylor series at zero vanishes.
 
 **Wikipedia:** [Absolutely and completely monotonic functions and sequences](https://en.wikipedia.org/wiki/Absolutely_and_completely_monotonic_functions_and_sequences). It says: “A function that is absolutely monotonic on the open interval (a,b) can be extended to an analytic function on the open disk”
 
@@ -3349,11 +3349,11 @@
 
 *True by definition. Confidence: medium.* MSC 26A48 (Monotonic functions, generalizations), 44A10. arXiv math.CA. Level 3: graduate.
 
-**Definition.** In the Laplace representation, f is completely monotone if one positive Borel measure μ on \[0,∞) satisfies f(x) = ∫ exp(−xt) dμ(t) for every x&gt;0. Each integral must be finite.
+**Definition.** Call f completely monotone if f(x) = ∫ exp(−xt) dμ(t) for one positive Borel measure μ on \[0, ∞), with the integral finite for every x &gt; 0. So f is a mixture of the decaying exponentials exp(−xt), whose nth derivatives have sign (−1)ⁿ.
 
 **Problem.** Let f be the Laplace transform of a positive measure, finite for every x &gt; 0. Then f is smooth, and (−1)ⁿf⁽ⁿ⁾(x) ≥ 0 for every n and every x &gt; 0.
 
-**How the definition helps.** Differentiation gives (−1)ⁿf⁽ⁿ⁾(x) = ∫ tⁿexp(−xt) dμ(t) ≥ 0 (our own). Near each x₀ &gt; 0, a constant times exp(−x₀t/2) dominates each fixed derivative integrand and is integrable (our own). Dominated convergence therefore justifies repeated differentiation (our own). Bernstein’s theorem gives the converse representation (our own).
+**How the definition helps.** Differentiating under the integral gives (−1)ⁿf⁽ⁿ⁾(x) = ∫ tⁿexp(−xt) dμ(t) ≥ 0 (our own). Near x₀ &gt; 0, a constant times exp(−x₀t/2) dominates each integrand, so dominated convergence justifies this (our own). Bernstein’s theorem gives the converse (our own).
 
 **Wikipedia:** [Bernstein's theorem on monotone functions](https://en.wikipedia.org/wiki/Bernstein%27s_theorem_on_monotone_functions). It says: “it is the Laplace transform of a positive Borel measure”
 
@@ -3367,11 +3367,11 @@
 
 *True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations), 28A25. arXiv math.CA. Level 3: graduate.
 
-**Definition.** A finite convex function on the whole line is the supremum of countably many affine minorants. These are straight lines that lie below the function. This describes the same class as requiring the function to lie below each chord between two of its points.
+**Definition.** A finite convex function on the line is the supremum of countably many affine minorants, straight lines that lie below it. This is equivalent to the usual chord condition.
 
 **Problem.** Let X and f(X) be integrable, with f finite and convex on the line. Given the same information, f of the conditional mean of X is at most the conditional mean of f(X), with probability one.
 
-**How the definition helps.** A countable family of affine minorants gives simultaneous lower bounds outside one null set (our own). For each minorant ℓ, conditional averaging gives ℓ(E\[X \| 𝒢\]) = E\[ℓ(X) \| 𝒢\] ≤ E\[f(X) \| 𝒢\] almost surely (our own). Taking the supremum gives the claim (our own). Supporting lines at rational points suffice by continuity and local bounds on their slopes (our own).
+**How the definition helps.** Conditional expectation commutes with each affine minorant ℓ, so ℓ(E\[X \| 𝒢\]) = E\[ℓ(X) \| 𝒢\] ≤ E\[f(X) \| 𝒢\] almost surely (our own). With countably many ℓ, the null sets combine into one, and taking the supremum gives the claim (our own). Supporting lines at rational points suffice, by continuity of f and local bounds on their slopes (our own).
 
 **Paper or page:** [Conditional Jensen's Inequality](https://proofwiki.org/wiki/Conditional_Jensen's_Inequality). It says: “f(E\[X \| 𝒢\]) ≤ E\[f(X) \| 𝒢\]”
 
@@ -3383,11 +3383,11 @@
 
 *Rules out counterexamples.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** A first-order Whitney jet assigns a value f(x) and a continuous slope vector p(x) on a closed Euclidean set. On each compact subset, the ratio \|f(y) − f(x) − p(x)·(y−x)\|/‖y−x‖ must tend uniformly to zero as distinct points approach each other.
+**Definition.** A first-order Whitney jet on a closed set in Euclidean space gives each point a value f(x) and a continuous slope vector p(x) that agree to first order. That is, on each compact subset, \|f(y) − f(x) − p(x)·(y − x)\|/‖y − x‖ tends to zero uniformly as distinct points approach each other.
 
 **Problem.** A first-order Whitney jet on a closed subset of Euclidean space extends to a continuously differentiable function with the prescribed values and slopes.
 
-**How the definition helps.** Taylor compatibility rules out assigning value zero and slope one at every point of {0, 1, ½, ⅓, …} (our own). The slope at zero would have to be zero along that sequence (our own). Whitney’s extension theorem proves sufficiency by gluing local Taylor polynomials off the closed set (our own).
+**How the definition helps.** Whitney’s extension theorem shows that this compatibility is all an extension needs, by gluing local Taylor polynomials off the closed set (our own). It rules out, for example, value zero and slope one on {0, 1, ½, ⅓, …}, since along that sequence the slope at zero would have to be zero (our own).
 
 **Wikipedia:** [Whitney extension theorem](https://en.wikipedia.org/wiki/Whitney_extension_theorem). It says: “it is possible to extend a given function of A in such a way as to have prescribed derivatives”
 
@@ -3401,11 +3401,11 @@
 
 *Rules out counterexamples.* MSC 26B15 (Integration of real functions of several variables: length, area, volume), 26B05. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Lusin’s property N means that f sends every Lebesgue null set to a Lebesgue null set. An approximate derivative at x is a linear map A satisfying f(x+h)−f(x)−Ah = o(‖h‖) along a measurable set of increments of density one at zero.
+**Definition.** A map f has Lusin’s property N if it sends every Lebesgue null set to a null set. An approximate derivative at x is a linear map A with f(x + h) − f(x) − Ah = o(‖h‖) as h → 0 through a set of density one at zero.
 
-**Problem.** Let f map an open Euclidean set into Euclidean space of the same dimension. Assume f has an approximate derivative almost everywhere and satisfies property N. The integral of the absolute determinant of that derivative equals the integral counting preimages at each target point.
+**Problem.** Let f map an open subset of ℝⁿ to ℝⁿ, with an approximate derivative almost everywhere and property N. Then the integral of the absolute determinant of that derivative equals the integral, over target points, of the number of preimages.
 
-**How the definition helps.** Property N makes the image of the exceptional null set invisible to the preimage integral (our own). Federer’s area theorem supplies the formula on the differentiable pieces (our own). The Cantor function has derivative zero almost everywhere but maps the null Cantor set onto the unit interval (our own).
+**How the definition helps.** Property N stops the null set where f has no approximate derivative from carrying any image area, so only the differentiable pieces count (our own). Federer’s area theorem gives the formula on those pieces (our own). The Cantor function lacks property N: it has derivative zero almost everywhere but maps the null Cantor set onto the unit interval (our own).
 
 **Paper or page:** [Local L¹-convergence of Jacobians of Sobolev homeomorphisms via area formula](https://arxiv.org/abs/2501.11106v2). It says: “If f satisfies the Lusin condition (N), then for any measurable function”
 
@@ -3417,11 +3417,11 @@
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 62C05. arXiv cs.LG, stat.ML. Level 3: graduate.
 
-**Definition.** Let F be differentiable and strictly convex on an open convex set. Its Bregman divergence is D(s‖x) = F(s) − F(x) − ⟨∇F(x),s−x⟩. For a random second argument X, its center x\* satisfies ∇F(x\*) = E\[∇F(X)\] when such a point exists.
+**Definition.** For a differentiable, strictly convex F on an open convex set, the Bregman divergence D(s‖x) = F(s) − F(x) − ⟨∇F(x), s − x⟩ is the gap between F and its tangent at x. The center of a random X is the point x\* whose gradient is the mean gradient, ∇F(x\*) = E\[∇F(X)\], when such a point exists.
 
 **Problem.** If x\* exists and the expectations are finite, then E\[D(s‖X)\] = D(s‖x\*) + E\[D(x\*‖X)\] for every s. This gives a bias–variance decomposition for squared error and for the log loss of exponential families.
 
-**How the definition helps.** Subtracting D(x\*‖X) from D(s‖X) cancels F(X) (our own). The remaining expression is F(s) − F(x\*) − ⟨∇F(X),s−x\*⟩ (our own). Taking expectations replaces the random gradient by ∇F(x\*), giving D(s‖x\*) (our own).
+**How the definition helps.** The difference D(s‖X) − D(x\*‖X) equals F(s) − F(x\*) − ⟨∇F(X), s − x\*⟩, which is affine in ∇F(X) (our own). Taking expectations replaces ∇F(X) by its mean ∇F(x\*), which gives exactly D(s‖x\*) (our own).
 
 **Paper or page:** [A Generalized Bias-Variance Decomposition for Bregman Divergences](https://arxiv.org/abs/2511.08789v1). It says: “Let F : 𝒮 → ℝ be a strictly convex differentiable function, and X be a random variable on 𝒮. Then for any point s ∈ 𝒮, the expected Bregman divergences have the following exact decomposition: 𝔼\[D<sub>F</sub>\[s\|\|X\]\] = D<sub>F</sub>\[s\|\|x\*\] + 𝔼\[D<sub>F</sub>\[x\*\|\|X\]\], where x\* = argmin<sub>z</sub> 𝔼\[D<sub>F</sub>\[z\|\|X\]\]”
 
@@ -3435,11 +3435,11 @@
 
 *Rules out counterexamples.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 49N15. arXiv math.OC, math.CA. Level 3: graduate.
 
-**Definition.** An extended real function is proper if it never takes −∞ and has at least one finite value. It is lower semicontinuous if {x : f(x) ≤ c} is closed for every real c.
+**Definition.** An extended real function is proper if it never takes −∞ and is finite somewhere, and lower semicontinuous if each set {x : f(x) ≤ c} is closed. A supremum of continuous affine functions is always convex and lower semicontinuous, and it is proper unless it is identically +∞ or −∞ (our own).
 
 **Problem.** On a Hausdorff locally convex space, every extended real function satisfies f\*\* ≤ f, using the continuous dual. Equality holds exactly for proper lower semicontinuous convex functions and the two constant functions +∞ and −∞.
 
-**How the definition helps.** The biconjugate takes the supremum of continuous affine minorants, giving f\*\* ≤ f (our own). Fenchel–Moreau separation recovers each proper lower semicontinuous convex function this way (our own). An upward endpoint jump breaks lower semicontinuity, and any value −∞ forces f\*\* to be identically −∞ (our own). Both infinite constant functions equal their biconjugates (our own).
+**How the definition helps.** The biconjugate f\*\* is the supremum of the continuous affine functions below f, so f\*\* ≤ f and f\*\* has the properties above (our own). Fenchel–Moreau separation shows that every proper lower semicontinuous convex f is recovered this way (our own). If f takes the value −∞, no affine function lies below it, so f\*\* is identically −∞ (our own).
 
 **Wikipedia:** [Fenchel–Moreau theorem](https://en.wikipedia.org/wiki/Fenchel%E2%80%93Moreau_theorem), [Proper convex function](https://en.wikipedia.org/wiki/Proper_convex_function). It says: “a proper convex function is an extended real-valued convex function with a non-empty domain, that never takes on the value −∞ and also is not identically equal to +∞.”
 
@@ -3454,11 +3454,11 @@
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For K ≥ 0, a function on a convex domain is K-semiconcave when subtracting K times half the squared norm makes it concave. This replaces an upper bound on second derivatives, which may not exist.
+**Definition.** For K ≥ 0, a function on a convex domain is K-semiconcave if subtracting K‖x‖²/2 leaves a concave function. This bounds second derivatives above by K without asking that they exist.
 
 **Problem.** A uniform limit of functions with the same semiconcavity constant K is K-semiconcave.
 
-**How the definition helps.** After subtracting the same quadratic, every function satisfies the ordinary concavity inequality, which passes to the limit (our own). For twice differentiable functions, this definition bounds every second derivative along a unit direction from above by K (our own). The one-variable second derivative test along lines proves the equivalence (our own).
+**How the definition helps.** After subtracting the same quadratic, each function satisfies the concavity inequality, and such pointwise inequalities pass to uniform limits (our own). For twice differentiable functions, the definition means that every second derivative along a unit direction is at most K (our own).
 
 **Paper or page:** [Global propagation of singularities for magnetic mechanical systems](https://arxiv.org/abs/2509.13433v1). It says: “then ψ is K-semiconcave.”
 
@@ -3466,15 +3466,15 @@
 
 ### Log-concavity survives integration
 
-**Remember:** The geometric-mean inequality lets you integrate whole slices at once.
+**Remember:** The middle beats the geometric mean of the ends.
 
 *Makes the theorem clean to state or prove.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 26D15. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Call a nonnegative function log-concave if its value at a weighted average is at least the weighted geometric mean of its endpoint values. Unlike the formula using an ordinary logarithm, this definition allows zeros for weights strictly between zero and one.
+**Definition.** A nonnegative function F is log-concave if F((1 − λ)x + λy) ≥ F(x)<sup>(1−λ)</sup>·F(y)<sup>λ</sup> for every λ strictly between zero and one. Unlike asking that log F be concave, this allows zeros.
 
 **Problem.** Let F be a nonnegative measurable log-concave function on a product of Euclidean spaces, with finite integrals over all second-variable slices. Integrating over the second variable gives a log-concave function of the first.
 
-**How the definition helps.** Joint log-concavity is exactly the pointwise comparison that Prékopa–Leindler needs for two endpoint slices and the middle slice (our own). The hard work shifts to that integral inequality, which turns the pointwise geometric mean bound into the same bound for the integrals (our own).
+**How the definition helps.** On slices, log-concavity says the middle slice is at least the geometric mean of the two end slices at matching points, which is the hypothesis of the Prékopa–Leindler inequality (our own). That inequality gives the same bound for their integrals (our own).
 
 **Wikipedia:** [Logarithmically concave function](https://en.wikipedia.org/wiki/Logarithmically_concave_function). It says: “is log-concave (see Prékopa–Leindler inequality).”
 
@@ -3486,11 +3486,11 @@
 
 *True by definition. Confidence: medium.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 90C25. arXiv math.OC. Level 3: graduate.
 
-**Definition.** The strict epigraph of f consists of all (x,t) with t &gt; f(x). A function is convex if its strict epigraph is a convex set.
+**Definition.** The strict epigraph of f is the set of points (x, t) with t &gt; f(x), and f is convex when this set is convex. A height lies strictly above an infimum exactly when it lies strictly above one of its values.
 
 **Problem.** Let f(x, y) be jointly convex and let C be a convex set. If the infimum of f(x, y) over y in C is never −∞, then it is convex as a function of x.
 
-**How the definition helps.** The strict-epigraph definition turns partial minimization into a linear projection, which preserves convexity. In our own proof, a height above the infimum exceeds f(x, y) for at least one y in C. So the strict epigraph of the infimum is the projection, omitting y, of the strict epigraph restricted to y in C. The ordinary epigraph need not project onto the ordinary epigraph when the infimum is not attained.
+**How the definition helps.** So the strict epigraph of the infimum is the projection, dropping y, of the convex set of (x, y, t) with y ∈ C and t &gt; f(x, y) (our own). Linear projections keep sets convex. The ordinary epigraph fails here when the infimum is not attained.
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “provided that C is a convex set and that g(x) ≠ −∞.”
 
@@ -3502,11 +3502,11 @@
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For ρ &gt; 0, call a real function on Euclidean space strongly convex with constant ρ if subtracting ρ‖x‖²/2 leaves a convex function. Equivalently, its chord inequality improves the ordinary convexity bound by a quadratic term. A subgradient is the slope of an affine function touching the graph from below.
+**Definition.** For ρ &gt; 0, a function on Euclidean space is strongly convex with constant ρ if subtracting ρ‖x‖²/2 leaves a convex function. This shifts each subgradient p at x, the slope of an affine function touching the graph from below, to p − ρx (our own).
 
-**Problem.** Subgradients p and q at x and y satisfy ⟨p − q, x − y⟩ ≥ ρ‖x − y‖².
+**Problem.** For a strongly convex function with constant ρ, subgradients p at x and q at y satisfy ⟨p − q, x − y⟩ ≥ ρ‖x − y‖².
 
-**How the definition helps.** Subtracting the quadratic turns the claimed bound into ordinary monotonicity of supporting slopes (our own). The subgradient sum rule subtracts ρx from the slope at x (our own). Adding the two supporting inequalities gives monotonicity (our own). Expanding the squared norm in the chord inequality proves the two definitions agree (our own).
+**How the definition helps.** Subtracting the quadratic turns the claim into monotonicity of subgradients of a convex function (our own). Adding the two supporting inequalities of the convex remainder gives ⟨(p − ρx) − (q − ρy), x − y⟩ ≥ 0 (our own). Expanding this inner product gives the bound (our own).
 
 **Paper or page:** [New Douglas-Rashford Splitting Algorithms for Generalized DC Programming with Applications in Machine Learning](https://arxiv.org/abs/2404.14800v1). It says: “If f is ρ-strongly convex, then ∂f is ρ-strongly monotone.”
 
@@ -3518,11 +3518,11 @@
 
 *True by definition. Confidence: medium.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 52A41. arXiv math.OC. Level 3: graduate.
 
-**Definition.** The perspective of f is g(x, t) = t·f(x/t) for t &gt; 0 and x/t in the domain of f. Its epigraph is the set of points (x, t, s) with s ≥ g(x, t). A function is convex exactly when its epigraph is convex.
+**Definition.** The perspective of f is g(x, t) = t·f(x/t) for t &gt; 0 and x/t in the domain of f. Its epigraph is the set of positive multiples of the points (u, 1, r) with r ≥ f(u) (our own).
 
 **Problem.** If f is convex, its perspective is jointly convex in (x, t).
 
-**How the definition helps.** The perspective epigraph consists of the positive multiples of points (u,1,r) with r ≥ f(u) (our own). Indeed, (x,t,s) belongs exactly when t &gt; 0 and s/t ≥ f(x/t) (our own). Positive multiples of a convex set form a convex set, so the epigraph is convex (our own).
+**How the definition helps.** A point (x, t, s) lies above g exactly when t &gt; 0 and s/t ≥ f(x/t), that is, when it is t times a point (u, 1, r) above f (our own). Positive multiples of a convex set form a convex cone, so g has a convex epigraph and is convex (our own).
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “If f is convex, then its perspective g(x, t) = t f(x/t) with domain {(x,t) : x/t ∈ Dom(f), t &gt; 0} is convex.”
 
@@ -3534,11 +3534,11 @@
 
 *True by definition.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For measurable E in Ω, its perimeter is sup ∫<sub>E</sub> div φ over smooth compactly supported vector fields on Ω with ‖φ‖ ≤ 1 everywhere. Define the variation of f by integrating the perimeters of {x ∈ Ω : f(x) &gt; t} over all real t.
+**Definition.** The variation of f on Ω is the integral, over all heights t, of the perimeter of the level set {x ∈ Ω : f(x) &gt; t}. The perimeter of E is the supremum of ∫<sub>E</sub> div φ over smooth compactly supported vector fields φ on Ω with ‖φ‖ ≤ 1.
 
 **Problem.** Let f be integrable with finite variation on an open Euclidean set. Clipping its values to \[a,b\], where a ≤ 0 ≤ b, cannot increase its variation.
 
-**How the definition helps.** Clipping keeps the upper level sets for heights strictly between a and b (our own). At other heights, apart from endpoints, the sets are empty or full and have zero perimeter inside the domain (our own). Clipping toward an interval containing zero preserves integrability (our own). The coarea theorem identifies variation with the perimeter integral and gives finite variation when that integral is finite.
+**How the definition helps.** Clipping to \[a, b\] keeps the level sets for heights between a and b and makes the others empty or all of Ω, which have zero perimeter in Ω (our own). So the clipped variation integrates fewer perimeters (our own). Clipping toward an interval containing zero keeps f integrable (our own), and the coarea theorem matches this variation with the usual one.
 
 **Paper or page:** [Free-Boundary Monotonicity for Almost-Minimizers of the Relative Perimeter](https://arxiv.org/abs/2407.05039v2). It says: “\|Df\|(Ω) = ∫ℝ P(Eₜ; Ω) dt”
 
@@ -3550,11 +3550,11 @@
 
 *True by definition.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Integration by parts defines the weak derivative. For a function of bounded variation, this derivative is a vector measure, and total variation is its mass. Smooth the function by averaging translates against a nonnegative smooth function with compact support and integral one.
+**Definition.** The total variation of an integrable function of bounded variation is the mass of its derivative Df, a vector measure defined by integration by parts. Smoothing averages translates of f against a nonnegative smooth bump with compact support and integral one, so its derivative is the same average of translates of Df.
 
 **Problem.** On all of Euclidean space, smoothing an integrable function of bounded variation cannot increase its total variation.
 
-**How the definition helps.** The smoothed derivative averages translated derivative measures, so the triangle inequality bounds its mass by their average mass (our own). Translation preserves that mass (our own). The cited identity lets the derivative pass through the average. The measure representation theorem identifies this mass with the usual supremum over smooth test fields of length at most one (our own).
+**How the definition helps.** The mass of an average is at most the average of the masses, and translation keeps mass, so smoothing cannot increase total variation (our own). The cited identity lets the derivative pass through the average.
 
 **Paper or page:** [Weighted Bounded Variation Revisited](https://arxiv.org/abs/2510.14105v1). It says: “D(f ∗ ηε) = \[Df\] ∗ ηε”
 
@@ -3566,11 +3566,11 @@
 
 *True by definition.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation), 49J45. arXiv math.CA, math.AP. Level 3: graduate.
 
-**Definition.** For f in L¹ of an open set Ω in ℝⁿ, define its total variation as the supremum of the integrals of f div φ. Here φ ranges over continuously differentiable vector fields with compact support in Ω and \|φ\| ≤ 1 everywhere. For continuously differentiable f, this equals the integral of \|∇f\|.
+**Definition.** For f in L¹(Ω), the total variation is the supremum of ∫ f div φ over continuously differentiable vector fields φ with compact support in Ω and \|φ\| ≤ 1. Each such integral is continuous in f for the L¹ distance, since div φ is bounded (our own).
 
 **Problem.** If fₙ → f in L¹(Ω), then the total variation of f is at most the limit inferior of the total variations of fₙ.
 
-**How the definition helps.** Each test integral is continuous in L¹ because div φ is bounded (our own). Its limit therefore cannot exceed the limit inferior of the variations of fₙ (our own). Taking the supremum over φ gives the asserted bound.
+**How the definition helps.** A supremum of continuous functions is lower semicontinuous (our own). Each test integral for f is the limit of those for fₙ, so it is at most the limit inferior of their variations; then take the supremum over φ (our own).
 
 **Wikipedia:** [Bounded variation](https://en.wikipedia.org/wiki/Bounded_variation), [Total variation](https://en.wikipedia.org/wiki/Total_variation). It says: “lim infₙ→∞ V(uₙ,Ω) ≥ V(u,Ω) which is exactly the definition of lower semicontinuity.”
 
@@ -3582,11 +3582,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26D15 (Inequalities for sums, series and integrals), 28A25. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Symmetric decreasing rearrangement replaces every set where a nonnegative function exceeds a given height by a centered ball of equal volume. The nested balls determine the rearranged function.
+**Definition.** The symmetric decreasing rearrangement of a nonnegative function replaces each level set {f &gt; t} by the centered ball of the same volume. Centered balls are nested, so two of them overlap in the whole smaller ball, the most two sets of those volumes can share.
 
 **Problem.** For nonnegative measurable functions on Euclidean space with finite positive-height level volumes, rearranging both cannot decrease the integral of their product.
 
-**How the definition helps.** Two centered balls overlap in the entire smaller ball, the largest possible overlap for sets of their volumes. The layer cake formula expresses each function value as the length of the interval of heights below it. Integrating the resulting product counts overlaps over all pairs of heights. In our own justification, Tonelli’s theorem permits this change of integration order because the integrand is nonnegative.
+**How the definition helps.** By the layer cake formula, the integral of a product is the integral over pairs of heights of the volume where both functions exceed them (our own). That volume is at most the smaller of the two volumes, which the centered balls attain. Tonelli’s theorem allows the change of integration order (our own).
 
 **Wikipedia:** [Hardy–Littlewood inequality](https://en.wikipedia.org/wiki/Hardy%E2%80%93Littlewood_inequality). It says: “is exactly the smaller one of the two balls:”
 
@@ -3598,11 +3598,11 @@
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Take a real integrable function on a finite interval. For each length t between zero and the interval length, its concentration is the supremum of its integrals over measurable subsets of length t. Another formula integrates its decreasing rearrangement, which sorts function values from largest to smallest while preserving the measure above every height.
+**Definition.** On a finite interval, the concentration of an integrable real function at a length t is the supremum of its integrals over measurable subsets of length t. Each such integral is linear in the function (our own).
 
 **Problem.** On a finite interval, concentration at fixed length is convex as a function of the input function.
 
-**How the definition helps.** Each test integrates over a fixed set, so it is linear, and the supremum of linear tests is convex (our own). The rearrangement formula carries the work of showing which sets attain the supremum (our own). Pick the highest values first and split a level set when ties occur (our own).
+**How the definition helps.** A supremum of linear functions is convex (our own). The decreasing rearrangement, which takes the highest values first, shows which sets attain the supremum (our own).
 
 **Paper or page:** [Symmetrization of measures and the one-dimensional Poisson equation with Dirichlet boundary conditions](https://arxiv.org/abs/2506.13311v1). It says: “there exists a Borel set E ⊂ \[−π, π\] with λ(E) = t”
 
@@ -3616,11 +3616,11 @@
 
 *True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Define the symmetric decreasing rearrangement by replacing every upper level set by a ball of the same volume centered at zero. These nested balls determine a new nonnegative function.
+**Definition.** Symmetric decreasing rearrangement replaces each upper level set of a nonnegative function by a ball of the same volume centered at zero. Concentric balls are nested, so they overlap as much as any two sets of their volumes can.
 
 **Problem.** For two nonnegative measurable functions with finite upper level volumes at every positive height, rearranging both cannot decrease the integral of their product.
 
-**How the definition helps.** Concentric balls realize the largest possible intersection at each pair of heights. The usual description asks for a radially decreasing function with the original volumes above each height (our own). Taking centered balls constructs those level sets up to sets of measure zero (our own). Integrating their intersection volumes over both heights gives the product integral by Tonelli’s theorem (our own).
+**How the definition helps.** By Tonelli’s theorem, the product integral is the integral over pairs of heights of the volume where both functions exceed them (our own). Each such volume is at most the smaller volume, and concentric balls attain it. The nested balls define a radially decreasing function with the original volumes above each height, up to null sets (our own).
 
 **Wikipedia:** [Hardy–Littlewood inequality](https://en.wikipedia.org/wiki/Hardy%E2%80%93Littlewood_inequality). It says: “we continue by estimating the volume of the intersection by the minimum of the volumes of the two sets.”
 
@@ -3632,11 +3632,11 @@
 
 *Rules out counterexamples.* MSC 26D15 (Inequalities for sums, series and integrals), 30B50. arXiv math.CA, math.NT. Level 3: graduate.
 
-**Definition.** Let P(t) = ∑ aⱼ exp(itλⱼ) have finitely many real frequencies, with at least two terms. Define δ as the smallest distance between two differently indexed frequencies. Require δ &gt; 0.
+**Definition.** Let P(t) = ∑ aⱼ exp(itλⱼ) be a finite sum of at least two terms with distinct real frequencies. The gap δ &gt; 0 is the smallest distance between two of the frequencies.
 
 **Problem.** On every interval of length T, the integral of \|P(t)\|² equals (T + O(1/δ))∑ \|aⱼ\|². The implied constant is absolute.
 
-**How the definition helps.** Separation bounds interference through the minimum frequency gap (our own). Two identical frequencies with unit coefficients instead give integral 4T while their diagonal contribution is only 2T (our own). For distinct frequencies, integrating the off-diagonal terms gives two endpoint sums (our own). Montgomery and Vaughan’s Hilbert inequality bounds each by an absolute constant times ∑ⱼ \|aⱼ\|²/δ (our own).
+**How the definition helps.** Expanding \|P\|² gives the diagonal T∑ \|aⱼ\|² plus cross terms, whose integrals are endpoint sums with denominators λⱼ − λₖ (our own). Montgomery and Vaughan’s Hilbert inequality bounds these sums by an absolute constant times ∑ \|aⱼ\|²/δ (our own). With δ = 0, two equal frequencies with unit coefficients give 4T against a diagonal of only 2T (our own).
 
 **Wikipedia:** [Hilbert's inequality](https://en.wikipedia.org/wiki/Hilbert%27s_inequality). It says: “Montgomery &amp; Vaughan reported several generalizations of Hilbert's inequality”
 
@@ -3652,11 +3652,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26D15 (Inequalities for sums, series and integrals), 30B50. arXiv math.CA, math.NT. Level 3: graduate.
 
-**Definition.** Take finitely many distinct real frequencies λⱼ, with at least two terms. Let δⱼ be the distance from λⱼ to its nearest neighbor. Write P(t) = ∑ aⱼ exp(itλⱼ).
+**Definition.** Let P(t) = ∑ aⱼ exp(itλⱼ) be a finite sum of at least two terms with distinct real frequencies λⱼ. Each coefficient aⱼ carries its own gap δⱼ, the distance from λⱼ to its nearest other frequency.
 
 **Problem.** On any interval of length T, the integral of \|P(t)\|² differs from T∑ \|aⱼ\|² by at most C∑ \|aⱼ\|²/δⱼ. The constant C is absolute.
 
-**How the definition helps.** Each coefficient pays for the distance to its own nearest frequency. In our own derivation, expanding the square gives two endpoint sums over unequal frequencies. Montgomery and Vaughan’s weighted Hilbert inequality bounds both sums using the individual gaps.
+**How the definition helps.** Each coefficient pays only for the gap at its own frequency, which the weighted Hilbert inequality allows. Expanding the square gives T∑ \|aⱼ\|² plus endpoint sums over pairs of unequal frequencies (our own). Montgomery and Vaughan’s weighted Hilbert inequality bounds those sums by an absolute constant times ∑ \|aⱼ\|²/δⱼ.
 
 **Wikipedia:** [Hilbert's inequality](https://en.wikipedia.org/wiki/Hilbert%27s_inequality). It says: “are distinct real numbers.”
 
@@ -3672,11 +3672,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26E15 (Calculus of functions on infinite-dimensional spaces), 58B10. arXiv math.FA, math.DG. Level 3: graduate.
 
-**Definition.** A Hausdorff locally convex space is convenient if every scalarwise smooth curve c from ℝ has continuous derivatives of all orders in the space. Scalarwise smooth means ℓ∘c is smooth for every continuous linear functional ℓ. A smooth map between convenient spaces sends each smooth curve to a smooth curve.
+**Definition.** A convenient vector space is a Hausdorff locally convex space X in which a curve c from ℝ to X is smooth as soon as ℓ∘c is smooth for every continuous linear functional ℓ. A map between convenient spaces is smooth if it sends smooth curves to smooth curves.
 
 **Problem.** For convenient vector spaces X, Y and Z, the exponential law C∞(X × Y, Z) ≅ C∞(X, C∞(Y, Z)) holds. So the category of convenient vector spaces and smooth maps is cartesian closed.
 
-**How the definition helps.** Testing maps on curves gives a common smoothness condition for maps into function spaces and maps on products (our own). The convenient exponential law of Kriegl and Michor supplies the smooth function-space structure and identifies the two kinds of maps (our own).
+**How the definition helps.** Because smoothness of maps is tested only on curves, a map on X × Y and its curried form face the same tests (our own). Kriegl and Michor’s exponential law supplies the smooth structure on C∞(Y, Z) and identifies the two kinds of maps (our own).
 
 **nLab:** [convenient vector space](https://ncatlab.org/nlab/show/convenient+vector+space), [Boman's theorem](https://ncatlab.org/nlab/show/Boman%27s+theorem), [manifold structure of mapping spaces](https://ncatlab.org/nlab/show/manifold+structure+of+mapping+spaces). It says: “The category of convenient vector spaces and smooth functions between them is a cartesian closed category.”
 
@@ -3687,15 +3687,15 @@
 
 ### Infinitesimals make open, closed and compact one-quantifier conditions
 
-**Remember:** Monads collect infinitely close points, and standard parts identify their real neighbors.
+**Remember:** Monads hold the infinitely close points; standard part rounds back to ℝ.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26E35 (Nonstandard analysis), 54J05, 03H05. arXiv math.LO, math.CA. Level 3: graduate.
 
-**Definition.** Use a hyperreal ultrapower of ℝ over a nonprincipal ultrafilter on the natural numbers. The monad of r consists of points closer to r than every positive real distance. The standard part of a finite hyperreal is the unique real whose monad contains it.
+**Definition.** The monad of a real r is the set of hyperreals infinitely close to r, that is, closer to r than every positive real distance. The standard part of a finite hyperreal is the one real whose monad contains it.
 
-**Problem.** Let E ⊆ ℝ have hyperreal extension \*E. Openness means each member’s monad lies in \*E, and closedness means every finite point of \*E has standard part in E. Compactness means every point of \*E is finite and has standard part in E.
+**Problem.** A set E ⊆ ℝ is open exactly when its hyperreal extension \*E contains the monad of each point of E, and closed exactly when every finite point of \*E has standard part in E. E is compact exactly when every point of \*E is finite and has standard part in E.
 
-**How the definition helps.** Monads and standard parts replace each nested ε–δ condition by one check on hyperreal points. The nLab calls these an elementary fact. The real content is the transfer principle, which follows from Łoś's theorem on ultraproducts.
+**How the definition helps.** “Within every ε” becomes “infinitely close”, so each nested ε–δ condition turns into one check on hyperreal points. The nLab calls these an elementary fact. The transfer principle, which follows from Łoś's theorem on ultraproducts, does the real work.
 
 **nLab:** [nonstandard analysis](https://ncatlab.org/nlab/show/nonstandard+analysis), [ultraproduct](https://ncatlab.org/nlab/show/ultraproduct). It says: “a subset E ⊂ ℝ is open iff μ(r) ⊂ \*E for all r ∈ E; E is closed iff st(x) ∈ E for all finite x ∈ \*E; and E is compact iff, for all x ∈ \*E, x is finite and st(x) ∈ E.”
 
@@ -3705,15 +3705,15 @@
 
 ### A dense set of non-zeros gives a constructive intermediate value theorem
 
-**Remember:** Every open subinterval contains a point whose value has positive absolute value.
+**Remember:** Every gap holds a point whose sign you can read.
 
 *Rules out counterexamples. Confidence: medium.* MSC 26E40 (Constructive real analysis), 03F60, 26A15. arXiv math.CA, math.LO. Level 3: graduate.
 
-**Definition.** Say that f has dense non-zeros when, between any two points a &lt; b, there is a point c with \|f(c)\| &gt; 0.
+**Definition.** Say that f has dense non-zeros when every interval (a, b) inside \[0, 1\] contains a point c with \|f(c)\| &gt; 0, so that f(c) is known to be positive or known to be negative (our own).
 
 **Problem.** Constructively, a uniformly continuous f : \[0,1\] → ℝ with f(0) &lt; 0 &lt; f(1) and dense non-zeros has a zero. The usual intermediate value theorem, without the extra hypothesis, cannot be proved constructively.
 
-**How the definition helps.** Dense nonzeros give a point of decidable sign in the middle third of each bracket (our own). Retain the bracket with opposite endpoint signs, shrinking its length by at least one third (our own). Uniform continuity makes the common limit a zero (our own). A zero plateau can prevent a sign decision throughout the middle third (our own).
+**How the definition helps.** Bisection works again, because each step can find a point of known sign (our own). Pick such a point in the middle third of the current bracket, and keep the sub-bracket whose endpoints have opposite signs; uniform continuity makes the limit a zero (our own). Without the hypothesis, a flat stretch of zeros can block every sign decision (our own).
 
 **nLab:** [intermediate value theorem](https://ncatlab.org/nlab/show/intermediate+value+theorem). It says: “As normally stated, the IVT is not valid in constructive mathematics, although there are constructively valid versions. These versions either weaken the conclusion to an approximate zero, or to strengthen the hypothesis”
 
@@ -3724,15 +3724,15 @@
 
 ### Dedekind real numbers are always Cauchy complete
 
-**Remember:** A cut gives all rational bounds at once, so no choices are needed.
+**Remember:** A cut holds all rational bounds at once, so nothing is chosen.
 
 *Rules out counterexamples.* MSC 26E40 (Constructive real analysis), 03F60. arXiv math.LO, math.CA. Level 3: graduate.
 
-**Definition.** A Dedekind real consists of nonempty rational sets L,U, respectively downward and upward closed. Every lower member has a larger lower member, and every upper member has a smaller upper member. Every lower member lies below every upper member, and for rationals a &lt; b either a ∈ L or b ∈ U.
+**Definition.** A Dedekind real is given by all its rational bounds at once: an inhabited set L of lower bounds and an inhabited set U of upper bounds. L is downward closed with no largest member, and U is upward closed with no smallest member. Every member of L lies below every member of U, and for rationals a &lt; b, either a ∈ L or b ∈ U.
 
 **Problem.** The Dedekind real numbers are Cauchy complete, even without countable choice: every Cauchy sequence of Dedekind reals converges to a Dedekind real.
 
-**How the definition helps.** The limit cut records eventual bounds with a positive rational margin (our own). Put q in L when some rational r &gt; q eventually lies below every sequence term, and define U symmetrically (our own). Cauchy closeness gives locatedness and convergence without choosing rational approximants for every term (our own). Lubarsky’s countermodel shows that Cauchy reals can lack this completeness without countable choice.
+**How the definition helps.** The limit can be read off from the rational bounds of the terms, so no rational approximants need to be chosen (our own). Put q in L when some rational r &gt; q lies eventually below every term, define U symmetrically, and Cauchy closeness gives locatedness and convergence (our own). Lubarsky’s countermodel shows that Cauchy reals can lack this completeness without countable choice.
 
 **nLab:** [Cauchy real number](https://ncatlab.org/nlab/show/Cauchy+real+number), [Dedekind cut](https://ncatlab.org/nlab/show/Dedekind+cut). It says: “a Cauchy sequence (even a modulated one) of Cauchy real numbers need not converge to another Cauchy real number (though it always does converge to a Dedekind real number, since the Dedekind real numbers are always Cauchy complete).”
 
@@ -3746,11 +3746,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 26E40 (Constructive real analysis), 03F60. arXiv math.LO, math.CA. Level 3: graduate.
 
-**Definition.** A lower real is an inhabited downward-closed set L of rationals such that each q ∈ L lies below some r ∈ L. Inclusion orders lower reals, and ℚ itself represents +∞.
+**Definition.** A lower real is a number known only by its rational lower bounds: an inhabited, downward-closed set L of rationals with no largest member. Lower reals are ordered by inclusion, and ℚ itself stands for +∞.
 
 **Problem.** Constructively, every inhabited set of lower reals has a supremum, namely the union of their sets of rationals. For the usual real numbers, a bounded inhabited set need not have a supremum constructively.
 
-**How the definition helps.** The union contains each member and lies inside every common upper bound (our own). An inhabited family of inhabited cuts has inhabited union (our own). Downward closure and the existence of a larger member both pass from each cut to the union (our own).
+**How the definition helps.** Every defining condition passes from the members of an inhabited family to their union, so the union is a lower real (our own). Since the order is inclusion, the union contains each member and lies inside every common upper bound (our own).
 
 **nLab:** [one-sided real number](https://ncatlab.org/nlab/show/one-sided+real+number). It says: “Explicitly, the supremum of any inhabited set of lower reals is a lower real and the infimum of any inhabited set of upper reals is an upper real.”
 
@@ -3760,15 +3760,15 @@
 
 ### The genuine integral of cogerm forms ignores second-order terms
 
-**Remember:** Every sufficiently local tagged contribution is negligible compared with its interval length.
+**Remember:** Each small tagged piece is tiny compared with its own length.
 
 *True by definition. Confidence: medium.* MSC 26A39 (Denjoy and Perron integrals, other special integrals), 58A10. arXiv math.CA, math.DG. Level 4: research.
 
-**Definition.** Along a given smooth curve, write W(t,u,v) for the form’s contribution on \[u,v\] tagged at t ∈ \[u,v\]. The form is o(dx) there if each ε&gt;0 and tag t admit δ&gt;0 with \|W(t,u,v)\| ≤ ε(v−u) whenever \[u,v\] ⊂ (t−δ,t+δ).
+**Definition.** Along a smooth curve, a form is o(dx) when its contribution on each small interval \[u, v\] tagged at t has absolute value at most ε(v − u). Precisely, each ε &gt; 0 and tag t admit δ &gt; 0 with this bound whenever t ∈ \[u, v\] ⊂ (t − δ, t + δ).
 
 **Problem.** The genuine integral of every o(dx) form, such as dx² or d²x, is zero. So the trapezoid integrand f(x) dx + ½ f′(x) dx² has the same genuine integral as f(x) dx.
 
-**How the definition helps.** Choose the local radii as a gauge for the tagged partitions (our own). Every fine sum on \[a,b\] has absolute value at most ε(b−a), so the genuine integral vanishes (our own). Along a smooth curve the second-order terms satisfy this bound, and adding them leaves the integral unchanged (our own).
+**How the definition helps.** A fine tagged partition adds contributions of absolute value at most ε times each length, so every fine sum on \[a, b\] has absolute value at most ε(b − a) (our own). The local radii δ serve as the gauge that makes the partition fine (our own). Since ε is arbitrary, the genuine integral is zero; dx², d²x and ½ f′(x) dx² satisfy the bound, so adding them changes no integral (our own).
 
 **nLab:** [cogerm differential form](https://ncatlab.org/nlab/show/cogerm+differential+form). It says: “The answer 0 given by the genuine integral is preferable if we regard dx as a "first-order change in x", so that dx² or d²x are "second-order" quantities and hence ought to be negligible.”
 
@@ -3780,11 +3780,11 @@
 
 *Rules out counterexamples.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 4: research.
 
-**Definition.** Consider a finite convex function on Euclidean space. Its graph contains a full line if the function is affine along some entire straight line. A locally Lipschitz gradient changes by at most a constant times distance near each point.
+**Definition.** The graph of a finite convex function f on Euclidean space contains a full line when f is affine along some entire straight line. Such a line lets a corner of f, like the crease of \|x\| in the plane, run on forever (our own).
 
-**Problem.** Let f be finite and convex on Euclidean space, without a locally Lipschitz gradient. Call g an ε-approximation if it is convex, has locally Lipschitz gradient and differs from f on a set of measure below ε. Such approximations exist for every ε &gt; 0 exactly when the graph of f contains no full line.
+**Problem.** Let f be finite and convex on Euclidean space, without a locally Lipschitz gradient. For every ε &gt; 0, f has a convex approximation with locally Lipschitz gradient that differs from f on a set of measure below ε, exactly when the graph of f contains no full line.
 
-**How the definition helps.** Excluding full lines rules out a corner that repeats unchanged along an infinite direction (our own). For f(x,y) = \|x\|, a small disagreement area forces agreement at points arbitrarily far up and down almost every vertical line (our own). Convexity then makes the approximation constant on those lines, so it agrees with \|x\| everywhere, corner included (our own). The cited theorem proves sufficiency.
+**How the definition helps.** Excluding full lines rules out a corner that repeats unchanged along an infinite direction (our own). For f(x, y) = \|x\|, small disagreement forces agreement far up and down almost every vertical line, and convexity then makes the approximation equal \|x\|, corner included (our own). The cited theorem proves that having no full line suffices.
 
 **Paper or page:** [C²-Lusin approximation of convex functions: one variable case](https://arxiv.org/abs/2505.22975v2). It says: “The graph of f does not contain any line isometric to ℝ.”
 
@@ -3792,15 +3792,15 @@
 
 ### Retained slopes preserve contact
 
-**Remember:** Keep the touching slope and you keep the value.
+**Remember:** Keep only bounded slopes; you keep f where one still touches.
 
 *True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 4: research.
 
-**Definition.** Let f be a proper closed convex function on Euclidean space. Let C be a compact set containing the slope of at least one affine minorant of f. Define g as the supremum of all affine minorants of f with slopes in C.
+**Definition.** Let f be a proper closed convex function on Euclidean space, and let C be a compact set of slopes that contains the slope of at least one affine function below f. Let g be the supremum of all affine functions below f whose slopes lie in C.
 
-**Problem.** The function g has a global Lipschitz bound, meaning its changes are bounded by a constant times distance. It equals f at x exactly when an allowed affine function touches f there.
+**Problem.** The function g is globally Lipschitz, meaning its changes are bounded by a constant times distance. It equals f at x exactly when some affine function below f with slope in C touches f at x.
 
-**How the definition helps.** Every allowed affine minorant has Lipschitz constant at most max<sub>p∈C</sub>‖p‖, so the finite supremum function shares that bound (our own). A touching minorant forces equality at its contact point (our own). At fixed x, the best height for slope p is inf<sub>y</sub>(f(y) + ⟨p,x−y⟩), upper semicontinuous in p (our own). Its maximum on C gives a touching minorant whenever g(x) = f(x) (our own).
+**How the definition helps.** Each allowed affine function has Lipschitz constant at most the largest norm of a slope in C, and the supremum keeps that bound (our own). A touching allowed function forces g(x) = f(x) (our own). Conversely, the best height at x for slope p, inf<sub>y</sub> (f(y) + ⟨p, x − y⟩), is upper semicontinuous in p, so its maximum on compact C gives a touching function (our own).
 
 **Paper or page:** [Singularities of Fitzpatrick and convex functions](https://arxiv.org/abs/2212.09954v3). It says: “∂f(x) ∩ C ≠ ∅ ⇔ f(x) = f꜀(x)”
 
@@ -3812,11 +3812,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 4: research.
 
-**Definition.** On an open subset of Euclidean space, take a positive weight w whose strict upper level sets are open. Above each point x, use the vertical interval 0 &lt; t &lt; w(x). Give every point in that interval the value f(x). Weighted variation integrates w against the total mass measure of the derivative defined by integration by parts.
+**Definition.** Lift f to one more dimension by giving the value f(x) to every point (x, t) with 0 &lt; t &lt; w(x). Here w is a positive weight on an open set whose strict upper level sets are open, and weighted variation integrates w against the total variation measure of the distributional derivative of f.
 
-**Problem.** Suppose both the weighted integral of \|f\| and the weighted variation of f are finite. The ordinary integral of the lifted absolute value and its ordinary variation equal the respective weighted quantities.
+**Problem.** Suppose the weighted integral of \|f\| and the weighted variation of f are both finite. Then the ordinary integral of the absolute value of the lift and its ordinary variation equal these weighted quantities.
 
-**How the definition helps.** Each vertical interval contributes its length w(x) when we integrate the lifted absolute value (our own). For variation, the lifting theorem shows that only horizontal changes contribute. Integrating their mass up each interval gives the same factor w(x) (our own).
+**How the definition helps.** Each vertical interval has length w(x), so integrating the lift counts the value at x with weight w(x) (our own). For variation, the lifting theorem shows that only horizontal changes contribute. Integrating their mass up each interval gives the same factor w(x) (our own).
 
 **Paper or page:** [Weighted Bounded Variation Revisited](https://arxiv.org/abs/2510.14105v1). It says: “is an isometric embedding”
 
@@ -3826,15 +3826,15 @@
 
 ### Derivative growth bounds make Taylor data unique
 
-**Remember:** Bound all derivatives by weights whose successive ratios have divergent reciprocal sum.
+**Remember:** Derivatives that grow slowly enough pin a function to one point.
 
 *Rules out counterexamples.* MSC 26E10 (\\(C<sup>\\infty\\</sup>)-functions, quasi-analytic functions). arXiv math.CA. Level 4: research.
 
-**Definition.** Take positive weights Mₖ with M₀ = 1 whose successive ratios are nondecreasing and tend to infinity. In the corresponding class, one constant C ≥ 1 bounds the absolute kth derivative everywhere by Mₖ times the (k + 1)st power of C. Require the sum of the reciprocals of the successive ratios to diverge.
+**Definition.** A function lies in the Denjoy–Carleman class of the weights Mₖ when one constant C ≥ 1 bounds its kth derivative everywhere by Cᵏ⁺¹Mₖ, for every k. The weights are positive with M₀ = 1, their successive ratios Mₖ/Mₖ₋₁ increase to infinity, and the reciprocals of these ratios have divergent sum.
 
 **Problem.** Two functions in this class on a closed interval coincide if their values and all their derivatives agree at one interior point.
 
-**How the definition helps.** The Denjoy–Carleman theorem makes the divergent sum a test for uniqueness from derivatives at one point. Our own counterexample for a convergent sum is the smooth bump exp(−1/(1 − x²)) on \|x\| &lt; 1, extended by zero. Weights that bound its derivatives on \[−2,2\] can be chosen with ratios at least k², so the reciprocal sum is finite. At the interior point 1 the bump and zero have the same derivatives of every order.
+**How the definition helps.** The Denjoy–Carleman theorem says that a divergent sum is exactly what makes derivatives at one point determine the function. For a convergent sum, our own counterexample is the bump exp(−1/(1 − x²)) on \|x\| &lt; 1, extended by zero, which fits weights on \[−2, 2\] with ratios at least k². At the interior point 1, the bump and zero have the same derivatives of every order (our own).
 
 **Wikipedia:** [Quasi-analytic function](https://en.wikipedia.org/wiki/Quasi-analytic_function). It says: “the only function in it having all its partial derivatives equal to zero at a point is the function identically equal to zero.”
 
@@ -3848,11 +3848,11 @@
 
 *True by definition. Confidence: medium.* MSC 26E35 (Nonstandard analysis), 40A30, 26A15. arXiv math.CA, math.HO. Level 4: research.
 
-**Definition.** Let fₙ and f be real functions on D, and extend the sequence and f to the hyperreals. Uniform convergence means that for every infinite hypernatural n and every x ∈ \*D, the extended value (\*f)ₙ(x) is infinitely close to f\*(x).
+**Definition.** Extend the functions fₙ and f on D to the hyperreals. The sequence converges at every hyperreal point when, for every infinite index n and every x ∈ \*D, fₙ(x) is infinitely close to f(x); this is exactly uniform convergence.
 
 **Problem.** If continuous functions fₙ converge at every hyperreal point, their limit is continuous. Under this reading, Cauchy's 1821 proof of his sum theorem works as written.
 
-**How the definition helps.** For x infinitely close to a real a ∈ D, compare f\*(x) and f(a) through one standard continuous approximant (our own). Uniform convergence makes both approximation errors arbitrarily small, while continuity makes the approximant’s change infinitesimal (our own). Thus f is continuous (our own). The cited historical reading interprets Cauchy’s convergence hypothesis as this uniform condition.
+**How the definition helps.** For x infinitely close to a real a ∈ D, compare f(x) and f(a) through one standard continuous fₙ: they differ by two small errors plus an infinitesimal (our own). Uniform convergence makes the errors smaller than any positive real, so f(x) is infinitely close to f(a), and f is continuous (our own). The cited historical reading takes Cauchy’s convergence hypothesis to be this uniform condition.
 
 **nLab:** [Cauchy sum theorem](https://ncatlab.org/nlab/show/Cauchy+sum+theorem). It says: “By this analysis, Cauchy's notion of convergence everywhere is our modern notion of uniform convergence, not pointwise convergence, and his theorem is true”
 
@@ -3867,11 +3867,11 @@
 
 *True by definition.* MSC 26E40 (Constructive real analysis), 03B38. arXiv math.LO, math.CA. Level 4: research.
 
-**Definition.** The HoTT reals are the freely generated Cauchy completion of ℚ, with a limit constructor for each Cauchy approximation x. Such an approximation assigns x(ε) to each positive rational ε, with x(ε) and x(δ) within ε+δ for all positive rational ε,δ. The construction identifies points within ε of each other for every positive rational ε.
+**Definition.** The HoTT reals are ℚ with a limit freely added for every Cauchy approximation, a family x(ε) over positive rationals ε with x(ε) and x(δ) within ε + δ. Points within ε of each other for every positive rational ε are made equal.
 
 **Problem.** The HoTT reals admit limits of regular Cauchy sequences without countable choice. In particular, analytic functions such as exp, sin and cos are well defined on them.
 
-**How the definition helps.** A specified Cauchy rate turns a regular sequence into an approximation accepted by the limit constructor (our own). The accompanying closeness rules ensure that the constructed point is its limit (our own). The cited power-series examples use this completeness.
+**How the definition helps.** A regular Cauchy sequence, with its fixed rate, is already a Cauchy approximation, so the limit constructor gives it a limit without any choice (our own). The closeness rules show that this point is its limit (our own). Power series such as exp, sin and cos then converge, as the cited examples use.
 
 **nLab:** [HoTT book real number](https://ncatlab.org/nlab/show/HoTT+book+real+number). It says: “The analytic functions, such as the exponential function, the sine function, and the cosine function are well defined in the HoTT book real numbers, since all regular Cauchy sequences converge in the HoTT book real numbers.”
 
@@ -3882,15 +3882,15 @@
 
 ### Changed coordinates reveal mean convexity
 
-**Remember:** Change scale, then use Jensen on the midpoint map.
+**Remember:** In the f-scale, means are averages and the midpoint is H.
 
 *Makes the theorem clean to state or prove.* MSC 26E60 (Means), 26B25. arXiv math.CA. Level 4: research.
 
-**Definition.** Let f be continuous and strictly increasing on an interval. Define the mean of a list by averaging its f-values with nonnegative weights totaling one, then applying the inverse of f. For u and v in the range, let H(u,v) be f at the midpoint of their inverse images.
+**Definition.** For a continuous strictly increasing f on an interval, the f-mean of a list averages the f-values with nonnegative weights summing to one, then applies f⁻¹. In the f-scale, taking a midpoint becomes H(u, v) = f((f⁻¹(u) + f⁻¹(v))/2).
 
-**Problem.** For two lists with common weights, compare the mean of their coordinatewise midpoints with the midpoint of their means. The first never exceeds the second, for any lists and weights, exactly when H is concave.
+**Problem.** For two lists with common weights, the f-mean of their coordinatewise midpoints never exceeds the midpoint of their f-means, for all lists and weights, exactly when H is concave.
 
-**How the definition helps.** Applying f turns the comparison of means into Jensen’s inequality for H on pairs of transformed entries (our own). Every pair in the range has inverse images, so the mean comparisons also give every weighted concavity inequality for H (our own).
+**How the definition helps.** Applying f turns the comparison into ∑ wᵢ H(uᵢ, vᵢ) ≤ H(∑ wᵢuᵢ, ∑ wᵢvᵢ), which is Jensen’s inequality for H (our own). Every pair in the range comes from some entries, so the comparisons for all lists give every weighted concavity inequality for H (our own).
 
 **Paper or page:** [Hölder- and Minkowski-type inequalities for generalized quasi-arithmetic means](https://arxiv.org/abs/2511.05411v1). It says: “The function f is continuous and the function Ψ: f(I)² → ℝ defined by”
 

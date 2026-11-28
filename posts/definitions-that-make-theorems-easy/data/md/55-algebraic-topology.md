@@ -1,14 +1,14 @@
 ### Angle-lift winding numbers force complex polynomials to have roots
 
-**Remember:** Lift the angle in turns and count its net change around the loop.
+**Remember:** Count the net turns of the angle; whole turns cannot jump.
 
 *True by definition.* MSC 55M25 (Degree, winding number), 30C15. arXiv math.AT, math.CV. Level 2: later undergraduate.
 
-**Definition.** Define the winding number of a loop avoiding zero as the net change of a continuous angle, measured in turns. Its value is an integer and cannot change during a deformation through loops avoiding zero. The integral definition for piecewise smooth loops divides the integral of dz/z by 2πi.
+**Definition.** The winding number of a loop that avoids 0 is the net number of turns made by a continuous choice of its angle. It is an integer, so it cannot change while the loop deforms without touching 0.
 
 **Problem.** Every nonconstant complex polynomial has a complex root.
 
-**How the definition helps.** On a sufficiently large circle the leading monomial dominates the lower terms, so removing them continuously preserves winding (our own). The leading monomial winds as many times as the polynomial’s degree (our own). If the polynomial had no root, shrinking the circle would deform its image to a constant loop avoiding zero. Homotopy invariance would then force this positive winding number to equal zero (our own).
+**How the definition helps.** Suppose p has no root, and let the radius R of a circle shrink from large to 0 (our own). The image of the circle never touches 0, so its winding number stays fixed. For large R the leading term gives winding number equal to the degree, but at R = 0 the constant loop gives 0 (our own).
 
 **Wikipedia:** [Fundamental theorem of algebra](https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra), [Winding number](https://en.wikipedia.org/wiki/Winding_number). It says: “Now changing R continuously will deform the loop continuously. At some R the winding number must change. But that can only happen if the curve P(R) includes the origin (0,0) for some R.”
 
@@ -16,15 +16,15 @@
 
 ### Angle-lift winding numbers make Rouché’s zero counts agree
 
-**Remember:** Count turns by lifting angles continuously around each boundary loop.
+**Remember:** A dog on a short leash circles the tree equally often.
 
 *True by definition.* MSC 55M25 (Degree, winding number), 30C15. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** Define the winding number of a loop avoiding zero as the net change of a continuous angle, measured in turns. The angle lift makes that integer invariant under deformations avoiding zero. The integral definition instead integrates dw/w along the loop and divides by 2πi.
+**Definition.** The winding number of a loop that avoids 0 is the net number of turns made by a continuous choice of its angle. It is an integer, so it stays fixed while the loop deforms without touching 0.
 
-**Problem.** Let f and g be holomorphic on an open set containing a simple closed piecewise smooth curve C and its interior. If \|g\| &lt; \|f\| on C, then f and f + g have the same number of zeros inside. Count each zero by its order.
+**Problem.** Let f and g be holomorphic on an open set containing a simple closed piecewise smooth curve C and its interior. If \|g\| &lt; \|f\| on C, then f and f + g have the same number of zeros inside C, counted with multiplicity.
 
-**How the definition helps.** The bound \|g\|&lt;\|f\| keeps f+tg nonzero on C for 0≤t≤1 (our own). This deformation preserves winding number by angle lifting (our own). The argument principle identifies winding on the positively oriented boundary with the number of interior zeros counted with multiplicity (our own).
+**How the definition helps.** The bound \|g\| &lt; \|f\| keeps f + tg nonzero on C for 0 ≤ t ≤ 1 (our own). So the images of C under f and f + g have the same winding number around 0 (our own). The argument principle says that this winding number counts the zeros inside C with multiplicity (our own).
 
 **Wikipedia:** [Rouché's theorem](https://en.wikipedia.org/wiki/Rouch%C3%A9%27s_theorem). It says: “then the person and the dog go around the tree the same number of times.”
 
@@ -38,11 +38,11 @@
 
 *True by definition. Confidence: medium.* MSC 55M25 (Degree, winding number), 30E20. arXiv math.AT, math.CV. Level 2: later undergraduate.
 
-**Definition.** For a loop γ:\[0,1\]→ℂ avoiding a, lift the direction of γ(t)−a to a continuous angle s(t) measured in turns. Its winding number about a is s(1)−s(0), independent of the lift since lifts differ by a constant integer (our own).
+**Definition.** For a loop γ avoiding a point a, choose a continuous angle s(t) of γ(t) − a, measured in turns. The winding number about a is s(1) − s(0). It is an integer because the loop is closed, and two choices of angle differ by a constant, so it does not depend on the choice (our own).
 
 **Problem.** If two loops are homotopic through loops that avoid a, they have the same winding number about a.
 
-**How the definition helps.** The covering homotopy theorem lifts the angle continuously across the whole homotopy square (our own). Subtracting the two endpoint angles therefore gives a continuous function of the homotopy parameter (our own). Each loop ends where it began, so this difference is integer-valued and hence constant (our own).
+**How the definition helps.** The covering homotopy theorem lifts the angle continuously over the whole homotopy (our own). The winding number then depends continuously on the homotopy parameter and takes only integer values, so it is constant (our own).
 
 **Wikipedia:** [Winding number](https://en.wikipedia.org/wiki/Winding_number). It says: “wind(γ,a) = s(1) − s(0)”
 
@@ -54,11 +54,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55M25 (Degree, winding number), 55M20, 55N10. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** The degree of a sphere map is the integer by which it multiplies the sphere’s top reduced homology group. This definition also works for a continuous map with no derivative.
+**Definition.** The degree of a continuous map from a sphere to itself is the integer by which it multiplies the top reduced homology group ℤ. A sphere map that extends over the ball has degree zero, because the ball has zero reduced homology (our own).
 
 **Problem.** Every continuous map from the n-sphere to Euclidean n-space agrees at some pair of opposite points when n ≥ 1. Equivalently, no continuous odd map takes the n-sphere into the sphere one dimension lower.
 
-**How the definition helps.** A sphere map that extends over a ball has degree zero because the ball has zero reduced homology (our own). Without an antipodal coincidence, dividing f(x) − f(−x) by its length gives an odd map to the sphere one dimension lower (our own). Its restriction to the equator extends over a hemisphere (our own). The odd-degree theorem says this restriction has odd degree, a contradiction.
+**How the definition helps.** If f(x) ≠ f(−x) for every x, then (f(x) − f(−x)) / \|f(x) − f(−x)\| is an odd map to the sphere one dimension lower (our own). Its restriction to the equator extends over a hemisphere, so it has degree zero (our own). The odd-degree theorem says that this odd restriction has odd degree, a contradiction.
 
 **Wikipedia:** [Borsuk–Ulam theorem](https://en.wikipedia.org/wiki/Borsuk%E2%80%93Ulam_theorem). It says: “any odd map Sⁿ⁻¹ → Sⁿ⁻¹ has odd degree”
 
@@ -72,11 +72,11 @@
 
 *True by definition.* MSC 55M25 (Degree, winding number), 30E20. arXiv math.AT, math.CV. Level 2: later undergraduate.
 
-**Definition.** For a closed path γ in ℂ avoiding a, choose a continuous angle s(t) of γ(t) − a, measured in turns. Its winding number about a is s(1) − s(0).
+**Definition.** For a closed path γ in ℂ avoiding a, choose a continuous angle s(t) of γ(t) − a, measured in turns. Its winding number about a is s(1) − s(0), where s(1) and s(0) name the same direction because γ(1) = γ(0).
 
 **Problem.** The winding number of a closed path around a point is an integer.
 
-**How the definition helps.** The angle lift makes integrality immediate because the endpoint and start represent the same direction. Their real angles therefore differ by an integer number of turns. In our own comparison, the integral definition has the same value by differentiating the polar form along a piecewise smooth path. The work is proving that a continuous real angle exists once the starting angle is chosen.
+**How the definition helps.** Two angles of the same direction differ by a whole number of turns, so s(1) − s(0) is an integer. The only work is the existence of a continuous angle, which is path lifting for the covering of the circle by ℝ (our own).
 
 **Wikipedia:** [Winding number](https://en.wikipedia.org/wiki/Winding_number). It says: “all the fibers of p are of the form ρ₀ × (s₀ + ℤ) (so the above expression does not depend on the choice of the starting point). It is an integer because the path is closed.”
 
@@ -84,15 +84,15 @@
 
 ### Parity gives a degree even without orientations
 
-**Remember:** Count endpoints in pairs, without signs.
+**Remember:** Count preimages only up to parity, so no signs are needed.
 
 *Makes the theorem clean to state or prove.* MSC 55M25 (Degree, winding number), 57R35. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Consider a smooth map between manifolds of equal dimension without boundary, with compact source and connected target. At a regular value, the derivative is invertible at each preimage. The degree modulo two records whether the number of preimages is even or odd.
+**Definition.** Take a smooth map from a compact manifold to a connected manifold of the same dimension, both without boundary. Its degree modulo two is the parity of the number of preimages of a regular value, a point at whose preimages the derivative is invertible. The count uses no signs, so it needs no orientation.
 
 **Problem.** The degree modulo two is independent of the regular value and stays the same under smooth homotopy. It exists even when the manifolds have no orientation.
 
-**How the definition helps.** The parity of a finite fiber survives a cobordism because each interval has two endpoints (our own). Sard’s theorem gives a nearby value regular for the homotopy and both end maps (our own). Local constancy at regular values transfers the parity back, and an isotopy moving one target point to another gives independence (our own).
+**How the definition helps.** Near a regular value of both end maps, Sard’s theorem gives one also regular for the homotopy, with the same parities by local constancy (our own). Its preimage is a compact curve whose arcs each have two ends, so both end maps give the same parity (our own). An isotopy of the target moving one regular value to another gives independence of the value (our own).
 
 **Wikipedia:** [Degree of a continuous mapping](https://en.wikipedia.org/wiki/Degree_of_a_continuous_mapping). It says: “the manifolds need not be orientable”
 
@@ -102,15 +102,15 @@
 
 ### Signed preimages make boundary extensions have degree zero
 
-**Remember:** A fiber interval contributes one point of each sign.
+**Remember:** Count preimages with signs, and an arc's two ends cancel.
 
 *True by definition.* MSC 55M25 (Degree, winding number), 57R35. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** For a smooth map between oriented manifolds of equal dimension without boundary, assume the source is compact and the target connected. Its degree counts preimages of a regular value with sign +1 or −1 as the derivative preserves or reverses orientation.
+**Definition.** Take a smooth map between oriented manifolds of the same dimension without boundary, with compact source and connected target. Its degree counts the preimages of a regular value, each with sign +1 if the derivative preserves orientation and −1 if it reverses it.
 
-**Problem.** Let a smooth map from the oriented boundary of a compact oriented manifold extend smoothly over that manifold. Its degree is zero for a connected oriented target without boundary of the same dimension as the source boundary.
+**Problem.** Let W be a compact oriented manifold, and let N be a connected oriented manifold without boundary with dim N = dim ∂W. A smooth map from ∂W to N that extends smoothly over W has degree zero.
 
-**How the definition helps.** Computing degree by signed preimages instead of top homology turns the calculation into counting interval endpoints (our own). Sard’s theorem supplies a value regular for both maps, whose inverse image under the extension is a compact oriented curve (our own). Its interval endpoints contribute opposite signs under the induced boundary orientation, and its circles contribute none (our own).
+**How the definition helps.** Over a value regular for the map and its extension, the preimage under the extension is a compact oriented curve in W (our own). Each arc meets ∂W in two points of opposite sign, and closed loops do not meet ∂W, so the signed count is zero (our own). Sard’s theorem supplies such a regular value (our own).
 
 **Paper or page:** [Extendability Theorem for Intersection Numbers/Corollary](https://proofwiki.org/wiki/Extendability_Theorem_for_Intersection_Numbers/Corollary). It says: “deg f = 0”
 
@@ -120,15 +120,15 @@
 
 ### Augmentation makes one suspension formula work in all degrees
 
-**Remember:** Remove the point contribution and suspension shifts every degree alike.
+**Remember:** Reduced homology gives a point nothing, so cones vanish in every degree.
 
 *Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Reduced homology adds a boundary map that sends each point to 1 in a copy of ℤ in degree −1. The suspension takes a cylinder on the space and collapses each end to its own point.
+**Definition.** Reduced homology extends the singular chain complex by ℤ in degree −1, sending each point to 1. Then every contractible space, a cone included, has zero reduced homology in every degree (our own). The suspension of X collapses each end of X × \[0, 1\] to its own point, so it is two cones glued along X.
 
-**Problem.** For a nonempty space, suspension shifts reduced homology from degree n to n + 1 for every n ≥ 0. A sphere therefore has reduced homology ℤ in its dimension and zero in other nonnegative degrees.
+**Problem.** For a nonempty space, suspension shifts reduced homology from degree n to n + 1 for every n ≥ 0. So a sphere has reduced homology ℤ in its dimension and zero in other nonnegative degrees.
 
-**How the definition helps.** Reduced homology vanishes on each contractible cone even in degree zero (our own). The complements of the two tips form an open cover, and their overlap deforms onto the original space (our own). The Mayer–Vietoris exact sequence for this cover then gives the degree shift (our own). Starting with two points gives the sphere calculation (our own).
+**How the definition helps.** The complements of the two tips are open cones with zero reduced homology, and their overlap deforms onto X (our own). The Mayer–Vietoris sequence in reduced homology then gives the shift, with no exception in degree zero (our own). Starting with two points gives the sphere calculation (our own).
 
 **Wikipedia:** [Mayer–Vietoris sequence](https://en.wikipedia.org/wiki/Mayer%E2%80%93Vietoris_sequence). It says: “with A and B contractible. Also, the intersection A ∩ B is homotopy equivalent to Y.”
 
@@ -136,15 +136,15 @@
 
 ### Cell boundaries turn surface homology into signed edge counts
 
-**Remember:** Opposite traversals cancel, while matching traversals give a two.
+**Remember:** Read the polygon's edge word, with signs for direction.
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory), 57K20. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Cellular chains use one integer generator per cell in each dimension. For a polygon with paired edges and one vertex, its boundary records each edge traversal with a sign for its direction.
+**Definition.** For a surface built from one polygon with paired edges and one vertex, cellular chains have one integer generator per edge and one for the face. Each edge has boundary zero (our own), and the face's boundary adds each edge once per traversal, with sign −1 when it is traversed backwards.
 
-**Problem.** The first integral homology of a connected sum of g ≥ 1 tori is free abelian of rank 2g. For k ≥ 1 projective planes, the connected sum has k − 1 free generators and one summand ℤ/2ℤ.
+**Problem.** The first integral homology of a connected sum of g ≥ 1 tori is free abelian of rank 2g. For k ≥ 1 projective planes, the connected sum has first homology ℤᵏ⁻¹ ⊕ ℤ/2ℤ.
 
-**How the definition helps.** Cellular chains replace a triangulation by one polygon relation, since every edge begins and ends at the same vertex (our own). In the usual torus sum polygon, each edge appears twice in opposite directions and cancels (our own). For the projective plane sum, the boundary is twice the sum of all edges, and this sum can replace one generator (our own). The polygon descriptions and the cellular homology theorem justify the calculation (our own).
+**How the definition helps.** By the cellular homology theorem, H₁ is the free abelian group on the edges modulo the face's boundary (our own). For the torus sum each edge occurs once in each direction, so the boundary is zero and H₁ = ℤ²ᵍ (our own). For the projective plane sum the boundary is twice the sum of all edges, and that sum can replace one generator (our own).
 
 **nLab:** [cellular homology](https://ncatlab.org/nlab/show/cellular+homology). It says: “Cellular homology is a very efficient tool for computing the ordinary homology groups of topological spaces which are CW complexes”
 
@@ -156,11 +156,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory), 55U15. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A chain map commutes with the boundary operator ∂. Two chain maps are chain homotopic if their difference equals ∂P + P∂ for an operator P that raises degree by one.
+**Definition.** Two chain maps f and g are chain homotopic if f − g = ∂P + P∂ for some maps P that raise degree by one. On a cycle z this gives f(z) − g(z) = ∂(Pz), a boundary (our own).
 
 **Problem.** Homotopic continuous maps induce the same homomorphism on singular homology. In particular homotopy equivalences induce isomorphisms.
 
-**How the definition helps.** For a cycle z, its boundary ∂z vanishes, so the two images differ by the boundary ∂Pz (our own). Homology identifies cycles whose difference is a boundary (our own). To pass from a continuous deformation to this algebraic formula, the prism construction divides each moving simplex into higher-dimensional simplices (our own).
+**How the definition helps.** Homology identifies cycles that differ by a boundary, so chain homotopic maps agree on homology (our own). The prism construction turns a homotopy of continuous maps into a chain homotopy of the induced singular chain maps (our own).
 
 **Paper or page:** [Homotopic Chain Maps Induce Equal Maps on Homology](https://proofwiki.org/wiki/Homotopic_Chain_Maps_Induce_Equal_Maps_on_Homology). It says: “Then f and g induce equal maps on homology.”
 
@@ -172,11 +172,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory), 55U15. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A singular simplex in X is any continuous map from a standard simplex to X. Unlike a simplex in a triangulation, its image may overlap itself or collapse.
+**Definition.** A singular simplex in X is any continuous map from a standard simplex into X, with no condition that it be injective or fit a triangulation. So composing it with a continuous map from X to Y always gives a singular simplex in Y (our own).
 
 **Problem.** Every continuous map induces homomorphisms on singular homology. The identity induces the identity, and composition induces composition.
 
-**How the definition helps.** Composing a singular simplex with any continuous map immediately gives another singular simplex (our own). Composition respects faces, so it carries cycles to cycles and boundaries to boundaries (our own). For triangulations the direct construction would require simplicial maps (our own). The comparison theorem identifies simplicial and singular homology on a triangulated space (our own).
+**How the definition helps.** Composition with a map commutes with taking faces, so it is a chain map and acts on homology (our own). Composing with the identity, or with two maps in turn, gives the identity and the composite (our own).
 
 **Paper or page:** [Homomorphism of Chain Complexes induces Homomorphism of Homology](https://proofwiki.org/wiki/Homomorphism_of_Chain_Complexes_induces_Homomorphism_of_Homology). It says: “Then for every n, f induces a morphism”
 
@@ -188,11 +188,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** For a subspace A of X, the relative singular chain complex is C•(X)/C•(A), with boundary induced from X. Its homology is Hₙ(X, A).
+**Definition.** For a subspace A of X, the relative singular chain complex C•(X, A) is the quotient C•(X)/C•(A), with boundary induced from X, and its homology is Hₙ(X, A). So 0 → C•(A) → C•(X) → C•(X, A) → 0 is a short exact sequence of chain complexes.
 
 **Problem.** Every pair (X, A) has a natural long exact sequence … → Hₙ(A) → Hₙ(X) → Hₙ(X, A) → Hₙ₋₁(A) → …
 
-**How the definition helps.** The quotient gives a short exact sequence of chain complexes with first term C•(A), middle term C•(X), and last term C•(X)/C•(A). The zigzag lemma supplies its natural long exact homology sequence (our own).
+**How the definition helps.** The zigzag lemma turns every short exact sequence of chain complexes into a natural long exact homology sequence (our own).
 
 **nLab:** [relative homology](https://ncatlab.org/nlab/show/relative+homology). It says: “The cokernel of this inclusion, hence the quotient C•(X)/C•(A) of C•(X) by the image of C•(A) under the inclusion”
 
@@ -206,11 +206,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Local homology at x means the relative homology of the space paired with the complement of x. Relative chains identify every chain avoiding x with zero.
+**Definition.** The local homology of X at a point x is the relative homology Hₙ(X, X ∖ {x}). It sees only the space near x (our own), because chains that avoid x count as zero.
 
 **Problem.** Homeomorphic nonempty open subsets of Euclidean spaces have the same dimension, which local homology detects at any point.
 
-**How the definition helps.** At a point of an open subset of Euclidean n-space, local homology is ℤ in degree n and zero elsewhere (our own). Excision reduces the calculation to a ball around the point (our own). For positive dimension the punctured ball deforms onto a sphere, and the exact sequence of the pair gives the result (our own). A homeomorphism preserves these groups, so it preserves the dimension (our own).
+**How the definition helps.** At a point of an open subset of ℝⁿ, excision reduces local homology to a ball, where it is ℤ in degree n and zero elsewhere (our own). A homeomorphism preserves local homology, so it preserves n (our own).
 
 **Wikipedia:** [Excision theorem](https://en.wikipedia.org/wiki/Excision_theorem). It says: “This follows from the excision theorem, the long exact sequence for the pair”
 
@@ -222,11 +222,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory), 57K20. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Orient a triangulated surface by choosing directions around its triangles so adjacent triangles induce opposite directions along their shared edge. Independent choices of directions need not fit together.
+**Definition.** An orientation of a triangulated surface chooses a direction around each triangle so that two triangles sharing an edge run along it in opposite directions. Then the sum of all the oriented triangles has zero boundary (our own).
 
 **Problem.** For a connected closed triangulated surface, the second integral homology group is ℤ if the surface is orientable and zero otherwise. Here closed means compact and without boundary.
 
-**How the definition helps.** Compatible triangle orientations make every edge cancel in the sum of all triangles (our own). In any cycle, cancellation across an edge forces its two triangle coefficients to have equal magnitudes (our own). Every triangle connects to every other across edges, so a nonzero cycle gives compatible orientations and one common magnitude (our own). There are no three-dimensional chains whose boundaries could remove such a cycle (our own).
+**How the definition helps.** Compatible orientations make the sum of all triangles a cycle (our own). In any 2-cycle the two triangles at an edge have coefficients of equal size, so by connectedness a nonzero cycle is a multiple of such a sum (our own). There are no 3-chains, so H₂ is the group of 2-cycles (our own).
 
 **Wikipedia:** [Orientability](https://en.wikipedia.org/wiki/Orientability). It says: “neighboring edges are pointing in the opposite direction, then this determines an orientation of the surface.”
 
@@ -238,11 +238,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** For an open cover by U and V, call a singular chain small if each of its simplices lies in U or in V. General singular chains can contain simplices crossing between the two sets.
+**Definition.** For open sets U and V covering X, a singular chain is small if each of its simplices lies in U or in V. Modulo chains in U, a small chain keeps only its simplices in V but not in U ∩ V (our own). Those form exactly a chain of the pair (V, U ∩ V) (our own).
 
-**Problem.** Suppose open sets U and V cover X. Inclusion of (V, U ∩ V) into (X, U) induces isomorphisms on relative homology, which ignores chains in the second space.
+**Problem.** Suppose open sets U and V cover X. Then the inclusion of (V, U ∩ V) into (X, U) induces isomorphisms on relative homology.
 
-**How the definition helps.** Among small chains, ignoring simplices in U leaves precisely the simplices in V that do not lie entirely in the intersection (our own). This identifies the two relative chain groups and their boundary maps (our own). Repeated subdivision makes each finite chain small, and a chain homotopy shows that this preserves relative homology (our own).
+**How the definition helps.** On small chains the two relative chain complexes are equal, since both have the simplices in V but not in U as a basis (our own). Repeated subdivision makes every chain small, and a chain homotopy shows that this does not change homology (our own).
 
 **Wikipedia:** [Excision theorem](https://en.wikipedia.org/wiki/Excision_theorem). It says: “subdivide the simplices in a relative cycle”
 
@@ -254,11 +254,11 @@
 
 *Rules out counterexamples.* MSC 55P10 (Homotopy equivalences in algebraic topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A retraction is a continuous map onto a subspace that fixes its points. A strong deformation retraction continuously moves each point to its image under the retraction while keeping the subspace fixed.
+**Definition.** A strong deformation retraction of X onto a subspace A is a continuous motion that slides every point of X into A while every point of A stays fixed. Its final map is a retraction, a map onto A that fixes A.
 
 **Problem.** Including a strong deformation retract gives a homotopy equivalence, a map with an inverse up to continuous deformation. It induces an isomorphism on fundamental groups at each base point in the subspace.
 
-**How the definition helps.** The inclusion and retraction compose to the identity one way and deform to it the other way (our own). An ordinary retraction can send a circle to a point and lose its nontrivial fundamental group (our own). The work is finding the deformation and showing that based homotopies induce equal homomorphisms (our own).
+**How the definition helps.** The retraction after the inclusion is the identity of A, and the inclusion after the retraction moves to the identity of X by the motion (our own). An ordinary retraction is not enough: a circle retracts onto a point but has nontrivial fundamental group (our own). The motion fixes A, so the homotopy is based at each point of A (our own).
 
 **nLab:** [deformation retract](https://ncatlab.org/nlab/show/deformation+retract). It says: “Hence a deformation retract is a (left) homotopy equivalence where one of the two homotopies occuring is in fact an identity.”
 
@@ -270,11 +270,11 @@
 
 *True by definition.* MSC 55P10 (Homotopy equivalences in algebraic topology). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** To form the mapping cylinder of f from X to Y, glue the bottom of X × \[0, 1\] to Y by f. Leave the top as a separate copy of X.
+**Definition.** The mapping cylinder of f from X to Y glues the bottom end of X × \[0, 1\] to Y by f. Its top end stays a free copy of X. Sliding each vertical segment down to its bottom retracts the cylinder onto Y (our own).
 
 **Problem.** Every continuous map factors through its mapping cylinder as an inclusion followed by a retraction onto its target.
 
-**How the definition helps.** The separate top keeps distinct input points apart even when the original map identifies them (our own). Sliding each vertical segment to its bottom gives a continuous retraction because the slide respects the gluing (our own). The slide fixes the target throughout, so the retraction is a homotopy equivalence (our own).
+**How the definition helps.** Including X as the top and then sliding down gives f, so f factors as an inclusion followed by a retraction (our own). The slide fixes Y throughout, so the retraction is a homotopy equivalence (our own).
 
 **nLab:** [mapping cylinder](https://ncatlab.org/nlab/show/mapping+cylinder). It says: “In particular every continuous function factors as a map into its mapping cylinder followed by a deformation retraction.”
 
@@ -286,11 +286,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A group pushout starts with the free product of two groups, which allows words from both groups. It imposes exactly the relations that identify the two images of each element of a shared source group.
+**Definition.** The pushout of groups G and H over a group K is the free product of G and H, whose elements are words in both. It adds one relation for each element of K: its image in G equals its image in H.
 
 **Problem.** Attaching a disk to a path-connected cell complex adds exactly one relation to its fundamental group. The loop along the disk boundary becomes the identity.
 
-**How the definition helps.** The disk has trivial fundamental group, so the pushout sets its boundary loop equal to the identity (our own). Van Kampen identifies this pushout with the new fundamental group (our own). Apply it to overlapping neighborhoods of the old space and the disk interior whose intersection deforms onto a circle (our own).
+**How the definition helps.** Van Kampen's theorem says that the new fundamental group is the pushout of the old group and the disk's group over the group of a circle (our own). The disk's group is trivial, so the only effect is the relation that kills the boundary loop (our own).
 
 **nLab:** [van Kampen theorem](https://ncatlab.org/nlab/show/van+Kampen+theorem). It says: “is a pushout square in Grp.”
 
@@ -302,11 +302,11 @@
 
 *True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A spanning tree is a connected subgraph without cycles that contains every vertex. Form the quotient graph by identifying the whole tree with one point.
+**Definition.** A spanning tree of a connected graph is a connected subgraph without cycles that contains every vertex. It is contractible, and collapsing it to a point leaves a wedge of circles, one for each edge outside the tree (our own).
 
 **Problem.** A finite connected graph has free fundamental group with one generator per edge outside a spanning tree. For E edges and V vertices its rank is E − V + 1.
 
-**How the definition helps.** Collapsing the tree leaves one circle for each remaining edge, avoiding relations for the paths between vertices (our own). Before collapse, each generator follows tree paths to and from its chosen edge (our own). Collapsing a contractible cell subcomplex preserves homotopy type (our own). Van Kampen gives a free group on the resulting circles (our own).
+**How the definition helps.** Collapsing a contractible subcomplex keeps the homotopy type, and a wedge of circles has free fundamental group with one generator per circle (our own). A tree on V vertices has V − 1 edges, so E − V + 1 edges remain (our own).
 
 **Wikipedia:** [Fundamental group](https://en.wikipedia.org/wiki/Fundamental_group). It says: “the free product of the individual fundamental groups”
 
@@ -318,11 +318,11 @@
 
 *True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 55P10. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** The cone on X is X × \[0, 1\] with all points at time 1 identified. Its base is the copy of X at time 0.
+**Definition.** The cone on X is X × \[0, 1\] with the top end X × {1} collapsed to one point, and its base is X × {0}. A map on the cone is the same as a deformation of its base map that ends at a constant (our own).
 
 **Problem.** A continuous map from a nonempty space deforms to a constant exactly when it extends continuously over the cone. For a sphere, this means it extends over the ball.
 
-**How the definition helps.** Collapsing the last time slice turns a deformation ending at one point into a map on the cone (our own). The quotient topology makes that map continuous (our own). Conversely, following each vertical segment through an extension gives the required deformation (our own). For a sphere the cone is a ball (our own).
+**How the definition helps.** Reading the cone's second coordinate as time matches null homotopies with extensions over the cone, and the quotient topology makes both directions continuous (our own). The cone on a sphere is a ball (our own).
 
 **nLab:** [cone](https://ncatlab.org/nlab/show/cone). It says: “is the space obtained by taking the X-shaped cylinder X × I, where I may be an interval object, and squashing one end down to a point.”
 
@@ -334,11 +334,11 @@
 
 *Rules out counterexamples.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A based loop starts and ends at a chosen point. Based homotopy deforms one loop into another while keeping both endpoints there. Free homotopy allows the common endpoint to move.
+**Definition.** A based homotopy of loops at a point x deforms one loop into another while both ends stay at x throughout. So two such deformations can run end to end at every moment, and joining loops respects them (our own).
 
 **Problem.** Based homotopy classes of loops form the fundamental group under concatenation, which follows one loop after another.
 
-**How the definition helps.** Fixed endpoints let the two deformations meet at the same point throughout (our own). On two circles joined at a point, write a and b for the trips around the circles (our own). Allowing the base point to move identifies b with aba⁻¹, yet multiplying each by b gives different free loop classes (our own). The group laws follow by changing speed and cancelling a path with its reverse (our own).
+**How the definition helps.** Fixed ends make concatenation well defined on based classes (our own). With a moving base point, b and aba⁻¹ on a wedge of two circles become equal, yet b·b and aba⁻¹·b do not (our own). The group laws follow by changing speed and cancelling a loop with its reverse (our own).
 
 **Paper or page:** [Homotopic Paths Implies Homotopic Composition](https://proofwiki.org/wiki/Homotopic_Paths_Implies_Homotopic_Composition). It says: “Then the concatenated paths f₁ ∗ g₁ and f₂ ∗ g₂ are homotopic.”
 
@@ -346,15 +346,15 @@
 
 ### Groupoids reveal every path component
 
-**Remember:** Keep paths between every pair and read off the components.
+**Remember:** Keep paths between every pair of points, and components appear.
 
 *True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 01A60. arXiv math.AT, math.HO. Level 2: later undergraduate.
 
-**Definition.** The fundamental group records loops at one chosen point, identifying loops that deform into each other while fixing that point. The fundamental groupoid uses all points and records paths between them, up to deformations that fix both endpoints.
+**Definition.** The fundamental groupoid of X has every point of X as an object. Its arrows from x to y are the paths from x to y, up to deformations fixing both ends.
 
 **Problem.** The components of the fundamental groupoid are exactly the path components of the space.
 
-**How the definition helps.** An arrow exists between two points exactly when a path joins them. Thus the groupoid partitions points into precisely the path components.
+**How the definition helps.** Two points lie in one component of the groupoid exactly when an arrow joins them, which means exactly when a path joins them.
 
 **nLab:** [fundamental groupoid](https://ncatlab.org/nlab/show/fundamental+groupoid). It says: “The set of connected components of Π₁(X) is precisely the set Π₀(X) of path-components of X.”
 
@@ -368,11 +368,11 @@
 
 *True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** A topological group has continuous multiplication and inversion. For loops at its identity, pointwise multiplication multiplies their values at each time. Concatenation instead traverses one loop and then the other.
+**Definition.** In a topological group, loops at the identity can be multiplied pointwise, (αβ)(t) = α(t)β(t), as well as concatenated. The pointwise product of two concatenations is the concatenation of the pointwise products, and on homotopy classes both operations have the constant class as unit (our own).
 
 **Problem.** The fundamental group of a topological group at its identity is abelian.
 
-**How the definition helps.** Pointwise multiplication respects the two halves of concatenation, so the operations satisfy the interchange law (our own). Both operations on loop classes have the constant class as their identity (our own). The Eckmann–Hilton argument then shows that the two operations agree and commute.
+**How the definition helps.** By the Eckmann–Hilton argument, two operations with a common unit that satisfy this interchange law agree and are commutative.
 
 **nLab:** [Eckmann-Hilton argument](https://ncatlab.org/nlab/show/Eckmann-Hilton+argument). It says: “then the two structures actually coincide and the resulting monoid is commutative.”
 
@@ -380,15 +380,15 @@
 
 ### Van Kampen's theorem works for a set of base points
 
-**Remember:** Keep paths between chosen points in every component of each piece and overlap.
+**Remember:** Choose base points in every component of each piece and overlap.
 
 *Makes the theorem clean to state or prove.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 18B40, 57M05. arXiv math.AT, math.CT. Level 2: later undergraduate.
 
-**Definition.** For A ⊆ X, the fundamental groupoid Π₁(X, A) has the points of A as objects. Its arrows from x to y are paths in X from x to y modulo homotopies fixing both endpoints. Composition joins paths.
+**Definition.** For a set A of points of X, the fundamental groupoid Π₁(X, A) keeps only the paths that start and end in A, up to homotopy fixing both ends. With points of A in every component, one groupoid can describe a space whose pieces overlap in several components.
 
 **Problem.** Suppose X = U ∪ V for open U and V, and A meets every path component of U, V and U ∩ V. Writing G(W) = Π₁(W, A ∩ W), the pushout of G(U) and G(V) over G(U ∩ V) is G(X).
 
-**How the definition helps.** Multiple base points represent disconnected overlaps in a single groupoid. The groupoid van Kampen theorem gives the pushout when the chosen points meet all the specified components (our own).
+**How the definition helps.** A single base point cannot reach every component of a disconnected overlap U ∩ V, but a set of base points can (our own). The groupoid van Kampen theorem gives the pushout when A meets every path component of U, V and U ∩ V (our own).
 
 **nLab:** [van Kampen theorem](https://ncatlab.org/nlab/show/van+Kampen+theorem). It says: “Note that the version of the theorem for fundamental groups does not apply, since U ∩ V is not path-connected.”
 
@@ -403,11 +403,11 @@
 
 *Rules out counterexamples.* MSC 55R15 (Classification of fiber spaces or bundles in algebraic topology), 57M10. arXiv math.AT, math.GT. Level 2: later undergraduate.
 
-**Definition.** A space X is semi-locally simply connected if each x has a neighborhood U where every loop based at x contracts in X.
+**Definition.** A space X is semi-locally simply connected if each point x has a neighborhood U whose loops at x all shrink to a point in X, possibly leaving U. So small loops act trivially in any action of the fundamental groupoid (our own).
 
 **Problem.** Let X be locally path-connected and semi-locally simply connected. Then covering spaces of X are the same as actions of the fundamental groupoid of X on sets.
 
-**How the definition helps.** Small loops must act trivially for the reconstruction from an action to give evenly covered neighborhoods (our own). The Hawaiian earring fails this test because every neighborhood of its wedge point contains an entire essential circle (our own). The covering classification theorem identifies coverings with their monodromy actions under the stated hypotheses (our own).
+**How the definition helps.** Small loops acting trivially is what lets a set with a groupoid action be rebuilt into a covering with evenly covered neighborhoods (our own). The Hawaiian earring fails the condition, since every neighborhood of its wedge point contains a whole essential circle (our own).
 
 **nLab:** [semi-locally simply-connected topological space](https://ncatlab.org/nlab/show/semi-locally+simply-connected+topological+space), [fundamental theorem of covering spaces](https://ncatlab.org/nlab/show/fundamental+theorem+of+covering+spaces), [Hawaiian earring space](https://ncatlab.org/nlab/show/Hawaiian+earring+space). It says: “Semi-local simple connectedness is the crucial condition needed to have a good theory of covering spaces”
 
@@ -422,11 +422,11 @@
 
 *True by definition.* MSC 55U10 (Simplicial sets and complexes in algebraic topology). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** The open star of a vertex consists of the relative interiors of all simplices containing that vertex. A simplicial approximation chooses target vertices and extends linearly over each simplex. The open star of each chosen vertex must contain the image of the corresponding source star.
+**Definition.** A simplicial approximation to a continuous map f sends vertices to vertices and extends linearly over each simplex. It must map stars into stars: f sends the open star of each vertex v, the union of open simplices containing v, into the open star of v's image. So for every point, its images under f and the approximation lie in one common simplex.
 
 **Problem.** The realization of a simplicial approximation is homotopic to the map it approximates. The homotopy fixes every point where the two maps agree.
 
-**How the definition helps.** The star condition puts both images of each point in one simplex, where the straight segment between them stays inside. These segments give a continuous deformation and keep points fixed wherever the images agree. Finding an approximation with this condition can require subdivision (our own).
+**How the definition helps.** Each simplex is convex, so the straight segment between the two images stays inside it. These segments give a continuous deformation that fixes every point where the two maps agree.
 
 **nLab:** [simplicial approximation theorem](https://ncatlab.org/nlab/show/simplicial+approximation+theorem). It says: “This makes sense since if f(α) ∈ \|s\|, then \|φ\|(α) ∈ \|s\| and \|s\| is closed under convex combinations.”
 
@@ -438,11 +438,11 @@
 
 *Rules out counterexamples.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 55N10. arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Use integer sums of oriented simplices. The boundary of a positive-dimensional ordered simplex deletes each vertex in turn and adds the resulting faces with signs alternating from plus. A vertex has boundary zero.
+**Definition.** The boundary of an ordered simplex v₀…vₙ with n ≥ 1 is the sum of its faces, the face that omits vᵢ having sign (−1)ⁱ. A vertex has boundary zero.
 
 **Problem.** The simplicial boundary followed by another boundary is zero. Thus every boundary is a cycle, which means its own boundary is zero.
 
-**How the definition helps.** Each face two dimensions down occurs twice with opposite signs because the first deletion shifts one index (our own). With all signs positive, the second boundary of a triangle would count each vertex twice (our own).
+**How the definition helps.** Omitting vᵢ then vⱼ gives the same face as the other order, but with opposite sign, because the first omission shifts the later index (our own). With all signs positive, the second boundary of a triangle would count each vertex twice (our own).
 
 **Wikipedia:** [Simplicial homology](https://en.wikipedia.org/wiki/Simplicial_homology). It says: “we declare that each oriented simplex is equal to the negative of the simplex with the opposite orientation.”
 
@@ -454,11 +454,11 @@
 
 *True by definition. Confidence: medium.* MSC 55M20 (Fixed points and coincidences in algebraic topology), 57R19. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** For a continuous self-map f of a closed oriented manifold M, intersect its graph with the diagonal algebraically. Equivalently, evaluate the diagonal Thom class pulled back by x ↦ (x, f(x)) on \[M\], using normal orientation from the difference first minus second. This gives the Lefschetz number (our own).
+**Definition.** For a continuous self-map f of a closed oriented manifold M, the Lefschetz number counts with signs where the graph of f meets the diagonal. The graph meets the diagonal only at fixed points (our own). Precisely, pull back the diagonal's Thom class, oriented by first coordinate minus second, along x ↦ (x, f(x)), and evaluate on \[M\] (our own).
 
 **Problem.** If a continuous map of a closed oriented manifold to itself has nonzero Lefschetz number, then it has a fixed point.
 
-**How the definition helps.** The diagonal class restricts to zero off the diagonal because it comes from relative cohomology (our own). Without a fixed point the graph lies in that complement, so its pullback vanishes (our own). The Lefschetz trace formula identifies the evaluation with the alternating homology trace (our own).
+**How the definition helps.** The Thom class restricts to zero away from the diagonal, so if f has no fixed point the pullback is zero (our own). The Lefschetz trace formula equates this number with the alternating sum of homology traces (our own).
 
 **Wikipedia:** [Lefschetz fixed-point theorem](https://en.wikipedia.org/wiki/Lefschetz_fixed-point_theorem). It says: “as the alternating sum of traces of maps induced on homologies by f”
 
@@ -470,7 +470,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55M20 (Fixed points and coincidences in algebraic topology), 55N10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a continuous self-map f of a compact triangulable space, Λ(f) is the finite sum ∑ₙ (−1)ⁿ tr(Hₙ(f; ℚ)).
+**Definition.** For a continuous self-map f of a compact triangulable space, the Lefschetz number Λ(f) is the alternating sum of the traces of f on rational homology. In symbols, Λ(f) = ∑ₙ (−1)ⁿ tr(Hₙ(f; ℚ)), a finite sum because the homology vanishes above some degree.
 
 **Problem.** If Λ(f) is not zero, then f has a fixed point. For the disk all higher homology vanishes, so Λ(f) = 1 for every map, which gives the Brouwer fixed point theorem.
 
@@ -488,11 +488,11 @@
 
 *True by definition. Confidence: medium.* MSC 55M25 (Degree, winding number), 57R19. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** Let f be a continuous map between compact connected oriented n-manifolds M and N, taking boundary into boundary. Its degree is the unique integer d with f∗\[M\] = d\[N\] in Hₙ(N, ∂N), using relative fundamental classes.
+**Definition.** Let f be a continuous map between compact connected oriented n-manifolds M and N that sends ∂M into ∂N. Its degree is the integer d with f∗\[M\] = d\[N\] in Hₙ(N, ∂N), for the relative fundamental classes \[M\] and \[N\]. The connecting map sends these classes to the fundamental classes of the boundaries (our own).
 
 **Problem.** Suppose that ∂M and ∂N are nonempty and connected. Then f and its restriction ∂M → ∂N have the same degree.
 
-**How the definition helps.** The connecting map carries each relative fundamental class to its oriented boundary class (our own). Naturality therefore gives (f\|∂M)∗\[∂M\] = d\[∂N\], which identifies the two degrees (our own).
+**How the definition helps.** The connecting map commutes with f, so (f\|∂M)∗\[∂M\] = d\[∂N\] (our own). This says that the restriction to the boundary also has degree d (our own).
 
 **Wikipedia:** [Degree of a continuous mapping](https://en.wikipedia.org/wiki/Degree_of_a_continuous_mapping). It says: “The same definition works for compact manifolds with boundary but then f should send the boundary of X to the boundary of Y.”
 
@@ -504,11 +504,11 @@
 
 *True by definition.* MSC 55M25 (Degree, winding number), 57R19. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** For connected closed oriented n-manifolds X and Y, let \[X\] and \[Y\] denote their integral fundamental classes. The degree of a continuous map f from X to Y is the unique integer d satisfying f∗\[X\] = d\[Y\].
+**Definition.** For connected closed oriented n-manifolds X and Y, the degree of a continuous map f from X to Y is the integer d by which f∗ multiplies top homology. In symbols, f∗\[X\] = d\[Y\] for the fundamental classes \[X\] and \[Y\].
 
 **Problem.** For maps f: X → Y and g: Y → Z of such manifolds, deg(g ∘ f) = deg(g) · deg(f).
 
-**How the definition helps.** Functoriality gives (g ∘ f)∗\[X\] = g∗(deg(f)\[Y\]) = deg(f)deg(g)\[Z\] (our own). The coefficient of \[Z\] is the composite’s degree (our own).
+**How the definition helps.** Functoriality gives (g ∘ f)∗\[X\] = g∗(deg(f)\[Y\]) = deg(f)deg(g)\[Z\], and the coefficient of \[Z\] is the degree of g ∘ f (our own).
 
 **nLab:** [degree of a continuous function](https://ncatlab.org/nlab/show/degree+of+a+continuous+function). It says: “Given a continuous map f : X → Y between two such manifolds, the homomorphism f∗ = Hₙ(f) : Hₙ(X) → Hₙ(Y) is therefore specified by the integer n such that f∗\[ω<sub>X</sub>\] = n\[ω<sub>Y</sub>\]. This integer is called the degree of f.”
 
@@ -518,15 +518,15 @@
 
 ### Defining degree by top homology makes it a homotopy invariant
 
-**Remember:** Homotopic maps induce the same map on homology, so their degrees agree.
+**Remember:** Degree is the multiplier on top homology, which homotopy cannot change.
 
 *True by definition.* MSC 55M25 (Degree, winding number), 57R19. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** For connected closed oriented n-manifolds X and Y, let \[X\] and \[Y\] denote their integral fundamental classes. The degree of a continuous map f from X to Y is the unique integer d satisfying f∗\[X\] = d\[Y\].
+**Definition.** For connected closed oriented n-manifolds X and Y, the degree of a continuous map f from X to Y is the integer d by which f∗ multiplies top homology. In symbols, f∗\[X\] = d\[Y\] for the fundamental classes \[X\] and \[Y\].
 
 **Problem.** Homotopic maps between connected closed oriented manifolds of the same dimension have the same degree.
 
-**How the definition helps.** Homotopic maps induce equal homomorphisms on top homology (our own). They therefore give the same coefficient of \[Y\] in the image of \[X\] (our own).
+**How the definition helps.** Homotopic maps induce the same map on homology, so they send \[X\] to the same multiple of \[Y\] (our own).
 
 **nLab:** [degree of a continuous function](https://ncatlab.org/nlab/show/degree+of+a+continuous+function). It says: “Given a continuous map f : X → Y between two such manifolds, the homomorphism f∗ = Hₙ(f) : Hₙ(X) → Hₙ(Y) is therefore specified by the integer n such that f∗\[ω<sub>X</sub>\] = n\[ω<sub>Y</sub>\]. This integer is called the degree of f.”
 
@@ -541,11 +541,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55M25 (Degree, winding number), 55Q05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For connected closed oriented n-manifolds X and Y, let \[X\] and \[Y\] denote their integral fundamental classes. The degree of a continuous map f from X to Y is the unique integer d satisfying f∗\[X\] = d\[Y\].
+**Definition.** Orienting a connected closed n-manifold chooses a generator of its top homology group ℤ, its fundamental class. For such manifolds X and Y, the degree of a continuous map f from X to Y is the integer d with f∗\[X\] = d\[Y\].
 
 **Problem.** For a closed connected oriented n-manifold M with n ≥ 1, two maps to Sⁿ are homotopic exactly when their degrees agree.
 
-**How the definition helps.** Choosing fundamental classes encodes the induced homomorphism by one integer. Homotopy invariance gives one implication, and the Hopf degree theorem gives the converse (our own).
+**How the definition helps.** Homotopic maps induce the same map on homology, so they have equal degrees (our own). The Hopf degree theorem gives the converse (our own).
 
 **Wikipedia:** [Degree of a continuous mapping](https://en.wikipedia.org/wiki/Degree_of_a_continuous_mapping). It says: “Poincaré duality implies that the manifold's top homology group is isomorphic to Z. Choosing an orientation means choosing a generator of the top homology group.”
 
@@ -559,11 +559,11 @@
 
 *True by definition.* MSC 55M25 (Degree, winding number), 47H11. arXiv math.AT, math.FA. Level 3: graduate.
 
-**Definition.** Let Ω ⊂ ℝⁿ be bounded and open, and let f take a neighborhood of its closure smoothly into ℝⁿ. For p outside f(∂Ω) regular for f on Ω, the degree sums sign(det Df(x)) over x ∈ Ω with f(x) = p. At other p outside f(∂Ω), use any sufficiently close regular value.
+**Definition.** Let Ω ⊂ ℝⁿ be bounded and open, and let f be smooth on a neighborhood of its closure. For a regular value p outside f(∂Ω), deg(f, Ω, p) counts the solutions of f(x) = p in Ω, each with the sign of det Df(x). For other p outside f(∂Ω), use any sufficiently close regular value.
 
 **Problem.** If deg(f, Ω, p) ≠ 0, then the equation f(x) = p has a solution in Ω.
 
-**How the definition helps.** If p has no preimage in Ω, it is regular for the restriction to Ω (our own). Its signed count is the empty sum, hence zero (our own).
+**How the definition helps.** If f(x) = p has no solution in Ω, then p is a regular value and the signed count is an empty sum, which is zero (our own).
 
 **Wikipedia:** [Degree of a continuous mapping](https://en.wikipedia.org/wiki/Degree_of_a_continuous_mapping). It says: “If deg(f, Ω̄, p) ≠ 0, then there exists x ∈ Ω such that f(x) = p.”
 
@@ -575,11 +575,11 @@
 
 *Rules out counterexamples.* MSC 55N05 (?ech types), 55M05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Reduced Čech cohomology takes the direct limit of reduced simplicial cohomology over open covers ordered by refinement. Each cover gives a nerve whose simplices are finite collections of cover members with nonempty intersection.
+**Definition.** Reduced Čech cohomology is the direct limit, over open covers ordered by refinement, of the reduced simplicial cohomology of their nerves. The nerve of a cover has a simplex for each finite family of members with a common point. For a compact subset of a sphere, it equals the limit of the cohomology of the set's open neighborhoods (our own).
 
-**Problem.** Let X be a compact subset of the n-sphere. Alexander duality says the complement's reduced homology in degree q equals the reduced cohomology of X in degree n − q − 1. With Čech cohomology this holds for all compact X, with no local condition.
+**Problem.** For every compact subset X of the n-sphere, the complement's reduced homology in degree q equals the reduced Čech cohomology of X in degree n − q − 1. No local condition on X is needed.
 
-**How the definition helps.** Čech cohomology captures the neighborhood limit in Alexander duality for compact sets (our own). The planar Warsaw circle has two complementary components in S², so their union has reduced H₀ equal to ℤ (our own). Its singular H¹ vanishes, but its Čech H¹ equals ℤ (our own).
+**How the definition helps.** Alexander duality computes the complement through shrinking neighborhoods of X, and Čech cohomology is the limit of their cohomology (our own). The Warsaw circle splits S² into two components, so its complement has reduced H₀ = ℤ (our own). Its Čech H¹ is ℤ, but its singular H¹ is zero (our own).
 
 **Wikipedia:** [Alexander duality](https://en.wikipedia.org/wiki/Alexander_duality). It says: “Note that we can drop local contractibility as part of the hypothesis if we use reduced Čech cohomology, which is designed to deal with local pathologies.”
 
@@ -593,11 +593,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N10 (Singular homology and cohomology theory), 55U15. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Augment the singular chain complex by placing ℤ in degree −1 and sending each point generator in degree zero to 1. Reduced homology is the homology of this complex.
+**Definition.** Reduced homology is the homology of the singular chain complex extended by ℤ in degree −1, where each point, as a 0-chain, maps to 1. So reduced homology in degree −1 is ℤ modulo the image of the 0-chains.
 
 **Problem.** The empty space has reduced homology ℤ in degree −1 and zero in all other degrees. Every nonempty space has zero reduced homology in degree −1.
 
-**How the definition helps.** The augmented definition makes reduced homology in degree −1 the cokernel of one map, so the answer can be read off. For the empty space, degree 0 is zero, so the cokernel is ℤ. For a nonempty space, the map is onto, so the cokernel is zero. These consequences are our own, and the page gives only the definition.
+**How the definition helps.** The empty space has no chains at all, so the image is zero, giving ℤ in degree −1 and zero elsewhere (our own). For a nonempty space a single point already maps onto ℤ, so degree −1 gives zero (our own).
 
 **nLab:** [reduced homology](https://ncatlab.org/nlab/show/reduced+homology). It says: “is the chain homology of the augmented chain complex”
 
@@ -627,11 +627,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory), 55M05, 57N65. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a manifold M, compactly supported cohomology Hᵏ<sub>c</sub>(M) is the direct limit of Hᵏ(M, M ∖ K) over compact subsets K ordered by inclusion.
+**Definition.** For a manifold M, compactly supported cohomology Hᵏ<sub>c</sub>(M) is the direct limit of Hᵏ(M, M ∖ K) over compact subsets K, ordered by inclusion. It keeps only the classes that vanish away from some compact set.
 
-**Problem.** For an oriented n-manifold M without boundary, compact or not, Hᵏ with compact support is isomorphic to Hₙ₋ₖ(M). For example (our own), ℝⁿ has compactly supported cohomology ℤ in degree n, matching H₀(ℝⁿ) = ℤ.
+**Problem.** For an oriented n-manifold M without boundary, compact or not, Hᵏ<sub>c</sub>(M) is isomorphic to Hₙ₋ₖ(M).
 
-**How the definition helps.** Passing to compact supports gives the cohomology groups that Poincaré duality pairs with ordinary homology (our own). For n &gt; 0, ordinary Hⁿ(ℝⁿ) vanishes, while compactly supported Hⁿ<sub>c</sub>(ℝⁿ) and H₀(ℝⁿ) both equal ℤ (our own).
+**How the definition helps.** A noncompact M has no fundamental class, only one in Hₙ(M, M ∖ K) for each compact K (our own). Capping with these classes defines the duality map exactly on the limit over K (our own). For n &gt; 0, ordinary Hⁿ(ℝⁿ) is zero, but Hⁿ<sub>c</sub>(ℝⁿ) = ℤ matches H₀(ℝⁿ) = ℤ (our own).
 
 **Wikipedia:** [Poincaré duality](https://en.wikipedia.org/wiki/Poincar%C3%A9_duality). It says: “In the case where an oriented manifold is not compact, one has to replace homology by Borel–Moore homology”
 
@@ -645,11 +645,11 @@
 
 *True by definition.* MSC 55N10 (Singular homology and cohomology theory), 55U05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a CW complex X with skeleta Xⁿ, put Cₙ = Hₙ(Xⁿ, Xⁿ⁻¹). Its cellular boundary first applies the connecting map into Hₙ₋₁(Xⁿ⁻¹), then the canonical map into Cₙ₋₁.
+**Definition.** The cellular chain group Cₙ of a CW complex X is Hₙ(Xⁿ, Xⁿ⁻¹), the homology of the n-skeleton relative to the (n − 1)-skeleton. The boundary is the connecting map into Hₙ₋₁(Xⁿ⁻¹) followed by the map into Hₙ₋₁(Xⁿ⁻¹, Xⁿ⁻²), both maps from exact sequences of pairs.
 
 **Problem.** In the cellular chain complex of a CW complex, dₙ ∘ dₙ₊₁ = 0.
 
-**How the definition helps.** The composite contains consecutive maps Hₙ(Xⁿ) → Hₙ(Xⁿ, Xⁿ⁻¹) → Hₙ₋₁(Xⁿ⁻¹) from the exact sequence of a pair (our own). Their composite is zero by exactness (our own).
+**How the definition helps.** In dₙ ∘ dₙ₊₁ the middle maps Hₙ(Xⁿ) → Hₙ(Xⁿ, Xⁿ⁻¹) → Hₙ₋₁(Xⁿ⁻¹) are consecutive in the exact sequence of the pair, so they compose to zero (our own).
 
 **nLab:** [cellular homology](https://ncatlab.org/nlab/show/cellular+homology). It says: “On representative singular chains the morphism iₙ acts as the identity”
 
@@ -663,11 +663,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N10 (Singular homology and cohomology theory), 55U05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a CW complex X with skeleta Xⁿ, put Cₙ(X) = Hₙ(Xⁿ, Xⁿ⁻¹). Its boundary applies the connecting map into Hₙ₋₁(Xⁿ⁻¹), then the canonical map into Cₙ₋₁(X).
+**Definition.** The cellular chain group Cₙ(X) of a CW complex X is Hₙ(Xⁿ, Xⁿ⁻¹), the homology of each skeleton relative to the one below. Its boundary is the connecting map into Hₙ₋₁(Xⁿ⁻¹) followed by the map into Cₙ₋₁(X), so every ingredient is a natural map of pairs of skeleta (our own).
 
 **Problem.** A cellular map, one that sends each skeleton into the matching skeleton, induces a chain map of cellular chain complexes. This rule respects composition and identities.
 
-**How the definition helps.** Every cellular map preserves skeleta, so relative homology gives maps between the cellular chain groups (our own). Naturality of both boundary factors makes these maps commute with the differentials (our own). Relative homology respects composition and identities (our own).
+**How the definition helps.** A cellular map sends each pair (Xⁿ, Xⁿ⁻¹) into the matching pair, so it acts on each Cₙ (our own). Both boundary maps are natural, so this action commutes with the boundary, and relative homology respects composition and identities (our own).
 
 **Wikipedia:** [Cellular homology](https://en.wikipedia.org/wiki/Cellular_homology). It says: “Cellular homology is a functor from the category of CW complexes with cellular maps”
 
@@ -675,15 +675,15 @@
 
 ### Defining the Euler characteristic by Betti numbers makes it invariant
 
-**Remember:** Count holes of each dimension, not faces, and the cutting cannot change the answer.
+**Remember:** Count holes, not faces, and the cutting cannot change the answer.
 
 *Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory), 57Q05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a finite CW complex X, its Euler characteristic is ∑ₙ (−1)ⁿ bₙ, where bₙ = dim Hₙ(X; ℚ).
+**Definition.** The Euler characteristic of a finite CW complex X is ∑ₙ (−1)ⁿ bₙ, where the Betti number bₙ = dim Hₙ(X; ℚ) counts the n-dimensional holes. Betti numbers depend only on the space, not on how it is cut into cells (our own).
 
 **Problem.** Every bounded three-dimensional convex polyhedron has V − E + F = 2.
 
-**How the definition helps.** The boundary is homeomorphic to S², whose only nonzero Betti numbers are b₀ = b₂ = 1. The Euler–Poincaré formula equates this alternating sum with the boundary’s alternating cell count V − E + F (our own).
+**How the definition helps.** The surface of a convex polyhedron is homeomorphic to S², whose Betti numbers b₀ = b₂ = 1 and b₁ = 0 give 2. The Euler–Poincaré formula equates this sum with the cell count V − E + F of the surface (our own).
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “any convex polyhedron is homeomorphic to the three-dimensional ball, so its surface is homeomorphic (hence homotopy equivalent) to the two-dimensional sphere, which has Euler characteristic 2. This explains why the surface of a convex polyhedron has Euler characteristic 2.”
 
@@ -695,11 +695,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55N10 (Singular homology and cohomology theory), 55P05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A pair (X, A) is a good pair when A is a nonempty closed subspace that is a deformation retract of some neighborhood in X. A deformation retract is a subspace onto which the neighborhood can be continuously shrunk.
+**Definition.** A pair (X, A) is good when A is a nonempty closed subspace with a neighborhood that slides continuously onto A, that is, has A as a deformation retract.
 
 **Problem.** For a good pair, the reduced homology of the quotient X/A equals the relative homology Hₙ(X, A). With the disk and its boundary sphere, this gives the homology of all spheres by induction.
 
-**How the definition helps.** A neighborhood retracting onto A lets excision compare the pair with its quotient, giving the good-pair theorem (our own). In \[0,1\], the closed set A = {0} ∪ {1/n ∣ n ≥ 1} admits no such neighborhood (our own). Every neighborhood contains an interval joining 0 to some 1/n, which cannot retract into the totally disconnected A (our own). Its quotient is the Hawaiian earring, whose first homology exceeds the countable relative group (our own).
+**How the definition helps.** A neighborhood that slides onto A lets excision identify Hₙ(X, A) with the reduced homology of X/A (our own). In \[0, 1\], the closed set A = {0} ∪ {1/n ∣ n ≥ 1} has no such neighborhood: each contains an interval joining 0 to some 1/n, which cannot slide into the totally disconnected A (our own). Its quotient is the Hawaiian earring, whose first homology is uncountable, while the relative group is countable (our own).
 
 **Wikipedia:** [Relative homology](https://en.wikipedia.org/wiki/Relative_homology). It says: “In the case that A is a subspace of X fulfilling the mild regularity condition that there exists a neighborhood of A that has A as a deformation retract, then the group H̃ₙ(X/A) is isomorphic to Hₙ(X,A).”
 
@@ -709,15 +709,15 @@
 
 ### Homology groups, not Betti numbers, give invariants of maps
 
-**Remember:** Numbers count holes; groups also say where the holes go under a map.
+**Remember:** Numbers count holes; groups also track where a map sends them.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N10 (Singular homology and cohomology theory), 55N40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The integral singular homology group Hₙ(X) consists of singular n-cycles modulo boundaries of singular (n+1)-chains. The map induced by f sends each cycle class to the class obtained by composing its simplices with f (our own).
+**Definition.** The integral singular homology group Hₙ(X) is the group of n-cycles modulo boundaries. A continuous map f acts on it by composing each simplex with f. So homology gives a homomorphism for each map, not only a number for each space (our own).
 
 **Problem.** Integral homology takes continuous maps to homomorphisms and preserves identities and composition. Consequently, for n ≥ 2 the disk Dⁿ has no retraction onto Sⁿ⁻¹ (our own).
 
-**How the definition helps.** Composition on simplices respects faces, identities and composition, so it induces the stated maps on classes (our own). A retraction would factor the identity on Hₙ₋₁(Sⁿ⁻¹) ≅ ℤ through Hₙ₋₁(Dⁿ) = 0 (our own).
+**How the definition helps.** Composition respects faces, identities and composites, so the induced maps are functorial (our own). A retraction of Dⁿ onto Sⁿ⁻¹ would factor the identity of Hₙ₋₁(Sⁿ⁻¹) ≅ ℤ through Hₙ₋₁(Dⁿ) = 0 (our own).
 
 **nLab:** [decategorification](https://ncatlab.org/nlab/show/decategorification). It says: “Noether noted that if we work with homology groups rather than Betti numbers, we can solve more problems, because we obtain invariants not only of spaces, but also of maps.”
 
@@ -727,15 +727,15 @@
 
 ### Reduced homology gives the point no homology, so wedge sums split
 
-**Remember:** Reduced homology removes the one copy of ℤ in degree 0 that a point gives.
+**Remember:** Reduced homology deletes the point's copy of ℤ in degree zero.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** The reduced singular homology H̃•(X) is the homology of the augmented chain complex … → C₁(X) → C₀(X) → ℤ → 0. The map C₀(X) → ℤ adds up the coefficients of a 0-chain.
+**Definition.** Reduced singular homology H̃•(X) adds ℤ in degree −1 to the singular chain complex, with each 0-chain sent to the sum of its coefficients. This removes the one ℤ that a point gives in degree zero, so a point has zero reduced homology.
 
 **Problem.** Contractible spaces have zero reduced homology in every degree. A wedge of well-pointed spaces has reduced homology equal to the direct sum of the reduced homologies of its summands.
 
-**How the definition helps.** Augmentation makes the homology of a point vanish, and homotopy invariance gives the contractible case (our own). For closed base points whose inclusions are cofibrations, the reduced homology wedge theorem gives the direct sum in every degree (our own).
+**How the definition helps.** Homotopy invariance passes this from the point to every contractible space (our own). For well-pointed spaces, whose base point inclusions are cofibrations, the reduced homology wedge theorem gives the direct sum in every degree (our own).
 
 **nLab:** [reduced homology](https://ncatlab.org/nlab/show/reduced+homology). It says: “For some applications, though, it is convenient to divide out that contribution such as to have the homology of the point be entirely trivial.”
 
@@ -749,11 +749,11 @@
 
 *True by definition.* MSC 55N15 (Topological \\(K\\)-theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a based compact Hausdorff space X, reduced complex K-theory K̃(X) is the kernel of base-point restriction K(X) → K(point) ≅ ℤ.
+**Definition.** For a based compact Hausdorff space X, reduced complex K-theory K̃(X) is the kernel of restriction to the base point, K(X) → K(point) ≅ ℤ. Pulling back along the constant map from X to the point splits this restriction.
 
 **Problem.** For a based compact Hausdorff space X, K(X) ≅ K̃(X) ⊕ ℤ.
 
-**How the definition helps.** The constant map from X to the point gives a right inverse to restriction, so the kernel is a direct summand. The nLab proves this splitting from the kernel definition. In the stable-bundle definition, one must first show that the classes form a group (our own). That uses the theorem that every bundle on a compact Hausdorff space is a summand of a trivial bundle.
+**How the definition helps.** A restriction with a right inverse is onto, and its kernel is a direct summand. The constant map gives that right inverse, because the base point followed by the constant map is the identity of the point (our own).
 
 **nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “The kernel of this map is called the reduced K-theory group”
 
@@ -765,11 +765,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 15A66. arXiv math.AT, math.KT. Level 3: graduate.
 
-**Definition.** Let Cℓₙ be the real Clifford algebra on n anticommuting generators squaring to +1. For compact Hausdorff X, restrict Cℓₙ₊₁-module bundles to Cℓₙ-module bundles. Karoubi’s degree −n group is π₀ of the homotopy fiber of this restriction on topological K-theory spectra (our own).
+**Definition.** Let Cℓₙ be the real Clifford algebra on n anticommuting generators with square +1. Karoubi’s degree −n group of X is built only from restricting Cℓₙ₊₁-module bundles on X to Cℓₙ-module bundles. Precisely, it is π₀ of the homotopy fiber of this restriction on topological K-theory spectra (our own).
 
 **Problem.** Real topological K-theory of compact Hausdorff spaces repeats every eight degrees.
 
-**How the definition helps.** Eightfold Clifford periodicity gives compatible Morita equivalences for both algebras in the restriction functor. They identify the two relative groups eight degrees apart (our own). Karoubi’s comparison theorem identifies these groups with real topological K-theory (our own).
+**How the definition helps.** Cℓₙ₊₈ is the 16 × 16 matrix algebra over Cℓₙ, so it gives the same module bundles up to Morita equivalence, compatibly with restriction. Thus the groups in degrees −n and −n − 8 agree (our own). Karoubi’s comparison theorem identifies these groups with real topological K-theory (our own).
 
 **nLab:** [Karoubi K-theory](https://ncatlab.org/nlab/show/Karoubi+K-theory). It says: “The sequence is periodic up to Morita equivalence”
 
@@ -779,15 +779,15 @@
 
 ### Over a compact Hausdorff base, K-theory classes are stable classes of bundles
 
-**Remember:** Over a compact Hausdorff space, every bundle has a partner that makes it trivial.
+**Remember:** Every bundle on a compact base has a partner making it trivial.
 
 *Rules out counterexamples. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 55R50. arXiv math.KT, math.AT. Level 3: graduate.
 
-**Definition.** Topological K-theory K(X) is the Grothendieck group of vector bundles on X. You take isomorphism classes of vector bundles, add them by direct sum, and formally add negatives. Here the base space X is compact Hausdorff.
+**Definition.** Topological K-theory K(X) of a compact Hausdorff space X is the Grothendieck group of isomorphism classes of vector bundles under direct sum, whose elements are formal differences \[E\] − \[F\]. Over such a base every bundle F has a complement G with F ⊕ G trivial (our own), so any negative term can be traded for a trivial one.
 
 **Problem.** For a compact Hausdorff space X, every element of K(X) is a formal difference \[E\] − \[trivial bundle\]. Two bundles have the same class in K(X) exactly when they are stably equivalent, that is, isomorphic after adding the same trivial bundle to each.
 
-**How the definition helps.** Over a compact Hausdorff base every bundle F has a complement G with F ⊕ G trivial (our own). Adding G to both terms of \[E\] − \[F\] gives a trivial negative term (our own). Equality in the group completion means equality after adding one common bundle, whose complement makes the addition trivial (our own). On discrete ℕ, fibers of rank n at n have no common finite rank bound and hence no such complement (our own).
+**How the definition helps.** Adding the complement G to both terms turns \[E\] − \[F\] into \[E ⊕ G\] − \[trivial\] (our own). Equality in the group completion means isomorphism after adding a common bundle, and that bundle's complement makes the added bundle trivial (our own). On the noncompact discrete space ℕ, a bundle with fibre rank n at n has no complement, so the statement fails (our own).
 
 **nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “For the most part below we will invoke the assumption that the base topological space X is a compact Hausdorff space. Because then the following statement holds, which is crucial in some places:”
 
@@ -797,15 +797,15 @@
 
 ### Representing K-theory by maps to ℤ × BU makes it homotopy invariant
 
-**Remember:** A homotopy of input maps gives a homotopy after composition.
+**Remember:** K-classes are maps to ℤ × BU, so homotopies pass through.
 
 *True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory), 55R50. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a compact Hausdorff space X, let K⁰(X) be the set of homotopy classes of maps from X to ℤ × BU. Here BU classifies complex vector bundles up to adding trivial bundles. The bundle definition uses formal differences \[E\] − \[F\] of complex vector bundles on X.
+**Definition.** For a compact Hausdorff space X, K⁰(X) is the set of homotopy classes of maps from X to ℤ × BU, the space that classifies complex bundles up to adding trivial ones. Pulling a class back along f : Y → X is composing its map with f.
 
 **Problem.** Homotopic maps f, g : Y → X between compact Hausdorff spaces induce the same pullback map K⁰(X) → K⁰(Y).
 
-**How the definition helps.** Pullback in the representing model means precomposition (our own). For every c from X to ℤ × BU, composing c with a homotopy between f and g identifies their pullbacks (our own). Representability identifies these homotopy classes with bundle K-theory.
+**How the definition helps.** A homotopy from f to g, composed with a map c : X → ℤ × BU, is a homotopy from c∘f to c∘g (our own). So f and g pull back every class to the same class (our own). Representability identifies these homotopy classes with bundle K-theory.
 
 **nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “by homotopy classes of continuous functions into the classifying spaces BO × ℤ and BU × ℤ, respectively”
 
@@ -817,11 +817,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N15 (Topological \\(K\\)-theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a based finite CW complex X, reduced complex K-theory consists of based homotopy classes of maps X → ℤ × BU, based at zero.
+**Definition.** For a based finite CW complex X, reduced complex K-theory K̃(X) is the group of based homotopy classes of maps X → ℤ × BU that send the base point to zero. The group operation is pointwise in ℤ × BU.
 
 **Problem.** The wedge X ∨ Y joins two based spaces at their base points. Its reduced K-group is the direct sum K̃(X) ⊕ K̃(Y).
 
-**How the definition helps.** A based map or based homotopy on X ∨ Y is exactly a pair of them on X and Y (our own). The group operation is pointwise in ℤ × BU, so this bijection is an isomorphism (our own). The nLab proves the same isomorphism in the bundle model, using retracts and the exact sequence of a pair. The mapping model avoids that, but its agreement with the bundle model is a separate theorem (our own).
+**How the definition helps.** A based map or based homotopy out of X ∨ Y is exactly a pair of them out of X and Y (our own). The operation is pointwise, so this bijection is a group isomorphism (our own). That this mapping model agrees with the bundle model is a separate theorem (our own).
 
 **nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “Then there is an isomorphism K̃(X ∨ Y) ≃ K̃(X) ⊕ K̃(Y)”
 
@@ -829,15 +829,15 @@
 
 ### Flat differential classes are homotopy invariant
 
-**Remember:** Without curvature, smooth homotopies cannot change a differential class.
+**Remember:** Flat means zero curvature, so homotopies have nothing to integrate.
 
 *Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 53C08. arXiv math.AT, math.DG. Level 3: graduate.
 
-**Definition.** A differential cohomology class has a closed differential form called its curvature. The class is flat when this form vanishes.
+**Definition.** A differential cohomology class x has a curvature R(x), a closed differential form. For a smooth homotopy H from f₀ to f₁, the difference f₁\*x − f₀\*x comes from the integral of H\*R(x) along the interval (our own). The class is flat when R(x) = 0.
 
 **Problem.** Smoothly homotopic maps give the same pullback on flat differential classes. They can give different pullbacks on classes with nonzero curvature.
 
-**How the definition helps.** The homotopy formula expresses the endpoint difference using the integral of curvature along the homotopy, which vanishes for flat classes (our own). In ordinary degree one, classes are smooth functions with values in ℝ/ℤ (our own). The function t ↦ t mod ℤ on ℝ distinguishes evaluation at 0 from evaluation at ½ (our own).
+**How the definition helps.** For a flat class that integral is zero, so the two pullbacks agree (our own). In degree one, classes are smooth functions to ℝ/ℤ, with curvature their derivative (our own). The function t ↦ t mod ℤ on ℝ is not flat, and its pullbacks along the homotopic constant maps to 0 and to ½ differ (our own).
 
 **nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “(i.e. flat cohomology) is a homotopy invariant functor.”
 
@@ -852,11 +852,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A generalized (Eilenberg–Steenrod) cohomology theory is a functor that satisfies all the Eilenberg–Steenrod axioms except the dimension axiom. The dimension axiom says that the cohomology of a point is zero outside degree 0. So in a generalized theory, the value on a point may be non-zero in many degrees.
+**Definition.** A generalized cohomology theory is a functor that satisfies the Eilenberg–Steenrod axioms of homotopy invariance, exactness and excision, but not the dimension axiom. So the cohomology of a point may be non-zero in degrees other than 0.
 
 **Problem.** Every spectrum gives a generalized cohomology theory, for example K-theory and cobordism. Conversely, by Brown representability, every additive generalized cohomology theory on CW complexes comes from a spectrum.
 
-**How the definition helps.** A spectrum supplies suspension isomorphisms and exact cofiber sequences without requiring its coefficients to vanish outside degree zero (our own). Conversely, Brown representability gives representing spaces for an additive theory on pointed CW complexes, and suspension links them into a spectrum (our own).
+**How the definition helps.** A spectrum gives suspension isomorphisms and exact cofiber sequences, but nothing forces its coefficients to vanish outside degree 0 (our own). Conversely, Brown representability gives a representing space in each degree for an additive theory on pointed CW complexes, and suspension links them into a spectrum (our own).
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology), [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “This entry here is concerned with the generalization obtained from the Eilenberg-Steenrod axioms by just discarding the dimension axiom.”
 
@@ -867,15 +867,15 @@
 
 ### Suspension-defined connecting maps make cohomology exact in all degrees
 
-**Remember:** Apply three-term exactness to each consecutive triple of the cofiber sequence.
+**Remember:** Middle exactness on every cofiber triple, and suspension shifts degree.
 
 *True by definition. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55U35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A reduced cohomology theory here is a graded contravariant functor to abelian groups taking coproducts to products and cofiber triples to middle-exact sequences. It has natural suspension isomorphisms Hⁿ(X) ≅ Hⁿ⁺¹(ΣX). For a cofiber sequence X → Y → Z, the connecting map composes this isomorphism with pullback along Z → ΣX.
+**Definition.** A reduced cohomology theory is a graded functor to abelian groups that sends coproducts to products and each cofiber sequence X → Y → Z to a sequence exact in the middle. It has natural suspension isomorphisms Hⁿ(X) ≅ Hⁿ⁺¹(ΣX), and the connecting map is this isomorphism followed by pullback along Z → ΣX.
 
 **Problem.** In a pointed ∞-category with finite colimits, reduced cohomology sends a cofiber sequence to a long exact sequence. The connecting map from the group of X to the next-degree group of Z uses suspension and the map Z → ΣX.
 
-**How the definition helps.** Each consecutive triple in X → Y → Z → ΣX → ΣY and its suspensions is a cofiber sequence (our own). Three-term exactness therefore gives exactness at each middle group (our own). The suspension isomorphisms identify the resulting maps across degrees with the connecting maps.
+**How the definition helps.** Each consecutive triple of X → Y → Z → ΣX → ΣY → ⋯ is a cofiber sequence, so middle exactness holds at every term (our own). The suspension isomorphisms turn the maps out of the groups of ΣX into the connecting maps, so the pieces join into one long exact sequence.
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology). It says: “using that σ is by definition an isomorphism.”
 
@@ -887,11 +887,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The wedge axiom requires restriction to induce Ẽⁿ(∨ᵢ Xᵢ) ≅ ∏ᵢ Ẽⁿ(Xᵢ) for every family of pointed CW complexes and every degree n.
+**Definition.** A reduced cohomology theory satisfies the wedge axiom if, for every family of pointed CW complexes Xᵢ and every degree n, restriction gives Ẽⁿ(∨ᵢ Xᵢ) ≅ ∏ᵢ Ẽⁿ(Xᵢ). So its value on an infinite wedge of spheres is fixed by its value on each sphere.
 
 **Problem.** Suppose a suspension-compatible natural transformation between reduced additive cohomology theories is an isomorphism on S⁰ in every degree. It is then an isomorphism on every pointed CW complex.
 
-**How the definition helps.** The wedge axiom extends cellular comparison to arbitrary wedges of spheres and to the telescope of the skeleta (our own). The comparison theorem then extends the coefficient isomorphism to all CW complexes. Without additivity, tensoring integral cohomology with ℚ agrees with rational cohomology on S⁰ but misses unbounded denominators on an infinite wedge of circles (our own).
+**How the definition helps.** The wedge axiom extends the finite comparison to infinite wedges of spheres and to the telescope of the skeleta (our own). The comparison theorem then gives an isomorphism on every CW complex. Without the axiom it fails: H\*(−; ℤ) ⊗ ℚ agrees with rational cohomology on S⁰ but not on an infinite wedge of circles (our own).
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology), [wedge axiom](https://ncatlab.org/nlab/show/wedge+axiom). It says: “Then φ(X): E(X) → F(X) is an isomorphism for X any CW-complex with a finite number of cells. If both E and F satisfy the wedge axiom, then φ(X) is an isomorphism for X any CW-complex, not necessarily finite.”
 
@@ -902,15 +902,15 @@
 
 ### Ω-spectrum cohomology has natural suspension isomorphisms by adjunction
 
-**Remember:** Moving suspension to the representing space turns it into loops.
+**Remember:** Each space is the loop space of the next.
 
 *True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** An Ω-spectrum has pointed spaces Eₙ linked by weak equivalences Eₙ → ΩEₙ₊₁ for each degree n. Its cohomology of a pointed CW complex X in degree n consists of pointed homotopy classes of maps from X to Eₙ. The axiomatic definition of reduced cohomology instead assumes suspension isomorphisms.
+**Definition.** An Ω-spectrum is a sequence of pointed spaces Eₙ with weak equivalences Eₙ → ΩEₙ₊₁ to the loop space of the next one. Its degree n cohomology of a pointed CW complex X is the set of pointed homotopy classes of maps X → Eₙ.
 
 **Problem.** For an Ω-spectrum, the degree n cohomology of X is naturally isomorphic to the degree n + 1 cohomology of its reduced suspension.
 
-**How the definition helps.** Suspension–loop adjunction identifies based maps ΣX → Eₙ₊₁ with based maps X → ΩEₙ₊₁, also on homotopy classes (our own). For a pointed CW domain, the structure equivalence Eₙ → ΩEₙ₊₁ induces a bijection on those classes (our own). Both identifications are natural in X (our own).
+**How the definition helps.** Suspension–loop adjunction turns pointed maps ΣX → Eₙ₊₁ into pointed maps X → ΩEₙ₊₁, also on homotopy classes (our own). Since X is a CW complex, the weak equivalence Eₙ → ΩEₙ₊₁ gives a bijection on these classes, naturally in X (our own).
 
 **nLab:** [Whitehead-generalized cohomology](https://ncatlab.org/nlab/show/Whitehead-generalized+cohomology). It says: “In (Whitehead 62) it was observed that every spectrum induces a generalized homology theory. The Brown representability theorem (Brown 62) asserts that every generalized (co)homology arises this way”
 
@@ -922,15 +922,15 @@
 
 ### Complex orientations of a ring spectrum are exactly ring maps from MU
 
-**Remember:** An orientation is one class on ℂℙ∞, and that class is a map from MU.
+**Remember:** One normalized class on ℂℙ∞ is one ring map from MU.
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55P43. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A complex orientation of a homotopy commutative ring spectrum E is a class x ∈ Ẽ²(ℂℙ∞) restricting to the suspended unit in Ẽ²(ℂℙ¹).
+**Definition.** A complex orientation of a homotopy commutative ring spectrum E is a class x ∈ Ẽ²(ℂℙ∞), a universal first Chern class for E (our own), whose restriction to ℂℙ¹ is the suspended unit.
 
 **Problem.** For a homotopy commutative ring spectrum E, complex orientations of E correspond bijectively to homotopy ring maps MU → E.
 
-**How the definition helps.** A ring map from MU carries its universal orientation to a normalized class on ℂℙ∞ (our own). The universal property of complex cobordism gives the converse via the compatible multiplicative Thom classes determined by that orientation (our own).
+**How the definition helps.** MU carries a universal orientation, and a ring map MU → E sends it to an orientation of E (our own). Conversely, an orientation gives compatible multiplicative Thom classes, which the universal property of MU assembles into a ring map (our own).
 
 **nLab:** [complex oriented cohomology theory](https://ncatlab.org/nlab/show/complex+oriented+cohomology+theory). It says: “For E a homotopy commutative ring spectrum, there is a bijection between complex orientations of E-cohomology and homotopy commutative ring spectrum-homomorphisms MU ⟶ E out of MU.”
 
@@ -942,15 +942,15 @@
 
 ### Defining bordism by the Thom spectrum makes its long exact sequence automatic
 
-**Remember:** Spectra give exact sequences before any manifolds are glued.
+**Remember:** Bordism is homotopy of MSO smashed with X, and smash keeps cofibers.
 
 *True by definition. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R75. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a CW pair (X,A), define oriented bordism in degree n as πₙ(MSO ∧ Σ∞(X₊/A₊)). Here MSO is the oriented Thom spectrum, and the plus signs adjoin base points.
+**Definition.** For a CW pair (X, A), oriented bordism in degree n is defined as the stable homotopy group πₙ(MSO ∧ Σ∞(X₊/A₊)), where MSO is the oriented Thom spectrum and the plus signs add base points. Smashing with MSO keeps cofiber sequences (our own).
 
 **Problem.** For a cell complex X and a subcomplex A, oriented bordism has a long exact sequence of the pair.
 
-**How the definition helps.** Smashing the suspension spectra of the cofiber sequence A₊ → X₊ → X₊/A₊ with MSO preserves the cofiber sequence (our own). Stable homotopy groups then give the long exact sequence (our own). The Pontryagin–Thom theorem identifies this construction with geometric oriented bordism (our own).
+**How the definition helps.** Smashing the cofiber sequence A₊ → X₊ → X₊/A₊ with MSO gives a cofiber sequence of spectra, and its homotopy groups form a long exact sequence (our own). The Pontryagin–Thom theorem identifies this construction with geometric oriented bordism (our own).
 
 **nLab:** [bordism homology theory](https://ncatlab.org/nlab/show/bordism+homology+theory). It says: “A generalized homology theory represented by a Thom spectrum.”
 
@@ -965,11 +965,11 @@
 
 *Rules out counterexamples.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55N15. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A ring spectrum E, an object that represents a cohomology theory with products, is even if its homotopy groups πₖE vanish for every odd k. E is complex orientable if some class in E²(ℂℙ∞) restricts to the unit on ℂℙ¹.
+**Definition.** A ring spectrum E is even if its homotopy groups πₖE vanish for every odd k. It is complex orientable if the unit class on ℂℙ¹ extends to a class in E²(ℂℙ∞), and ℂℙ∞ is built from ℂℙ¹ by adding cells of even dimension only.
 
 **Problem.** Every even ring spectrum is complex orientable. Real K-theory KO, which has π₁KO = ℤ/2, is not complex orientable.
 
-**How the definition helps.** The unit on ℂℙ¹ extends over each higher even cell because its obstruction lies in an odd coefficient group (our own). Compatible extensions give an orientation on ℂℙ∞ (our own). For KO the attaching Hopf map of the four-cell already carries the unit to the nonzero class in π₁KO (our own).
+**How the definition helps.** Extending over a cell of dimension 2m meets an obstruction in π₂ₘ₋₃E, an odd homotopy group, which is zero for even E (our own). Compatible extensions give an orientation on ℂℙ∞ (our own). For KO, the Hopf map that attaches the 4-cell sends the unit to the nonzero element of π₁KO (our own).
 
 **nLab:** [complex oriented cohomology theory](https://ncatlab.org/nlab/show/complex+oriented+cohomology+theory). It says: “A sufficient condition for this is, evidently, that the reduced E-cohomology of all odd-dimensional spheres vanishes, hence, that the graded E-cohomology ring E• is trivial in odd degrees (an even cohomology theory).”
 
@@ -981,11 +981,11 @@
 
 *Rules out counterexamples.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14L05, 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let F be a graded one-dimensional commutative formal group law over R. For each prime p let v₀ = p, and for i ≥ 1 take vᵢ as the coefficient of xᵖⁱ in \[p\]F(x). Landweber exactness requires multiplication by vᵢ on R/(v₀,…,vᵢ₋₁) to be injective for every p and i ≥ 0, starting with R.
+**Definition.** A graded one-dimensional commutative formal group law F over R is Landweber exact if, for every prime p, multiplication by p on R and by each vᵢ on R/(p, v₁, …, vᵢ₋₁) is injective. Here vᵢ, for i ≥ 1, is the coefficient of xᵖⁱ in the p-series \[p\]F(x).
 
 **Problem.** For Landweber exact F, the functor X ↦ MU∗(X) ⊗<sub>L</sub> R is a generalized homology theory represented by a spectrum. Here L is the Lazard ring acting through F.
 
-**How the definition helps.** Landweber’s exact functor theorem turns these injection tests into exactness on the cobordism comodules needed for homology (our own). For the additive law over ℤ, v₁ vanishes modulo p, so multiplication by v₁ fails the test (our own). Representability then supplies the spectrum (our own).
+**How the definition helps.** Landweber’s exact functor theorem says these injectivity tests make tensoring with R exact on MU-homology, so exact sequences of homology survive (our own). Brown representability then supplies the spectrum (our own). The additive law over ℤ fails, since its v₁ is 0 modulo p (our own).
 
 **nLab:** [Landweber exact functor theorem](https://ncatlab.org/nlab/show/Landweber+exact+functor+theorem), [Landweber exactness](https://ncatlab.org/nlab/show/Landweber+exactness). It says: “Landweber exactness is a sufficient condition on R for E ≔ MU•(−) ⊗ L R to be indeed a generalized homology theory”
 
@@ -995,15 +995,15 @@
 
 ### Morava K-theory has a graded field of coefficients, so Künneth always holds
 
-**Remember:** Every nonzero homogeneous coefficient has an inverse.
+**Remember:** Coefficients form a graded field, so every module is free.
 
 *True by definition.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A graded field is a graded ring in which every nonzero homogeneous element is invertible. At prime p and height n ≥ 1, Morava K-theory has the graded field 𝔽ₚ\[vₙ, vₙ⁻¹\] as coefficients, with \|vₙ\| = 2(pⁿ − 1).
+**Definition.** Morava K-theory K(n), at a prime p and height n ≥ 1, has coefficients 𝔽ₚ\[vₙ, vₙ⁻¹\] with \|vₙ\| = 2(pⁿ − 1). This ring is a graded field: every nonzero homogeneous element is invertible, so every graded module over it is free (our own).
 
 **Problem.** For all spaces X and Y, the K(n)-homology of X × Y is the tensor product over K(n)\* of the K(n)-homologies of X and Y.
 
-**How the definition helps.** Every graded module over a graded field is free (our own). Thus the higher Tor groups in the Künneth spectral sequence vanish, leaving the tensor product via the external product (our own).
+**How the definition helps.** Free modules have no higher Tor groups, so the Künneth spectral sequence collapses to the tensor product given by the external product (our own).
 
 **nLab:** [Morava K-theory](https://ncatlab.org/nlab/show/Morava+K-theory). It says: “This ring is a graded field in the sense that every graded module over it is free.”
 
@@ -1015,15 +1015,15 @@
 
 ### One class on ℂP∞ gives a formal group law
 
-**Remember:** A complex orientation is a first Chern class that restricts to 1 on the 2-sphere.
+**Remember:** An orientation is a first Chern class equal to 1 on S².
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A complex orientation of a homotopy commutative ring spectrum E is a class x ∈ Ẽ²(ℂℙ∞) restricting on ℂℙ¹ to the suspended unit.
+**Definition.** A complex orientation of a homotopy commutative ring spectrum E is a class x ∈ Ẽ²(ℂℙ∞) that restricts on ℂℙ¹ to the suspended unit. It acts as a first Chern class, and Ẽ\*(ℂℙ∞ × ℂℙ∞) is then power series in its two copies x₁ and x₂ (our own).
 
 **Problem.** Every complex oriented cohomology theory carries a formal group law, from the first Chern class of a tensor product of line bundles. For a homotopy commutative ring spectrum E, complex orientations correspond exactly to ring maps MU → E, so MU is the universal complex oriented theory.
 
-**How the definition helps.** The projective bundle theorem expresses the tensor product’s first Chern class uniquely as a power series in the two classes (our own). Tensor product gives this series the formal group identities (our own). The universal property of MU identifies choices of orientation with homotopy ring maps from MU.
+**How the definition helps.** The class of the tensor product of the two universal line bundles is therefore a power series F(x₁, x₂), and the laws of tensor product make it a formal group law (our own). The universal property of MU identifies orientations with homotopy ring maps from MU.
 
 **nLab:** [complex oriented cohomology theory](https://ncatlab.org/nlab/show/complex+oriented+cohomology+theory), [Milnor-Quillen theorem on MU](https://ncatlab.org/nlab/show/Milnor-Quillen+theorem+on+MU). It says: “For E a homotopy commutative ring spectrum, there is a bijection between complex orientations of E-cohomology and homotopy commutative ring spectrum-homomorphisms MU ⟶ E out of MU.”
 
@@ -1037,11 +1037,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14L05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Over a torsion-free ℤ₍ₚ₎-algebra R, a one-dimensional commutative formal group law is p-typical if its logarithm over R ⊗ ℚ uses only powers xᵖⁱ.
+**Definition.** Over a torsion-free ℤ₍ₚ₎-algebra R, a one-dimensional commutative formal group law is p-typical if its logarithm over R ⊗ ℚ uses only powers xᵖⁱ. Cartier’s p-typification turns every such law into an isomorphic p-typical one and fixes p-typical laws (our own).
 
 **Problem.** There is an idempotent ring map ε from MU₍ₚ₎ to itself whose image BP has π\*BP = ℤ₍ₚ₎\[v₁, v₂, …\]. Its formal group law is the universal p-typical one, and MU₍ₚ₎ is a wedge of suspensions of BP.
 
-**How the definition helps.** Cartier’s p-typification fixes p-typical laws, which explains the idempotent on the universal law (our own). Quillen’s splitting theorem realizes this projection on p-local complex cobordism, identifies the polynomial coefficients of BP, and gives the wedge decomposition (our own).
+**How the definition helps.** So p-typification is an idempotent on the universal law, and Quillen realized it as an idempotent ring map ε of MU₍ₚ₎ (our own). Quillen’s splitting theorem then gives BP its polynomial coefficients, its universal p-typical law and the wedge decomposition (our own).
 
 **nLab:** [Brown-Peterson spectrum](https://ncatlab.org/nlab/show/Brown-Peterson+spectrum). It says: “BP is related to p-typical formal groups as MU is to formal groups.”
 
@@ -1054,15 +1054,15 @@
 
 ### Cohomology with supports in a closed set depends only near it
 
-**Remember:** A section zero off Z glues with zero, so only near Z matters.
+**Remember:** Sections vanishing off Z glue with zero, so only near Z matters.
 
 *True by definition. Confidence: medium.* MSC 55N30 (Sheaf cohomology in algebraic topology), 14B15. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** For a sheaf F of abelian groups on X and closed Z ⊆ X, Γ<sub>Z</sub>(X,F) consists of sections vanishing on X ∖ Z. Its right derived functors are the cohomology groups with support in Z.
+**Definition.** For a sheaf F of abelian groups on X and closed Z ⊆ X, Γ<sub>Z</sub>(X, F) consists of the sections that vanish on X ∖ Z, and its right derived functors are cohomology with support in Z. Such a section is the same as a section over any open U ⊇ Z that vanishes off Z, since it glues with zero on X ∖ Z.
 
 **Problem.** For every open U containing Z, restriction induces an isomorphism on cohomology with support in Z for every sheaf of abelian groups on X.
 
-**How the definition helps.** A section on U that vanishes off Z glues with zero on X − Z, so supported sections on X and on U agree. Restriction to an open set keeps injective sheaves injective, so one injective resolution computes both sides (our own summary). For relative cohomology of the pair (X, X − Z) this is excision, which singular cohomology proves by subdividing simplices (our own remark).
+**How the definition helps.** So Γ<sub>Z</sub>(X, −) and Γ<sub>Z</sub>(U, −) are the same functor up to restriction. Restriction to an open set keeps injective sheaves injective, so one injective resolution computes both derived functors (our own summary).
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “(So cohomology with support in a closed subset Y only depends on the behavior of the space X and the sheaf E near Y.)”
 
@@ -1076,11 +1076,11 @@
 
 *True by definition.* MSC 55N30 (Sheaf cohomology in algebraic topology), 14P10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Take a locally compact semialgebraic set, one cut out by finite combinations of polynomial equalities and inequalities. Its compactly supported Euler characteristic is the alternating sum of dimensions of its compactly supported cohomology over ℚ. This cohomology uses classes with support inside compact subsets and agrees with ordinary cohomology on compact spaces.
+**Definition.** For a locally compact semialgebraic set, one built from finitely many polynomial equations and inequalities, χ<sub>c</sub> is the alternating sum of dimensions of its compactly supported cohomology over ℚ. Compact supports put an open subset U, its closed complement Z and the whole set X into one long exact sequence (our own).
 
 **Problem.** Let U be an open semialgebraic subset of X with complement Z. Then the compactly supported Euler characteristic of X is the sum of those of U and Z.
 
-**How the definition helps.** Compactly supported cohomology gives a long exact sequence for U, X and Z (our own). Semialgebraic finiteness makes the groups finite-dimensional and zero outside finitely many degrees (our own). Taking alternating dimensions gives χ<sub>c</sub>(X) = χ<sub>c</sub>(U) + χ<sub>c</sub>(Z) (our own).
+**How the definition helps.** Alternating sums of dimensions add along a long exact sequence of finite-dimensional groups (our own). Semialgebraic finiteness makes the groups finite-dimensional and zero outside finitely many degrees (our own).
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic), [Euler calculus](https://en.wikipedia.org/wiki/Euler_calculus). It says: “if X is a locally compact space, and one uses Euler characteristics with compact supports, no assumptions on M or N are needed.”
 
@@ -1092,11 +1092,11 @@
 
 *True by definition.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20, 55M05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let p map a locally compact space X of finite dimension to a point, so Rp₍!₎ is compactly supported cohomology. The exceptional inverse image p⁽!⁾ is defined as the right adjoint of Rp₍!₎, on derived categories of sheaves of k-vector spaces.
+**Definition.** Let p map a finite-dimensional locally compact Hausdorff space X to a point, so Rp₍!₎ is compactly supported cohomology. The exceptional inverse image p⁽!⁾ is defined as the right adjoint of Rp₍!₎ on derived categories of sheaves of k-vector spaces.
 
 **Problem.** For an oriented n-manifold X without boundary and a field k, the dual of Hⁱ<sub>c</sub>(X;k) is isomorphic to Hⁿ⁻ⁱ(X;k).
 
-**How the definition helps.** Adjunction identifies Hom(Rp₍!₎k,k\[−i\]) with Hom(k,p⁽!⁾k\[−i\]). Over a field, the first group is the dual of Hⁱ<sub>c</sub>(X;k) (our own). Orientation identifies the dualizing complex p⁽!⁾k with k\[n\], giving Hⁿ⁻ⁱ(X;k) on the right (our own).
+**How the definition helps.** Adjunction identifies Hom(Rp₍!₎k, k\[−i\]) with Hom(k, p⁽!⁾k\[−i\]). Over a field the first group is the dual of Hⁱ<sub>c</sub>(X;k) (our own). On an oriented n-manifold p⁽!⁾k ≅ k\[n\], so the second group is Hⁿ⁻ⁱ(X;k) (our own).
 
 **nLab:** [Verdier duality](https://ncatlab.org/nlab/show/Verdier+duality). It says: “The analog of Poincaré duality is then the statement that the abelian sheaf cohomology with coefficients in V is dual to the abelian sheaf cohomology with compact support with coefficients in 𝔻V.”
 
@@ -1113,11 +1113,11 @@
 
 *Rules out counterexamples.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** Let f be continuous between locally compact Hausdorff spaces. On open V, f₍!₎F consists of sections over f⁻¹(V) whose support maps properly to V.
+**Definition.** Let f be a continuous map between locally compact Hausdorff spaces. On an open V, f₍!₎F consists of the sections over f⁻¹(V) whose support maps properly to V, so its stalk at y is the compactly supported sections on the fibre f⁻¹(y).
 
 **Problem.** Take a cartesian square of locally compact Hausdorff spaces. For any map f, the base change map g⁻¹Rf₍!₎F → Rf′₍!₎g′⁻¹F is an isomorphism.
 
-**How the definition helps.** Supports that are proper over Y stay proper after base change, so the proper base change argument needs no hypothesis on f (our own summary). The plain direct image fails: for the inclusion f of ℂ minus 0 into ℂ, f∗ℤ has stalk ℤ at 0. Yet the fibre over 0 is empty. Extension by zero has stalk 0 there, which matches the empty fibre.
+**How the definition helps.** Proper support stays proper after base change, and the stalk sees only the fibre, so the proper base change argument needs no hypothesis on f (our own summary). The plain direct image fails: for the inclusion f of ℂ ∖ {0} into ℂ, f∗ℤ has stalk ℤ at 0, though the fibre over 0 is empty. Extension by zero has stalk 0 there, which matches the empty fibre.
 
 **nLab:** [direct image with compact support](https://ncatlab.org/nlab/show/direct+image+with+compact+support). It says: “If y∈Y, then the fiber (f₍!₎F)<sub>y</sub> is isomorphic to Γ<sub>c</sub>(f⁻¹y, F\|f⁻¹(y)).”
 
@@ -1130,15 +1130,15 @@
 
 ### Disjoint clopen covers make all higher sheaf cohomology of profinite spaces vanish
 
-**Remember:** Disjoint covers have no overlaps, so Čech cochains carry nothing.
+**Remember:** Disjoint clopen covers have no overlaps, so local lifts always glue.
 
 *True by definition. Confidence: medium.* MSC 55N30 (Sheaf cohomology in algebraic topology), 55N05. arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** A profinite space is a compact Hausdorff space that is totally disconnected, such as the Cantor set or the p-adic integers. In such a space every open cover is refined by a finite cover by disjoint open and closed sets.
+**Definition.** A profinite space is a compact Hausdorff space that is totally disconnected, such as the Cantor set or the p-adic integers. Every open cover of it has a finite refinement by disjoint sets that are both open and closed, so pieces never overlap.
 
 **Problem.** Every abelian sheaf F on a profinite space X has Hⁿ(X, F) = 0 for all n &gt; 0.
 
-**How the definition helps.** A section of a quotient sheaf lifts locally, and every covering by lifting neighborhoods admits a disjoint clopen refinement (our own). Lifts on disjoint pieces glue, so global sections preserve surjections and hence form an exact functor (our own). Its higher derived functors vanish (our own).
+**How the definition helps.** On disjoint clopen pieces, local lifts of a section to a quotient sheaf glue with no compatibility check, so global sections keep surjections surjective (our own). Hence global sections form an exact functor, and its higher derived functors vanish (our own).
 
 **Paper or page:** [Cohomology](https://stacks.math.columbia.edu/tag/0A3F), [Cohomology](https://stacks.math.columbia.edu/tag/09V2). It says: “Let X be a profinite topological space. Then H<sup>q</sup>(X, ℱ) = 0 for all q &gt; 0 and all abelian sheaves ℱ.”
 
@@ -1152,11 +1152,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** Let p map X to a point, and let p⁽!⁾ be the right adjoint of compactly supported cohomology. The dualizing complex of X is ω(X) = p⁽!⁾k. The Verdier dual of a complex F is D(F) = RHom(F, ω(X)), a derived internal Hom.
+**Definition.** Let p map X to a point and let p⁽!⁾ be the right adjoint of compactly supported cohomology. The dualizing complex is ω(X) = p⁽!⁾k, and the Verdier dual of F is D(F) = RHom(F, ω(X)). Because right adjoints compose, f⁽!⁾ω(Y) ≅ ω(X) for every map f : X → Y (our own).
 
 **Problem.** For a continuous map f between finite-dimensional locally compact Hausdorff spaces, D<sub>Y</sub>(Rf₍!₎F) ≅ Rf∗D<sub>X</sub>(F) for complexes F of sheaves of k-vector spaces in Verdier duality.
 
-**How the definition helps.** Local Verdier duality identifies D<sub>Y</sub>(Rf₍!₎F) with Rf∗RHom(F, f⁽!⁾ω(Y)) (our own). Right adjoints compose, giving f⁽!⁾ω(Y) ≅ ω(X) because the maps to a point compose (our own). Substitution gives Rf∗D<sub>X</sub>(F) (our own).
+**How the definition helps.** Local Verdier duality identifies D<sub>Y</sub>(Rf₍!₎F) with Rf∗RHom(F, f⁽!⁾ω(Y)) (our own). Substituting f⁽!⁾ω(Y) ≅ ω(X) gives Rf∗D<sub>X</sub>(F) (our own).
 
 **Wikipedia:** [Verdier duality](https://en.wikipedia.org/wiki/Verdier_duality). It says: “(Intertwining of functors f∗ and f₍!₎). If f is a continuous map from X to Y, then there is an isomorphism D(Rf₍!₎(ℱ)) ≅ Rf∗D(ℱ).”
 
@@ -1167,15 +1167,15 @@
 
 ### Extension by zero makes injective sheaves flasque, giving Mayer–Vietoris sequences
 
-**Remember:** Injectivity applied to ℤ\[U′\] ⊂ ℤ\[U\] extends every section.
+**Remember:** Maps from ℤ\[U\] are sections over U, so injectives extend sections.
 
 *True by definition.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** For an open set U, let ℤ\[U\] be the constant sheaf ℤ on U extended by zero to X, so its stalks vanish outside U. It is defined so that sheaf maps ℤ\[U\] → F are the same as sections in F(U).
+**Definition.** For an open set U, ℤ\[U\] is the constant sheaf ℤ on U extended by zero to X. Sheaf maps ℤ\[U\] → F are the same as sections in F(U), and ℤ\[U′\] ⊆ ℤ\[U\] when U′ ⊆ U.
 
 **Problem.** Let X = U ∪ V with U and V open, and let F be an abelian sheaf. Then there is a long exact sequence 0 → H⁰(X, F) → H⁰(U) ⊕ H⁰(V) → H⁰(U ∩ V) → H¹(X, F) → ⋯.
 
-**How the definition helps.** For open U′ ⊆ U, injectivity extends every map ℤ\[U′\] → I across ℤ\[U′\] ⊆ ℤ\[U\] (our own). Thus restrictions of I are surjective, and the sheaf axiom gives a short exact sequence of sections for the cover (our own). Applying this to an injective resolution and taking the cohomology sequence gives Mayer–Vietoris (our own).
+**How the definition helps.** An injective sheaf I extends every map ℤ\[U′\] → I across ℤ\[U′\] ⊆ ℤ\[U\], so its restriction maps are surjective (our own). With this surjectivity, the sheaf axiom gives a short exact sequence of sections of I over X, U ⊕ V and U ∩ V (our own). Applying this to an injective resolution of F and taking cohomology gives Mayer–Vietoris (our own).
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “Namely, let X be a topological space which is a union of two open subsets U and V, and let E be a sheaf on X. Then there is a long exact sequence of abelian groups:”
 
@@ -1187,15 +1187,15 @@
 
 ### Fine resolutions by smooth forms identify Dolbeault cohomology with sheaf cohomology
 
-**Remember:** Split the identity into endomorphisms supported inside the members of each locally finite cover.
+**Remember:** Partitions of unity split the identity, killing higher cohomology.
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 32L10. arXiv math.CV, math.AG. Level 3: graduate.
 
-**Definition.** A sheaf is fine if every locally finite open cover admits a family of sheaf endomorphisms summing to the identity. Each endomorphism has support inside its corresponding cover member.
+**Definition.** A sheaf is fine if, for every locally finite open cover, the identity splits as a sum of sheaf endomorphisms, each supported inside one member of the cover. Smooth partitions of unity make the sheaves of smooth (p, q)-forms fine (our own).
 
 **Problem.** For a complex manifold X, the q-th sheaf cohomology of the sheaf Ωᵖ of holomorphic p-forms equals the q-th Dolbeault cohomology. That is the cohomology of the operator ∂̄ on global smooth forms of type (p, q).
 
-**How the definition helps.** Smooth partitions of unity make the sheaves of smooth (p,q)-forms fine, hence acyclic on a paracompact complex manifold (our own). The local ∂̄-Poincaré lemma gives exactness in positive q, and the degree-zero kernel consists of holomorphic p-forms (our own). The acyclic resolution theorem therefore computes sheaf cohomology from the global Dolbeault complex (our own).
+**How the definition helps.** Fine sheaves have no higher cohomology on a paracompact space, so a fine resolution computes sheaf cohomology from global sections. The local ∂̄-Poincaré lemma makes the smooth (p, q)-forms, with ∂̄ in q, a resolution of Ωᵖ (our own). Its global sections form the Dolbeault complex (our own).
 
 **nLab:** [fine sheaf](https://ncatlab.org/nlab/show/fine+sheaf). It says: “For any fine sheaf J over a paracompact Hausdorff space M, the sheaf cohomology groups of positive degree j are all trivial”
 
@@ -1211,11 +1211,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** An abelian sheaf F is flasque if for every inclusion U ⊆ V of open sets, every section in F(U) extends to F(V).
+**Definition.** An abelian sheaf F is flasque if every section over an open set extends to every larger open set, so all restriction maps are surjective.
 
 **Problem.** Every flasque sheaf F has Hⁿ(X, F) = 0 for all n &gt; 0. So any resolution of F by flasque sheaves computes Hⁿ(X, F) from its complex of global sections.
 
-**How the definition helps.** Surjective restrictions let local lifts of a section be glued, so global sections stay exact on short exact sequences that begin with a flasque sheaf. The gluing step uses Zorn's lemma on partial lifts. Then embed F in an injective sheaf, which is flasque, and note that the quotient is flasque too. Induction on the degree then kills all higher cohomology (our own summary of the standard proof).
+**How the definition helps.** Surjective restrictions let local lifts of a section be glued, with Zorn's lemma, so global sections stay exact on short exact sequences that begin with a flasque sheaf. Embed F in an injective sheaf, which is flasque, and the quotient is flasque too. Induction on the degree then kills all higher cohomology (our own summary of the standard proof).
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “A sheaf E on X is called flabby (French: flasque) if every section of E on an open subset of X extends to a section of E on all of X. Flabby sheaves are acyclic.”
 
@@ -1232,11 +1232,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 55N05, 18G40. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** Take an open cover of X. In degree p, the Čech complex of a sheaf F is the product of its sections over intersections of p + 1 cover sets. The cover is a Leray cover for F when F has no higher cohomology on any finite intersection of cover sets.
+**Definition.** An open cover is a Leray cover for a sheaf F when F has no higher cohomology on any finite intersection of cover sets. Its Čech complex uses only the sections of F over these intersections.
 
 **Problem.** If a cover is a Leray cover for F, then its Čech cohomology with coefficients in F equals Hᵖ(X, F) for every p.
 
-**How the definition helps.** The Čech-to-derived spectral sequence starts from Čech cochains of the presheaves U ↦ Hʲ(U, F) and converges to sheaf cohomology. The Leray condition makes these presheaves zero on every intersection when j &gt; 0. So only the row j = 0 survives, and that row is the Čech complex of F. The work moves into building this spectral sequence (Stacks Lemma 20.11.5).
+**How the definition helps.** The Čech-to-derived spectral sequence starts from Čech cochains of the presheaves U ↦ Hʲ(U, F) and converges to sheaf cohomology. The Leray condition makes these presheaves zero on every intersection when j &gt; 0, so only the row j = 0, the Čech complex of F, survives.
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “Thus Čech cohomology is an approximation to sheaf cohomology using only the sections of E on finite intersections of the open sets Uᵢ.”
 
@@ -1252,11 +1252,11 @@
 
 *Rules out counterexamples.* MSC 55N30 (Sheaf cohomology in algebraic topology), 55N10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A space is weakly locally contractible when each neighbourhood U of a point x contains a smaller neighbourhood V. The inclusion of V into U must be homotopic to a constant map. Sheaf cohomology with coefficients in a group A uses the constant sheaf of locally constant A-valued functions.
+**Definition.** A space is weakly locally contractible when every neighbourhood U of a point contains a smaller neighbourhood V whose inclusion into U is homotopic to a constant map. So, locally, singular cochains see only constant coefficients, as the constant sheaf does (our own).
 
 **Problem.** For every paracompact Hausdorff weakly locally contractible space and abelian group A, constant-sheaf cohomology agrees with singular cohomology with coefficients in A.
 
-**How the definition helps.** Local contractibility makes the sheafified singular cochains a resolution of the constant sheaf. These sheaves are acyclic on paracompact spaces (our own summary of Bredon's proof). Without the condition they differ in degree 0: on the Cantor set, sheaf H⁰ is the countable group of locally constant integer functions. Singular H⁰ is the group of all integer functions on its points, since each path component is a single point.
+**How the definition helps.** Local contractibility makes the sheafified singular cochains a resolution of the constant sheaf A, and these sheaves are acyclic on paracompact spaces (our own summary of Bredon's proof). Without the condition the two differ in degree 0. On the Cantor set, sheaf H⁰ is the countable group of locally constant integer functions, but singular H⁰ is all integer functions on its points.
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “whereas sheaf cohomology H⁰(X,Z<sub>X</sub>) is the group of locally constant functions from X to Z. These are different, for example, when X is the Cantor set.”
 
@@ -1266,15 +1266,15 @@
 
 ### On irreducible spaces constant sheaves are flasque, so their higher cohomology vanishes
 
-**Remember:** Open sets all overlap, so constant sections never need extending.
+**Remember:** All open sets overlap, so constant sections extend everywhere.
 
 *True by definition.* MSC 55N30 (Sheaf cohomology in algebraic topology), 14F06. arXiv math.AG, math.AT. Level 3: graduate.
 
-**Definition.** A topological space is irreducible when it is nonempty and any two nonempty open subsets meet. Then every nonempty open subset is connected. The constant sheaf A assigns to each open set the locally constant functions to A.
+**Definition.** A topological space is irreducible when it is nonempty and any two nonempty open subsets meet. Then every nonempty open set is connected, so the constant sheaf A has A(U) = A and every restriction between nonempty open sets is the identity.
 
 **Problem.** If X is irreducible, then Hⁿ(X, A) = 0 for every n &gt; 0 and every abelian group A. This holds, for example, for any irreducible variety with the Zariski topology.
 
-**How the definition helps.** Every nonempty open set of an irreducible space is connected, so the constant sheaf has A(U) = A for nonempty U. Restrictions between nonempty open sets are then the identity, so the sheaf is flasque by definition. Flasque sheaves are acyclic, and that theorem carries the work. On the circle the constant sheaf is not flasque, and H¹(S¹, ℤ) = ℤ (our own example).
+**How the definition helps.** So the constant sheaf is flasque, and flasque sheaves have no higher cohomology. On the circle the constant sheaf is not flasque, and H¹(S¹, ℤ) = ℤ (our own example).
 
 **nLab:** [hypercohomology](https://ncatlab.org/nlab/show/hypercohomology). It says: “Note that, in the algebraic category, the cohomology of the constant sheaf ℂ is not the right thing to consider, for constant sheaves on irreducible spaces are flasque, hence acyclic.”
 
@@ -1290,11 +1290,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 58A12. arXiv math.AT, math.DG. Level 3: graduate.
 
-**Definition.** A sheaf on a paracompact Hausdorff space is soft when every section over a closed subset extends to the whole space. Smooth partitions of unity make the sheaf Ωʲ of smooth j-forms on a manifold soft.
+**Definition.** A sheaf on a paracompact Hausdorff space is soft when every section over a closed subset extends to the whole space. Soft sheaves have no higher cohomology, and smooth partitions of unity make the sheaf Ωʲ of smooth j-forms on a manifold soft.
 
 **Problem.** For a smooth manifold X, the sheaf cohomology Hʲ(X, ℝ) is isomorphic to de Rham cohomology, the cohomology of the complex of global smooth forms.
 
-**How the definition helps.** Soft sheaves are acyclic on paracompact spaces. So the soft resolution 0 → ℝ → Ω⁰ → Ω¹ → ⋯ computes sheaf cohomology from global forms. The Poincaré lemma, which says closed forms are locally exact, makes this complex a resolution. The work splits into these two facts.
+**How the definition helps.** The Poincaré lemma, which says closed forms are locally exact, makes 0 → ℝ → Ω⁰ → Ω¹ → ⋯ a soft resolution of ℝ. A soft resolution computes sheaf cohomology from global sections, and here those form the de Rham complex.
 
 **nLab:** [soft sheaf](https://ncatlab.org/nlab/show/soft+sheaf). It says: “A sheaf F of sets (or of abelian groups) over a paracompact Hausdorff space X is soft if for any closed subset V⊂X, every section of F over V can be extended to the whole X.”
 
@@ -1310,11 +1310,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N30 (Sheaf cohomology in algebraic topology), 54C10. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** A continuous map f : X → Y is proper when it is closed, separated and has quasi-compact fibres. Quasi-compact means compact without the Hausdorff condition, and separated means two distinct points in one fibre have disjoint neighbourhoods in X. Equivalently, f is separated and stays closed after every base change.
+**Definition.** A continuous map f : X → Y is proper when it is closed, has quasi-compact fibres, and is separated: two distinct points of one fibre have disjoint neighbourhoods in X. Closedness makes the sets f⁻¹(W), for neighbourhoods W of y, cofinal among neighbourhoods of the fibre f⁻¹(y) (our own).
 
 **Problem.** For a proper map f, a sheaf F on X and a point y of Y, the stalk of Rⁱf∗F at y is Hⁱ(f⁻¹(y), F). Hence higher direct images commute with every base change Y′ → Y.
 
-**How the definition helps.** Closedness makes inverse images of neighborhoods of y cofinal among neighborhoods of its fiber (our own). The continuity theorem for a quasi-compact fiber with separated points identifies the resulting cohomology limit with fiber cohomology (our own). Properness survives base change, and the fibers agree, so the stalk comparison gives base change.
+**How the definition helps.** So the stalk of Rⁱf∗F at y is the limit of cohomology over neighbourhoods of the fibre (our own). For a quasi-compact fibre with separated points, that limit is the cohomology of the fibre itself (our own). Properness survives base change and the fibres stay the same, so base change follows.
 
 **Wikipedia:** [Base change theorems](https://en.wikipedia.org/wiki/Base_change_theorems). It says: “the base change map g\* Rʳf∗ℱ → Rʳf′∗g′\*ℱ is an isomorphism.”
 
@@ -1330,11 +1330,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N30 (Sheaf cohomology in algebraic topology), 54F45. arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** A paracompact Hausdorff space has covering dimension at most n if every open cover has an open refinement of multiplicity at most n + 1. Multiplicity counts how many members contain a given point. The covering dimension is the least such n, when finite.
+**Definition.** A paracompact Hausdorff space has covering dimension at most n if every open cover has an open refinement in which each point lies in at most n + 1 sets. Its covering dimension is the least such n.
 
 **Problem.** On a paracompact Hausdorff space of covering dimension n, Hʲ(X, E) = 0 for every j &gt; n and every abelian sheaf E.
 
-**How the definition helps.** By the definition, covers in which each point lies in at most n + 1 sets refine every cover. Their alternating Čech cochains vanish above degree n (our own summary). The work is in the theorem that Čech and sheaf cohomology agree on paracompact Hausdorff spaces. Singular cohomology has no such bound: Barratt and Milnor found a compact subset of ℝ³ with nonzero singular cohomology in infinitely many degrees.
+**How the definition helps.** On such a refinement, an alternating Čech cochain of degree above n needs n + 2 sets with a common point, so it vanishes (our own summary). Čech and sheaf cohomology agree on paracompact Hausdorff spaces, and that theorem carries the work. Singular cohomology has no such bound: Barratt and Milnor found a compact subset of ℝ³ with nonzero singular cohomology in infinitely many degrees.
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “This does not hold in the same generality for singular cohomology: for example, there is a compact subset of Euclidean space R³ that has nonzero singular cohomology in infinitely many degrees.”
 
@@ -1349,11 +1349,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18F20. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** Fix a point x and an abelian group I. The skyscraper sheaf Sky(x, I) has sections I over open sets that contain x, and 0 over the others. It is built so that a sheaf map F → Sky(x, I) is the same as a group map from the stalk Fₓ to I.
+**Definition.** For a point x and an abelian group I, the skyscraper sheaf Sky(x, I) has sections I over open sets that contain x and 0 over the others. Sheaf maps F → Sky(x, I) are the same as group maps from the stalk Fₓ to I.
 
 **Problem.** Every abelian sheaf F on a topological space embeds in an injective sheaf. One choice is the product over all points x of Sky(x, Iₓ), where Iₓ is an injective group containing Fₓ.
 
-**How the definition helps.** Stalks are exact, so the stalk adjunction makes Sky(x,Iₓ) injective whenever Iₓ is injective (our own). Embed each Fₓ in an injective group Iₓ and take the product of the adjoint sheaf maps (our own). Each germ is detected by its own coordinate, so this map is injective, and products of injectives are injective (our own).
+**How the definition helps.** Stalks are exact, so this adjunction makes Sky(x, I) injective whenever I is injective (our own). Embedding each Fₓ in an injective group Iₓ gives a map from F to the product of the Sky(x, Iₓ), and it is injective because each germ shows in its own coordinate (our own). Products of injectives are injective (our own).
 
 **Wikipedia:** [Injective sheaf](https://en.wikipedia.org/wiki/Injective_sheaf). It says: “The category of abelian sheaves has enough injective objects: this means that any sheaf is a subsheaf of an injective sheaf.”
 
@@ -1369,11 +1369,11 @@
 
 *True by definition.* MSC 55N30 (Sheaf cohomology in algebraic topology), 18G10. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** The Godement sheaf of F assigns to an open set U the product of the stalks Fₓ over all x in U. Its sections are sections of F that need not be continuous. Repeating this on cokernels gives a canonical flasque resolution of F, in which each step is an exact functor of F.
+**Definition.** The Godement sheaf of F assigns to an open set U the product of the stalks Fₓ over x in U, that is, sections of F that need not be continuous. Repeating this on cokernels gives a canonical flasque resolution of F, and each step is an exact functor of F.
 
 **Problem.** Godement cohomology, the cohomology of global sections of the Godement resolution, equals derived functor cohomology. Each short exact sequence of sheaves gives a natural long exact sequence of these groups.
 
-**How the definition helps.** The Godement functors are exact and involve no choices, so a short exact sequence of sheaves gives one of resolutions. Global sections keep it exact, and the long exact sequence is the usual one for complexes. With injective resolutions one must first show independence of the choice and build compatible resolutions. The work moves into the theorem that flasque sheaves are acyclic, which identifies the two definitions.
+**How the definition helps.** The construction is exact and needs no choices, so a short exact sequence of sheaves gives a short exact sequence of resolutions, and global sections ∏ₓ Fₓ keep it exact. The long exact sequence is then the usual one for complexes. The resolution is flasque, and flasque sheaves are acyclic, so these groups equal derived functor cohomology.
 
 **Wikipedia:** [Godement resolution](https://en.wikipedia.org/wiki/Godement_resolution). It says: “This is manifestly well-defined as the resolution is canonically given for any sheaf, and since the functors Gᵏ are exact, the existence of the long exact sequence follows from a simple argument.”
 
@@ -1389,11 +1389,11 @@
 
 *Rules out counterexamples.* MSC 55N30 (Sheaf cohomology in algebraic topology), 55M05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For an n-manifold X without boundary, the orientation sheaf over k has local sections given by compatible local orientation classes. It is the sheafification of U ↦ Hₙ(X, X ∖ U; k), with stalk Hₙ(X, X ∖ {x}; k) at x (our own).
+**Definition.** For an n-manifold X without boundary and a field k, the orientation sheaf o has stalk Hₙ(X, X ∖ {x}; k) at x, the local orientations at x. It is locally isomorphic to the constant sheaf k, and o shifted by n is the dualizing complex of X (our own).
 
 **Problem.** For any n-manifold X without boundary and field k, Hʲ(X,o) is dual to compactly supported cohomology in degree n − j.
 
-**How the definition helps.** Verdier duality pairs against the dualizing complex, which on an n-manifold is o shifted by n, so no orientation hypothesis is needed. The untwisted form fails on the real projective plane with rational coefficients (our own example). There H²(ℝP²; ℚ) = 0, but compactly supported H⁰ is ℚ because ℝP² is compact and connected. With the twist, H²(ℝP², o) ≅ ℚ, as duality requires.
+**How the definition helps.** Verdier duality pairs cohomology with coefficients in the dualizing complex against compactly supported cohomology, so no orientation is needed. Without the twist it fails on ℝP² over ℚ: H²(ℝP²; ℚ) = 0, but compactly supported H⁰ is ℚ (our own example). With the twist, H²(ℝP², o) ≅ ℚ, as duality requires.
 
 **Wikipedia:** [Sheaf cohomology](https://en.wikipedia.org/wiki/Sheaf_cohomology). It says: “For any manifold X and field k, there is a sheaf o<sub>X</sub> on X, the orientation sheaf, which is locally (but perhaps not globally) isomorphic to the constant sheaf k.”
 
@@ -1407,11 +1407,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N31 (Persistent homology and applications, topological data analysis). arXiv math.AT. Level 3: graduate.
 
-**Definition.** An ε-interleaving (ε ≥ 0) consists of natural maps V(t) → W(t+ε) and W(t) → V(t+ε) whose shifted composites are the structure maps to t+2ε. Interleaving distance is the infimum of such ε. Bottleneck distance is the infimum matching tolerance, allowing endpoint errors ≤ ε and unmatched intervals of length ≤ 2ε.
+**Definition.** Persistence modules V and W are ε-interleaved if there are natural maps V(t) → W(t + ε) and W(t) → V(t + ε) whose composites are the structure maps from t to t + 2ε. Interleaving distance is the infimum of such ε. Bottleneck distance is the infimum of ε for which a matching of the barcodes moves matched endpoints by at most ε and leaves unmatched only intervals of length at most 2ε.
 
 **Problem.** For real-indexed pointwise finite-dimensional persistence modules over a field, interleaving distance equals bottleneck distance between their barcodes.
 
-**How the definition helps.** Both distances measure a uniform shift in the parameter (our own). The algebraic stability theorem bounds bottleneck distance by interleaving distance, and interval decomposition converts matchings into the reverse bound (our own). Together these bounds give the isometry theorem.
+**How the definition helps.** Both distances measure a shift of ε in the parameter (our own). The algebraic stability theorem bounds bottleneck distance by interleaving distance, and an ε-matching of interval summands builds an ε-interleaving for the reverse bound (our own).
 
 **Paper or page:** [Intrinsic Bottleneck Distance for Merge Trees](https://arxiv.org/abs/2509.02755). It says: “Then the bottleneck distance between the barcode B arising from V and the barcode B′ of W is equal to the value inf{ε ≥ 0: V and W are ε-interleaved}.”
 
@@ -1427,11 +1427,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N31 (Persistent homology and applications, topological data analysis), 16G20. arXiv math.AT, math.RT. Level 3: graduate.
 
-**Definition.** A persistence module on S ⊆ ℝ is a functor from the ordered set S to vector spaces over a fixed field. It is pointwise finite-dimensional if every value has finite dimension. An interval module assigns the field on one nonempty order interval and zero elsewhere, with identity maps within the interval.
+**Definition.** A persistence module on S ⊆ ℝ is a functor from the ordered set S to vector spaces over a fixed field, and it is pointwise finite-dimensional if every value is finite-dimensional. An interval module is the field on one nonempty interval of S and zero elsewhere, with identity maps inside the interval.
 
 **Problem.** Every pointwise finite-dimensional persistence module over a subset of the real line is a direct sum of interval modules. The multiset of intervals, called the barcode, is unique.
 
-**How the definition helps.** Finite dimension at each parameter gives the chain conditions in Crawley-Boevey’s interval decomposition theorem (our own). That theorem and uniqueness of the interval multiplicities give the barcode.
+**How the definition helps.** Finite dimension at each parameter gives the chain conditions that Crawley-Boevey's theorem needs to split the module into interval modules (our own). Uniqueness of the interval multiplicities makes the barcode well defined.
 
 **Paper or page:** [The Extended Persistent Homology Transform of manifolds with boundary](https://arxiv.org/abs/2208.14583), [Stabilization of codimension of persistence barcodes](https://arxiv.org/abs/2311.01610). It says: “A pointwise finite dimensional persistence module over any subset of ℝ admits an interval decomposition. … This decomposition is unique up to isomorphism.”
 
@@ -1442,15 +1442,15 @@
 
 ### Intersection cohomology restores Poincaré duality for singular spaces
 
-**Remember:** Chains may meet the singular set only as much as the perversity allows.
+**Remember:** Chains meet the singular set only as much as perversity allows.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N33 (Intersection homology and cohomology in algebraic topology), 14F43, 14F08. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** For a stratified PL pseudomanifold, a perversity p assigns an integer p(k) to each singular codimension k. An allowable i-chain meets each codimension-k stratum in dimension at most i − k + p(k). Intersection chains require this bound for the chain and the corresponding degree-(i−1) bound for its boundary.
+**Definition.** On a stratified PL pseudomanifold, a perversity p gives an integer p(k) for each singular codimension k. An intersection i-chain meets each codimension-k stratum in dimension at most i − k + p(k), and its boundary obeys the same bound with i − 1 in place of i.
 
 **Problem.** On a compact oriented n-dimensional PL pseudomanifold without boundary, field-valued intersection homology pairs complementary degrees perfectly for complementary traditional perversities. On a compact pure-dimensional complex variety, middle perversity is self-complementary on a complex stratification, giving Poincaré duality even when ordinary cohomology lacks it.
 
-**How the definition helps.** Complementary perversities satisfy p(k) + q(k) = k − 2, matching the two incidence bounds in the Goresky–MacPherson duality theorem (our own). Complex strata have even real codimension, where the two middle perversities agree (our own).
+**How the definition helps.** Complementary perversities satisfy p(k) + q(k) = k − 2, which matches the two incidence bounds in the Goresky–MacPherson duality theorem (our own). Complex strata have even real codimension, where the two middle perversities agree, so middle perversity is its own complement (our own).
 
 **nLab:** [intersection cohomology](https://ncatlab.org/nlab/show/intersection+cohomology), [perverse sheaf](https://ncatlab.org/nlab/show/perverse+sheaf). It says: “While for smooth manifolds there is a Poincaré duality relating singular homology and singular cohomology, this fails for singular spaces.”
 
@@ -1461,15 +1461,15 @@
 
 ### Locally finite chains make proper maps push Borel–Moore homology forward
 
-**Remember:** Proper maps pull compact sets back to compact sets.
+**Remember:** Infinite chains, but only finitely many simplices meet each compact set.
 
 *True by definition.* MSC 55N35 (Other homology theories in algebraic topology), 55P57. arXiv math.AT. Level 3: graduate.
 
-**Definition.** On a locally compact Hausdorff space, a locally finite singular chain is a formal sum of simplices. Each compact set meets only finitely many simplices with nonzero coefficients. Its boundary takes the usual signed faces term by term. The homology of this complex is locally finite singular homology.
+**Definition.** On a locally compact Hausdorff space, a locally finite singular chain is a possibly infinite formal sum of simplices in which each compact set meets only finitely many simplices with nonzero coefficient. The boundary is taken term by term, and the homology of these chains is Borel–Moore homology.
 
 **Problem.** A continuous proper map induces a pushforward on Borel–Moore homology in the locally finite chain model. Proper means that every compact set has compact inverse image.
 
-**How the definition helps.** Compose every simplex with f (our own). Only simplices meeting the compact set f⁻¹(K) can produce terms meeting a given compact K, so their number is finite (our own). Composition respects faces and gives a chain map (our own).
+**How the definition helps.** Compose every simplex with f (our own). A simplex whose image meets a compact set K itself meets the compact set f⁻¹(K), so only finitely many terms meet K (our own). Composition respects faces, so this is a chain map (our own).
 
 **Wikipedia:** [Borel–Moore homology](https://en.wikipedia.org/wiki/Borel%E2%80%93Moore_homology). It says: “the homology of the chain complex of locally finite singular chains”
 
@@ -1483,11 +1483,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N40 (Axioms for homology theory and uniqueness theorems in algebraic topology), 55N10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** An ordinary homology theory assigns graded abelian groups functorially to pairs of spaces, with natural boundary maps. It satisfies the Eilenberg–Steenrod axioms of homotopy invariance, pair exactness, excision, additivity and dimension.
+**Definition.** An ordinary homology theory assigns graded abelian groups functorially to pairs of spaces, with natural boundary maps. It satisfies the Eilenberg–Steenrod axioms: homotopy invariance, exactness for pairs, excision, additivity and dimension, so any proof from the axioms holds in every such theory.
 
 **Problem.** Every ordinary homology theory gives Mayer–Vietoris for open covers by two sets and computes sphere homology from its coefficient group. With nonzero coefficients, Sⁿ⁻¹ cannot retract from Dⁿ for n ≥ 1, giving Brouwer’s fixed point theorem.
 
-**How the definition helps.** Excision and pair exactness give Mayer–Vietoris (our own). Covering a sphere by two contractible open caps shifts reduced homology to that of their equatorial overlap (our own). Induction gives a nonzero reduced group for the boundary sphere, while the disk has none, ruling out a retraction (our own). A fixed-point-free disk map would give that retraction by radial projection (our own).
+**How the definition helps.** Excision and exactness give Mayer–Vietoris, and covering a sphere by two contractible caps shifts reduced homology down to the equator (our own). Induction then gives H̃ₙ₋₁(Sⁿ⁻¹) ≠ 0 with nonzero coefficients, while H̃ₙ₋₁(Dⁿ) = 0, so no retraction Dⁿ → Sⁿ⁻¹ exists (our own). A fixed-point-free map of the disk would give such a retraction by radial projection (our own).
 
 **Wikipedia:** [Eilenberg–Steenrod axioms](https://en.wikipedia.org/wiki/Eilenberg%E2%80%93Steenrod_axioms). It says: “The axiomatic approach, which was developed in 1945, allows one to prove results, such as the Mayer–Vietoris sequence, that are common to all homology theories satisfying the axioms.”
 
@@ -1517,11 +1517,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N45 (Products and intersections in homology and cohomology), 18M05. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** A lax monoidal functor F has natural maps F(A) ⊗ F(B) → F(A ⊗ B) for every A and B. It also has a map from the target unit to the image of the source unit. These maps satisfy the associativity and unit coherence diagrams.
+**Definition.** A lax monoidal functor F has natural maps F(A) ⊗ F(B) → F(A ⊗ B) and a map from the unit to F of the unit, satisfying the associativity and unit coherence diagrams. These diagrams are what carry a monoid in the source to a monoid in the target.
 
 **Problem.** The homology of a topological monoid with coefficients in a commutative ring is a unital, associative graded ring. The same holds for a space with a multiplication that is associative and unital up to homotopy.
 
-**How the definition helps.** The lax monoidal definition transfers the multiplication and its laws together, so the ring laws need no separate verification. The general result sends a monoid, an object with an associative unital multiplication, to a monoid. Our own application uses that homotopic maps induce the same map on homology, so the laws need hold only up to homotopy. The work moves into constructing the homology cross product and proving that it is natural, associative and unital.
+**How the definition helps.** Homology with the cross product is lax monoidal, so it carries the monoid's multiplication and its laws to a graded ring. Homotopic maps induce the same map on homology, so the laws need hold only up to homotopy (our own). The work lies in showing that the cross product is natural, associative and unital.
 
 **nLab:** [monoidal functor](https://ncatlab.org/nlab/show/monoidal+functor). It says: “Lax monoidal functors send monoids to monoids”
 
@@ -1535,11 +1535,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 55P91, 19A22. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a compact Lie group G, RO(G) consists of formal differences of finite-dimensional real G-representations, with addition induced by direct sum. The representation sphere Sⱽ is V with one point at infinity fixed by G.
+**Definition.** For a compact Lie group G, RO(G) is the group of formal differences of finite-dimensional real G-representations, added by direct sum. Grading by RO(G) gives a degree shift by each representation V, to match suspension by the representation sphere Sⱽ, the one-point compactification of V.
 
 **Problem.** In genuine reduced G-equivariant cohomology, Ẽᴳᵅ(X) ≅ Ẽᴳᵅ⁺ⱽ(Sⱽ ∧ X) for every pointed G-space X, degree α and finite-dimensional real G-representation V. The action on Sⱽ may be nontrivial.
 
-**How the definition helps.** Representation grading supplies the degree α + V. The suspension axiom of a genuine theory identifies suspension by Sⱽ with precisely this degree shift.
+**How the definition helps.** The suspension axiom of a genuine theory says that suspension by Sⱽ is an isomorphism shifting degree by V. Grading by RO(G) is what makes the degree α + V exist.
 
 **nLab:** [RO(G)-grading](https://ncatlab.org/nlab/show/RO%28G%29-grading). It says: “this leads one to demand that E• is graded not just by the integers, but by any linear representation V, so that one has equivariant suspension isomorphisms”
 
@@ -1549,15 +1549,15 @@
 
 ### The Borel construction gives free actions the cohomology of their quotient
 
-**Remember:** For a free action, the extra factor EG is contractible.
+**Remember:** Multiply by contractible EG before taking the quotient.
 
 *True by definition. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 55R10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The Borel construction of a G-space X is (X × EG)/G with the diagonal action. Here EG is the total space of a universal principal G-bundle. Its ordinary cohomology is the Borel equivariant cohomology of X.
+**Definition.** The Borel construction of a G-space X is (X × EG)/G with the diagonal action, where EG is a contractible space with a free G-action. Borel equivariant cohomology of X is the ordinary cohomology of this space.
 
 **Problem.** Let P → B be a principal G-bundle, so G acts freely on P with quotient B and the map is locally a product. Then the Borel equivariant cohomology of P is the ordinary cohomology of B.
 
-**How the definition helps.** The projection (P × EG)/G → B is the associated fiber bundle with contractible fiber EG (our own). Its homotopy exact sequence makes the projection a weak equivalence, hence an isomorphism on singular cohomology (our own).
+**How the definition helps.** For a free action, the projection (P × EG)/G → B is a fibre bundle with contractible fibre EG (our own). So the projection is a weak equivalence and an isomorphism on singular cohomology (our own).
 
 **nLab:** [Borel equivariant cohomology](https://ncatlab.org/nlab/show/Borel+equivariant+cohomology). It says: “For X a space and G a group acting on it, then the Borel equivariant cohomology of X is the cohomology of the homotopy quotient X//G.”
 
@@ -1569,11 +1569,11 @@
 
 *True by definition.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology), 55U35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A map A → X is a Hurewicz cofibration if every homotopy on A extends to X from a compatible starting map. In compactly generated spaces, a homotopy with values in Y is a map into the space of paths in Y. Thus A → X must fill squares as the left map against path evaluation at time zero.
+**Definition.** A map A → X is a Hurewicz cofibration if it has the homotopy extension property for every space Y. In compactly generated spaces a homotopy into Y is a map into the path space of Y, so this is a left lifting property against evaluation at time zero.
 
 **Problem.** In compactly generated spaces, the pushout of a Hurewicz cofibration along any map is a Hurewicz cofibration.
 
-**How the definition helps.** The path-space description makes this a general fact about maps defined by a left lifting test (our own explanation). A square for the pushout restricts to a square for the original map. Its filler then extends over the pushout by the universal property of the pushout.
+**How the definition helps.** Maps defined by a left lifting property are always stable under pushout (our own explanation). A lifting square for the pushout restricts to one for the original map, and its filler extends over the pushout by the pushout's universal property.
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “A map (continuous function) i : A → X between topological spaces is a Hurewicz cofibration if it satisfies the homotopy extension property for all spaces”
 
@@ -1587,11 +1587,11 @@
 
 *True by definition.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology). arXiv math.AT. Level 3: graduate.
 
-**Definition.** For closed A ⊆ X, the criterion requires a continuous retraction from X × \[0,1\] onto X × {0} ∪ A × \[0,1\]. Such a retraction exists exactly when the inclusion has the homotopy extension property.
+**Definition.** A closed inclusion A ⊆ X is a Hurewicz cofibration exactly when X × \[0,1\] retracts onto X × {0} ∪ A × \[0,1\]. So one map, the retraction, witnesses the homotopy extension property for all targets.
 
 **Problem.** Let A → X be a closed Hurewicz cofibration in compactly generated spaces. For every compactly generated Y, the product inclusion Y × A → Y × X is a Hurewicz cofibration.
 
-**How the definition helps.** The retraction criterion asks for one map, and the identity of Y times that map is the needed retraction. Compactly generated spaces form a cartesian closed category, so Y × (−) preserves the gluing that builds the subspace. The work moves into the criterion, which says that one retraction gives the homotopy extension property for all targets.
+**How the definition helps.** The identity of Y times that retraction is a retraction of Y × X × \[0,1\] onto Y × (X × {0} ∪ A × \[0,1\]) (our own). Compactly generated spaces form a cartesian closed category, so Y × (−) preserves the gluing that builds this subspace.
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “to yield a retract that exhibits the cofibration property of Y × i.”
 
@@ -1603,11 +1603,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology), 54D50. arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** A space is weak Hausdorff if the image of each map from a compact Hausdorff space into it is closed. Many topologists work in compactly generated weak Hausdorff spaces.
+**Definition.** A space is weak Hausdorff if every map from a compact Hausdorff space into it has closed image. In particular every point is closed, which rules out spaces such as the indiscrete two-point space (our own).
 
 **Problem.** In compactly generated weak Hausdorff spaces, the image of every Hurewicz cofibration is closed. So the retraction and NDR-pair characterizations, proved for closed inclusions, apply to every cofibration.
 
-**How the definition helps.** The point inclusion into the indiscrete two-point space is a cofibration with nonclosed image (our own). Weak Hausdorffness excludes that space because the image of the one-point compact Hausdorff space is not closed (our own). The closed-image theorem for Hurewicz cofibrations then makes the closed-inclusion criteria applicable.
+**How the definition helps.** The closed-image theorem holds in compactly generated weak Hausdorff spaces, so the closed-inclusion criteria apply to every cofibration. The condition is needed: the point inclusion into the indiscrete two-point space is a cofibration with nonclosed image (our own).
 
 **nLab:** [Hurewicz cofibration](https://ncatlab.org/nlab/show/Hurewicz+cofibration). It says: “In the category of weakly Hausdorff compactly generated spaces, the image i(A) of a Hurewicz cofibration is always closed.”
 
@@ -1621,11 +1621,11 @@
 
 *True by definition. Confidence: medium.* MSC 55P05 (Homotopy extension properties, cofibrations in algebraic topology), 18N50, 55R35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A topological group is well-pointed if inclusion of its identity element is a closed Hurewicz cofibration, meaning a closed inclusion with the homotopy extension property.
+**Definition.** A topological group is well-pointed if the inclusion of its identity element is a closed Hurewicz cofibration, a closed inclusion with the homotopy extension property. Each degeneracy of its nerve inserts the identity, so well-pointedness controls all degeneracies (our own).
 
 **Problem.** For a well-pointed topological group in compactly generated weak Hausdorff spaces, the plain geometric realization of its nerve is homotopy equivalent to the fat realization. So the plain realization computes the homotopy colimit.
 
-**How the definition helps.** Each degeneracy inserts the identity, taking the product of the identity inclusion with identity maps (our own). Products with a space preserve closed Hurewicz cofibrations here, making the nerve good (our own). Segal’s comparison theorem for good simplicial spaces identifies fat and plain realization up to homotopy equivalence (our own).
+**How the definition helps.** Products with a space preserve closed Hurewicz cofibrations here, so every degeneracy is a closed cofibration and the nerve is good (our own). Segal's comparison theorem for good simplicial spaces then identifies fat and plain realization up to homotopy equivalence (our own).
 
 **nLab:** [well-pointed topological space](https://ncatlab.org/nlab/show/well-pointed+topological+space). It says: “These facts explain the key role of well-pointedness in classifying space-theory, where it ensures that plain topological realization of simplicial topological spaces coincides, up to weak homotopy equivalence, with fat geometric realization”
 
@@ -1658,11 +1658,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P25 (Spanier-Whitehead duality), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** In a symmetric monoidal category, X has dual D if there are maps D ⊗ X → 1 and 1 → X ⊗ D. Inserting the second map and contracting with the first must give the identity on both X and D. Spanier–Whitehead duality uses smash product and the sphere spectrum as unit.
+**Definition.** In a symmetric monoidal category, a dual of X is an object D with maps D ⊗ X → 1 and 1 → X ⊗ D whose two zigzag composites are the identities of X and D. Spanier–Whitehead duality is this duality for the smash product of spectra, with the sphere spectrum as unit. The trace of a map is coevaluation, then the map with a swap of factors, then evaluation (our own).
 
 **Problem.** Atiyah duality identifies the S-dual of Σ∞₊X for a closed smooth manifold X with the Thom spectrum of its stable normal bundle. The trace of the identity on Σ∞₊X equals the Euler characteristic of X.
 
-**How the definition helps.** The duality maps define the trace by coevaluation, interchange of factors and evaluation (our own). Atiyah duality identifies the dual with the Thom spectrum of the virtual negative tangent bundle (our own). The stable Lefschetz trace formula evaluates the identity trace as the Euler characteristic (our own).
+**How the definition helps.** Atiyah duality identifies the dual of Σ∞₊X with the Thom spectrum of the stable normal bundle (our own). The stable Lefschetz trace formula evaluates the trace of the identity as the Euler characteristic (our own).
 
 **nLab:** [Spanier-Whitehead duality](https://ncatlab.org/nlab/show/Spanier-Whitehead+duality). It says: “Using this one shows that the trace on the identity on Σ<sup>∞</sup>₊X -- its categorical dimension -- is the Euler characteristic of X.”
 
@@ -1677,11 +1677,11 @@
 
 *True by definition.* MSC 55P35 (Loop spaces), 55R35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For discrete G, the conjugation groupoid has objects g ∈ G and an arrow labeled h from g to hgh⁻¹ for each h ∈ G. Composition multiplies the labels.
+**Definition.** For a discrete group G, the conjugation groupoid has the elements g of G as objects and an arrow h from g to hgh⁻¹ for each h, composed by multiplying labels. It is the groupoid of functors from ℤ to G and their natural isomorphisms, which models free loops in BG (our own).
 
 **Problem.** The free loop space of BG, the space of all maps from the circle to BG, has one component for each conjugacy class of G. The component of g is homotopy equivalent to BC(g). Here the centralizer C(g) is the subgroup of elements that commute with g.
 
-**How the definition helps.** The mapping groupoid from the one-object groupoid ℤ to G models free loops in BG (our own). A functor selects the image g of 1, and a natural isomorphism conjugates g. Components are therefore conjugacy classes, and the automorphisms at g form C(g) (our own). Each connected groupoid is equivalent to its one-object automorphism groupoid, giving BC(g) (our own).
+**How the definition helps.** Its connected components are the conjugacy classes, and the arrows from g to itself form the centralizer C(g) (our own). A connected groupoid is equivalent to the automorphism group of one object, so each component has classifying space BC(g) (our own).
 
 **nLab:** [free loop space of classifying space](https://ncatlab.org/nlab/show/free+loop+space+of+classifying+space). It says: “This shows that the hom-groupoid is the action groupoid of the conjugation action”
 
@@ -1693,11 +1693,11 @@
 
 *True by definition.* MSC 55P40 (Suspensions), 55P05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a map f: X → Y of pointed spaces, define the homotopy cofiber C(f) as the homotopy pushout of Y ← X → ∗. A homotopy pushout glues along a cylinder on X instead of along X itself. The concrete model attaches the cone on X to Y along f.
+**Definition.** For a map f : X → Y of pointed spaces, the homotopy cofiber C(f) is the homotopy pushout of Y ← X → ∗; concretely, attach the cone on X to Y along f. Two homotopy pushout squares placed side by side form a homotopy pushout (our own).
 
 **Problem.** Let X and Y be well-pointed, meaning that the inclusion of the base point is a cofibration. Then the homotopy cofiber of the inclusion Y → C(f) is homotopy equivalent to the reduced suspension ΣX.
 
-**How the definition helps.** Pasting the two defining homotopy pushout squares gives another homotopy pushout (our own). Its span is ∗ ← X → ∗, whose pointed homotopy pushout is ΣX.
+**How the definition helps.** Pasting the square for C(f) with the square for the cofiber of Y → C(f) gives a homotopy pushout of ∗ ← X → ∗ (our own). That pointed homotopy pushout is the reduced suspension ΣX.
 
 **nLab:** [mapping cone](https://ncatlab.org/nlab/show/mapping+cone). It says: “to the terminal object is the suspension object”
 
@@ -1707,15 +1707,15 @@
 
 ### Adding infinite spectra makes Brown representability hold in the stable homotopy category
 
-**Remember:** Brown builds the representing object from infinitely many cells, so allow infinite spectra.
+**Remember:** Brown attaches infinitely many cells, so allow infinite spectra.
 
 *Makes the theorem clean to state or prove.* MSC 55P42 (Stable homotopy theory, spectra), 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The Spanier–Whitehead category has finite CW complexes and their formal desuspensions as objects. Its maps are homotopy classes of maps after enough suspensions. The stable homotopy category of spectra contains it as the finite spectra, and it also has infinite spectra and arbitrary wedges.
+**Definition.** The stable homotopy category of spectra enlarges the Spanier–Whitehead category of finite CW complexes and their formal desuspensions. It adds infinite spectra, so every family of spectra, even an infinite one, has a wedge.
 
 **Problem.** Let h be a contravariant functor from the stable homotopy category to abelian groups. If h turns wedges into products and cofiber sequences into exact sequences, then h(X) ≅ \[X, E\] for some spectrum E.
 
-**How the definition helps.** Brown's construction of the representing object attaches cells infinitely often, so it needs infinite objects and arbitrary wedges, which spectra have (our own). The Spanier–Whitehead category lacks such wedges, and the nLab notes that the theorem fails there. Allowing all spectra makes the statement true and clean. The work is Brown's cell-attachment argument, run once in spectra.
+**How the definition helps.** Brown's proof builds the representing spectrum E by attaching cells infinitely often, so it needs infinite spectra and arbitrary wedges (our own). The Spanier–Whitehead category lacks these wedges, and the nLab notes that the theorem fails there.
 
 **nLab:** [Spanier-Whitehead category](https://ncatlab.org/nlab/show/Spanier-Whitehead+category). It says: “As a consequence, in particular a Brown representability theorem does not hold in the SW-category.”
 
@@ -1727,15 +1727,15 @@
 
 ### Dualizable spectra are exactly the finite spectra
 
-**Remember:** Finite is a construction; dualizable and compact are properties, and all three agree.
+**Remember:** Finite means having a dual means maps out commute with wedges.
 
 *Makes the theorem clean to state or prove.* MSC 55P42 (Stable homotopy theory, spectra), 55P25, 18G80. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A spectrum X is dualizable when it has a dual DX with maps DX ∧ X → S and S → X ∧ DX. These maps satisfy the two triangle identities; S is the sphere spectrum, the unit for the smash product. A spectrum X is compact when \[X, −\] takes every wedge of spectra to the direct sum of the groups.
+**Definition.** A spectrum X is dualizable when it has a dual DX, with maps DX ∧ X → S and S → X ∧ DX for the sphere spectrum S that satisfy the two triangle identities. It is compact when maps out of it, \[X, −\], turn every wedge of spectra into the direct sum of the groups.
 
 **Problem.** A spectrum is dualizable exactly when it is compact, and both conditions hold exactly for the finite spectra. So finiteness, which depends on a cell structure, becomes a property of the object in the stable homotopy category.
 
-**How the definition helps.** The definitions turn finiteness into an intrinsic property, and one direction is then immediate. Duality gives \[X, Y\] ≅ π₀(DX ∧ Y), and both steps preserve wedges, so dualizable spectra are compact (our own). The sphere is dualizable, and dualizable spectra are closed under cofiber sequences and retracts, so finite spectra are dualizable (our own). A compact spectrum is a retract of a finite stage of its cell filtration, and a separate result makes such retracts finite (our own).
+**How the definition helps.** Duality turns maps out of X into smashing with DX, which commutes with wedges, so dualizable spectra are compact (our own). Finite spectra are dualizable, because the sphere is and duals survive cofibre sequences and retracts (our own). A compact spectrum is a retract of a finite stage of its cell filtration, and such a retract is finite (our own).
 
 **nLab:** [dualizable object](https://ncatlab.org/nlab/show/dualizable+object). It says: “a spectrum is dualizable in the stable homotopy category with its smash product precisely if it is a finite spectrum.”
 
@@ -1743,15 +1743,15 @@
 
 ### For orthogonal spectra, naive stable homotopy groups detect stable equivalences
 
-**Remember:** Use orthogonal groups, not symmetric groups, and the naive homotopy groups are right.
+**Remember:** Continuous O(n) symmetries, unlike discrete permutations, keep the naive homotopy groups honest.
 
 *Rules out counterexamples.* MSC 55P42 (Stable homotopy theory, spectra), 55Q10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** An orthogonal spectrum has based O(n)-spaces Xₙ and O(n) × O(m)-equivariant maps Xₙ ∧ Sᵐ → Xₙ₊ₘ for all n,m ≥ 0. The actions use block sum, the maps respect iteration, and the m = 0 map is the identity.
+**Definition.** An orthogonal spectrum is a sequence of based spaces Xₙ with structure maps Xₙ ∧ Sᵐ → Xₙ₊ₘ, where each Xₙ has a continuous action of the orthogonal group O(n), not only of a discrete symmetric group. The structure maps are O(n) × O(m)-equivariant for the block-sum action, respect iteration, and are the identity for m = 0.
 
 **Problem.** A map of orthogonal spectra is a stable equivalence exactly when it is an isomorphism on the naive stable homotopy groups πₙ(X) = colimₖ πₖ₊ₙ(Xₖ).
 
-**How the definition helps.** For fixed n, the Stiefel manifolds O(q)/O(q − n) become arbitrarily highly connected as q grows (our own). This connectivity underlies the stable equivalence detection theorem for orthogonal spectra (our own). The corresponding symmetric-group quotients are discrete (our own). For free symmetric spectra, λ from F₁S¹ to F₀S⁰ is a stable equivalence that fails the naive group test (our own).
+**How the definition helps.** The quotients O(q)/O(q − n) are Stiefel manifolds that become highly connected as q grows, and this makes the naive groups detect stable equivalences (our own). For symmetric spectra the matching quotients of symmetric groups are discrete (our own). There the map λ from F₁S¹ to F₀S⁰ is a stable equivalence that the naive groups miss (our own).
 
 **nLab:** [symmetric spectrum](https://ncatlab.org/nlab/show/symmetric+spectrum), [orthogonal spectrum](https://ncatlab.org/nlab/show/orthogonal+spectrum), [Model categories of diagram spectra](https://ncatlab.org/nlab/show/Model+categories+of+diagram+spectra), [semistable symmetric spectrum](https://ncatlab.org/nlab/show/semistable+symmetric+spectrum). It says: “Among the various (now) common models for spectra, this issue is unique to symmetric spectra”
 
@@ -1766,11 +1766,11 @@
 
 *True by definition.* MSC 55P42 (Stable homotopy theory, spectra), 55P25, 55M05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Spanier–Whitehead dual of a spectrum A is a spectrum D with evaluation D ∧ A → S and coevaluation S → A ∧ D. Inserting coevaluation and then applying evaluation must recover the identity on each factor.
+**Definition.** A Spanier–Whitehead dual of a spectrum A is a spectrum D with maps D ∧ A → S and S → A ∧ D for the sphere spectrum S that satisfy the two triangle identities. For a compact neighbourhood retract X in Sⁿ, the reduced spectrum of Sⁿ ∖ X, shifted by n − 1, is a dual of that of X (our own).
 
 **Problem.** Let X be a proper, nonempty compact neighbourhood retract in the sphere Sⁿ. Then H̃ᵢ(Sⁿ ∖ X) ≅ H̃ⁿ⁻ⁱ⁻¹(X) for reduced homology and cohomology (Alexander duality).
 
-**How the definition helps.** Geometric Spanier–Whitehead duality pairs the reduced spectra of X and its spherical complement with shift n − 1 (our own). Applying the integral Eilenberg–MacLane spectrum exchanges reduced homology of the complement with reduced cohomology of X in the complementary degree.
+**How the definition helps.** Homology with coefficients in a spectrum turns into cohomology of its dual, so applying the integral Eilenberg–MacLane spectrum gives Alexander duality. The shift n − 1 produces the complementary degree n − i − 1 (our own).
 
 **Wikipedia:** [Spanier–Whitehead duality](https://en.wikipedia.org/wiki/Spanier%E2%80%93Whitehead_duality). It says: “Taking homology and cohomology with respect to an Eilenberg–MacLane spectrum recovers Alexander duality formally.”
 
@@ -1780,15 +1780,15 @@
 
 ### Flat ring spectra make the Adams E₂-term an Ext of comodules
 
-**Remember:** If E sees itself flatly, E-homology carries a coaction of E•(E).
+**Remember:** If E∗E is flat, E-homology carries a coaction of E∗E.
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55T15, 16T05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A homotopy commutative ring spectrum E is flat if E∗E = π∗(E ∧ E) is flat over E∗ = π∗E. Flatness means tensoring with E∗E over E∗ preserves exact sequences of graded modules.
+**Definition.** A homotopy commutative ring spectrum E is flat when E∗E = π∗(E ∧ E) is a flat module over E∗ = π∗E. Then E∗(E ∧ X) ≅ E∗E ⊗ E∗X over E∗, and this gives each E∗X a coaction of E∗E (our own).
 
 **Problem.** Suppose E is flat and E∗X is projective over E∗. Then (E∗, E∗E) is a Hopf algebroid. The E-Adams spectral sequence for maps X → Y has E₂-term given by comodule Ext from E∗X to E∗Y.
 
-**How the definition helps.** Flatness identifies iterated E-homology with tensor products, giving the Hopf algebroid (E∗, E∗E) and its natural coactions (our own). When E∗X is projective over E∗, the Adams cobar calculation identifies the E₂-term with comodule Ext from E∗X to E∗Y (our own).
+**How the definition helps.** Flatness turns iterated E-homology into iterated tensor products, so (E∗, E∗E) is a Hopf algebroid and each E∗X is a comodule (our own). When E∗X is projective over E∗, the Adams cobar complex computes comodule Ext from E∗X to E∗Y (our own).
 
 **nLab:** [Adams spectral sequence](https://ncatlab.org/nlab/show/Adams+spectral+sequence). It says: “the d₁-cohomology of the first page computes the Ext-groups from the E-homology of Y to the E-homology of X, regarded as E•(E)-comodules.”
 
@@ -1798,15 +1798,15 @@
 
 ### Modules over the Eilenberg–MacLane ring spectrum HR are chain complexes
 
-**Remember:** HR-modules and chain complexes are the same homotopy theory.
+**Remember:** Homotopy only in degree zero, so HR-modules are chain complexes.
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 18G80, 13D09. arXiv math.AT, math.KT. Level 3: graduate.
 
-**Definition.** For a ring R, its Eilenberg–MacLane ring spectrum HR has π₀HR = R and all other homotopy groups zero. A left HR-module has a unital, coherently associative action HR ∧ M → M.
+**Definition.** For a ring R, the Eilenberg–MacLane ring spectrum HR has π₀HR = R and no other homotopy groups. A left HR-module is a spectrum M with a unital, coherently associative action HR ∧ M → M.
 
 **Problem.** For every ring R, HR-module spectra and unbounded chain complexes of R-modules have Quillen equivalent model structures. So the homotopy category of HR-modules is the derived category D(R).
 
-**How the definition helps.** The free rank-one module generates each stable theory, and its derived endomorphism spectrum has homotopy only in degree zero (our own). For left modules its degree-zero endomorphism ring is Rᵒᵖ (our own). The Schwede–Shipley Morita theorem therefore identifies the two module theories (our own).
+**How the definition helps.** Both theories are stable and generated by one free module whose derived endomorphisms have homotopy only in degree zero, equal to Rᵒᵖ for left modules (our own). The Schwede–Shipley Morita theorem then identifies the two module theories (our own).
 
 **nLab:** [stable Dold-Kan correspondence](https://ncatlab.org/nlab/show/stable+Dold-Kan+correspondence). It says: “For R any ring (or ringoid, even) there is a Quillen equivalence H R ModSpectra ≃ Ch<sub>•</sub>(R Mod) between a model category of H R-module spectra over the Eilenberg-MacLane spectrum H R and the model structure on unbounded chain complexes”
 
@@ -1817,15 +1817,15 @@
 
 ### Segal's condition makes Γ-spaces model infinite loop spaces
 
-**Remember:** Segal maps identify powers, and grouplike components permit repeated delooping.
+**Remember:** X of n points is n copies of X of one point.
 
 *Makes the theorem clean to state or prove.* MSC 55P47 (Infinite loop spaces), 55P48, 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Γ-space X is a functor from finite pointed sets to spaces. The n projections onto the two-element pointed set each retain one nonbasepoint and collapse the others. X is special if these projections induce weak equivalences X(n) → X(1)ⁿ for all n ≥ 0. It is very special if π₀X(1) under the induced multiplication is a group.
+**Definition.** A Γ-space X is a functor from finite pointed sets to spaces. It is special when the n collapse maps from n points to one point, each keeping one point, give weak equivalences X(n) → X(1)ⁿ for all n ≥ 0. It is very special when, in addition, π₀X(1) is a group under the induced multiplication.
 
-**Problem.** For a special Γ-space X, the maps of finite pointed sets make X(1) a multiplication that is unital, associative and commutative up to coherent homotopy. If X is very special, X presents an infinite loop space (Segal's theorem).
+**Problem.** For a special Γ-space X, the maps of finite pointed sets give X(1) a multiplication that is unital, associative and commutative up to coherent homotopy. If X is very special, X presents an infinite loop space (Segal's theorem).
 
-**How the definition helps.** Via the Segal equivalences, fold maps give coherently commutative multiplication (our own). Segal’s recognition theorem gives repeated deloopings when the component monoid is a group (our own).
+**How the definition helps.** The fold map from n points to one point, read through X(n) ≃ X(1)ⁿ, gives a multiplication that is coherently commutative (our own). Segal's recognition theorem deloops X(1) repeatedly when its components form a group (our own).
 
 **nLab:** [Gamma-space](https://ncatlab.org/nlab/show/Gamma-space). It says: “In order for this to be valid, and thus for X to present an infinite loop space, a Γ-space must satisfy the further condition that all the Segal maps … are weak equivalences.”
 
@@ -1835,15 +1835,15 @@
 
 ### Grouplike Eₖ-algebras are exactly the k-fold loop spaces
 
-**Remember:** k-fold loop spaces are grouplike spaces that multiply in k directions.
+**Remember:** Loops in a k-cube multiply in any arrangement of small cubes.
 
 *Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology), 55P35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** An Eₖ-algebra is a space with an action of the little k-cubes operad. This operad describes the ways to place several small k-dimensional cubes, without overlap, inside one big cube. An Eₖ-algebra is grouplike if its monoid of components π₀ is a group.
+**Definition.** An Eₖ-algebra is a space with a multiplication for every arrangement of disjoint small k-dimensional cubes inside one big cube, that is, an action of the little k-cubes operad. It is grouplike when its components π₀ form a group.
 
 **Problem.** A space is a k-fold loop space up to homotopy exactly when it is a grouplike Eₖ-algebra (May 1972).
 
-**How the definition helps.** Disjoint little cubes let a k-fold loop space perform several loops inside one cube (our own). Reversing a loop gives inverses on components (our own). May’s recognition theorem gives the converse for grouplike little-cubes algebras in the homotopy theory of spaces.
+**How the definition helps.** A k-fold loop space consists of maps from a k-cube that send its boundary to the base point. So loops can run inside the small cubes, and reversing a loop gives inverses (our own). May's recognition theorem gives the converse for grouplike Eₖ-algebras in spaces.
 
 **nLab:** [May recognition theorem](https://ncatlab.org/nlab/show/May+recognition+theorem), [little cubes operad](https://ncatlab.org/nlab/show/little+cubes+operad), [delooping hypothesis](https://ncatlab.org/nlab/show/delooping+hypothesis). It says: “iterated loop spaces as "grouplike" En-algebras in the classical homotopy theory of spaces (∞Grpd)”
 
@@ -1854,15 +1854,15 @@
 
 ### Shape theory sees the Warsaw circle as a circle
 
-**Remember:** Keep the homotopy types of all neighbourhoods and the inclusions between them.
+**Remember:** See a space through its thickenings, which close up its gaps.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P55 (Shape theory). arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** Embed the compact metric space X in the Hilbert cube. Its shape is the pro-homotopy type of its open neighbourhoods, with inclusion maps from smaller neighbourhoods to larger ones.
+**Definition.** Embed the compact metric space X in the Hilbert cube. Its shape is the system of homotopy types of its open neighbourhoods, linked by the inclusions of smaller into larger ones, taken as a pro-homotopy type.
 
 **Problem.** Shape agrees with homotopy type on ANRs. The Warsaw circle has the shape of the circle S¹, although its weak homotopy type sees no circle.
 
-**How the definition helps.** For a compact absolute neighbourhood retract, the neighbourhood system is pro-homotopy equivalent to the space itself (our own explanation). The Warsaw circle has arbitrarily small nested annular neighbourhoods whose inclusions are homotopy equivalences. Its shape is therefore S¹, although its homotopy groups are trivial (our own explanation).
+**How the definition helps.** Shape sees only neighbourhoods, and the Warsaw circle has arbitrarily small nested annular neighbourhoods whose inclusions are homotopy equivalences, so its shape is S¹ (our own explanation). For a compact absolute neighbourhood retract, the neighbourhood system is pro-homotopy equivalent to the space itself (our own explanation).
 
 **nLab:** [shape theory](https://ncatlab.org/nlab/show/shape+theory), [Warsaw circle](https://ncatlab.org/nlab/show/Warsaw+circle). It says: “the weak homotopy type fails to give useful information for 'bad' spaces, of which classical examples include the Warsaw Circle”
 
@@ -1876,11 +1876,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A spectrum Z is E-local if \[Y,Z\] = 0 for every spectrum Y with E ∧ Y ≃ 0. E-localization is the universal map from X to an E-local spectrum. Rationalization uses E = Sℚ, and profinite completion takes the product of the S/p-localizations over all primes p.
+**Definition.** Rationalization is localization at the rational sphere Sℚ, and profinite completion is the product over all primes p of localizations at the mod-p Moore spectrum S/p. Here localization at E is the universal map from X to a spectrum Z with \[Y, Z\] = 0 whenever E ∧ Y ≃ 0.
 
 **Problem.** For every spectrum X, the square formed by X, its rationalization, its profinite completion and the rationalization of that completion is a homotopy pullback. For spaces the same square needs extra hypotheses, such as nilpotence.
 
-**How the definition helps.** With both corners defined as localizations, the proof reduces to comparing the fibres of two maps. The fibre F of the completion map has S(ℚ/ℤ) ∧ F = 0, so its homotopy groups are ℚ-vector spaces (our own outline). Rationalization is exact and leaves this fibre unchanged, so the rationalized map has the same fibre, with no hypothesis on X (our own outline). The work moves into Bousfield's theorem that S(ℚ/ℤ)-localization is the product of the p-completions.
+**How the definition helps.** Because both corners are localizations, the square is a pullback once the completion map and its rationalization have the same fibre. That fibre is S(ℚ/ℤ)-acyclic, so it is rational and rationalization leaves it unchanged, for every X (our own outline). The work is Bousfield's theorem that S(ℚ/ℤ)-localization is the product of the p-completions.
 
 **nLab:** [fracture theorem](https://ncatlab.org/nlab/show/fracture+theorem). It says: “the arithmetic fracture theorem says that stable homotopy types (and suitably tame plain homotopy types) canonically decompose into their rationalization and their p-completion for all primes p”
 
@@ -1894,11 +1894,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a prime p, let S/p be the cofibre of multiplication by p on the sphere spectrum. The p-completion of X is its universal map to a spectrum Z satisfying \[Y,Z\] = 0 whenever S/p ∧ Y ≃ 0.
+**Definition.** For a prime p, let S/p be the mod-p Moore spectrum, the cofibre of multiplication by p on the sphere spectrum. The p-completion of X is its universal map to a spectrum Z that S/p-acyclic spectra cannot see: \[Y, Z\] = 0 whenever S/p ∧ Y ≃ 0.
 
 **Problem.** For every spectrum X, the p-completion of X is the function spectrum F(Σ⁻¹Sℤ/p∞, X), with Sℤ/p∞ the Moore spectrum of the Prüfer group ℤ/p∞. Its homotopy fits into a short exact sequence 0 → Ext(ℤ/p∞, πₙX) → πₙ(completion) → Hom(ℤ/p∞, πₙ₋₁X) → 0.
 
-**How the definition helps.** Bousfield identifies the displayed function spectrum as S/p-local and the natural map into it as an S/p-equivalence. The universal property then identifies the target with the completion. The universal coefficient sequence for maps from a Moore spectrum gives the stated exact sequence (our own explanation).
+**How the definition helps.** Bousfield shows that F(Σ⁻¹Sℤ/p∞, X) is S/p-local and that X maps to it by an S/p-equivalence, so the universal property makes it the completion. The universal coefficient sequence for maps out of a Moore spectrum then gives the exact sequence (our own explanation).
 
 **nLab:** [Bousfield localization of spectra](https://ncatlab.org/nlab/show/Bousfield+localization+of+spectra). It says: “The localization of spectra at the Moore spectrum S𝔽ₚ is given by the mapping spectrum out of S⁻¹ℤ/p<sup>∞</sup>”
 
@@ -1908,15 +1908,15 @@
 
 ### Localization at a set of primes works well for nilpotent spaces
 
-**Remember:** Outside T, every power map must admit unique roots.
+**Remember:** Abelian layers, each with unique qth roots for primes outside T.
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** Fix a set T of primes. A connected space is nilpotent if π₁ is nilpotent and acts nilpotently on every higher homotopy group. A nilpotent group is T-local if taking the qth power is bijective for every prime q outside T.
+**Definition.** Fix a set T of primes; a nilpotent group is T-local when x ↦ x<sup>q</sup> is a bijection for every prime q outside T. A connected space is nilpotent when π₁ is nilpotent and acts nilpotently on each higher πₙ, so its Postnikov tower refines into layers with abelian fibres (our own).
 
-**Problem.** For nilpotent CW spaces, locality for ℤ-localized-at-T homology equivalences agrees with T-locality of every homotopy group and with T-locality of every integral homology group. Every such space admits a localization, unique up to homotopy, localizing its homotopy and homology groups.
+**Problem.** For a nilpotent CW space, three conditions agree: being local for homology equivalences with ℤ localized at T, having T-local homotopy groups, and having T-local integral homology groups. Every such space has a localization, unique up to homotopy, that localizes its homotopy and homology groups.
 
-**How the definition helps.** Homological locality means each localized-homology equivalence induces a bijection on homotopy classes of maps into the space. Sullivan’s nilpotent localization theorem identifies this mapping condition with the two group tests and constructs the localization (our own explanation). Outside the nilpotent setting these definitions can diverge.
+**How the definition helps.** Nilpotence lets one localize the space one abelian layer at a time, and the three tests agree layer by layer (our own explanation). Sullivan's nilpotent localization theorem makes this precise and builds the localization. Outside nilpotent spaces these definitions can differ, as the nLab notes.
 
 **nLab:** [localization of a space](https://ncatlab.org/nlab/show/localization+of+a+space), [nilpotent topological space](https://ncatlab.org/nlab/show/nilpotent+topological+space). It says: “For non-nilpotent spaces, there are multiple inequivalent definitions of localization”
 
@@ -1927,15 +1927,15 @@
 
 ### Localizing at a subring of ℚ just tensors homotopy groups with it
 
-**Remember:** Localize at a subring of the rationals by tensoring homotopy with it.
+**Remember:** Inverting primes in the sphere inverts them in every homotopy group.
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory), 55P62. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a unital subring R ⊆ ℚ, let SR be the sphere with all primes invertible in R inverted. A spectrum Z is SR-local if \[Y,Z\] = 0 whenever SR ∧ Y ≃ 0. SR-localization is the universal map to an SR-local spectrum.
+**Definition.** For a unital subring R ⊆ ℚ, let SR be the sphere spectrum with the primes invertible in R inverted. SR-localization is the universal map from X to a spectrum Z with \[Y, Z\] = 0 whenever SR ∧ Y ≃ 0.
 
 **Problem.** For a subring R of ℚ, the SR-localization of every spectrum X is X ∧ SR, and its homotopy groups are πₙX ⊗ R. For R = ℚ this is rationalization, and the rational stable homotopy category is equivalent to graded ℚ-vector spaces.
 
-**How the definition helps.** Smashing with SR inverts exactly those primes on every homotopy group, giving πₙX ⊗ R by filtered colimits (our own outline). The natural map X → X ∧ SR is an SR-equivalence since SR ∧ SR ≃ SR. Its target is local as an SR-module. Serre’s finiteness theorem identifies Sℚ with the rational Eilenberg–Mac Lane spectrum, whose modules correspond to graded rational vector spaces up to equivalence.
+**How the definition helps.** Smashing with SR inverts the same primes on every homotopy group, so πₙ(X ∧ SR) = πₙX ⊗ R by filtered colimits (our own outline). The map X → X ∧ SR is an SR-equivalence since SR ∧ SR ≃ SR, and its target is an SR-module, hence SR-local. For R = ℚ, Serre's finiteness theorem makes Sℚ the rational Eilenberg–MacLane spectrum, whose modules are graded rational vector spaces.
 
 **nLab:** [smashing localization](https://ncatlab.org/nlab/show/smashing+localization). It says: “For G a group without torsion, then localization at the Moore spectrum E = SG (in particular p-localization) is smashing”
 
@@ -1949,11 +1949,11 @@
 
 *Rules out counterexamples.* MSC 55P60 (Localization and completion in homotopy theory), 55P42. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Fix a spectrum E, an object that represents a homology theory. A map f of spectra is an E-equivalence when it induces an isomorphism on E-homology. A spectrum X is E-local when every E-equivalence f induces a bijection \[f, X\] on homotopy classes of maps into X.
+**Definition.** Fix a spectrum E. A map f is an E-equivalence when it is an isomorphism on E-homology, and a spectrum X is E-local when every E-equivalence f induces a bijection \[f, X\] on homotopy classes of maps into X.
 
 **Problem.** An E-equivalence between two E-local spectra is an equivalence. Hence the E-localization X → LX, the universal map from X to an E-local spectrum, is unique up to unique equivalence.
 
-**How the definition helps.** The definition of an E-local spectrum is exactly the condition that the Yoneda lemma needs to invert an E-equivalence. For such f from X to Y, \[f, X\] gives a left inverse g, and \[f, Y\] makes g a right inverse (our own outline). Without locality the claim fails: multiplication by 2 on the sphere spectrum is a rational homology isomorphism, not an equivalence (our own example). The work moves into Bousfield's theorem that every spectrum has an E-localization.
+**How the definition helps.** An E-local spectrum cannot tell an E-equivalence from an isomorphism, so the Yoneda lemma inverts an E-equivalence between local spectra. For f from X to Y, \[f, X\] gives a left inverse g, and \[f, Y\] makes g a right inverse (our own outline). Without locality the claim fails: multiplication by 2 on the sphere spectrum is a rational isomorphism but not an equivalence (our own example).
 
 **nLab:** [Bousfield localization of spectra](https://ncatlab.org/nlab/show/Bousfield+localization+of+spectra). It says: “for every E-equivalence f then \[f,X\]• is an isomorphism;”
 
@@ -1963,15 +1963,15 @@
 
 ### Minimal Sullivan models are unique and show the rational homotopy groups
 
-**Remember:** Add generators in degree order, with differentials built from products of earlier generators.
+**Remember:** Differentials only make products, so the generators are the homotopy.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P62 (Rational homotopy theory). arXiv math.AT. Level 3: graduate.
 
-**Definition.** A simply connected minimal Sullivan algebra over ℚ is free graded-commutative on generators of degrees at least two. Its degree-one differential squares to zero and sends each generator to sums of products of at least two earlier generators in a degree-ordered basis.
+**Definition.** A simply connected minimal Sullivan algebra over ℚ is a free graded-commutative algebra on generators of degree at least 2, with a differential of degree +1 that squares to zero. The differential sends each generator to sums of products of at least two earlier generators, so it has no linear part.
 
 **Problem.** Finite-type simply connected minimal Sullivan algebras classify simply connected rational homotopy types of finite type up to isomorphism. The degree-n generator space is dual to the nth rational homotopy group.
 
-**How the definition helps.** Minimality makes the model unique up to isomorphism, so invariants can be read straight off it. Any Sullivan model gives the rational homotopy type, but there are many non-isomorphic ones. The deep part is Sullivan's theorem that rational homotopy types of such spaces are equivalent to these algebras.
+**How the definition helps.** With no linear part in the differential, a quasi-isomorphism between minimal algebras is an isomorphism, so the model is unique and its generators are invariants. Any Sullivan model gives the rational homotopy type, but non-minimal ones are far from unique. The deep part is Sullivan's theorem that these algebras model rational homotopy types.
 
 **nLab:** [Sullivan model](https://ncatlab.org/nlab/show/Sullivan+model). It says: “Conversely, every rational space can be obtained from a dg-algebra and the minimal Sullivan algebras provide convenient representatives that correspond bijectively to rational homotopy types under this correspondence.”
 
@@ -1982,15 +1982,15 @@
 
 ### Rational homotopy theory needs nilpotent spaces of finite type
 
-**Remember:** Require a nilpotent fundamental group, nilpotent higher actions, and finite rational homology in each degree.
+**Remember:** Nilpotence bars acyclic spaces that forms would mistake for a point.
 
 *Rules out counterexamples.* MSC 55P62 (Rational homotopy theory), 55P60. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A connected space X is nilpotent if π₁X has a finite central series and acts nilpotently on every πₙX for n ≥ 2. Each such action must preserve a finite filtration from zero to πₙX and act trivially on every successive quotient. Finite rational type means finite-dimensional rational homology in each degree.
+**Definition.** A connected space X is nilpotent when π₁X is a nilpotent group and acts nilpotently on each higher πₙX, so the action is trivial on the quotients of some finite filtration of πₙX. It has finite rational type when its rational homology is finite-dimensional in each degree.
 
 **Problem.** For nilpotent spaces of finite rational type, piecewise polynomial forms identify rational homotopy types contravariantly with the corresponding finite-type minimal Sullivan algebras up to isomorphism.
 
-**How the definition helps.** Nontrivial acyclic groups are perfect, so their lower central series never reaches the identity (our own explanation). Nilpotence therefore excludes their classifying spaces, whose rational cohomology agrees with that of a point. Sullivan’s classification theorem gives the equivalence for rational homotopy types in the stated class.
+**How the definition helps.** Nilpotence excludes classifying spaces of nontrivial acyclic groups, whose rational cohomology agrees with that of a point (our own explanation). Such groups are perfect, so their lower central series never reaches the identity (our own explanation). Sullivan's classification theorem then gives the equivalence on the stated class.
 
 **nLab:** [rational homotopy theory](https://ncatlab.org/nlab/show/rational+homotopy+theory), [nilpotent topological space](https://ncatlab.org/nlab/show/nilpotent+topological+space). It says: “But by Hurewicz theorem asking that all spaces be simply connected precisely makes all "acyclic spaces" be contractible.”
 
@@ -2002,15 +2002,15 @@
 
 ### Brown representability needs connected pointed spaces
 
-**Remember:** Wedges go to products, pushouts go to weak pullbacks, and a representing space exists.
+**Remember:** Wedges to products, pushouts to weak pullbacks, on connected pointed spaces.
 
 *Makes the theorem clean to state or prove.* MSC 55P65 (Homotopy functors in algebraic topology), 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Brown functor is a contravariant pointed-set functor on the homotopy category of connected pointed CW complexes. It takes arbitrary wedges to products. On every homotopy pushout, each pair of elements agreeing on the common domain has a simultaneous lift.
+**Definition.** A Brown functor is a contravariant functor from the homotopy category of connected pointed CW complexes to pointed sets that turns arbitrary wedges into products. On every homotopy pushout, two elements that agree on the common part must both come from one element on the pushout.
 
 **Problem.** Brown representability says that every Brown functor is representable: F is \[−, Y\], the homotopy classes of maps into some space Y. In particular, a spectrum represents every additive reduced generalized cohomology theory.
 
-**How the definition helps.** Connected pointed CW complexes satisfy Brown’s representability theorem under the wedge and gluing axioms. Freyd and Heller’s nonsplitting example concerns the unpointed homotopy category (our own clarification). Applying representability to the degrees of a reduced cohomology theory gives representing spaces linked by loop equivalences (our own explanation).
+**How the definition helps.** Brown's cell-by-cell construction of Y works on connected pointed CW complexes, and the nLab notes that the theorem fails for pointed non-connected or for unpointed spaces. Freyd and Heller's nonsplitting example concerns the unpointed homotopy category (our own clarification). Applying the theorem in each degree of a reduced cohomology theory gives spaces linked by loop equivalences, a spectrum (our own explanation).
 
 **nLab:** [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “In particular, there is no Brown representability theorem for functors from the homotopy category of pointed not-necessarily-connected spaces to pointed sets, or for functors from the homotopy category of unpointed spaces to sets.”
 
@@ -2022,15 +2022,15 @@
 
 ### Testing weak equivalences on all fixed points gives Elmendorf's theorem
 
-**Remember:** Test a G-map on every subgroup's fixed points, not only on the whole space.
+**Remember:** Test a G-map on the fixed points of every subgroup.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 18N40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Fix a compact Lie group G and G-spaces X and Y. A G-map f is a weak G-equivalence if fᴴ is a weak homotopy equivalence for every closed subgroup H ≤ G. The space Xᴴ consists of the points fixed by every element of H.
+**Definition.** Fix a compact Lie group G. A G-map f is a weak G-equivalence when, for every closed subgroup H, its restriction fᴴ to the points fixed by H is a weak homotopy equivalence. These fixed points Xᴴ are the G-maps from G/H to X, so they form a presheaf on the orbits G/H (our own).
 
 **Problem.** Elmendorf's theorem says that G-equivariant homotopy theory is equivalent to the homotopy theory of presheaves of spaces on the orbit category of G. The orbit category has the spaces G/H as objects.
 
-**How the definition helps.** The fixed-point presheaf sends G/H to Xᴴ on the topologically enriched orbit category (our own explanation). Its objectwise weak equivalences are exactly the weak G-equivalences. Elmendorf’s theorem supplies the inverse construction up to homotopy.
+**How the definition helps.** The fixed-point presheaf lives on the orbit category, and its objectwise weak equivalences are exactly the weak G-equivalences (our own explanation). Elmendorf's theorem supplies the inverse construction up to homotopy.
 
 **nLab:** [Elmendorf's theorem](https://ncatlab.org/nlab/show/Elmendorf%27s+theorem), [fine model structure on topological G-spaces](https://ncatlab.org/nlab/show/fine+model+structure+on+topological+G-spaces). It says: “For general G, Elmendorf's theorem asserts that the fine equivariant model structure is Quillen equivalent to the model category of simplicial presheaves on the orbit category of G.”
 
@@ -2040,11 +2040,11 @@
 
 ### Moore paths have variable length, so they compose strictly
 
-**Remember:** Let each path take as long as it needs, and concatenation is strictly associative.
+**Remember:** Let each path keep its own length, and lengths just add.
 
 *Makes the theorem clean to state or prove.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 55R05, 18F60. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Moore path in X consists of r ≥ 0 and a continuous map γ from \[0,∞) to X constant on \[r,∞). Compose paths with matching endpoints by running them consecutively and adding their lengths.
+**Definition.** A Moore path in X is a path with its own length r ≥ 0: a map γ from \[0,∞) to X that is constant on \[r,∞). Compose two paths with matching endpoints by running one after the other and adding their lengths.
 
 **Problem.** Moore paths in a space form a strict category, with strictly associative composition and strict units. The Moore path space factors each map functorially into a trivial Hurewicz cofibration followed by a Hurewicz fibration.
 
@@ -2062,11 +2062,11 @@
 
 *True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 3: graduate.
 
-**Definition.** For n ≥ 1, πₙ(X) consists of maps \[0,1\]ⁿ → X sending the boundary to the base point, modulo homotopies fixing the boundary. Multiply two classes by placing their cubes side by side along the first coordinate and rescaling.
+**Definition.** For n ≥ 1, πₙ(X) is the set of homotopy classes of maps from the cube \[0,1\]ⁿ to X that send the boundary to the base point, using homotopies that fix the boundary. Multiply two classes by placing their cubes side by side along a coordinate; when n ≥ 2 there are at least two coordinates to choose from.
 
 **Problem.** For n ≥ 2, the homotopy group πₙ(X) is abelian.
 
-**How the definition helps.** Two coordinate directions give two products with the constant map as common unit on homotopy classes (our own explanation). Subdivision into four rectangles gives the interchange law. The Eckmann–Hilton argument then makes the products equal and commutative.
+**How the definition helps.** The two coordinate directions give two products with the same unit, the constant map (our own explanation). Splitting a cube into four rectangles gives the interchange law, so the Eckmann–Hilton argument makes the products equal and commutative.
 
 **Wikipedia:** [Homotopy group](https://en.wikipedia.org/wiki/Homotopy_group). It says: “Equivalently, define πₙ(X) to be the group of homotopy classes of maps”
 
@@ -2080,7 +2080,7 @@
 
 *True by definition.* MSC 55Q10 (Stable homotopy groups), 55P40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a based space X, define πₙˢ(X) as the colimit of πₙ₊ₖ(ΣᵏX) under suspension, starting with k ≥ 0 and n+k ≥ 2. Here Σ denotes reduced suspension.
+**Definition.** For a based space X, the stable homotopy group πₙˢ(X) is the colimit of πₙ₊ₖ(ΣᵏX) under reduced suspension, over the k ≥ 0 with n + k ≥ 2.
 
 **Problem.** Suspension gives a natural isomorphism from πₙˢ(X) to πₙ₊₁ˢ(ΣX).
 
@@ -2098,11 +2098,11 @@
 
 *True by definition. Confidence: medium.* MSC 55Q10 (Stable homotopy groups), 55P42, 55N20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The suspension spectrum of a pointed space is its image under the left adjoint to the functor taking a spectrum’s zeroth space. Stable homotopy groups of the space are the homotopy groups of its suspension spectrum. The classical version takes the colimit of homotopy groups of successive suspensions, with the degree shifted at each step.
+**Definition.** The suspension spectrum functor sends a pointed space to a spectrum and is left adjoint to taking a spectrum's zeroth space, so it preserves homotopy cofibre sequences. The stable homotopy groups of the space are the homotopy groups of its suspension spectrum.
 
 **Problem.** For a pointed CW pair A ⊆ X, the stable homotopy groups of A, X and X/A form a long exact sequence.
 
-**How the definition helps.** The suspension spectrum functor preserves homotopy pushouts because it is a left adjoint on homotopy types (our own explanation). The CW inclusion makes X/A its homotopy cofiber. Applying suspension spectra gives a cofiber sequence, which is also a fiber sequence by stability. Its long exact homotopy sequence gives the claim.
+**How the definition helps.** As a left adjoint, the suspension spectrum functor turns the cofibre sequence A → X → X/A of the CW pair into a cofibre sequence of spectra (our own explanation). In spectra every cofibre sequence is also a fibre sequence, so its homotopy groups form a long exact sequence.
 
 **nLab:** [stabilization](https://ncatlab.org/nlab/show/stabilization). It says: “Under mild conditions, notably when C is a presentable (∞,1)-category, this functor has a left adjoint”
 
@@ -2130,7 +2130,7 @@
 
 *True by definition.* MSC 55Q25 (Hopf invariants), 55N45. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For n ≥ 2 and f: S²ⁿ⁻¹ → Sⁿ, attach an oriented 2n-cell along f to form C(f). Let α and β be the integral cohomology generators from the oriented n-sphere and top cell, respectively. Define H(f) by α ∪ α = H(f)β.
+**Definition.** For n ≥ 2 and f: S²ⁿ⁻¹ → Sⁿ, attach an oriented 2n-cell to Sⁿ along f to form C(f). The Hopf invariant H(f) is the integer with α ∪ α = H(f)β. Here α and β are the integral cohomology generators of C(f) in degrees n and 2n given by the oriented sphere and the oriented cell.
 
 **Problem.** Let n ≥ 2 and let g: Sⁿ → Sⁿ have degree d. Then H(g ∘ f) = d² H(f).
 
@@ -2148,11 +2148,11 @@
 
 *True by definition.* MSC 55Q25 (Hopf invariants), 55N45. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For n &gt; 1, attach an oriented 2n-cell to the oriented n-sphere along φ: S²ⁿ⁻¹ → Sⁿ. Let α and β be the resulting integral cohomology generators in degrees n and 2n. Define h(φ) by α ⌣ α = h(φ)β.
+**Definition.** For n &gt; 1 and φ: S²ⁿ⁻¹ → Sⁿ, attach an oriented 2n-cell to Sⁿ along φ. The Hopf invariant h(φ) is the integer with α ⌣ α = h(φ)β, where α and β generate the integral cohomology in degrees n and 2n.
 
 **Problem.** For odd n &gt; 1, every map from the (2n−1)-sphere to the n-sphere has Hopf invariant zero.
 
-**How the definition helps.** In our own short proof, the cup-square definition gives zero because an odd-degree class has a square equal to its own negative. Thus 2h(φ)β = 0, and β generates a copy of ℤ, so h(φ) = 0. The geometric definition instead needs a sign rule for exchanging the two preimages.
+**How the definition helps.** An odd-degree class α satisfies α ⌣ α = −α ⌣ α by graded commutativity, so 2h(φ)β = 0 (our own proof). Since β generates a copy of ℤ, h(φ) = 0.
 
 **Wikipedia:** [Hopf invariant](https://en.wikipedia.org/wiki/Hopf_invariant). It says: “The integer h(φ) is the Hopf invariant of the map φ.”
 
@@ -2166,11 +2166,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q45 (Stable homotopy of spheres), 55Q35. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Take composable based maps f, g and h with gf and hg based nullhomotopic. Postcompose a nullhomotopy of gf with h and precompose one of hg with f. Gluing these cones gives a map SW → Z, and the Toda bracket consists of its homotopy classes over all choices.
+**Definition.** Take composable based maps f: W → X, g: X → Y and h: Y → Z with gf and hg nullhomotopic, and choose a based nullhomotopy of each. Gluing h applied to the first with the second precomposed with f gives a map SW → Z. The Toda bracket ⟨f, g, h⟩ is the set of all such homotopy classes, over all choices.
 
 **Problem.** For stable maps, the Toda bracket ⟨f, g, h⟩ is a coset of the subgroup h ∘ \[SW, Y\] + \[SX, Z\] ∘ Sf. So it is a well-defined element of the quotient of \[SW, Z\] by that subgroup.
 
-**How the definition helps.** Changing the first nullhomotopy translates the class by h ∘ \[SW,Y\], and changing the second translates it by \[SX,Z\] ∘ Sf. Every such change occurs by gluing in the corresponding suspension map (our own explanation). Stable mapping groups are abelian, so all choices form one coset of the sum.
+**How the definition helps.** Because the bracket collects all choices, a change of choice only moves the class. Changing the nullhomotopy of gf adds exactly the elements of h ∘ \[SW, Y\], and changing that of hg adds exactly those of \[SX, Z\] ∘ Sf (our own explanation). Stable mapping groups are abelian, so all choices form one coset of the sum.
 
 **Wikipedia:** [Toda bracket](https://en.wikipedia.org/wiki/Toda_bracket). It says: “Changing these maps changes the Toda bracket by adding elements of h \[SW,Y\] and \[SX,Z\]C<sub>f</sub>.”
 
@@ -2204,11 +2204,11 @@
 
 *True by definition. Confidence: medium.* MSC 55R05 (Fiber spaces in algebraic topology), 55P05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Serre fibration is a map p: E → B that lifts each homotopy of a disk Dⁿ, given a lift at time 0. In other words, p has the right lifting property against each inclusion Dⁿ × {0} → Dⁿ × \[0,1\]. Another definition asks for the same lifting for every CW complex, a space built by attaching disks along their boundaries.
+**Definition.** A Serre fibration is a map p: E → B that lifts homotopies of disks: every homotopy Dⁿ × \[0,1\] → B lifts to E once a lift at time 0 is given.
 
 **Problem.** A Serre fibration lifts every homotopy of a CW complex, once a lift at time 0 is given.
 
-**How the definition helps.** Extend the lift over each skeleton of the CW complex (our own argument). On each cell the prescribed lift covers the bottom and sides of the cylinder. This inclusion is homeomorphic as a pair to the bottom inclusion, so disk lifting extends the lift. The CW topology glues the compatible lifts.
+**How the definition helps.** A CW complex is built from disks, so extend the lift one skeleton at a time (our own argument). On each cell the lift is given on the bottom and sides of the cylinder, a pair homeomorphic to the bottom alone, so disk lifting extends it. The CW topology glues the compatible lifts.
 
 **nLab:** [Serre fibration](https://ncatlab.org/nlab/show/Serre+fibration). It says: “A Serre fibration has the right lifting property against all retracts”
 
@@ -2218,15 +2218,15 @@
 
 ### Schedules glue Hurewicz fibrations over numerable covers
 
-**Remember:** A schedule is a timetable that says which open set a path is in.
+**Remember:** A timetable says which open set the path is in, and when.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55R05 (Fiber spaces in algebraic topology), 55R70. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a path on \[0,1\], a schedule lists open sets of the cover and successive interval lengths summing to one. The path fits if each positive-length closed interval maps into its assigned set.
+**Definition.** Fix an open cover of B. A schedule for a path on \[0,1\] splits \[0,1\] into successive closed intervals and assigns an open set of the cover to each. The path fits it when each interval of positive length maps into its assigned set.
 
 **Problem.** Suppose B has a locally finite numerable open cover. If p: Y → B restricts to a Hurewicz fibration over each cover member, then p is a Hurewicz fibration.
 
-**How the definition helps.** A compatible schedule tells us where to switch between local path lifts (our own explanation). Dyer and Eilenberg’s schedule theorem supplies the continuous construction needed to join the local lifting rules. The resulting continuous path-lifting rule gives a Hurewicz fibration.
+**How the definition helps.** A schedule tells a path when to switch from one local lift to the next, so the local fibrations can be chained along it (our own explanation). Dyer and Eilenberg's schedule theorem makes this choice continuous in the path, which gives a global lifting rule.
 
 **nLab:** [schedule](https://ncatlab.org/nlab/show/schedule), [Hurewicz connection](https://ncatlab.org/nlab/show/Hurewicz+connection). It says: “The original motivation for the notion of schedules was to prove the globalisation theorem for (Hurewicz) fibrations.”
 
@@ -2236,15 +2236,15 @@
 
 ### The homotopy kernel of a homotopy kernel is a loop space
 
-**Remember:** Pull back the point along itself up to homotopy, and you get loops.
+**Remember:** Pulling the point back along itself gives loops, not nothing.
 
 *True by definition. Confidence: medium.* MSC 55R05 (Fiber spaces in algebraic topology), 55P35, 18N60. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** In a pointed ∞-category with finite limits, define ker(f) for f: A → B as the pullback A ×<sub>B</sub> \*. Define ΩB as the pullback \* ×<sub>B</sub> \*.
+**Definition.** In a pointed ∞-category with finite limits, the kernel of f: A → B is the homotopy pullback ker(f) = A ×<sub>B</sub> \*. The loop object ΩB is the base point pulled back along itself, \* ×<sub>B</sub> \*.
 
 **Problem.** The homotopy kernel of ker(f) → A is equivalent to ΩB. Iteration gives the long fiber sequence … → ΩA → ΩB → ker(f) → A → B.
 
-**How the definition helps.** With homotopy pullbacks, the kernel of a kernel is a loop space, so the sequence never stops. For ordinary kernels, the kernel of a kernel is trivial. Pasting the two homotopy pullback squares gives the outer square that defines ΩB, so the pasting law gives ker(ker(f)) ≃ ΩB. The nLab notes that the loops are reversed in direction.
+**How the definition helps.** Pasting the two pullback squares shows that the kernel of ker(f) → A is \* ×<sub>B</sub> \*, which is ΩB by definition. An ordinary kernel of a kernel is trivial, but a homotopy pullback of the point along itself gives loops. The nLab notes that the loops come out reversed.
 
 **nLab:** [fiber sequence](https://ncatlab.org/nlab/show/fiber+sequence). It says: “in contrast to the ordinary kernel of a kernel, which is necessarily trivial, the homotopy kernel of a homotopy kernel is typically far from trivial, but is a loop space object.”
 
@@ -2258,11 +2258,11 @@
 
 *True by definition.* MSC 55R05 (Fiber spaces in algebraic topology), 55P10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For f: A → B and b ∈ B, the homotopy fiber over b consists of pairs (a,γ). Here γ is a path from f(a) to b, and the pair space has the subspace topology from A times the path space.
+**Definition.** For f: A → B and b ∈ B, the homotopy fiber over b is the space of pairs (a, γ) with γ a path from f(a) to b. It has the subspace topology from A times the path space of B.
 
 **Problem.** If a path joins two points b and b′ of B, then the homotopy fibers over b and b′ are homotopy equivalent.
 
-**How the definition helps.** Appending a path δ from b to b′ moves each pair into the fiber over b′. Appending the reversed path gives a map back (our own argument). Contracting each backtracking segment and reparametrizing gives the two inverse homotopies.
+**How the definition helps.** Appending a path δ from b to b′ moves each pair into the fiber over b′, and appending the reversed path gives a map back (our own argument). Contracting each backtracking segment and reparametrizing gives the two inverse homotopies.
 
 **Wikipedia:** [Homotopy fiber](https://en.wikipedia.org/wiki/Homotopy_fiber). It says: “their homotopy fibers are homotopy equivalent.”
 
@@ -2274,11 +2274,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55R15 (Classification of fiber spaces or bundles in algebraic topology), 55R10. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** An open cover is numerable if it has a subordinate partition of unity. A fibre bundle is numerable if it is locally trivial over a numerable open cover.
+**Definition.** An open cover is numerable when it has a subordinate partition of unity. A fibre bundle is numerable when it is trivial over each set of some numerable open cover.
 
 **Problem.** Over any base B, homotopy classes of maps B → BG classify isomorphism classes of numerable principal G-bundles. The projection of every numerable fibre bundle is a Hurewicz fibration.
 
-**How the definition helps.** A partition of unity on the trivializing cover supplies the weights used to build the classifying map (our own explanation). Dold’s numerable-cover theorem also glues the local fibrations. Both statements therefore use a hypothesis on the bundle’s cover over an arbitrary base.
+**How the definition helps.** A partition of unity on the trivializing cover gives the weights to build the classifying map B → BG (our own explanation). Dold's theorem on numerable covers glues the local fibrations into a global Hurewicz fibration.
 
 **nLab:** [numerable fiber bundle](https://ncatlab.org/nlab/show/numerable+fiber+bundle), [numerable open cover](https://ncatlab.org/nlab/show/numerable+open+cover). It says: “For the theory of fiber bundles to be well-behaved one typically needs to restrict to those that have a local trivialization not just over any open cover but over a numerable open cover”
 
@@ -2288,15 +2288,15 @@
 
 ### The universal first Chern class classifies complex line bundles
 
-**Remember:** An equivalence of the two target spaces identifies line bundles with cohomology classes.
+**Remember:** BU(1) is K(ℤ,2), so line bundles are degree-two classes.
 
 *True by definition.* MSC 55R15 (Classification of fiber spaces or bundles in algebraic topology), 55R40, 55P20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The universal first Chern class on BU(1) is the integral degree-two generator evaluating to −1 on the complex projective line for the tautological line convention. The first Chern class of a line bundle is its pullback along a classifying map.
+**Definition.** The universal first Chern class is the generator of H²(BU(1); ℤ) with value −1 on ℂP¹ for the tautological line, and as a map BU(1) → K(ℤ,2) it is a weak equivalence. The first Chern class of a line bundle is the pullback of this class along a classifying map.
 
 **Problem.** For a CW complex X, the first Chern class is a bijection from isomorphism classes of complex line bundles on X to H²(X, ℤ).
 
-**How the definition helps.** Composition with an equivalence gives a bijection on homotopy classes of maps, so the universal definition gives the bijection at once. In our own proof, a map to BU(1) classifies the line bundle and its composite to K(ℤ, 2) represents its class. The work lies in building both classifying spaces and showing that c₁ is an equivalence.
+**How the definition helps.** Line bundles on X are maps X → BU(1) up to homotopy, and classes in H²(X; ℤ) are maps X → K(ℤ,2), so composing with the equivalence c₁ is a bijection (our own proof). The work lies in building both classifying spaces and showing that c₁ is an equivalence.
 
 **nLab:** [first Chern class](https://ncatlab.org/nlab/show/first+Chern+class). It says: “As a universal characteristic class, the first Chern class is the weak homotopy equivalence c₁ : BU(1) ≃→ K(ℤ,2).”
 
@@ -2308,9 +2308,9 @@
 
 *True by definition.* MSC 55R25 (Sphere bundles and vector bundles in algebraic topology), 55P40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a finite-dimensional vector bundle V over a compact Hausdorff base, its Thom space is the one-point compactification of its total space. A neighbourhood of infinity contains the complement of some compact subset.
+**Definition.** For a finite-dimensional vector bundle V over a compact Hausdorff base, its Thom space Th(V) is the one-point compactification of the total space: V with one point at infinity added.
 
-**Problem.** Let V → X and W → Y be vector bundles over compact Hausdorff bases. Their exterior sum over X × Y has total space V × W. Its Thom space is homeomorphic to the smash product Th(V) ∧ Th(W), which collapses all pairs with a base point to one point.
+**Problem.** Let V → X and W → Y be vector bundles over compact Hausdorff bases. The Thom space of their exterior sum over X × Y, whose total space is V × W, is homeomorphic to Th(V) ∧ Th(W).
 
 **How the definition helps.** The product V⁺ × W⁺ contains V × W as an open subspace (our own explanation). Collapsing its complement gives a compact Hausdorff space with one point at infinity. The collapsed complement consists exactly of pairs with a base point, which defines the smash product.
 
@@ -2320,7 +2320,7 @@
 
 ### Naturality identifies characteristic classes with classes on the classifying space
 
-**Remember:** Evaluate a natural class on the universal bundle to recover its defining value.
+**Remember:** A natural class is fixed by its value on the universal bundle.
 
 *True by definition.* MSC 55R40 (Homology of classifying spaces and characteristic classes in algebraic topology), 55R35. arXiv math.AT. Level 3: graduate.
 
@@ -2328,7 +2328,7 @@
 
 **Problem.** On CW complexes, degree-k characteristic classes of principal G-bundles with fixed coefficients correspond bijectively to degree-k cohomology classes on BG.
 
-**How the definition helps.** Every bundle comes from the universal bundle by pullback, so one universal value fixes the class. In our own proof, evaluating the class on the universal bundle gives a class on BG. Conversely, pull a class on BG back along each classifying map; homotopy invariance makes this independent of the map. The work is building the universal bundle and proving that it classifies bundles.
+**How the definition helps.** Every bundle is a pullback of the universal bundle, so naturality fixes a characteristic class by its value there, a class on BG. Conversely, pulling a class on BG back along classifying maps defines a characteristic class, and homotopy invariance makes it independent of the map (our own proof). The work is building the universal bundle and proving that it classifies bundles.
 
 **Wikipedia:** [Characteristic class](https://en.wikipedia.org/wiki/Characteristic_class). It says: “Once the cohomology H\*(BG) was calculated, once and for all, the contravariance property of cohomology meant that characteristic classes for the bundle would be defined in H\*(X) in the same dimensions.”
 
@@ -2342,11 +2342,11 @@
 
 *True by definition.* MSC 55S05 (Primary cohomology operations in algebraic topology), 55P20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A cohomology operation is a natural rule from one cohomology functor to another. For an abelian group π and n ≥ 1, K(π,n) is a connected space with homotopy group π in degree n and no others. In the represented definition, degree n cohomology with coefficients π consists of homotopy classes of maps to K(π,n).
+**Definition.** A cohomology operation is a natural map from one cohomology functor to another. Here degree n cohomology with coefficients π is represented: it is homotopy classes of maps to K(π,n), the space whose only homotopy group is π in degree n.
 
 **Problem.** Let π and G be abelian groups and let n and q be positive. On CW complexes, natural operations from degree n with coefficients π to degree q with coefficients G correspond to degree q classes on K(π,n).
 
-**How the definition helps.** The identity of K(π,n) represents the universal class. Naturality says to pull its image back along the map representing each input class. Conversely, any degree-q class defines an operation by these pullbacks. This is the Yoneda lemma.
+**How the definition helps.** This is the Yoneda lemma: a natural operation is fixed by its value on the universal class, the identity map of K(π,n). Every input class is a pullback of the universal class, so naturality sends it to the pullback of that value, and any degree q class on K(π,n) defines an operation this way.
 
 **nLab:** [cohomology operation](https://ncatlab.org/nlab/show/cohomology+operation). It says: “by the Yoneda lemma, (non-abelian/unstable) cohomology operations are in natural bijection with homotopy classes of maps between classifying spaces.”
 
@@ -2362,11 +2362,11 @@
 
 *True by definition.* MSC 55S05 (Primary cohomology operations in algebraic topology), 55P20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For abelian G and m &gt; 0, choose a connected CW complex K(G,m) with πₘ ≅ G and all other positive homotopy groups zero. On CW complexes X, homotopy classes of maps X → K(G,m) represent Hᵐ(X;G).
+**Definition.** For abelian G and m &gt; 0, let K(G,m) be a connected CW complex whose only nonzero homotopy group is πₘ ≅ G. On CW complexes X, homotopy classes of maps X → K(G,m) are the classes in Hᵐ(X;G), and the identity map of K(G,m) gives the universal class ι.
 
 **Problem.** For abelian G and H, natural operations Hᵐ(−;G) → Hⁿ(−;H) on CW complexes correspond to classes in Hⁿ(K(G,m);H). The correspondence sends Θ to Θ(ι), where ι is the universal degree-m class.
 
-**How the definition helps.** With the representing space, this is the Yoneda lemma, which fixes a natural map by its value on the identity map. Each class α is ϕ\*(ι) for a map ϕ: X → K(G, m), so Θ(α) = ϕ\*(Θ(ι)). The work moves to the theorem that maps to K(G, m) represent cohomology. The operations need not be additive.
+**How the definition helps.** With a representing space, the Yoneda lemma fixes a natural operation by its value on the universal class ι. Each class α is ϕ\*(ι) for a map ϕ: X → K(G,m), so Θ(α) = ϕ\*(Θ(ι)), and the operations need not be additive. The work moves to the theorem that maps to K(G,m) represent cohomology.
 
 **nLab:** [cohomology operation](https://ncatlab.org/nlab/show/cohomology+operation). It says: “(non-abelian/unstable) cohomology operations are in natural bijection with homotopy classes of maps between classifying spaces.”
 
@@ -2381,11 +2381,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55S10 (Steenrod algebra), 55P20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A finite sequence I of positive integers is admissible if iⱼ ≥ 2iⱼ₊₁ for every adjacent pair. Its excess is the first term minus the sum of the remaining terms. The empty sequence has excess zero and denotes the identity operation.
+**Definition.** A finite sequence I of positive integers is admissible when each term is at least twice the next. Its excess is the first term minus the sum of the others, and the empty sequence stands for the identity, with excess zero. By instability, Sqᴵ(ιₙ) is zero when the excess exceeds n and a square when it equals n (our own).
 
 **Problem.** For n ≥ 1, let ιₙ be the fundamental mod 2 class on K(ℤ/2,n). Its mod 2 cohomology is polynomial on Sqᴵ(ιₙ) for admissible I of excess less than n.
 
-**How the definition helps.** The instability axioms kill composites of excess greater than n and turn those of excess n into squares (our own explanation). Serre’s spectral sequence computation proves that all remaining admissible composites generate freely, including ιₙ itself.
+**How the definition helps.** Instability removes the composites of excess above n and makes those of excess n into squares (our own explanation). Serre's spectral sequence computation shows that the remaining admissible composites, including ιₙ itself, are free polynomial generators.
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “where I is an admissible sequence, form a basis (the Serre–Cartan basis) for the mod 2 Steenrod algebra, called the admissible basis.”
 
@@ -2399,7 +2399,7 @@
 
 *True by definition.* MSC 55S10 (Steenrod algebra), 55S05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a degree-n mod 2 class a on X, let P(a) be Steenrod’s equivariant external square restricted along the diagonal. In H\*(ℝP∞ × X), define Sqⁱ(a) as the coefficient of xⁿ⁻ⁱ in P(a), where x generates H¹(ℝP∞). A negative exponent has coefficient zero.
+**Definition.** For a degree-n mod 2 class a on X, Steenrod's equivariant square restricted along the diagonal gives a total power P(a) in H\*(ℝP∞ × X) = H\*(X)\[x\], with x of degree 1. Define Sqⁱ(a) as the coefficient of xⁿ⁻ⁱ in P(a), so Sqⁱ(a) = 0 when n − i is negative.
 
 **Problem.** The squares defined this way satisfy the Cartan formula: Sqᵏ(a ∪ b) is the sum of Sqⁱ(a) ∪ Sqʲ(b) over i + j = k. They also satisfy Sqⁱ(a) = 0 for i &gt; n and Sqⁿ(a) = a ∪ a.
 
@@ -2415,11 +2415,11 @@
 
 *True by definition.* MSC 55S10 (Steenrod algebra), 16T05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The mod 2 Steenrod algebra A is generated by the stable cohomology operations Sqⁱ. The Cartan coproduct is the algebra map sending Sqᵏ to the sum of Sqⁱ ⊗ Sqʲ over nonnegative i+j=k. Multiplication on the graded dual is dual to this coproduct.
+**Definition.** The mod 2 Steenrod algebra A has the Cartan coproduct, the algebra map that sends each Sqᵏ to the symmetric sum of Sqⁱ ⊗ Sqʲ over i + j = k. The dual Steenrod algebra takes its product from the dual of this coproduct.
 
 **Problem.** The Steenrod algebra is cocommutative, so the dual Steenrod algebra is a commutative algebra. The Steenrod algebra itself is not commutative, since Sq¹Sq² = Sq³ but Sq²Sq¹ is a different basis element.
 
-**How the definition helps.** Interchanging the tensor factors preserves the defining sum for each generator. Both coproducts are algebra maps, so agreement on the generators proves cocommutativity. Duality then gives commutativity, while the Adem relations distinguish the two compositions in A (our own explanation).
+**How the definition helps.** Swapping the tensor factors fixes the defining sum for each Sqᵏ, and both coproducts are algebra maps, so they agree everywhere. Duality then makes the dual algebra commutative, while the Adem relations tell the two compositions in A apart (our own explanation).
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “It is also a Hopf algebra, so that in particular there is a diagonal or comultiplication map ψ: A → A ⊗ A induced by the Cartan formula for the action of the Steenrod algebra on the cup product.”
 
@@ -2433,11 +2433,11 @@
 
 *True by definition.* MSC 55S10 (Steenrod algebra). arXiv math.AT. Level 3: graduate.
 
-**Definition.** On mod 2 cohomology the total square is Sq(a) = ∑ᵢ≥₀ Sqⁱ(a). For a homogeneous class of degree n, instability makes every term above n vanish. The Cartan formula makes Sq multiplicative.
+**Definition.** The total square Sq(a) = ∑ᵢ Sqⁱ(a) on mod 2 cohomology is a finite sum, because Sqⁱ(a) vanishes when i exceeds the degree of a. The Cartan formula makes Sq a ring map.
 
 **Problem.** In H\*(ℝP∞; 𝔽₂) = 𝔽₂\[x\], with x in degree 1, the square Sqⁱ(xⁿ) is the binomial coefficient C(n, i) mod 2 times xⁿ⁺ⁱ.
 
-**How the definition helps.** Because the total square is multiplicative, it is fixed by its value on the generator, and the axioms give Sq(x) = x + x². So Sq(xⁿ) = (x + x²)ⁿ, and the binomial theorem gives each Sqⁱ(xⁿ) as the part of degree n + i. The work went into constructing squares that satisfy the Cartan formula and the axioms.
+**How the definition helps.** A ring map is fixed by its value on the generator, and the axioms give Sq(x) = x + x². So Sq(xⁿ) = (x + x²)ⁿ, and the binomial theorem gives Sqⁱ(xⁿ) as the part of degree n + i.
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “The Cartan relation implies that the total square Sq := Sq⁰ + Sq¹ + Sq² + ⋯ is a ring homomorphism”
 
@@ -2449,11 +2449,11 @@
 
 *True by definition.* MSC 55S10 (Steenrod algebra), 55Q25. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For n ≥ 2, attach an oriented 2n-cell to Sⁿ along f: S²ⁿ⁻¹ → Sⁿ. With integral generators a and b from the sphere and oriented cell, define H(f) by a ∪ a = H(f)b.
+**Definition.** For n ≥ 2, attach an oriented 2n-cell to Sⁿ along f: S²ⁿ⁻¹ → Sⁿ. The Hopf invariant H(f) is the integer with a ∪ a = H(f)b, where a and b generate the integral cohomology in degrees n and 2n. Modulo 2, a ∪ a is Sqⁿ(a), so H(f) is odd exactly when Sqⁿ is nonzero on the cone.
 
 **Problem.** For n ≥ 2, an odd Hopf invariant for f: S²ⁿ⁻¹ → Sⁿ forces n to be a power of two.
 
-**How the definition helps.** An odd Hopf invariant makes Sqⁿ(a) = a² nonzero after reduction modulo two (our own explanation). Unless n is a power of two, the Adem relations express Sqⁿ as sums of composites of smaller positive squares. Each composite starts in degree n and passes through a degree strictly between n and 2n. The cone has no cohomology there.
+**How the definition helps.** If n is not a power of two, the Adem relations write Sqⁿ as a sum of composites of smaller positive squares. Each composite passes through a degree strictly between n and 2n, where the cone has no cohomology, so Sqⁿ(a) = 0 and H(f) is even (our own explanation).
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra), [Hopf invariant](https://en.wikipedia.org/wiki/Hopf_invariant). It says: “The proof uses the fact that each Sqᵏ is decomposable for k which is not a power of 2; that is, such an element is a product of squares of strictly smaller degree.”
 
@@ -2468,7 +2468,7 @@
 
 *True by definition.* MSC 55S45 (Postnikov systems, \\(k\\)-invariants), 55P15. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Define n-truncation as the universal map from a space to an n-type, a homotopy type with no higher homotopy groups. The usual Postnikov construction instead attaches cells to kill groups above n without changing lower groups.
+**Definition.** The n-truncation of a space is its universal map to an n-type, a space with no homotopy groups above degree n: every map to an n-type factors through it, uniquely up to homotopy.
 
 **Problem.** Truncating first at one nonnegative degree and then at another is equivalent to truncating once at the lower degree.
 
@@ -2504,11 +2504,11 @@
 
 *Rules out counterexamples.* MSC 55T10 (Serre spectral sequences), 55R20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let F → E → B be a fibre bundle over a connected base, and k a field. The fibre is totally non-homologous to zero when restriction H\*(E; k) → H\*(F; k) is onto. Equivalently, there are classes on E whose restrictions to each fibre form a basis of the fibre's cohomology.
+**Definition.** Let F → E → B be a fibre bundle over a connected base, with coefficients in a field k. The fibre is totally non-homologous to zero when restriction H\*(E; k) → H\*(F; k) is onto, that is, some classes on E restrict on each fibre to a basis of its cohomology.
 
 **Problem.** For a fibre bundle over a path-connected CW base, assume restriction onto H\*(F;k) is surjective and each fibre cohomology group is finite-dimensional. For any graded linear section s, the assignment b ⊗ f ↦ p\*(b) ∪ s(f) identifies H\*(B;k) ⊗ H\*(F;k) with H\*(E;k) as H\*(B;k)-modules.
 
-**How the definition helps.** The onto condition rules out fibre classes that a differential could kill, so the spectral sequence must collapse. The Hopf fibration S¹ → S³ → S² shows the need, because H¹(S³) = 0 cannot map onto H¹(S¹) (our own example). Under the condition, the left column of E₂ consists of permanent cycles, and by the Leibniz rule all differentials vanish (our own summary). The H\*(B)-module structure then solves the extension problem, so the module is free.
+**How the definition helps.** Classes on E that restrict to a fibre basis are permanent cycles, so by the Leibniz rule every differential vanishes and the spectral sequence collapses (our own summary). The H\*(B)-module structure then solves the extension problem, so H\*(E) is free over H\*(B). The Hopf fibration S¹ → S³ → S² shows the need, because H¹(S³) = 0 cannot map onto H¹(S¹) (our own example).
 
 **nLab:** [Leray-Hirsch theorem](https://ncatlab.org/nlab/show/Leray-Hirsch+theorem). It says: “The Leray-Hirsch theorem states sufficient fiberwise condition for the ordinary cohomology of the total space of a fiber bundle with coefficients in a commutative ring to be free module over the cohomology ring of the base space.”
 
@@ -2524,11 +2524,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T10 (Serre spectral sequences), 55N45. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A multiplicative cohomological spectral sequence has a bigraded algebra on each page, and taking cohomology induces the next page’s product. For homogeneous x of total degree j, every differential satisfies d(xy) = d(x)y + (−1)ʲx d(y).
+**Definition.** A multiplicative cohomological spectral sequence has a bigraded algebra on each page, with product induced from the previous page. Each differential is a derivation: d(xy) = d(x)y + (−1)ʲx d(y) for x of total degree j.
 
 **Problem.** The integral cohomology ring of complex projective space is H\*(ℂPⁿ; ℤ) = ℤ\[x\]/(xⁿ⁺¹) with x in degree 2. Letting n grow gives H\*(ℂP∞; ℤ) = ℤ\[x\].
 
-**How the definition helps.** In the Hopf circle bundle over ℂPⁿ, the Serre differential sends the fibre generator to a degree-two class x (our own calculation). The derivation rule makes this differential multiplication by x between the two rows. Vanishing of intermediate cohomology on S²ⁿ⁺¹ forces multiplication by x to be an isomorphism through degree 2n. The base has dimension 2n, and the finite calculations stabilize degreewise for ℂP∞.
+**How the definition helps.** Because differentials are derivations, the differential that sends the fibre generator of the circle bundle S¹ → S²ⁿ⁺¹ → ℂPⁿ to x acts as multiplication by x (our own calculation). The sphere has no cohomology in degrees 1 to 2n, so multiplication by x is an isomorphism up to degree 2n, and xⁿ⁺¹ = 0 since ℂPⁿ has dimension 2n. The finite calculations stabilize degreewise for ℂP∞.
 
 **nLab:** [multiplicative spectral sequence](https://ncatlab.org/nlab/show/multiplicative+spectral+sequence). It says: “A spectral sequence is called multiplicative or a spectral ring if there is a bi-graded algebra structure on each page such that the differentials act as graded derivations of total degree 1.”
 
@@ -2544,11 +2544,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T10 (Serre spectral sequences), 55Q40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The 3-connected cover of S³ is the homotopy fibre X of a map S³ → K(ℤ,3) inducing an isomorphism on π₃. Its fibre over S³ is ΩK(ℤ,3) ≃ ℂP∞.
+**Definition.** The 3-connected cover of S³ is the homotopy fibre X of a map S³ → K(ℤ,3) that is an isomorphism on π₃, so X keeps the higher homotopy groups of S³ and loses π₃. It fibres over S³ with fibre ΩK(ℤ,3) ≃ ℂP∞.
 
 **Problem.** The fourth homotopy group of the 3-sphere is π₄(S³) ≅ ℤ/2. With the Hopf fibration S¹ → S³ → S², this also gives π₄(S²) ≅ ℤ/2.
 
-**How the definition helps.** The fibre sequence and Hurewicz identify π₄(S³) with H₄(X) (our own outline). In the integral cohomology Serre sequence, 3-connectivity forces d₃(a) = ι for suitable generators. Thus d₃(a²) = 2aι, giving H⁴(X) = 0 and H⁵(X) ≅ ℤ/2. Finite type and universal coefficients give H₄(X) ≅ ℤ/2, and the Hopf fibre sequence identifies π₄(S²) with π₄(S³).
+**How the definition helps.** X is 3-connected with π₄(X) = π₄(S³), so Hurewicz turns π₄(S³) into H₄(X) (our own outline). In the Serre sequence of ℂP∞ → X → S³, 3-connectivity forces d₃(a) = ι, so d₃(a²) = 2aι, H⁴(X) = 0 and H⁵(X) ≅ ℤ/2. Universal coefficients give H₄(X) ≅ ℤ/2, and the Hopf fibration identifies π₄(S²) with π₄(S³).
 
 **Wikipedia:** [Serre spectral sequence](https://en.wikipedia.org/wiki/Serre_spectral_sequence). It says: “But now since we killed off the lower homotopy groups of X (i.e., the groups in degrees less than 4) by using the iterated fibration, we know that H₄(X) = π₄(X) by the Hurewicz theorem”
 
@@ -2562,11 +2562,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T10 (Serre spectral sequences), 55N25. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A local coefficient system assigns an abelian group to every point and an isomorphism to each path class relative to its endpoints. It sends constant paths to identities and concatenation to composition. Fibre cohomology in each degree gives such a system by transport.
+**Definition.** A local coefficient system on B assigns an abelian group to each point and an isomorphism to each homotopy class of paths, compatibly with constant paths and concatenation. The fibre cohomology Hᵗ(F) forms one by transport along paths, so it records how loops in the base act on the fibre.
 
 **Problem.** Every Serre fibration F → E → B over a path-connected base has a spectral sequence from Hᵖ(B; Hᵗ(F)), with local coefficients, to H\*(E). When π₁(B) acts trivially on H\*(F), for example when B is simply connected, the E₂ term is ordinary cohomology.
 
-**How the definition helps.** The local system records how loops in the base act on the fibre's cohomology, so the theorem needs no hypothesis on π₁(B). Without it, the statement must assume that B is simply connected or that the action is trivial. The work goes into Serre's construction, which filters E by the parts over the skeleta of B. Its first page is then the cellular cochain complex of B with the twisted coefficients (our own summary).
+**How the definition helps.** The twisted coefficients absorb the action of π₁(B), so the theorem needs no hypothesis on it. Serre's construction filters E by the parts over the skeleta of B, and its first page is the cellular cochain complex of B with these coefficients (our own summary). When the action is trivial, the coefficients are constant and E₂ is ordinary cohomology.
 
 **nLab:** [Serre spectral sequence](https://ncatlab.org/nlab/show/Serre+spectral+sequence). It says: “such that the canonical group action of the fundamental group π₁(X) on the ordinary cohomology of the fiber F is trivial (for instance if X is a simply connected topological space)”
 
@@ -2582,11 +2582,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T10 (Serre spectral sequences), 55R20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A fibration over a path-connected base is orientable over K if transport around every based loop induces the identity on the fibre’s cohomology over K.
+**Definition.** A fibration over a path-connected base is orientable over a field K when moving the fibre around any loop in the base acts as the identity on its cohomology over K.
 
 **Problem.** If B is path-connected, the fibration is orientable over K and the homology of B and F is finite-dimensional, then χ(E) = χ(F)·χ(B).
 
-**How the definition helps.** Orientability makes E₂ a tensor product, so its Euler characteristic is χ(B)·χ(F). Each differential raises total degree by one, and taking homology of such a differential does not change the Euler characteristic (our own summary). So E∞ has the same value, and E∞ is the associated graded of H\*(E). The work is in the Serre spectral sequence and its E₂ term.
+**How the definition helps.** Orientability makes E₂ = H\*(B) ⊗ H\*(F), so its Euler characteristic is χ(B)·χ(F). Taking homology does not change the Euler characteristic, so E∞ has the same value (our own summary). E∞ is the associated graded of H\*(E), so χ(E) = χ(B)·χ(F).
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “If p: E → B is a fibration with fiber F, with the base B path-connected, and the fibration is orientable over a field K, then the Euler characteristic with coefficients in the field K satisfies the product property”
 
@@ -2596,15 +2596,15 @@
 
 ### Serre classes make the Hurewicz theorem hold modulo finite groups
 
-**Remember:** Ignore a map’s kernel and cokernel when both belong to the chosen class.
+**Remember:** Count finite groups as zero, and Hurewicz still holds.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55T10 (Serre spectral sequences), 55Q40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Serre class is a family 𝒞 of abelian groups that contains 0 and is closed under subgroups, quotients and extensions. A map is an isomorphism modulo 𝒞 when its kernel and cokernel lie in 𝒞. The finite abelian groups form a Serre class, and so do the finite groups of order prime to p.
+**Definition.** A Serre class is a family 𝒞 of abelian groups that contains 0 and is closed under subgroups, quotients and extensions, such as the finite abelian groups. A map is an isomorphism modulo 𝒞 when its kernel and cokernel lie in 𝒞, so groups in 𝒞 count as zero.
 
 **Problem.** For i,n ≥ 1 with i ≠ n, πᵢ(Sⁿ) is finite, except that π₄ₖ₋₁(S²ᵏ) is ℤ plus a finite group. For simply connected X and n ≥ 2, finiteness of every πᵢ(X) below n makes the nth Hurewicz map an isomorphism modulo finite groups.
 
-**How the definition helps.** The finite-group Serre class lets the Hurewicz comparison disregard finite kernels and cokernels (our own explanation). Serre’s spectral sequence argument applies this comparison to successive connected covers of spheres. Finite generation and the rational cohomology calculation for K(ℤ,n) yield the stated exceptional degrees.
+**How the definition helps.** With finite groups counted as zero, the Hurewicz argument goes through while ignoring finite kernels and cokernels (our own explanation). Serre's spectral sequence argument applies this to successive connected covers of spheres. Finite generation and the rational cohomology of K(ℤ,n) then give the exceptional degrees.
 
 **Wikipedia:** [Homotopy groups of spheres](https://en.wikipedia.org/wiki/Homotopy_groups_of_spheres). It says: “Jean-Pierre Serre showed that homotopy groups of spheres are all finite except for those of the form πₙ(Sⁿ) or π₄ₙ₋₁(S²ⁿ) (for positive n), when the group is the product of the infinite cyclic group with a finite abelian group.”
 
@@ -2614,15 +2614,15 @@
 
 ### The Euler class as a transgression gives the Gysin sequence at once
 
-**Remember:** Transgress the oriented fibre generator to get the Euler class.
+**Remember:** The Euler class is where the one differential sends the fibre class.
 
 *True by definition.* MSC 55T10 (Serre spectral sequences), 55R25. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For an oriented Sᵏ-bundle with k ≥ 1, choose the integral fibre generator u prescribed by its orientation. Define its Euler class by e = dₖ₊₁(u) in the cohomology Serre spectral sequence.
+**Definition.** For an oriented Sᵏ-bundle with k ≥ 1, the Euler class e is the image of the orientation's fibre generator u under the differential dₖ₊₁ of the cohomology Serre spectral sequence. The E₂ page has only the rows q = 0 and q = k, so this one differential carries all the information.
 
 **Problem.** An oriented Sᵏ-bundle over a path-connected CW base has a long exact integral Gysin sequence. Its terms include Hⁿ(B) → Hⁿ⁺ᵏ⁺¹(B) → Hⁿ⁺ᵏ⁺¹(E) → Hⁿ⁺¹(B). The first arrow cups with e, and the second pulls back along the projection.
 
-**How the definition helps.** The E₂ page has only the two rows q = 0 and q = k, so the single differential dₖ₊₁ joins them. By the Leibniz rule it sends b·u to ±b ∪ e. A spectral sequence with two rows always unrolls into a long exact sequence, and with this definition of e that sequence is the Gysin sequence. The work moves to the theorem that this transgression equals the Euler class defined by the Thom class (our own remark).
+**How the definition helps.** A spectral sequence with only two rows unrolls into a long exact sequence. By the Leibniz rule dₖ₊₁(b·u) = ±b ∪ e, so the connecting map is cup with e, and the sequence is the Gysin sequence. That this e equals the Euler class defined by the Thom class is a separate theorem (our own remark).
 
 **Wikipedia:** [Serre spectral sequence](https://en.wikipedia.org/wiki/Serre_spectral_sequence), [Gysin homomorphism](https://en.wikipedia.org/wiki/Gysin_homomorphism). It says: “We see that the only non-trivial differentials are given on the E₂ᵣ-page and are defined by cupping with the Euler class e(ℰ).”
 
@@ -2632,15 +2632,15 @@
 
 ### Transgression as a coboundary makes it commute with Steenrod squares
 
-**Remember:** A transgression pulls back to the connecting image of the fibre class.
+**Remember:** Transgression is coboundary then pullback, and squares commute with both.
 
 *True by definition. Confidence: medium.* MSC 55T10 (Serre spectral sequences), 55S10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a based fibration p with fibre F over b, use mod 2 cohomology. A class x ∈ Hᵗ(F) transgresses to y ∈ Hᵗ⁺¹(B,{b}) if δx = p\*y in Hᵗ⁺¹(E,F). Here δ is the connecting map for (E,F).
+**Definition.** Over 𝔽₂, a fibre class x ∈ Hᵗ(F) of a based fibration p transgresses to y ∈ Hᵗ⁺¹(B,{b}) when its coboundary δx in Hᵗ⁺¹(E,F) is pulled back from the base, δx = p\*y. So transgression is built only from the coboundary δ and the pullback p\*, and Steenrod squares commute with both.
 
-**Problem.** If x is transgressive with transgression y, then each Steenrod square Sqⁱx is transgressive with transgression Sqⁱy. This lets Serre compute H\*(K(ℤ/2, n); 𝔽₂) as a polynomial ring on the classes Sqᴵιₙ with I admissible of excess below n.
+**Problem.** If x transgresses to y, then each Steenrod square Sqⁱx transgresses to Sqⁱy. With this, Serre computes H\*(K(ℤ/2, n); 𝔽₂) as a polynomial ring on the classes Sqᴵιₙ with I admissible of excess below n.
 
-**How the definition helps.** Steenrod squares are natural for maps of pairs and commute with the coboundary δ. So they preserve the relation δx = p\*(y) term by term (our own summary). The work moves to Serre's theorem that this geometric transgression is the differential of the spectral sequence. With that identification, Borel's theorem on transgressive generators gives the cohomology of the Eilenberg–MacLane spaces.
+**How the definition helps.** Apply Sqⁱ to δx = p\*y: since Sqⁱ commutes with δ and with p\*, it gives δ(Sqⁱx) = p\*(Sqⁱy) (our own summary). Serre's theorem that this transgression is the differential of the spectral sequence, with Borel's theorem on transgressive generators, then gives the cohomology of the Eilenberg–MacLane spaces.
 
 **nLab:** [transgression](https://ncatlab.org/nlab/show/transgression). It says: “This construction really exhibits transgression as a special case of the connecting homomorphism in cohomology”
 
@@ -2656,11 +2656,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55T10 (Serre spectral sequences), 55R40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a simply connected base, a degree-t fibre class is transgressive if it survives to page t+1 of the cohomology Serre spectral sequence. A transgression is any base class representing its dₜ₊₁ image. A simple system consists of classes whose ordered products over finite subsets, including the empty product, form a basis.
+**Definition.** A fibre class of degree t is transgressive when it survives to page t+1 of the cohomology Serre spectral sequence, so its only possible differential jumps straight to the base row; a base class representing that image is a transgression. A simple system of generators is a set of classes whose ordered products over finite subsets, the empty product included, form a basis.
 
 **Problem.** Suppose E is contractible, B simply connected, and H\*(F;k) has finite type over a field k with odd-degree transgressive simple generators. Then H\*(B;k) is polynomial on chosen transgressions of those generators. In particular, H\*(BG;ℚ) is polynomial for every compact connected Lie group G.
 
-**How the definition helps.** Borel’s transgression theorem identifies the base generators through their differentials from the fibre (our own explanation). Zeeman’s comparison theorem compares the model calculation with the Serre spectral sequence. Hopf’s theorem and Borel’s transgressive generators apply this calculation to the universal bundle of a compact connected Lie group.
+**How the definition helps.** Each generator jumps straight to the base row, so the spectral sequence matches a model in which each exterior generator kills one polynomial generator (our own explanation). Zeeman's comparison theorem makes this comparison rigorous, which gives Borel's transgression theorem. For a compact connected Lie group, Hopf's theorem gives odd exterior generators of H\*(G;ℚ), and they transgress in the universal bundle.
 
 **Wikipedia:** [Zeeman's comparison theorem](https://en.wikipedia.org/wiki/Zeeman%27s_comparison_theorem). It says: “A crucial point is that f is a "ring homomorphism"; this rests on the technical conditions that uᵢ are "transgressive”
 
@@ -2671,15 +2671,15 @@
 
 ### The Bockstein spectral sequence reads off orders of p-torsion page by page
 
-**Remember:** The r-th page sees exactly the summands of order pʳ.
+**Remember:** Divide the boundary by pʳ: the r-th differential finds ℤ/pʳ summands.
 
 *Makes the theorem clean to state or prove.* MSC 55T99 (Spectral sequences in algebraic topology), 55N10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Fix a prime p and a chain complex C of torsion-free abelian groups. Multiplication by p gives the short exact sequence 0 → C → C → C/pC → 0. Its homology exact couple defines the Bockstein spectral sequence with first page H\_∗(C/pC).
+**Definition.** Fix a prime p and a chain complex C of torsion-free abelian groups. The Bockstein spectral sequence starts at E¹ = H\_∗(C/pC), and its rth differential dʳ takes a chain c with ∂c divisible by pʳ to the class of ∂c/pʳ modulo p. It comes from the exact couple of 0 → C → C → C/pC → 0, with the first map multiplication by p.
 
 **Problem.** If every Hₙ(C) is finitely generated, E∞ is the torsion-free quotient of integral homology tensored with 𝔽ₚ. Each cyclic summand ℤ/pʳ in Hₙ(C) gives classes in degrees n+1 and n paired by a nonzero dʳ.
 
-**How the definition helps.** In the rth derived couple the integral term is pʳ⁻¹H\_∗(C) (our own explanation). The cyclic summand still contributes its final order-p subgroup there, and the connecting map followed by reduction pairs its two classes. Earlier differentials vanish on that pair, and the next derived couple loses it. Finite generation leaves just the free part modulo p at the limit.
+**How the definition helps.** A summand ℤ/pʳ generated by z, with pʳz = ∂c, gives a mod-p cycle c in degree n+1 with dʳ\[c\] = \[z\] ≠ 0, and earlier differentials vanish on this pair (our own explanation). After page r the pair is gone. A free summand meets no differential, so with finite generation E∞ is the free part tensored with 𝔽ₚ.
 
 **nLab:** [Bockstein spectral sequence](https://ncatlab.org/nlab/show/Bockstein+spectral+sequence). It says: “The Bockstein spectral sequence is traditionally defined by an exact couple in a way that does not manifestly come from a filtered chain complex.”
 
@@ -2691,15 +2691,15 @@
 
 ### Closure-finiteness and the weak topology put compact sets in finite subcomplexes
 
-**Remember:** Cell closures meet finitely many cells, and closedness is tested on each closure.
+**Remember:** One point per cell makes a discrete closed set, never compact.
 
 *Rules out counterexamples.* MSC 55U05 (Abstract complexes in algebraic topology), 55P10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** In a CW complex, the closure of every cell meets only finitely many cells. A subset is closed exactly when its intersection with every cell closure is closed there.
+**Definition.** In a CW complex, the closure of every cell meets only finitely many cells (closure-finite). A set is closed exactly when it meets every cell closure in a closed set (weak topology), so a set with at most one point in each cell is closed and discrete.
 
 **Problem.** Every compact subset of a CW complex lies in a finite subcomplex. Thus a map from a sphere, or a homotopy of such maps, has image in a finite subcomplex.
 
-**How the definition helps.** The weak topology makes any set that picks one point from infinitely many cells closed and discrete, so no compact set contains one. With closure-finiteness, the finitely many cells that a compact set meets grow to a finite subcomplex. Our own example: the Hawaiian earring, split into one point and infinitely many 1-cells, is closure-finite and compact. It meets infinitely many cells, because its topology is not the weak topology.
+**How the definition helps.** A compact set therefore meets only finitely many cells, since one point from each of infinitely many cells would be an infinite closed discrete subset. By closure-finiteness, each of these cells lies in a finite subcomplex, and their union is a finite subcomplex. Our own example: the Hawaiian earring with infinitely many 1-cells is compact and closure-finite, but lacks the weak topology and meets infinitely many cells.
 
 **Wikipedia:** [CW complex](https://en.wikipedia.org/wiki/CW_complex). It says: “A compact subspace of a CW complex is always contained in a finite subcomplex.”
 
@@ -2713,11 +2713,11 @@
 
 *Rules out counterexamples.* MSC 55U05 (Abstract complexes in algebraic topology), 55P10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A CW complex is a space built by gluing balls (cells) of rising dimension along their boundary spheres. Each cell meets only finitely many other cells in its boundary (closure-finite). A set is closed when it meets each closed cell in a closed set (weak topology).
+**Definition.** A CW complex is a space built by gluing balls (cells) of rising dimension along their boundary spheres. Each cell closure meets only finitely many cells, and a set is closed when it meets each closed cell in a closed set. So maps and homotopies can be built on it one cell at a time, and each step needs only homotopy groups.
 
-**Problem.** Whitehead's theorem says that a map between connected CW complexes which gives isomorphisms on all homotopy groups is a homotopy equivalence. A homotopy equivalence is a map with an inverse up to continuous deformation.
+**Problem.** A map between connected CW complexes that induces isomorphisms on all homotopy groups is a homotopy equivalence (Whitehead's theorem). That is, it has an inverse up to homotopy.
 
-**How the definition helps.** The cell structure lets you build an inverse map one cell at a time, so isomorphisms on homotopy groups are enough. The Warsaw circle is the bad case that the restriction excludes. Our own description: it is a closed loop in the plane with one piece that oscillates like sin(1/x). All its homotopy groups vanish, but it is not contractible.
+**How the definition helps.** Built one cell at a time, the obstruction at each cell lies in a relative homotopy group, and the isomorphisms make it vanish (our own). The Warsaw circle shows that the restriction is needed: all its homotopy groups vanish, but it is not contractible. Our own description: it is a closed loop in the plane with one piece that oscillates like sin(1/x).
 
 **Wikipedia:** [Whitehead theorem](https://en.wikipedia.org/wiki/Whitehead_theorem), [CW complex](https://en.wikipedia.org/wiki/CW_complex). It says: “For example, the Warsaw circle, a compact subset of the plane, has all homotopy groups zero, but the map from the Warsaw circle to a single point is not a homotopy equivalence.”
 
@@ -2731,11 +2731,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 57Q55. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A subdivision triangulates each original simplex compatibly with its faces and leaves the underlying space unchanged. A simplicial map assigns vertices to vertices so the images of each simplex’s vertices span a target simplex, then extends linearly.
+**Definition.** A subdivision cuts each simplex into smaller simplices, compatibly on faces, without changing the space. A simplicial map sends vertices to vertices and extends linearly from each simplex onto a target simplex. After enough barycentric subdivisions of the domain, a continuous map f sends the open star of each vertex into the open star of some target vertex (our own).
 
 **Problem.** Every continuous map between finite simplicial complexes is homotopic to a simplicial map from a subdivision of the domain. As a consequence, the homotopy group πₖ(Sⁿ) is zero when k is less than n.
 
-**How the definition helps.** Repeated barycentric subdivision makes each vertex star small enough for its image to lie in a target vertex star. Choosing these target vertices gives a simplicial approximation homotopic to the original map. For k &lt; n its image misses a point of Sⁿ, whose complement is contractible (our own explanation).
+**How the definition helps.** Send each vertex v to a target vertex w with f(star v) ⊆ star w. This gives a simplicial map g, and f(x) and g(x) lie in one closed simplex, so a straight-line homotopy joins them. For k &lt; n, a simplicial map Sᵏ → Sⁿ misses a point of Sⁿ, whose complement is contractible (our own explanation).
 
 **Wikipedia:** [Simplicial approximation theorem](https://en.wikipedia.org/wiki/Simplicial_approximation_theorem). It says: “In short, the theorem says any continuous map between simplicial complexes is the geometric realization of a simplicial mapping up to homotopy and subdivision.”
 
@@ -2749,11 +2749,11 @@
 
 *True by definition. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 55U05. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A simplex of a simplicial set is degenerate if a degeneracy map, which repeats a vertex, sends a lower-dimensional simplex to it. Every simplicial set is built from the empty set by adjoining nondegenerate simplices along their boundaries, step by step.
+**Definition.** A simplex of a simplicial set is nondegenerate if no degeneracy map, which repeats a vertex, produces it from a lower simplex. Every simplicial set is built from the empty set by attaching one Δ\[n\] along its boundary ∂Δ\[n\] for each nondegenerate n-simplex, in order of rising n.
 
 **Problem.** The geometric realization of a simplicial set is a CW complex with one n-cell for each nondegenerate n-simplex.
 
-**How the definition helps.** Each step attaches Δ\[n\] along its boundary, and realization, a left adjoint, turns this into attaching an n-cell along its boundary sphere. The direct definition glues all simplices, degenerate ones included, at once. The work moves to the Eilenberg–Zilber lemma: each simplex is a degeneracy of exactly one nondegenerate simplex, in exactly one way.
+**How the definition helps.** Realization is a left adjoint, so it keeps these attachments and turns each attached Δ\[n\] into an n-cell attached along its boundary sphere. The attaching description rests on the Eilenberg–Zilber lemma: each simplex is a degeneracy of exactly one nondegenerate simplex, in exactly one way.
 
 **nLab:** [geometric realization](https://ncatlab.org/nlab/show/geometric+realization). It says: “can be seen as the result of iteratively adjoining nondegenerate n-simplices.”
 
@@ -2763,15 +2763,15 @@
 
 ### Defining realization as a colimit-preserving extension makes it left adjoint to Sing
 
-**Remember:** A map out of the gluing is a compatible family of singular simplices.
+**Remember:** A map out of a gluing is one map per piece.
 
 *True by definition.* MSC 55U10 (Simplicial sets and complexes in algebraic topology). arXiv math.AT. Level 3: graduate.
 
-**Definition.** Geometric realization is the colimit-preserving extension sending Δ\[n\] to the topological n-simplex and each simplex operator to its affine map. Singular n-simplices of X are continuous maps Δⁿ → X, with simplex operators acting by precomposition.
+**Definition.** Geometric realization \|K\| glues one topological n-simplex Δⁿ for each n-simplex of K, along the affine maps given by the simplex operators. Formally, it is the colimit-preserving functor that sends Δ\[n\] to Δⁿ. Sing X is the simplicial set whose n-simplices are the continuous maps Δⁿ → X.
 
 **Problem.** Continuous maps \|K\| → X correspond naturally to simplicial maps K → Sing X.
 
-**How the definition helps.** A map out of the colimit specifies one continuous map Δⁿ → X per simplex of K, compatibly with simplex operators (our own explanation). These families are precisely simplicial maps K → Sing X, naturally in both variables.
+**How the definition helps.** A map out of a gluing is one map per piece, agreeing on the glue: here a continuous map Δⁿ → X for each simplex of K, compatible with the simplex operators (our own explanation). Such a family is exactly a simplicial map K → Sing X, naturally in K and X.
 
 **nLab:** [geometric realization](https://ncatlab.org/nlab/show/geometric+realization). It says: “Geometric realization is the special case of the general notion of nerve and realization that is induced from the standard cosimplicial topological space”
 
@@ -2783,11 +2783,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 55N10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A Δ-complex is the realization of sets of n-simplices with face maps dᵢ satisfying dᵢdⱼ = dⱼ₋₁dᵢ whenever i &lt; j. Realization attaches each ordered simplex along its prescribed faces, allowing identified vertices.
+**Definition.** A Δ-complex is a space glued from ordered simplices along their faces, where faces of one simplex may be glued to each other, so vertices and edges may repeat. Formally, it is a family of sets of n-simplices with face maps dᵢ that satisfy dᵢdⱼ = dⱼ₋₁dᵢ whenever i &lt; j.
 
 **Problem.** The torus is a Δ-complex with one vertex, three edges and two triangles. Its homology is ℤ in degree 0, ℤ² in degree 1 and ℤ in degree 2.
 
-**How the definition helps.** Cut a square along a diagonal and identify opposite sides to obtain the torus with the stated simplices (our own calculation). All three edges are loops, so their boundaries vanish. Orient the triangles coherently: their boundaries are opposite primitive sums of the three edges. The resulting kernel has rank one and the edge quotient is ℤ², giving the stated homology by the simplicial homology theorem.
+**How the definition helps.** Cut a square along a diagonal and glue opposite sides: this gives one vertex, three edges a, b, c and two triangles (our own calculation). Every edge is a loop, so its boundary is zero, and both triangles have boundary a + b − c. So their difference spans H₂ = ℤ, and H₁ = ℤ³/ℤ(a + b − c) = ℤ².
 
 **Wikipedia:** [Delta set](https://en.wikipedia.org/wiki/Delta_set). It says: “It is worth highlighting that the minimum number of simplices needed to endow T² with the structure of a simplicial complex is 7 vertices, 21 edges, and 14 2-simplices, for a total of 42 simplices.”
 
@@ -2798,15 +2798,15 @@
 
 ### Dowker's two complexes from one relation have the same homotopy type
 
-**Remember:** Swap witnesses and vertices without changing the homotopy type.
+**Remember:** Each y spans one full simplex, and their nerve swaps the sides.
 
 *Makes the theorem clean to state or prove.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 05E45. arXiv math.CO, math.AT. Level 3: graduate.
 
-**Definition.** For R ⊆ X × Y, the first Dowker complex consists of finite subsets of X sharing a related element of Y. The second consists of finite subsets of Y sharing a related element of X.
+**Definition.** A relation R ⊆ X × Y gives two Dowker complexes. In the first, a finite subset of X is a simplex when it lies in the neighbour set of some y ∈ Y, so the complex is a union of one full simplex for each y. The second swaps the roles of X and Y.
 
 **Problem.** The geometric realizations of the two Dowker complexes of a relation are homotopy equivalent.
 
-**How the definition helps.** Cover the first complex by the full simplices on the nonempty sets of neighbours of individual elements of Y (our own argument). Every nonempty finite intersection is another full simplex and hence contractible. A finite family intersects exactly when its labels share a neighbour in X. Its nerve is therefore the second complex, and the simplicial nerve theorem gives the equivalence.
+**How the definition helps.** The full simplices on the nonempty neighbour sets cover the first complex, and any finite family of them meets in the full simplex on the common neighbours, which is contractible (our own argument). A family meets exactly when its elements of Y share a neighbour in X, so its nerve is the second complex. The nerve theorem for simplicial complexes gives the equivalence.
 
 **Paper or page:** [Dowker Complexes and filtrations on self-relations](https://arxiv.org/abs/2301.03739v1), [Dowker Complexes and filtrations on self-relations](https://arxiv.org/abs/2301.03739v1). It says: “Given a relation on X × Y, we can construct two abstract simplicial complexes called Dowker complexes. The geometric realizations of these simplicial complexes are homotopically equivalent.”
 
@@ -2817,15 +2817,15 @@
 
 ### Filling horns makes simplicial homotopy behave as it does for spaces
 
-**Remember:** Every simplex with one face missing can be completed, as in a space.
+**Remember:** Any simplex missing one face can be completed, as in a space.
 
 *Makes the theorem clean to state or prove.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 18N50. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** A Kan complex is a simplicial set X in which every horn Λᵏ\[n\] → X extends to a full simplex Δ\[n\] → X. The horn Λᵏ\[n\] is the boundary of the n-simplex with its k-th face removed. This is the extension condition.
+**Definition.** A Kan complex is a simplicial set X in which every horn has a filler: each map Λᵏ\[n\] → X, from the boundary of Δ\[n\] without its k-th face, extends to Δ\[n\]. The filler supplies the missing face, which serves as a composite of the given faces, as paths compose in a space.
 
 **Problem.** For maps into a Kan complex, simplicial homotopy is an equivalence relation. The homotopy groups of a Kan complex can be defined combinatorially, from simplices whose boundary sits at the base point.
 
-**How the definition helps.** Horn fillers supply the compositions that homotopy theory needs. They give the composite of two classes of simplices, and this composite is the group product. For a simplicial set that is not Kan, the nLab uses a Kan fibrant replacement. The real link to spaces is the theorem that these groups agree with those of the geometric realization.
+**How the definition helps.** Horn fillers compose homotopies and invert them, so homotopy is symmetric and transitive (our own summary). Fillers in higher dimensions show that these composites are well defined, and the same composite is the group product (our own summary). That these groups agree with those of the geometric realization is a further theorem.
 
 **nLab:** [Kan complex](https://ncatlab.org/nlab/show/Kan+complex), [simplicial homotopy group](https://ncatlab.org/nlab/show/simplicial+homotopy+group), [simplicial homotopy](https://ncatlab.org/nlab/show/simplicial+homotopy). It says: “For such complexes, usually called Kan complexes, homotopy groups may be defined, and, further, the notion of homotopy between maps of an arbitrary semi-simplicial complex into a Kan complex is an equivalence relation.”
 
@@ -2835,15 +2835,15 @@
 
 ### For the décalage, the fibration property is a single horn filler
 
-**Remember:** Shift a simplicial set down one degree to get its paths ending at a vertex.
+**Remember:** Décalage adds a last vertex, so lifting fills one horn.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 18N50. arXiv math.AT. Level 3: graduate.
 
-**Definition.** The upper décalage has (Dec₀ X)ₙ = Xₙ₊₁ and retains the face and degeneracy operators indexed 0 through n in degree n. Its projection to X in degree n is the last face dₙ₊₁.
+**Definition.** The upper décalage Dec₀ X shifts X down one degree: its n-simplices are the (n+1)-simplices of X, with the last face and the last degeneracy forgotten. Equivalently, a map K → Dec₀ X is a map into X from K joined with one extra last vertex, and the projection Dec₀ X → X is the forgotten last face.
 
 **Problem.** For Kan X, the last face projection Dec₀ X → X is a Kan fibration. The décalage deformation retracts onto its constant vertex simplices. Thus the projection replaces the vertex inclusion X₀ → X by a Kan fibration.
 
-**How the definition helps.** Each lifting problem for the projection specifies all but one face of an (n+1)-simplex, so the Kan condition supplies a lift (our own explanation). The omitted degeneracy gives an extra degeneracy contracting each component onto its terminal vertex. Together these give the claimed fibration replacement.
+**How the definition helps.** A lifting problem from Λᵏ\[n\] → Δ\[n\] against the projection is then a map Λᵏ\[n+1\] → X, so one Kan filler solves it (our own explanation). The forgotten last degeneracy is an extra degeneracy that contracts each component onto its last vertex. So Dec₀ X deformation retracts onto its vertices, and the projection replaces X₀ → X by a Kan fibration.
 
 **nLab:** [decalage](https://ncatlab.org/nlab/show/decalage). It says: “As a result, the décalage construction is often more convenient than forming X<sup>I</sup> ×<sub>X</sub> X<sub>0</sub>.”
 
@@ -2853,15 +2853,15 @@
 
 ### Good open covers make the nerve theorem true
 
-**Remember:** A good cover has no holes in its pieces or in their overlaps.
+**Remember:** A good cover has no holes in pieces or overlaps.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 54D20. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A good open cover of a space X is an open cover in which every set is contractible. Every inhabited (nonempty) finite intersection of the sets must also be contractible.
+**Definition.** A good open cover of a space X is an open cover in which every set, and every nonempty finite intersection of sets, is contractible. So each piece and each overlap is a point up to homotopy, and a point is all that the nerve records for it.
 
 **Problem.** For a good open cover of a paracompact space X, the geometric realization of the nerve is homotopy equivalent to X (the nerve theorem).
 
-**How the definition helps.** If all the pieces and all their overlaps are contractible, the nerve loses no information about their shape. For a general open cover, the nerve forgets the topology of the pieces and their overlaps. Our own example: cover a circle by two arcs that meet in two arcs, and the nerve is an interval. The proof uses partitions of unity.
+**How the definition helps.** The nerve replaces each piece and each overlap by a point, so it loses nothing when they are contractible. Partitions of unity on the paracompact space give a map to the nerve, and contractibility makes it an equivalence. Our own example: two arcs that cover a circle meet in two arcs, and the nerve is an interval, not a circle.
 
 **nLab:** [nerve theorem](https://ncatlab.org/nlab/show/nerve+theorem), [good open cover](https://ncatlab.org/nlab/show/good+open+cover). It says: “The nerve theorem asserts that the homotopy type of a sufficiently nice topological space is encoded in the Čech nerve of a good open cover”
 
@@ -2876,11 +2876,11 @@
 
 *True by definition.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 18N50, 55P15. arXiv math.AT, math.CT. Level 3: graduate.
 
-**Definition.** One model takes ∞-groupoids to be spaces with weak homotopy equivalences inverted. Another uses Kan complexes, simplicial sets in which every map from a horn extends to the corresponding simplex.
+**Definition.** One model defines an ∞-groupoid to be a topological space, with weak homotopy equivalences inverted. Another defines it to be a Kan complex, a simplicial set in which every horn extends to a full simplex.
 
 **Problem.** The homotopy hypothesis says that ∞-groupoids are equivalent to topological spaces up to weak homotopy equivalence. The fundamental ∞-groupoid of a space gives the equivalence.
 
-**How the definition helps.** In the space model the identity functor gives the equivalence by definition. In the Kan model the singular complex represents the fundamental ∞-groupoid. Quillen’s realization–singular complex equivalence gives the theorem for this model.
+**How the definition helps.** In the space model the hypothesis is a tautology, because the fundamental ∞-groupoid of a space is the space itself. In the Kan model the fundamental ∞-groupoid is the singular complex, and Quillen's equivalence between realization and the singular complex proves the hypothesis.
 
 **nLab:** [homotopy hypothesis](https://ncatlab.org/nlab/show/homotopy+hypothesis), [Kan complex](https://ncatlab.org/nlab/show/Kan+complex). It says: “For instance there is some justification for defining an ∞-groupoid to be equivalently a topological space considered modulo weak homotopy equivalence (see at classical model structure on topological spaces). For this definition the homotopy hypothesis is of course a tautology.”
 
@@ -2895,11 +2895,11 @@
 
 *True by definition.* MSC 55U35 (Abstract and axiomatic homotopy theory in algebraic topology), 18N40, 18A30. arXiv math.AT. Level 3: graduate.
 
-**Definition.** For a fixed diagram shape, invert the natural transformations that are weak equivalences at every object. The homotopy limit is the right derived functor of limit for this localization, and the homotopy colimit is the left derived functor of colimit.
+**Definition.** The homotopy limit of a diagram is the right derived functor of the limit, taken after inverting the objectwise weak equivalences of diagrams. The homotopy colimit is the left derived functor of colimit, and both are defined on the homotopy category, where weak equivalences are already isomorphisms.
 
 **Problem.** Where the derived functors exist, homotopy limits and colimits send objectwise weak equivalences of diagrams to isomorphisms in the homotopy category.
 
-**How the definition helps.** Objectwise weak equivalences become isomorphisms in the homotopy category of diagrams. Both derived functors preserve those isomorphisms (our own explanation). The work is proving existence and verifying that a chosen construction computes the derived functor.
+**How the definition helps.** An objectwise weak equivalence is an isomorphism in the homotopy category of diagrams, and every functor sends isomorphisms to isomorphisms (our own explanation). The work is proving existence and showing that a chosen construction, such as the homotopy pushout, computes the derived functor.
 
 **nLab:** [homotopy limit](https://ncatlab.org/nlab/show/homotopy+limit). It says: “The homotopy limit of a functor F : D → C is, if it exists, the image of F under the right derived functor of the limit functor”
 
@@ -2911,15 +2911,15 @@
 
 ### Smash products are associative in a convenient category of spaces
 
-**Remember:** Smash is a quotient of a product, and cartesian closed products keep quotients.
+**Remember:** Products keep quotients, so both bracketings are one quotient of A×B×C.
 
 *True by definition.* MSC 55U40 (Topological categories, foundations of homotopy theory), 54D50, 18F60. arXiv math.AT, math.GN. Level 3: graduate.
 
-**Definition.** In a cartesian closed category of spaces with the indicated quotients, the smash product of pointed A and B is (A × B)/(A ∨ B). The wedge consists of pairs with at least one base point.
+**Definition.** In a cartesian closed category of spaces, the smash product A ∧ B of pointed spaces is the quotient (A × B)/(A ∨ B), which collapses the pairs with at least one base point. Cartesian closure gives each product functor a right adjoint, so products keep quotient maps (our own explanation).
 
 **Problem.** In a convenient category of pointed spaces, the smash product is associative: A ∧ (B ∧ C) ≅ (A ∧ B) ∧ C.
 
-**How the definition helps.** Each product functor preserves quotients because it has a right adjoint (our own explanation). Both bracketings therefore collapse the same subspace of the triple product, consisting of triples with a base point. This gives the canonical homeomorphism.
+**How the definition helps.** Since products keep quotients, both A ∧ (B ∧ C) and (A ∧ B) ∧ C are quotients of A × B × C (our own explanation). Both collapse the same set, the triples with at least one base point. So the canonical bijection is a homeomorphism.
 
 **nLab:** [smash product](https://ncatlab.org/nlab/show/smash+product). It says: “Associativity fails in general for the category Top of all topological spaces; however, it is satisfied for pointed objects in any convenient category of topological spaces, since such a category is cartesian closed.”
 
@@ -2929,15 +2929,15 @@
 
 ### Bordism holonomy forces integral periods
 
-**Remember:** On a closed bordism, the holonomy difference vanishes and the integral is an integer.
+**Remember:** Empty boundary, zero holonomy, so the curvature integral is an integer.
 
 *True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N22. arXiv math.AT. Level 4: research.
 
-**Definition.** A degree-n differential bordism character pairs closed curvature data ω with an additive ℝ/ℤ-valued function h on geometric (n−1)-cycles. For every geometric n-bordism W, require h(∂W) to equal the integral of the Chern–Weil form cw(ω) on W modulo ℤ.
+**Definition.** A degree-n differential bordism character is closed curvature data ω together with an additive ℝ/ℤ-valued holonomy h on geometric (n−1)-cycles. Its rule is that the holonomy of a boundary is the curvature integral: for every geometric n-bordism W, h(∂W) is the integral of the Chern–Weil form cw(ω) over W modulo ℤ.
 
 **Problem.** On closed manifolds, these integrals give an integer-valued homomorphism on the bordism group for the chosen tangential structure.
 
-**How the definition helps.** For closed W the boundary is empty, so additivity gives h(∂W) = 0 and the integral is an integer (our own argument). Integration adds under disjoint union. Stokes’ theorem for the closed Chern–Weil form makes the integral zero on boundaries, so it descends to bordism.
+**How the definition helps.** A closed W has empty boundary, so the additive h gives 0 = h(∂W), and the integral is an integer (our own argument). Integration adds under disjoint union, and by Stokes' theorem the closed form integrates to zero on boundaries, so the map descends to bordism.
 
 **Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270). It says: “induces a ℤ-valued homomorphism cw(ω) : Ω∗ᴳ(X, Y) → ℤ.”
 
@@ -2951,11 +2951,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** For a sheaf of spectra F, reduced circle evaluation at M is the homotopy fibre of F(S¹ × M) → F(M) over zero. The map restricts to the basepoint slice. Geometric suspension suspends this fibre once.
+**Definition.** For a sheaf of spectra F on manifolds, reduced circle evaluation at M is the homotopy fibre of the restriction F(S¹ × M) → F(M) to a basepoint slice. Geometric suspension suspends this fibre once.
 
 **Problem.** Geometric suspension preserves the underlying cohomology theory of a differential refinement, obtained by forcing homotopic maps to act alike.
 
-**How the definition helps.** Removing the basepoint contribution leaves a loop in the underlying theory, and the degree shift cancels that loop (our own). Bunke, Nikolaus and Völkl prove that taking the invariant approximation commutes with reduced circle evaluation (our own).
+**How the definition helps.** On a homotopy-invariant sheaf, the reduced circle part is the loop space of the theory, and suspension undoes that loop (our own). Bunke, Nikolaus and Völkl prove that the homotopy-invariant approximation commutes with reduced circle evaluation (our own), so the same holds for the underlying theory of F.
 
 **nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
 
@@ -2965,15 +2965,15 @@
 
 ### Cofiber curvature gives homotopy formulas
 
-**Remember:** The difference of endpoint restrictions passes through curvature and lands in deformations.
+**Remember:** Endpoints agree on the homotopy-invariant parts, so their difference is curvature.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** For a sheaf of spectra F on manifolds, curvature data form the cofiber of the natural map from the constant sheaf on F(\*) to F. Deformations form the fiber of F → H(F), where H is the universal homotopy-invariant approximation.
+**Definition.** For a sheaf of spectra F on manifolds, curvature data are what remain after removing the constant part: the cofiber of the map from the constant sheaf on F(\*) to F. Deformations are what the homotopy-invariant approximation H(F) loses: the fiber of F → H(F).
 
 **Problem.** For data on M × \[0,1\], the difference of endpoint restrictions factors naturally through curvature data on the cylinder and then through deformations on M.
 
-**How the definition helps.** The endpoints agree up to homotopy on the constant part, so their difference factors through curvature (our own). They also agree after passage to the invariant approximation, so the result lifts to deformations (our own). Bunke, Nikolaus and Völkl construct compatible homotopies for these two steps in Theorem 3.2 (our own).
+**How the definition helps.** The constant sheaf and H(F) are homotopy invariant, so the two endpoint restrictions agree on them up to homotopy (our own). So their difference factors through curvature data, and it lifts to deformations (our own). Bunke, Nikolaus and Völkl construct compatible homotopies for these two steps in Theorem 3.2 (our own).
 
 **nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “every smooth spectrum sits in a hexagonal differential cohomology diagram”
 
@@ -2987,11 +2987,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** For a sheaf of spectra F on smooth manifolds, its flat part is the constant sheaf on F(\*). Its curvature target is the homotopy cofiber of the natural map from that sheaf to F.
+**Definition.** For a sheaf of spectra F on smooth manifolds, the flat part is the constant sheaf on F(\*), and the curvature target is the homotopy cofiber of the natural map from the flat part to F. So the map from F to its curvature target has the flat part as its fiber (our own).
 
 **Problem.** A smooth spectrum can be reconstructed from its curvature target and its homotopy-invariant approximation. Reconstruction matches their images in the homotopy-invariant approximation of the curvature target, including a path witnessing each match.
 
-**How the definition helps.** Quotienting by the flat part gives both comparison maps the same fiber, which makes their square a homotopy pullback (our own). The approximation forces homotopic maps to act alike and preserves fiber sequences (our own). It therefore leaves the already invariant flat part unchanged (our own).
+**How the definition helps.** The homotopy-invariant approximation keeps fiber sequences and leaves the already invariant flat part unchanged, so its map to the approximated curvature target also has the flat part as fiber (our own). A square of spectra whose two parallel maps have the same fiber is a homotopy pullback (our own). Reconstruction is this pullback.
 
 **nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “where both rows are homotopy fiber sequences.”
 
@@ -3005,11 +3005,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** The differential function complex describes families of cocycles on a manifold M with a simplex as parameter space. At filtration zero, the closed curvature form vanishes whenever one input points along the simplex.
+**Definition.** The differential function complex is a simplicial set whose simplices are families of cocycles on a manifold M with a simplex as parameter space. At filtration zero, the closed curvature form must vanish whenever one input points along the simplex, so it has no component in the parameter directions.
 
 **Problem.** Curvature is constant on each connected component of the filtration-zero complex. In the unrestricted complex, a path can join distinct curvatures.
 
-**How the definition helps.** The restriction removes all parameter differentials, so closedness forces the remaining coefficients to be constant along the simplex (our own). Without the restriction, the exact form d(tf) on M × \[0,1\] joins zero to df for any nonconstant smooth function f (our own). The function tf modulo integers gives the corresponding family of degree-one differential classes (our own).
+**How the definition helps.** A closed form on M × Δᵏ with no parameter components has coefficients constant in the parameters, because their parameter derivatives appear in its exterior derivative (our own). Without the restriction, the exact form d(tf) on M × \[0,1\] joins zero to df for any nonconstant smooth function f (our own). The function tf modulo integers gives the matching family of degree-one differential classes (our own).
 
 **nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “the sub-simplicial set of differential forms that vanish when evaluated on more than s vector fields tangent to the simplex;”
 
@@ -3019,15 +3019,15 @@
 
 ### Hodge pullbacks give generalized Jacobians
 
-**Remember:** Match weighted complexification with filtered forms, keeping a path for each match.
+**Remember:** The matching path, one degree lower, is the Jacobian.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** Let E be connective with finitely generated homotopy groups and rational homotopy concentrated in even degrees. Use the chosen weight-p comparison E → H(π\_∗E ⊗ ℂ), with its de Rham model. The Hodge pullback is its homotopy pullback along the filtered forms, retaining holomorphic degree ≥ p+j in coefficient degree 2j.
+**Definition.** Let E be connective with finitely generated homotopy groups and rational homotopy only in even degrees. Its weight-p Hodge pullback is the homotopy pullback that matches an E-cocycle with a Hodge-filtered complex form by a path between their complex images, for the chosen weight-p comparison E → H(π\_∗E ⊗ ℂ). A form is filtered when, in coefficient degree 2j, it has holomorphic degree ≥ p+j.
 
 **Problem.** On a compact Kähler manifold, degree-2p Hodge-filtered classes map onto precisely the E-classes whose complex images belong to this filtration. The kernel is degree-(2p−1) complexified E-cohomology modulo the sum of the filtered subgroup and the image of E-cohomology.
 
-**How the definition helps.** The matching condition gives the image, while the freedom to choose a matching path gives the kernel one degree lower (our own). The pullback exact sequence computes this quotient (our own). Hodge decomposition for compact Kähler manifolds identifies filtered cohomology with a subgroup of complex cohomology (our own).
+**How the definition helps.** A class needs matching complex images, which gives the image (our own). The choice of matching path is a complex class one degree lower, counted modulo the filtered part and the image of E-cohomology, and this gives the kernel (our own). Hodge decomposition on a compact Kähler manifold makes filtered cohomology a subgroup of complex cohomology, so the pullback exact sequence gives exactly these groups (our own).
 
 **nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “the Hodge-filtered variant pairs instead with the Hodge filtered E• ⊗ ℂ-valued Dolbeault complexes”
 
@@ -3041,11 +3041,11 @@
 
 *True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** On a complex manifold let Ω• be the holomorphic de Rham complex and FᵖΩ• its subcomplex in degrees ≥ p. Take the homotopy pullback of (2πi)ᵖℤ → Ω• ← FᵖΩ• as complexes of sheaves. Its hypercohomology gives the weight-p pullback groups.
+**Definition.** On a complex manifold, the weight-p Hodge pullback is the homotopy pullback of the lattice (2πi)ᵖℤ and the truncated holomorphic de Rham complex FᵖΩ• (forms of degree ≥ p) over the full complex Ω•. Since FᵖΩ• is a subcomplex, this is the homotopy fiber of the map from the lattice to the quotient, the forms of degree below p (our own).
 
 **Problem.** For positive integers p, this pullback computes analytic Deligne cohomology in every degree. Its usual defining complex starts with the lattice and continues through holomorphic forms of degrees zero to p−1.
 
-**How the definition helps.** Taking the quotient by the retained forms leaves exactly the degrees below p (our own). The pullback is then the homotopy fiber of the map from the lattice to that quotient, giving the usual Deligne complex (our own). The holomorphic de Rham theorem identifies the full form complex with complex coefficients (our own).
+**How the definition helps.** The quotient Ω•/FᵖΩ• is the complex of holomorphic forms of degrees 0 to p−1 (our own). So the pullback is the homotopy fiber of the map from (2πi)ᵖℤ to 𝒪 → Ω¹ → ⋯ → Ωᵖ⁻¹, which is the usual Deligne complex (our own).
 
 **nLab:** [Hodge-filtered differential cohomology](https://ncatlab.org/nlab/show/Hodge-filtered+differential+cohomology). It says: “reproduces the Deligne complex in its original form”
 
@@ -3061,11 +3061,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 18N60, 53C08. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** For a spectrum object E in a cohesive ∞-topos, define its degree-n intrinsic cohomology on X by homotopy classes of maps X → Ω∞ΣⁿE. The flat part of E is its flat coreflection, with its natural map to E. Its curvature target is the cofiber of that map.
+**Definition.** In a cohesive ∞-topos, differential cohomology is defined as intrinsic cohomology: degree-n cohomology of X with coefficients in a spectrum object E is homotopy classes of maps X → Ω∞ΣⁿE. The hexagon comes from E itself, through the natural map from its flat part to E, whose cofiber is the curvature target.
 
 **Problem.** Every stable homotopy type in a cohesive ∞-topos sits in a differential cohomology hexagon (Bunke, Nikolaus and Völkl). The hexagon is a diagram of two fibre sequences that link curvature, characteristic class, flat classes and forms.
 
-**How the definition helps.** The counit from the flat part gives one fiber sequence, and applying shape gives its topological counterpart (our own explanation). Naturality relates these sequences and taking fibers supplies the deformation terms of the hexagon. The differential cohomology diagram theorem provides this construction uniformly, including the smooth-spectrum case of Bunke, Nikolaus and Völkl.
+**How the definition helps.** The map from the flat part gives one fiber sequence, and applying the shape functor gives its topological counterpart (our own explanation). Naturality links these two sequences, and their fibers give the remaining terms of the hexagon. The differential cohomology diagram theorem does this for every stable homotopy type, including the smooth spectra of Bunke, Nikolaus and Völkl.
 
 **nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology), [ordinary differential cohomology](https://ncatlab.org/nlab/show/ordinary+differential+cohomology). It says: “It is therefore natural to define differential cohomology to be the intrinsic cohomology of cohesive (∞,1)-toposes.”
 
@@ -3081,11 +3081,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** In the differential function complex, filtration s retains simplices whose curvature form vanishes whenever more than s arguments are tangent to the parameter simplex. Use an Ω-spectrum with compatible real cocycles, so looping its nth space recovers its (n−1)st space up to equivalence.
+**Definition.** In the differential function complex at filtration s, a simplex's curvature form may take at most s inputs along the parameter simplex. A loop adds one parameter direction, so looping uses up one filtration step. Here E is an Ω-spectrum with compatible real cocycles, so looping its nth space gives its (n−1)st space up to equivalence.
 
 **Problem.** For n ≥ 1 and s ≥ 0, the degree-(n−1) complex at filtration s is weakly equivalent to loops on degree n at filtration s+1.
 
-**How the definition helps.** A loop adds one parameter direction, which the extra filtration step allows (our own). Hopkins and Singer prove that the comparison induces isomorphisms on all homotopy groups by analyzing the filtered forms (our own).
+**How the definition helps.** A loop is a 1-simplex with both ends at the base point, so its curvature uses one more parameter direction, which filtration s+1 allows (our own). Hopkins and Singer prove that the comparison map is an isomorphism on all homotopy groups by an analysis of the filtered forms (our own).
 
 **nLab:** [differential function complex](https://ncatlab.org/nlab/show/differential+function+complex). It says: “identifying the loop space object (at the canonical base point) of the differential function complex of Eₙ at filtration level s+1 with that differential function complex of Eₙ₋₁ at filtration level s.”
 
@@ -3099,11 +3099,11 @@
 
 *True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** For a generalized cohomology theory E, a Hopkins–Singer cocycle records a representative of an E-class and a closed differential form. It also records a path joining their images in the space representing real cohomology with the real coefficients of E.
+**Definition.** For a cohomology theory E, a Hopkins–Singer differential cocycle is a triple: a cocycle for an E-class, a closed differential form, and a path joining their images in the space that represents real cohomology with the real coefficients of E.
 
 **Problem.** On a smooth manifold, an E-class and a closed form lift together to a differential E-class whenever their real classes agree.
 
-**How the definition helps.** The definition asks for a path, and equality of real classes puts the two representatives in the same path component (our own). In the cochain description this amounts to finding a real cochain whose coboundary is their difference (our own). The de Rham comparison sends the form to its real representative by integration (our own).
+**How the definition helps.** Equal real classes put the two real representatives in the same path component, so a joining path exists (our own). In cochain terms, the path is a real cochain whose coboundary is their difference (our own). The form enters through the de Rham map, which sends it to a real cochain by integration (our own).
 
 **nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “A standard definition of differential cohomology is in terms of a homotopy pullback of a generalized (Eilenberg-Steenrod) cohomology theory with the complex of differential forms over real cohomology:”
 
@@ -3117,11 +3117,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** The Hopkins–Singer construction pairs a representative of a generalized cohomology class with a closed form. Its homotopy pullback also records a path between their real representatives, which a pullback of groups discards.
+**Definition.** A Hopkins–Singer differential class is an E-cocycle and a closed form, together with a path between their real representatives. A pullback of groups would keep only the pair, but this homotopy pullback also keeps the path.
 
 **Problem.** Classes with both entries zero form a quotient of degree-(n−1) cohomology with the graded real coefficients of E. The denominator is the real image of E-cohomology in degree n−1.
 
-**How the definition helps.** With both entries zero, a comparison path becomes a loop based at zero (our own). Such loops represent real cohomology one degree lower (our own). The pullback exact sequence identifies loops differing by the real image of an E-class (our own).
+**How the definition helps.** With both entries zero, the path becomes a loop at zero, and such loops are real cohomology one degree lower (our own). The exact sequence of the pullback identifies two loops that differ by the real image of an E-class of degree n−1 (our own).
 
 **nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “The characterization/construction of differential cohomology via homotopy fiber products (of mapping spectra with differential form data)”
 
@@ -3135,11 +3135,11 @@
 
 *Rules out counterexamples.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** A sheaf of spectra P on manifolds is pure if P(\*) is the zero spectrum. Its homotopy-invariant approximation H(P) is universal among maps from P to sheaves invariant under M × \[0,1\] → M.
+**Definition.** A sheaf of spectra P on manifolds is pure if its value on a point is zero, P(\*) ≃ 0, so it has no constant part. Its homotopy-invariant approximation H(P) is the universal map from P to a sheaf that is invariant under M × \[0,1\] → M.
 
 **Problem.** The homotopy pullback of a pure sheaf P and a constant sheaf over the invariant approximation of P defines a differential theory. Its curvature data recover P.
 
-**How the definition helps.** Removing the constant part preserves this pullback, kills both invariant entries and leaves the pure input P intact (our own). Proposition 3.5 identifies the resulting quotient with the curvature data (our own). If P is nonzero and constant, matching it against zero instead gives zero curvature data (our own).
+**How the definition helps.** Removing the constant part preserves the pullback and kills both homotopy-invariant entries, while the pure input P has no constant part to lose (our own). So the curvature data, which Proposition 3.5 identifies with this quotient, are P (our own). For a nonzero constant P, the same construction gives zero curvature data instead (our own).
 
 **nLab:** [differential cohomology diagram](https://ncatlab.org/nlab/show/differential+cohomology+diagram). It says: “♭-anti-modal types are called "pure”
 
@@ -3153,11 +3153,11 @@
 
 *True by definition.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology), 55N30. arXiv math.AT. Level 4: research.
 
-**Definition.** A smooth spectrum is a contravariant functor F from smooth manifolds to spectra satisfying descent for every open cover. Descent means F(M) is the homotopy limit of the diagram of values on all multiple intersections in the cover’s Čech nerve.
+**Definition.** A smooth spectrum is a contravariant functor F from smooth manifolds to spectra with descent: for every open cover, F(M) is the homotopy limit of its values on all multiple intersections. For a cover by U and V, this says F(M) is the homotopy pullback of F(U) and F(V) over F(U ∩ V) (our own).
 
 **Problem.** For a cover by two open sets, the homotopy groups form a long exact sequence relating the manifold, the two sets and their intersection.
 
-**How the definition helps.** The sheaf condition already expresses global sections as pairs of local sections with a path matching their restrictions (our own). For spectra, this identifies global sections with the fiber of the difference of restrictions (our own). Taking homotopy groups gives exactness in every degree (our own). A model defined by geometric cocycles must first prove the gluing condition (our own).
+**How the definition helps.** In spectra this pullback makes F(M) the fiber of the difference of restrictions F(U) ⊕ F(V) → F(U ∩ V) (our own). A fiber sequence of spectra gives a long exact sequence of homotopy groups (our own). A model built from geometric cocycles must first prove descent (our own).
 
 **nLab:** [smooth spectrum](https://ncatlab.org/nlab/show/smooth+spectrum). It says: “A sheaf of spectra on the site of all smooth manifolds may be thought of as a spectrum equipped with generalized smooth structure,”
 
@@ -3167,15 +3167,15 @@
 
 ### The curvature fiber gives flat coefficients
 
-**Remember:** For flat classes, take the fiber of realification.
+**Remember:** A flat class is an E-class with its real image trivialized.
 
 *Makes the theorem clean to state or prove.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** In degree n, the Hopkins–Singer construction matches E-cohomology with real differential forms and discards form degrees below n, counting coefficient degrees. Curvature sends a differential class to its closed form. A flat class has zero curvature.
+**Definition.** In degree n, the Hopkins–Singer construction matches an E-cocycle with a closed real form by a path between their real images, and it keeps only forms of total degree at least n. A flat class is one whose curvature form is zero.
 
 **Problem.** On a smooth manifold, flat differential E-classes of degree n form the E-cohomology group with ℝ/ℤ coefficients in degree n−1.
 
-**How the definition helps.** Setting curvature to zero in the defining pullback leaves the fiber of the map from E to its real version (our own). This fiber records a class and a path from its real image to zero (our own). The cutoff leaves no degree-(n−1) form classes, so this fiber computes the kernel (our own). In spectra, the fiber is the degree shift of the quotient defining ℝ/ℤ coefficients (our own).
+**How the definition helps.** With zero curvature, a class is an E-cocycle with a path from its real image to zero, a point of the fiber of the map from E to E with real coefficients (our own). The degree cutoff leaves no forms of degree n−1 to change this (our own). That fiber is the degree shift of the cofiber that defines ℝ/ℤ coefficients, so flat classes form E-cohomology with ℝ/ℤ coefficients in degree n−1 (our own).
 
 **nLab:** [differential cohomology](https://ncatlab.org/nlab/show/differential+cohomology). It says: “Moreover Ê(flat)⁎ = E ℝ/ℤ•⁻¹.”
 
@@ -3189,11 +3189,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N20 (Generalized (extraordinary) homology and cohomology theories in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** A Hopkins–Singer cocycle records a topological cocycle, a closed form and a path matching their real representatives. In degree n the construction discards forms below total degree n.
+**Definition.** A Hopkins–Singer cocycle in degree n is a topological cocycle, a closed form of total degree at least n, and a path that matches their real representatives. Each of the first two entries has its own circle integration, so a map on cocycles needs only a compatible way to integrate the path.
 
 **Problem.** Integrating around the oriented circle gives a natural map from degree n on S¹ × M to degree n−1 on M. It respects both curvature and the underlying topological class.
 
-**How the definition helps.** Matching paths let circle integration on forms and topological suspension define a single operation on differential classes (our own). The comparison must identify the two operations on real representatives up to a specified homotopy, and integration lowers the form cutoff by one (our own).
+**How the definition helps.** Integrate the form over the circle, suspend the topological cocycle, and carry the path along through the homotopy that compares these two operations on real representatives (our own). Circle integration lowers form degree by one, which matches the cutoff in degree n−1 (our own).
 
 **nLab:** [fiber integration in differential cohomology](https://ncatlab.org/nlab/show/fiber+integration+in+differential+cohomology). It says: “General discussion of fiber integration for Hopkins-Singer coefficients is in (HopkinsSinger, section 4.10) and for integration over circle fibers in (Bunke-Nikolaus-Völkl 13, section 4.5).”
 
@@ -3208,11 +3208,11 @@
 
 *True by definition. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A corrected cycle for smooth complex cobordism has a proper cycle map with connection on its stable complex normal bundle. Write T for the pushforward current of its characteristic form. The correction is a current α modulo exact currents such that T − dα is smooth.
+**Definition.** A corrected cycle for smooth complex cobordism is a proper cycle map with a connection on its stable complex normal bundle, together with a correction current α modulo exact currents. The pushforward current T of its characteristic form need not be smooth, and α is chosen so that the curvature T − dα is smooth.
 
 **Problem.** Curvature depends only on the smooth complex cobordism class of a corrected cycle.
 
-**How the definition helps.** Stokes’ theorem makes the change in T across a bordism the derivative of its bordism current (our own explanation). The bordism relation changes α by that current modulo exact currents. The two changes therefore cancel in T − dα.
+**How the definition helps.** Across a bordism, Stokes' theorem changes T by the derivative of the bordism current, and the bordism relation changes α by that same current (our own explanation). The two changes cancel in T − dα.
 
 **nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
 
@@ -3226,11 +3226,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology). arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A differential bordism character pairs a closed curvature form with an additive ℝ/ℤ-valued function on closed geometric test cycles. For each bordism the value on its boundary equals the weighted curvature integral modulo ℤ. For a properly oriented submersion, evaluate the pushforward on each test cycle by taking its fibre product with the source.
+**Definition.** A differential bordism character is a closed curvature form with an additive ℝ/ℤ-valued function on closed geometric test cycles, whose value on a boundary is the weighted curvature integral modulo ℤ. Along a proper oriented submersion, the pushforward evaluates a character on a test cycle by pulling the cycle back, that is, taking its fibre product with the source.
 
-**Problem.** For a proper submersion with compatible geometric orientation, this construction lifts the topological pushforward on the Anderson dual of bordism. This dual theory pairs cohomology classes with bordism cycles.
+**Problem.** For a proper submersion with compatible geometric orientation, this construction lifts the topological pushforward on the Anderson dual of bordism, the theory that pairs cohomology classes with bordism cycles.
 
-**How the definition helps.** Fibre products commute with taking the boundary of a test bordism (our own argument). Fibre integration of the weighted curvature therefore gives exactly the boundary value of the pulled-back cycle. The geometric pushforward theorem identifies the underlying operation with the topological Anderson-dual pushforward.
+**How the definition helps.** Pulling back commutes with taking boundaries of test bordisms, and fibre integration of the curvature matches the boundary rule (our own argument). So the pushforward is again a character. The geometric pushforward theorem identifies its underlying map with the topological Anderson-dual pushforward.
 
 **Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “refines the topological pushforward map”
 
@@ -3244,11 +3244,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** A degree-2k differential spin-c bordism character pairs closed curvature data with an additive phase in ℝ/ℤ on closed geometric spin-c (2k−1)-cycles. For every geometric spin-c bordism, its boundary phase equals its curvature integral modulo integers.
+**Definition.** A degree-2k differential spin-c bordism character is closed curvature data with an additive phase in ℝ/ℤ on closed geometric spin-c (2k−1)-cycles. Its rule is that on the boundary of every geometric spin-c bordism, the phase equals the curvature integral modulo integers.
 
 **Problem.** For a Hermitian bundle with unitary connection, the reduced eta phase and its local index form represent the spin-c index image in differential Anderson duality.
 
-**How the definition helps.** The Atiyah–Patodi–Singer index theorem gives the character’s boundary rule (our own explanation). Its curvature integrand is the degree-2k part of the Chern character times the Todd form. On a closed cycle the phase is half the sum of the twisted Dirac eta invariant and kernel dimension, modulo integers. Proposition 3.52 identifies this pair with the differential spin-c index image.
+**How the definition helps.** The Atiyah–Patodi–Singer index theorem gives exactly this rule for the curvature form, the degree-2k part of the Chern character times the Todd form, and the reduced eta phase (our own explanation). On a closed cycle the phase is half the sum of the twisted Dirac eta invariant and the kernel dimension, modulo integers. Proposition 3.52 identifies this pair with the differential spin-c index image.
 
 **Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, II](https://arxiv.org/abs/2110.14828v2). It says: “((\\mathrm{Ch}(\\nabla ^W)\\otimes \\mathrm{Todd})\|<sub>2k</sub>, \\bar{\\eta }<sub>\\nabla ^W</sub>)= \\Phi \_{\\mathrm{ABS}}(\[W, h<sup>E</sup>, \\nabla ^E, 0\]\\otimes \\gamma \_K).”
 
@@ -3258,15 +3258,15 @@
 
 ### Eta invariants realize spinᶜ orientations
 
-**Remember:** Pair the local index form with the reduced eta invariant on boundary cycles.
+**Remember:** Local index form for curvature, reduced eta for phase.
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15, 58J20. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A degree-2k differential spinᶜ bordism character pairs closed curvature data with an additive ℝ/ℤ-valued function on closed geometric spinᶜ (2k−1)-cycles over the base. On the boundary of every geometric bordism, its value is the integral of the corresponding curvature integrand modulo integers.
+**Definition.** A degree-2k differential spinᶜ bordism character is closed curvature data with an additive ℝ/ℤ-valued phase on closed geometric spinᶜ (2k−1)-cycles over the base. Its rule is that on the boundary of every geometric bordism, the phase equals the curvature integral modulo integers.
 
 **Problem.** For a Hermitian bundle with compatible connection, the differential Atiyah–Bott–Shapiro pairing uses the total degree-2k part of the Chern character times the Todd series. Its evaluation is the twisted Dirac operator’s reduced eta invariant, a measure of spectral asymmetry that includes the kernel contribution.
 
-**How the definition helps.** The character describes the pairing by one curvature formula and one rule for evaluating cycles (our own). The index theorem for manifolds with boundary relates these formulas modulo integers (our own). Identifying the resulting character with the pairing requires the differential orientation theorem (our own).
+**How the definition helps.** The index theorem for manifolds with boundary shows that the local index form and the reduced eta invariant obey this rule modulo integers (our own). So they form a character (our own). Identifying it with the differential Atiyah–Bott–Shapiro pairing takes the differential orientation theorem (our own).
 
 **Wikipedia:** [Atiyah–Bott–Shapiro orientation](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Bott%E2%80%93Shapiro_orientation). It says: “These represent the Â genus and the Todd genus.”
 
@@ -3278,15 +3278,15 @@
 
 ### Flat anomaly characters give the extension group
 
-**Remember:** A topologically nontrivial flat phase does not lift to a real character.
+**Remember:** Flat phases modulo real lifts form the Ext group.
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 81T50. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** Fix a tangential structure, meaning a chosen type of structure on tangent bundles. Let B be the group of closed (n−1)-dimensional backgrounds modulo boundaries with that structure. A flat character assigns additive values in ℝ/ℤ to B.
+**Definition.** Fix a tangential structure, and let B be the bordism group of closed (n−1)-dimensional backgrounds with that structure. A flat character is an additive map B → ℝ/ℤ, and it is trivial in topology when it lifts to a map B → ℝ.
 
 **Problem.** Flat characters give a subgroup of the degree n topological Anderson dual naturally isomorphic to Ext¹(B, ℤ). This group classifies abelian extensions of B by ℤ.
 
-**How the definition helps.** The character model identifies the kernel of the map from flat characters to topological classes with phases that lift to real characters. In our own derivation, the coefficient sequence ℤ → ℝ → ℝ/ℤ identifies the quotient with Ext¹ because ℝ is divisible. Comparing the character model with the spectrum definition of Anderson duality takes a separate theorem.
+**How the definition helps.** The flat characters modulo those that lift to ℝ are Hom(B, ℝ/ℤ) modulo the image of Hom(B, ℝ) (our own derivation). Since ℝ is divisible, the sequence ℤ → ℝ → ℝ/ℤ identifies this quotient with Ext¹(B, ℤ). Comparing the character model with the spectrum definition of Anderson duality takes a separate theorem.
 
 **Paper or page:** [Differential models for the Anderson dual to bordism theories and invertible QFT's, I](https://arxiv.org/abs/2106.09270v3). It says: “\\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R})\\to \\mathrm{Hom}(\\Omega ^G<sub>n-1</sub>(X, Y), \\mathbb {R}/\\mathbb {Z}) \\xrightarrow {p} (I\\Omega ^G\_{\\mathrm{dR}})<sup>n</sup>(X, Y)”
 
@@ -3300,11 +3300,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R15. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** On a common local cover, a differential stable gerbe isomorphism identifies the two twists by compatible line bundles Kᵢ with connection. Their transition isomorphisms intertwine the gerbe multiplications and connections, and their curvatures account for the difference of the curvings.
+**Definition.** A differential stable isomorphism of bundle gerbes is a family of local line bundles Kᵢ with connection, whose transition maps match the gerbe multiplications and connections. Their curvatures account for the difference of the curvings, so tensoring with Kᵢ turns a module twisted by one gerbe into one twisted by the other (our own).
 
 **Problem.** A connection-preserving stable isomorphism of gerbes gives an isomorphism between their differential spinᶜ bordism groups. It preserves the maps relating cycles to forms and underlying bordism classes.
 
-**How the definition helps.** Tensoring each local spinor module with the prescribed dual line transports its gluing to the new twist (our own explanation). The Clifford endomorphisms persist, and compatibility with the curvings preserves the corrected characteristic forms. The operation respects boundaries, and tensoring with the inverse isomorphism reverses it.
+**How the definition helps.** Tensoring each local spinor module of a cycle with the dual line bundle makes its gluing fit the new twist (our own explanation). The Clifford action survives, and the curving condition keeps the corrected characteristic forms, so the maps to forms and to bordism classes are kept. The operation respects boundaries, and the inverse isomorphism reverses it.
 
 **Paper or page:** [Differential Models for Anderson Dual to Twisted Spinᶜ-Bordism and Twisted Anomaly Map](https://arxiv.org/abs/2510.27286v1). It says: “If (K, ∇ᴷ) is a differential stable isomorphism of bundle gerbes”
 
@@ -3319,11 +3319,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14C30. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** Hodge-filtered complex cobordism matches a complex cobordism cocycle with a closed filtered form by a path between their weighted complex representatives. In coefficient degree 2j, filtration p retains holomorphic degrees ≥ p+j.
+**Definition.** Hodge-filtered complex cobordism matches a complex cobordism cocycle with a closed filtered form by a path between their weighted complex images. In coefficient degree 2j, filtration p keeps holomorphic degrees ≥ p+j. When the topological class vanishes, the path survives as a class one degree lower (our own).
 
 **Problem.** On a smooth projective complex variety, a codimension-p algebraic cobordism class that vanishes in topological complex cobordism has an Abel–Jacobi invariant. Its target is complexified cobordism in degree 2p−1 modulo the integral image and the shifted filtration p.
 
-**How the definition helps.** The comparison retains a class in the quotient even when the topological class vanishes (our own). The proof constructs the filtered cycle map from algebraic cobordism and identifies its topologically trivial values with elements of this quotient (our own).
+**How the definition helps.** For a topologically trivial cycle only the path is left, and it gives a class in the stated quotient (our own). The proof builds the filtered cycle map from algebraic cobordism and identifies its topologically trivial values with elements of this quotient (our own).
 
 **nLab:** [Center for Quantum and Topological Systems](https://ncatlab.org/nlab/show/Center+for+Quantum+and+Topological+Systems). It says: “This allows us to give a concrete description of an Abel-Jacobi type secondary invariant for topologically trivial cobordism cycles.”
 
@@ -3342,7 +3342,7 @@
 
 **Problem.** On compact smooth manifolds, tensoring smooth complex cobordism with R gives a multiplicative differential extension of the corresponding cohomology theory when R is Landweber exact.
 
-**How the definition helps.** Tensor the structure maps, including the maps on forms, with the coefficient algebra (our own outline). The Landweber exact base-change theorem for smooth complex cobordism proves the differential extension sequence remains exact on compact manifolds. The coefficient algebra multiplication induces the product.
+**How the definition helps.** Because R is Landweber exact, tensoring every structure map of smooth complex cobordism with R, including the maps on forms, keeps the differential extension sequence exact (our own outline). The Landweber exact base-change theorem for smooth complex cobordism proves this on compact manifolds. The multiplication of R gives the product.
 
 **nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “By tensoring with a Landweber exact ring, this induces various other differential cohomology theories, such as differential elliptic cohomology.”
 
@@ -3356,11 +3356,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a prime p and a p-local Landweber exact BP\_∗-algebra E\_∗. For n ≥ 1 put Iₙ = (p,v₁,…,vₙ₋₁). The theory is vₙ-periodic if E\_∗/Iₙ is nonzero and vₙ acts invertibly on it.
+**Definition.** Fix a prime p and a p-local Landweber exact BP\_∗-algebra E\_∗, and put Iₙ = (p, v₁, …, vₙ₋₁) for n ≥ 1. The theory is vₙ-periodic when E\_∗/Iₙ is nonzero and vₙ acts invertibly on it, so its formal group reaches height n but no greater height.
 
 **Problem.** For every spectrum X, its E-homology vanishes exactly when its K(m)-homology vanishes for every 0 ≤ m ≤ n. Hence E(n), Morava E-theory Eₙ and all such theories give the same localization Lₙ.
 
-**How the definition helps.** The periodicity condition depends only on the height of the formal group, so the Bousfield class depends only on the height. One no longer checks each theory separately. The work moves to Hovey's comparison of E with the Johnson–Wilson theory E(n) through Landweber's filtration of comodules.
+**How the definition helps.** By Landweber's filtration of comodules, the acyclic spectra of a Landweber exact theory depend only on which heights its formal group reaches (our own summary of Hovey's argument). Every vₙ-periodic theory reaches exactly the heights 0 to n, like E(n). So all these theories have the Bousfield class of E(n).
 
 **Paper or page:** [An elementary proof of the chromatic Smith fixed point theorem](https://arxiv.org/abs/2303.02022). It says: “Let E∗ be Landweber exact and vₙ–periodic. A spectrum is E∗–acyclic if and only if it is K(m)∗–acyclic for 0 ≤ m ≤ n.”
 
@@ -3371,15 +3371,15 @@
 
 ### Morava's change of rings turns chromatic Ext groups into group cohomology
 
-**Remember:** At height h, remember the formal group’s automorphisms and its field symmetries.
+**Remember:** At height exactly h, all formal groups look alike; only symmetries remain.
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55T25. arXiv math.AT. Level 4: research.
 
-**Definition.** At a prime p and height h ≥ 1, take the Honda formal group over 𝔽ₚʰ. Its extended stabilizer group 𝔾ₕ combines its automorphisms with Gal(𝔽ₚʰ/𝔽ₚ) by semidirect product. A BP\_∗BP-comodule is Iₕ-nilpotent if each element is killed by some power of Iₕ = (p,v₁,…,vₕ₋₁).
+**Definition.** At a prime p and height h ≥ 1, the extended stabilizer group 𝔾ₕ is the group of symmetries of the Honda formal group over 𝔽ₚʰ. It combines the formal group's automorphisms with Gal(𝔽ₚʰ/𝔽ₚ) by semidirect product. A BP\_∗BP-comodule is Iₕ-nilpotent if a power of Iₕ = (p, v₁, …, vₕ₋₁) kills each element.
 
 **Problem.** For an Iₕ-nilpotent comodule M, Ext over BP\_∗BP from BP\_∗ to vₕ⁻¹M is continuous 𝔾ₕ-cohomology with coefficients Eₕ\_∗ ⊗BP∗ M.
 
-**How the definition helps.** The stabilizer records the symmetries of the height-h formal group, so it supplies the group acting on the changed coefficients (our own explanation). Morava’s change-of-rings theorem identifies the localized comodule Ext groups with that continuous group cohomology.
+**How the definition helps.** After inverting vₕ, an Iₕ-nilpotent comodule lives where the formal group has height exactly h, and there every formal group is locally the Honda one (our own explanation). So only its symmetry group 𝔾ₕ is left. Morava's change-of-rings theorem makes this precise.
 
 **nLab:** [Morava stabilizer group](https://ncatlab.org/nlab/show/Morava+stabilizer+group). It says: “This is called the Morava stabilizer group.”
 
@@ -3395,11 +3395,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14L05. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a prime p. A homogeneous ideal J of BP\_∗ is invariant if the BP\_∗BP-coaction on BP\_∗ restricts to a coaction on J. Set Iₙ = (p,v₁,…,vₙ₋₁) for n ≥ 1.
+**Definition.** Fix a prime p. A homogeneous ideal of BP\_∗ is invariant if the BP\_∗BP-coaction maps it into itself, which means it does not depend on the choice of coordinate on the formal group (our own gloss). Set Iₙ = (p, v₁, …, vₙ₋₁) for n ≥ 1, the ideal that cuts out height at least n.
 
 **Problem.** At a prime p, the invariant prime ideals of BP\* are 0, the ideals (p, v₁, …, vₙ₋₁) for n ≥ 1, and their union. So Landweber's exactness test needs to check only these ideals.
 
-**How the definition helps.** Invariance asks that an ideal not depend on coordinates, and the height ideals qualify because height does not depend on coordinates. So invariant ideals cut out closed pieces of the moduli stack of p-typical formal groups. The theorem says there are no other primes, so the irreducible closed pieces are the loci of height at least n. Landweber's proof, with the generators vᵢ of Hazewinkel or Araki, carries the work.
+**How the definition helps.** Over an algebraically closed field, formal groups are classified by height (Lazard), so a closed set that every coordinate change preserves is cut out by height conditions (our own explanation). The irreducible ones are the loci of height at least n. Landweber's proof makes this algebraic, using the generators vᵢ of Hazewinkel or Araki.
 
 **Wikipedia:** [Landweber exact functor theorem](https://en.wikipedia.org/wiki/Landweber_exact_functor_theorem). It says: “the only prime ideals of BP∗ which are invariant under coaction of BP∗BP are the Iₙ = (p,v₁,…, vₙ).”
 
@@ -3413,11 +3413,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 55R35. arXiv math.AT. Level 4: research.
 
-**Definition.** For a prime p, the p-series of a one-dimensional formal group law F adds its variable to itself p times using F. Over a local ring of residue characteristic p, the special fibre has height n if the reduced p-series starts in degree pⁿ.
+**Definition.** The p-series \[p\](y) of a one-dimensional formal group law adds the variable y to itself p times with the group law. Over a complete local ring of residue characteristic p, the formal group has height n when \[p\](y), reduced to the residue field, starts in degree pⁿ.
 
 **Problem.** For Morava E-theory at height n, Eₙ\*(BCₚ) ≅ Eₙ\*\[\[y\]\]/(\[p\](y)) is free of rank pⁿ over Eₙ\*. Similarly K(n)\*(BCₚ) is K(n)\*\[y\] modulo y to the power pⁿ.
 
-**How the definition helps.** Height is the degree pⁿ of the leading term of \[p\](y), and this degree is exactly the rank. The Gysin sequence gives E\*(BCₚ) as E\*\[\[y\]\] modulo \[p\](y), the Euler class of the p-th tensor power of the universal line bundle (our own outline). Weierstrass preparation then writes \[p\](y) as a unit times a monic polynomial of degree pⁿ. The work moves to the Gysin sequence and to Weierstrass preparation over the complete local ring Eₙ\*.
+**How the definition helps.** The Gysin sequence gives E\*(BCₚ) as E\*\[\[y\]\] modulo \[p\](y), the Euler class of the p-th tensor power of the universal line bundle (our own outline). Weierstrass preparation writes \[p\](y) as a unit times a monic polynomial of degree pⁿ, the height degree. So the quotient is free of rank pⁿ, and for K(n), where \[p\](y) is a unit times y to the power pⁿ, it is the truncated polynomial ring.
 
 **Paper or page:** [An elementary proof of the chromatic Smith fixed point theorem](https://arxiv.org/abs/2303.02022), [An elementary proof of the chromatic Smith fixed point theorem](https://arxiv.org/abs/2303.02022). It says: “If A is a finite abelian p-group, then Eₙ\*(BA) is a free Eₙ\*–module of rank \|A\|ⁿ”
 
@@ -3431,11 +3431,11 @@
 
 *True by definition.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 14L05. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a finite-height formal group f over a perfect field k of characteristic p. A deformation over a complete local ring with residue field k is a formal group together with an identification of its special fibre with f. The Lubin–Tate ring represents isomorphism classes of deformations, where isomorphisms respect the chosen identification.
+**Definition.** Fix a finite-height formal group f over a perfect field k of characteristic p. A deformation of f over a complete local ring with residue field k is a formal group there with an identification of its special fibre with f. The Lubin–Tate ring represents deformations up to isomorphisms that respect this identification, so a symmetry of f acts on it by changing the identification.
 
 **Problem.** The automorphism group of f acts on the Lubin–Tate ring by ring maps. Through the Landweber exact functor theorem it acts on the homology theory given by Morava E-theory Eₙ.
 
-**How the definition helps.** Postcomposing the special-fibre identification with a symmetry of f acts on deformation classes (our own explanation). Representability converts these operations into ring automorphisms, using inverses to pass between right and left actions. Their isomorphisms of universal deformations act on the periodic coefficients, and Landweber’s construction induces the homology operations.
+**How the definition helps.** Composing the identification with a symmetry of f acts on deformation classes, naturally in the ring (our own explanation). Representability turns these operations into ring automorphisms, with inverses to turn a right action into a left one. The action lifts to the universal deformation, so Landweber's construction turns it into operations on Eₙ.
 
 **nLab:** [Lubin-Tate theory](https://ncatlab.org/nlab/show/Lubin-Tate+theory). It says: “The Lubin-Tate formal group f̄ is the universal deformation of f in that for every infinitesimal thickening A of k, f̄ induces a bijection”
 
@@ -3449,11 +3449,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55N22 (Bordism and cobordism theories and formal group laws in algebraic topology), 57R77, 58A25. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** For a smooth cycle map f, its normal covectors are nonzero covectors ξ at f(x) with ξ ∘ dfₓ = 0 for some x. Choose a correcting current whose wavefront set lies in these normal covectors.
+**Definition.** For a smooth cycle map f, the normal covectors are the nonzero covectors ξ at a point f(x) with ξ ∘ dfₓ = 0. Choose the correcting current so that its wavefront set, the directions in which it is singular, lies in these normal covectors.
 
 **Problem.** Every smooth map transverse to the cycle map can pull back the chosen correcting current.
 
-**How the definition helps.** Transversality keeps singular directions away from covectors that annihilate the derivative of the pullback map (our own). The distribution pullback theorem then applies (our own). A step function at its jump illustrates why arbitrary currents lack a canonical restriction (our own). The paper constructs the required representative by changing the current by an exact current.
+**How the definition helps.** If g is transverse to f, no nonzero covector annihilates both dg and df, so the wavefront set misses the normal covectors of g (our own). Hörmander's pullback theorem for distributions then defines the pullback (our own). The paper finds such a current by changing a given one by an exact current.
 
 **nLab:** [differential cobordism cohomology](https://ncatlab.org/nlab/show/differential+cobordism+cohomology). It says: “A model for a multiplicative differential refinement of complex cobordism cohomology theory, the theory represented by the Thom spectrum MU:”
 
@@ -3467,11 +3467,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55N31 (Persistent homology and applications, topological data analysis). arXiv math.AT. Level 4: research.
 
-**Definition.** A real-indexed persistence module over a field is a family of vector spaces with compatible linear maps for s ≤ t. It is q-tame if the map for every s &lt; t has finite rank.
+**Definition.** A real-indexed persistence module over a field is a family of vector spaces with compatible linear maps for s ≤ t. It is q-tame if the map for every s &lt; t has finite rank, even when the spaces themselves are infinite-dimensional.
 
 **Problem.** Two δ-interleaved q-tame persistence modules have persistence diagrams with a δ-matching. So the bottleneck distance between their diagrams is at most δ.
 
-**How the definition helps.** Finite ranks across separated parameters give the off-diagonal counts needed to define the persistence diagram (our own explanation). The algebraic stability theorem for q-tame persistence modules converts a δ-interleaving into the stated δ-matching. This matching bounds the bottleneck distance by definition.
+**How the definition helps.** The persistence diagram counts bars by ranks of maps between separated parameters, so finite ranks are all it needs (our own explanation). The algebraic stability theorem for q-tame modules then turns a δ-interleaving into a δ-matching. This matching bounds the bottleneck distance by δ by definition.
 
 **Paper or page:** [Persistent Stanley–Reisner Theory](https://arxiv.org/abs/2503.23482). It says: “Let 𝕌 and 𝕍 be q-tame persistence modules that are δ-interleaved. Then there exists a δ-matching between the multisets dgm(𝕌) and dgm(𝕍).”
 
@@ -3487,11 +3487,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55N91 (Equivariant homology and cohomology in algebraic topology), 55P91. arXiv math.AT. Level 4: research.
 
-**Definition.** An RO(G)-graded theory has groups indexed by formal differences of finite-dimensional real G-representations. For each representation V, smashing the input with its one-point compactification Sⱽ gives a suspension isomorphism shifting degree by V.
+**Definition.** An RO(G)-graded cohomology theory has groups indexed by formal differences of finite-dimensional real G-representations, not just by integers. Smashing with Sⱽ, the one-point compactification of a representation V, shifts degree by V. So a G-manifold can have a fundamental class in a representation degree (our own).
 
 **Problem.** Let G be finite and M a closed smooth G-manifold with a tangent bundle oriented in Bredon cohomology of fixed representation degree V. Equivariant Poincaré duality with the given Mackey functor coefficients exchanges cohomological degree α with homological degree V−α.
 
-**How the definition helps.** The representation grading accommodates the degree V of the equivariant fundamental class (our own explanation). Equivariant Atiyah duality uses the stable normal bundle of an equivariant embedding. The orientation supplies the Thom isomorphism that converts this bundle shift into the displayed representation shift.
+**How the definition helps.** The equivariant fundamental class of M has degree V, so only a representation grading can hold it (our own explanation). Equivariant Atiyah duality uses the stable normal bundle of an equivariant embedding. The orientation gives a Thom isomorphism that turns this bundle shift into the shift by V.
 
 **nLab:** [equivariant cohomology](https://ncatlab.org/nlab/show/equivariant+cohomology), [RO(G)-grading](https://ncatlab.org/nlab/show/RO%28G%29-grading). It says: “It would also be nice to have a Poincare duality theorem for G-manifolds, but that fails with these theories. The solution people have come up with is to widen the notion of "looping" and "delooping" and thereby the grading”
 
@@ -3505,11 +3505,11 @@
 
 *True by definition.* MSC 55P42 (Stable homotopy theory, spectra), 18N60. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** Let D be an ∞-category with finite limits, and let D∗ be its ∞-category of pointed objects. The stabilization Stab(D) is the limit of the tower ⋯ → D∗ → D∗ whose maps are the loop functor Ω. For D the ∞-category of spaces, Stab(D) is the ∞-category of spectra.
+**Definition.** For an ∞-category D with finite limits, the stabilization Stab(D) is the limit of the tower ⋯ → D∗ → D∗ of pointed objects under the loop functor Ω. For spaces this gives spectra, sequences of pointed spaces each the loop space of the next.
 
 **Problem.** For an ∞-category C and an ∞-category D with finite limits, Stab(Fun(C, D)) is equivalent to Fun(C, Stab(D)). In particular, the stabilization of presheaves of spaces on C is the ∞-category of presheaves of spectra on C.
 
-**How the definition helps.** With stabilization defined as a limit, the theorem says only that limits commute with Fun(C, −). The loop functor on Fun(C, D) is computed objectwise, so its tower is Fun(C, −) applied to the tower for D (our own). The functor Fun(C, −) preserves limits of ∞-categories, so the equivalence follows (our own). With spectra defined by a model category, such as presheaves of Bousfield–Friedlander spectra, the same statement needs a comparison of model structures (our own).
+**How the definition helps.** Loops in Fun(C, D) are computed objectwise, so the tower for Fun(C, D) is Fun(C, −) applied to the tower for D (our own). Fun(C, −) preserves limits of ∞-categories, so the equivalence follows (our own). If spectra are defined by a model category instead, the same statement needs a comparison of model structures (our own).
 
 **nLab:** [stable (infinity,1)-category](https://ncatlab.org/nlab/show/stable+%28infinity%2C1%29-category). It says: “Its stabilization is equivalent to the functor category into the stabilization of D”
 
@@ -3519,15 +3519,15 @@
 
 ### Duality over a ring spectrum makes Poincaré duality hold for oriented theories
 
-**Remember:** Atiyah duality plus a Thom isomorphism gives Poincaré duality in any oriented theory.
+**Remember:** Atiyah duality plus a Thom isomorphism equals Poincaré duality.
 
 *Makes the theorem clean to state or prove.* MSC 55P42 (Stable homotopy theory, spectra), 55P25, 55N20. arXiv math.AT. Level 4: research.
 
-**Definition.** For a commutative ring spectrum R, the R-dual of an R-module N is the function module Fᴿ(N,R). An R-orientation of a rank-r normal bundle is a degree-r Thom class restricting to an R-generator on every fibre.
+**Definition.** For a commutative ring spectrum R, the R-dual of an R-module N is the function module Fᴿ(N, R). An R-orientation of a rank-r bundle is a degree-r Thom class that restricts to an R-generator on every fibre. It gives a Thom isomorphism: R smashed with the Thom spectrum is R smashed with the base, shifted by r.
 
 **Problem.** If a closed smooth n-manifold M has an R-orientation of its normal bundle, then the R-dual of R ∧ M₊ is R ∧ Σ⁻ⁿM₊. Taking homotopy groups gives Poincaré duality Rᵏ(M) ≅ Rₙ₋ₖ(M).
 
-**How the definition helps.** Atiyah duality identifies the R-dual with the R-module of the stable normal Thom spectrum (our own explanation). The chosen orientation gives its Thom equivalence after smashing with R, producing the shift by −n. Taking π₋ₖ reads the dual as Rᵏ(M) and the shifted module as Rₙ₋ₖ(M).
+**How the definition helps.** Atiyah duality identifies the R-dual of R ∧ M₊ with R smashed with the Thom spectrum of the stable normal bundle (our own explanation). The orientation's Thom isomorphism turns this into R ∧ Σ⁻ⁿM₊. Taking π₋ₖ gives Rᵏ(M) ≅ Rₙ₋ₖ(M).
 
 **nLab:** [Thom spectrum](https://ncatlab.org/nlab/show/Thom+spectrum). It says: “In that case Th(N X) -- the Thom spectrum of its stable normal bundle is the corresponding dual object.”
 
@@ -3540,15 +3540,15 @@
 
 ### Excisive-functor spectra give Mayer–Vietoris sequences on finite pointed spaces
 
-**Remember:** The excision axiom turns a pushout into a pullback before taking homotopy groups.
+**Remember:** Excisive: pushouts of inputs become pullbacks of values.
 
 *True by definition. Confidence: medium.* MSC 55P42 (Stable homotopy theory, spectra), 55N20, 55P65. arXiv math.AT. Level 4: research.
 
-**Definition.** A spectrum can be modeled by a functor from finite pointed homotopy types to spaces that sends the point to a contractible space. It must send every homotopy pushout square to a homotopy pullback square.
+**Definition.** A spectrum can be modeled by an excisive functor from finite pointed homotopy types to spaces. It sends the point to a contractible space and every homotopy pushout square to a homotopy pullback square.
 
 **Problem.** For a pushout of finite pointed homotopy types, the functor gives a pullback square of values. The associated spectrum-valued functor gives a Mayer–Vietoris long exact sequence of homotopy groups.
 
-**How the definition helps.** Applying excision to the suspension square gives E(X) ≃ ΩE(ΣX), so the values on successive suspensions form a spectrum (our own explanation). Each suspension preserves pushouts, and excision gives a pullback at every level. The assembled pullback of spectra gives the Mayer–Vietoris sequence on homotopy groups.
+**How the definition helps.** The theorem is the excision condition itself: a pushout of inputs becomes a pullback of values. Excision on the suspension square gives E(X) ≃ ΩE(ΣX), so the values on successive suspensions form a spectrum (our own explanation). A pullback square of spectra gives a Mayer–Vietoris long exact sequence of homotopy groups.
 
 **nLab:** [excisive (∞,1)-functor](https://ncatlab.org/nlab/show/excisive+%28%E2%88%9E%2C1%29-functor). It says: “then excisive functors that send the point to the point (up to equivalence) are still equivalent to spectra (spectrum objects)”
 
@@ -3556,15 +3556,15 @@
 
 ### Finite homotopy groups make Brown–Comenetz double duality an equivalence
 
-**Remember:** Pontryagin duality is perfect on finite groups, so the double dual returns.
+**Remember:** Dualize twice into ℚ/ℤ, and finite groups come back unchanged.
 
 *Rules out counterexamples.* MSC 55P42 (Stable homotopy theory, spectra), 55N20. arXiv math.AT. Level 4: research.
 
-**Definition.** The Brown–Comenetz dual of a spectrum X is the function spectrum IX = F(X, I), where I is the Brown–Comenetz spectrum. Its homotopy groups are πₙ(IX) ≅ Hom(π₋ₙX, ℚ/ℤ), the Pontryagin duals of the homotopy groups of X. There is a natural double-duality map X → I(IX).
+**Definition.** The Brown–Comenetz dual of a spectrum X is IX = F(X, I), where I is the Brown–Comenetz spectrum. Its homotopy groups are the Pontryagin duals πₙ(IX) ≅ Hom(π₋ₙX, ℚ/ℤ). The natural double-duality map X → I(IX) acts on each homotopy group as the double-dual map A → Hom(Hom(A, ℚ/ℤ), ℚ/ℤ) (our own).
 
 **Problem.** If every stable homotopy group of a spectrum X is finite, then the double-duality map X → I(IX) is an equivalence.
 
-**How the definition helps.** On homotopy groups the double-duality map is the Pontryagin double-dual map A → Hom(Hom(A, ℚ/ℤ), ℚ/ℤ), which is an isomorphism for finite A (our own). For A = ℤ this map goes into the profinite integers ℤ̂ and is not onto (our own). So the Eilenberg–MacLane spectrum Hℤ is not equivalent to its double dual, and the finiteness condition removes this failure (our own). The work is classical Pontryagin duality for finite abelian groups.
+**How the definition helps.** A finite abelian group equals its Pontryagin double dual, so the map is an isomorphism on every homotopy group (our own). For A = ℤ the double dual is the profinite integers ℤ̂, so Hℤ is not its own double dual (our own).
 
 **nLab:** [Brown-Comenetz duality](https://ncatlab.org/nlab/show/Brown-Comenetz+duality). It says: “If X is a spectrum whose stable homotopy groups are finite groups, then the natural "double-duality" map X → I\_ℚ/ℤ I\_ℚ/ℤ X (the unit of the corresponding continuation monad) is an equivalence”
 
@@ -3574,15 +3574,15 @@
 
 ### Injectivity of ℚ/ℤ makes the Brown–Comenetz spectrum exist
 
-**Remember:** An injective target keeps exactness, so Brown representability gives the dual spectrum.
+**Remember:** An injective target keeps exactness, so dualizing homotopy gives a cohomology theory.
 
 *Rules out counterexamples.* MSC 55P42 (Stable homotopy theory, spectra), 55N20. arXiv math.AT. Level 4: research.
 
-**Definition.** An abelian group A is injective if Hom(−, A) sends every short exact sequence to a short exact sequence with arrows reversed (our own).
+**Definition.** An abelian group A is injective if Hom(−, A) turns every short exact sequence into a short exact sequence with arrows reversed (our own). For example, ℚ/ℤ is injective because it is divisible (our own).
 
 **Problem.** For an injective group such as ℚ/ℤ, the functor X ↦ Hom(π₀X, ℚ/ℤ) is represented by a spectrum I. Then \[X, ΣⁿI\] ≅ Hom(πₙX, ℚ/ℤ) for every integer n.
 
-**How the definition helps.** The group ℚ/ℤ is divisible and hence injective, so dualizing the homotopy sequence preserves exactness (our own). Wedges give products because homotopy groups take wedges to direct sums (our own). Brown representability gives I, and shifting X gives the stated formula (our own). Multiplication by two on ℤ shows why dualizing into ℤ can lose surjectivity (our own).
+**How the definition helps.** Because ℚ/ℤ is injective, X ↦ Hom(π₀X, ℚ/ℤ) turns cofibre sequences into exact sequences and wedges into products, so Brown representability gives I (our own). Shifting X gives the formula for every n (our own). Dualizing into ℤ fails: multiplication by two on ℤ is injective, but its dual is not onto (our own).
 
 **nLab:** [Brown-Comenetz duality](https://ncatlab.org/nlab/show/Brown-Comenetz+duality). It says: “Brown-Comenetz 76 introduced the spectrum I\_ℚ/ℤ which represents the cohomology theory that assigns to a spectrum X the algebraic Pontrjagin duals Hom\_ℤ(π₋⋆X, ℚ/ℤ) of its homotopy groups with respect to ℚ/ℤ.”
 
@@ -3592,15 +3592,15 @@
 
 ### Pre-excisive functors give a symmetric monoidal smash product almost for free
 
-**Remember:** Index by all finite complexes, not just spheres, and smash products come free.
+**Remember:** Index by all finite complexes, and their smash product comes along.
 
 *True by definition.* MSC 55P42 (Stable homotopy theory, spectra), 18M05. arXiv math.AT. Level 4: research.
 
-**Definition.** A pre-excisive functor is a pointed, topologically enriched functor from finite pointed CW complexes to pointed spaces. Enrichment means its action on each mapping space is continuous (our own).
+**Definition.** A pre-excisive functor is a pointed functor from finite pointed CW complexes to pointed spaces, continuous on mapping spaces (our own). Unlike a sequential spectrum, it is indexed by a category with its own smash product (our own).
 
 **Problem.** Day convolution gives pre-excisive functors a closed symmetric monoidal smash product, with unit the sphere functor 𝕊. Restricting to sequential spectra loses this symmetric monoidal product.
 
-**How the definition helps.** Day’s convolution theorem gives the enriched functor category a closed symmetric monoidal product (our own). Its unit is the functor represented by S⁰, which sends each complex to itself (our own). Sequential spectra lack this indexing category with its smash product (our own).
+**How the definition helps.** The indexing category has a symmetric monoidal smash product, so Day convolution extends it to the functors (our own). The unit is the functor represented by S⁰, which sends each complex to itself, so it is the sphere functor 𝕊 (our own). Sequential spectra are indexed by the natural numbers with only shifts, so they get no such product (our own).
 
 **nLab:** [model structure on orthogonal spectra](https://ncatlab.org/nlab/show/model+structure+on+orthogonal+spectra), [Introduction to Stable homotopy theory -- 1-2](https://ncatlab.org/nlab/show/Introduction+to+Stable+homotopy+theory+--+1-2), [symmetric smash product of spectra](https://ncatlab.org/nlab/show/symmetric+smash+product+of+spectra). It says: “We consider an almost tautological construction of a pointed topologically enriched category equipped with a closed symmetric monoidal product: the category of pre-excisive functors.”
 
@@ -3614,11 +3614,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P42 (Stable homotopy theory, spectra), 55N20, 55P25. arXiv math.AT. Level 4: research.
 
-**Definition.** The Spanier–Whitehead dual of a finite spectrum X is the function spectrum F(X, S), where S is the sphere spectrum (our own).
+**Definition.** The Spanier–Whitehead dual DX of a finite spectrum X is the function spectrum F(X, S) into the sphere spectrum S. It reverses maps and satisfies D(DX) ≃ X, so homology of X becomes cohomology of DX (our own).
 
 **Problem.** Every reduced generalized homology theory h on finite pointed CW complexes has a representing spectrum E (Adams). Thus hₙ(X) ≅ πₙ(E ∧ X) naturally in finite pointed X.
 
-**How the definition helps.** Through D, the functor Y ↦ h₋ₙ(DY) is a cohomology theory on finite spectra, so homology representability becomes cohomology representability (our own). If that theory is \[−, ΣⁿE\], then hₙ(X) ≅ \[DX, Σ⁻ⁿE\] ≅ πₙ(E ∧ X) for finite X (our own). Plain Brown representability needs infinite wedges, which finite spectra lack, so the nLab's short derivation hides a step (our own). The work moves into Adams' variant of Brown's theorem for functors defined only on finite complexes.
+**How the definition helps.** Through D, the functor Y ↦ h₋ₙ(DY) is a cohomology theory on finite spectra, so homology representability becomes cohomology representability (our own). If that theory is \[−, ΣⁿE\], then hₙ(X) ≅ \[DX, Σ⁻ⁿE\] ≅ πₙ(E ∧ X) for finite X (our own). Plain Brown representability needs infinite wedges, so this step uses Adams' variant for functors defined only on finite complexes (our own).
 
 **nLab:** [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “But by way of Spanier-Whitehead duality it implies at least over finite CW-complexes that dually every additive generalized homology theory E<sub>•</sub> is representable by a spectrum E”
 
@@ -3628,15 +3628,15 @@
 
 ### The loop-tower definition of stabilization makes looping invertible
 
-**Remember:** In a tower of loop objects, moving one place undoes looping.
+**Remember:** Each entry is the loops of the next, so shifting undoes looping.
 
 *True by definition. Confidence: medium.* MSC 55P42 (Stable homotopy theory, spectra), 18N60. arXiv math.AT. Level 4: research.
 
-**Definition.** For a pointed ∞-category C with finite limits, its stabilization is the limit of the tower with every transition given by Ω. Its objects are sequences with equivalences Xₙ ≃ ΩXₙ₊₁ for every n ≥ 0 (our own).
+**Definition.** The stabilization of a pointed ∞-category C with finite limits is the limit of the tower ⋯ → C → C in which every map is Ω. So an object is a sequence X₀, X₁, … with equivalences Xₙ ≃ ΩXₙ₊₁ for all n ≥ 0 (our own).
 
 **Problem.** The loop functor on the stabilization is an equivalence. Its inverse sends X₀, X₁, … to X₁, X₂, ….
 
-**How the definition helps.** Loops act entry by entry because limits in the tower are computed there (our own). The equivalences Xₙ ≃ ΩXₙ₊₁ identify both composites of looping and shifting with the identity (our own).
+**How the definition helps.** Loops act entry by entry, so looping the shifted sequence X₁, X₂, … gives ΩX₁, ΩX₂, … (our own). The defining equivalences identify this with X₀, X₁, …, and the other composite works the same way (our own).
 
 **nLab:** [stabilization](https://ncatlab.org/nlab/show/stabilization). It says: “The stabilization Stab(C) of C is the (∞,1)-limit (in the (∞,1)-category of (∞,1)-categories) of the tower of applications of the loop space functor”
 
@@ -3644,15 +3644,15 @@
 
 ### Commutative S-algebras make the smash product the coproduct of E∞ rings
 
-**Remember:** A commutative S-algebra is a commutative monoid under smash product.
+**Remember:** Commutative monoids: multiply the two images together, so smash is coproduct.
 
 *True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** A commutative S-algebra is a commutative monoid in S-modules under their smash product. It has a unit and an associative, commutative multiplication satisfying the unit laws (our own).
+**Definition.** A commutative S-algebra is a commutative monoid in S-modules under smash product: a unit and an associative, commutative multiplication (our own gloss).
 
-**Problem.** Let A and B be commutative S-algebras under a commutative S-algebra R. Then A ∧ B over R is their coproduct in commutative R-algebras. For cofibrant inputs it is also the homotopy pushout of E∞ rings.
+**Problem.** For commutative S-algebras A and B under a commutative S-algebra R, the smash product A ∧ B over R is their coproduct in commutative R-algebras. For cofibrant inputs it is also the homotopy pushout of E∞ rings.
 
-**How the definition helps.** Maps from A and B to a commutative R-algebra combine uniquely by multiplication into a map from their relative smash product (our own). This gives the coproduct property, and cofibrant R-algebras compute the derived coproduct (our own).
+**How the definition helps.** Among commutative monoids, the monoidal product is the coproduct (our own). Maps from A and B to a commutative R-algebra C combine uniquely into A ∧ B → C ∧ C → C, all over R (our own). Cofibrant inputs make this point-set coproduct compute the derived one (our own).
 
 **Wikipedia:** [Highly structured ring spectrum](https://en.wikipedia.org/wiki/Highly_structured_ring_spectrum). It says: “Therefore, is it possible to define A<sub>∞</sub>-ring spectra and E<sub>∞</sub>-ring spectra as (commutative) monoids in the category of S-modules, so called (commutative) S-algebras.”
 
@@ -3662,15 +3662,15 @@
 
 ### Defining K-theory of ring spectra through perfect modules makes it Morita invariant
 
-**Remember:** K-theory sees only the module category, so Morita equivalent rings agree.
+**Remember:** K-theory reads only compact modules, so equal module categories agree.
 
 *True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 19D10. arXiv math.KT, math.AT. Level 4: research.
 
-**Definition.** For a ring spectrum R, define K(R) as the algebraic K-theory of Perf(R). This full subcategory of R-modules consists of the compact objects.
+**Definition.** For a ring spectrum R, K(R) is the algebraic K-theory of Perf(R), the compact objects of the ∞-category of R-modules. It depends only on the module ∞-category, because compactness is defined inside it (our own).
 
 **Problem.** If ring spectra R and R′ have equivalent module ∞-categories, then K(R) ≃ K(R′). For example, K(R) ≃ K(End(P)) for each compact generator P of Mod(R), such as Rⁿ with its matrix ring.
 
-**How the definition helps.** An equivalence of module ∞-categories preserves compact objects and therefore restricts to an equivalence of their perfect subcategories (our own). Functoriality of K-theory gives the result, and Schwede–Shipley Morita theory supplies the endomorphism-ring example (our own).
+**How the definition helps.** An equivalence of module ∞-categories preserves compact objects, so it restricts to Perf(R) ≃ Perf(R′) and the K-theories agree (our own). Schwede–Shipley Morita theory identifies Mod(R) with modules over End(P) for a compact generator P, which gives the example (our own).
 
 **Wikipedia:** [Module spectrum](https://en.wikipedia.org/wiki/Module_spectrum). It says: “Lurie defines the K-theory of a ring spectrum R to be the K-theory of the ∞-category of perfect modules over R (a perfect module being defined as a compact object in the ∞-category of module spectra).”
 
@@ -3681,15 +3681,15 @@
 
 ### Defining orientations as trivializations makes universal orientations into ring maps
 
-**Remember:** Trivialize the spherical bundle after extending its units to R, through maps of spectra.
+**Remember:** Orient by trivializing the bundle's units in R, as spectrum maps.
 
 *True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N22, 55R25. arXiv math.AT. Level 4: research.
 
-**Definition.** Let f be a map bg → Σgl₁(S) of connective spectra inducing the spherical bundle on BG. An E∞ R-orientation of f is a null-homotopy of bg → Σgl₁(S) → Σgl₁(R) (our own).
+**Definition.** Let f, a map of connective spectra from bg to Σgl₁(S), classify a spherical bundle on BG. An E∞ R-orientation of f is a null-homotopy of its composite with Σgl₁(S) → Σgl₁(R) (our own). It trivializes the induced R-line bundle as a map of spectra (our own).
 
 **Problem.** Let G → O be a map of groups that deloops to a map of spectra, as for SO, Spin, String and U. Then E∞ R-orientations correspond to E∞ ring maps from the Thom spectrum MG to R.
 
-**How the definition helps.** The Thom spectrum’s universal property identifies E∞ maps MG → R with trivializations of the induced R-line bundle respecting infinite loop structures (our own). The units adjunction identifies these trivializations with the defining null-homotopies (our own).
+**How the definition helps.** The Thom spectrum MG is universal among E∞ rings with such a trivialization, so E∞ maps MG → R are exactly these null-homotopies (our own). The adjunction between E∞ rings and their unit spectra gl₁ turns trivializations into the defining null-homotopies (our own).
 
 **nLab:** [orientation in generalized cohomology](https://ncatlab.org/nlab/show/orientation+in+generalized+cohomology). It says: “If here G → GL₁(𝕊) is the Ω<sup>∞</sup>-component of a map of spectra then this σ is a homomorphism of E-∞ rings and in this case there is a bijection between universal orientations and such E∞-ring homomorphisms”
 
@@ -3700,15 +3700,15 @@
 
 ### E₂ Thom spectra make H𝔽ₚ the free E₂ ring with p zero
 
-**Remember:** Extend the loop for one minus p twice multiplicatively, then take its Thom spectrum.
+**Remember:** Freely kill p as an E₂ ring, and 𝔽ₚ appears.
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R25. arXiv math.AT. Level 4: research.
 
-**Definition.** For a prime p, let f be the double loop map Ω²S³ → BGL₁(Sₚ^) extending the loop representing 1 − p. Here Sₚ^ denotes the p-complete sphere, and Mf is the colimit of the Sₚ<sup>-lines</sup> classified by f (our own).
+**Definition.** For a prime p, let f from Ω²S³ to BGL₁ of the p-complete sphere Sₚ^ extend the loop 1 − p as a double loop map. Its Thom spectrum Mf is the colimit of the Sₚ<sup>-lines</sup> that f classifies (our own). E₂ maps out of Mf are null-homotopies of p in the target (our own).
 
 **Problem.** This E₂ Thom spectrum is the Eilenberg–MacLane spectrum H𝔽ₚ (Hopkins–Mahowald). Equivalently, H𝔽ₚ is the free E₂ ring over the p-complete sphere on a null-homotopy of p.
 
-**How the definition helps.** The free double loop space on S¹ is Ω²S³ (our own). The Thom universal property identifies maps from Mf with choices of null-homotopy of p in the target. The Hopkins–Mahowald theorem identifies Mf with H𝔽ₚ (our own).
+**How the definition helps.** Ω²S³ is the free double loop space on S¹, so f is the free E₂ extension of the loop 1 − p (our own). The Thom universal property then makes Mf the free E₂ ring with p null-homotopic, and Hopkins–Mahowald identify Mf with H𝔽ₚ (our own).
 
 **Paper or page:** [Perfectoid rings as Thom spectra](https://arxiv.org/abs/2003.08697v2), [Perfectoid rings as Thom spectra](https://arxiv.org/abs/2003.08697v2). It says: “For all 𝔼₂-W⁺(k)-algebras A, the mapping space Map\_{Alg<sub>W⁺(k)</sub><sup>𝔼₂</sup>}(M f<sub>k,pu</sub>, A) could be naturally identified with the space of null-homotopies of the composite map W⁺(k) →m<sub>pu</sub> W⁺(k) →η A”
 
@@ -3718,15 +3718,15 @@
 
 ### E∞ cochains determine finite type nilpotent spaces up to weak equivalence
 
-**Remember:** Remember the higher homotopies of the cup product, and you remember the space.
+**Remember:** Keep the cup product's higher homotopies, and you keep the space.
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P15. arXiv math.AT. Level 4: research.
 
-**Definition.** An E∞ cochain algebra is a cochain complex with an action of a chosen E∞ chain operad (our own). One can use normalized chains on the Barratt–Eccles operad, whose arity-n space is contractible with free symmetric-group action (our own).
+**Definition.** An E∞ cochain algebra is a cochain complex with an action of an E∞ operad (our own). The action keeps all higher homotopies for the commutativity of the cup product, and so the Steenrod operations (our own).
 
 **Problem.** Finite type nilpotent spaces X and Y are weakly equivalent if and only if their E∞ cochain algebras over ℤ are quasi-isomorphic (Mandell).
 
-**How the definition helps.** The E∞ structure keeps the Steenrod operations, which cohomology rings forget, so a complete integral invariant becomes possible to state. For example, ΣℂP² and S³ ∨ S⁵ have isomorphic cohomology rings but differ by Sq² (our own). The work went into Mandell's earlier p-adic theorem for E∞ algebras over the algebraic closure of 𝔽ₚ. An arithmetic square then glues the primes and the rational case (our own summary).
+**How the definition helps.** The E∞ structure keeps the Steenrod operations that the cohomology ring forgets, so a complete integral invariant becomes possible to state. For example, ΣℂP² and S³ ∨ S⁵ have isomorphic cohomology rings but differ by Sq² (our own). Mandell deduces the theorem from his p-adic version over the algebraic closure of 𝔽ₚ and an arithmetic square (our own summary).
 
 **nLab:** [E-infinity algebra](https://ncatlab.org/nlab/show/E-infinity+algebra). It says: “Finite type nilpotent spaces X and Y are weakly homotopy equivalent if and only if the E∞-algebras C<sup>\*</sup>(X,ℤ) and C<sup>\*</sup>(Y,ℤ) are quasi-isomorphic.”
 
@@ -3740,11 +3740,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N34, 18N70. arXiv math.AT, math.AG. Level 4: research.
 
-**Definition.** An E∞-ring spectrum is a commutative algebra object in the symmetric monoidal ∞-category of spectra under smash product (our own).
+**Definition.** An E∞-ring spectrum is a commutative algebra in the ∞-category of spectra under smash product, with commutativity holding up to all higher homotopies (our own). Unlike cohomology theories, such rings have homotopy limits, so a sheaf of them has global sections (our own).
 
-**Problem.** On the smooth elliptic moduli stack, the presheaf of elliptic cohomology theories on flat charts lifts to a sheaf of E∞-ring spectra. This lift is unique up to homotopy by Goerss–Hopkins–Miller. Its global sections give periodic topological modular forms.
+**Problem.** On the smooth elliptic moduli stack, the presheaf of elliptic cohomology theories on flat charts lifts to a sheaf of E∞-ring spectra, unique up to homotopy (Goerss–Hopkins–Miller). Its global sections give periodic topological modular forms.
 
-**How the definition helps.** Global sections of a sheaf of E∞-rings are a limit in E∞-rings (our own). Goerss–Hopkins–Miller supplies the sheaf, whose sections over smooth elliptic curves give periodic TMF (our own). Sections over the compactification give Tmf, whose connective cover is tmf (our own).
+**How the definition helps.** Global sections of a sheaf of E∞-rings are a homotopy limit in E∞-rings, which a diagram of mere cohomology theories lacks (our own). Goerss–Hopkins–Miller lift the elliptic theories to such a sheaf, and its global sections are periodic TMF (our own).
 
 **nLab:** [A Survey of Elliptic Cohomology - E-infinity rings and derived schemes](https://ncatlab.org/nlab/show/A+Survey+of+Elliptic+Cohomology+-+E-infinity+rings+and+derived+schemes). It says: “To get a single cohomology theory from that we want to take global sections, but there is no good way to say what a global section of a cohomology-theoy valued functor would be.”
 
@@ -3754,15 +3754,15 @@
 
 ### Faithful Galois extensions of ring spectra survive every base change
 
-**Remember:** Faithful means extension to B detects every nonzero module.
+**Remember:** Faithful: extension to B kills no nonzero module.
 
 *Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)). arXiv math.AT. Level 4: research.
 
-**Definition.** Let A → B be a finite G-Galois extension. It is faithful if B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
+**Definition.** A finite G-Galois extension A → B is faithful if extension to B kills no nonzero module (our own). That is, B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
 
 **Problem.** Let A → B be a faithful G-Galois extension and A → A′ any map of E∞ rings. Then A′ → A′ ∧ B over A is again a faithful G-Galois extension.
 
-**How the definition helps.** After extension to B, the Galois product equivalence splits the descent diagram, and dualizability lets extension to B preserve its limit (our own). Faithfulness detects the resulting equivalence before extension, including after base change (our own). Without faithfulness, base change from C∗(BC₂; 𝔽₂) to its Tate ring kills the covering algebra 𝔽₂ (our own).
+**How the definition helps.** Faithfulness lets one check the Galois conditions after extension to B, where the splitting B ∧ₐ B ≃ ∏B makes them hold (our own). Faithfulness itself survives base change, so this check also works for A′ → A′ ∧ B over A (our own). Without it, base change from C∗(BC₂; 𝔽₂) to its Tate ring kills the covering algebra 𝔽₂ (our own).
 
 **Paper or page:** [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2), [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2). It says: “G-Galois extensions are stable under dualizable base-change. Faithful G-Galois extensions are stable under arbitrary base-change.”
 
@@ -3776,11 +3776,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 20C20. arXiv math.AT, math.RT. Level 4: research.
 
-**Definition.** Let A → B be a finite G-Galois extension. It is faithful if B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
+**Definition.** A finite G-Galois extension A → B is faithful if extension to B kills no nonzero module (our own). That is, B ∧ₐ M ≃ 0 implies M ≃ 0 for every A-module M (our own).
 
 **Problem.** For a faithful G-Galois extension A → B, A-modules are the same as B-modules with a homotopy-coherent semilinear G-action. In symbols, Mod(A) is the homotopy fixed points of G acting on Mod(B).
 
-**How the definition helps.** Faithfulness makes extension to B detect equivalences, as descent requires (our own). Mathew’s descendability theorem gives module descent, and the Galois equivalences identify its diagram with the group action diagram (our own). Cochains on BC₂ over 𝔽₂ fail faithfulness because their nonzero Tate module becomes zero over 𝔽₂ (our own).
+**How the definition helps.** Faithfulness makes extension to B detect equivalences, which is what descent needs (our own). Mathew's descendability theorem then gives module descent, and the Galois equivalences turn its diagram into the G-action diagram (our own). Cochains on BC₂ over 𝔽₂ fail: their Tate module is nonzero but becomes zero over 𝔽₂ (our own).
 
 **Paper or page:** [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2), [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2), [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2), [The inverse limit topology and profinite descent on Picard groups in K(n)-local homotopy theory](https://arxiv.org/abs/2309.05039v3). It says: “If f : R → S is a faithful G-Galois extension of 𝔼<sub>∞</sub>-rings, then we have a natural equivalence of ∞-categories Mod(R) ≃ Mod(S)<sup>hG</sup>.”
 
@@ -3795,11 +3795,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** For an E∞ ring A, pic(A) is the connective spectrum corresponding to the grouplike E∞-space of invertible A-modules and their equivalences (our own). The group operation comes from tensor product over A (our own).
+**Definition.** For an E∞ ring A, the Picard spectrum pic(A) is the connective spectrum of invertible A-modules and their equivalences, added by tensor product (our own). Taking it commutes with limits of symmetric monoidal module categories (our own).
 
 **Problem.** For a faithful finite G-Galois extension A → B, pic(A) is the connective cover of pic(B)ʰᴳ. Under strong convergence, its homotopy fixed-point spectral sequence from Hˢ(G; πₜpic(B)) computes Pic(A) in total degree zero.
 
-**How the definition helps.** The Picard spectrum is a functor of the symmetric monoidal module category that preserves limits, so descent for modules passes straight to Picard spectra. The homotopy fixed-point spectral sequence then applies, as to any homotopy limit. The work went into the descent theorem for modules and into computing differentials, which the source compares with those for A itself. Applied to KO → KU, this method gives Pic(KO) ≅ ℤ/8 (our own summary of Mathew and Stojanoska).
+**How the definition helps.** Galois descent gives Mod(A) ≃ Mod(B)ʰᴳ, and pic preserves this limit, so pic(A) is the connective cover of pic(B)ʰᴳ (our own). The homotopy fixed-point spectral sequence of this limit then computes Pic(A) in total degree zero. For KO → KU this gives Pic(KO) ≅ ℤ/8 (our own summary of Mathew and Stojanoska).
 
 **Paper or page:** [The inverse limit topology and profinite descent on Picard groups in K(n)-local homotopy theory](https://arxiv.org/abs/2309.05039v3). It says: “If A → B is a faithful G-Galois extension of 𝔼<sub>∞</sub>-ring spectra, then there is a natural equivalence of symmetric monoidal ∞-categories: Mod(A) ≃ (Mod(B))<sup>hG</sup>”
 
@@ -3809,15 +3809,15 @@
 
 ### Principal bundles give Galois extensions of cochain ring spectra
 
-**Remember:** Take homotopy fixed points downstairs and split the relative smash into group-indexed copies upstairs.
+**Remember:** Fixed points recover the base; B ∧ₐ B splits into Γ copies.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R20. arXiv math.AT. Level 4: research.
 
-**Definition.** Let Γ be a finite group acting on a commutative A-algebra B in spectra. The extension is Γ-Galois if A → BʰΓ and B ∧ₐ B → ∏<sub>g∈Γ</sub> B are equivalences (our own). The g-component multiplies the first factor by the g-transformed second factor (our own).
+**Definition.** Let a finite group Γ act on a commutative A-algebra B in spectra. B is Γ-Galois over A if A → BʰΓ is an equivalence and B ∧ₐ B splits as Γ copies of B (our own). The map to the copy for g multiplies the first factor by g applied to the second (our own).
 
-**Problem.** Let P → X be a principal Γ-bundle, with Γ finite and X path-connected. Suppose π₁(X) acts nilpotently on the homology of the fibre, the group ring k\[Γ\]. Then the map of cochain rings F(X₊, k) → F(P₊, k) is a Γ-Galois extension.
+**Problem.** Let P → X be a principal Γ-bundle, with Γ finite, X path-connected, and π₁(X) acting nilpotently on k\[Γ\], the homology of the fibre. Then the map of cochain rings F(X₊, k) → F(P₊, k) is a Γ-Galois extension.
 
-**How the definition helps.** The definition asks only for equivalences of cochain spectra, which a covering space supplies even when cohomology rings fail to be Galois (our own). The fixed-point condition holds because Γ acts freely on P with quotient X. The product condition holds because P fibred with itself over X is Γ copies of P. The Eilenberg–Moore theorem, which needs the nilpotence condition, turns this pullback into a smash product (our own).
+**How the definition helps.** Both conditions concern spectra, so a covering space supplies them even when cohomology rings are not Galois (our own). Γ acts freely on P over X, giving the fixed points, and P ×<sub>X</sub> P is Γ copies of P, giving the product. The Eilenberg–Moore theorem, which needs the nilpotence hypothesis, turns that fibre product into a smash product of cochains (our own).
 
 **Paper or page:** [Endotrivial modules for cyclic p-groups and generalized quaternion groups via Galois descent](https://arxiv.org/abs/2107.06308v2). It says: “Let Γ be a finite discrete group, and P → X a principal Γ-bundle. Suppose that X is path-connected and π<sub>1</sub>(X) acts nilpotently on H\_\*(Γ;k). Then the map of cochain k-algebras F(X\_+,k) → F(P\_+,k) is a Γ-Galois extension.”
 
@@ -3831,11 +3831,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** A K(n)-local profinite G-Galois extension is a compatible filtered system of faithful G/U-Galois extensions of A for open normal subgroups U of G (our own). Its target B is the K(n)-localization of their colimit (our own).
+**Definition.** A K(n)-local profinite G-Galois extension of A is a compatible system of faithful G/U-Galois extensions of A, one for each open normal subgroup U (our own). Its target B is the K(n)-localization of their colimit (our own).
 
 **Problem.** The unit map from the K(n)-local sphere to Morava E-theory Eₙ is a K(n)-local profinite Galois extension. The group is the Morava stabilizer group 𝔾ₙ, acting by the Goerss–Hopkins–Miller action.
 
-**How the definition helps.** The definition turns the Devinatz–Hopkins fixed-point spectra into the data of one Galois extension, so their results become a single statement. The work went into the Devinatz–Hopkins construction of homotopy fixed points of Eₙ for closed subgroups of 𝔾ₙ. It also needs their proof that the fixed points of all of 𝔾ₙ form the K(n)-local sphere. In this form, the source computes Picard and Brauer groups by profinite Galois descent.
+**How the definition helps.** The definition makes the Devinatz–Hopkins fixed-point spectra the finite stages of one Galois extension, so their results become a single statement (our own). The work is the Devinatz–Hopkins construction of homotopy fixed points of Eₙ for closed subgroups of 𝔾ₙ. It also needs their proof that the fixed points of all of 𝔾ₙ form the K(n)-local sphere.
 
 **Paper or page:** [Picard and Brauer groups of K(n)-local spectra via profinite Galois descent](https://arxiv.org/abs/2306.05393v2). It says: “The unit L<sub>K(h)</sub> 𝕊 → E<sub>h</sub> is a K(h)-local profinite Galois extension for the Goerss-Hopkins-Miller action of 𝔾<sub>h</sub>.”
 
@@ -3850,11 +3850,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55U35, 18G80. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** A compact generator P of a stable model category is an object for which \[P, −\] preserves arbitrary coproducts in its homotopy category (our own). For every X, if \[ΣⁿP, X\] vanishes for every integer n, then X is zero there (our own).
+**Definition.** An object P of a stable model category is a compact generator if \[P, −\] on the homotopy category preserves arbitrary coproducts (our own). It must also detect zero: X ≃ 0 whenever \[ΣⁿP, X\] = 0 for all integers n (our own). Its self-maps in all degrees form a ring spectrum End(P) (our own).
 
 **Problem.** Let a stable model category be simplicial, cofibrantly generated and proper, with one compact generator P. Then it is Quillen equivalent to the category of modules over the ring spectrum End(P) (Schwede–Shipley).
 
-**How the definition helps.** Ring spectra let the endomorphisms of P have homotopy in every degree, so the theorem needs no condition on those degrees. Rickard's Morita theory for rings needs a tilting complex, whose graded ring of self-maps lies in degree zero. The work went into Schwede and Shipley's construction of mapping spectra in a model category, which makes End(P) a ring spectrum.
+**How the definition helps.** Ring spectra let End(P) have homotopy in every degree, so mapping out of P lands in End(P)-modules with no condition on those degrees (our own). Rickard's Morita theory for rings instead needs a tilting complex, whose self-maps lie only in degree zero. The work went into Schwede and Shipley's construction of mapping spectra in a model category.
 
 **nLab:** [stable model category](https://ncatlab.org/nlab/show/stable+model+category), [derived Morita equivalence](https://ncatlab.org/nlab/show/derived+Morita+equivalence). It says: “there is just one compact generator P ∈ 𝒞, then there is a one-object Sp-enriched category, hence an A-infinity algebra A, which is the endomorphisms A ≃ End\_𝒞(P), and the stable model category is its category of modules”
 
@@ -3864,15 +3864,15 @@
 
 ### Rognes's Galois extensions make KO → KU a Galois extension
 
-**Remember:** Recover the base by fixed points and split the relative smash into group-indexed copies.
+**Remember:** Fixed points recover the base; B ∧ₐ B splits into G copies.
 
 *Makes the theorem clean to state or prove.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55N15. arXiv math.AT, math.KT. Level 4: research.
 
-**Definition.** Let a finite group G act on a commutative A-algebra B in spectra. The extension is G-Galois if A → Bʰᴳ and B ∧ₐ B → ∏<sub>g∈G</sub> B are equivalences (our own). The g-component of the second map multiplies after applying g to the first factor (our own).
+**Definition.** Let a finite group G act on a commutative A-algebra B in spectra. B is G-Galois over A if A → Bʰᴳ is an equivalence and B ∧ₐ B splits as G copies of B (our own). The map to the copy for g multiplies the first factor by g applied to the second (our own).
 
 **Problem.** Complex conjugation makes complex K-theory KU a C₂-Galois extension of real K-theory KO. This holds although π∗KO → π∗KU is not a Galois extension of graded rings.
 
-**How the definition helps.** The definition asks for equivalences of spectra, so it can hold when the map of homotopy rings is far from Galois. A Galois extension of rings is injective, but the Hopf class η in π₁KO maps to zero in π₁KU (our own). The fixed-point condition is the classical fact that conjugation on KU has homotopy fixed points KO. The product condition follows from Wood's theorem that KO smashed with the cofibre of η is KU (our own summary of Rognes).
+**How the definition helps.** The definition asks for equivalences of spectra, so it can hold when the map of homotopy rings is far from Galois. A Galois extension of rings is injective, but the Hopf class η in π₁KO maps to zero in π₁KU (our own). The fixed points are KU<sup>hC₂</sup> ≃ KO, and the product condition follows from Wood's theorem KO ∧ Cη ≃ KU (our own summary of Rognes).
 
 **Wikipedia:** [G-spectrum](https://en.wikipedia.org/wiki/G-spectrum). It says: “Example: KO → KU is a ℤ./2-Galois extension.”
 
@@ -3882,15 +3882,15 @@
 
 ### Thom spectra as colimits make n-fold loop maps give Eₙ ring spectra
 
-**Remember:** Take the colimit of the diagram of sphere lines.
+**Remember:** Glue sphere lines by a colimit; colimits respect smash, so structure transfers.
 
 *True by definition.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R25, 55N22. arXiv math.AT. Level 4: research.
 
-**Definition.** For a map f from a space X to BGL₁(S), its Thom spectrum is the colimit of the associated diagram of sphere lines in spectra. The indexing ∞-groupoid is X (our own).
+**Definition.** For a map f from a space X to BGL₁(S), the Thom spectrum Mf is the colimit over X of the sphere lines that f classifies (our own). Smash products commute with colimits, so this construction turns products of maps into smash products (our own).
 
 **Problem.** If f is a map of n-fold loop spaces, then Mf is an Eₙ ring spectrum; infinite loop maps give E∞ ring spectra. In particular MO, MSO, MSpin, MString and MU are E∞ ring spectra.
 
-**How the definition helps.** Smash products commute with colimits, so the Thom spectrum functor from spaces over BGL₁(S) to spectra is symmetric monoidal (our own outline). A symmetric monoidal functor carries Eₙ algebras to Eₙ algebras. The work went into building BGL₁(S) as an infinite loop space and the Thom functor as a functor of ∞-categories. With the classical definition by Thom spaces of vector bundles, Lewis needed a long point-set construction for the E∞ structure (our own).
+**How the definition helps.** So the Thom functor from spaces over BGL₁(S) is symmetric monoidal, and such a functor carries Eₙ algebras to Eₙ algebras (our own outline). An n-fold loop map is an Eₙ algebra over BGL₁(S), so Mf is an Eₙ ring (our own). With the classical definition by Thom spaces, Lewis needed a long point-set construction for the E∞ structure (our own).
 
 **nLab:** [Thom spectrum](https://ncatlab.org/nlab/show/Thom+spectrum). It says: “the sufficient condition for a Thom spectrum of an ∞-module bundle (as above) to have an E-∞ ring structure is that it arises as the (∞,1)-colimit of a homomorphism of E-∞ spaces B → A Line (ABG 10, prop.6.21)”
 
@@ -3901,15 +3901,15 @@
 
 ### Thom spectrum models make THH of perfectoid rings polynomial
 
-**Remember:** Arrange smash factors in a circle, multiply neighbors, and realize.
+**Remember:** Write HR as a Thom spectrum, and THH becomes loop-space homology.
 
 *True by definition. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 19D55, 14F30. arXiv math.AT, math.KT. Level 4: research.
 
-**Definition.** For an associative ring spectrum A, THH(A) is the geometric realization of its cyclic bar construction (our own). In degree n it has n+1 smash factors A over the sphere, with faces from multiplication and degeneracies from the unit (our own).
+**Definition.** For an associative ring spectrum A, THH(A) is the realization of the cyclic bar construction, with n+1 copies of A smashed around a circle in degree n (our own). When A is the Thom spectrum of a loop map, THH(A) is again a Thom spectrum, over a free loop space (our own).
 
 **Problem.** For every perfectoid ring R, the p-completed THH(HR) is HR smashed with ΩS³₊. So its homotopy ring is the polynomial ring R\[u\] with u in degree 2, which is Bökstedt's theorem when R = 𝔽ₚ.
 
-**How the definition helps.** THH of a Thom spectrum is again a Thom spectrum over a loop space, so the Thom model reduces THH(HR) to the homology of ΩS³. That homology is polynomial on one class of degree 2. Bökstedt's original proof for 𝔽ₚ instead runs a hard spectral sequence computation with Dyer–Lashof operations (our own). The work went into identifying HR as a Thom spectrum and into comparing absolute THH with THH relative to spherical Witt vectors.
+**How the definition helps.** Writing HR as a Thom spectrum makes THH(HR) a Thom spectrum too, which reduces it to HR smashed with ΩS³₊ (our own outline). The homology of ΩS³ is polynomial on one class of degree 2, which gives R\[u\]. Bökstedt's original proof for 𝔽ₚ needed a hard spectral sequence computation with Dyer–Lashof operations (our own).
 
 **Wikipedia:** [Topological Hochschild homology](https://en.wikipedia.org/wiki/Topological_Hochschild_homology). It says: “In contrast, the Topological Hochschild Homology ring has the isomorphism THH\_\*(𝔽<sub>p</sub>) = 𝔽<sub>p</sub>\[u\] giving a less pathological theory.”
 
@@ -3921,15 +3921,15 @@
 
 ### Twisted spectra over a connected space are modules over a Thom spectrum
 
-**Remember:** A twist transports spectra around the base, and a twisted spectrum is a section.
+**Remember:** A twisted spectrum is a section of spectra transported around B.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P43 (Spectra with additional structure (\\(E\_\\infty\\), \\(A\_\\infty\\), ring spectra, etc.)), 55R70. arXiv math.AT. Level 4: research.
 
-**Definition.** A twist on B is a map σ from B to BPic(S), the delooping of the space of invertible spectra (our own). A σ-twisted spectrum is a section of the bundle of categories of spectra classified by σ (our own).
+**Definition.** A twist on B is a map σ from B to BPic(S), the delooping of the space Pic(S) of invertible spectra (our own). A σ-twisted spectrum is a section of the bundle of ∞-categories of spectra that σ classifies (our own).
 
 **Problem.** For a connected space B with a twist σ, σ-twisted spectra on B are the modules over the Thom spectrum of Ωσ. For the trivial twist, spectra parametrized over B are modules over the spherical group ring Σ∞₊ΩB.
 
-**How the definition helps.** The Thom spectrum of a loop map is a ring spectrum, so it can be an endomorphism ring of a twisted spectrum. The twisted spectrum induced from a point has this endomorphism ring and generates for connected B, so Morita theory applies (our own outline). The work went into identifying this endomorphism ring with the Thom spectrum, which the colimit definition of Thom spectra makes possible (our own).
+**How the definition helps.** For connected B, the twisted spectrum induced from a point generates, so Morita theory makes twisted spectra modules over its endomorphism ring (our own outline). That endomorphism ring is the Thom spectrum of the loop map Ωσ from ΩB to Pic(S) (our own). For the trivial twist this ring is Σ∞₊ΩB (our own).
 
 **Paper or page:** [Twisted Spectra Revisited](https://arxiv.org/abs/2312.07403v2). It says: “Let B be a connected space and consider a haunt σ : B → BPic(𝕊). Then, there is a natural equivalence TwSp(B,σ) ≃ Mod<sub>Th(Ω σ)</sub> of ∞-categories.”
 
@@ -3939,15 +3939,15 @@
 
 ### Cofinal completion changes only components
 
-**Remember:** Adding missing summands can add components without changing higher homotopy.
+**Remember:** Every component can be topped up into A by adding something.
 
 *Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology), 19D23. arXiv math.KT, math.AT. Level 4: research.
 
-**Definition.** Let A ⊆ B be an inclusion of E∞-monoids that identifies A with a union of components of B (our own). It is cofinal if for every b ∈ π₀B there exists c ∈ π₀B with b+c ∈ π₀A (our own).
+**Definition.** An inclusion A ⊆ B of E∞-monoids onto a union of components is cofinal if every component of B can be added into A (our own). That is, for each b ∈ π₀B some c ∈ π₀B has b + c ∈ π₀A (our own).
 
 **Problem.** After group completion, a cofinal inclusion gives an injection on components and isomorphisms on all higher homotopy groups.
 
-**How the definition helps.** In our own explanation, the complement condition says exactly how addition can move any target component into the source. Lehner’s cofinality theorem proves the assertion about homotopy groups. For our own example, take finitely generated projective modules over a unital ring, with isomorphisms as paths and direct sum as addition. The free modules give a cofinal inclusion because every finitely generated projective module is a direct summand of a finite free module.
+**How the definition helps.** Each component of B lands in A after adding something, so group completion adds no new homotopy above degree zero (our own). Lehner's cofinality theorem proves this. For example, free modules are cofinal among finitely generated projective modules, since each projective is a summand of a free one (our own).
 
 **Paper or page:** [Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118). It says: “is injective in degree 0 and an isomorphism for i &gt; 0.”
 
@@ -3961,11 +3961,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology), 55P91. arXiv math.AT. Level 4: research.
 
-**Definition.** For a finite group G and a real G-representation V, an 𝔼ᵥ-algebra is a G-space with operations given by embeddings of V-framed G-disks. It is group-like at a subgroup H when the monoid of components of its H-fixed points is a group. The condition is asked only for subgroups H whose fixed space Vᴴ has dimension at least 1.
+**Definition.** For a finite group G and a real G-representation V, an 𝔼ᵥ-algebra is a G-space with multiplications given by embeddings of V-framed G-disks. When dim Vᴴ ≥ 1 its fixed points Aᴴ inherit a multiplication, and A is group-like at H if π₀(Aᴴ) is then a group (our own).
 
 **Problem.** An 𝔼ᵥ-algebra A is equivalent to a V-fold loop space exactly when Aᴴ is group-like for every subgroup H with dim Vᴴ ≥ 1. This holds for every V; earlier results needed a trivial summand in V.
 
-**How the definition helps.** The condition asks for group-like fixed points exactly where the fixed points carry a multiplication. The fixed points Aᴴ are algebras over the little-disks operad of dimension dim Vᴴ (our own summary of the abstract). Where Vᴴ is zero, there is no multiplication and no condition to ask (our own). The hard part is the equivariant approximation theorem for all V and all based G-spaces.
+**How the definition helps.** A loop space is group-like in each direction it can loop, so a V-fold loop space has group-like Aᴴ exactly where Vᴴ is nonzero (our own). Where Vᴴ is zero, Aᴴ has no multiplication and no condition is asked (our own). The hard part is the equivariant approximation theorem for all V and all based G-spaces.
 
 **Paper or page:** [A genuine equivariant recognition principle for finite groups](https://arxiv.org/abs/2508.04421). It says: “We prove that an 𝔼ᵥ-algebra is equivalent to a V-fold loop space if and only if Aᴴ is group-like for all H such that dim Vᴴ ≥ 1. This generalizes a result by Guillou and May”
 
@@ -3980,11 +3980,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** An Eₙ-monoid is a space with multiplication operations parametrized by configurations of little n-dimensional cubes. Its action category has points as objects. An arrow from x to y gives a multiplier k and a path from kx to y, with higher homotopies retained.
+**Definition.** An Eₙ-monoid is a space with multiplications parametrized by configurations of little n-cubes. Its action category has the points as objects. An arrow from x to y is a multiplier k with a path from kx to y, with higher homotopies kept.
 
 **Problem.** Let X be an Eₙ-monoid with n ≥ 2, and let Xᵍᵖ be its group completion. Then the loop space ΩXᵍᵖ is the colimit, in E₁-groups, of the automorphism groups Aut(x) over the action category.
 
-**How the definition helps.** In our own explanation, the action category specifies how to compare loops at different points. Multiply a loop at x by k and transport it along the chosen path to y. Lehner’s theorem identifies the universal group built from these comparisons with the loops on Xᵍᵖ.
+**How the definition helps.** Each arrow compares a loop at x with one at y: multiply by k, then transport along the path (our own). Lehner's theorem identifies the universal group built from these comparisons with ΩXᵍᵖ.
 
 **Paper or page:** [Group completion via the action ∞-category](https://arxiv.org/abs/2405.12118). It says: “There is a natural equivalence of E₁-groups ΩXᵍᵖ ≃ colimₓ∈𝐄𝐗 Aut(x) where the colimit is taken in the ∞-category of E₁-groups.”
 
@@ -3994,15 +3994,15 @@
 
 ### Transfer systems classify N∞ operads up to homotopy
 
-**Remember:** Order subgroups by allowed transfers, and keep that order under conjugation and restriction.
+**Remember:** Order subgroups by allowed transfers, closed under conjugation and restriction.
 
 *Makes the theorem clean to state or prove.* MSC 55P48 (Loop space machines and operads in algebraic topology), 55P91. arXiv math.AT. Level 4: research.
 
-**Definition.** A transfer system on the subgroups of a finite group G is a conjugation-invariant partial order ≼ refining inclusion (our own). Whenever K ≼ H and L ≤ H, it requires K ∩ L ≼ L (our own).
+**Definition.** A transfer system on a finite group G is a partial order ≼ on subgroups, read as allowed transfers, that refines inclusion and is conjugation invariant (our own). It is closed under restriction: K ≼ H and L ≤ H give K ∩ L ≼ L (our own).
 
 **Problem.** The homotopy category of G-N∞ operads is equivalent to the lattice of transfer systems on G.
 
-**How the definition helps.** The homotopy type of an N∞ operad depends only on which norms its algebras have, and the transfer system records exactly those norms. So the classification becomes a question about a finite lattice. The theorem is due to Blumberg and Hill and to Rubin. The hard part, that every transfer system comes from an operad, is due to Rubin and to others (our own).
+**How the definition helps.** Up to homotopy an N∞ operad is determined by which norms its algebras have, and a transfer system records exactly those norms (our own). Blumberg and Hill set up this comparison. The hard part, that every transfer system comes from an operad, is due to Rubin and to others (our own).
 
 **Paper or page:** [Transfer systems for rank two elementary Abelian groups: characteristic functions and matchstick games](https://arxiv.org/abs/2310.13835). It says: “There is a functor from the category of G-N∞ operads to (the category induced by) the lattice Tr(G) that induces an equivalence between the homotopy category of G-N∞ operads and Tr(G).”
 
@@ -4013,15 +4013,15 @@
 
 ### Defining invertibility with the K(n)-local smash product gives an algebraic test
 
-**Remember:** Find a partner whose localized smash with X is the localized sphere.
+**Remember:** Invertible: some partner smashes with X to the local sphere.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P60 (Localization and completion in homotopy theory), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a prime p and height n. A K(n)-local spectrum X is invertible if some K(n)-local Y satisfies L<sub>K</sub>(n)(X ∧ Y) ≃ L<sub>K</sub>(n)S (our own).
+**Definition.** Fix a prime p and height n. A K(n)-local spectrum X is invertible if it has an inverse for the K(n)-local smash product: some K(n)-local Y has L<sub>K</sub>(n)(X ∧ Y) ≃ L<sub>K</sub>(n)S (our own).
 
 **Problem.** A K(n)-local spectrum X is invertible exactly when its completed Morava E-theory is an invertible graded module over Eₙ\*. That theory is the homotopy of the K(n)-localization of Eₙ ∧ X.
 
-**How the definition helps.** The localized smash product defines the inverse on the spectrum side of the criterion (our own). The Hopkins–Mahowald–Sadofsky invertibility criterion detects that inverse using completed Morava E-homology (our own).
+**How the definition helps.** The definition uses the K(n)-local smash product, the product that completed Morava E-theory sees, so invertibility can be tested in E-theory (our own). The Hopkins–Mahowald–Sadofsky criterion shows the test works in both directions (our own).
 
 **Paper or page:** [Exotic Picard groups and chromatic vanishing via the Gross-Hopkins duality](https://arxiv.org/abs/2203.09455), [Exotic Picard groups and chromatic vanishing via the Gross-Hopkins duality](https://arxiv.org/abs/2203.09455). It says: “The followings are equivalent: X ∈ Sp<sub>K</sub>(h) is invertible. (Eₕ)\*(X) is an invertible graded (Eₕ)\*-module.”
 
@@ -4031,15 +4031,15 @@
 
 ### Finite localizations are smashing because their acyclics are built from compact spectra
 
-**Remember:** Maps out of finite spectra commute with sums, so finite localizations are smashing.
+**Remember:** Locality is tested by finite spectra, which commute with sums.
 
 *True by definition.* MSC 55P60 (Localization and completion in homotopy theory), 55Q51. arXiv math.AT. Level 4: research.
 
-**Definition.** For a set A of finite spectra, call Z local if \[ΣᵏF, Z\] = 0 for every F ∈ A and integer k (our own). Finite localization away from A sends each spectrum to its universal local target (our own).
+**Definition.** For a set A of finite spectra, call a spectrum Z local if no suspension of a member of A maps nontrivially to Z (our own). That is, \[ΣᵏF, Z\] = 0 for all F ∈ A and integers k. Finite localization away from A sends each spectrum to its universal local target (our own).
 
 **Problem.** Every finite localization is smashing, that is, smash product with the localized sphere, so it commutes with all homotopy colimits. In particular, finite localization away from the finite spectra on which K(0), …, K(n) vanish is smashing, where K(i) are the Morava K-theories.
 
-**How the definition helps.** Local spectra are defined by the vanishing of maps out of finite spectra, and maps out of a finite spectrum commute with infinite sums. So sums of local spectra are local, the localization preserves sums, and such a localization is smashing (our own outline). For localization at a homology theory, the acyclic spectra need not be built from finite spectra, and smashing can be deep. For Morava E-theory it is a theorem of Hopkins and Ravenel, and p-completion is not smashing at all.
+**How the definition helps.** Maps out of a finite spectrum commute with infinite sums, so sums of local spectra are local (our own outline). So the localization preserves sums and hence is smashing (our own outline). For a homology theory the acyclics need not come from finite spectra: p-completion is not smashing, and for Morava E-theory smashing is the deep Hopkins–Ravenel theorem.
 
 **nLab:** [smashing localization](https://ncatlab.org/nlab/show/smashing+localization). It says: “finite localizations" are smashing”
 
@@ -4053,11 +4053,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory), 55Q51. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a prime p and height n ≥ 1, and let Eₙ be Morava E-theory. A generalized Moore spectrum of type n here is a finite p-local spectrum M realizing a quotient Eₙ∗M ≅ Eₙ∗/J (our own). The homogeneous invariant ideal J contains a power of the maximal ideal and is proper (our own).
+**Definition.** For a prime p and height n ≥ 1, a generalized Moore spectrum of type n is a finite p-local spectrum M with Eₙ∗M ≅ Eₙ∗/J (our own). Here J is a proper homogeneous invariant ideal that contains a power of the maximal ideal (our own). M plays for K(n)-localization the role that S/pᵏ plays for p-completion (our own).
 
-**Problem.** Write Lₙ for localization at Eₙ. There is a tower of generalized Moore spectra Mⱼ of type n whose ideals intersect in zero. For every spectrum X, its K(n)-localization is the homotopy limit of LₙX ∧ Mⱼ.
+**Problem.** With Lₙ the localization at Eₙ, there is a tower of generalized Moore spectra Mⱼ of type n whose ideals intersect in zero. For every spectrum X, its K(n)-localization is the homotopy limit of LₙX ∧ Mⱼ.
 
-**How the definition helps.** With a tower of type n Moore spectra, K(n)-localization becomes a completion of Lₙ, as p-completion is the limit of the spectra X ∧ S/pᵏ. Each LₙX ∧ Mⱼ is K(n)-local, and the map from X to the limit is a K(n)-equivalence (our own summary). This turns many K(n)-local questions into questions about finite spectra of type n. The work moves into the Hovey–Strickland construction of the tower, with compatible multiplications.
+**How the definition helps.** A tower of such spectra with ideals shrinking to zero makes K(n)-localization a completion of Lₙ, as p-completion is a limit of X ∧ S/pᵏ. Each LₙX ∧ Mⱼ is K(n)-local, and the map from X to the limit is a K(n)-equivalence (our own summary). The tower, with compatible multiplications, is due to Hovey and Strickland.
 
 **Paper or page:** [The inverse limit topology and profinite descent on Picard groups in K(n)-local homotopy theory](https://arxiv.org/abs/2309.05039). It says: “Denote the Bousfield localization at the height n Morava E-theory Eₙ by Lₙ. For any spectrum X, we have a natural equivalence: L<sub>K</sub>(n)X ≃ holimⱼ(LₙX ∧ Mⱼ).”
 
@@ -4071,11 +4071,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P60 (Localization and completion in homotopy theory), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** A Moore spectrum SA for an abelian group A is a connective spectrum with integral homology A in degree zero and zero elsewhere (our own). An SA-acyclic spectrum Y satisfies SA ∧ Y ≃ 0. Localization at SA inverts exactly the maps with SA-acyclic cofiber (our own).
+**Definition.** A Moore spectrum SA of an abelian group A is a connective spectrum with integral homology A in degree zero and zero elsewhere (our own). Localization at SA inverts exactly the maps whose cofiber Y has SA ∧ Y ≃ 0, so it depends only on which spectra SA kills (our own).
 
 **Problem.** The localizations at SA₁ and SA₂ agree exactly when the same primes are invertible in A₁ and A₂ and both or neither are torsion. So each such localization is either localization at a subring of ℚ or completion at a set of primes.
 
-**How the definition helps.** Because the localization depends only on the acyclic spectra, two Moore spectra with the same acyclic spectra give the same localization, with no further check. Bousfield showed that the acyclic spectra of SA depend only on which primes are invertible in A and on whether A is torsion. So an infinite family of localizations collapses to two simple kinds. The work moves into that computation of acyclic spectra.
+**How the definition helps.** Because the localization depends only on the acyclic spectra, two Moore spectra with the same acyclics give the same localization. Bousfield showed that the acyclics of SA depend only on which primes are invertible in A and on whether A is torsion. The work is that computation of acyclic spectra.
 
 **nLab:** [Bousfield localization of spectra](https://ncatlab.org/nlab/show/Bousfield+localization+of+spectra). It says: “A₁ and A₂ have the same type of acyclicity, meaning that every prime number p is invertible in A₁ precisely if it is in A₂; A₁ is a torsion group precisely if A₂ is.”
 
@@ -4085,15 +4085,15 @@
 
 ### Enriched Lie models extend Sullivan theory to all connected spaces
 
-**Remember:** Remember the finite nilpotent quotients and recover the algebra as their inverse limit.
+**Remember:** The algebra is the inverse limit of finite nilpotent quotients.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P62 (Rational homotopy theory), 17B70. arXiv math.AT. Level 4: research.
 
-**Definition.** An enriched differential graded Lie algebra over ℚ carries a directed system of differential ideals ordered by reverse inclusion (our own). Their quotients are finite-dimensional nilpotent differential graded Lie algebras, and the canonical map to their inverse limit is an isomorphism (our own).
+**Definition.** An enriched differential graded Lie algebra over ℚ equals the inverse limit of its quotients by a directed system of differential ideals (our own). Each of these quotients is finite-dimensional and nilpotent (our own).
 
 **Problem.** Every connected space has a minimal enriched Lie model unique up to isomorphism. An algebraic process connects it to the minimal Sullivan model.
 
-**How the definition helps.** The inverse limit accommodates the completed Lie algebra needed in degree zero for connected spaces (our own). The enriched Lie minimal-model theorem gives existence, uniqueness up to isomorphism, and the comparison with Sullivan models.
+**How the definition helps.** An inverse limit of finite-dimensional nilpotent quotients can hold the completed Lie algebra that a connected space needs in degree zero, whatever its fundamental group (our own). The enriched Lie minimal-model theorem gives existence, uniqueness up to isomorphism, and the comparison with Sullivan models.
 
 **Paper or page:** [Enriched Differential Lie Algebras in Topology](https://arxiv.org/abs/2208.12171). It says: “Each connected space has a unique minimal edgl model, and an algebraic process connects this to the minimal Sullivan model.”
 
@@ -4107,11 +4107,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 19A22. arXiv math.AT. Level 4: research.
 
-**Definition.** For H ≤ G, restrict a genuine G-spectrum to H and kill cells induced from proper subgroups (our own). Taking derived H-fixed points then gives its geometric H-fixed points, with residual N<sub>G</sub>(H)/H-action (our own).
+**Definition.** To form the geometric H-fixed points ΦᴴX of a genuine G-spectrum X, restrict to H, kill cells induced from proper subgroups, and take derived H-fixed points (our own). They carry a residual action of the Weyl group W(H) = N<sub>G</sub>(H)/H (our own).
 
-**Problem.** Suppose p does not divide the order of G. Take the functors Φᴴ, one for each conjugacy class of subgroups H. Together they make p-local G-spectra equivalent, as a symmetric monoidal homotopy category, to the product of p-local spectra with a W(H)-action.
+**Problem.** If p does not divide the order of G, the functors Φᴴ, one per conjugacy class of subgroups H, together give a symmetric monoidal equivalence of homotopy categories. It goes from p-local G-spectra to the product over H of p-local spectra with a W(H)-action.
 
-**How the definition helps.** Inverting the group order splits the Burnside ring into idempotents indexed by conjugacy classes of subgroups (our own). The geometric fixed-point splitting theorem identifies each idempotent summand with spectra carrying the corresponding Weyl action (our own).
+**How the definition helps.** Inverting the group order splits the Burnside ring into idempotents, one per conjugacy class of subgroups, and these split every p-local G-spectrum (our own). On the summand for H, Φᴴ is an equivalence onto spectra with a W(H)-action (our own).
 
 **nLab:** [tom Dieck splitting](https://ncatlab.org/nlab/show/tom+Dieck+splitting). It says: “For G finite and for rational equivariant stable homotopy theory this becomes”
 
@@ -4127,11 +4127,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 19A22, 55Q55. arXiv math.AT. Level 4: research.
 
-**Definition.** The Burnside ring A(G) of a finite group G has an augmentation to ℤ that sends a G-set to its number of elements. Its kernel I is the augmentation ideal. The completion of A(G) is the inverse limit of the rings A(G)/Iⁿ.
+**Definition.** The Burnside ring A(G) of a finite group G has an augmentation ideal I, the kernel of the map to ℤ that counts the elements of a G-set. Its I-adic completion is the inverse limit of the rings A(G)/Iⁿ.
 
 **Problem.** Let G be a finite group, and add a disjoint base point to BG. The inverse limit over skeleta of its stable cohomotopy in degree zero is the I-adic completion of A(G) (Carlsson).
 
-**How the definition helps.** Completion records the augmentation ideal to every order. For C₂ its powers satisfy I² = 2I, giving a 2-adic summand as required by Lin’s calculation (our own). Carlsson’s proof of the Segal conjecture identifies the completion for every finite G (our own).
+**How the definition helps.** The ideal I acts nilpotently on the stable cohomotopy of each finite skeleton of BG, so the limit sees at most the I-adic completion (our own). Carlsson's proof of the Segal conjecture shows that it sees exactly the completion (our own). For C₂, I² = 2I, so completion gives a 2-adic summand, matching Lin's calculation (our own).
 
 **Wikipedia:** [Segal's conjecture](https://en.wikipedia.org/wiki/Segal%27s_conjecture). It says: “On the right-hand side, the hat denotes the completion of the Burnside ring with respect to its augmentation ideal.”
 
@@ -4142,15 +4142,15 @@
 
 ### Equivariant suspensions give group completions
 
-**Remember:** Free algebra then completion is the same free object among loops.
+**Remember:** Free algebra, then inverses, equals loops on the suspension.
 
 *True by definition.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P48. arXiv math.AT. Level 4: research.
 
-**Definition.** Let V be a real representation of a finite group G. A little V-disks algebra A is grouplike if π₀(Aᴴ) is a group whenever dim(Vᴴ) ≥ 1 (our own). Group completion is the universal map to a grouplike little V-disks algebra (our own).
+**Definition.** Let V be a real representation of a finite group G. A little V-disks algebra A is grouplike if π₀(Aᴴ) is a group whenever dim Vᴴ ≥ 1 (our own). Group completion is the universal map to a grouplike algebra (our own).
 
-**Problem.** For any based G-space X, the group completion of the free little V-disks algebra on X is equivalent to ΩⱽΣⱽX. Suspension takes the smash product with the one-point compactification of V. Looping takes based maps from that same sphere.
+**Problem.** For any based G-space X, the group completion of the free little V-disks algebra on X is equivalent to ΩⱽΣⱽX. Here Σⱽ smashes with the one-point compactification Sⱽ of V, and Ωⱽ takes based maps from Sⱽ.
 
-**How the definition helps.** In our own argument, freely adjoining operations and then freely adjoining inverses gives the free grouplike algebra on X. Juran’s recognition theorem identifies grouplike algebras with the appropriate based G-spaces via V-fold looping. Under that equivalence, the suspension and looping adjunction gives ΩⱽΣⱽX the same universal property. Recognition supplies the comparison needed to identify the two constructions.
+**How the definition helps.** Both sides are the free grouplike algebra on X (our own). Freely adding operations and then inverses gives the left side this property. Juran's recognition theorem and the suspension–loop adjunction give ΩⱽΣⱽX the same universal property (our own).
 
 **Paper or page:** [A genuine equivariant recognition principle for finite groups](https://arxiv.org/abs/2508.04421). It says: “exhibits the target as the group completion of the source.”
 
@@ -4160,15 +4160,15 @@
 
 ### Genuine Cₚ-spectra are Borel spectra glued to geometric fixed points through Tate
 
-**Remember:** Tate is the cofiber of the norm from orbits to fixed points.
+**Remember:** Free part plus geometric fixed points, glued along a map to Tate.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** Let Cₚ be the cyclic group of order p. A genuine Cₚ-spectrum has an underlying spectrum X with a Cₚ-action, called its Borel part, and it has geometric fixed points Φ. The Tate spectrum of X is the cofibre of the norm map from homotopy orbits to homotopy fixed points.
+**Definition.** Let Cₚ be the cyclic group of order p. A genuine Cₚ-spectrum has two parts: its underlying spectrum X with a Cₚ-action, and its geometric fixed points Φ. The Tate spectrum of X, the cofibre of the norm from homotopy orbits to homotopy fixed points, is where the two parts are glued (our own).
 
-**Problem.** Genuine Cₚ-spectra are equivalent to triples. A triple is a spectrum X with a Cₚ-action, a spectrum Φ, and a map from Φ to the Tate spectrum of X. The genuine fixed points are the pullback of Φ and the homotopy fixed points of X over the Tate spectrum.
+**Problem.** Genuine Cₚ-spectra are equivalent to triples: a spectrum X with a Cₚ-action, a spectrum Φ, and a map from Φ to the Tate spectrum of X. The genuine fixed points are the pullback of Φ and the homotopy fixed points of X over the Tate spectrum.
 
-**How the definition helps.** Cₚ has only two orbit types, so the isotropy separation sequence cuts a genuine spectrum into its free part and its geometric fixed points. The Tate spectrum records how the two parts are glued (our own summary). So the gluing data is one map from Φ to the Tate spectrum of X. The work went into proving that this gluing recovers the genuine category.
+**How the definition helps.** Cₚ has only two orbit types, so isotropy separation cuts a genuine spectrum into its free part and Φ (our own summary). The two parts meet in the Tate spectrum, so the gluing is one map from Φ to the Tate spectrum of X (our own summary). The work went into proving that this gluing recovers the genuine category.
 
 **nLab:** [G-spectrum](https://ncatlab.org/nlab/show/G-spectrum). It says: “genuine G-spectra admit a simple model which amounts to specifying a spectrum E, a G-action on E, a genuine fixed point spectrum Eᴳ, and a diagram E<sub>hG</sub> → Eᴳ → Eʰᴳ.”
 
@@ -4178,15 +4178,15 @@
 
 ### Genuine fixed points of a suspension G-spectrum split over conjugacy classes
 
-**Remember:** One summand per orbit type, built from fixed points and Weyl groups.
+**Remember:** Index on every representation, and every orbit gets a transfer.
 
 *Makes the theorem clean to state or prove.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** For a finite group G, a genuine G-spectrum is indexed on all representations of G, so every representation sphere has an inverse. Its fixed point spectrum is the derived functor of taking G-fixed points. For a subgroup H, the Weyl group is W(H) = N(H)/H, where N(H) is the normalizer.
+**Definition.** A genuine G-spectrum, for a finite group G, is indexed on all representations, so every representation sphere is invertible (our own). This gives a transfer for every orbit G/H (our own). Its fixed point spectrum is the derived G-fixed points, and the Weyl group of H is W(H) = N(H)/H.
 
-**Problem.** Let G be finite and X a based G-space. The fixed point spectrum of the suspension G-spectrum of X is a wedge over conjugacy classes of subgroups H. The summand for H is the suspension spectrum of the homotopy orbits of Xᴴ under W(H).
+**Problem.** For finite G and a based G-space X, the fixed point spectrum of the suspension G-spectrum of X is a wedge over conjugacy classes of subgroups H. The summand for H is the suspension spectrum of the homotopy orbits of Xᴴ under W(H).
 
-**How the definition helps.** Stabilizing over all representations supplies transfers for every orbit type (our own). The tom Dieck splitting theorem identifies each corresponding summand with the suspension spectrum of the Weyl homotopy orbits.
+**How the definition helps.** Each conjugacy class of subgroups H contributes a summand through its transfer, built from Xᴴ and its residual W(H)-action (our own). The tom Dieck splitting theorem identifies that summand with the suspension spectrum of the homotopy orbits of Xᴴ under W(H).
 
 **nLab:** [tom Dieck splitting](https://ncatlab.org/nlab/show/tom+Dieck+splitting). It says: “The tom Dieck splitting (tom Dieck 75, Lewis-May-Steinberger 86, V.11) gives an explicit description of all the wedge summands appearing in fixed point spectra of equivariant suspension spectra.”
 
@@ -4201,11 +4201,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 19A22. arXiv math.AT. Level 4: research.
 
-**Definition.** For a finite group G, the Burnside ring A(G) is the group completion of finite G-set isomorphism classes under disjoint union (our own). Cartesian product gives its multiplication, and the orbits G/H give an additive basis indexed by conjugacy classes of H (our own).
+**Definition.** The Burnside ring A(G) of a finite group G is the group completion of isomorphism classes of finite G-sets under disjoint union, with product from cartesian product (our own). A G-set is determined by its marks, the numbers of points fixed by each subgroup (our own).
 
 **Problem.** For every finite group G, the zeroth G-equivariant stable homotopy group of the genuine sphere spectrum is isomorphic to A(G) (Segal).
 
-**How the definition helps.** A stable equivariant self-map of a sphere has a degree on the fixed sphere for each subgroup (our own). These degrees correspond to the fixed-point counts of finite G-sets under Segal’s isomorphism (our own). Segal’s theorem identifies the integral ring, including the relations among those counts (our own).
+**How the definition helps.** A stable self-map of the G-sphere has a degree on each fixed sphere, just as a G-set has one mark per subgroup (our own). Segal's theorem shows that these degrees satisfy exactly the relations among marks, so the group is A(G) (our own).
 
 **nLab:** [equivariant stable cohomotopy](https://ncatlab.org/nlab/show/equivariant+stable+cohomotopy), [Burnside ring](https://ncatlab.org/nlab/show/Burnside+ring). It says: “Let G be a finite group, then its Burnside ring A(G) is isomorphic to the equivariant stable cohomotopy cohomology ring 𝕊<sub>G</sub>(∗) of the point in degree 0.”
 
@@ -4223,7 +4223,7 @@
 
 **Problem.** Take an element of the stable homotopy groups of the G-sphere, graded by representations of G. It is nilpotent exactly when its underlying image and its geometric fixed point image are both nilpotent.
 
-**How the definition helps.** Geometric fixed points preserve smash products and colimits, so they preserve the telescope that inverts α (our own). This telescope vanishes exactly when some power of α vanishes (our own). Isotropy separation detects vanishing from the underlying and geometric fixed-point spectra together (our own).
+**How the definition helps.** An element α is nilpotent exactly when the telescope that inverts α vanishes (our own). Both functors preserve smash products and colimits, so they carry this telescope to the telescopes of the images, and together they detect its vanishing (our own).
 
 **Paper or page:** [The reduced ring of the RO(C₂)-graded C₂-equivariant stable stems](https://arxiv.org/abs/2211.04611). It says: “An element α ∈ π\_⋆<sup>C₂</sup> is nilpotent if and only if both its geometric fixed points Φ<sup>C₂</sup>(α) ∈ π\_\*<sup>s</sup> and its underlying non-equivariant map Φ<sup>e</sup>(α) ∈ π\_\*<sup>s</sup> are nilpotent.”
 
@@ -4237,11 +4237,11 @@
 
 *True by definition.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** For finite G, let ẼP be the cofiber of EP₊ → S⁰ for the family P of proper subgroups (our own). Define ΦᴳX as the derived categorical fixed points of ẼP ∧ X (our own).
+**Definition.** For finite G, ΦᴳX is formed by killing all cells of X with proper isotropy, by smashing with ẼP, and then taking derived categorical fixed points (our own). Here ẼP is the cofiber of EP₊ → S⁰ for the family P of proper subgroups (our own).
 
 **Problem.** For every based G-space A, geometric fixed points of its derived suspension G-spectrum give the suspension spectrum of Aᴳ. Geometric fixed points are symmetric monoidal, while categorical fixed points of the sphere have π₀ equal to A(G).
 
-**How the definition helps.** The geometric fixed-point construction kills suspension cells with proper isotropy and sends G-fixed suspension cells to ordinary suspension cells (our own). Its derived strong monoidal comparison gives the smash product formula. For the genuine sphere, categorical fixed points have π₀ equal to A(G) (our own).
+**How the definition helps.** Smashing with ẼP kills suspension cells with proper isotropy, and the remaining G-fixed cells become ordinary suspension cells of Aᴳ (our own). The functor is strong monoidal after deriving, which gives the smash product formula. Categorical fixed points instead keep the transfers, so for the sphere their π₀ is A(G) (our own).
 
 **nLab:** [geometric fixed point spectrum](https://ncatlab.org/nlab/show/geometric+fixed+point+spectrum). It says: “The construction of geometric fixed point spectra is essentially uniquely characterized by the property Φᴳ(Σ∞<sub>G</sub> X) ≃ Σ∞(Xᴳ) and the property of being left derived strong monoidal and preserving homotopy colimits.”
 
@@ -4251,15 +4251,15 @@
 
 ### Homotopy fixed points defined by Kan extension compose in stages
 
-**Remember:** Factoring the map to a point lets us take fixed points twice.
+**Remember:** A limit over BG can be taken in two stages.
 
 *True by definition. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 18N60. arXiv math.AT. Level 4: research.
 
-**Definition.** A coherent G-action on a space X is a functor from the one-object groupoid BG to spaces with value X (our own). Its homotopy fixed points are the limit of this functor.
+**Definition.** A coherent G-action on a space X is a functor from BG, the one-object groupoid with automorphisms G, to spaces with value X (our own). Its homotopy fixed points are the limit of this functor, that is, the right Kan extension along BG → ∗.
 
 **Problem.** Let H be a normal subgroup of G. The H-homotopy fixed points inherit a coherent G/H-action, whose homotopy fixed points are the G-homotopy fixed points of X.
 
-**How the definition helps.** Right Kan extensions compose along BG → B(G/H) → ∗ (our own). The first extension has value Xʰᴴ because the homotopy fiber is BH, and it supplies the quotient action (our own). Its limit therefore gives Xʰᴳ (our own).
+**How the definition helps.** Kan extensions compose, so the limit along BG → ∗ is the extension along BG → B(G/H) followed by the limit along B(G/H) → ∗ (our own). The first stage has value Xʰᴴ, since the fibre of BG → B(G/H) is BH, and it carries the G/H-action (our own).
 
 **nLab:** [homotopy fixed point](https://ncatlab.org/nlab/show/homotopy+fixed+point). It says: “Generally, for G an ∞-group and X equipped with an ∞-action, then the homotopy fixed points is the base change along/dependent product over the delooping 𝐁G”
 
@@ -4271,11 +4271,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55S10. arXiv math.AT. Level 4: research.
 
-**Definition.** For a group G, choose a free contractible G-CW complex EG. The homotopy fixed points of a G-space X form the space of equivariant maps EG → X.
+**Definition.** For a group G, choose a free contractible G-CW complex EG. The homotopy fixed points Xʰᴳ are the space of equivariant maps EG → X. Each actual fixed point gives a constant map, so Xᴳ maps to Xʰᴳ (our own).
 
 **Problem.** For a finite p-group G acting on a finite G-CW complex X, the natural map (Xᴳ)ₚ<sup>∧</sup> → (Xₚ<sup>∧</sup>)ʰᴳ is a weak equivalence.
 
-**How the definition helps.** The map EG → ∗ turns each fixed point into a constant equivariant map (our own). Applying p-completion gives the comparison in the generalized Sullivan conjecture, proved by Dwyer–Miller–Neisendorfer, Carlsson, and Lannes (our own).
+**How the definition helps.** The definition gives the fixed points a homotopy-invariant target, so the comparison (Xᴳ)ₚ<sup>∧</sup> → (Xₚ<sup>∧</sup>)ʰᴳ makes sense (our own). That it is an equivalence is the generalized Sullivan conjecture, proved by Dwyer–Miller–Neisendorfer, Carlsson and Lannes (our own).
 
 **Wikipedia:** [Sullivan conjecture](https://en.wikipedia.org/wiki/Sullivan_conjecture). It says: “showing that the natural map (Xᴳ)ₚ → F(EG, (X)ₚ)ᴳ is a weak equivalence when the order of G is a power of a prime p”
 
@@ -4291,11 +4291,11 @@
 
 *Rules out counterexamples.* MSC 55P91 (Equivariant homotopy theory in algebraic topology). arXiv math.AT. Level 4: research.
 
-**Definition.** A spectrum X is bounded below if there exists an integer N such that πₖX = 0 for every k &lt; N (our own).
+**Definition.** A spectrum X is bounded below if its homotopy groups vanish below some degree N: πₖX = 0 for every k &lt; N (our own).
 
-**Problem.** Let a cyclic group of order p² act on a bounded-below spectrum, where p is prime. Take homotopy orbits under the subgroup of order p, then take the Tate spectrum for the quotient group. The result vanishes.
+**Problem.** Let a cyclic group of order p², for a prime p, act on a bounded-below spectrum. Taking homotopy orbits under the subgroup of order p, and then the Tate spectrum for the quotient group, gives zero.
 
-**How the definition helps.** The lower bound excludes periodic complex K-theory, whose even homotopy groups are nonzero in arbitrarily negative degrees (our own). Nikolaus and Scholze prove vanishing under the lower bound in their Tate orbit lemma (our own). They also calculate that periodic complex K-theory with trivial action fails the lemma at every prime (our own).
+**How the definition helps.** The lower bound excludes periodic complex K-theory, whose homotopy is nonzero in arbitrarily negative degrees (our own). With trivial action, that spectrum fails the vanishing at every prime (our own). Under the bound, vanishing is Nikolaus and Scholze's Tate orbit lemma (our own).
 
 **nLab:** [Tate spectrum](https://ncatlab.org/nlab/show/Tate+spectrum). It says: “the homotopy cofiber Xᵗᴳ of the norm map is called the Tate construction”
 
@@ -4309,11 +4309,11 @@
 
 *Rules out counterexamples.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P43. arXiv math.AT. Level 4: research.
 
-**Definition.** For every positive integer m, let Cₘ act on the m-fold smash power of X by cyclically permuting its factors (our own). Define its Tate power as the cofiber of the norm from homotopy orbits to homotopy fixed points (our own).
+**Definition.** For each positive integer m, let Cₘ permute the factors of the m-fold smash power of X (our own). The Tate power of X is its Tate spectrum, the cofiber of the norm from homotopy orbits to homotopy fixed points (our own). For a sum X ∨ Y, the smash power splits into words of length m in X and Y, which Cₘ rotates (our own).
 
 **Problem.** For prime m this operation preserves finite direct sums. For m = 4 it fails even on the sum of two sphere spectra, the units for the smash product.
 
-**How the definition helps.** At prime length, each nonconstant word in the summands has a free rotation orbit (our own). Free orbits give induced spectra with vanishing Tate construction, leaving just the constant words (our own). At length four the alternating word has stabilizer C₂, so its orbit contributes the C₂-Tate sphere (our own). The Segal conjecture for C₂ implies this contribution is nonzero (our own).
+**How the definition helps.** For prime m, every nonconstant word has a free rotation orbit, and free orbits have zero Tate construction, so only the two constant words remain (our own). For m = 4 the word XYXY has stabilizer C₂, so it contributes a C₂-Tate sphere (our own). The Segal conjecture for C₂ shows that this sphere is nonzero (our own).
 
 **nLab:** [Tate spectrum](https://ncatlab.org/nlab/show/Tate+spectrum). It says: “Tate spectra for cyclic groups play a role in the characterization of cyclotomic spectra.”
 
@@ -4327,11 +4327,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** For a normal subgroup N of a finite group G, let 𝓕\[N\] be the family of subgroups that do not contain N. Let Ẽ𝓕\[N\] be the based G-space whose H-fixed points are S⁰ when H contains N and a point otherwise. Its suspension spectrum is an idempotent ring: smashing it with itself gives it back.
+**Definition.** For a normal subgroup N of a finite group G, let Ẽ𝓕\[N\] be the based G-space whose H-fixed points are S⁰ when H contains N and a point otherwise. Here 𝓕\[N\] is the family of subgroups that do not contain N. Its suspension spectrum is an idempotent ring: smashing it with itself gives it back.
 
 **Problem.** Localizing G-spectra at the maps that become equivalences after smashing with Ẽ𝓕\[N\] is a smashing localization, and the local G-spectra are equivalent to G/N-spectra. Under this equivalence, the geometric fixed points for N become extension of scalars along the unit map of this idempotent ring.
 
-**How the definition helps.** Because the ring is idempotent, its modules are exactly the local objects, and base change to it is just smashing. So the geometric fixed point functor for N is automatically symmetric monoidal and preserves colimits (our own summary). The work went into identifying the local G-spectra with G/N-spectra, done by Lewis, May and Steinberger.
+**How the definition helps.** Because the ring is idempotent, its modules are exactly the local objects, and base change to it is just smashing with it. So the geometric fixed points for N are symmetric monoidal and preserve colimits (our own summary). The identification of the local G-spectra with G/N-spectra is due to Lewis, May and Steinberger.
 
 **nLab:** [geometric fixed point spectrum](https://ncatlab.org/nlab/show/geometric+fixed+point+spectrum). It says: “is a smashing localization, given by smashing with the equivariant suspension spectrum of Ẽ𝓕\[N\]”
 
@@ -4344,15 +4344,15 @@
 
 ### The Tate construction states the Segal conjecture for Cₚ as p-completion
 
-**Remember:** Take the cofiber of the norm from homotopy orbits to homotopy fixed points.
+**Remember:** Tate measures how far the norm is from an equivalence.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55P91 (Equivariant homotopy theory in algebraic topology), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** Let a finite group G act on a spectrum X. Its Tate spectrum is the cofiber of the norm from homotopy orbits to homotopy fixed points (our own).
+**Definition.** Let a finite group G act on a spectrum X. Its Tate spectrum is the cofiber of the norm from homotopy orbits to homotopy fixed points, so it measures how far the norm is from an equivalence (our own).
 
 **Problem.** For the cyclic group Cₚ, the unit map from 𝕊 to the Cₚ-Tate spectrum of 𝕊 is a p-completion. This is Lin's theorem for p = 2 and Gunawardena's for odd p, and it is equivalent to the Segal conjecture for Cₚ.
 
-**How the definition helps.** The Tate construction packages the norm comparison into one spectrum (our own). The Tate pullback square for the genuine sphere relates its unit map to the Segal conjecture for Cₚ (our own). Lin and Gunawardena compute this map at two and at odd primes, respectively (our own).
+**How the definition helps.** The Cₚ-fixed points of the genuine sphere are the pullback of the geometric fixed points 𝕊 and the homotopy fixed points 𝕊ʰᶜᵖ over 𝕊ᵗᶜᵖ (our own). So the Segal conjecture for Cₚ becomes a statement about the map 𝕊 → 𝕊ᵗᶜᵖ (our own). Lin and Gunawardena compute that this map is p-completion, for p = 2 and for odd p (our own).
 
 **nLab:** [Tate spectrum](https://ncatlab.org/nlab/show/Tate+spectrum). It says: “then the homotopy cofiber Xᵗᴳ of the norm map is called the Tate construction”
 
@@ -4369,11 +4369,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q45 (Stable homotopy of spheres), 55Q50. arXiv math.AT. Level 4: research.
 
-**Definition.** Represent an odd stable stem class by f from S²ⁿ⁺²ᵐ⁻¹ to S²ⁿ with n and m positive (our own). Reduced complex K-theory of its cone extends K̃⁰(S²ⁿ) by K̃⁰(S²ⁿ⁺²ᵐ), with Adams operations (our own). The complex e-invariant is the image of this extension class under Adams’s identification in ℚ/ℤ (our own).
+**Definition.** Represent an odd stable stem class by f from S²ⁿ⁺²ᵐ⁻¹ to S²ⁿ, with n and m positive (our own). Its mapping cone has K-theory extending K̃⁰(S²ⁿ) by K̃⁰(S²ⁿ⁺²ᵐ), compatibly with Adams operations (our own). The e-invariant is this extension class, read in ℚ/ℤ by Adams's identification (our own).
 
 **Problem.** The e-invariant is a homomorphism from the odd stable stems to ℚ/ℤ, injective on the image of the J-homomorphism at odd primes. So at an odd prime each odd stem is the direct sum of the image of J and the kernel of e.
 
-**How the definition helps.** Defining e(f) as an extension class makes it additive at once, because sums of maps give Baer sums of extensions (our own remark). The extension splits as abelian groups, so only the Adams operations carry information. The splitting off of the image of J needs Adams's computation of e on that image and the Adams conjecture, proved by Quillen and Sullivan. At the prime 2 one needs a real K-theory version of e.
+**How the definition helps.** Defining e(f) as an extension class makes it additive at once, because sums of maps give Baer sums of extensions (our own remark). The extension splits as abelian groups, so only the Adams operations carry information. Splitting off the image of J needs Adams's computation of e on it and the Adams conjecture, proved by Quillen and Sullivan.
 
 **nLab:** [Adams e-invariant](https://ncatlab.org/nlab/show/Adams+e-invariant). It says: “Thus this short exact sequence defines an element in the Ext group formed in this category”
 
@@ -4385,15 +4385,15 @@
 
 ### Localizing the sphere at K-theory makes image-of-J orders zeta denominators
 
-**Remember:** Localize the sphere by making every KU-acyclic spectrum map trivially into it.
+**Remember:** At odd p, the p-complete KU-local sphere is KU's ψᵍ-fixed points.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q45 (Stable homotopy of spheres), 55P60, 55Q50. arXiv math.AT, math.NT. Level 4: research.
 
-**Definition.** The KU-local sphere is the universal KU-local target of the sphere spectrum (our own). A spectrum Z is KU-local if every map Y → Z is null whenever KU ∧ Y ≃ 0 (our own).
+**Definition.** The KU-local sphere is the universal map from the sphere spectrum to a KU-local spectrum (our own). A spectrum is KU-local if it receives only null maps from spectra Y with KU ∧ Y ≃ 0 (our own). At an odd prime p, its p-completion is the fibre of ψᵍ − 1 on p-complete KU, for g generating ℤₚ<sup>×</sup> topologically (our own).
 
 **Problem.** For each n ≥ 1, π₂ₙ₋₁ of the KU-local sphere has order the denominator of ζ(1 − n), up to a power of 2. Away from 2, they are the image of the J-homomorphism, which maps homotopy of the orthogonal group to stable homotopy of spheres.
 
-**How the definition helps.** The fibre description makes each odd-degree group of the p-completion a cokernel of an explicit map on ℤₚ, the p-adic integers (our own outline). In degree 2n − 1 the group is ℤₚ modulo gⁿ − 1, which is zero unless p − 1 divides n. Otherwise its order is p times the p-part of n, the p-part of the denominator of ζ(1 − n) = −Bₙ/n (our own remark). The work moves into identifying the p-completion as this fibre, and into Quillen's proof of the Adams conjecture.
+**How the definition helps.** So π₂ₙ₋₁ of the p-completion is the cokernel of gⁿ − 1 on ℤₚ, which is zero unless p − 1 divides n (our own outline). Otherwise its order is p times the p-part of n, the p-part of the denominator of ζ(1 − n) = −Bₙ/n (our own remark). The fibre description and its link to the image of J rest on Adams operations and on Quillen's proof of the Adams conjecture.
 
 **Paper or page:** [Denominators of special values of zeta-functions count KU-local homotopy groups of mod p Moore spectra](https://arxiv.org/abs/2303.09550). It says: “the order \#(π₂ₙ(L<sub>KU</sub> S)) of the 2nth stable homotopy group π₂ₙ(L<sub>KU</sub> S) is a power of 2, and \#(π₂ₙ₋₁(L<sub>KU</sub> S)) = denom(ζ(1−n)) up to multiplication by a power of 2”
 
@@ -4407,11 +4407,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 18G80. arXiv math.AT. Level 4: research.
 
-**Definition.** In an essentially small tensor triangulated category, a prime P is a proper thick tensor ideal satisfying the following condition (our own). For every X,Y with X ⊗ Y ∈ P, either X ∈ P or Y ∈ P (our own). Such primes form the Balmer spectrum, whose closed sets are generated by supports {P ∣ X ∉ P} (our own).
+**Definition.** A prime in an essentially small tensor triangulated category is a proper thick tensor ideal P that contains a factor of each product it contains (our own). That is, X ⊗ Y ∈ P forces X ∈ P or Y ∈ P (our own). The primes form the Balmer spectrum, with closed sets generated by the supports {P ∣ X ∉ P} (our own).
 
 **Problem.** The Balmer spectrum of finite p-local spectra is a chain of points, the subcategories of type at least n for 1 ≤ n ≤ ∞. The closure of each point is the set of points with larger n.
 
-**How the definition helps.** Balmer's theorem matches radical thick tensor ideals with suitable subsets of the spectrum, so a classification of ideals becomes a computation of a space. For finite spectra every thick subcategory is an ideal. The kernel of each K(n)\* is prime because of the Künneth formula for K(n) (our own outline). The work moves to the thick subcategory theorem itself.
+**How the definition helps.** Balmer's theorem matches radical thick tensor ideals with suitable subsets of the spectrum, so classifying ideals becomes computing a space. For finite p-local spectra the thick subcategory theorem lists the ideals, and each kernel of K(n)\* is prime by the Künneth formula for K(n) (our own outline).
 
 **nLab:** [prime spectrum of a symmetric monoidal stable (∞,1)-category](https://ncatlab.org/nlab/show/prime+spectrum+of+a+symmetric+monoidal+stable+%28%E2%88%9E%2C1%29-category). It says: “The prime spectrum of the (∞,1)-category of spectra (p-local and finite) is labeled by the Morava K-theories (Balmer 10, prop. 9.4). This follows from the the thick subcategory theorem.”
 
@@ -4427,11 +4427,11 @@
 
 *True by definition.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** A Bousfield localization L is smashing if LX ≃ X ∧ LS for every spectrum X, where S is the sphere spectrum. Lₙ denotes localization with respect to the Johnson–Wilson theory E(n).
+**Definition.** A Bousfield localization L is smashing if it is smashing with the localized sphere: LX ≃ X ∧ LS for every spectrum X. Lₙ is localization at Johnson–Wilson theory E(n).
 
 **Problem.** Lₙ preserves all homotopy colimits, and Lₙ(X ∧ Y) ≃ LₙX ∧ Y for all spectra X and Y. A spectrum is E(n)-local exactly when it is a module over LₙS up to homotopy.
 
-**How the definition helps.** Once L is smashing, each claim is the formula LX ≃ X ∧ LS together with the fact that X ∧ − preserves colimits. Local objects are then retracts of LS ∧ X, and LS ∧ LS ≃ LS makes LS an idempotent ring. For a general Bousfield localization, defined only by its local objects, these formulas fail, for example for p-completion. The work moves to the Hopkins–Ravenel smash product theorem, which proves that Lₙ is smashing.
+**How the definition helps.** Once Lₙ is smashing, each claim follows from LX ≃ X ∧ LS, because X ∧ − preserves colimits. Also LS ∧ LS ≃ LS makes LS an idempotent ring, whose modules are the local objects; p-completion, which is not smashing, fails these formulas. That Lₙ is smashing is the Hopkins–Ravenel smash product theorem.
 
 **nLab:** [smashing localization](https://ncatlab.org/nlab/show/smashing+localization). It says: “Localization with respect to Morava E-theory is smashing (Hopkins-Ravenel).”
 
@@ -4441,15 +4441,15 @@
 
 ### Bousfield classes split E(n)-localization into a K(n) piece and a lower piece
 
-**Remember:** Height n is height n − 1 glued to the K(n)-local part.
+**Remember:** An E(n)-equivalence is an E(n−1)-equivalence that is also a K(n)-equivalence.
 
 *True by definition. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** For a spectrum E, E-localization universally inverts maps f such that E ∧ f is an equivalence (our own). Write Lₙ for localization at Johnson–Wilson E(n) and L<sub>K</sub>(n) for localization at Morava K(n) (our own).
+**Definition.** E-localization universally inverts the maps f with E ∧ f an equivalence; Lₙ localizes at Johnson–Wilson E(n) and L<sub>K</sub>(n) at Morava K(n) (our own). E(n) has the Bousfield class of E(n−1) ∨ K(n) (our own). So a map is an E(n)-equivalence exactly when it is both an E(n−1)- and a K(n)-equivalence (our own).
 
 **Problem.** For n ≥ 1 and every spectrum X, LₙX is the homotopy pullback of Lₙ₋₁X → Lₙ₋₁L<sub>K</sub>(n)X ← L<sub>K</sub>(n)X.
 
-**How the definition helps.** Ravenel’s Bousfield class calculation detects E(n)-equivalences jointly by E(n−1) and K(n) (our own). Smashing localization at E(n−1) and chromatic orthogonality give K(n) ∧ Lₙ₋₁Y ≃ 0 for every Y (our own). Applying these two equivalence tests to the pullback comparison proves the fracture formula (our own).
+**How the definition helps.** By that Bousfield class identity, it suffices to check the pullback comparison after smashing with E(n−1) and with K(n) (our own). After K(n), the Lₙ₋₁ corners vanish, because Lₙ₋₁ is smashing and K(n) ∧ Lₙ₋₁S ≃ 0 (our own). After E(n−1), the map L<sub>K</sub>(n)X → Lₙ₋₁L<sub>K</sub>(n)X becomes an equivalence, so the square is a pullback (our own).
 
 **nLab:** [smash product theorem](https://ncatlab.org/nlab/show/smash+product+theorem). It says: “For X a homotopy type/spectrum and for all n, there is a homotopy pullback”
 
@@ -4460,15 +4460,15 @@
 
 ### Chromatic convergence needs finite spectra, which excludes mod p homology
 
-**Remember:** Finite spectra are the limit of their chromatic towers; H𝔽ₚ is invisible.
+**Remember:** Finite spectra are seen by finite heights; H𝔽ₚ by none.
 
 *Rules out counterexamples.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** A finite p-local spectrum is a retract of a spectrum built from finitely many shifted p-local sphere cells (our own). Its chromatic tower is the sequence of localizations LₙX at Johnson–Wilson E(n), with maps from height n+1 to n (our own).
+**Definition.** A finite p-local spectrum is one built, up to retracts, from finitely many shifted p-local sphere cells (our own). Its chromatic tower is the sequence of localizations LₙX at Johnson–Wilson E(n), which see only heights up to n, with maps from height n+1 to n (our own).
 
 **Problem.** For every finite p-local spectrum X, the homotopy limit of its chromatic tower is X. The Eilenberg–MacLane spectrum H𝔽ₚ, which is not finite, has a tower that is zero at every stage.
 
-**How the definition helps.** The finiteness condition removes spectra that no Morava K-theory of finite height can see. H𝔽ₚ is K(m)-acyclic for every finite m, so every LₙH𝔽ₚ is zero and the limit is zero, not H𝔽ₚ (our own example). For finite X the theorem lets one rebuild X from its K(n)-local pieces. The work moves to the proof by Hopkins and Ravenel, which uses the smash product theorem.
+**How the definition helps.** Finiteness removes spectra that no Morava K-theory of finite height can see. H𝔽ₚ is K(m)-acyclic for every finite m, so every LₙH𝔽ₚ is zero and the limit is zero, not H𝔽ₚ (our own example). For finite X the theorem is due to Hopkins and Ravenel, whose proof uses the smash product theorem.
 
 **nLab:** [chromatic convergence theorem](https://ncatlab.org/nlab/show/chromatic+convergence+theorem). It says: “The chromatic convergence theorem states mild conditions under which the homotopy limit over this tower is the p-localization”
 
@@ -4481,15 +4481,15 @@
 
 ### Closure under retracts is needed for the thick subcategory theorem
 
-**Remember:** Keep the summands, or the Euler characteristic splits the ladder.
+**Remember:** Thick means you keep every summand of what you contain.
 
 *Rules out counterexamples. Confidence: medium.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 18G80. arXiv math.AT. Level 4: research.
 
-**Definition.** A thick subcategory is a full triangulated subcategory closed under retracts. Thus whenever it contains X, it contains every direct summand of X.
+**Definition.** A thick subcategory is a full triangulated subcategory closed under retracts, so it contains every direct summand of each of its objects.
 
 **Problem.** The thick subcategories of finite p-local spectra are exactly the classes of spectra of type at least n. Without closure under retracts this fails: spectra of even rational Euler characteristic form a triangulated subcategory not on the list.
 
-**How the definition helps.** Even rational Euler characteristic is closed under shifts and cofiber sequences because Euler characteristic is additive (our own). It includes S ∨ S but excludes its retract S, so the resulting subcategory fails thickness (our own). The Hopkins–Smith thick subcategory theorem classifies the subcategories that satisfy the retract condition (our own).
+**How the definition helps.** The Hopkins–Smith theorem classifies only the subcategories that contain all summands (our own). Even rational Euler characteristic is closed under shifts and cofiber sequences, because Euler characteristic is additive (our own). It contains S ∨ S but not its summand S, so it is not thick (our own).
 
 **nLab:** [thick subcategory](https://ncatlab.org/nlab/show/thick+subcategory). It says: “A non-empty full (pre-)triangulated subcategory T is called thick (or épaisse) if it is "closed under direct summands”
 
@@ -4500,15 +4500,15 @@
 
 ### Defining vₙ self maps through Morava K-theory makes the periodicity theorem statable
 
-**Remember:** A positive-degree self-map is invertible at one height and nilpotent at every other height.
+**Remember:** Invertible at height n, nilpotent at every other height.
 
 *Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** Fix n ≥ 1 and a finite p-local spectrum X. A vₙ self-map is a map ΣᵏX → X with k &gt; 0 inducing an isomorphism on K(n)-homology (our own). It must act nilpotently on K(m)-homology at every other height m (our own).
+**Definition.** For n ≥ 1, a vₙ self-map of a finite p-local spectrum X is a map ΣᵏX → X with k &gt; 0 that is an isomorphism on K(n)-homology and nilpotent on K(m)-homology for every m ≠ n (our own).
 
 **Problem.** Every finite p-local spectrum of type n has a vₙ self map. Given two such maps, some power of one equals some power of the other, so the telescope does not depend on the choice.
 
-**How the definition helps.** Because the definition is a condition on homology, it can be tested for every type n spectrum at once. The spectra that admit a vₙ self map form a thick subcategory, so by the thick subcategory theorem one example of type n is enough. The work moves to building one such example, which Hopkins and Smith do with a vanishing line in an Adams spectral sequence. The uniqueness of powers follows from the nilpotence theorem.
+**How the definition helps.** Because the definition is a condition on Morava K-theory homology, the spectra that admit a vₙ self-map form a thick subcategory. So by the thick subcategory theorem one example of type n is enough, and Hopkins and Smith build one with a vanishing line in an Adams spectral sequence. The uniqueness of powers follows from the nilpotence theorem.
 
 **nLab:** [periodicity theorem](https://ncatlab.org/nlab/show/periodicity+theorem), [telescopic localization](https://ncatlab.org/nlab/show/telescopic+localization). It says: “A vₙ-self-map on a p-local finite spectrum X, for n ≥ 1 is a map f : Σᵏ X ⟶ X such that”
 
@@ -4518,15 +4518,15 @@
 
 ### Finite spectra of the same type have the same Bousfield class
 
-**Remember:** Same type, same thick subcategory, same spectra killed.
+**Remember:** A spectrum's Bousfield class is the set of spectra it kills.
 
 *Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** The Bousfield class ⟨X⟩ of a spectrum X records which spectra Y satisfy X ∧ Y = 0. Two spectra are Bousfield equivalent when they kill the same spectra.
+**Definition.** The Bousfield class ⟨X⟩ of a spectrum X is the class of spectra Y that X kills, meaning X ∧ Y = 0. For a fixed Y, the finite spectra that kill Y form a thick subcategory, since smashing with Y keeps cofiber sequences and retracts (our own).
 
 **Problem.** If F and F′ are finite p-local spectra of the same type n, then ⟨F⟩ = ⟨F′⟩. The classes of type 0, 1, 2, … strictly decrease.
 
-**How the definition helps.** The Bousfield class works because, for fixed Y, the finite spectra F with F ∧ Y = 0 form a thick subcategory (our own). By the thick subcategory theorem, F and F′ generate the same thick subcategory, so each kills Y exactly when the other does. The decrease is strict because K(n−1) kills a type n spectrum but not one of type n − 1. All the work sits in the thick subcategory theorem.
+**How the definition helps.** By the thick subcategory theorem, finite F and F′ of the same type generate the same thick subcategory, so each kills Y exactly when the other does. The decrease is strict because K(n−1) kills a type n spectrum but not one of type n − 1.
 
 **nLab:** [Bousfield lattice](https://ncatlab.org/nlab/show/Bousfield+lattice), [thick subcategory theorem](https://ncatlab.org/nlab/show/thick+subcategory+theorem). It says: “let the Bousfield class of an object X, denoted ⟨X⟩, be the class { Y∈obj(T): X⊗Y=0}.”
 
@@ -4541,11 +4541,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55Q51 (\\(v<sub>n</sub>\\)-periodicity), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** A thick subcategory is a full triangulated subcategory closed under retracts (our own). A finite p-local spectrum has type at least n if its K(m)-homology vanishes for every finite height m &lt; n (our own). For n = ∞ this requires vanishing at every finite height (our own).
+**Definition.** A finite p-local spectrum X has type at least n when every Morava K-theory below height n is blind to it: the K(m)-homology of X vanishes for all finite m &lt; n (our own). Each such class is thick, a full triangulated subcategory closed under retracts (our own).
 
 **Problem.** Every thick subcategory of finite p-local spectra is the class of spectra of type at least n, for some n from 0 to ∞.
 
-**How the definition helps.** The type turns each thick subcategory into a single number, so the classification becomes a list. Each class of type at least n is thick, because each K(m)\* has long exact sequences and respects retracts. By a theorem of Ravenel, every K(m) with m ≥ n sees a finite spectrum of type n. The work moves to the nilpotence theorem, which shows that a thick subcategory with one spectrum of type n contains all of them.
+**How the definition helps.** The type turns each thick subcategory into one number, so the classification becomes a list. Each class is thick because each K(m)-homology has long exact sequences and respects retracts. The nilpotence theorem does the work: a thick subcategory with one spectrum of type n contains all of them.
 
 **nLab:** [thick subcategory theorem](https://ncatlab.org/nlab/show/thick+subcategory+theorem). It says: “The thick subcategory theorem says that thick subcategories of Spectraᶠⁱⁿₚ are precisely the full subcategories on the spectra of type ≥ n, for some n.”
 
@@ -4558,11 +4558,11 @@
 
 ### Cartan principal bundles give a clean form of Palais's local triviality theorem
 
-**Remember:** Cartan's condition: dividing one point of a fiber by another is continuous.
+**Remember:** Dividing one point of an orbit by another is continuous.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55R10 (Fiber bundles in algebraic topology), 54H15. arXiv math.GN, math.AT. Level 4: research.
 
-**Definition.** Let a locally compact group G act freely and continuously on the right of a completely regular space P (our own). The quotient is a Cartan principal bundle if the division map P ×<sub>P/G</sub> P → G is continuous. It sends each (p,q) to the unique g with p·g = q (our own).
+**Definition.** A free continuous right action of a locally compact group G on a completely regular space P is a Cartan principal bundle when division is continuous (our own). Division is the map P ×<sub>P/G</sub> P → G sending each pair (p,q) in one orbit to the unique g with p·g = q (our own).
 
 **Problem.** For a free Lie group action on a completely regular space P, the quotient bundle is locally trivial exactly when division is continuous (Palais). In particular this holds for the translation action of a closed Lie subgroup of a Hausdorff topological group.
 
@@ -4580,11 +4580,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55R10 (Fiber bundles in algebraic topology), 55R15, 18N50. arXiv math.AT, math.GT. Level 4: research.
 
-**Definition.** A semi-simplicial set is a contravariant functor from nonempty finite ordinals and strictly increasing maps to sets (our own). Its n-simplices are the elements assigned to {0,…,n} (our own).
+**Definition.** A semi-simplicial set is a simplicial set without degeneracies: sets of n-simplices joined only by face maps, that is, a contravariant functor from nonempty finite ordinals and strictly increasing maps to sets (our own). Unlike a simplicial complex, a simplex may repeat a vertex and several simplices may share the same boundary, so more triangulations exist (our own).
 
 **Problem.** An oriented circle bundle over a finite semi-simplicial base B admits a semi-simplicial triangulation over B exactly under Mnëv’s Euler class criterion. Its integral Euler class must have a simplicial cocycle representative taking only the values zero and one on base triangles.
 
-**How the definition helps.** The looser semi-simplicial notion removes extra combinatorial conditions (our own reading). So the criterion becomes a simple condition on a cocycle with values 0 and 1. For classical simplicial triangulations, the same theorem says that this condition is necessary but not sufficient. The theorem is due to Mnëv, and the paper quotes it as its starting point.
+**How the definition helps.** The looser notion admits more triangulations, so the criterion reduces to a cocycle with values 0 and 1 (our own reading). For classical simplicial triangulations the same condition is necessary but not sufficient. The theorem is due to Mnëv.
 
 **Paper or page:** [Minimal triangulations of circle bundles](https://arxiv.org/abs/2311.04214). It says: “A circle bundle can be semi-simplicially triangulated over a finite semi-simplicial base B iff its integer Euler class can be represented by a simplicial cocycle having values 0 and 1 on 2-simplices of the base.”
 
@@ -4599,7 +4599,7 @@
 
 *True by definition. Confidence: medium.* MSC 55R15 (Classification of fiber spaces or bundles in algebraic topology), 03B38. arXiv math.AT, math.LO. Level 4: research.
 
-**Definition.** In univalent homotopy type theory, a covering of X is a family assigning a set C(x) to every point x (our own). Its total space consists of pairs (x,c) with c ∈ C(x) (our own).
+**Definition.** In univalent homotopy type theory, a covering of X is a family of sets C(x) over the points x of X, with total space the pairs (x,c) with c ∈ C(x) (our own). Because sets form a 1-type, such a family sees only points and paths up to homotopy, that is, the fundamental groupoid (our own).
 
 **Problem.** Covering spaces of X are equivalent to sets with an action of the fundamental groupoid of X (the fundamental theorem of covering spaces).
 
@@ -4617,11 +4617,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55R25 (Sphere bundles and vector bundles in algebraic topology), 03B38, 55P20. arXiv math.AT, math.LO. Level 4: research.
 
-**Definition.** Start with the empty type and its empty family, then take the mapping cone of each current two-point family’s projection (our own). Keep the old family on the base and put a standard pair at the cone point (our own). Glue over each total-space point by the equivalence sending its chosen fiber element to the first standard element (our own).
+**Definition.** Define ℝPⁿ by induction together with its tautological bundle of 2-element sets, starting from the empty type (our own). ℝPⁿ⁺¹ is the mapping cone of the bundle's projection onto ℝPⁿ, and the new bundle is the old one on ℝPⁿ and a standard pair at the cone point (our own). Over each point e of a fiber, the glue identifies that fiber with the standard pair by sending e to its first element (our own).
 
 **Problem.** In homotopy type theory, ℝPⁿ⁺¹ is ℝPⁿ with one (n+1)-cell attached. The colimit ℝP∞ is K(ℤ/2, 1), the space whose only nonzero homotopy group is ℤ/2 in degree 1.
 
-**How the definition helps.** Each step is a mapping cone, so the cell structure is built into the definition. The classical quotient of the n-sphere by the antipodal map does not translate directly to homotopy type theory. The work that remains is to show that the total space of the tautological bundle on ℝPⁿ is the n-sphere. Then ℝP∞ is the type of 2-element types, which is K(ℤ/2, 1).
+**How the definition helps.** Each step is a mapping cone, so the cell attachment is built into the definition. The work left is to show that the total space of the bundle over ℝPⁿ is the n-sphere. Then ℝP∞ is the type of 2-element types, which is K(ℤ/2, 1).
 
 **nLab:** [The real projective spaces in homotopy type theory](https://ncatlab.org/nlab/show/The+real+projective+spaces+in+homotopy+type+theory). It says: “The classical definition of ℝPⁿ, as the quotient space identifying antipodal points of the n-sphere, does not translate directly to homotopy type theory. Instead, we define ℝPⁿ by induction on n simultaneously with its tautological bundle of 2-element sets.”
 
@@ -4635,11 +4635,11 @@
 
 *True by definition. Confidence: medium.* MSC 55R25 (Sphere bundles and vector bundles in algebraic topology), 55P43, 55N20. arXiv math.AT. Level 4: research.
 
-**Definition.** For a real rank-n bundle V over X and a commutative ring spectrum E, an E-orientation is an equivalence of E-module bundles over X. It identifies E ∧ Sⱽ with the constant bundle of fiber ΣⁿE, where Sⱽ denotes fiberwise one-point compactification.
+**Definition.** For a commutative ring spectrum E, an E-orientation of a real rank-n bundle V over X is a trivialization of the E-module bundle E ∧ Sⱽ, where Sⱽ is the fiberwise one-point compactification. That is, an equivalence over X with the constant bundle of fiber ΣⁿE.
 
 **Problem.** For an E-oriented bundle, the E-module Thom spectrum is equivalent to ΣⁿE smashed with X with a disjoint base point. This gives the Thom isomorphism in E-cohomology.
 
-**How the definition helps.** Taking colimits preserves the equivalence of bundles (our own). Smashing with E preserves colimits, so the first colimit is the E-module Thom spectrum (our own). The constant bundle has colimit ΣⁿE ∧ Σ∞X₊, giving the cohomological Thom isomorphism (our own).
+**How the definition helps.** The Thom spectrum is the colimit of the bundle Sⱽ, and an equivalence of bundles gives an equivalence of their colimits (our own). Smashing with E preserves colimits, so one side is the E-module Thom spectrum and the other is ΣⁿE ∧ Σ∞X₊ (our own).
 
 **nLab:** [orientation in generalized cohomology](https://ncatlab.org/nlab/show/orientation+in+generalized+cohomology). It says: “An E-orientation of a vector bundle V → X is a trivialization of the E-module bundle E ∧ Sⱽ”
 
@@ -4653,11 +4653,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55R40 (Homology of classifying spaces and characteristic classes in algebraic topology), 57K20. arXiv math.GT, math.DG. Level 4: research.
 
-**Definition.** For a closed oriented surface Σ and a representation ρ of π₁Σ into PSL(2,ℝ), form the associated flat bundle using its circle action (our own). The Euler number of ρ is the Euler class of this bundle evaluated on the fundamental class of Σ (our own).
+**Definition.** For a closed oriented surface Σ, the Euler number of a representation ρ of π₁Σ into PSL(2,ℝ) is the Euler class of the flat circle bundle that ρ defines, evaluated on the fundamental class of Σ (our own). It is an integer that depends continuously on ρ (our own).
 
 **Problem.** For a closed oriented surface Σ of genus at least two, the Euler number classifies connected components of its PSL(2,ℝ) representation space (Goldman). The integers that occur are exactly those between χ(Σ) and −χ(Σ), inclusive.
 
-**How the definition helps.** The Euler class is an integer that varies continuously, so it is constant on each component (our own remark). Goldman proved the converse: each value allowed by Milnor–Wood gives exactly one nonempty component. For punctured surfaces, Ryu and Yang also need the signs of the peripheral images. The hard part is to prove that each level set is connected.
+**How the definition helps.** A continuous integer is constant on each connected component (our own remark). Goldman proved the converse: each value allowed by the Milnor–Wood inequality gives exactly one nonempty component, and the hard part is that each level set is connected. For punctured surfaces, Ryu and Yang also need the signs of the peripheral images.
 
 **Paper or page:** [Connected components of the space of type-preserving representations](https://arxiv.org/abs/2507.07391), [Connected components of the space of type-preserving representations](https://arxiv.org/abs/2507.07391). It says: “We show that the connected components are indexed by the relative Euler classes and the signs of the images of the peripheral elements satisfying a generalized Milnor-Wood inequality”
 
@@ -4668,15 +4668,15 @@
 
 ### Internally defined equivariant principal bundles restrict to fixed loci
 
-**Remember:** Every pair in one fiber differs by a unique group element, continuously and equivariantly.
+**Remember:** Principal is one isomorphism of G-spaces, which fixed points keep.
 
 *True by definition.* MSC 55R91 (Equivariant fiber spaces and bundles in algebraic topology), 55P91. arXiv math.AT. Level 4: research.
 
-**Definition.** Here an equivariant principal Γ-bundle is a G-map P → X with a compatible right action by a group object Γ in G-spaces (our own). The map (p,γ) ↦ (p,pγ) must identify P × Γ with P ×ₓ P as G-spaces, and fibers may be empty (our own).
+**Definition.** An equivariant principal Γ-bundle, defined inside G-spaces, is a G-map P → X with a right action of a group object Γ in G-spaces such that (p,γ) ↦ (p,pγ) is a G-isomorphism P × Γ ≅ P ×ₓ P; fibers may be empty (our own). It uses only products, pullbacks and isomorphisms, which taking H-fixed points preserves (our own).
 
 **Problem.** Take any subgroup H ⊂ G. Then the H-fixed locus Pᴴ → Xᴴ of an equivariant principal bundle is again an equivariant principal bundle. Its group is Γᴴ, and it is equivariant for the Weyl group N(H)/H, where N(H) is the normalizer of H.
 
-**How the definition helps.** Taking H-fixed points preserves the defining products, pullbacks, and isomorphism (our own). The normalizer acts on the resulting diagram through N(H)/H, and the acting group becomes Γᴴ (our own).
+**How the definition helps.** Taking H-fixed points carries the defining isomorphism to one for Pᴴ → Xᴴ, with group Γᴴ (our own). The normalizer N(H) acts on the fixed points and H acts trivially, so the result is N(H)/H-equivariant (our own).
 
 **nLab:** [equivariant bundle](https://ncatlab.org/nlab/show/equivariant+bundle). It says: “serves to make manifest that they have good behaviour under passage to fixed loci”
 
@@ -4690,11 +4690,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55S10 (Steenrod algebra). arXiv math.AT. Level 4: research.
 
-**Definition.** Put all Steenrod squares into one power series P(t) = Sq⁰ + tSq¹ + t²Sq² + ⋯ with coefficients in the Steenrod algebra. The product of two such series is composition of operations. This total operation replaces the infinite list of separate squares.
+**Definition.** Put all Steenrod squares into one power series P(t) = Sq⁰ + tSq¹ + t²Sq² + ⋯ with coefficients in the Steenrod algebra, where products of series compose the operations.
 
 **Problem.** Take the Adem relations, one for each pair 0 &lt; i &lt; 2j. Together they are equivalent to the single identity P(s² + st)·P(t²) = P(t² + st)·P(s²).
 
-**How the definition helps.** The generating series packs the infinitely many binomial-coefficient relations into one symmetry in the two variables s and t. Expanding both sides and comparing coefficients gives back each Adem relation (our own summary). The work moved into proving this one identity, which Bullett and Macdonald did.
+**How the definition helps.** Comparing coefficients of each monomial in s and t on both sides gives back each Adem relation, so one identity carries them all (our own summary). Bullett and Macdonald found and proved this identity.
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “then the Adem relations are equivalent to P(s²+st)⋅P(t²)=P(t²+st)⋅P(s²)”
 
@@ -4708,11 +4708,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55S10 (Steenrod algebra), 55S12. arXiv math.AT. Level 4: research.
 
-**Definition.** For an 𝔽₂-chain complex V, D₂(V) is the homotopy quotient of V ⊗ V by the action interchanging its factors (our own). A symmetric multiplication is a chain map D₂(V) → V.
+**Definition.** For an 𝔽₂-chain complex V, the extended square D₂(V) is the homotopy quotient of V ⊗ V by the swap of factors (our own). A symmetric multiplication is a chain map D₂(V) → V, and May's operations are its values on the homology classes of D₂(V) built from x ⊗ x (our own).
 
 **Problem.** For algebras over the E∞ operad in 𝔽₂-chain complexes, May's operations satisfy a Cartan formula and Adem relations. The Steenrod squares on spaces and the Dyer–Lashof operations on the homology of infinite loop spaces are special cases.
 
-**How the definition helps.** The operations and their relations are proved from the E∞ structure alone, so each theorem holds in every example at once. The Cartan formula comes from comparing the extended square of a tensor product with two extended squares. The Adem relations come from comparing the two ways of iterating the square, through symmetric groups on four letters (our own summary). The work went into the homology of these symmetric groups.
+**How the definition helps.** The operations and their relations are proved from the E∞ structure alone, so they hold in every example at once. The Cartan formula compares the extended square of a tensor product with two extended squares. The Adem relations compare the two ways of iterating the square, through symmetric groups on four letters (our own summary).
 
 **nLab:** [Steenrod square](https://ncatlab.org/nlab/show/Steenrod+square). It says: “A chain map D₂(V) ⟶ V is called a symmetric multiplication on V (a shadow of an E-infinity algebra structure).”
 
@@ -4722,15 +4722,15 @@
 
 ### Dualizing turns indecomposable Steenrod squares into primitives, so Sq²ⁱ generate
 
-**Remember:** Primitives of Milnor's dual are ξ₁ to powers of two, so Sq²ⁱ generate.
+**Remember:** Indecomposables of A are dual to primitives of its dual.
 
 *True by definition.* MSC 55S10 (Steenrod algebra), 16T05. arXiv math.AT. Level 4: research.
 
-**Definition.** For a connected graded augmented algebra A with augmentation ideal I, its space of indecomposables is I/I² (our own). In a Hopf algebra, x is primitive when its coproduct equals x ⊗ 1 + 1 ⊗ x (our own).
+**Definition.** The indecomposables of the Steenrod algebra are its elements modulo sums of products of lower-degree elements, the quotient I/I² of the augmentation ideal I (our own). Under duality they pair with the primitives of the dual Hopf algebra, the x whose coproduct is x ⊗ 1 + 1 ⊗ x (our own).
 
 **Problem.** The squares of degrees 2ⁱ for i ≥ 0 generate the mod 2 Steenrod algebra. Every positive-degree Sqᵏ with k not a power of two is a sum of products of lower-degree squares.
 
-**How the definition helps.** Degreewise duality identifies indecomposables with the dual of the primitive subspace (our own). Milnor’s coproduct gives a primitive basis consisting of the powers ξ₁²ⁱ, paired with the squares of degrees 2ⁱ. Those squares therefore generate by induction on degree (our own).
+**How the definition helps.** Generators are needed exactly in the degrees of indecomposables, and these are dual to primitives (our own). In Milnor's dual algebra the primitives are the powers ξ₁<sup>(2ⁱ)</sup>, which pair with the squares Sq<sup>(2ⁱ)</sup>. So these squares generate, by induction on degree (our own).
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “The only primitive elements of A∗ for p=2 are the elements of the form ξ₁²ⁱ, and these are dual to the Sq²ⁱ (the only indecomposables of A).”
 
@@ -4745,11 +4745,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 55S10 (Steenrod algebra), 55R35. arXiv math.AT. Level 4: research.
 
-**Definition.** For an elementary abelian p-group V, Lannes’s T-functor on unstable mod p algebras is left adjoint to N ↦ H∗(BV; 𝔽ₚ) ⊗ N (our own).
+**Definition.** For an elementary abelian p-group V, Lannes's T-functor on unstable mod p algebras is left adjoint to tensoring with H\*(BV; 𝔽ₚ) (our own). It mirrors how maps BV × Y → X match maps from Y to the space of maps from BV to X (our own).
 
 **Problem.** Suppose H\*(X) and T H\*(X) are of finite type and T H\*(X) is zero in degree 1. Then T H\*(X) is the mod p cohomology of the space of maps from BV to the p-completion of X (Lannes).
 
-**How the definition helps.** The T-adjunction matches the mapping-space adjunction by the cohomology cross product (our own). It supplies the comparison map, and Lannes’s mapping-space theorem proves the comparison under the stated finiteness and degree-one hypotheses (our own).
+**How the definition helps.** The T-adjunction matches the mapping-space adjunction through the cohomology cross product, which gives a comparison map (our own). Lannes's theorem proves this map an isomorphism under the stated finiteness and degree-one hypotheses (our own).
 
 **Wikipedia:** [Jean Lannes (mathematician)](https://en.wikipedia.org/wiki/Jean_Lannes_%28mathematician%29), [Sullivan conjecture](https://en.wikipedia.org/wiki/Sullivan_conjecture). It says: “He introduced the T-functor on the category of unstable algebra over the Steenrod algebra.”
 
@@ -4763,11 +4763,11 @@
 
 *True by definition.* MSC 55S10 (Steenrod algebra), 14L05. arXiv math.AT. Level 4: research.
 
-**Definition.** For a commutative 𝔽₂-algebra R, a strict additive series is f(x) ∈ R\[\[x\]\] with linear term x, constant term zero, and f(x+y)=f(x)+f(y). Its coefficients aᵢ at powers x<sup>(2ⁱ)</sup> give all its terms, with a₀=1 (our own).
+**Definition.** Maps from the dual Steenrod algebra to a commutative 𝔽₂-algebra R are the additive power series f(x) = x + a₁x² + a₂x⁴ + ⋯ over R, those with f(x+y) = f(x) + f(y) (our own). The generator ξᵢ reads off the coefficient aᵢ of x<sup>(2ⁱ)</sup>, and the coproduct is composition of series (our own).
 
 **Problem.** The coproduct of the dual Steenrod algebra sends ξₙ to a sum over 0 ≤ i ≤ n. The term for i is (ξₙ₋ᵢ raised to the power 2ⁱ) ⊗ ξᵢ, where ξ₀ = 1.
 
-**How the definition helps.** Evaluate the coproduct on series f and g by forming g(f(x)) in the stated tensor order (our own). Its coefficient at x<sup>(2ⁿ)</sup> is ∑ᵢ aₙ₋ᵢ<sup>(2ⁱ)</sup>bᵢ for 0 ≤ i ≤ n (our own). Milnor’s identification makes these coefficient functions the generators ξᵢ (our own).
+**How the definition helps.** In g(f(x)), the coefficient of x<sup>(2ⁿ)</sup> is ∑ aₙ₋ᵢ<sup>(2ⁱ)</sup>bᵢ over 0 ≤ i ≤ n, which is the coproduct formula in the stated tensor order (our own). Milnor's identification makes these coefficient functions the generators ξᵢ (our own).
 
 **Wikipedia:** [Steenrod algebra](https://en.wikipedia.org/wiki/Steenrod_algebra). It says: “For example, if p=2 then the dual Steenrod algebra is the group scheme of automorphisms of the 1-dimensional additive formal group scheme x+y that are the identity to first order.”
 
@@ -4793,15 +4793,15 @@
 
 ### Conditional convergence gives a usable notion of convergence for spectral sequences
 
-**Remember:** Conditional convergence asks only that the filtration has zero lim and zero lim¹.
+**Remember:** Conditional convergence: the filtration has zero lim and zero lim¹.
 
 *Makes the theorem clean to state or prove.* MSC 55T05 (General theory of spectral sequences in algebraic topology), 18G40. arXiv math.AT. Level 4: research.
 
-**Definition.** Consider the filtration tower Dˢ of a half-plane exact couple. Conditional convergence to its specified target requires lim Dˢ and lim¹ Dˢ to vanish degreewise as s increases (our own).
+**Definition.** A half-plane spectral sequence converges conditionally to its specified target when its filtration tower Dˢ leaves nothing at the bottom: lim Dˢ and lim¹ Dˢ vanish degreewise as s increases (our own).
 
 **Problem.** For a conditionally convergent half-plane spectral sequence with entering differentials, vanishing of Boardman’s degreewise lim¹ of surviving cycles implies strong convergence. This criterion applies to Adams spectral sequences of this form.
 
-**How the definition helps.** Conditional convergence settles the tower condition (our own). Boardman’s half-plane convergence theorem supplies strong convergence when the derived limit of the surviving cycles also vanishes (our own).
+**How the definition helps.** Conditional convergence settles the tower, so only the spectral sequence itself remains to check (our own). Boardman's half-plane theorem then gives strong convergence when the derived limit of the surviving cycles also vanishes (our own).
 
 **nLab:** [conditional convergence of spectral sequences](https://ncatlab.org/nlab/show/conditional+convergence+of+spectral+sequences). It says: “that converges conditionally, then sufficient condition that it converges strongly (def.) is that also the lim¹ over its pages vanishes”
 
@@ -4811,15 +4811,15 @@
 
 ### Converging to the E-nilpotent completion makes Adams convergence a theorem
 
-**Remember:** Remove successive smash powers of the unit fiber, then take the inverse homotopy limit.
+**Remember:** Kill ever higher powers of the unit fiber, then take limits.
 
 *Makes the theorem clean to state or prove.* MSC 55T15 (Adams spectral sequences), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** For a ring spectrum E, let Ē be the fiber of its unit S → E (our own). The E-nilpotent completion of X is the homotopy limit over s of the cofibers of Ē<sup>∧s</sup> ∧ X → X (our own). Each map uses the fiber inclusion in every smash factor (our own).
+**Definition.** For a ring spectrum E with unit fiber Ē → S, the E-nilpotent completion of X is what remains after removing ever higher smash powers of Ē (our own). It is the homotopy limit over s of the cofibers of Ē<sup>∧s</sup> ∧ X → X, where each map uses the fiber inclusion in every factor (our own).
 
 **Problem.** Bousfield's theorem: let E and X be connective, and let the core of π₀(E) be ℤ/n or ℤ with a set of primes inverted. Then the E-nilpotent completion of X is the E-localization of X, which for E = H𝔽ₚ is the p-completion of X.
 
-**How the definition helps.** The E-Adams spectral sequence comes from the tower that defines the completion, so it converges to that completion by construction, in Boardman's conditional sense. The question of what it computes then becomes the identification of the completion with a localization. The work moves into Bousfield's theorem, which uses the connectivity of X and the arithmetic of π₀(E).
+**How the definition helps.** The E-Adams spectral sequence comes from the tower that defines the completion, so it converges to that completion by construction, in Boardman's conditional sense. What it computes then reduces to identifying the completion with a localization, which Bousfield's theorem does using the connectivity of X and the arithmetic of π₀(E).
 
 **nLab:** [nilpotent completion of spectra](https://ncatlab.org/nlab/show/nilpotent+completion+of+spectra), [Adams spectral sequence](https://ncatlab.org/nlab/show/Adams+spectral+sequence). It says: “The E-Adams spectral sequence induced by the given Adams tower conditionally converges to the E-nilpotent completion.”
 
@@ -4847,15 +4847,15 @@
 
 ### Ext¹ classes turn the Hopf invariant one problem into one differential
 
-**Remember:** Dualize a power-of-two indecomposable square to get its filtration-one class.
+**Remember:** hⱼ survives exactly when a Hopf invariant one map exists.
 
 *Makes the theorem clean to state or prove.* MSC 55T15 (Adams spectral sequences), 55Q25. arXiv math.AT. Level 4: research.
 
-**Definition.** In the mod 2 Adams spectral sequence, hⱼ is the filtration-one class dual to the indecomposable square of degree 2ʲ (our own). Here j ≥ 0 and the stem is 2ʲ − 1 (our own).
+**Definition.** In the mod 2 Adams spectral sequence, hⱼ (j ≥ 0) is the class in filtration one and stem 2ʲ − 1 dual to the indecomposable square Sq<sup>(2ʲ)</sup> (our own). A map of Hopf invariant one in that stem exists exactly when hⱼ survives to E∞ (our own).
 
 **Problem.** Adams's theorem: maps of Hopf invariant one exist only for n = 1, 2, 4 and 8. So ℝⁿ carries a division algebra structure only in these dimensions.
 
-**How the definition helps.** Classes of Adams filtration one are those detected by a single primary operation, so the geometric question becomes whether hⱼ survives the spectral sequence. Adams showed that d₂(hⱼ₊₁) = h₀hⱼ² for j ≥ 3, and this target is nonzero, so hⱼ dies for every j ≥ 4. The work goes into computing that d₂ with secondary cohomology operations.
+**How the definition helps.** The geometric question becomes whether each hⱼ survives the spectral sequence. Adams showed d₂(hⱼ₊₁) = h₀hⱼ² for j ≥ 3, and this target is nonzero, so hⱼ dies for every j ≥ 4. Computing that d₂ needs secondary cohomology operations.
 
 **nLab:** [Hopf invariant one](https://ncatlab.org/nlab/show/Hopf+invariant+one). It says: “A celebrated theorem due to (Adams 60, introducing and using the Adams spectral sequence) states that maps of Hopf invariant one correspond precisely to the the Hopf constructions on the four normed division algebras”
 
@@ -4867,7 +4867,7 @@
 
 ### Finite type and connectivity make Adams spectral sequences compute p-adic homotopy
 
-**Remember:** Rational spectra are invisible mod p, so ask for finite generation.
+**Remember:** Nothing below degree zero, finitely generated in every degree.
 
 *Rules out counterexamples.* MSC 55T15 (Adams spectral sequences), 55P42. arXiv math.AT. Level 4: research.
 
@@ -4875,7 +4875,7 @@
 
 **Problem.** Let X be a connective spectrum of finite type, and ℤₚ the p-adic integers. Then the mod p Adams spectral sequence, with E₂ = Ext over the Steenrod algebra of H\*(X; 𝔽ₚ) and 𝔽ₚ, converges to π\*(X) ⊗ ℤₚ.
 
-**How the definition helps.** The finite-type condition rules out spectra whose homotopy mod p cohomology cannot see. For the rational spectrum Hℚ, mod p cohomology is zero, so the E₂ page is zero, yet π₀(Hℚ) = ℚ (our own example). Even for Hℤ the E₂ page is one tower of classes in stem 0, which builds ℤₚ and not ℤ. The work is in Adams's construction and in Bousfield's identification of the target as the p-completion.
+**How the definition helps.** Finite type rules out homotopy that mod p cohomology cannot see. For the rational spectrum Hℚ, mod p cohomology is zero, so the E₂ page is zero, yet π₀(Hℚ) = ℚ (our own example). The theorem is Adams's, and Bousfield identified the target as the p-completion.
 
 **Wikipedia:** [Adams spectral sequence](https://en.wikipedia.org/wiki/Adams_spectral_sequence). It says: “The classical Adams spectral sequence can be stated for any connective spectrum X of finite type, meaning πᵢ(X)=0 for i &lt; 0 and πᵢ(X) is a finitely generated Abelian group in each degree.”
 
@@ -4890,11 +4890,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T15 (Adams spectral sequences), 55P60. arXiv math.AT. Level 4: research.
 
-**Definition.** For Morava K-theory K at a fixed prime and height, the K-nilpotent completion of X is the totalization of its Amitsur resolution (our own). In degree q this is K<sup>∧</sup>(q+1) ∧ X, with cofaces from the unit and codegeneracies from multiplication (our own).
+**Definition.** For Morava K-theory K at a fixed prime and height, the K-nilpotent completion of X is the totalization of its Amitsur resolution: the cosimplicial spectrum K<sup>∧</sup>(q+1) ∧ X, with cofaces from the unit and codegeneracies from multiplication (our own).
 
 **Problem.** For every spectrum X, the K(n)-nilpotent completion of X is its K(n)-localization. So the K(n)-based Adams spectral sequence converges conditionally to π\* of the K(n)-localization of X, and completely when X is K(n)-locally dualizable.
 
-**How the definition helps.** Because the completion equals the localization, the convergence statement needs no connectivity or finiteness hypothesis on X. By contrast, Bousfield's theorem for H𝔽ₚ is stated for connective X (our own comparison). The work moves into the proof of the comparison of completion and localization.
+**How the definition helps.** Since the completion equals the localization for every X, convergence needs no connectivity or finiteness hypothesis on X. Bousfield's theorem for H𝔽ₚ, by contrast, is stated for connective X (our own comparison).
 
 **Paper or page:** [Morava K-theory and Filtrations by Powers](https://arxiv.org/abs/2111.06379), [Morava K-theory and Filtrations by Powers](https://arxiv.org/abs/2111.06379). It says: “For any spectrum X, the K-nilpotent completion of X is equivalent to the K-localization of X”
 
@@ -4904,15 +4904,15 @@
 
 ### Replacing mod p cohomology by complex cobordism removes p-completion from Adams
 
-**Remember:** Build the Adams tower using the unit of complex cobordism.
+**Remember:** Use complex cobordism, whose π₀ is ℤ, not 𝔽ₚ.
 
 *Makes the theorem clean to state or prove.* MSC 55T15 (Adams spectral sequences), 55N22. arXiv math.AT. Level 4: research.
 
-**Definition.** The integral Adams–Novikov spectral sequence of X is the Adams spectral sequence formed from the unit S → MU of complex cobordism (our own). Its tower uses the successive smash powers of the unit fiber smashed with X (our own).
+**Definition.** The integral Adams–Novikov spectral sequence of X is the Adams spectral sequence built from the unit S → MU of complex cobordism, whose π₀ is ℤ rather than 𝔽ₚ (our own). Its tower smashes X with successive smash powers of the unit fiber (our own).
 
 **Problem.** For a connective spectrum X, the Adams–Novikov spectral sequence converges to π\*(X) itself, with no completion at a prime. In particular it converges to the stable homotopy groups of spheres.
 
-**How the definition helps.** The ring π₀(MU) is ℤ, so by Bousfield's theorem the MU-nilpotent completion of a connective spectrum is the spectrum itself. The mod p theory has π₀ = 𝔽ₚ, which is why its Adams spectral sequence sees only the p-completion. The work moves to Novikov's computation of MU\*MU and to the convergence theorem.
+**How the definition helps.** Since π₀(MU) = ℤ, Bousfield's theorem makes the MU-nilpotent completion of a connective spectrum the spectrum itself. Mod p cohomology has π₀ = 𝔽ₚ, which is why its Adams spectral sequence sees only the p-completion. The rest is Novikov's computation of MU\*MU.
 
 **nLab:** [Adams–Novikov spectral sequence](https://ncatlab.org/nlab/show/Adams%E2%80%93Novikov+spectral+sequence), [nilpotent completion of spectra](https://ncatlab.org/nlab/show/nilpotent+completion+of+spectra). It says: “This makes the Adams-Novikov spectral sequence converge to the full homotopy groups of connective spectra, hence in particular to the full stable homotopy groups of spheres”
 
@@ -4923,15 +4923,15 @@
 
 ### Requiring E∗E flat makes cooperations a Hopf algebroid for Adams spectral sequences
 
-**Remember:** Flat cooperations preserve exact sequences when tensored over the coefficient ring.
+**Remember:** Flat cooperations split E∗(E ∧ X), making homology a comodule.
 
 *Rules out counterexamples.* MSC 55T15 (Adams spectral sequences), 55S10. arXiv math.AT. Level 4: research.
 
-**Definition.** For a homotopy-commutative ring spectrum E, put R = π∗E and Γ = E∗E. Adams’s flatness condition requires Γ ⊗ᵣ − to preserve every short exact sequence of graded R-modules (our own).
+**Definition.** For a homotopy-commutative ring spectrum E, Adams's condition asks that the cooperations E∗E be flat over the coefficients π∗E: tensoring with E∗E over π∗E keeps every short exact sequence of graded modules exact (our own). Then E∗(E ∧ X) splits as E∗E ⊗ E∗X, so each E∗X is a comodule (our own).
 
 **Problem.** Suppose E∗E is flat over π∗E. Then the second page of the E-based Adams spectral sequence for X is Ext over E∗E from π∗E to E∗X. This holds for E = H𝔽ₚ, MU and KU, but the condition fails for E = Hℤ.
 
-**How the definition helps.** Flatness gives a Künneth isomorphism from E∗(E ∧ X) to E∗E ⊗ E∗X, and this is what makes E∗X a comodule. With that, the first page of the spectral sequence becomes a resolution by comodules, so the second page is an Ext group. Hℤ fails the condition because the integral homology of Hℤ has torsion, so it is not flat over ℤ (our own example). The work went into checking flatness for each E, such as Milnor's theorem for H𝔽ₚ.
+**How the definition helps.** Flatness gives the Künneth splitting, which makes the first page a resolution by comodules, so the second page is an Ext group. Hℤ fails because the integral homology of Hℤ has torsion, so it is not flat over ℤ (our own example). For H𝔽ₚ flatness is automatic over a field, and Milnor computed the comodule structure.
 
 **nLab:** [Steenrod algebra](https://ncatlab.org/nlab/show/Steenrod+algebra), [Adams spectral sequence](https://ncatlab.org/nlab/show/Adams+spectral+sequence). It says: “The dual 𝔽ₚ Steenrod algebra is a special case of a commutative Hopf algebroid structure canonically induced on the self generalized homology E•(E) of any ring spectrum E for which E• → E•(E) is a flat morphisms.”
 
@@ -4939,15 +4939,15 @@
 
 ### Synthetic spectra turn Adams differentials into powers of λ
 
-**Remember:** Use sheaves that turn finite sums into products and homology surjections into covers.
+**Remember:** Sheaves on finite spectra, with λ remembering Adams filtration.
 
 *Makes the theorem clean to state or prove.* MSC 55T15 (Adams spectral sequences), 55P42. arXiv math.AT. Level 4: research.
 
-**Definition.** For mod 2 homology, synthetic spectra are spherical sheaves of spectra on the site of finite mod 2 projective spectra (our own). Covers induce surjections on mod 2 homology, and spherical sheaves take finite sums to products (our own).
+**Definition.** Mod 2 synthetic spectra are sheaves of spectra on finite mod 2 projective spectra that take finite sums to products, where covers are maps onto in mod 2 homology (our own). They carry a deformation parameter λ that records Adams filtration (our own).
 
 **Problem.** For the mod 2 synthetic analogue νX, the synthetic Adams E₂ page is the classical Adams E₂ page tensored with 𝔽₂\[λ\]. Each classical dᵣ(x) = y gives dᵣ(x) = λʳ⁻¹y, and all synthetic differentials follow by λ-linearity.
 
-**How the definition helps.** The synthetic deformation parameter λ records the filtration shift of a classical differential (our own). The Burklund–Hahn–Senger comparison gives the factor λʳ⁻¹ and shows that λ-linearity accounts for all differentials.
+**How the definition helps.** λ records the filtration jump of a classical differential, so a dᵣ appears with the factor λʳ⁻¹ (our own). The Burklund–Hahn–Senger comparison proves this and shows that λ-linearity gives all synthetic differentials.
 
 **Paper or page:** [On the Last Kervaire Invariant Problem](https://arxiv.org/abs/2412.10879), [On the Last Kervaire Invariant Problem](https://arxiv.org/abs/2412.10879). It says: “Given a classical Adams differential dᶜˡᵣ(x)=y, the corresponding synthetic differential is dᵣ(x)=λʳ⁻¹y, which is λ-linear, and all synthetic Adams differentials arise in this way.”
 
@@ -4961,11 +4961,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 55T20 (Eilenberg-Moore spectral sequences), 55R20. arXiv math.AT. Level 4: research.
 
-**Definition.** A π-module M is nilpotent if it has a finite π-invariant filtration from zero to M with trivial π-action on every successive quotient (our own). Dwyer requires this for the π₁(B)-action on each Hᵢ(F;k).
+**Definition.** A π-module M is nilpotent when π acts trivially on each layer of some finite π-invariant filtration 0 = M₀ ⊂ ⋯ ⊂ Mₙ = M, so M is built from trivial modules by finitely many extensions (our own).
 
 **Problem.** Dwyer's theorem: let F → E → B be a fibration over a connected base, and k a field. If π₁(B) acts nilpotently on Hᵢ(F; k) for every i, then the Eilenberg–Moore spectral sequence converges strongly to H\*(F; k).
 
-**How the definition helps.** Nilpotence replaces simple connectivity and removes the cases where the spectral sequence computes the wrong answer. Our own counterexample is the path fibration over ℝP∞ with rational coefficients, whose fibre is two points swapped by π₁ = ℤ/2. The E₂ page is Tor of ℚ with ℚ over H\*(ℝP∞; ℚ) = ℚ, which is one-dimensional, but H⁰ of two points is two-dimensional. The work is in Dwyer's convergence argument.
+**How the definition helps.** Nilpotence replaces simple connectivity and removes the cases where the spectral sequence computes the wrong answer. Our own counterexample is the path fibration over ℝP∞ with rational coefficients, whose fibre is two points swapped by π₁ = ℤ/2. There E₂ is Tor of ℚ with ℚ over H\*(ℝP∞; ℚ) = ℚ, which is one-dimensional, but H⁰ of two points is two-dimensional.
 
 **Wikipedia:** [Eilenberg–Moore spectral sequence](https://en.wikipedia.org/wiki/Eilenberg%E2%80%93Moore_spectral_sequence). It says: “refined the convergence results to include spaces for which π₁(B) acts nilpotently on Hᵢ(E<sub>f</sub>) for all i ≥ 0”
 
@@ -4979,11 +4979,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 55T20 (Eilenberg-Moore spectral sequences), 55R20. arXiv math.AT. Level 4: research.
 
-**Definition.** For graded modules M and N over a graded commutative algebra A, choose a graded free resolution P of M (our own). Tor over A is the homology of P ⊗ₐ N, graded by resolution degree and internal degree (our own).
+**Definition.** Tor over a graded commutative algebra A measures the tensor product together with its failure to be exact (our own). Resolve M by free A-modules P and take the homology of P ⊗ₐ N, graded by resolution degree and internal degree; Tor₀ is M ⊗ₐ N (our own).
 
-**Problem.** Take a fibration pullback P = X ×ᵦ E over simply connected B, with connected spaces of finite k-type. The Eilenberg–Moore spectral sequence runs from Tor over H∗(B;k) of H∗(X;k) and H∗(E;k) to H∗(P;k). For ΩSⁿ with n ≥ 2, its E₂ term has one copy of k in each nonnegative total degree divisible by n−1.
+**Problem.** For a fibration pullback P = X ×ᵦ E over simply connected B, with connected spaces of finite k-type, the Eilenberg–Moore spectral sequence runs from Tor over H∗(B;k) of H∗(X;k) and H∗(E;k) to H∗(P;k). For ΩSⁿ with n ≥ 2, its E₂ term has one copy of k in each nonnegative total degree divisible by n−1.
 
-**How the definition helps.** Tor over H\*(B) records both the tensor product and its failure to be exact, so one statement covers products and fibre products. When B is a point, only Tor₀ = ⊗ survives, and the theorem becomes the Künneth formula. The work goes into Eilenberg and Moore's comparison of the cobar construction on singular chains with the chains of the pullback.
+**How the definition helps.** Tor₀ is the tensor product, so when B is a point only Tor₀ survives and the theorem becomes the Künneth formula. The higher Tor groups correct for the failure of exactness, so no vanishing of Tor is assumed. The work is Eilenberg and Moore's comparison of the cobar construction on singular chains with the chains of the pullback.
 
 **nLab:** [Eilenberg–Moore spectral sequence](https://ncatlab.org/nlab/show/Eilenberg%E2%80%93Moore+spectral+sequence). It says: “it applies without assumption on vanishing of Tor-groups;”
 
@@ -5000,11 +5000,11 @@
 
 *Rules out counterexamples.* MSC 55U05 (Abstract complexes in algebraic topology), 18G45. arXiv math.AT. Level 4: research.
 
-**Definition.** A cubical set with connections is a presheaf on the cube category generated by faces, coordinate deletions, and adjacent-coordinate connections (our own). A connection combines adjacent interval coordinates by maximum, or by minimum in the opposite convention (our own).
+**Definition.** A cubical set with connections has extra degeneracies, called connections, that fold an n-cube into an (n+1)-cube by combining two adjacent coordinates by maximum or minimum (our own). Formally it is a presheaf on the cube category generated by faces, coordinate deletions and these connections (our own).
 
 **Problem.** Every cubical group with connections is a Kan complex (Tonks). The cube category with connections is a strict test category, so products of cubical sets have the correct homotopy type (Maltsiniotis).
 
-**How the definition helps.** Connections supply fillers for open boxes in cubical groups, as Tonks proves. Without connections, cubical groups can lack such fillers. The product of two representable intervals also has incorrect homotopy type in plain cubical sets (our own). Maltsiniotis proves the strict test category result with connections (our own).
+**How the definition helps.** Connections give fillers for open boxes in cubical groups, as Tonks proves; without them, cubical groups can lack such fillers. In plain cubical sets the product of two intervals also has the wrong homotopy type (our own). Maltsiniotis proves the strict test category result with connections (our own).
 
 **nLab:** [cubical set](https://ncatlab.org/nlab/show/cubical+set), [connection on a cubical set](https://ncatlab.org/nlab/show/connection+on+a+cubical+set). It says: “Another reason was that cubical groups were in general not Kan complexes; however cubical groups with connection are Kan complexes.”
 
@@ -5015,15 +5015,15 @@
 
 ### Connections on cubical sets give the equivalence with crossed complexes
 
-**Remember:** A connection folds a cell into a square with the cell on two adjacent sides.
+**Remember:** A connection folds a cell onto two adjacent sides of a square.
 
 *Makes the theorem clean to state or prove.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 18G45. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** A cubical set with connections is a presheaf on cubes whose coordinate maps include faces, projections, and adjacent-coordinate connections (our own). Pulling back a cube along an adjacent-coordinate maximum or minimum folds it into a cube one dimension higher (our own).
+**Definition.** A cubical set with connections has extra degeneracies that fold a cube into one of the next dimension, by pulling back along the maximum or minimum of two adjacent coordinates (our own). Formally it is a presheaf on cubes whose maps include faces, projections and these connections (our own).
 
 **Problem.** Cubical ω-groupoids with connections are equivalent to crossed complexes (Brown and Higgins). A crossed complex is like a chain complex, with a groupoid at the bottom and groupoid actions above it.
 
-**How the definition helps.** The connection operations supply the thin cells used to fold cubes into the globular pieces of a crossed complex (our own). Brown and Higgins prove that this construction yields the equivalence for cubical ω-groupoids with connections.
+**How the definition helps.** The connections supply the thin cells used to fold cubes into the globular pieces of a crossed complex (our own). Brown and Higgins prove that this folding gives the equivalence for cubical ω-groupoids with connections.
 
 **nLab:** [connection on a cubical set](https://ncatlab.org/nlab/show/connection+on+a+cubical+set). It says: “Such connections on cubical sets were introduced in 1981 by Brown and Higgins in order to obtain the equivalence of their "cubical ∞-groupoids" with crossed complexes.”
 
@@ -5033,15 +5033,15 @@
 
 ### Cogroup generators make equivalences of spectra detectable at one base point
 
-**Remember:** Suspensions are cogroups, so all components of a mapping space look alike.
+**Remember:** Cogroup generators make all components of a mapping space alike.
 
 *Rules out counterexamples.* MSC 55U35 (Abstract and axiomatic homotopy theory in algebraic topology), 55P42, 18N60. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** In a pointed cocomplete ∞-category, take compact objects Sᵢ that generate under colimits (our own). Require the family to contain their suspensions and each Sᵢ to represent a group-valued functor on the homotopy category (our own).
+**Definition.** In a pointed cocomplete ∞-category, take a family of compact objects Sᵢ that generates under colimits, contains the suspension of each member, and consists of cogroups, so each \[Sᵢ, −\] is group-valued (our own).
 
 **Problem.** In such an ∞-category, a map f: X → Y is an equivalence when every map \[Sᵢ, X\] → \[Sᵢ, Y\] is a bijection. For spectra, a map is an equivalence exactly when it is an isomorphism on πₙ for every integer n.
 
-**How the definition helps.** The cogroup structure makes each mapping space out of Sᵢ an H-group, so all its components look alike and one base point is enough (nLab). In pointed spaces S⁰ is not a cogroup, so the test can fail when X is not connected (nLab). For example, sending S⁰ into a point plus a disjoint circle passes the test but is not an equivalence (our own). The work is the ordinary Whitehead theorem, applied to the mapping spaces out of each Sᵢ.
+**How the definition helps.** The cogroup structure makes each mapping space out of Sᵢ an H-group, so all its components look alike and one base point is enough (nLab). In pointed spaces S⁰ is not a cogroup, so the test can fail for X not connected (nLab). For example, the inclusion of S⁰ into a point plus a disjoint circle passes the test but is not an equivalence (our own).
 
 **nLab:** [Brown representability theorem](https://ncatlab.org/nlab/show/Brown+representability+theorem). It says: “It is this last condition of testing on all basepoints that the assumed cogroup structure on the S<sub>i</sub> allows to do away with”
 
@@ -5051,15 +5051,15 @@
 
 ### Quillen idempotent monads give the stable model structure on spectra
 
-**Remember:** Preserve weak equivalences, stabilize after one application, and preserve local equivalences under the specified pullbacks.
+**Remember:** Q keeps equivalences, is idempotent, and survives the specified pullbacks.
 
 *Makes the theorem clean to state or prove.* MSC 55U35 (Abstract and axiomatic homotopy theory in algebraic topology), 55P42, 18N40. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** Let η: Id → Q coaugment an endofunctor of a right proper model category. Require Q to preserve weak equivalences, and Qηₓ and η<sub>QX</sub> to be weak equivalences for every X (our own). Pullback along fibrations between fibrant objects where η is a weak equivalence must preserve maps that Q sends to weak equivalences (our own).
+**Definition.** On a right proper model category, take a coaugmented endofunctor η: Id → Q that preserves weak equivalences and is idempotent up to weak equivalence, meaning Qηₓ and η<sub>QX</sub> are weak equivalences for every X (our own). Pullback along fibrations between fibrant objects where η is a weak equivalence must preserve maps that Q sends to weak equivalences (our own).
 
 **Problem.** For such Q, the original cofibrations and the Q-equivalences are part of a model structure (Bousfield–Friedlander). For Q the Ω-spectrification of topological sequential spectra, this is the stable model structure, whose weak equivalences are the stable weak homotopy equivalences.
 
-**How the definition helps.** The definition turns the existence of a localized model structure into three checks on one functor (our own). For sequential spectra these checks are properties of Ω-spectrification, which preserves homotopy pullbacks (our own). The work sits in the general Bousfield–Friedlander theorem, proved once for all such Q.
+**How the definition helps.** The definition turns building a localized model structure into three checks on one functor (our own). For sequential spectra these are properties of Ω-spectrification, which preserves homotopy pullbacks (our own). The general Bousfield–Friedlander theorem, proved once for all such Q, does the rest.
 
 **nLab:** [Introduction to Stable homotopy theory -- 1-1](https://ncatlab.org/nlab/show/Introduction+to+Stable+homotopy+theory+--+1-1). It says: “this establishes the stable model structure on topological sequential spectra”
 
@@ -5069,15 +5069,15 @@
 
 ### Test categories make presheaves model homotopy types almost by definition
 
-**Remember:** Test categories with terminal objects by taking elements of the slice-functor presheaf.
+**Remember:** Contractible categories must stay contractible as presheaves on A.
 
 *True by definition. Confidence: medium.* MSC 55U35 (Abstract and axiomatic homotopy theory in algebraic topology), 55P15, 18F20. arXiv math.AT, math.CT. Level 4: research.
 
-**Definition.** A small category A is a weak test category if the following test holds for every small category D with a terminal object (our own). The category of elements of the presheaf a ↦ Fun(A/a,D)₀ must have weakly contractible nerve (our own). Here Fun(A/a,D)₀ denotes the set of functors from the slice to D (our own).
+**Definition.** A small category A is a weak test category when, for every small category D with a terminal object, the presheaf sending a to the set of functors A/a → D has a category of elements with weakly contractible nerve (our own). Such D are contractible, so the test asks that presheaves on A keep them contractible (our own).
 
 **Problem.** For a weak test category A, localizing presheaves at category-of-elements nerve equivalences gives the homotopy category of small categories localized at nerve equivalences. Thus presheaves on a test category model homotopy types.
 
-**How the definition helps.** The axioms make the comparison with small categories almost automatic: it follows by a short argument (Maltsiniotis, Lemme 1.3.8 and Proposition 1.3.9). The real work moves to two places. One must prove that small categories model homotopy types through nerves, and check that categories such as the simplex category Δ are test categories.
+**How the definition helps.** The test is exactly what the comparison with small categories needs, so the theorem follows by a short argument (Maltsiniotis, Lemme 1.3.8 and Proposition 1.3.9). The real work is proving that small categories model homotopy types through nerves, and checking that categories such as Δ are test categories.
 
 **nLab:** [test category](https://ncatlab.org/nlab/show/test+category), [Pursuing Stacks](https://ncatlab.org/nlab/show/Pursuing+Stacks). It says: “In other words, presheaves over a (weak) test category are models for homotopy types of ∞-groupoids.”
 
