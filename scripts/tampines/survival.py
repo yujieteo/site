@@ -175,13 +175,21 @@ def tampines_polygon():
     if not path.exists():
         base = f"https://api-open.data.gov.sg/v1/public/api/datasets/{URA_PLANNING_AREAS}"
         fetch(f"{base}/initiate-download", gap=3)
+        url = None
         for _ in range(60):
-            d = fetch(f"{base}/poll-download", gap=3)["data"]
+            resp = fetch(f"{base}/poll-download", gap=3)
+            d = (resp or {}).get("data") or {}
             if d.get("url"):
+                url = d["url"]
                 break
             time.sleep(5)
+        if not url:
+            raise RuntimeError("URA planning area download timed out")
+        raw = fetch(url, want_json=False)
+        if not raw:
+            raise RuntimeError(f"failed to download URA planning area from {url}")
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(fetch(d["url"], want_json=False))
+        path.write_bytes(raw)
     feats = [f for f in json.loads(path.read_text())["features"] if f["properties"].get("PLN_AREA_N") == "TAMPINES"]
     assert len(feats) == 1, "expected one TAMPINES planning area"
     geom = feats[0]["geometry"]
@@ -206,6 +214,8 @@ def onemap(q, pages=3):
         url = f"{ONEMAP}?" + urllib.parse.urlencode({"searchVal": q, "returnGeom": "Y", "getAddrDetails": "Y", "pageNum": page})
         key = re.sub(r"[^A-Za-z0-9]+", "_", q).strip("_")[:80] + f"_p{page}.json"
         d = fetch(url, CACHE / "onemap" / key, gap=1.0)
+        if not d:
+            break
         results += d.get("results", [])
         if page >= int(d.get("totalNumPages") or 1):
             break
@@ -237,20 +247,21 @@ def stage_postal(rows):
             q, hit, how = p["place"], nearest_onemap(p["place"], lat, lon, 150), "onemap:place"
             if hit is None:
                 data = osm_map(lat, lon)
-                coords = element_coords(data)
-                cands = []
-                for e in data["elements"]:
-                    t = e.get("tags", {})
-                    c = coords.get((e["type"], e["id"]))
-                    if c and t.get("addr:housenumber") and t.get("addr:street"):
-                        cands.append((metres(lat, lon, *c), f'{t["addr:housenumber"]} {t["addr:street"]}'))
-                for d, addr in sorted(cands):
-                    if d > 60:
-                        break
-                    hit2 = nearest_onemap(addr, lat, lon, 150)
-                    if hit2:
-                        q, hit, how = addr, hit2, f"osm-address({d:.0f}m)->onemap"
-                        break
+                if data:
+                    coords = element_coords(data)
+                    cands = []
+                    for e in data["elements"]:
+                        t = e.get("tags", {})
+                        c = coords.get((e["type"], e["id"]))
+                        if c and t.get("addr:housenumber") and t.get("addr:street"):
+                            cands.append((metres(lat, lon, *c), f'{t["addr:housenumber"]} {t["addr:street"]}'))
+                    for d, addr in sorted(cands):
+                        if d > 60:
+                            break
+                        hit2 = nearest_onemap(addr, lat, lon, 150)
+                        if hit2:
+                            q, hit, how = addr, hit2, f"osm-address({d:.0f}m)->onemap"
+                            break
             if hit is None:  # same coordinates as a place resolved directly by OneMap
                 for k2, v2 in memo.items():
                     if k2[1:] == k[1:] and v2[1] is not None and v2[2] == "onemap:place":
@@ -461,6 +472,8 @@ def stage_osm(rows):
     for p in rows:
         lat, lon = float(p["lat"]), float(p["lon"])
         data = osm_map(lat, lon)
+        if not data:
+            continue
         coords = element_coords(data)
         best = None
         for e in data["elements"]:
@@ -477,7 +490,10 @@ def stage_osm(rows):
         if best is None:
             continue
         d, s, e = best
-        hist = fetch(f"{OSM}/{e['type']}/{e['id']}/history.json", CACHE / f"osm/history/{e['type']}{e['id']}.json", gap=1.5)["elements"]
+        hist_data = fetch(f"{OSM}/{e['type']}/{e['id']}/history.json", CACHE / f"osm/history/{e['type']}{e['id']}.json", gap=1.5)
+        if not hist_data or not hist_data.get("elements"):
+            continue
+        hist = hist_data["elements"]
         names = {v.get("tags", {}).get("name", "").strip().casefold() for v in hist} - {""}
         last = hist[-1]
         lt = last.get("tags", {})

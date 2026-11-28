@@ -224,36 +224,7 @@ def task_c():
                               "evidence", "corrected_price", "note"], rows)
 
 
-# ---------- D. HPB Energy & Nutrient Composition of Food ----------
-
-HPB_PROBES = [
-    "https://focos.hpb.gov.sg/eservices/ENCF/",
-    "http://focos.hpb.gov.sg/eservices/ENCF/",
-    "https://www.hpb.gov.sg/",
-    "https://www.healthhub.sg/search?q=energy%20and%20nutrient%20composition",
-]
-
-
-def task_d():
-    for u in HPB_PROBES:
-        status, body = fetch(u, refresh=True)
-        hit = bool(re.search(rb"(?i)focos|ENCF|nutrient composition", body)) if u.startswith("https://www.") else None
-        print(f"D {status:3d} {len(body):7d} {u}" + ("" if hit is None else f" mentions database: {hit}"), file=sys.stderr)
-    # data.gov.sg: list every dataset and look for a food composition table
-    found, page = [], 1
-    while True:
-        status, body = fetch(f"https://api-production.data.gov.sg/v2/public/api/datasets?page={page}")
-        d = json.loads(body)["data"]
-        found += [(x["datasetId"], x["name"]) for x in d["datasets"]
-                  if re.search(r"(?i)nutrient compos|food compos|energy and nutrient|calori", x["name"])]
-        if not d["datasets"] or page >= d.get("pages", page):
-            break
-        page += 1
-    print(f"D data.gov.sg: {page} pages scanned, composition datasets: {found or 'none'}", file=sys.stderr)
-    # The database is a search form with no bulk download; nothing is written unless it answers.
-
-
 if __name__ == "__main__":
-    todo = [a.upper() for a in sys.argv[1:]] or ["A", "B", "C", "D"]
+    todo = [a.upper() for a in sys.argv[1:]] or ["A", "B", "C"]
     for t in todo:
-        {"A": task_a, "B": task_b, "C": task_c, "D": task_d}[t]()
+        {"A": task_a, "B": task_b, "C": task_c}[t]()

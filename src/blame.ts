@@ -40,9 +40,8 @@ export function lastChanged(path: string): string {
 }
 
 // The commit the site is built from and its time, so two builds of one commit give the same bytes.
-export function headCommit(): { commit: string; at: string; dirty: boolean } {
+export function headCommit(): { commit: string; at: string } {
   const run = Bun.spawnSync(["git", "log", "-1", "--format=%H %cI"]);
   const [commit = "", at = ""] = run.stdout.toString().trim().split(" ");
-  const dirty = Bun.spawnSync(["git", "status", "--porcelain"]).stdout.toString().trim() !== "";
-  return { commit, at: new Date(at).toISOString().replace(".000Z", "Z"), dirty };
+  return { commit, at: new Date(at).toISOString().replace(".000Z", "Z") };
 }

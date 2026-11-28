@@ -8,7 +8,7 @@ Checked on 2026-11-15. A separate script reopened each downloaded file, checked 
 
 All 15 rows passed. "Verified" below means the number is what the document says, or what it gives when summed or differenced as stated. Caveats on what the number means are listed with each row.
 
-Scripts used (outside the download folders, run with `python3 -I`): /private/tmp/claude-501/-Users-yj-src/35635280-e2c0-4797-9ad5-6d47982b37f2/scratchpad/limits/ (build_tsv.py, verify.py, xlsx.py, eia860m_sum.py, intl_series.py). That scratchpad can be cleared, so the verification output is copied here.
+The verification scripts ran in a temporary scratch directory with `python3 -I`; the verification output is recorded below.
 
 ## IAEA PRIS, Nuclear Power Reactors in the World, RDS-2/45 (2025 edition, data to end of 2024)
 
@@ -65,5 +65,5 @@ Rows:
 ## SEC EDGAR (TSMC 20-F, Micron or Intel 10-K): NOT OBTAINED
 
 - data.sec.gov accepted the User-Agent `teoyujie-research/1.0 (research use)`. The TSMC submissions index was saved as edgar-tsmc/CIK0001046179.json. It lists the FY2025 20-F (accession 0001628280-26-025362, tsm-20251231.htm) and the FY2024 20-F (0001193125-25-083423, d896993d20f.htm).
-- www.sec.gov refused both filing documents with HTTP 403, a page titled "Your Request Originates from an Undeclared Automated Tool". As instructed, I stopped on EDGAR rather than adding contact details.
+- www.sec.gov refused both filing documents with HTTP 403, a page titled "Your Request Originates from an Undeclared Automated Tool". Stopped on EDGAR rather than adding contact details.
 - There are no TSMC, Micron or Intel wafer-capacity rows.

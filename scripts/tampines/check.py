@@ -225,6 +225,7 @@ def acra_closure_kind(status: str) -> str:
 
 
 def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
+    ACRA_FAILED.clear()
     chosen = rows
     if not chosen:
         return {}
@@ -269,7 +270,8 @@ def osm_status(rows: list[dict[str, str]]) -> dict[str, str]:
             if e.code == 410:
                 out[r["place_id"]] = "OSM element deleted"
             continue
-        except Exception:
+        except Exception as e:
+            print(f"  OSM {r['osm_type']}/{r['osm_id']}: {e}", file=sys.stderr)
             continue
         tags = el.get("tags", {})
         if any(k.startswith(("disused:", "was:")) for k in tags):

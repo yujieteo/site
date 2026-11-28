@@ -413,11 +413,6 @@ def build_patterns(places):
     return pats
 
 
-# Hand review. Keys: (article_id or url, place_id) -> 1 force-include / 0 force-exclude.
-# Filled after reading the ambiguous matches printed by --review.
-OVERRIDES = {}
-
-
 def find_mentions(text, places, pats, scope):
     """Return {place_id: name_as_written} for the 139 places the text names."""
     raw = text
@@ -552,17 +547,11 @@ def main():
         src = "page"
         if not pub:
             pub, src = wayback_first(url), "wayback"
-        sp, ev = SPONSOR_OVERRIDES.get(url) or sponsorship(text)
+        sp, ev = sponsorship(text)
         scope = u.get("scope") or "all"
         single = scope.startswith("single=")
         scoped = {pid for pid in pmap if in_scope(pmap[pid], scope, areas)}
         found = find_mentions(text, places, pats, scope)
-        for (k, pid), v in OVERRIDES.items():
-            if k in (aid, url):
-                if v:
-                    found.setdefault(pid, _subject_name(text, places, pid))
-                else:
-                    found.pop(pid, None)
         if single:
             pid = scope.split("=", 1)[1]
             found.setdefault(pid, _subject_name(text, places, pid))
@@ -601,10 +590,6 @@ def _write(path, hdr, rows):
 CLOSED_OVERRIDES = {
     ("https://eatbook.sg/lawa-bintang/", "p131"): 0,  # the closed outlets are Kaki Bukit and Tai Seng, not Tampines
 }
-
-
-# Manual sponsorship corrections after reading each hit: url -> (flag, evidence)
-SPONSOR_OVERRIDES = {}
 
 
 # ---------------------------------------------------------------- Michelin
